@@ -1,0 +1,177 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+// ----------------------------------------------------------------------------
+// APAP 11개 CMS 메뉴 관리를 관통하는 핵심 엔티티 1:N 다국어 번역 데이터 모델 (MySQL/MariaDB)
+// ----------------------------------------------------------------------------
+
+// 1. 회차 (Edition)
+// APAP의 각 회차(예: 1회, 2회... 8회 등)를 관리하는 공통 모델입니다.
+model Edition {
+  id              String    @id @default(uuid())
+  number          Int       @unique // 회차 번호 (예: 1, 2, ..., 8)
+  
+  // 기간 설정
+  startDate       DateTime?
+  endDate         DateTime?
+
+  // 활성화 여부
+  isActive        Boolean   @default(true)
+
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
+
+  // 1:N 관계 (다국어 번역 테이블 연결)
+  translations    EditionTranslation[]
+  
+  // M:N 관계 조인용
+  artists         ArtistEdition[]
+  artworks        ArtworkEdition[]
+}
+
+// 회차 번역 테이블
+model EditionTranslation {
+  id            String    @id @default(uuid())
+  editionId     String
+  lang          String    // "ko", "en", "ja", "zh" 등 언어 코드
+
+  title         String    // 해당 언어의 회차 제목 (예: "디지털 무릉도원")
+  description   String    @db.Text // 해당 언어의 회차 설명
+
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+
+  edition       Edition   @relation(fields: [editionId], references: [id], onDelete: Cascade)
+
+  @@unique([editionId, lang])
+}
+
+// 2. 작가 (Artist)
+// 전시에 참여한 작가 정보를 관리하는 공통 모델입니다.
+model Artist {
+  id              String    @id @default(uuid())
+  
+  // 외부 링크 및 추가 정보 (언어 무관 데이터)
+  website         String?
+  profileImageUrl String?
+
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
+
+  // 1:N 관계 (다국어 번역 테이블 연결)
+  translations    ArtistTranslation[]
+
+  // M:N 관계 조인용
+  editions        ArtistEdition[]
+  artworks        ArtistArtwork[]
+}
+
+// 작가 번역 테이블
+model ArtistTranslation {
+  id            String    @id @default(uuid())
+  artistId      String
+  lang          String    // "ko", "en", "ja", "zh" 등 언어 코드
+
+  name          String    // 작가명 (각 언어별 번역)
+  bio           String?   @db.Text // 작가 이력/소개
+
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+
+  artist        Artist    @relation(fields: [artistId], references: [id], onDelete: Cascade)
+
+  @@unique([artistId, lang])
+}
+
+// 3. 작품 (Artwork)
+// 작가가 제작하고 특정 회차에 출품된 작품 정보를 관리하는 공통 모델입니다.
+model Artwork {
+  id              String    @id @default(uuid())
+  
+  // 작품 물리 정보 (언어 무관 데이터)
+  year            String?   // 제작 연도
+  dimensions      String?   // 규격
+  imageUrl        String?   // 대표 이미지
+
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
+
+  // 1:N 관계 (다국어 번역 테이블 연결)
+  translations    ArtworkTranslation[]
+
+  // M:N 관계 조인용
+  editions        ArtworkEdition[]
+  artists         ArtistArtwork[]
+}
+
+// 작품 번역 테이블
+model ArtworkTranslation {
+  id            String    @id @default(uuid())
+  artworkId     String
+  lang          String    // "ko", "en", "ja", "zh" 등 언어 코드
+
+  title         String    // 작품명
+  description   String    @db.Text // 작품 설명
+  material      String?   // 재료
+  location      String?   // 설치 장소
+
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+
+  artwork       Artwork   @relation(fields: [artworkId], references: [id], onDelete: Cascade)
+
+  @@unique([artworkId, lang])
+}
+
+// ----------------------------------------------------------------------------
+// Join Tables (M:N 관계 해소)
+// 다대다 관계는 핵심 공통 엔티티(Edition, Artist, Artwork) 간에 연결됩니다.
+// ----------------------------------------------------------------------------
+
+// 회차 - 작가 연결 테이블
+model ArtistEdition {
+  editionId   String
+  artistId    String
+  
+  createdAt   DateTime @default(now())
+
+  edition     Edition  @relation(fields: [editionId], references: [id], onDelete: Cascade)
+  artist      Artist   @relation(fields: [artistId], references: [id], onDelete: Cascade)
+
+  @@id([editionId, artistId])
+}
+
+// 회차 - 작품 연결 테이블
+model ArtworkEdition {
+  editionId   String
+  artworkId   String
+  
+  createdAt   DateTime @default(now())
+
+  edition     Edition  @relation(fields: [editionId], references: [id], onDelete: Cascade)
+  artwork     Artwork  @relation(fields: [artworkId], references: [id], onDelete: Cascade)
+
+  @@id([editionId, artworkId])
+}
+
+// 작가 - 작품 연결 테이블 (공동 작업 등 대응)
+model ArtistArtwork {
+  artistId    String
+  artworkId   String
+  
+  createdAt   DateTime @default(now())
+
+  artist      Artist   @relation(fields: [artistId], references: [id], onDelete: Cascade)
+  artwork     Artwork  @relation(fields: [artworkId], references: [id], onDelete: Cascade)
+
+  @@id([artistId, artworkId])
+}
