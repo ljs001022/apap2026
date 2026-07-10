@@ -31,23 +31,62 @@ export function proxy(request: NextRequest) {
     ? `/ko${pathname === '/' ? '' : pathname}`
     : pathname;
 
+  // active_site 쿠키 확인 (로컬 개발 및 단일 도메인 테스트용 라우팅 상태 유지)
+  const activeSiteCookie = request.cookies.get('active_site')?.value;
+
   // 3. 도메인 분기 및 리라이트
   if (host.includes('2026.apap.or.kr') || host.includes('apap8.or.kr')) {
-    // 사이트 B (8회차 랜딩페이지) 전용 라우팅
-    // 무조건 로케일이 적용된 /site-b/ko 또는 /site-b/en 형태로 내부 포워딩
+    // 사이트 B (8회차 랜딩페이지) 전용 도메인 접속 시
     url.pathname = `/site-b${normalizedPath}`;
+    const response = NextResponse.rewrite(url);
+    response.cookies.set('active_site', 'site-b', { path: '/' });
+    return response;
+  }
+
+  // 3.1. 아카이브 강제 진입 경로 (/archive) 처리
+  if (pathname.startsWith('/archive')) {
+    const cleanPath = pathname.replace('/archive', '');
+    const archivePathIsMissingLocale = locales.every(
+      (locale) => !cleanPath.startsWith(`/${locale}/`) && cleanPath !== `/${locale}`
+    );
+    const targetPath = archivePathIsMissingLocale ? `/ko${cleanPath === '/' ? '' : cleanPath}` : cleanPath;
+    
+    url.pathname = `/site-a${targetPath}`;
+    const response = NextResponse.rewrite(url);
+    response.cookies.set('active_site', 'site-a', { path: '/' });
+    return response;
+  }
+
+  // 3.2. 명시적으로 site-a나 site-b 경로로 직접 들어온 경우 쿠키 세팅
+  if (pathname.startsWith('/site-a')) {
+    const response = NextResponse.next();
+    response.cookies.set('active_site', 'site-a', { path: '/' });
+    return response;
+  }
+  if (pathname.startsWith('/site-b')) {
+    const response = NextResponse.next();
+    response.cookies.set('active_site', 'site-b', { path: '/' });
+    return response;
+  }
+
+  // 3.3. root (/) 접근 시 언제나 8회차 랜딩(site-b)을 메인으로 초기화 및 쿠키 갱신
+  if (pathname === '/') {
+    url.pathname = `/site-b/ko`;
+    const response = NextResponse.rewrite(url);
+    response.cookies.set('active_site', 'site-b', { path: '/' });
+    return response;
+  }
+
+  // 3.4. 일반적인 다국어 경로 (/, /ko, /en 등) 접근 시 쿠키 상태에 따라 라우팅
+  if (activeSiteCookie === 'site-a') {
+    url.pathname = `/site-a${normalizedPath}`;
     return NextResponse.rewrite(url);
   } else {
-    // 기본 도메인(apap.or.kr 등) 접속
-    if (pathnameIsMissingLocale) {
-      // 8회차 랜딩 우선 배포 정책:
-      // 명시적 언어 접두사 없이 루트(/)나 일반 경로로 접속 시 당분간 8회차 랜딩(site-b/ko)으로 rewrite
-      url.pathname = `/site-b/ko${pathname === '/' ? '' : pathname}`;
-    } else {
-      // 주소창 뒤에 /ko, /en, /ja, /zh 가 명시적으로 붙은 경우에만 아카이브 메인 홈페이지(site-a)로 분기
-      url.pathname = `/site-a${pathname}`;
-    }
-    return NextResponse.rewrite(url);
+    // 기본값은 8회차 랜딩(site-b)으로 노출 (임시 우선 배포 정책)
+    url.pathname = `/site-b${normalizedPath}`;
+    const response = NextResponse.rewrite(url);
+    response.cookies.set('active_site', 'site-b', { path: '/' });
+    return response;
   }
 }
 
