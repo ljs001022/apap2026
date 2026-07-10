@@ -1,0 +1,8 @@
+<svg width="143" height="244" viewBox="0 0 143 244" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+        <filter x="-.4%" y="-.2%" width="100.7%" height="100.4%" filterUnits="objectBoundingBox" id="sugz1wwpea">
+            <feGaussianBlur in="SourceGraphic"/>
+        </filter>
+    </defs>
+    <ellipse filter="url(#sugz1wwpea)" cx="396.49" cy="1106.693" rx="70.114" ry="120.987" transform="translate(-325 -985)" fill="#FFF" stroke="#333" fill-rule="evenodd"/>
+</svg>

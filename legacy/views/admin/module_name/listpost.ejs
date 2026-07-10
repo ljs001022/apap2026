@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html>
+	<%- include('../includes/head.ejs') %>
+	<body>
+        <%
+            let curPostId = '',
+                curCategory='',
+                curLng='',    
+                curTitle ='',
+                curVideo='',
+                curImg='',
+                curThumbImg ='/public/images/thumDefaultImg.jpg';
+            
+            if (posts){
+                curPostId = posts._id,
+                curCategory= posts.category,
+                curLng=posts.lng,    
+                curTitle = posts.title,
+                curVideo= posts.video,
+                curImg= posts.img,
+                curThumbImg = posts.thumbnail_img;
+            }
+
+
+        %>
+        <style>
+            /* .videoSection, .imageSection{
+                display: none;
+            } */
+        </style>
+		<article id="contents_wrap" class="writing_wrap">
+			<%- include('../includes/gnb.ejs') %>
+            <script>
+                $(document).ready(function(){
+                    PROJECT_NAME_EDITER.init("페이지 이름");
+                    // renderByCategory();
+                    selectDefalutByparamLng();
+                    
+
+                    var categoryval = "<%=curCategory%>",
+                        lngval ="<%=curLng%>";
+
+                    if (categoryval){
+                        $('select[name="category"]').val(categoryval).trigger("change");
+                    } 
+
+
+                    $(".uploadImg").on("click",function(e){
+						e.preventDefault();
+						$(".imguploadpopup").show();
+						popupOpen();
+						offLoading($(".imguploadpopup"));
+
+						$(".form-imgupload input[name='uploadImage']").val("");
+					})
+
+                    $(".photoUploadBtn").on("click",function(e){
+	  	
+                            e.preventDefault();					
+                            var fileNm = $(".form-imgupload input[name='uploadImage']").val();
+                                
+                            if (fileNm != "") {
+                            
+                                var ext = fileNm.slice(fileNm.lastIndexOf(".") + 1).toLowerCase();
+                            
+                                if (!(ext == "gif" || ext == "jpg" || ext == "png")) {
+                                    alert("이미지파일 (.jpg, .png, .gif ) 만 업로드 가능합니다.");
+                                    return false;
+                                }
+                            
+                            }else{
+                                alert("이미지 파일을 등록해 주세요");
+                                return false;
+                            }
+
+                            
+                            var form = $('.form-imgupload')[0];
+
+                            // Create an FormData object
+                            var data = new FormData(form);
+
+                            // If you want to add an extra field for the FormData
+                            
+
+                            // disabled the submit button
+                            onLoading($(".imguploadpopup"))
+
+                            $.ajax({
+                                type: "POST",
+                                enctype: 'multipart/form-data',
+                                url: "/upload/uploadImage",
+                                data: data,
+                                processData: false,
+                                contentType: false,
+                                cache: false,
+                                timeout: 600000,
+                                success: function (data) {
+
+                                    var result = jQuery.parseJSON(data);
+
+                                    $(".imguploadpopup .closeBtn").trigger("click");
+                                    $("input[name='img']").val(result.fileSrc);
+                                    $(".previewImg").css("background-image","url("+result.fileSrc+")");
+
+                                    // $(".previewImg").attr("src", result.fileSrc);
+                                    
+                                    //$('#summernote').summernote('insertImage', result.fileSrc, result.info);
+
+                                },
+                                error: function (e) {
+                                    console.log("ERROR : ", e);
+                                }
+                            });
+
+                    })
+
+                    
+
+                    function renderByCategory(){
+                        $('select[name="category"]').on('change',function(){
+                            var val = $(this).val();
+                            if(val==="video"||val==="asmr"){
+                                $(".videoSection").hide();
+                                $(".imageSection").hide();
+                                $(".table_type01 .videoSection").show();
+                                $(".detail-preview .videoSection").show();
+                            }else if(val==="image"){
+                                $(".videoSection").hide();
+                                $(".imageSection").hide();
+                                $(".table_type01 .imageSection").show();
+                                $(".detail-preview .imageSection").show();
+                            }
+                        });
+                    }
+                    function selectDefalutByparamLng(){
+                        var paramLng = USE9.getUrlVar("lng");
+                        if(paramLng){
+                            $('input[name="lng"][value='+paramLng+']').prop("checked",true);
+                        }
+                    }
+                })
+            </script>
+			<section class="contents contents_popup titleImgupload"  style="display:none">
+				<a href="#" class="closeBtn"><img src="/public/images/closeBtn.png"/></a>
+				<div class="tit_box">
+					<h2>썸네일 이미지 등록</h2>
+				</div>
+				<div class="imgcrop_container" >
+					<img id="img_crop_titleImg" style="width:500px;height:340px" src="/public/images/thumDefaultImg.jpg" style="width:600px;height:600px" alt="Picture">
+					<div class="fileUpload_btn">
+						<label for="upload_poster">이미지 업로드하기</label>
+					    <input type="file" id="upload_poster_titleImg" class="upload_poster">
+					</div>
+				</div>
+				<div class="tm10">
+					<a href="#" class="btn_type01 titleImgUploadBtn">등록하기</a>
+				</div>
+				<form class="form-slideimg-data" action="" method="POST">
+					<input type="hidden" name="imgStr"/>
+				</form>
+			</section>
+			<section class="contents contents_popup imguploadpopup"  style="display:none">
+				<a href="#" class="closeBtn"><img src="/public/images/closeBtn.png"/></a>
+				<div class="tit_box">
+					<h2>이미지 등록</h2>
+				</div>
+				<h3>&nbsp;</h3>
+				<form class="form-imgupload" action="/upload/uploadImage" method="POST" enctype="multipart/form-data">
+					<table class="table_type01">
+						<colgroup>
+							<col width="100px">
+							<col width="*">
+						</colgroup>
+						<tbody>
+							
+							<tr>
+								<td>이미지</td>
+								<td>
+									<input type="file" name="uploadImage"/>
+								</td>
+							</tr>
+							<!-- <tr>
+								<td>설명</td>
+								<td>
+									<input type="text" name="imageInfo"/>
+								</td>
+							</tr>	 -->					
+						</tbody>					
+					</table>
+				</form>
+				<div class="tm10">
+					<a href="#" class="btn_type01 photoUploadBtn">등록하기</a>
+				</div>
+			</section>
+			<!--upload popup-->
+			<section class="contents" style="min-width: 970px;">
+                <form class="form-post-data" action="<%=postpath%>" method="POST">
+                    <input type="hidden" name="thumbimg" value="<%=curThumbImg%>"/>
+                    <input type="hidden" name="img" value="<%=curImg%>"/>
+                    <div class="tit_box">
+                        <h2>moudule_name</h2>
+                        <span><%=category01%><%if(category02){%><span>></span><%=category02%><%}%></span>
+                    </div>
+				    <h3>&nbsp;</h3>
+                    <table class="table_type01">
+                        <colgroup>
+                            <col width="150px">
+                            <col width="*">
+                            <col width="150px">
+                            <col width="*">
+                        </colgroup>
+                        <thead>
+                            <tr>
+                                <th colspan="4">기본 입력 사항<a href="#" class="btn_type07 btn_loadpost" style="display:none">기본 입력 사항 불러오기</a></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th>카테고리</th>
+                                <td>
+                                    <select class="select_type02 category_select" name="category">
+                                        <option hidden value="">카테고리를 선택해주세요</option>
+                                        <option value="facility">부대시설</option>
+                                        <option value="room">객실</option>
+                                        <option value="outfacility">외부시설</option>
+                                    </select>
+                                    
+                                </td>
+                                <th>언어</th>
+                                <td>
+                                    <input type="radio" name="lng" value="ko" id="lng_ko" <%if( curLng=="ko"){%>checked<%}%>/>
+                                    <label for="lng_ko">국문</label>
+                                    &nbsp;&nbsp;|&nbsp;&nbsp;
+                                    <input type="radio" name="lng" value="en" id="lng_en"<%if( curLng=="en"){%>checked<%}%>/>
+                                    <label for="lng_en">영문</label>
+                                    &nbsp;&nbsp;|&nbsp;&nbsp;
+                                    <input type="radio" name="lng" value="cn" id="lng_cn"<%if( curLng=="cn"){%>checked<%}%>/>
+                                    <label for="lng_cn">중문</label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>제목</th>
+                                <td colspan="3"><input type="text" class="textDefault" name="title" placeholder="제목을 입력해주세요" value="<%=curTitle%>" autocomplete="off"></td>
+                            </tr>
+                        </tbody>
+                        <thead>
+                            <tr>
+                                <th colspan="4">선택 입력 사항</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th>Video ID</th>
+                                <td>
+                                    <input type="text" class="textDefault" name="video" placeholder="video Id를 입력해주세요" value="<%=curVideo%>" autocomplete="off" style="width: 183px;">
+                                    <p class="ex_cmt">ex) https://vimeo.com/<span>123456789</span></p>
+                                </td>
+                                <th>이미지</th>
+                                <td><img src="" class="thumimgsrc" style="width:200px"/><a href="#" class="btn_type02 uploadImg">등록하기</a></td>
+                            </tr>
+                        </tbody>
+                        <style>
+                            .ex_cmt{
+                                font-size: 12px;
+                                color: #999;
+                                letter-spacing: -.5px;
+                                margin-top: 5px;
+                            }
+                            .ex_cmt span{
+                                font-size: inherit;
+                                letter-spacing: inherit;
+                                text-decoration: underline;
+                                color: red;
+                            }
+                        </style>
+                    </table>
+                    <section class="detail-preview" style="display: flex; padding-top: 20px;">
+                        <div class="videoSection" style="width: 48.4%; border-right: 2px dashed grey; padding-left: 16px;">
+                            <h2>썸네일 이미지 등록하기</h2>
+                            <div class="pop_wrap" style="width: 100%; padding-top: 16px;">
+                                <a href="" class="close_btn"></a>
+                                <div class="pop_cont" style="width: 100%;">
+                                    <div class="pop_img">
+                                        <img src="<%=curThumbImg%>" style="width:432px;height:250px" alt="">
+                                        <a href="#" class="btn_type01 titleImageOpen" style="margin-left: 0; left: 0">등록하기</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <style>
+                            .preview_img_box{
+                                width: 462px;
+                                height: 308px;
+                                background-repeat: no-repeat;
+                                background-position: center;
+                                background-size: contain;
+                                background-color: #e1e1e1;
+                                margin-top: 16px;
+                            }
+                        </style>
+                        <div class="imageSection"  style="flex: 1; padding-left: 16px;">
+                            <h2>이미지 미리보기</h2>
+                            <div class="previewImg preview_img_box" style="background-image:url(<%=curImg%>);"></div>
+                            <!-- <img class="previewImg" src="<%=curImg%>" alt="" style="width: 432px; height: auto;"> -->
+                        </div>
+                    </section>
+                    <hr style="border-top:1px solid #093c71"/>				
+                    <a href="#" class="btn_type01 postSave tm50" style="margin:0">글 저장하고 목록으로</a>
+                    <br/>
+                    <br/>
+                    <br/>
+                    <br/>
+                    <br/>
+                    <br/>
+                    <br/>
+                    <br/>
+                </form>
+            </section>
+		</article>
+	</body>
+</html>

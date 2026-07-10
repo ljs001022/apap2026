@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<%- include('./includes/head.ejs') %>
+	<body>
+		<article id="contents_wrap" class="writing_wrap">
+			<%- include('./includes/gnb.ejs') %>
+			<section class="contents">
+				<div class="tit_box">
+					<h2>관리자 로그</h2>
+					<span>관리자<span>></span>접속 이력</span>
+				</div>
+				<table class="table_type01 dataTable">
+					<colgroup>
+						<col width="25%">
+						<col width="25%">
+						<col width="25%">
+						<col width="25%">
+					</colgroup>
+					<thead>
+						<tr>
+							<th>아이디</th>
+							<th>활동</th>
+							<th>아이피</th>
+							<th>날짜</th>
+						</tr>
+					</thead>
+					<tbody>
+						<%
+							
+							var logs = result;
+						
+						     for (var i = 0; i < logs.length; i++) {
+						       var curId = logs[i]._doc.email;
+						       var curIp = logs[i]._doc.ip;
+						       var curAction = logs[i]._doc.action;
+						       var curDate = logs[i]._doc.created_at;
+						       //curDate = curDate.toFormat("YYYY.MM.DD ");
+
+							   
+						%>
+						<tr>								
+							<td><%=curId%></td>
+							<td><%=curAction%></td>
+							<td><%=curIp%></td>
+							<td><%=curDate%></td>
+						</tr>
+						<% 
+							}
+						 %>							
+					</tbody>
+				</table>		
+			</section>
+		</article>
+	</body>
+</html>

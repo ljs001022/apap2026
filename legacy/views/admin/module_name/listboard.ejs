@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html>
+	<%- include('../includes/head.ejs') %>
+	<body>
+		<script>
+			function listpost(page, perPage) {
+				
+				var locationUrl = USE9.setUrlVar("page",page);
+				document.location = locationUrl;
+
+			}
+			$(document).ready(function(){
+				$(".deletePostBtn").on("click",function(e){
+					e.preventDefault();
+
+					var okFlag = confirm("정말로 글을 삭제 합니까?");
+
+					var tempPostId = $(this).attr("data-post");
+					// var $targetTr = $(this).parents("tr");
+
+					if(okFlag){
+						$.ajax({
+				            type: "POST",
+				            url: "<%=rootpath%>/module_name/delete",
+				            data: {postid:tempPostId},
+				            datatype:"json",
+				            success: function (req) {
+				                if(req.result){
+				                	alert("삭제되었습니다.");
+				                	location.reload();
+				                }else{
+				                	alert("삭제 실패");
+				                }
+				            },
+				            error: function (e) {
+				                console.log("ERROR : ", e);
+				            }
+				        });
+					}
+					
+				})
+
+				var searchFormSubmit = function(){
+					console.log('함수 실행');
+					//1. 카테고리
+					var catStr;
+					if($('.search_box input[name="chkall"]:checked').val()=="all"){
+						console.log("전체");
+						catStr = "all";
+					}else{
+						catStr = "";
+						$('.search_box input[name="chk"]:checked').each(function() {
+
+							this.checked = true; //checked 처리
+
+							if(this.checked){//checked 처리된 항목의 값
+
+								catStr+=(this.value+","); 
+
+							}
+						});
+					}
+					//1-1. 카테고리가 선택 안되었을때
+					if(catStr == ""){
+						catStr = "none";
+					}
+
+					//2. 검색어
+					searchStr = $(".search_box #searchStr").val();
+					if(searchStr == ""){
+						searchStr = "%20";
+					}else{
+						searchStr = encodeURIComponent(searchStr);
+					}
+
+					var locationUrl = USE9.setUrlVar("cat",encodeURIComponent(catStr));
+					locationUrl = USE9.setUrlVarInUrl(locationUrl,"page",0);
+					locationUrl = USE9.setUrlVarInUrl(locationUrl,"str",searchStr);
+
+					location.href=locationUrl;
+					
+				}
+				
+				$(".listSearchBtn").on("click",function(e){
+					console.log('클릭');
+					e.preventDefault();
+					searchFormSubmit();
+				});
+
+				$("#searchStr").keypress(function(e) { 
+					
+					
+				    if (e.keyCode == 13){
+				       e.preventDefault();
+				       searchFormSubmit();
+
+				    }    
+				});
+			
+				var searchBlockDefault = function(){
+					//카테고리 적용
+					var paramCategory = USE9.getUrlVar("cat");
+					var paramStr = USE9.getUrlVar("str");
+
+
+					if(paramCategory=="all"){
+						$(".search_box input[name='chkall']").attr("checked", true)
+						$(".search_box input[name='chk']").attr("checked", true)
+					}else{
+						
+						paramCategory = decodeURIComponent(paramCategory);
+						paramCategory = paramCategory.split(",");
+    					paramCategory.pop();
+
+    					$.each(paramCategory,function(idx,value){
+    						$('.search_box input:checkbox[value="'+value+'"]').attr("checked", true); //단일건
+    					})
+
+						
+					}
+
+
+    				if(paramStr!=""){
+    					$(".search_box #searchStr").val(decodeURIComponent(paramStr));
+    				}
+
+
+				}
+
+				searchBlockDefault();
+			
+			})
+		</script>
+		<%
+			let transLng = '';
+			switch (lng) {
+				case "ko":
+					transLng ='국문'
+					break;
+				case "en":
+					transLng ='영문'
+					break;
+				case "cn":
+					transLng ='중문'
+					break;
+				default: "ko"
+					break;
+			}
+		%>
+		<article id="contents_wrap" class="writing_wrap">
+			<%- include('../includes/gnb.ejs') %>
+			<section class="contents">
+				<div class="tit_box">
+					<h2>module_name 관리 (<%=transLng%>)</h2>
+					<span><%=category01%><%if(category02){%><span>></span><%=category02%><%}%></span>
+				</div>
+				<div class="search_box">
+					<form>
+						<ul>
+							<li>
+								<span>카테고리 선택</span>
+								<input type="checkbox" id="chk01" name="chkall" value="all" />
+	    						<label for="chk01"><span></span>전체</label>
+	    						<input type="checkbox" id="chk02" name="chk" value="facility" />
+	    						<label for="chk02"><span></span>부대시설</label>
+	    						<input type="checkbox" id="chk03" name="chk" value="room" />
+	    						<label for="chk03"><span></span>객실</label>
+								<input type="checkbox" id="chk04" name="chk" value="outfacility" />
+	    						<label for="chk04"><span></span>외부시설</label>
+							</li>
+							<li>
+								<span>검색</span>
+								<input type="text" id="searchStr" name="search"/>
+							</li>
+							<li><a href="#" class="btn_type02 listSearchBtn">검색하기</a><a href="<%=rootpath%>/selftour/write?lng=<%=lng%>" class="btn_type01">등록하기</a></li>
+						</ul>
+					</form>
+				</div>
+				<div class="search_list">
+					<div>
+						<span class="tit">검색결과</span>
+						<span>총 <span><%=totalRecords%></span>개</span>
+						<select class="select_type01" style="display:none">
+							<option>10개씩 보기</option>
+							<option>30개씩 보기</option>
+							<option>50개씩 보기</option>
+						</select>
+					</div>
+					<table class="table_type01">
+						<colgroup>
+							<col width="13%">
+							<col width="*">
+							<col width="13%">
+							<col width="13%">
+						</colgroup>
+						<thead>
+							<tr>
+								<th>카테고리</th>
+								<th>제목</th>
+								<th>삭제</th>
+								<th>작성일</th>
+							</tr>
+						</thead>
+						<tbody>
+							<%
+							    for (var i = 0; i < posts.length; i++) {
+									var curPostid = posts[i]._id;
+									var curCategory = posts[i].category;
+									var curTitle = posts[i].title;
+									var curWriteDate = posts[i].created_at;
+									var transCategory = '';
+
+								   curWriteDate = curWriteDate.toLocaleDateString();
+
+									switch (curCategory) {
+										case "facility":
+										transCategory = "부대시설"
+											break;
+										case "room":
+										transCategory = "객실"
+											break;
+										case "outfacility":
+										transCategory = "외부시설"
+											break;
+									
+										default:
+											break;
+									}
+							%>
+							<tr>								
+								<td><%=transCategory%></td>
+								<td><a href="<%=rootpath%>/selftour/show/<%=curPostid%>"><%=curTitle%></a></td>
+								<td><a href="#" class="btn_type02 deletePostBtn" data-post="<%=curPostid%>">Delete</a></td>
+								<td style="text-align: center;"><%=curWriteDate%></td>
+							</tr>
+							<% } %>							
+						</tbody>
+					</table>
+					
+					
+					<div class="paging">
+							<%
+					 			if (page > 0) {
+					 		%>
+					 				<a href="#" class="prev_btn arrow_btn" onclick="listpost(<%=(page-1)%>,<%=perPage%>)"><</a>
+					 		<%
+					 			}
+					 		%>
+					 		<% 
+					 			var initial = Math.floor(page / 10) * 10;
+					 			console.log('initial : ' + initial);
+					 			
+					 			var max = pageCount - initial;
+					 			if (max > 10) {
+					 				max = initial + 10;
+					 			} else {
+					 				max = initial + max;
+					 			}
+					 			console.log('max : ' + max);
+					 			
+					 			for (var i = initial; i < max; i++) {
+					 				if (i != page) {
+					 		%>
+					 					<a href="#" onclick="listpost(<%=i%>, <%=perPage%>)"><%=(i+1)%></a>
+					 		<%
+					 				} else {
+					 		%>
+					 					<a href="#" class="on_page"><%=(i+1)%></a>
+					 		<% 
+					 				}
+					 			}
+					 		%>
+					 		<%
+					 			if ((page+1) < pageCount) {
+					 		%>
+					 				<a href="#" class="next_btn arrow_btn" onclick="listpost(<%=(page+1) %>, <%=perPage %>)">></a>
+					 		<%
+					 			} 
+					 		%>
+					 	<!--
+						<a href="#" class="prev_btn arrow_btn"><img src="images/arrow_img04.png" alt=""></a>
+						<a href="#" class="on_page">1</a>
+						<a href="#">2</a>
+						<a href="#">3</a>
+						<a href="#" class="next_btn arrow_btn"><img src="/images/arrow_img03.png" alt=""></a>
+						-->
+					</div>
+				</div>
+			</section>
+		</article>
+	</body>
+</html>

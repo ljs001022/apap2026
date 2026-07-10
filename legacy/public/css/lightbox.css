@@ -1,0 +1,14 @@
+#lightbox {background-color:#eee; padding: 10px; border-bottom: 2px solid #666; border-right: 2px solid #666;}
+#lightboxDetails {font-size: 0.8em; padding-top: 0.4em;}	
+#lightboxCaption {float:left;}
+#keyboardMsg {float:right;}
+#closeButton {top:5px; right:5px;}
+#lightbox img {border:none; clear:both;} 
+#overlay img {border:none;}
+#overlay{ 
+	/*background: url(overlay.png); */
+	background: #000;
+	filter:alpha(opacity=60);
+	-moz-opacity: 0.6;
+	opacity: 0.6;
+}

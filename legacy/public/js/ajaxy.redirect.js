@@ -1,0 +1,1 @@
+(function(){if(location.href.match("/#")){}else{var url = location.href.replace(location.host,"");var url  = url.replace("http://","");var redirectURL = "http://"+location.host+"/#"+url;location.href=redirectURL;}})()

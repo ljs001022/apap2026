@@ -1,0 +1,145 @@
+<section class="gnb">
+	<%
+		var profileimg = user.profileimg || "/public/images/logo02.png"
+	%>
+	<h1>프로젝트 명 입력</h1>
+	<div class="member_box">
+		<img src="/public/images/profile_img.svg" alt="">
+		<p><span><%=user.email%></span>님</p>
+		<div class="j_m_btn_box">
+            <a href="<%=rootpath%>/logout" class="logoutbtn">로그아웃</a>
+            <a href="#" class="userEditer">비밀번호 변경</a>
+        </div>
+	</div>
+	<nav>
+		<ul>
+			<!-- 모듈 항목에 맞게 수정하여 사용  -->
+			<li <% if (page_name === 'page_name1' || page_name === 'page_name2') { %>class="on_menu" <% } %>>
+				<a href="#" class="writing j_ex">항목 1</a>
+				<ul>
+					<li <% if (page_name === 'page_name1') { %>class="on_lnb" <% } %>><a href="<%=rootpath%>/module_name/write">세부 항목 1</a></li>				
+					<li <% if (page_name === 'page_name2') { %>class="on_lnb" <% } %>><a href="<%=rootpath%>/module_name/listboard?page=0&perPage=20&lng=ko&cat=all&str=%20">세부 항목 2</a></li>				
+				</ul>
+			</li>
+			
+			<li <% if (page_name === 'page_name3') { %>class="on_menu" <% } %>>
+				<a href="<%=rootpath%>/module_name/listboard?page=0&perPage=20" class="writing j_board">항목 2</a>
+			</li>
+			<%if(user.level==9){%>
+			<li <% if (page_name === 'logs') { %>class="on_menu" <% } %>><a href="<%=rootpath%>/adminlogs" class="member">관리자 접속 이력</a></li>
+			<%}%>
+		</ul>
+	</nav>
+</section>
+<div class="layerBg" style="display:none"></div>
+<section class="contents contents_popup usereditePopup popupDefaultType01"  style="display:none">
+	<a href="#" class="closeBtn"><img src="/public/images/closeBtn.png"/></a>
+	<div class="tit_box">
+		<h2>비밀번호 변경</h2>
+	</div>
+	<h3>&nbsp;</h3>
+	<form class="form-userediter" action="<%=rootpath%>/useredite" method="POST">
+	<table class="table_type01">
+		<colgroup>
+			<col width="160px">
+			<col width="*">
+		</colgroup>
+		<tbody>
+			<tr>
+				<td>기존</td>
+				<td>
+					<input type="password" name="password">
+				</td>
+			</tr>
+			<tr>
+				<td>새로운 비밀번호</td>
+				<td>
+					<input type="password" name="newpassword">
+				</td>
+			</tr>
+			<tr>
+				<td>새로운 비밀번호 확인</td>
+				<td>
+					<input type="password" name="newpassword_check">
+				</td>
+			</tr>
+		</tbody>					
+	</table>
+	</form>
+	<div class="tm10">
+		<a href="#" class="btn_type01 userediterBtn">변경하기</a>
+	</div>
+</section>
+<script>
+	$(document).ready(function(){
+
+		
+
+		$(".userEditer").on("click",function(e){
+			e.preventDefault();
+			popupOpen();
+			$(".usereditePopup").show();
+		})
+
+
+		// $(".userEditerProfile").on("click",function(e){
+		// 	e.preventDefault();
+		// 	popupOpen();
+		// 	$(".userediteProfilePopup").show();
+			
+		// })
+
+		
+
+		$(".userediterBtn").on("click",function(e){
+			e.preventDefault();
+
+
+			if($('.form-userediter input[name="newpassword"]').val()!=$('.form-userediter input[name="newpassword_check"]').val()){
+				alert("새로운 비밀번호를 정확히 입력해 주세요");
+				return;
+			}
+
+			var tempPass = String($('.form-userediter input[name="newpassword"]').val());
+			if(tempPass.length<4){
+				alert("새로운 비밀번호를 4자리 이상 입력해 주세요");
+			}
+
+			var formData = $('.form-userediter').serialize();
+
+			// Create an FormData object
+	        var userdata = new FormData();
+	        userdata.password = $('.form-userediter input[name="password"]').val();
+	        userdata.newpassword = $('.form-userediter input[name="newpassword"]').val();
+
+	        console.log(formData);
+	        
+
+	        //여기오류 페이지에서 데이터 못받음
+
+	        $.ajax({
+	            type: "POST",
+	            url: "<%=rootpath%>/useredite",
+	            data: formData,
+	            datatype:"json",
+	            success: function (data) {
+
+	            	var result = jQuery.parseJSON(data);
+	                if(result.result){
+	                	location.href = "<%=rootpath%>/logout"
+	                }else{
+	                	alert("비빌번호 변경 실패");
+	                }
+
+	            },
+	            error: function (e) {
+	                console.log("ERROR : ", e);
+	            }
+	        });
+
+		})
+
+
+		
+	})
+</script>

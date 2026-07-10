@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+	<%- include('./includes/head.ejs') %>
+	<body style="background:#e1e1e1">
+		<!--
+		<div class="container">
+
+			<div class="col-sm-6 col-sm-offset-3">
+		
+			    <h1><span class="fa fa-sign-in"></span> 로그인</h1>
+			
+			    인증 처리 후 메시지가 있으면 메시지 표시
+			   
+			
+			    <form action="/login" method="post" >
+			        <div class="form-group">
+			            <label>아이디</label>
+			            <input type="text" class="form-control" name="email">
+			        </div>
+			        <div class="form-group">
+			            <label>비밀번호</label>
+			            <input type="password" class="form-control" name="password">
+			        </div>
+			
+			        <button type="submit" class="btn btn-warning btn-lg">로그인</button>
+			    </form>
+			
+			    <hr>
+			
+			    <p>계정이 없으세요? <a href="/signup">회원가입하기</a></p>
+			    <p><a href="/">홈으로</a>.</p>
+
+			</div>
+		
+		</div>
+		-->
+		<article id="contents_wrap" class="login">
+			<section>
+				<ul>
+					<li class="tit_box">
+						<p>project_name<span>프로젝트 이름 관리자 페이지</span></p>
+					</li>
+					<li>
+						<p>프로젝트 이름 관리자 페이지에 오신 것을 환영합니다.</p>
+						 <% if (message.length > 0) { %>
+					        <div class="alert alert-danger"><%= message %></div>
+					    <% } %>
+						<form action="<%=rootpath%>/login" method="post" >
+							<input type="text" name="email" placeholder="아이디" class="id">
+							<input type="password" name="password" placeholder="비밀번호" class="pw">
+							<input type="submit" value="로그인" class="login_btn">
+						</form>
+						<p class="copy">(C) 2021 cassia  All rights reversed.</p>
+					</li>
+				</ul>
+			</section>
+		</article>
+	</body>
+</html>

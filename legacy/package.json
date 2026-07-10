@@ -1,0 +1,52 @@
+{
+  "name": "apap7",
+  "version": "1.0.0",
+  "description": "This is APAP7 site.",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "gulp"
+  },
+  "author": "use9",
+  "license": "MIT",
+  "dependencies": {
+    "connect-flash": "^0.1.1",
+    "cookie-parser": "^1.4.5",
+    "dotenv": "^10.0.0",
+    "ejs": "^3.1.6",
+    "express": "^4.17.1",
+    "express-error-handler": "^1.1.0",
+    "express-session": "^1.17.2",
+    "http": "0.0.1-security",
+    "image-size": "^1.0.0",
+    "imagesloaded": "^4.1.4",
+    "jimp": "^0.16.1",
+    "mobile-detect": "^1.4.5",
+    "mongoose": "^5.12.15",
+    "morgan": "^1.10.0",
+    "multer": "^1.4.2",
+    "nodemon": "^2.0.7",
+    "passport": "^0.4.1",
+    "passport-local": "^1.0.0",
+    "unique-filename": "^1.1.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.9.0",
+    "@babel/preset-env": "^7.9.5",
+    "browser-sync": "^2.26.7",
+    "del": "^5.1.0",
+    "gulp": "^4.0.2",
+    "gulp-babel": "^8.0.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-imagemin": "^7.1.0",
+    "gulp-less": "^4.0.1",
+    "gulp-nodemon": "^2.5.0",
+    "gulp-rename": "^2.0.0",
+    "gulp-sourcemaps": "^2.6.5",
+    "gulp-uglify": "^3.0.2",
+    "gulp-watch": "^5.0.1",
+    "gulp-autoprefixer": "^7.0.1",
+    "gulp-clean-css": "^4.3.0",
+    "gulp-livereload": "^4.0.2"
+  }
+}

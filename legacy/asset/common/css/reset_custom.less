@@ -1,0 +1,292 @@
+
+@font-face {
+	font-family: 'SUIT';
+	font-weight: 100;
+	src:  url('/asset/common/fonts/SUIT-Thin.eot') format('embedded-opentype'),
+          url('/asset/common/fonts/SUIT-Thin.woff2') format('woff2');
+}
+@font-face {
+	font-family: 'SUIT';
+	font-weight: 200;
+	src:  url('/asset/common/fonts/SUIT-ExtraLight.eot') format('embedded-opentype'),
+          url('/asset/common/fonts/SUIT-ExtraLight.woff2') format('woff2');
+}
+@font-face {
+	font-family: 'SUIT';
+	font-weight: 300;
+	src:  url('/asset/common/fonts/SUIT-Light.eot') format('embedded-opentype'),
+        url('/asset/common/fonts/SUIT-Light.woff2') format('woff2');
+}
+@font-face {
+	font-family: 'SUIT';
+	font-weight: 400;
+	src:  url('/asset/common/fonts/SUIT-Regular.eot') format('embedded-opentype'),
+    url('/asset/common/fonts/SUIT-Regular.woff2') format('woff2');
+}
+@font-face {
+	font-family: 'SUIT';
+	font-weight: 500;
+	src:  url('/asset/common/fonts/SUIT-Medium.eot') format('embedded-opentype'),
+    url('/asset/common/fonts/SUIT-Medium.woff2') format('woff2');
+}
+@font-face {
+	font-family: 'SUIT';
+	font-weight: 600;
+	src:  url('/asset/common/fonts/SUIT-SemiBold.eot') format('embedded-opentype'),
+    url('/asset/common/fonts/SUIT-SemiBold.woff2') format('woff2');
+}
+@font-face {
+	font-family: 'SUIT';
+	font-weight: 700;
+	src:  url('/asset/common/fonts/SUIT-Bold.eot') format('embedded-opentype'),
+    url('/asset/common/fonts/SUIT-Bold.woff2') format('woff2');
+}
+@font-face {
+	font-family: 'SUIT';
+	font-weight: 800;
+	src:  url('/asset/common/fonts/SUIT-ExtraBold.eot') format('embedded-opentype'),
+    url('/asset/common/fonts/SUIT-ExtraBold.woff2') format('woff2');
+}
+@font-face {
+	font-family: 'SUIT';
+	font-weight: 900;
+	src:  url('/asset/common/fonts/SUIT-Heavy.eot') format('embedded-opentype'),
+    url('/asset/common/fonts/SUIT-Heavy.woff2') format('woff2');
+}
+
+* {
+	-webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+html, body, div, span, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, i,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details,
+figure, figcaption, footer, header, hgroup,
+nav, output, section,
+time, mark, audio, video, select, input, textarea {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-family: 'SUIT', Sans-serif;
+	font-weight: 400;
+	font-size: 16px;
+	color:#333;
+	vertical-align: baseline;
+	-webkit-text-size-adjust: 100%;
+	font-feature-settings: "liga" 0;
+}
+html,body{
+	width: 100%;
+	height: 100%;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+tr, th, td {
+	vertical-align: middle;
+}
+
+// HTML5 display-role reset for older browsers
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	font: 100%;
+	  color: #333;
+}
+ol, ul, li {
+	list-style: none;
+}
+ul::after,
+ol::after,
+.clb::after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+li,
+dl {
+    float: left;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+a {
+	text-decoration:none;
+	color:#333333;
+	-webkit-tap-highlight-color: rgba(0,0,0,0);
+	-webkit-tap-highlight-color: transparent;
+	&:hover{
+		text-decoration: none;
+	}
+}
+caption, legend {
+	display: none;
+}
+input,select {
+	font: 100%;
+	outline: none;
+	border-radius: 0;
+	-webkit-border-radius: 0;
+	-webkit-appearance: none;
+	-moz-appearance:none;
+	appearance:none;
+}
+select::-ms-expand {
+   display: none;
+}
+input {
+	border-radius: 0;
+	-webkit-border-radius: 0;
+	-webkit-appearance: none;
+}
+input[type="checkbox"],
+input[type="radio"] {
+	background: none;
+	border: none;
+	cursor: pointer;
+}
+input[type="submit"] {
+	cursor: pointer;
+}
+strong {
+	font-weight: bold;
+}
+input:focus::-webkit-input-placeholder,
+textarea:focus::-webkit-input-placeholder {
+  color:transparent;
+}
+
+input:focus:-moz-placeholder,
+textarea:focus:-moz-placeholder {
+  color:transparent;
+}
+
+input:focus::-moz-placeholder,
+textarea:focus::-moz-placeholder {
+  color:transparent;
+}
+
+input:focus:-ms-input-placeholder,
+textarea:focus:-ms-input-placeholder {
+  color:transparent;
+}
+
+input:-ms-input-placeholder { color: #939598; }
+
+input::-webkit-input-placeholder { color: #939598; }
+
+input::-moz-placeholder { color: #939598; }
+
+input::-moz-placeholder { color: #939598; }
+
+button{
+	border: none;
+}
+button:focus{
+	outline: none;
+}
+
+/*-------------------------------------------------------------------
+    Color
+-------------------------------------------------------------------*/
+
+@black: #333;
+@pointColor1: #f2ff19;
+@pointColor2: #740698;
+@pointColor3: #2f0f6d;
+@pointColor4: #f2f91c;
+@gray1: #bababa;
+@gray2:#555;
+@lightGray1: #f8f8f8;
+@lightGray2:#f2f2f2;
+@lightGray3: #efefef;
+@lightGray4: #eee;
+@lightGray5: #e6e6e6;
+
+
+/*-------------------------------------------------------------------
+    Variable
+-------------------------------------------------------------------*/
+
+.bld {
+    display: none ;
+}
+
+.after {
+    content: ".";
+    display: block;
+    visibility: hidden;
+    clear: both;
+    height: 0;
+    font-size: 0;
+}
+
+.afters{
+	&:after{
+		.after;
+	}
+}
+
+.bgo{
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: 100%;
+}
+
+.bg_cover {
+	background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.bg_contain {
+	background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.strong{
+	font-weight: bold;
+}
+
+/*-------------------------------------------------------------------
+    Mixins
+-------------------------------------------------------------------*/
+
+.line-clamp-one{
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	overflow: hidden;	
+}
+
+.line-clamp(@line-height; @line-clamp){
+	line-height: @line-height;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	max-height: @line-height * @line-clamp * 1em;
+	-webkit-line-clamp: @line-clamp;
+}
