@@ -1,0 +1,46 @@
+version: '3.8'
+
+services:
+  web:
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    container_name: apap_web
+    restart: always
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+      - DATABASE_URL=postgresql://apap_user:apap_password@db:5432/apap_db?schema=public
+      - NEXT_TELEMETRY_DISABLED=1
+    depends_on:
+      - db
+    networks:
+      - apap_network
+    volumes:
+      # 아카이브용 대용량 미디어 파일 처리 - 로컬 호스트 볼륨 매핑
+      # (실제 외부 서버의 마운트 경로로 호스트 경로를 변경하세요)
+      - /path/to/host/media/uploads:/app/public/uploads
+
+  db:
+    image: postgres:16-alpine
+    container_name: apap_db
+    restart: always
+    environment:
+      - POSTGRES_USER=apap_user
+      - POSTGRES_PASSWORD=apap_password
+      - POSTGRES_DB=apap_db
+    ports:
+      - "5432:5432"
+    networks:
+      - apap_network
+    volumes:
+      # 데이터베이스 데이터 유실 방지를 위한 볼륨 바인딩
+      - apap_db_data:/var/lib/postgresql/data
+
+networks:
+  apap_network:
+    driver: bridge
+
+volumes:
+  apap_db_data:
