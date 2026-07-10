@@ -1,7 +1,10 @@
+import createNextIntlPlugin from 'next-intl/plugin';
 import type { NextConfig } from "next";
 
+const withNextIntl = createNextIntlPlugin();
+
 const nextConfig: NextConfig = {
-  /* config options here */
+  allowedDevOrigins: ['apap.local', '2026.apap.or.kr'],
 };
 
-export default nextConfig;
+export default withNextIntl(nextConfig);

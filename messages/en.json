@@ -1,0 +1,23 @@
+{
+  "nav": {
+    "about": "About APAP",
+    "exhibitions": "Exhibitions",
+    "map": "Artwork Map",
+    "news": "News",
+    "visit": "Visit Info",
+    "archiveBack": "Back to Archive"
+  },
+  "site-b": {
+    "subtitle": "ANYANG PUBLIC ART PROJECT 8TH",
+    "title": "Digital Peach Blossom Spring",
+    "desc": "The utopian 'Peach Blossom Spring' from traditional Eastern paintings merges with modern technology, creating a space where futuristic media art and digital sculptures coexist.",
+    "btnConcept": "Explore Concept",
+    "btnProgram": "View Programs",
+    "conceptTitle": "Where Boundaries Blur: Human, Nature, Virtual",
+    "conceptDesc": "By overlaying digital lights, sensor-linked sculptures, and virtual metaverse layers onto Anyang's forests and streams, we create a meta-utopia that transcends reality.",
+    "programTitle": "4 Core Programs",
+    "programDesc": "Introducing the key programs of APAP8 designed with Anyang's futuristic values.",
+    "visitTitle": "Directions & Visit Info",
+    "visitDesc": "Outdoor media and sculpture exhibitions situated in Anyang Art Park and Anyang Stream are open to everyone."
+  }
+}
