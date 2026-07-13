@@ -15,6 +15,7 @@ import VisitSection from '@/components/site-b/VisitSection';
 import NewsSection from '@/components/site-b/NewsSection';
 import SponsorsSection from '@/components/site-b/SponsorsSection';
 import Footer from '@/components/site-b/Footer';
+import BlossomCanvas from '@/components/site-b/BlossomCanvas';
 
 interface PageProps {
   params: Promise<{
@@ -28,6 +29,8 @@ export default function SiteBPage({ params }: PageProps) {
 
   return (
     <div className="min-h-screen bg-[#050505] text-white font-sans selection:bg-white/20 overflow-x-hidden relative">
+      {/* 흩날리는 복사꽃 & 에메랄드 신선 기운 배경 애니메이션 */}
+      <BlossomCanvas />
       {/* 무릉도원(Peach Blossom Spring) 신비로운 배경 광원 효과 */}
       <motion.div 
         animate={{ opacity: [0.25, 0.45, 0.25], scale: [1, 1.05, 1] }}
@@ -75,6 +78,8 @@ export default function SiteBPage({ params }: PageProps) {
         </main>
 
         <Footer locale={locale} />
+
+
       </div>
     </div>
   );

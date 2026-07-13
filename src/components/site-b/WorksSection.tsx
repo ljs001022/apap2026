@@ -1,8 +1,9 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
+import BlurFade from './BlurFade';
 
 interface WorksProps {
   t: (key: string) => string;
@@ -19,45 +20,15 @@ export default function WorksSection({ t, locale }: WorksProps) {
   ];
 
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [direction, setDirection] = useState(0); // -1: left, 1: right
+  const [direction, setDirection] = useState(0);
 
-  React.useEffect(() => {
+  useEffect(() => {
     const timer = setInterval(() => {
       setDirection(1);
       setCurrentIndex((prev) => (prev + 1) % works.length);
     }, 5000);
     return () => clearInterval(timer);
-  }, [currentIndex]);
-
-  const slideVariants = {
-    enter: (dir: number) => ({
-      x: dir > 0 ? '100%' : '-100%',
-      opacity: 0,
-      scale: 0.95
-    }),
-    center: {
-      x: 0,
-      opacity: 1,
-      scale: 1,
-      zIndex: 1,
-      transition: {
-        x: { type: 'spring' as const, stiffness: 300, damping: 30 },
-        opacity: { duration: 0.3 },
-        scale: { duration: 0.3 }
-      }
-    },
-    exit: (dir: number) => ({
-      x: dir < 0 ? '100%' : '-100%',
-      opacity: 0,
-      scale: 0.95,
-      zIndex: 0,
-      transition: {
-        x: { type: 'spring' as const, stiffness: 300, damping: 30 },
-        opacity: { duration: 0.3 },
-        scale: { duration: 0.3 }
-      }
-    })
-  };
+  }, []);
 
   const handleNext = () => {
     setDirection(1);
@@ -69,26 +40,26 @@ export default function WorksSection({ t, locale }: WorksProps) {
     setCurrentIndex((prev) => (prev - 1 + works.length) % works.length);
   };
 
+  const slideVariants = {
+    enter: (dir: number) => ({ x: dir > 0 ? '100%' : '-100%', opacity: 0, scale: 0.96 }),
+    center: { x: 0, opacity: 1, scale: 1, zIndex: 1, transition: { x: { type: 'spring' as const, stiffness: 300, damping: 30 }, opacity: { duration: 0.3 } } },
+    exit: (dir: number) => ({ x: dir < 0 ? '100%' : '-100%', opacity: 0, scale: 0.96, zIndex: 0, transition: { x: { type: 'spring' as const, stiffness: 300, damping: 30 }, opacity: { duration: 0.25 } } })
+  };
+
   return (
-    <section id="works" className="py-24 px-6 border-t border-white/5 relative bg-transparent overflow-hidden">
-      {/* Background Neon Decor */}
-      <div className="absolute top-1/2 right-[-10%] w-[40vw] h-[40vw] bg-cyan-500/5 rounded-full blur-[100px] -translate-y-1/2 pointer-events-none" />
-      <div className="absolute bottom-[-10%] left-[-10%] w-[30vw] h-[30vw] bg-pink-500/5 rounded-full blur-[100px] pointer-events-none" />
+    <section id="works" className="relative min-h-screen flex flex-col justify-center py-20 md:py-28 px-5 sm:px-6 bg-transparent overflow-hidden">
+      <div className="absolute top-1/2 right-[-10%] w-[40vw] h-[40vw] bg-pink-500/5 rounded-full blur-[100px] -translate-y-1/2 pointer-events-none" />
+      <div className="absolute bottom-[-10%] left-[-10%] w-[30vw] h-[30vw] bg-indigo-500/5 rounded-full blur-[100px] pointer-events-none" />
 
-      <div className="container mx-auto max-w-5xl space-y-12 relative z-10">
+      <div className="container mx-auto max-w-5xl space-y-8 sm:space-y-10 relative z-10">
         
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-center space-y-4"
-        >
+        <BlurFade className="text-center space-y-3">
           <span className="text-[10px] md:text-xs font-mono text-white/50 tracking-widest uppercase block">Exhibition Gallery</span>
-          <h2 className="text-3xl md:text-5xl font-black uppercase text-white tracking-tight">Works / Projects</h2>
-        </motion.div>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black uppercase text-white tracking-tight">Works / Projects</h2>
+        </BlurFade>
 
-        {/* Carousel Window */}
-        <div className="relative w-full aspect-[4/3] sm:aspect-video rounded-3xl border border-white/10 overflow-hidden bg-white/[0.01] backdrop-blur-sm group">
+        {/* Carousel window */}
+        <div className="relative w-full aspect-[4/3] sm:aspect-video rounded-2xl sm:rounded-3xl border border-white/10 overflow-hidden bg-black group hover:shadow-[0_10px_35px_rgba(236,72,153,0.12)] transition-all duration-500">
           
           <AnimatePresence initial={false} custom={direction} mode="popLayout">
             <motion.div
@@ -98,60 +69,68 @@ export default function WorksSection({ t, locale }: WorksProps) {
               initial="enter"
               animate="center"
               exit="exit"
-              className="absolute inset-0 w-full h-full cursor-pointer"
+              drag="x"
+              dragConstraints={{ left: 0, right: 0 }}
+              dragElastic={0.5}
+              onDragEnd={(_, info) => {
+                if (info.offset.x < -50) handleNext();
+                else if (info.offset.x > 50) handlePrev();
+              }}
+              className="absolute inset-0 w-full h-full cursor-grab active:cursor-grabbing"
             >
               <div 
-                className="absolute inset-0 bg-cover bg-center transition-transform duration-1000 scale-100 group-hover:scale-102"
+                className="absolute inset-0 bg-cover bg-center"
                 style={{ backgroundImage: `url(${works[currentIndex].img})` }}
               />
-              {/* Overlays */}
               <div className="absolute inset-0 bg-black/40" />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0A] via-transparent to-black/30" />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0A] via-transparent to-black/20" />
               
-              {/* Content */}
-              <div className="absolute bottom-0 left-0 p-5 sm:p-8 md:p-12 w-full flex flex-col md:flex-row justify-between items-start md:items-end gap-6 z-20">
-                <div className="space-y-2">
-                  <span className="text-[10px] md:text-xs font-mono text-cyan-400 tracking-wider block uppercase">APAP8 Highlight</span>
-                  <h3 className="text-xl sm:text-3xl md:text-4xl lg:text-5xl font-black text-white leading-tight">{works[currentIndex].title}</h3>
-                  <p className="text-white/60 text-xs sm:text-sm md:text-lg font-light">{works[currentIndex].artist}</p>
+              {/* Content overlay */}
+              <div className="absolute bottom-0 left-0 p-5 sm:p-8 md:p-12 w-full flex flex-col sm:flex-row justify-between items-start sm:items-end gap-3 sm:gap-6 z-20">
+                <div className="space-y-1.5">
+                  <span className="text-[10px] font-mono text-pink-400 tracking-wider block uppercase">APAP8 Highlight</span>
+                  <h3 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black text-white leading-tight">
+                    {works[currentIndex].title}
+                  </h3>
+                  <p className="text-white/60 text-sm sm:text-base font-light">{works[currentIndex].artist}</p>
                 </div>
-                
-                <span className="font-mono text-white/50 text-[10px] sm:text-xs md:text-sm border border-white/20 px-3 py-1 sm:px-4 sm:py-1.5 rounded-full bg-black/30 backdrop-blur-md">
-                  YEAR {works[currentIndex].year}
+                <span className="font-mono text-white/50 text-[10px] sm:text-xs border border-white/20 px-3 py-1.5 rounded-full bg-black/40 backdrop-blur-sm flex-shrink-0">
+                  {works[currentIndex].year}
                 </span>
               </div>
             </motion.div>
           </AnimatePresence>
 
-          {/* Navigation Buttons (Left/Right Arrows - Hidden on mobile, shown on desktop) */}
-          <div className="absolute inset-x-4 top-1/2 -translate-y-1/2 flex justify-between z-30 pointer-events-none hidden md:flex">
-            <button 
-              onClick={handlePrev}
-              className="w-10 h-10 md:w-12 md:h-12 bg-black/60 hover:bg-black/90 text-white rounded-full flex items-center justify-center border border-white/10 hover:border-white/30 transition-all pointer-events-auto backdrop-blur-sm"
-            >
-              <ChevronLeft className="w-5 h-5" />
-            </button>
-            <button 
-              onClick={handleNext}
-              className="w-10 h-10 md:w-12 md:h-12 bg-black/60 hover:bg-black/90 text-white rounded-full flex items-center justify-center border border-white/10 hover:border-white/30 transition-all pointer-events-auto backdrop-blur-sm"
-            >
-              <ChevronRight className="w-5 h-5" />
-            </button>
-          </div>
-
-        </div>
-
-        {/* Indicators and Progress */}
-        <div className="flex items-center justify-between gap-6 px-4">
-          {/* Left Arrow (Mobile only) */}
+          {/* Desktop prev/next overlay arrows */}
           <button 
             onClick={handlePrev}
-            className="md:hidden w-9 h-9 bg-white/5 hover:bg-white/10 text-white rounded-full flex items-center justify-center border border-white/10 transition-colors"
+            className="absolute left-4 top-1/2 -translate-y-1/2 z-30 w-11 h-11 bg-black/60 hover:bg-pink-500/20 text-white rounded-full hidden md:flex items-center justify-center border border-white/10 hover:border-pink-400/50 transition-all backdrop-blur-sm cursor-pointer"
+            aria-label="Previous work"
+          >
+            <ChevronLeft className="w-5 h-5" />
+          </button>
+          <button 
+            onClick={handleNext}
+            className="absolute right-4 top-1/2 -translate-y-1/2 z-30 w-11 h-11 bg-black/60 hover:bg-pink-500/20 text-white rounded-full hidden md:flex items-center justify-center border border-white/10 hover:border-pink-400/50 transition-all backdrop-blur-sm cursor-pointer"
+            aria-label="Next work"
+          >
+            <ChevronRight className="w-5 h-5" />
+          </button>
+        </div>
+
+        {/* Bottom controls */}
+        <div className="flex items-center justify-between gap-4 px-2">
+          {/* Mobile arrow left */}
+          <button 
+            onClick={handlePrev}
+            className="md:hidden w-10 h-10 bg-white/5 hover:bg-pink-500/20 text-white rounded-full flex items-center justify-center border border-white/10 hover:border-pink-400/30 transition-colors cursor-pointer active:scale-90 flex-shrink-0"
+            aria-label="Previous work"
           >
             <ChevronLeft className="w-4 h-4" />
           </button>
 
-          <div className="flex space-x-2">
+          {/* Dots */}
+          <div className="flex items-center justify-center space-x-2 flex-1 md:flex-none">
             {works.map((_, idx) => (
               <button
                 key={idx}
@@ -159,21 +138,24 @@ export default function WorksSection({ t, locale }: WorksProps) {
                   setDirection(idx > currentIndex ? 1 : -1);
                   setCurrentIndex(idx);
                 }}
-                className={`h-1.5 transition-all duration-300 rounded-full ${
-                  currentIndex === idx ? 'w-8 bg-white' : 'w-2 bg-white/20 hover:bg-white/40'
+                className={`h-1.5 transition-all duration-300 rounded-full cursor-pointer ${
+                  currentIndex === idx ? 'w-8 bg-pink-400 shadow-[0_0_8px_#f472b6]' : 'w-2 bg-white/20 hover:bg-white/40'
                 }`}
+                aria-label={`Go to work ${idx + 1}`}
               />
             ))}
           </div>
 
-          <span className="font-mono text-xs text-white/40 tracking-wider">
+          {/* Counter */}
+          <span className="font-mono text-xs text-white/40 tracking-wider flex-shrink-0">
             {String(currentIndex + 1).padStart(2, '0')} / {String(works.length).padStart(2, '0')}
           </span>
 
-          {/* Right Arrow (Mobile only) */}
+          {/* Mobile arrow right */}
           <button 
             onClick={handleNext}
-            className="md:hidden w-9 h-9 bg-white/5 hover:bg-white/10 text-white rounded-full flex items-center justify-center border border-white/10 transition-colors"
+            className="md:hidden w-10 h-10 bg-white/5 hover:bg-pink-500/20 text-white rounded-full flex items-center justify-center border border-white/10 hover:border-pink-400/30 transition-colors cursor-pointer active:scale-90 flex-shrink-0"
+            aria-label="Next work"
           >
             <ChevronRight className="w-4 h-4" />
           </button>
