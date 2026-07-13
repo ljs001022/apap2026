@@ -15,6 +15,7 @@ import VisitSection from '@/components/site-b/VisitSection';
 import NewsSection from '@/components/site-b/NewsSection';
 import SponsorsSection from '@/components/site-b/SponsorsSection';
 import Footer from '@/components/site-b/Footer';
+import ConceptSwitcher from '@/components/site-b/ConceptSwitcher';
 import BlossomCanvas from '@/components/site-b/BlossomCanvas';
 
 interface PageProps {
@@ -79,7 +80,8 @@ export default function SiteBPage({ params }: PageProps) {
 
         <Footer locale={locale} />
 
-
+        {/* 컨셉 선택용 플로팅 위젯 */}
+        <ConceptSwitcher locale={locale} />
       </div>
     </div>
   );
