@@ -70,7 +70,7 @@ export default function ArchiveHeader({ locale, locales }: ArchiveHeaderProps) {
           <div className="flex items-center gap-2 sm:gap-3">
             {/* Language switcher – desktop */}
             <div className="hidden sm:flex border border-slate-200 rounded-lg overflow-hidden text-[10px] sm:text-xs font-semibold divide-x divide-slate-200">
-              {locales.map((loc) => (
+              {locales.filter(loc => loc === 'ko' || loc === 'en').map((loc) => (
                 <Link
                   key={loc}
                   href={`/${loc}`}
@@ -141,7 +141,7 @@ export default function ArchiveHeader({ locale, locales }: ArchiveHeaderProps) {
           <div className="px-6 py-5 border-t border-slate-100 space-y-3 flex-shrink-0">
             {/* Language row */}
             <div className="flex border border-slate-200 rounded-xl overflow-hidden text-xs font-bold divide-x divide-slate-200 w-full">
-              {locales.map((loc) => (
+              {locales.filter(loc => loc === 'ko' || loc === 'en').map((loc) => (
                 <Link
                   key={loc}
                   href={`/${loc}`}
