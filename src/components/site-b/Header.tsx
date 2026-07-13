@@ -7,11 +7,16 @@ import { ArrowUpRight, Menu, X } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { motion, AnimatePresence } from 'framer-motion';
 
+import { usePathname } from 'next/navigation';
+
 export default function Header({ locale }: { locale: string }) {
   const navT = useTranslations('nav');
-  const locales = ['ko', 'en', 'ja', 'zh'];
+  const locales = ['ko', 'en'];
   const [scrolled, setScrolled] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
+  const pathname = usePathname();
+  const isConceptB = pathname.endsWith('/concept-b');
+  const isConceptC = pathname.endsWith('/concept-c');
 
   useEffect(() => {
     const handleScroll = () => {
@@ -41,6 +46,10 @@ export default function Header({ locale }: { locale: string }) {
     { href: '#news', label: 'News' },
   ];
 
+  const filteredNavLinks = isConceptC 
+    ? navLinks.filter(link => link.label !== 'Home') 
+    : navLinks;
+
   return (
     <>
       <motion.header 
@@ -65,7 +74,7 @@ export default function Header({ locale }: { locale: string }) {
 
           {/* Desktop nav */}
           <nav className="hidden lg:flex space-x-6 xl:space-x-8 text-[10px] xl:text-xs font-semibold uppercase tracking-widest text-white/60">
-            {navLinks.map((link) => (
+            {filteredNavLinks.map((link) => (
               <a key={link.href} href={link.href} className="hover:text-white transition-colors py-1">{link.label}</a>
             ))}
           </nav>
@@ -74,18 +83,25 @@ export default function Header({ locale }: { locale: string }) {
           <div className="flex items-center space-x-2 sm:space-x-3 md:space-x-4">
             {/* Language selector – desktop */}
             <div className="hidden sm:flex border border-white/10 rounded-full overflow-hidden text-[10px] font-mono bg-[#0A0A0A]/50">
-              {locales.map((loc) => (
-                <Link
-                  key={loc}
-                  href={`/${loc}`}
-                  className={cn(
-                    "px-2.5 py-1.5 transition-colors uppercase",
-                    locale === loc ? 'bg-white/10 text-white' : 'text-white/40 hover:text-white hover:bg-white/5'
-                  )}
-                >
-                  {loc}
-                </Link>
-              ))}
+              {locales.map((loc) => {
+                const targetPath = isConceptB 
+                  ? `/site-b/${loc}/concept-b` 
+                  : isConceptC 
+                    ? `/site-b/${loc}/concept-c` 
+                    : `/site-b/${loc}`;
+                return (
+                  <Link
+                    key={loc}
+                    href={targetPath}
+                    className={cn(
+                      "px-2.5 py-1.5 transition-colors uppercase",
+                      locale === loc ? 'bg-white/10 text-white' : 'text-white/40 hover:text-white hover:bg-white/5'
+                    )}
+                  >
+                    {loc}
+                  </Link>
+                );
+              })}
             </div>
 
             {/* Archive button */}
@@ -133,10 +149,9 @@ export default function Header({ locale }: { locale: string }) {
                 <X className="w-5 h-5" />
               </button>
             </div>
-
             {/* Nav links */}
             <nav className="flex-1 flex flex-col justify-center px-8 py-6 space-y-1 overflow-y-auto">
-              {navLinks.map((link, idx) => (
+              {filteredNavLinks.map((link, idx) => (
                 <motion.a
                   key={link.href}
                   href={link.href}
@@ -158,19 +173,26 @@ export default function Header({ locale }: { locale: string }) {
             <div className="px-8 py-6 border-t border-white/10 flex flex-col gap-4 flex-shrink-0">
               {/* Language selector */}
               <div className="flex border border-white/10 rounded-full overflow-hidden text-xs font-mono bg-black w-full">
-                {locales.map((loc) => (
-                  <Link
-                    key={loc}
-                    href={`/${loc}`}
-                    onClick={() => setIsOpen(false)}
-                    className={cn(
-                      "flex-1 text-center py-2.5 transition-colors uppercase",
-                      locale === loc ? 'bg-white/10 text-white' : 'text-white/40 hover:text-white'
-                    )}
-                  >
-                    {loc}
-                  </Link>
-                ))}
+                {locales.map((loc) => {
+                  const targetPath = isConceptB 
+                    ? `/site-b/${loc}/concept-b` 
+                    : isConceptC 
+                      ? `/site-b/${loc}/concept-c` 
+                      : `/site-b/${loc}`;
+                  return (
+                    <Link
+                      key={loc}
+                      href={targetPath}
+                      onClick={() => setIsOpen(false)}
+                      className={cn(
+                        "flex-1 text-center py-2.5 transition-colors uppercase",
+                        locale === loc ? 'bg-white/10 text-white' : 'text-white/40 hover:text-white'
+                      )}
+                    >
+                      {loc}
+                    </Link>
+                  );
+                })}
               </div>
 
               {/* Archive button */}
