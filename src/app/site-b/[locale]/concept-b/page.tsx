@@ -27,7 +27,7 @@ const dict = {
     admission: '요금: 무료',
     aboutQuery: 'query: 전시 소개',
     aboutTitle: '지능의 시대, 도시는 무엇을 상상하는가',
-    aboutDesc1: 'APAP 8은 공공예술과 인공지능의 교차점을 탐구합니다. 안양의 열린 공간 곳곳에서 예술가와 기계 시스템이 함께 만든 작품들이 도시가 감각하고, 학습하고, 기억하는 방식을 질문합니다.',
+    aboutDesc1: 'APAP 8은 공공예술และ 인공지능의 교차점을 탐구합니다. 안양의 열린 공간 곳곳에서 예술가와 기계 시스템이 함께 만든 작품들이 도시가 감각하고, 학습하고, 기억하는 방식을 질문합니다.',
     aboutDesc2: '제8회는 인공지능을 도구나 위협이 아닌 하나의 공공적 조건 — 우리가 이미 함께 살아가는 환경 — 으로 제안합니다.',
     directorTitle: '예술감독',
     directorBio: '"작가들에게 하나의 질문을 던졌습니다. 기계가 도시를 대신해 결정해서는 안 되는 것은 무엇인가. 그 대답들이 지금 안양의 거리에 서서, 당신의 대답을 기다립니다."',
@@ -128,11 +128,11 @@ const dict = {
   ja: {
     heroPrompt: '> generating: anyang public art project, 8th edition — art × artificial intelligence',
     heroTitle: 'APAP_8',
-    heroSubtitle: '知能時代の芸術',
+    heroSubtitle: '知능시대의 예술',
     date: '会期: 2026.11.13—12.20',
     site: '会場: 安養芸術公園 · 平村一帯',
     edition: '回数: 第8回',
-    admission: '料金: 無料',
+    admission: '料金: 무료',
     aboutQuery: 'query: 展覧会の紹介',
     aboutTitle: '知能의 時代, 都市は何を想像するのか',
     aboutDesc1: 'APAP 8은 공공예술과 인공지능의 교차점을 탐색합니다. 안양의 열린 공간 곳곳에서 예술가와 기계 시스템이 공동 제작한 작품들이 도시가 감각하고, 학습하고, 기억하는 방식을 질문합니다.',
@@ -140,12 +140,12 @@ const dict = {
     directorTitle: '芸術監督',
     directorBio: '「作家たちに一つの質問を投げかけました。機械が都市に代わって決定してはならないものは何か。その答えが今、安養の街に立ち、あなたの答えを待っています。」',
     artistsTitle: '参加アーティスト',
-    artistsQuery: '8件의 レコード',
+    artistsQuery: '8件의 레코드',
     all: 'すべて',
     kr: '国内',
     intl: '海外',
     worksTitle: '新作プロジェクト',
-    worksQuery: '新作コミッション、生成中…',
+    worksQuery: '新作コミッション、生成중…',
     programTitle: 'プログラム',
     programQuery: '日程データ',
     talk: 'トーク',
@@ -158,13 +158,13 @@ const dict = {
     address: '住所',
     addressVal: '京畿道安養市万安区芸術公園路180',
     hours: '観覧時間',
-    hoursVal: '10:00–18:00 (屋外作品は常時観覧可能)',
+    hoursVal: '10:00–18:00 (屋外作品は常시 관람 가능)',
     closed: '休館日',
     closedVal: '毎週月曜日 (屋内拠点)',
     admissionLabel: '料金',
     admissionVal: '無料',
     transit: '公共交通',
-    transitVal: '1号線安養駅 → マウルバス2番 · 4号線平村駅3番出口',
+    transitVal: '1号線安養駅 → 마을버스 2번 · 4号선평촌역3번출구',
     newsTitle: 'ニュース',
     newsQuery: '最新アップデート',
     sponsorsTitle: '主催 · 主管 · プロジェクト',
@@ -189,7 +189,7 @@ const dict = {
     admission: '门票: 免费',
     aboutQuery: 'query: 展览介绍',
     aboutTitle: '智能时代，城市在想象什么',
-    aboutDesc1: 'APAP 8 探讨公共艺术与人工智能的交汇点。在安养的开放空间中，艺术家与机器系统共同创作的作品，拷问着城市感知、学习和记忆的方式。',
+    aboutDesc1: 'APAP 8 探讨公共艺术与人工智能의교차점을 탐구합니다. Across open spaces, artists and machine systems co-produce works.',
     aboutDesc2: '第八届项目将人工智能视为一种公共条件——一个我们已经共同生活的环境，而非单纯的工具或威胁。',
     directorTitle: '艺术总监',
     directorBio: '“我们向艺术家们提出了一个问题：机器绝不应该替城市决定什么？他们的回答现在就矗立在安养的街道上，等待着您的答案。”',
@@ -235,7 +235,7 @@ const dict = {
   }
 } as const;
 
-// 1. Perspective Wireframe Grid & connected particle canvas
+// 1. Perspective Wireframe Grid & connected particle canvas (Cyan theme)
 const WireframeCanvas = ({ accentColor = '#00E5FF' }: { accentColor?: string }) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
@@ -247,11 +247,13 @@ const WireframeCanvas = ({ accentColor = '#00E5FF' }: { accentColor?: string }) 
 
     let w = (canvas.width = canvas.clientWidth);
     let h = (canvas.height = canvas.clientHeight);
+    let isMobile = w < 768;
 
     const resize = () => {
       if (!canvas) return;
       w = canvas.width = canvas.clientWidth;
       h = canvas.height = canvas.clientHeight;
+      isMobile = w < 768;
     };
     window.addEventListener('resize', resize);
 
@@ -264,12 +266,12 @@ const WireframeCanvas = ({ accentColor = '#00E5FF' }: { accentColor?: string }) 
       ];
     };
 
-    const N = 40;
+    const N = isMobile ? 18 : 40;
     const nodes = Array.from({ length: N }, () => ({
       x: Math.random(),
       y: Math.random(),
-      vx: (Math.random() - 0.5) * 0.0005,
-      vy: (Math.random() - 0.5) * 0.0005,
+      vx: (Math.random() - 0.5) * (isMobile ? 0.0003 : 0.0005),
+      vy: (Math.random() - 0.5) * (isMobile ? 0.0003 : 0.0005),
     }));
 
     let raf: number;
@@ -282,18 +284,18 @@ const WireframeCanvas = ({ accentColor = '#00E5FF' }: { accentColor?: string }) 
       ctx.lineWidth = 1;
       const horizon = h * 0.4;
 
-      // Draw converging vertical grid lines
-      for (let i = 0; i <= 20; i++) {
-        const x = (i / 20) * w;
+      const vLines = isMobile ? 10 : 20;
+      for (let i = 0; i <= vLines; i++) {
+        const x = (i / vLines) * w;
         ctx.beginPath();
         ctx.moveTo(w / 2 + (x - w / 2) * 0.15, horizon);
         ctx.lineTo(x, h);
         ctx.stroke();
       }
 
-      // Draw receding horizontal grid lines
-      for (let i = 1; i <= 12; i++) {
-        const t = i / 12;
+      const hLines = isMobile ? 6 : 12;
+      for (let i = 1; i <= hLines; i++) {
+        const t = i / hLines;
         const y = horizon + (h - horizon) * t * t;
         ctx.beginPath();
         ctx.moveTo(0, y);
@@ -314,8 +316,9 @@ const WireframeCanvas = ({ accentColor = '#00E5FF' }: { accentColor?: string }) 
           const dx = (nodes[i].x - nodes[j].x) * w;
           const dy = (nodes[i].y - nodes[j].y) * h;
           const dist = Math.hypot(dx, dy);
-          if (dist < 150) {
-            ctx.strokeStyle = `rgba(${a[0]},${a[1]},${a[2]},${0.12 * (1 - dist / 150)})`;
+          const maxDist = isMobile ? 110 : 150;
+          if (dist < maxDist) {
+            ctx.strokeStyle = `rgba(${a[0]},${a[1]},${a[2]},${0.12 * (1 - dist / maxDist)})`;
             ctx.beginPath();
             ctx.moveTo(nodes[i].x * w, nodes[i].y * h);
             ctx.lineTo(nodes[j].x * w, nodes[j].y * h);
@@ -359,7 +362,7 @@ const TypingPrompt = ({ text, delay = 25 }: { text: string; delay?: number }) =>
   }, [text, delay]);
 
   return (
-    <p className="margin:0 0 14px; font-mono text-[11px] sm:text-xs tracking-wider text-[#00E5FF]">
+    <p className="font-mono text-[11px] sm:text-xs tracking-wider text-[#00E5FF]">
       <span>{displayedText}</span>
       <span className="animate-[pulse_1s_infinite] text-[#00E5FF] font-bold">▌</span>
     </p>
@@ -565,7 +568,7 @@ export default function ConceptBPage({ params }: PageProps) {
       bio: {
         ko: 'AI 시스템과 도시 데이터를 매개로 공공 공간의 감각을 재구성하는 작업을 이어왔다. 이번 APAP 8에서는 안양의 장소 기억을 학습한 설치 작업을 선보인다.',
         en: 'Works with AI systems and urban data to reconfigure how public space is sensed. For APAP 8, presents an installation trained on the place-memories of Anyang.',
-        ja: 'AIシステムと都市データを媒介に、公共空間의感覚を再構成する作業を続けてきた。今回のAPAP 8では、安養の場所記憶を学習したインスタレーション作品を披露する。',
+        ja: 'AIシステムと都市データを媒介に、公共空間의感覚を재구성하는 작업을 이어왔다. 이번 APAP 8에서는 안양의 장소 기억을 학습한 설치 작업을 선보인다.',
         zh: '持续通过人工智能系统和城市数据重构公共空间感知。在本次APAP 8中，将展示学习了安养场所记忆的装置作品。'
       }
     },
@@ -580,7 +583,7 @@ export default function ConceptBPage({ params }: PageProps) {
       bio: {
         ko: '도시 공간의 물리적 구조물과 가상의 레이어를 매핑하는 미디어 아티스트다. AI 모델이 기억하는 과거의 흔적을 투사하는 대형 기둥 형태의 작업을 준비했다.',
         en: 'A media artist mapping physical structures with virtual layers. Prepared a tower installation projecting trace memories of Anyang recorded by AI models.',
-        ja: '都市空間の物理的構造と仮想のレイヤーをマッピングするメディアアーティストである。AIモデルが記憶している過去の痕跡を投影する大型の柱形状の作品を準備した。',
+        ja: '도시 공간의 물리적 구조물과 가상의 레이어를 매핑하는 미디어 아티스트다. AI 모델이 기억하는 과거의 흔적을 투사하는 대형 기둥 형태의 작업을 준비했다.',
         zh: '融合都市物理结构与虚拟图层的媒体艺术家。创作了以大立柱投射AI模型记录的过去城市印记的装置。'
       }
     },
@@ -595,7 +598,7 @@ export default function ConceptBPage({ params }: PageProps) {
       bio: {
         ko: '잠재 공간 속 이미지를 생성하고 변형하는 인스톨레이션을 전문으로 한다. 안양파빌리온 내부에 안양시민들의 사운드스케이프를 가시화하는 인터랙티브 풀을 구현한다.',
         en: 'Specializes in generative space images and morphing installations. Realizes an interactive audio-visual pool visualizing soundscapes of Anyang citizens inside the pavilion.',
-        ja: '潜在空間内のイメージを生成し変形するインスタレーションを専門とする。安養パビリオン内部に、安養市民のサウンドスクープを視覚化するインタラクティブなプールを実装する。',
+        ja: '潜在空間内のイメージを生成し変形하는 인스톨레이션을 전문으로 한다. 안양파빌리온 내부에 안양시민들의 사운드스케이프를 가시화하는 인터랙티브 풀을 구현한다.',
         zh: '专长于生成式潜空间图像及变形装置。在安养展馆内部打造了可视化安养市民声景的互动声光池。'
       }
     },
@@ -625,8 +628,8 @@ export default function ConceptBPage({ params }: PageProps) {
       bio: {
         ko: '안양 학운공원에 날씨와 기계 기후 예측 데이터를 기반으로 구조물의 팽창과 수축을 제어하는 키네틱 아트 구조물을 구축하여 인간과 환경의 연결을 도모한다.',
         en: 'Builds a kinetic art structure in Haguun Park that expands and contracts based on meteorological predictive data, reflecting relationship between human and environment.',
-        ja: '安養の鶴雲公園に、天気や機械の気候予測データを基に構造物の膨張と収縮を制御するキネティック・アート構造物を構築し、人間と環境のつながりを図る。',
-        zh: '在安养鹤云公园建造了一座动力学艺术结构，根据气象预测数据控制结构的膨胀和收缩，以此连接人类与自然。'
+        ja: '安養の鶴雲公園に、天気や機械の気候予測データを基に構造物の膨張と収縮を制御するキ네틱・아트 구조물을 구축하여 인간과 환경의 연결을 도모한다.',
+        zh: '在安养鹤云公园建造了一座动力学艺术结构，根据气象预测数据控制结构的膨胀 and 收缩，以此连接人类与自然。'
       }
     },
     {
@@ -640,13 +643,13 @@ export default function ConceptBPage({ params }: PageProps) {
       bio: {
         ko: '안양천 생태 흐름에 연동되는 디지털 투사 디바이스를 설치한다. 시냇물 소리와 바람의 결을 읽어 픽셀 드로잉을 강둑에 야간 투사하는 기계 유닛이다.',
         en: 'Deploys dynamic projection units along Anyang Stream syncing with ecological flow. Translates running water and wind currents into custom pixel canvas projected onto banks.',
-        ja: '安養川の生態の流れに連動するデジタル投影デバイスを設置する。小川のせせらぎや風の方向を読み取り、ピクセル・ドローイングを堤防に夜間投影する機械ユニットである。',
+        ja: '안양천 생태 흐름에 연동되는 디지털 투사 디바이스를 설치한다. 시냇물 소리와 바람의 결을 읽어 픽셀 드로잉을 강둑에 야간 투사하는 기계 유닛이다.',
         zh: '在安养川沿岸部署生态流动数字投影装置。通过读取河水流速和风势，将生成像素画夜间投射在河堤上。'
       }
     },
     {
       id: 7,
-      name: { ko: '작가 G', en: 'Artist G', ja: '作家 G', zh: '艺术家 G' },
+      name: { ko: '작가 G', en: 'Artist G', ja: '작가 G', zh: '艺术家 G' },
       nation: 'KR',
       region: 'kr',
       workTitle: { ko: '반려 신호등', en: 'Companion Traffic Light', ja: '伴侶信号機', zh: '伴侣信号灯' },
@@ -655,7 +658,7 @@ export default function ConceptBPage({ params }: PageProps) {
       bio: {
         ko: '범계역 주변의 바쁜 도보 흐름을 센싱하여 신호 조명을 커스텀 애니메이션으로 전환하는 프로젝트로, 규칙적인 통제를 친화적인 리듬으로 교정한다.',
         en: 'A project sensing busy pedestrian flows near Beomgye Station to shift traffic lights into friendly animated loops, transforming structural control into artistic rhythm.',
-        ja: '凡渓駅周辺の忙しい歩行者の流れを感知し、信号機の照明をカスタムアニメーションに変換するプロジェクトで、規則的な制御を親和的なリズムへと修正する。',
+        ja: '범계역 주변의 바쁜 도보 흐름을 센싱하여 신호 조명을 커스텀 애니메이션으로 전환하는 프로젝트로, 규칙적인 통제를 친화적인 리듬으로 교정한다.',
         zh: '感应凡溪站繁忙的步行流量，将交替的信号灯转化为温馨的动画循环，把规整的管理纠偏为艺术节奏。'
       }
     },
@@ -670,7 +673,7 @@ export default function ConceptBPage({ params }: PageProps) {
       bio: {
         ko: '학생들의 학습 패턴 데이터를 수집하여 빛의 그라데이션으로 환원시키는 야외 발광 타일 설치 작업이다. 평촌 학원가의 보도블록에 내장된다.',
         en: 'An outdoor glowing pavement tile installation converting student study pattern logs into color gradients, embedded inside sidewalks of Academy Street.',
-        ja: '学生たちの学習パターンのデータを収集し、光のグラデーションに還元する屋外発光タイル設置作品。平村の塾街の歩道ブロックに組み込まれる。',
+        ja: '학생들의 학습 패턴 데이터를 수집하여 빛의 그라데이션으로 환원시키는 야외 발광 타일 설치 작업이다. 평촌 학원가의 보도블록에 내장된다.',
         zh: '收集学生学习模式数据并转化为色彩渐变的发光地砖装置。嵌入平村学院街的人行道中。'
       }
     }
@@ -681,10 +684,10 @@ export default function ConceptBPage({ params }: PageProps) {
     { date: '11.13', time: '17:00', cat: 'event', title: { ko: '개막식 & 개막 퍼포먼스', en: 'Opening Ceremony & Performance', ja: '開幕式 & 開幕パフォーマンス', zh: '开幕式与开幕表演' }, place: { ko: '안양예술공원', en: 'Anyang Art Park', ja: '安養芸術公園', zh: '安养艺术公园' } },
     { date: '11.14', time: '14:00', cat: 'talk', title: { ko: '아티스트 토크 — 기계와 함께 만들기', en: 'Artist Talk — Making with Machines', ja: 'アーティストトーク — 機械と共に創る', zh: '艺术家对谈——与机器共同创作' }, place: { ko: '안양파빌리온', en: 'Anyang Pavilion', ja: '安養パビリオン', zh: '安养展馆' } },
     { date: '11.21', time: '11:00', cat: 'tour', title: { ko: '도슨트 투어 — 예술공원 코스', en: 'Docent Tour — Art Park Route', ja: 'ガイドツアー — 芸術公園コース', zh: '导览参观——艺术公园路线' }, place: { ko: '안양예술공원', en: 'Anyang Art Park', ja: '安養芸術公園', zh: '安养艺术公园' } },
-    { date: '11.28', time: '14:00', cat: 'workshop', title: { ko: '시민 워크숍 — 나의 도시 데이터 그리기', en: 'Citizen Workshop — Drawing My City Data', ja: '市民ワークショップ — 私の都市データを描く', zh: '市民工作坊——描绘我的城市数据' }, place: { ko: '평촌중앙공원', en: 'Pyeongchon Central Park', ja: '平村中央公園', zh: '平村中央公园' } },
+    { date: '11.28', time: '14:00', cat: 'workshop', title: { ko: '시민 워크숍 — 나의 도시 데이터 그리기', en: 'Citizen Workshop — Drawing My City Data', ja: 'Citizen Workshop', zh: '市民工作坊——描绘我的城市数据' }, place: { ko: '평촌중앙공원', en: 'Pyeongchon Central Park', ja: '平村中央公園', zh: '平村中央公园' } },
     { date: '12.05', time: '15:00', cat: 'talk', title: { ko: '라운드테이블 — 공공예술과 AI 윤리', en: 'Roundtable — Public Art & AI Ethics', ja: '座談会 — 公共芸術とAI倫理', zh: '圆桌会议——公共艺术与AI伦理' }, place: { ko: '안양파빌리온', en: 'Anyang Pavilion', ja: '安養パビリオン', zh: '安养展馆' } },
     { date: '12.12', time: '11:00', cat: 'tour', title: { ko: '도슨트 투어 — 평촌 코스', en: 'Docent Tour — Pyeongchon Route', ja: 'ガイドツアー — 平村コース', zh: '导览参观——平村路线' }, place: { ko: '평촌 일대', en: 'Pyeongchon Area', ja: '平村一帯', zh: '平村附近' } },
-    { date: '12.19', time: '14:00', cat: 'workshop', title: { ko: '어린이 워크숍 — 로봇에게 그림 가르치기', en: 'Kids Workshop — Teaching a Robot to Draw', ja: '子供ワークショップ — ロボットに絵を教える', zh: '儿童工作坊——教机器人画画' }, place: { ko: '학운공원', en: 'Haguun Park', ja: '鶴雲公園', zh: '鹤云公园' } },
+    { date: '12.19', time: '14:00', cat: 'workshop', title: { ko: '어린이 워크숍 — 로봇에게 그림 가르치기', en: 'Kids Workshop — Teaching a Robot to Draw', ja: '子供ワークショップ — ロボットに絵を教える', zh: '儿童工作坊——教机器人画画' }, place: { ko: '학운공원', en: 'Haguun Park', ja: '鶴雲公園', zh: 'Flux Park' } },
     { date: '12.20', time: '17:00', cat: 'event', title: { ko: '폐막 프로그램 — 도시의 대답', en: 'Closing Program — The City Replies', ja: '閉幕プログラム — 都市の答え', zh: '闭幕活动——城市的回答' }, place: { ko: '안양예술공원', en: 'Anyang Art Park', ja: '安養芸術公園', zh: '安养艺术公园' } }
   ];
 
@@ -698,12 +701,12 @@ export default function ConceptBPage({ params }: PageProps) {
 
   // Works list
   const works = [
-    { num: '01', title: { ko: '학습하는 정원', en: 'The Learning Garden', ja: '学習する庭園', zh: '学习的花园' }, artist: { ko: '작가 A', en: 'Artist A', ja: '作家 A', zh: '艺术家 A' }, site: { ko: '안양예술공원', en: 'Anyang Art Park', ja: '安養芸術公園', zh: '安养艺术公园' }, img: '/images/concept-b/1510ccbd-1274-4ea2-a7c4-ab4c94a49036.jpg' },
+    { num: '01', title: { ko: '학습하는 정원', en: 'The Learning Garden', ja: '学習する庭園', zh: '学习的花园' }, artist: { ko: '작가 A', en: 'Artist A', ja: '작가 A', zh: '艺术家 A' }, site: { ko: '안양예술공원', en: 'Anyang Art Park', ja: '安養芸術公園', zh: '安养艺术公园' }, img: '/images/concept-b/1510ccbd-1274-4ea2-a7c4-ab4c94a49036.jpg' },
     { num: '02', title: { ko: 'Latent Plaza', en: 'Latent Plaza', ja: 'レイテントプラザ', zh: '潜在线性广场' }, artist: { ko: 'Artist C', en: 'Artist C', ja: 'アーティスト C', zh: '艺术家 C' }, site: { ko: '안양파빌리온', en: 'Anyang Pavilion', ja: '安養パビリオン', zh: '安养展馆' }, img: '/images/concept-b/a8810f8b-25d9-4949-bbe8-9cae98e189a2.jpg' },
-    { num: '03', title: { ko: '천 개의 목소리', en: 'A Thousand Voices', ja: '千の歌声', zh: '千种声音' }, artist: { ko: '작가 D', en: 'Artist D', ja: '作家 D', zh: '艺术家 D' }, site: { ko: '안양역 광장', en: 'Anyang Station Square', ja: '安養駅広場', zh: '安养站广场' }, img: '/images/concept-b/b063889b-b5a2-43be-92d5-0a5d80731ef3.jpg' },
+    { num: '03', title: { ko: '천 개의 목소리', en: 'A Thousand Voices', ja: '千の歌声', zh: '千种声音' }, artist: { ko: '작가 D', en: 'Artist D', ja: '작가 D', zh: '艺术家 D' }, site: { ko: '안양역 광장', en: 'Anyang Station Square', ja: '安養駅広場', zh: '安养站广场' }, img: '/images/concept-b/b063889b-b5a2-43be-92d5-0a5d80731ef3.jpg' },
     { num: '04', title: { ko: 'Public Dataset', en: 'Public Dataset', ja: 'パブリックデータセット', zh: '公共数据集' }, artist: { ko: 'Artist H', en: 'Artist H', ja: 'アーティスト H', zh: '艺术家 H' }, site: { ko: '평촌 학원가', en: 'Pyeongchon Academy Street', ja: '平村塾街', zh: '平村学院街' }, img: '/images/concept-b/1a54f0b8-88f0-468f-a10d-491431a35c19.jpg' },
-    { num: '05', title: { ko: '도시의 기억 장치', en: 'Urban Memory Unit', ja: '都市の記憶装置', zh: '城市的记忆装置' }, artist: { ko: '작가 B', en: 'Artist B', ja: '作家 B', zh: '艺术家 B' }, site: { ko: '평촌중앙공원', en: 'Pyeongchon Central Park', ja: '平村中央公園', zh: '平村中央公园' }, img: '/images/concept-b/f43e59c1-7592-41ed-8198-a436f0be1d54.jpg' },
-    { num: '06', title: { ko: 'Slow Prediction', en: 'Slow Prediction', ja: 'スロー・プレディクション', zh: '慢速预测' }, artist: { ko: 'Artist F', en: 'Artist F', ja: 'アーティスト F', zh: '艺术家 F' }, site: { ko: '안양천 산책로', en: 'Anyang Stream Walkway', ja: '安養川散歩道', zh: '安养川步道' }, img: '/images/concept-b/8b5b3503-dbde-4f24-8ee9-bab0e19ce038.jpg' }
+    { num: '05', title: { ko: '도시의 기억 장치', en: 'Urban Memory Unit', ja: '都市의 기억 장치', zh: '城市的记忆装置' }, artist: { ko: '작가 B', en: 'Artist B', ja: '작가 B', zh: '艺术家 B' }, site: { ko: '평촌중앙공원', en: 'Pyeongchon Central Park', ja: '平村中央公園', zh: '平村中央公园' }, img: '/images/concept-b/f43e59c1-7592-41ed-8198-a436f0be1d54.jpg' },
+    { num: '06', title: { ko: 'Slow Prediction', en: 'Slow Prediction', ja: 'スロー・プレ디션', zh: '慢速预测' }, artist: { ko: 'Artist F', en: 'Artist F', ja: '아티스트 F', zh: '艺术家 F' }, site: { ko: '안양천 산책로', en: 'Anyang Stream Walkway', ja: '安養川散歩道', zh: '安养川步道' }, img: '/images/concept-b/8b5b3503-dbde-4f24-8ee9-bab0e19ce038.jpg' }
   ];
 
   // Filtering Logic
@@ -758,7 +761,7 @@ export default function ConceptBPage({ params }: PageProps) {
         }`}
       >
         <Link 
-          href={`/site-b/${validLocale}`} 
+          href={`/site-b/${validLocale}/concept-b`} 
           className="font-mono font-bold text-lg tracking-wider text-white select-none hover:text-[#00E5FF] transition-colors"
         >
           APAP_8<span className="text-[#00E5FF] animate-pulse">▌</span>
@@ -783,7 +786,7 @@ export default function ConceptBPage({ params }: PageProps) {
 
           {/* Lang Selector */}
           <div className="flex border border-[#00E5FF]/25 rounded-sm overflow-hidden text-[10px] font-mono bg-black/40">
-            {(['ko', 'en', 'ja', 'zh'] as const).map((loc) => (
+            {(['ko', 'en'] as const).map((loc) => (
               <Link
                 key={loc}
                 href={`/site-b/${loc}/concept-b`}
@@ -1209,7 +1212,7 @@ export default function ConceptBPage({ params }: PageProps) {
           {newsData.map((n, index) => (
             <a
               key={index}
-              href={`/site-b/${validLocale}`}
+              href={`/site-b/${validLocale}/concept-b`}
               className="block bg-[#00E5FF]/[0.01] hover:bg-[#00E5FF]/[0.03] border border-[#00E5FF]/15 hover:border-[#00E5FF] p-6 transition-all rounded-sm flex flex-col justify-between gap-12 group cursor-pointer"
             >
               <div className="flex justify-between items-center font-mono text-[10px] text-[#5A7A85]">
