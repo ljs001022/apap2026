@@ -25,7 +25,7 @@ export default function HeroSection({ t, locale }: HeroProps) {
   }, []);
 
   return (
-    <section id="hero" className="relative min-h-[100svh] flex flex-col justify-center items-center px-5 sm:px-6 overflow-hidden">
+    <section id="intro" className="relative min-h-[100svh] flex flex-col justify-center items-center px-5 sm:px-6 overflow-hidden">
       <motion.div 
         initial={{ opacity: 0, scale: 0.95 }}
         animate={{ opacity: 1, scale: 1 }}

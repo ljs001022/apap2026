@@ -4,7 +4,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import { Menu, X, ArrowUpRight } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
-import ConceptSwitcher from '@/components/site-b/ConceptSwitcher';
+import ConceptSwitcher from '@/components/site-a/ConceptSwitcher';
 
 // Types & interfaces
 interface PageProps {
@@ -509,7 +509,7 @@ export default function ConceptBPage({ params }: PageProps) {
   const [selectedId, setSelectedId] = useState<number | null>(null);
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [activeSection, setActiveSection] = useState('#hero');
+  const [activeSection, setActiveSection] = useState('#intro');
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
 
   // Refs
@@ -528,9 +528,9 @@ export default function ConceptBPage({ params }: PageProps) {
     const handleScroll = () => {
       setScrolled(window.scrollY > 40);
       
-      const sections = ['#about', '#artists', '#works', '#program', '#visit', '#news'];
+      const sections = ['#exhibition', '#program', '#visit', '#news'];
       const probe = window.scrollY + window.innerHeight * 0.35;
-      let active = '#hero';
+      let active = '#intro';
       sections.forEach((id) => {
         const el = document.querySelector(id) as HTMLElement;
         if (el && el.offsetTop <= probe) {
@@ -730,12 +730,11 @@ export default function ConceptBPage({ params }: PageProps) {
     }));
 
   const navItems = [
-    { href: '#about', label: 'About', num: '01' },
-    { href: '#artists', label: 'Artists', num: '02' },
-    { href: '#works', label: 'Works', num: '03' },
-    { href: '#program', label: 'Program', num: '04' },
-    { href: '#visit', label: 'Visit', num: '05' },
-    { href: '#news', label: 'News', num: '06' },
+    { href: '#intro', label: 'Intro', num: '01' },
+    { href: '#exhibition', label: 'Exhibition', num: '02' },
+    { href: '#program', label: 'Program', num: '03' },
+    { href: '#visit', label: 'Visit', num: '04' },
+    { href: '#news', label: 'News', num: '05' },
   ];
 
   // Region & Category Switch CSS styles helper
@@ -761,7 +760,7 @@ export default function ConceptBPage({ params }: PageProps) {
         }`}
       >
         <Link 
-          href={`/site-b/${validLocale}/concept-b`} 
+          href={`/site-a/${validLocale}/concept-b`} 
           className="font-mono font-bold text-lg tracking-wider text-white select-none hover:text-[#00E5FF] transition-colors"
         >
           APAP_8<span className="text-[#00E5FF] animate-pulse">▌</span>
@@ -789,7 +788,7 @@ export default function ConceptBPage({ params }: PageProps) {
             {(['ko', 'en'] as const).map((loc) => (
               <Link
                 key={loc}
-                href={`/site-b/${loc}/concept-b`}
+                href={`/site-a/${loc}/concept-b`}
                 className={`px-2 py-1 uppercase transition-colors ${
                   validLocale === loc
                     ? 'bg-[#00E5FF]/20 text-[#00E5FF] font-bold'
@@ -843,7 +842,7 @@ export default function ConceptBPage({ params }: PageProps) {
 
       {/* 4. Hero Section */}
       <section 
-        id="hero" 
+        id="intro" 
         className="relative min-h-screen flex items-center pt-24 pb-16 px-6 sm:px-12 md:px-24 overflow-hidden z-10"
         ref={heroRef}
       >
@@ -950,7 +949,7 @@ export default function ConceptBPage({ params }: PageProps) {
       </section>
 
       {/* 6. Artists Section */}
-      <section id="artists" className="relative py-24 px-6 md:px-12 max-w-6xl mx-auto z-10 border-t border-[#00E5FF]/10">
+      <section id="exhibition" className="relative py-24 px-6 md:px-12 max-w-6xl mx-auto z-10 border-t border-[#00E5FF]/10">
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
           <div>
             <p className="font-mono text-xs text-[#00E5FF] tracking-wider mb-2">[02] ARTISTS — {t.artistsQuery}</p>
@@ -1212,7 +1211,7 @@ export default function ConceptBPage({ params }: PageProps) {
           {newsData.map((n, index) => (
             <a
               key={index}
-              href={`/site-b/${validLocale}/concept-b`}
+              href={`/site-a/${validLocale}/concept-b`}
               className="block bg-[#00E5FF]/[0.01] hover:bg-[#00E5FF]/[0.03] border border-[#00E5FF]/15 hover:border-[#00E5FF] p-6 transition-all rounded-sm flex flex-col justify-between gap-12 group cursor-pointer"
             >
               <div className="flex justify-between items-center font-mono text-[10px] text-[#5A7A85]">

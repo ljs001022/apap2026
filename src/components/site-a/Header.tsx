@@ -37,17 +37,15 @@ export default function Header({ locale }: { locale: string }) {
   }, [isOpen]);
 
   const navLinks = [
-    { href: '#hero', label: 'Home' },
-    { href: '#about', label: 'About' },
-    { href: '#artists', label: 'Artists' },
-    { href: '#works', label: 'Works' },
+    { href: '#intro', label: 'Intro' },
+    { href: '#exhibition', label: 'Exhibition' },
     { href: '#program', label: 'Program' },
     { href: '#visit', label: 'Visit' },
     { href: '#news', label: 'News' },
   ];
 
   const filteredNavLinks = isConceptC 
-    ? navLinks.filter(link => link.label !== 'Home') 
+    ? navLinks.filter(link => link.label !== 'Intro') 
     : navLinks;
 
   return (
@@ -85,10 +83,10 @@ export default function Header({ locale }: { locale: string }) {
             <div className="hidden sm:flex border border-white/10 rounded-full overflow-hidden text-[10px] font-mono bg-[#0A0A0A]/50">
               {locales.map((loc) => {
                 const targetPath = isConceptB 
-                  ? `/site-b/${loc}/concept-b` 
+                  ? `/site-a/${loc}/concept-b` 
                   : isConceptC 
-                    ? `/site-b/${loc}/concept-c` 
-                    : `/site-b/${loc}`;
+                    ? `/site-a/${loc}/concept-c` 
+                    : `/site-a/${loc}`;
                 return (
                   <Link
                     key={loc}
@@ -175,10 +173,10 @@ export default function Header({ locale }: { locale: string }) {
               <div className="flex border border-white/10 rounded-full overflow-hidden text-xs font-mono bg-black w-full">
                 {locales.map((loc) => {
                   const targetPath = isConceptB 
-                    ? `/site-b/${loc}/concept-b` 
+                    ? `/site-a/${loc}/concept-b` 
                     : isConceptC 
-                      ? `/site-b/${loc}/concept-c` 
-                      : `/site-b/${loc}`;
+                      ? `/site-a/${loc}/concept-c` 
+                      : `/site-a/${loc}`;
                   return (
                     <Link
                       key={loc}

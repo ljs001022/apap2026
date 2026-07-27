@@ -30,11 +30,12 @@ export default function ArchiveHeader({ locale, locales }: ArchiveHeaderProps) {
   }, [isOpen]);
 
   const menuItems = [
-    { name: locale === 'ko' ? 'APAP 소개' : locale === 'en' ? 'About APAP' : locale === 'ja' ? 'APAP紹介' : 'APAP 介绍', path: `/${locale}/about` },
-    { name: locale === 'ko' ? '전시' : locale === 'en' ? 'Exhibitions' : locale === 'ja' ? '展示' : '展览', path: `/${locale}/exhibitions` },
-    { name: locale === 'ko' ? '작품 지도' : locale === 'en' ? 'Artwork Map' : locale === 'ja' ? '作品マップ' : '作品地图', path: `/${locale}/map` },
-    { name: locale === 'ko' ? '소식' : locale === 'en' ? 'News' : locale === 'ja' ? 'ニュース' : '新闻', path: `/${locale}/news` },
-    { name: locale === 'ko' ? '방문 안내' : locale === 'en' ? 'Visit Info' : locale === 'ja' ? 'アクセス案内' : '参观指南', path: `/${locale}/visit` },
+    { name: locale === 'ko' ? 'APAP 소개' : 'About APAP', path: `/${locale}` },
+    { name: locale === 'ko' ? '안양파빌리온' : 'Anyang Pavilion', path: `/${locale}/pavilion` },
+    { name: locale === 'ko' ? '역대 아카이브' : 'Archives', path: `/${locale}/archive/8` },
+    { name: locale === 'ko' ? '작품 지도' : 'Artwork Map', path: `/${locale}/works` },
+    { name: locale === 'ko' ? '소식' : 'News', path: `/${locale}/news` },
+    { name: locale === 'ko' ? '관람 안내' : 'Visit', path: `/${locale}/visit` },
   ];
 
   return (

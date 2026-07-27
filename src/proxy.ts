@@ -36,10 +36,10 @@ export function proxy(request: NextRequest) {
 
   // 3. 도메인 분기 및 리라이트
   if (host.includes('2026.apap.or.kr') || host.includes('apap8.or.kr')) {
-    // 사이트 B (8회차 랜딩페이지) 전용 도메인 접속 시
-    url.pathname = `/site-b${normalizedPath}`;
+    // 사이트 A (8회차 랜딩페이지) 전용 도메인 접속 시
+    url.pathname = `/site-a${normalizedPath}`;
     const response = NextResponse.rewrite(url);
-    response.cookies.set('active_site', 'site-b', { path: '/' });
+    response.cookies.set('active_site', 'site-a', { path: '/' });
     return response;
   }
 
@@ -51,9 +51,9 @@ export function proxy(request: NextRequest) {
     );
     const targetPath = archivePathIsMissingLocale ? `/ko${cleanPath === '/' ? '' : cleanPath}` : cleanPath;
     
-    url.pathname = `/site-a${targetPath}`;
+    url.pathname = `/site-b${targetPath}`;
     const response = NextResponse.rewrite(url);
-    response.cookies.set('active_site', 'site-a', { path: '/' });
+    response.cookies.set('active_site', 'site-b', { path: '/' });
     return response;
   }
 
@@ -69,23 +69,23 @@ export function proxy(request: NextRequest) {
     return response;
   }
 
-  // 3.3. root (/) 접근 시 언제나 8회차 랜딩(site-b)을 메인으로 초기화 및 쿠키 갱신
+  // 3.3. root (/) 접근 시 언제나 8회차 랜딩(site-a)을 메인으로 초기화 및 쿠키 갱신
   if (pathname === '/') {
-    url.pathname = `/site-b/ko`;
+    url.pathname = `/site-a/ko`;
     const response = NextResponse.rewrite(url);
-    response.cookies.set('active_site', 'site-b', { path: '/' });
+    response.cookies.set('active_site', 'site-a', { path: '/' });
     return response;
   }
 
   // 3.4. 일반적인 다국어 경로 (/, /ko, /en 등) 접근 시 쿠키 상태에 따라 라우팅
-  if (activeSiteCookie === 'site-a') {
-    url.pathname = `/site-a${normalizedPath}`;
+  if (activeSiteCookie === 'site-b') {
+    url.pathname = `/site-b${normalizedPath}`;
     return NextResponse.rewrite(url);
   } else {
-    // 기본값은 8회차 랜딩(site-b)으로 노출 (임시 우선 배포 정책)
-    url.pathname = `/site-b${normalizedPath}`;
+    // 기본값은 8회차 랜딩(site-a)으로 노출 (임시 우선 배포 정책)
+    url.pathname = `/site-a${normalizedPath}`;
     const response = NextResponse.rewrite(url);
-    response.cookies.set('active_site', 'site-b', { path: '/' });
+    response.cookies.set('active_site', 'site-a', { path: '/' });
     return response;
   }
 }

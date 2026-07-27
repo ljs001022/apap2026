@@ -4,18 +4,18 @@ import React, { useState, useEffect } from 'react';
 import { useTranslations } from 'next-intl';
 import { motion } from 'framer-motion';
 
-import Header from '@/components/site-b/Header';
-import HeroSection from '@/components/site-b/HeroSection';
-import ConceptSection from '@/components/site-b/ConceptSection';
-import ArtistSection from '@/components/site-b/ArtistSection';
-import WorksSection from '@/components/site-b/WorksSection';
-import ProgramSection from '@/components/site-b/ProgramSection';
-import VisitSection from '@/components/site-b/VisitSection';
-import NewsSection from '@/components/site-b/NewsSection';
-import SponsorsSection from '@/components/site-b/SponsorsSection';
-import Footer from '@/components/site-b/Footer';
-import ConceptSwitcher from '@/components/site-b/ConceptSwitcher';
-import BlossomCanvas from '@/components/site-b/BlossomCanvas';
+import Header from '@/components/site-a/Header';
+import HeroSection from '@/components/site-a/HeroSection';
+import ConceptSection from '@/components/site-a/ConceptSection';
+import ArtistSection from '@/components/site-a/ArtistSection';
+import WorksSection from '@/components/site-a/WorksSection';
+import ProgramSection from '@/components/site-a/ProgramSection';
+import VisitSection from '@/components/site-a/VisitSection';
+import NewsSection from '@/components/site-a/NewsSection';
+import SponsorsSection from '@/components/site-a/SponsorsSection';
+import Footer from '@/components/site-a/Footer';
+import ConceptSwitcher from '@/components/site-a/ConceptSwitcher';
+import BlossomCanvas from '@/components/site-a/BlossomCanvas';
 
 interface PageProps {
   params: Promise<{
@@ -25,7 +25,7 @@ interface PageProps {
 
 export default function ConceptCPage({ params }: PageProps) {
   const { locale } = React.use(params);
-  const t = useTranslations('site-b');
+  const t = useTranslations('site-a');
 
   const [isMobile, setIsMobile] = useState(false);
 

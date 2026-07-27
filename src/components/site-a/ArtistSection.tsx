@@ -47,7 +47,7 @@ export default function ArtistSection({ t, locale }: ArtistProps) {
   };
 
   return (
-    <section id="artists" className="relative min-h-screen flex flex-col justify-center py-20 md:py-28 px-5 sm:px-6 bg-transparent">
+    <section id="exhibition" className="relative min-h-screen flex flex-col justify-center py-20 md:py-28 px-5 sm:px-6 bg-transparent">
       <div className="container mx-auto max-w-6xl space-y-8 sm:space-y-10">
 
         {/* Header row */}
