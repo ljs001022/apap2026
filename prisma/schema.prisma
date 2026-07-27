@@ -32,6 +32,8 @@ model Edition {
 
   // 1:N 관계 (다국어 번역 테이블 연결)
   translations    EditionTranslation[]
+  programs        Program[]
+  resources       Resource[]
   
   // M:N 관계 조인용
   artists         ArtistEdition[]
@@ -174,4 +176,99 @@ model ArtistArtwork {
   artwork     Artwork  @relation(fields: [artworkId], references: [id], onDelete: Cascade)
 
   @@id([artistId, artworkId])
+}
+
+// 4. 프로그램 (Program)
+model Program {
+  id              String    @id @default(uuid())
+  editionId       String
+  
+  date            String    // 프로그램 날짜 (예: "11.13")
+  time            String?   // 프로그램 시간 (예: "17:00")
+  category        String    // 프로그램 분류 (예: "talk", "workshop", "tour", "event")
+  isActive        Boolean   @default(true)
+
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
+
+  edition         Edition   @relation(fields: [editionId], references: [id], onDelete: Cascade)
+  translations    ProgramTranslation[]
+}
+
+model ProgramTranslation {
+  id            String    @id @default(uuid())
+  programId     String
+  lang          String    // "ko", "en", "ja", "zh" 등 언어 코드
+
+  title         String    // 프로그램명
+  place         String?   // 진행 장소
+  description   String?   @db.Text // 프로그램 상세 설명
+
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+
+  program       Program   @relation(fields: [programId], references: [id], onDelete: Cascade)
+
+  @@unique([programId, lang])
+}
+
+// 5. 새 소식 (News)
+model News {
+  id              String    @id @default(uuid())
+  category        String    // "notice", "press" 등 분류
+  date            String    // 게시일 (예: "2026.07.01")
+  isActive        Boolean   @default(true)
+
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
+
+  translations    NewsTranslation[]
+}
+
+model NewsTranslation {
+  id            String    @id @default(uuid())
+  newsId        String
+  lang          String    // "ko", "en", "ja", "zh" 등 언어 코드
+
+  title         String    // 제목
+  content       String?   @db.Text // 본문 내용
+
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+
+  news          News      @relation(fields: [newsId], references: [id], onDelete: Cascade)
+
+  @@unique([newsId, lang])
+}
+
+// 6. 자료 및 파일 (Resource)
+model Resource {
+  id              String    @id @default(uuid())
+  editionId       String?
+  
+  fileUrl         String?   // 첨부 파일 또는 대표 파일 URL
+  fileType        String?   // 파일 타입 (PDF, HWP, ZIP 등)
+  isActive        Boolean   @default(true)
+
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
+
+  edition         Edition?  @relation(fields: [editionId], references: [id], onDelete: SetNull)
+  translations    ResourceTranslation[]
+}
+
+model ResourceTranslation {
+  id            String    @id @default(uuid())
+  resourceId    String
+  lang          String    // "ko", "en", "ja", "zh" 등 언어 코드
+
+  title         String    // 자료 제목
+  description   String?   @db.Text // 자료 설명
+
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+
+  resource      Resource  @relation(fields: [resourceId], references: [id], onDelete: Cascade)
+
+  @@unique([resourceId, lang])
 }
