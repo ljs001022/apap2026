@@ -559,17 +559,17 @@ export default function SiteBPage({ params }: PageProps) {
   const artistsData = [
     {
       id: 1,
-      name: { ko: '작가 A', en: 'Artist A', ja: '作家 A', zh: '艺术家 A' },
+      name: { ko: '김덕한', en: 'Kim Deok Han', ja: 'キム・ドクハン', zh: '金德汉' },
       nation: 'KR',
       region: 'kr',
-      workTitle: { ko: '학습하는 정원', en: 'The Learning Garden', ja: '学習する庭園', zh: '学习的花园' },
-      workSite: { ko: '안양예술공원', en: 'Anyang Art Park', ja: '安養芸術公園', zh: '安养艺术公园' },
-      img: '/images/concept-b/1510ccbd-1274-4ea2-a7c4-ab4c94a49036.jpg',
+      workTitle: { ko: '<OVERLAID : 공존의 균형>', en: 'OVERLAID : Harmony in Coexistence', ja: 'OVERLAID : 共存の均衡', zh: 'OVERLAID : 共存之均衡' },
+      workSite: { ko: '안양예술공원 야외', en: 'Anyang Art Park Outdoor', ja: '安養芸術公園 野外', zh: '安养艺术公园 户外' },
+      img: '/images/artist/kim_profile.jpg',
       bio: {
-        ko: 'AI 시스템과 도시 데이터를 매개로 공공 공간의 감각을 재구성하는 작업을 이어왔다. 이번 APAP 8에서는 안양의 장소 기억을 학습한 설치 작업을 선보인다.',
-        en: 'Works with AI systems and urban data to reconfigure how public space is sensed. For APAP 8, presents an installation trained on the place-memories of Anyang.',
-        ja: 'AIシステムと都市データを媒介に、公共空間의感覚を재구성하는 작업을 이어왔다. 이번 APAP 8에서는 안양의 장소 기억을 학습한 설치 작업을 선보인다.',
-        zh: '持续通过人工智能系统和城市数据重构公共空间感知。在本次APAP 8中，将展示学习了安养场所记忆的装置作品。'
+        ko: '오방색 구체와 자연석의 수직적 중첩을 통해 시간, 기억, 관계의 층위를 시각화하는 설치미술가. APAP 8 커미션 신작으로 안양의 공존과 균형을 표현한 대형 조형물을 선보인다.',
+        en: 'A contemporary artist visualizing layers of time, memory, and relationships through vertical stacks of Obangsaek spheres and natural stone. Presents a new monumental commission for APAP 8.',
+        ja: '五方色の球体と自然石の垂直的重なりを通じて時間、記憶、関係の層位を可視化する設置美術家。APAP 8のコミッション新作として安養の共存と均衡を表現した大型造形物を披露する。',
+        zh: '通过五方色球体与天然石头的垂直重叠，将时间、记忆与关系的层次可视化的装置艺术家。在APAP 8中推出表现安养共存与平衡的大型公共艺术新作。'
       }
     },
     {

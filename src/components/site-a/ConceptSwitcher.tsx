@@ -13,7 +13,8 @@ export default function ConceptSwitcher({ locale }: { locale: string }) {
   // Determine active concept
   const isConceptB = pathname.endsWith('/concept-b');
   const isConceptC = pathname.endsWith('/concept-c');
-  const activeConcept = isConceptB ? 'b' : isConceptC ? 'c' : 'a';
+  const isConceptBW = pathname.includes('/concept-blackwhite') || pathname.includes('/concept-bw');
+  const activeConcept = isConceptBW ? 'bw' : isConceptB ? 'b' : isConceptC ? 'c' : 'a';
 
   useEffect(() => {
     const saved = localStorage.getItem('apap8_switcher_minimized');
@@ -27,13 +28,15 @@ export default function ConceptSwitcher({ locale }: { locale: string }) {
     localStorage.setItem('apap8_switcher_minimized', String(val));
   };
 
-  const handleSwitch = (concept: 'a' | 'b' | 'c') => {
+  const handleSwitch = (concept: 'a' | 'b' | 'c' | 'bw') => {
     if (concept === 'a') {
       router.push(`/${locale}`);
     } else if (concept === 'b') {
       router.push(`/${locale}/concept-b`);
-    } else {
+    } else if (concept === 'c') {
       router.push(`/${locale}/concept-c`);
+    } else {
+      router.push(`/${locale}/concept-blackwhite`);
     }
   };
 
@@ -47,7 +50,7 @@ export default function ConceptSwitcher({ locale }: { locale: string }) {
             animate={{ scale: 1, opacity: 1 }}
             exit={{ scale: 0.8, opacity: 0 }}
             onClick={() => handleMinimize(false)}
-            className="w-12 h-12 rounded-full bg-[#0A0A0A]/95 backdrop-blur-xl border border-lime-400/40 hover:border-lime-400 text-lime-400 flex items-center justify-center shadow-[0_4px_20px_rgba(180,255,57,0.25)] cursor-pointer active:scale-90 transition-all duration-300"
+            className="w-12 h-12 rounded-full bg-[#0A0A0A]/95 backdrop-blur-xl border border-white/40 hover:border-white text-white flex items-center justify-center shadow-[0_4px_20px_rgba(255,255,255,0.25)] cursor-pointer active:scale-90 transition-all duration-300"
             title="Expand Concept Switcher"
           >
             <Settings className="w-5 h-5 animate-[spin_10s_linear_infinite]" />
@@ -62,7 +65,7 @@ export default function ConceptSwitcher({ locale }: { locale: string }) {
           >
             <div className="flex items-center justify-between border-b border-white/10 pb-2 gap-4">
               <div className="flex items-center gap-2">
-                <Settings className="w-4 h-4 text-[#B4FF39] animate-[spin_8s_linear_infinite]" />
+                <Settings className="w-4 h-4 text-white animate-[spin_8s_linear_infinite]" />
                 <span className="text-[10px] font-mono tracking-widest text-white/50 uppercase select-none">
                   Concept Switcher
                 </span>
@@ -76,7 +79,19 @@ export default function ConceptSwitcher({ locale }: { locale: string }) {
               </button>
             </div>
             
-            <div className="flex flex-col gap-1.5 w-52">
+            <div className="flex flex-col gap-1.5 w-56">
+              <button
+                onClick={() => handleSwitch('bw')}
+                className={`w-full text-left px-3 py-2 rounded-lg text-xs font-bold transition-all flex items-center justify-between cursor-pointer ${
+                  activeConcept === 'bw' 
+                    ? 'bg-white/20 text-white border border-white shadow-[0_0_15px_rgba(255,255,255,0.2)]' 
+                    : 'text-white/60 hover:text-white hover:bg-white/5 border border-transparent'
+                }`}
+              >
+                <span>Concept BW: Black &amp; White (신규)</span>
+                {activeConcept === 'bw' && <span className="w-1.5 h-1.5 rounded-full bg-white shadow-[0_0_8px_#ffffff]" />}
+              </button>
+
               <button
                 onClick={() => handleSwitch('a')}
                 className={`w-full text-left px-3 py-2 rounded-lg text-xs font-bold transition-all flex items-center justify-between cursor-pointer ${

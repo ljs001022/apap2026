@@ -12,6 +12,7 @@ interface ArtistProps {
 
 export default function ArtistSection({ t, locale }: ArtistProps) {
   const artists = [
+    { name: locale === 'ko' ? '김덕한' : 'Kim Deok Han', type: 'Sculpture & Installation', img: '/images/artist/kim_profile.jpg' },
     { name: locale === 'ko' ? '김아영' : 'Ayoung Kim', type: 'Media Art', img: 'https://images.unsplash.com/photo-1550684848-fac1c5b4e853?q=80&w=800&auto=format&fit=crop' },
     { name: locale === 'ko' ? '레픽 아나돌' : 'Refik Anadol', type: 'AI Installation', img: 'https://images.unsplash.com/photo-1620641788421-7a1c342ea42e?q=80&w=800&auto=format&fit=crop' },
     { name: locale === 'ko' ? '히토 슈타이어얼' : 'Hito Steyerl', type: 'Video Essay', img: 'https://images.unsplash.com/photo-1518640467707-6811f4a6ab73?q=80&w=800&auto=format&fit=crop' },
