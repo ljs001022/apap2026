@@ -1,10 +1,15 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, ArrowUpRight, MapPin, Calendar, Clock, Layers, User, ExternalLink, ChevronRight } from 'lucide-react';
 import ConceptSwitcher from '@/components/site-a/ConceptSwitcher';
+import { Artist, WorkWithArtist } from '@/types/artist';
+import { getVenues, getAllWorksWithArtist } from '@/lib/artists';
+import ArtistGrid from '@/components/site-a/ArtistGrid';
+import WorkGallery from '@/components/site-a/WorkGallery';
+import ArtistModal from '@/components/site-a/ArtistModal';
 
 interface PageProps {
   params: Promise<{
@@ -12,72 +17,45 @@ interface PageProps {
   }>;
 }
 
-// Kim Deok Han real sample data extracted from xlsx
-const sampleArtistKim = {
-  id: 'kim-deok-han',
-  nameKo: '김덕한',
-  nameEn: 'Kim Deok Han',
-  birth: 'b.1981',
-  nationalityKo: '대한민국',
-  nationalityEn: 'Republic of Korea',
-  fieldKo: '설치 · 조각 · 옻칠',
-  fieldEn: 'Installation · Sculpture · Ottchil',
-  profileImg: '/images/artist/kim_profile.jpg',
-  artworkImg: '/images/artist/kim_artwork.png',
-  activityImg: '/images/artist/kim_activity.jpg',
-  workTitleKo: '<OVERLAID : 공존의 균형>',
-  workTitleEn: 'OVERLAID : Harmony in Coexistence',
-  workYear: '2026',
-  workMaterialKo: '스테인레스 스틸에 우레탄 도장, 고흥석, 마정석',
-  workMaterialEn: 'Urethane paint on Stainless steel, Goheung granite, Majeong stone',
-  workDimensionKo: '250 x 35 x 35cm (each), 가변설치',
-  workDimensionEn: '250 x 35 x 35cm (each), Dimensions variable',
-  workLocationKo: '안양예술공원 야외 조각공원',
-  workLocationEn: 'Anyang Art Park Outdoor Sculpture Area',
-  workDescKo: `<OVERLAID : 공존의 균형>은 서로 다른 색과 형태가 하나의 공간 안에서 조화를 이루는 과정을 표현한 공공 조형물이다. 오방색으로 구성된 구체들은 각각 시간, 기억, 관계의 층위를 상징하며, 수직으로 중첩된 구조를 통해 축적과 균형의 의미를 드러낸다. 중앙의 자연석은 시간의 중심이자 장소의 기억을 상징하며, 주변의 수직 조형물들은 그 주위를 감싸며 공존과 연결의 질서를 형성한다.`,
-  workDescEn: `OVERLAID: Harmony of Coexistence is a public sculpture that expresses the harmony of diverse colors and forms within a shared space. The spheres, composed of the five traditional Korean colors (Obangsaek), symbolize the layered dimensions of time, memory, and relationships. Their vertically stacked arrangement conveys the accumulation of experiences and the pursuit of balance. At the center, a natural stone represents the core of time and the memory of place, while the surrounding vertical sculptures embrace it, creating an ordered structure that embodies coexistence, connection, and harmony.`,
-  bioKo: {
-    solo: [
-      '2025 Layered Time, Forms of Memory, 화이트스톤 갤러리, 서울',
-      '2024 TRACE OF TIME, 화이트스톤 갤러리, 베이징, 중국',
-      '2020 Journey Through the Veil of Time, 이응노미술관, 대전',
-    ],
-    group: [
-      '2025 한국현대미술특별전 : 축(꺾이지 않는 마음), 주인도한국문화원, 뉴델리, 인도',
-      "2023 KEEM & KIM'S GLOWING OVERLAID HOUR, 아트베이스 26SQM (박서보 재단), 서울, 한국",
-      '2022 달의 심장, 해의 심장, 선화랑 개관 45주년 기념전, 선화랑, 서울, 한국',
-    ],
-  },
-  bioEn: {
-    solo: [
-      '2025 Layered Time, Forms of Memory, Whitestone Gallery, Seoul',
-      '2024 TRACE OF TIME, Whitestone Gallery, Beijing, China',
-      '2020 Journey Through the Veil of Time, Lee Ungno Museum, Daejeon',
-    ],
-    group: [
-      '2025 Special Exhibition of Korean Contemporary Art: Axis (An Unbreakable Spirit), Korean Cultural Center India, New Delhi, India',
-      "2023 KEEM & KIM'S GLOWING OVERLAID HOUR, Art Base 26SQM (Park Seo Bo Foundation), Seoul",
-      '2022 The Heart of the Moon, The Heart of the Sun (45th Anniversary Exhibition), Sun Gallery, Seoul',
-    ],
-  },
-};
-
-const otherArtists = [
-  { id: 'a2', nameKo: '작가명 2', nameEn: 'Artist Name 2', origin: 'KR', img: '/images/blackwhite/example05.jpg' },
-  { id: 'a3', nameKo: '작가명 3', nameEn: 'Artist Name 3', origin: "INT'L", img: '/images/blackwhite/example07.jpg' },
-  { id: 'a4', nameKo: '작가명 4', nameEn: 'Artist Name 4', origin: "INT'L", img: '/images/blackwhite/example06.jpg' },
-  { id: 'a5', nameKo: '작가명 5', nameEn: 'Artist Name 5', origin: 'KR', img: '/images/blackwhite/example03.jpg' },
-  { id: 'a6', nameKo: '작가명 6', nameEn: 'Artist Name 6', origin: 'KR', img: '/images/blackwhite/example08.jpg' },
-  { id: 'a7', nameKo: '작가명 7', nameEn: 'Artist Name 7', origin: "INT'L", img: '/images/blackwhite/example02.jpg' },
-  { id: 'a8', nameKo: '작가명 8', nameEn: 'Artist Name 8', origin: 'KR', img: '/images/blackwhite/example09.jpg' },
-];
-
 export default function ConceptBlackWhitePage({ params }: PageProps) {
   const { locale } = React.use(params);
   const isKo = locale === 'ko';
 
   const [activeTab, setActiveTab] = useState<'artists' | 'works' | 'map'>('artists');
-  const [selectedArtist, setSelectedArtist] = useState<typeof sampleArtistKim | null>(null);
+  const [selectedArtist, setSelectedArtist] = useState<Artist | null>(null);
+
+  const venues = useMemo(() => getVenues(), []);
+
+  // Category group for artists
+  const categories = useMemo(() => {
+    return venues.map((v) => ({
+      id: v.venue_slug,
+      label: v.venue_ko,
+      items: v.artists,
+    }));
+  }, [venues]);
+
+  // Category group for works
+  const workCategories = useMemo(() => {
+    return venues.map((v) => {
+      const worksInVenue: WorkWithArtist[] = [];
+      v.artists.forEach((artist) => {
+        artist.works.forEach((work) => {
+          worksInVenue.push({
+            work,
+            artist,
+            venue_ko: v.venue_ko,
+            venue_slug: v.venue_slug,
+          });
+        });
+      });
+      return {
+        id: v.venue_slug,
+        label: v.venue_ko,
+        items: worksInVenue,
+      };
+    });
+  }, [venues]);
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('#intro');
 
@@ -359,102 +337,23 @@ export default function ConceptBlackWhitePage({ params }: PageProps) {
 
         {/* Tab 1: Artists Grid */}
         {activeTab === 'artists' && (
-          <div className="grid grid-cols-2 md:grid-cols-4 divide-x divide-y divide-white border-b-0">
-            {/* Real Featured Sample Artist: Kim Deok Han */}
-            <div
-              onClick={() => setSelectedArtist(sampleArtistKim)}
-              className="cursor-pointer group relative bg-[#141414] hover:bg-[#1C1C1C] transition-colors"
-            >
-              <div className="aspect-square overflow-hidden relative">
-                <img
-                  src={sampleArtistKim.profileImg}
-                  alt={sampleArtistKim.nameKo}
-                  className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-500"
-                />
-                <span className="absolute top-3 left-3 bg-[#002FA7] text-white text-[10px] font-mono px-2 py-0.5 rounded font-bold uppercase tracking-wider">
-                  Featured Artist
-                </span>
-              </div>
-              <div className="p-4 border-t border-white">
-                <b className="block text-base font-extrabold text-white group-hover:text-white flex items-center justify-between">
-                  <span>{sampleArtistKim.nameKo}</span>
-                  <ArrowUpRight className="w-4 h-4 text-[#8C8C8C] group-hover:text-white transition-colors" />
-                </b>
-                <span className="font-mono text-xs text-[#8C8C8C]">{sampleArtistKim.nameEn} · KR</span>
-              </div>
-            </div>
-
-            {/* Other Artists */}
-            {otherArtists.map((artist) => (
-              <div
-                key={artist.id}
-                className="group relative bg-[#141414] hover:bg-[#1C1C1C] transition-colors"
-              >
-                <div className="aspect-square overflow-hidden relative">
-                  <img
-                    src={artist.img}
-                    alt={artist.nameKo}
-                    className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-500"
-                  />
-                </div>
-                <div className="p-4 border-t border-white">
-                  <b className="block text-base font-extrabold text-white">
-                    {artist.nameKo}
-                  </b>
-                  <span className="font-mono text-xs text-[#8C8C8C]">{artist.nameEn} · {artist.origin}</span>
-                </div>
-              </div>
-            ))}
+          <div className="p-6 sm:p-10">
+            <ArtistGrid
+              categories={categories}
+              allLabel={isKo ? '전체 부문 (ALL)' : 'ALL VENUES'}
+              onArtistClick={(a) => setSelectedArtist(a)}
+              showModalInternally={false}
+            />
           </div>
         )}
 
         {/* Tab 2: Works List */}
         {activeTab === 'works' && (
-          <div className="divide-y divide-[#2E2E2E]">
-            {/* Featured Work: Kim Deok Han */}
-            <div
-              onClick={() => setSelectedArtist(sampleArtistKim)}
-              className="p-6 sm:p-8 hover:bg-[#141414] transition-colors cursor-pointer flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 group"
-            >
-              <div className="flex items-center gap-6">
-                <span className="font-mono font-black text-2xl text-transparent" style={{ WebkitTextStroke: '1px #FFFFFF' }}>01</span>
-                <div className="w-20 h-16 bg-black border border-white overflow-hidden rounded flex-shrink-0">
-                  <img src={sampleArtistKim.artworkImg} alt={sampleArtistKim.workTitleKo} className="w-full h-full object-cover grayscale group-hover:grayscale-0" />
-                </div>
-                <div>
-                  <h4 className="font-extrabold text-lg text-white group-hover:text-white flex items-center gap-2">
-                    {sampleArtistKim.workTitleKo}
-                    <span className="text-xs bg-[#002FA7] text-white px-2 py-0.5 rounded font-mono font-bold">2026 신작</span>
-                  </h4>
-                  <p className="text-xs text-[#B9B9B9] mt-0.5 font-mono">
-                    {sampleArtistKim.nameKo} · {sampleArtistKim.workMaterialKo}
-                  </p>
-                </div>
-              </div>
-              <span className="border border-white text-xs font-bold px-4 py-1.5 rounded-full text-white self-start sm:self-auto font-mono">
-                {sampleArtistKim.workLocationKo}
-              </span>
-            </div>
-
-            {/* Other mock works */}
-            {[
-              { no: '02', title: '도시의 기억 장치 (Urban Memory Unit)', artist: '작가 2', loc: '안양천 일대' },
-              { no: '03', title: '공생의 거울 (Mirror of Coexistence)', artist: '작가 3', loc: '안양파빌리온' },
-              { no: '04', title: '바람의 회랑 (Corridor of Wind)', artist: '작가 4', loc: '평촌중앙공원' },
-            ].map((wk) => (
-              <div key={wk.no} className="p-6 sm:p-8 hover:bg-[#141414] transition-colors flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-                <div className="flex items-center gap-6">
-                  <span className="font-mono font-black text-2xl text-transparent" style={{ WebkitTextStroke: '1px #FFFFFF' }}>{wk.no}</span>
-                  <div>
-                    <h4 className="font-extrabold text-base text-white">{wk.title}</h4>
-                    <p className="text-xs text-[#B9B9B9] mt-0.5 font-mono">{wk.artist} · 설치/조각</p>
-                  </div>
-                </div>
-                <span className="border border-[#2E2E2E] text-xs font-medium px-4 py-1.5 rounded-full text-[#B9B9B9] self-start sm:self-auto font-mono">
-                  {wk.loc}
-                </span>
-              </div>
-            ))}
+          <div className="p-6 sm:p-10">
+            <WorkGallery
+              categories={workCategories}
+              allLabel={isKo ? '전체 출품작 (ALL)' : 'ALL WORKS'}
+            />
           </div>
         )}
 
@@ -635,114 +534,11 @@ export default function ConceptBlackWhitePage({ params }: PageProps) {
         </div>
       </footer>
 
-      {/* ─── Artist Detail Modal (Kim Deok Han) ─── */}
-      <AnimatePresence>
-        {selectedArtist && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-black/85 backdrop-blur-md">
-            <motion.div
-              initial={{ scale: 0.95, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.95, opacity: 0 }}
-              className="bg-[#141414] border border-white w-full max-w-4xl max-h-[90vh] overflow-y-auto rounded-2xl shadow-2xl flex flex-col"
-            >
-              {/* Modal Header */}
-              <div className="flex items-center justify-between p-6 border-b border-white sticky top-0 bg-[#141414] z-10">
-                <div>
-                  <span className="font-mono text-[10px] text-[#8C8C8C] uppercase tracking-widest">
-                    APAP8 PARTICIPATING ARTIST
-                  </span>
-                  <h3 className="text-2xl font-extrabold text-white flex items-baseline gap-2">
-                    {isKo ? selectedArtist.nameKo : selectedArtist.nameEn}
-                    <span className="font-mono text-sm font-normal text-[#8C8C8C]">
-                      {isKo ? selectedArtist.nameEn : selectedArtist.nameKo} ({selectedArtist.birth})
-                    </span>
-                  </h3>
-                </div>
-                <button
-                  onClick={() => setSelectedArtist(null)}
-                  className="w-9 h-9 rounded-full border border-white flex items-center justify-center text-white hover:bg-white hover:text-black transition-colors"
-                >
-                  <X className="w-5 h-5" />
-                </button>
-              </div>
-
-              {/* Modal Body */}
-              <div className="p-6 sm:p-8 space-y-8">
-                {/* Artist Profile & Artwork Grid */}
-                <div className="grid md:grid-cols-12 gap-6 items-start">
-                  <div className="md:col-span-5 space-y-4">
-                    <div className="aspect-square bg-black border border-white overflow-hidden rounded-xl">
-                      <img src={selectedArtist.profileImg} alt={selectedArtist.nameKo} className="w-full h-full object-cover" />
-                    </div>
-                    <div className="bg-[#1C1C1C] p-4 rounded-xl space-y-2 text-xs font-mono">
-                      <div><span className="text-[#8C8C8C]">국적:</span> <b className="text-white">{selectedArtist.nationalityKo}</b></div>
-                      <div><span className="text-[#8C8C8C]">분야:</span> <b className="text-white">{selectedArtist.fieldKo}</b></div>
-                    </div>
-                  </div>
-
-                  <div className="md:col-span-7 space-y-6">
-                    {/* Artwork info */}
-                    <div className="space-y-3">
-                      <span className="font-mono text-xs font-bold text-[#002FA7] uppercase tracking-widest bg-blue-500/10 border border-blue-500/30 px-3 py-1 rounded-full">
-                        2026 APAP8 COMMISSION WORK
-                      </span>
-                      <h4 className="text-xl sm:text-2xl font-extrabold text-white">
-                        {isKo ? selectedArtist.workTitleKo : selectedArtist.workTitleEn}
-                      </h4>
-                      <p className="text-xs text-[#8C8C8C] font-mono leading-relaxed">
-                        <b>재료:</b> {isKo ? selectedArtist.workMaterialKo : selectedArtist.workMaterialEn}<br />
-                        <b>크기:</b> {isKo ? selectedArtist.workDimensionKo : selectedArtist.workDimensionEn}<br />
-                        <b>위치:</b> {isKo ? selectedArtist.workLocationKo : selectedArtist.workLocationEn}
-                      </p>
-                    </div>
-
-                    <div className="aspect-video bg-black border border-white overflow-hidden rounded-xl">
-                      <img src={selectedArtist.artworkImg} alt={selectedArtist.workTitleKo} className="w-full h-full object-cover" />
-                    </div>
-
-                    <div className="text-sm text-[#B9B9B9] leading-relaxed font-light bg-[#1C1C1C] p-5 rounded-xl border border-[#2E2E2E]">
-                      {isKo ? selectedArtist.workDescKo : selectedArtist.workDescEn}
-                    </div>
-                  </div>
-                </div>
-
-                {/* Biography (Solo & Group Exhibitions from xlsx) */}
-                <div className="border-t border-[#2E2E2E] pt-6 space-y-6">
-                  <h4 className="font-mono text-xs font-bold text-white uppercase tracking-widest">
-                    EXHIBITIONS &amp; BIOGRAPHY (주요 전시 이력)
-                  </h4>
-                  
-                  <div className="grid md:grid-cols-2 gap-6 text-xs text-[#B9B9B9] leading-relaxed">
-                    <div className="bg-[#1C1C1C] p-5 rounded-xl space-y-3">
-                      <h5 className="font-bold text-white border-b border-[#2E2E2E] pb-2">주요 개인전 (Solo Exhibitions)</h5>
-                      <ul className="space-y-2 font-mono">
-                        {(isKo ? selectedArtist.bioKo.solo : selectedArtist.bioEn.solo).map((s, i) => (
-                          <li key={i} className="flex items-start gap-2">
-                            <span className="text-[#002FA7]">●</span>
-                            <span>{s}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-
-                    <div className="bg-[#1C1C1C] p-5 rounded-xl space-y-3">
-                      <h5 className="font-bold text-white border-b border-[#2E2E2E] pb-2">주요 단체전 (Group Exhibitions)</h5>
-                      <ul className="space-y-2 font-mono">
-                        {(isKo ? selectedArtist.bioKo.group : selectedArtist.bioEn.group).map((g, i) => (
-                          <li key={i} className="flex items-start gap-2">
-                            <span className="text-[#002FA7]">●</span>
-                            <span>{g}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </motion.div>
-          </div>
-        )}
-      </AnimatePresence>
+      {/* ─── Artist Detail Modal ─── */}
+      <ArtistModal
+        artist={selectedArtist}
+        onClose={() => setSelectedArtist(null)}
+      />
 
       {/* Floating Concept Switcher */}
       <ConceptSwitcher locale={locale} />

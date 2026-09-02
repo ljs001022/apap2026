@@ -5,6 +5,8 @@ import Link from 'next/link';
 import { Menu, X, ArrowUpRight } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import ConceptSwitcher from '@/components/site-a/ConceptSwitcher';
+import ArtistSection from '@/components/site-a/ArtistSection';
+import WorksSection from '@/components/site-a/WorksSection';
 
 // Types & interfaces
 interface PageProps {
@@ -504,9 +506,7 @@ export default function ConceptBPage({ params }: PageProps) {
   const t = dict[validLocale];
 
   // State Management
-  const [region, setRegion] = useState<'all' | 'kr' | 'intl'>('all');
   const [category, setCategory] = useState<'all' | 'talk' | 'workshop' | 'tour' | 'event'>('all');
-  const [selectedId, setSelectedId] = useState<number | null>(null);
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState('#intro');
@@ -555,129 +555,7 @@ export default function ConceptBPage({ params }: PageProps) {
     setMenuOpen(false);
   };
 
-  // Artists mock data
-  const artistsData = [
-    {
-      id: 1,
-      name: { ko: '김덕한', en: 'Kim Deok Han', ja: 'キム・ドクハン', zh: '金德汉' },
-      nation: 'KR',
-      region: 'kr',
-      workTitle: { ko: '<OVERLAID : 공존의 균형>', en: 'OVERLAID : Harmony in Coexistence', ja: 'OVERLAID : 共存の均衡', zh: 'OVERLAID : 共存之均衡' },
-      workSite: { ko: '안양예술공원 야외', en: 'Anyang Art Park Outdoor', ja: '安養芸術公園 野外', zh: '安养艺术公园 户外' },
-      img: '/images/artist/kim_profile.jpg',
-      bio: {
-        ko: '오방색 구체와 자연석의 수직적 중첩을 통해 시간, 기억, 관계의 층위를 시각화하는 설치미술가. APAP 8 커미션 신작으로 안양의 공존과 균형을 표현한 대형 조형물을 선보인다.',
-        en: 'A contemporary artist visualizing layers of time, memory, and relationships through vertical stacks of Obangsaek spheres and natural stone. Presents a new monumental commission for APAP 8.',
-        ja: '五方色の球体と自然石の垂直的重なりを通じて時間、記憶、関係の層位を可視化する設置美術家。APAP 8のコミッション新作として安養の共存と均衡を表現した大型造形物を披露する。',
-        zh: '通过五方色球体与天然石头的垂直重叠，将时间、记忆与关系的层次可视化的装置艺术家。在APAP 8中推出表现安养共存与平衡的大型公共艺术新作。'
-      }
-    },
-    {
-      id: 2,
-      name: { ko: '작가 B', en: 'Artist B', ja: '作家 B', zh: '艺术家 B' },
-      nation: 'KR',
-      region: 'kr',
-      workTitle: { ko: '도시의 기억 장치', en: 'Urban Memory Unit', ja: '都市の記憶装置', zh: '城市的记忆装置' },
-      workSite: { ko: '평촌중앙공원', en: 'Pyeongchon Central Park', ja: '平村中央公園', zh: '平村中央公园' },
-      img: '/images/concept-b/f43e59c1-7592-41ed-8198-a436f0be1d54.jpg',
-      bio: {
-        ko: '도시 공간의 물리적 구조물과 가상의 레이어를 매핑하는 미디어 아티스트다. AI 모델이 기억하는 과거의 흔적을 투사하는 대형 기둥 형태의 작업을 준비했다.',
-        en: 'A media artist mapping physical structures with virtual layers. Prepared a tower installation projecting trace memories of Anyang recorded by AI models.',
-        ja: '도시 공간의 물리적 구조물과 가상의 레이어를 매핑하는 미디어 아티스트다. AI 모델이 기억하는 과거의 흔적을 투사하는 대형 기둥 형태의 작업을 준비했다.',
-        zh: '融合都市物理结构与虚拟图层的媒体艺术家。创作了以大立柱投射AI模型记录的过去城市印记的装置。'
-      }
-    },
-    {
-      id: 3,
-      name: { ko: 'Artist C', en: 'Artist C', ja: 'アーティスト C', zh: '艺术家 C' },
-      nation: 'DE',
-      region: 'intl',
-      workTitle: { ko: 'Latent Plaza', en: 'Latent Plaza', ja: 'レイテントプラザ', zh: '潜在线性广场' },
-      workSite: { ko: '안양파빌리온', en: 'Anyang Pavilion', ja: '安養パビリオン', zh: '安养展馆' },
-      img: '/images/concept-b/a8810f8b-25d9-4949-bbe8-9cae98e189a2.jpg',
-      bio: {
-        ko: '잠재 공간 속 이미지를 생성하고 변형하는 인스톨레이션을 전문으로 한다. 안양파빌리온 내부에 안양시민들의 사운드스케이프를 가시화하는 인터랙티브 풀을 구현한다.',
-        en: 'Specializes in generative space images and morphing installations. Realizes an interactive audio-visual pool visualizing soundscapes of Anyang citizens inside the pavilion.',
-        ja: '潜在空間内のイメージを生成し変形하는 인스톨레이션을 전문으로 한다. 안양파빌리온 내부에 안양시민들의 사운드스케이프를 가시화하는 인터랙티브 풀을 구현한다.',
-        zh: '专长于生成式潜空间图像及变形装置。在安养展馆内部打造了可视化安养市民声景的互动声光池。'
-      }
-    },
-    {
-      id: 4,
-      name: { ko: '작가 D', en: 'Artist D', ja: '作家 D', zh: '艺术家 D' },
-      nation: 'KR',
-      region: 'kr',
-      workTitle: { ko: '천 개의 목소리', en: 'A Thousand Voices', ja: '千の歌声', zh: '千种声音' },
-      workSite: { ko: '안양역 광장', en: 'Anyang Station Square', ja: '安養駅広場', zh: '安养站广场' },
-      img: '/images/concept-b/b063889b-b5a2-43be-92d5-0a5d80731ef3.jpg',
-      bio: {
-        ko: '거리의 소음과 대화에서 데이터를 축적하여 거대 텍스트 네트워크를 시각화하는 설치 프로젝트를 진행한다. 안양역 일대의 라이브 텍스트 보드 형태로 띄워진다.',
-        en: 'Collects street chatter and sounds to visualize massive text networks. Placed on an active live text panel displaying generative poetry around Anyang Station.',
-        ja: '街のノイズや会話からデータを蓄積し、巨大なテキストネットワークを視覚化するインスタレーションプロジェクトを進行する。安養駅一帯にライブテキストボードの形式で掲示される。',
-        zh: '收集街道杂音和对话数据并可视化大型文本网络。在安养站广场以实时动态电子面板的形式呈现生成诗歌。'
-      }
-    },
-    {
-      id: 5,
-      name: { ko: 'Artist E', en: 'Artist E', ja: 'アーティスト E', zh: '艺术家 E' },
-      nation: 'US',
-      region: 'intl',
-      workTitle: { ko: 'Weather Model', en: 'Weather Model', ja: 'ウェザーモデル', zh: '天气生成模型' },
-      workSite: { ko: '학운공원', en: 'Haguun Park', ja: '鶴雲公園', zh: '鹤云公园' },
-      img: '/images/concept-b/1a54f0b8-88f0-468f-a10d-491431a35c19.jpg',
-      bio: {
-        ko: '안양 학운공원에 날씨와 기계 기후 예측 데이터를 기반으로 구조물의 팽창과 수축을 제어하는 키네틱 아트 구조물을 구축하여 인간과 환경의 연결을 도모한다.',
-        en: 'Builds a kinetic art structure in Haguun Park that expands and contracts based on meteorological predictive data, reflecting relationship between human and environment.',
-        ja: '安養の鶴雲公園に、天気や機械の気候予測データを基に構造物の膨張と収縮を制御するキ네틱・아트 구조물을 구축하여 인간과 환경의 연결을 도모한다.',
-        zh: '在安养鹤云公园建造了一座动力学艺术结构，根据气象预测数据控制结构的膨胀 and 收缩，以此连接人类与自然。'
-      }
-    },
-    {
-      id: 6,
-      name: { ko: 'Artist F', en: 'Artist F', ja: 'アーティスト F', zh: '艺术家 F' },
-      nation: 'JP',
-      region: 'intl',
-      workTitle: { ko: 'Slow Prediction', en: 'Slow Prediction', ja: 'スロー・プレディクション', zh: '慢速预测' },
-      workSite: { ko: '안양천 산책로', en: 'Anyang Stream Walkway', ja: '安養川散歩道', zh: '安养川步道' },
-      img: '/images/concept-b/8b5b3503-dbde-4f24-8ee9-bab0e19ce038.jpg',
-      bio: {
-        ko: '안양천 생태 흐름에 연동되는 디지털 투사 디바이스를 설치한다. 시냇물 소리와 바람의 결을 읽어 픽셀 드로잉을 강둑에 야간 투사하는 기계 유닛이다.',
-        en: 'Deploys dynamic projection units along Anyang Stream syncing with ecological flow. Translates running water and wind currents into custom pixel canvas projected onto banks.',
-        ja: '안양천 생태 흐름에 연동되는 디지털 투사 디바이스를 설치한다. 시냇물 소리와 바람의 결을 읽어 픽셀 드로잉을 강둑에 야간 투사하는 기계 유닛이다.',
-        zh: '在安养川沿岸部署生态流动数字投影装置。通过读取河水流速和风势，将生成像素画夜间投射在河堤上。'
-      }
-    },
-    {
-      id: 7,
-      name: { ko: '작가 G', en: 'Artist G', ja: '작가 G', zh: '艺术家 G' },
-      nation: 'KR',
-      region: 'kr',
-      workTitle: { ko: '반려 신호등', en: 'Companion Traffic Light', ja: '伴侶信号機', zh: '伴侣信号灯' },
-      workSite: { ko: '범계역 일대', en: 'Beomgye Station Area', ja: '凡渓駅一帯', zh: '凡溪站附近' },
-      img: '/images/concept-b/1510ccbd-1274-4ea2-a7c4-ab4c94a49036.jpg',
-      bio: {
-        ko: '범계역 주변의 바쁜 도보 흐름을 센싱하여 신호 조명을 커스텀 애니메이션으로 전환하는 프로젝트로, 규칙적인 통제를 친화적인 리듬으로 교정한다.',
-        en: 'A project sensing busy pedestrian flows near Beomgye Station to shift traffic lights into friendly animated loops, transforming structural control into artistic rhythm.',
-        ja: '범계역 주변의 바쁜 도보 흐름을 센싱하여 신호 조명을 커스텀 애니메이션으로 전환하는 프로젝트로, 규칙적인 통제를 친화적인 리듬으로 교정한다.',
-        zh: '感应凡溪站繁忙的步行流量，将交替的信号灯转化为温馨的动画循环，把规整的管理纠偏为艺术节奏。'
-      }
-    },
-    {
-      id: 8,
-      name: { ko: 'Artist H', en: 'Artist H', ja: 'アーティスト H', zh: '艺术家 H' },
-      nation: 'NL',
-      region: 'intl',
-      workTitle: { ko: 'Public Dataset', en: 'Public Dataset', ja: 'パブリックデータセット', zh: '公共数据集' },
-      workSite: { ko: '평촌 학원가', en: 'Pyeongchon Academy Street', ja: '平村塾街', zh: '平村学院街' },
-      img: '/images/concept-b/1a54f0b8-88f0-468f-a10d-491431a35c19.jpg',
-      bio: {
-        ko: '학생들의 학습 패턴 데이터를 수집하여 빛의 그라데이션으로 환원시키는 야외 발광 타일 설치 작업이다. 평촌 학원가의 보도블록에 내장된다.',
-        en: 'An outdoor glowing pavement tile installation converting student study pattern logs into color gradients, embedded inside sidewalks of Academy Street.',
-        ja: '학생들의 학습 패턴 데이터를 수집하여 빛의 그라데이션으로 환원시키는 야외 발광 타일 설치 작업이다. 평촌 학원가의 보도블록에 내장된다.',
-        zh: '收集学生学习模式数据并转化为色彩渐变的发光地砖装置。嵌入平村学院街的人行道中。'
-      }
-    }
-  ];
+
 
   // Programs mock data
   const programsData = [
@@ -699,27 +577,7 @@ export default function ConceptBPage({ params }: PageProps) {
     { cat: 'PRESS', date: '2026.05.20', title: { ko: '예술감독 선임 발표', en: 'Artistic Director appointed', ja: '芸術監督の選任発表', zh: '艺术总监委任公告' } }
   ];
 
-  // Works list
-  const works = [
-    { num: '01', title: { ko: '학습하는 정원', en: 'The Learning Garden', ja: '学習する庭園', zh: '学习的花园' }, artist: { ko: '작가 A', en: 'Artist A', ja: '작가 A', zh: '艺术家 A' }, site: { ko: '안양예술공원', en: 'Anyang Art Park', ja: '安養芸術公園', zh: '安养艺术公园' }, img: '/images/concept-b/1510ccbd-1274-4ea2-a7c4-ab4c94a49036.jpg' },
-    { num: '02', title: { ko: 'Latent Plaza', en: 'Latent Plaza', ja: 'レイテントプラザ', zh: '潜在线性广场' }, artist: { ko: 'Artist C', en: 'Artist C', ja: 'アーティスト C', zh: '艺术家 C' }, site: { ko: '안양파빌리온', en: 'Anyang Pavilion', ja: '安養パビリオン', zh: '安养展馆' }, img: '/images/concept-b/a8810f8b-25d9-4949-bbe8-9cae98e189a2.jpg' },
-    { num: '03', title: { ko: '천 개의 목소리', en: 'A Thousand Voices', ja: '千の歌声', zh: '千种声音' }, artist: { ko: '작가 D', en: 'Artist D', ja: '작가 D', zh: '艺术家 D' }, site: { ko: '안양역 광장', en: 'Anyang Station Square', ja: '安養駅広場', zh: '安养站广场' }, img: '/images/concept-b/b063889b-b5a2-43be-92d5-0a5d80731ef3.jpg' },
-    { num: '04', title: { ko: 'Public Dataset', en: 'Public Dataset', ja: 'パブリックデータセット', zh: '公共数据集' }, artist: { ko: 'Artist H', en: 'Artist H', ja: 'アーティスト H', zh: '艺术家 H' }, site: { ko: '평촌 학원가', en: 'Pyeongchon Academy Street', ja: '平村塾街', zh: '平村学院街' }, img: '/images/concept-b/1a54f0b8-88f0-468f-a10d-491431a35c19.jpg' },
-    { num: '05', title: { ko: '도시의 기억 장치', en: 'Urban Memory Unit', ja: '都市의 기억 장치', zh: '城市的记忆装置' }, artist: { ko: '작가 B', en: 'Artist B', ja: '작가 B', zh: '艺术家 B' }, site: { ko: '평촌중앙공원', en: 'Pyeongchon Central Park', ja: '平村中央公園', zh: '平村中央公园' }, img: '/images/concept-b/f43e59c1-7592-41ed-8198-a436f0be1d54.jpg' },
-    { num: '06', title: { ko: 'Slow Prediction', en: 'Slow Prediction', ja: 'スロー・プレ디션', zh: '慢速预测' }, artist: { ko: 'Artist F', en: 'Artist F', ja: '아티스트 F', zh: '艺术家 F' }, site: { ko: '안양천 산책로', en: 'Anyang Stream Walkway', ja: '安養川散歩道', zh: '安养川步道' }, img: '/images/concept-b/8b5b3503-dbde-4f24-8ee9-bab0e19ce038.jpg' }
-  ];
 
-  // Filtering Logic
-  const filteredArtists = artistsData
-    .filter((a) => region === 'all' || a.region === region)
-    .map((a) => ({
-      ...a,
-      displayName: a.name[validLocale],
-      displayWorkTitle: a.workTitle[validLocale],
-      displayWorkSite: a.workSite[validLocale],
-    }));
-
-  const selectedArtist = artistsData.find((a) => a.id === selectedId);
 
   const filteredPrograms = programsData
     .filter((p) => category === 'all' || p.cat === category)
@@ -949,156 +807,10 @@ export default function ConceptBPage({ params }: PageProps) {
       </section>
 
       {/* 6. Artists Section */}
-      <section id="exhibition" className="relative py-24 px-6 md:px-12 max-w-6xl mx-auto z-10 border-t border-[#00E5FF]/10">
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
-          <div>
-            <p className="font-mono text-xs text-[#00E5FF] tracking-wider mb-2">[02] ARTISTS — {t.artistsQuery}</p>
-            <h2 className="text-3xl sm:text-5xl font-bold text-white tracking-tight">
-              <DecryptedText text={t.artistsTitle} />
-            </h2>
-          </div>
-
-          {/* Region Tabs */}
-          <div className="flex gap-2">
-            {(['all', 'kr', 'intl'] as const).map((r) => (
-              <button
-                key={r}
-                onClick={() => setRegion(r)}
-                style={tabStyle(region === r)}
-                className="px-4 py-2 font-mono text-xs uppercase cursor-pointer transition-all rounded-sm"
-              >
-                {t[r]}
-              </button>
-            ))}
-          </div>
-        </div>
-
-        {/* Artists Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
-          {filteredArtists.map((artist) => (
-            <button
-              key={artist.id}
-              onClick={() => setSelectedId(artist.id)}
-              className="group block text-left bg-black/40 border border-[#00E5FF]/15 hover:border-[#00E5FF] transition-all cursor-pointer rounded-sm overflow-hidden"
-            >
-              <div className="relative aspect-[4/3] overflow-hidden bg-zinc-900 border-b border-[#00E5FF]/10">
-                <img 
-                  src={artist.img} 
-                  alt={artist.displayName} 
-                  className="block w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" 
-                />
-                <div className="absolute inset-0 bg-black/30 group-hover:bg-transparent transition-colors duration-300" />
-              </div>
-              <div className="p-4 flex flex-col gap-1 bg-[#04060A]/60">
-                <div className="flex justify-between items-baseline gap-2">
-                  <span className="font-bold text-base text-white tracking-tight group-hover:text-[#00E5FF] transition-colors">
-                    {artist.displayName}
-                  </span>
-                  <span className="font-mono text-[10px] text-[#00E5FF]">{artist.nation}</span>
-                </div>
-                <span className="font-mono text-[10px] text-[#5A7A85] truncate">
-                  「{artist.displayWorkTitle}」 @ {artist.displayWorkSite}
-                </span>
-              </div>
-            </button>
-          ))}
-        </div>
-      </section>
-
-      {/* Artist Details Popup Modal */}
-      <AnimatePresence>
-        {selectedArtist && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            onClick={() => setSelectedId(null)}
-            className="fixed inset-0 z-50 bg-[#04060A]/85 backdrop-blur-md flex items-center justify-center p-6"
-          >
-            <motion.div
-              initial={{ scale: 0.95, y: 15 }}
-              animate={{ scale: 1, y: 0 }}
-              exit={{ scale: 0.95, y: 15 }}
-              onClick={(e) => e.stopPropagation()}
-              className="bg-[#070B12] border border-[#00E5FF]/30 p-6 sm:p-10 max-w-3xl w-full max-h-[85vh] overflow-y-auto rounded-sm relative"
-            >
-              {/* Close Button */}
-              <button
-                onClick={() => setSelectedId(null)}
-                className="absolute top-4 right-4 flex items-center justify-center w-8 h-8 border border-[#00E5FF]/30 text-white cursor-pointer hover:border-[#00E5FF] hover:text-[#00E5FF] transition-all font-mono text-sm"
-                aria-label={t.close}
-              >
-                ×
-              </button>
-
-              <span className="font-mono text-[10px] text-[#00E5FF] tracking-wider block mb-1">
-                RECORD #{selectedArtist.id} · {selectedArtist.nation}
-              </span>
-              
-              <h3 className="text-2xl sm:text-4xl font-bold text-white tracking-tight mb-6">
-                {selectedArtist.name[validLocale]}
-              </h3>
-
-              <div className="grid md:grid-cols-2 gap-8 items-start">
-                <div className="aspect-[4/3] overflow-hidden border border-[#00E5FF]/20 rounded-sm">
-                  <img src={selectedArtist.img} alt={selectedArtist.name[validLocale]} className="block w-full h-full object-cover" />
-                </div>
-                <div className="flex flex-col gap-4">
-                  <p className="text-[#B8CBD3] text-sm sm:text-base leading-relaxed">
-                    {selectedArtist.bio[validLocale]}
-                  </p>
-                  <div className="mt-4 pt-4 border-t border-white/10">
-                    <span className="font-bold text-white block mb-1 text-sm">
-                      {selectedArtist.workTitle[validLocale]}
-                    </span>
-                    <span className="font-mono text-xs text-[#5A7A85]">
-                      — {selectedArtist.workSite[validLocale]}
-                    </span>
-                  </div>
-                </div>
-              </div>
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+      <ArtistSection locale={validLocale} />
 
       {/* 7. Works Section */}
-      <section id="works" className="relative py-24 overflow-hidden z-10 border-t border-[#00E5FF]/10">
-        <div className="max-w-6xl mx-auto px-6 md:px-12 mb-12">
-          <p className="font-mono text-xs text-[#00E5FF] tracking-wider mb-2">[03] WORKS — {t.worksQuery}</p>
-          <h2 className="text-3xl sm:text-5xl font-bold text-white tracking-tight">
-            <DecryptedText text={t.worksTitle} />
-          </h2>
-        </div>
-
-        {/* Works Horizontal Swipe Container */}
-        <div className="flex gap-6 overflow-x-auto pb-6 scroll-smooth snap-x hide-scrollbar px-6 md:px-12 max-w-6xl mx-auto">
-          {works.map((w, index) => (
-            <article 
-              key={index} 
-              className="flex-shrink-0 w-[280px] sm:w-[380px] snap-start bg-[#04060A]/40 border border-[#00E5FF]/15 hover:border-[#00E5FF] transition-all p-3 rounded-sm group cursor-pointer"
-            >
-              <div className="relative aspect-[4/3] overflow-hidden border border-[#00E5FF]/10 bg-zinc-900 mb-4">
-                <img 
-                  src={w.img} 
-                  alt={w.title[validLocale]} 
-                  className="block w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" 
-                />
-                <span className="absolute top-3 left-3 font-mono text-[9px] text-[#00E5FF] bg-[#04060A]/85 border border-[#00E5FF]/40 px-2 py-0.5">
-                  {w.site[validLocale]}
-                </span>
-              </div>
-              <div className="flex justify-between items-baseline gap-4 px-1">
-                <h3 className="font-bold text-base text-white truncate">{w.title[validLocale]}</h3>
-                <span className="font-mono text-[10px] text-[#5A7A85]">{w.num}/06</span>
-              </div>
-              <p className="font-mono text-[11px] text-[#5A7A85] mt-1 px-1">
-                {w.artist[validLocale]}
-              </p>
-            </article>
-          ))}
-        </div>
-      </section>
+      <WorksSection locale={validLocale} />
 
       {/* 8. Program Section */}
       <section id="program" className="relative py-24 px-6 md:px-12 max-w-6xl mx-auto z-10 border-t border-[#00E5FF]/10">

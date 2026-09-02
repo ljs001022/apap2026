@@ -1,0 +1,594 @@
+{
+  "venues": [
+    {
+      "venue_ko": "야외전시",
+      "venue_slug": "outdoor-exhibition",
+      "artists": [
+        {
+          "slug": "kim-deok-han",
+          "name_ko": "김덕한",
+          "name_en": "Kim Deok Han",
+          "birth_year": "1981",
+          "nationality": "대한민국",
+          "bio": "주요 개인전\n2025 Layered Time, Forms of Memory, 화이트스톤 갤러리, 서울\n2024 TRACE OF TIME, 화이트스톤 갤러리, 베이징, 중국\n2020  Journey Through the Veil of Time, 이응노미술관, 대전\n\n2025 Layered Time, Forms of Memory, Whitestone Gallery, Seoul\n2024 TRACE OF TIME, Whitestone Gallery, Beijing, China\n2020 Journey Through the Veil of Time, Lee Ungno Museum, Daejeon\n\n주요 단체전\n2025 한국현대미술특별전 : 축(꺾이지 않는 마음), 주인도한국문화원, 뉴델리, 인도\n2023 KEEM & KIM'S GLOWING OVERLAID HOUR, 아트베이스 26SQM (박서보 재단), 서울, 한국\n2022 달의 심장, 해의 심장, 선화랑 개관 45주년 기념전, 선화랑, 서울, 한국\n\n2025 Special Exhibition of Korean Contemporary Art: Axis (An Unbreakable Spirit), Korean Cultural Center India, New Delhi, India\n2023 KEEM & KIM'S GLOWING OVERLAID HOUR, Art Base 26SQM (Park Seo Bo Foundation), Seoul\n2022 The Heart of the Moon, The Heart of the Sun (45th Anniversary Exhibition), Sun Gallery, Seoul",
+          "intro": "",
+          "profile_image": null,
+          "works": [
+            {
+              "title": "<OVERLAID : 공존의 균형>\nOVERLAID : Harmony in Coexistence",
+              "year": "2026",
+              "material": "스테인리스 스틸에 우레탄 도장, 고흥석, 마정석\nUrethane paint on Stainless steel, Goheung granite, Majeong stone",
+              "size": "250 x 500 x 500cm",
+              "description": "<OVERLAID : 공존의 균형>은 서로 다른 색과 형태가 하나의 공간 안에서 조화를 이루는 과정을 표현한 공공 조형물이다. 오방색으로 구성된 구체들은 각각 시간, 기억, 관계의 층위를 상징하며, 수직으로 중첩된 구조를 통해 축적과 균형의 의미를 드러낸다. 중앙의 자연석은 시간의 중심이자 장소의 기억을 상징하며, 주변의 수직 조형물들은 그 주위를 감싸며 공존과 연결의 질서를 형성한다. \n\nOVERLAID: Harmony of Coexistence is a public sculpture that expresses the harmony of diverse colors and forms within a shared space. The spheres, composed of the five traditional Korean colors (Obangsaek), symbolize the layered dimensions of time, memory, and relationships. Their vertically stacked arrangement conveys the accumulation of experiences and the pursuit of balance. At the center, a natural stone represents the core of time and the memory of place, while the surrounding vertical sculptures embrace it, creating an ordered structure that embodies coexistence, connection, and harmony.",
+              "images": [
+                "/assets/artists/outdoor-exhibition/kim-deok-han/work-1-1.png",
+                "/assets/artists/outdoor-exhibition/kim-deok-han/work-1-2.png"
+              ]
+            }
+          ]
+        },
+        {
+          "slug": "yang-tae-geun",
+          "name_ko": "양태근",
+          "name_en": "Yang Tae Geun",
+          "birth_year": "1959",
+          "nationality": "대한민국",
+          "bio": "주요 개인전\n2025 생명의 하모니, 네오아트 기획 초대개인전, 네오아트센터, 청주\n2024 성남문화재단 초대개인전, 성남문화재단, 성남\n2023 멋진 신세계의 욕망, 바우지움조각미술관, 고성\n\n2025 Harmony of Life, Neo Art Center, Cheongju\n2024 Invited Solo Exhibition, Seongnam Cultural Foundation, Seongnam\n2023 Brave New World Desire, Bauzium Sculpture Museum, Goseong\n\n주요 단체전\n2026 서울국제조각페스타, 코엑스, 서울\n2025 제5회 한•일 현대조각의 비전, 갤러리 끼, 파주\n2024 한•중 조각교류전, 시안대학교, 시안, 중국\n\n2026 International Sculpture Festa 2026 in Seoul, COEX, Seoul\n2025 The 5th Vision of Korea•Japan Contemporary Sculpture Exhibition, Gallery KKI, Paju\n2024 Korea-China Sculpture Exchange Exhibition at Xi'an University, Xi'an, China",
+          "intro": "",
+          "profile_image": null,
+          "works": [
+            {
+              "title": "<터-지킴이>\n\nPlace Keeper",
+              "year": "2026",
+              "material": "스테인리스 스틸에 우레탄 도장, 화강석\n\nUrethane paint on Stainless steel casting, Granite",
+              "size": "700 x 130 x 130cm",
+              "description": "<터-지킴이>는 인간, 자연, 동물이 서로 분리될 수 없는 하나의 유기적 생명체임을 형상화한 수직적 토템 작품 형상이다. 대지와 하늘을 연결하는 사람의 형상과 중심에 지구를 상징하는 타원형의 형상이 결합하여 이루어진 작품이다. 위에 있는 독수리상은 매서운 눈으로 세상을 바라보는 통찰의 눈을 의미하며, 우리가 살아가는 삶의 터전과 생태계를 지켜내는 파수꾼 역할을 하는 지킴이의 의미를 담아 표현한 작품이다.\n\nPlace Keeper is a vertical totem sculpture embodying the idea that humanity, nature, and animals form an inseparable, organic whole. It features a human figure connecting the earth and the sky, combined with an oval shape at its center representing the globe. The eagle at the top symbolizes a piercing gaze of insight, reflecting the artwork's core meaning as a guardian that protects our habitat and ecosystem",
+              "images": [
+                "/assets/artists/outdoor-exhibition/yang-tae-geun/work-1-1.png",
+                "/assets/artists/outdoor-exhibition/yang-tae-geun/work-1-2.png"
+              ]
+            }
+          ]
+        },
+        {
+          "slug": "kwon-chi-gyu",
+          "name_ko": "권치규",
+          "name_en": "Kwon Chi-gyu",
+          "birth_year": "1968",
+          "nationality": "대한민국",
+          "bio": "주요 개인전\n2023 제28회 포스코미술관 개인전, 포스코센터, 서울\n2022 제25회 RE:TURN / SILIENCE, TYTART 스튜디오&갤러리, 뉴욕\n2010 제17회 인사아트센터 초대전, 인사아트센터, 서울\n\n2023 28th POSCO Museum solo exhibition, Posco center, Seoul\n2022 25th RE:TRUN/SILIENCE, TYTART STUDIO & GALLERY, New york\n2010 17th Insa art center special invitation exhibition, Insa Art Center, Seoul\n\n주요 단체전\n2026 국제조각페스타, 코엑스, 서울\n2025 상하이 아트페어, 상하이, 중국\n2024 서울리즘–LA : 서울 현대미술의 시선, 갤러리 웨스턴, LA, 미국\n\n2026 International Sculpture Festa, COEX, Seoul\n2025 Shanghai Art Fair, Shanghai, Chaina\n2024 Seoulism-LA: A Perspective on Seoul’s Contemporary Art, Gallery Western, LA, USA",
+          "intro": "",
+          "profile_image": "/assets/artists/outdoor-exhibition/kwon-chi-gyu/profile.png",
+          "works": [
+            {
+              "title": "〈Resilence-이수목〉",
+              "year": "2025",
+              "material": "스테인리스 스틸에 우레탄 도장(Urethane paint on Stainless steel)",
+              "size": "460×190×190㎝",
+              "description": "물은 생명을 이롭게 한다는 단순한 진리를 상징적으로 표현한 작품으로서 생명 순환의 원리에 있어 자연과 물의 소중함을 표현하고 있다. \n작품은 나무, 즉 자연의 피상적 묘사를 초월하여 자연의 힘과 에너지, 자연의 순환 체계를 내포한 형태를 통하여 도심 속 힐링과 휴식을 전달한다.\n\nWater, in its simple yet profound role as a source of life, symbolically embodies the preciousness of nature and water within the fundamental cycle of life. Transcending the superficial depiction of the tree as a representation of nature, the work takes form as an embodiment of nature’s inherent power, energy, and cyclical processes. Through this, it evokes a sense of healing and repose amidst the urban environment.",
+              "images": [
+                "/assets/artists/outdoor-exhibition/kwon-chi-gyu/work-1-1.png"
+              ]
+            }
+          ]
+        },
+        {
+          "slug": "kim-dohoon",
+          "name_ko": "김도훈",
+          "name_en": "Kim Dohoon",
+          "birth_year": "1981",
+          "nationality": "대한민국",
+          "bio": "주요 개인전\n2020 공기속 뜨개질, 문화상회 다담, 수원\n2018 휴애리 갤러리 팡 기획 초대전, 갤러리 팡, 서귀포\n2012 조각난 거울로 다시 짜여 진 동물들, 가나아트스페이스, 서울\n\n2020  knitting in the air, dadam,  suwon\n2018  Gallery Fang invitation exhibit, Gallery Fang, Jeju\n2012  Re-woven Animals with Broken Mirrors, Gana Art Center, Seoul\n\n주요 단체전\n2026 고양조각가협회 야외조각전, 일산호수공원, 고양\n2025 아로새긴 숲길전, 서울미술관, 서울\n2013 게이사이아트페스티벌#19, 도쿄 도립 산업무역센터 타이토관, 도쿄, 일본\n\n2026 Goyang Sculptors Association Outdoor Sculpture Exhibition, Ilsan Lake Park, Goyang\n2025 Engraved Forest Path, Seoul Museum, Seoul\n2013 Geisai Art Festival#19, Tokyo Trade Center The Taito,  Tokyo, Japan",
+          "intro": "",
+          "profile_image": "/assets/artists/outdoor-exhibition/kim-dohoon/profile.png",
+          "works": [
+            {
+              "title": "Cat",
+              "year": "2023",
+              "material": "스테인리스 슈퍼미러(Stainless Supper-mirror)",
+              "size": "270×250×145㎝",
+              "description": "본 작업은 얇은 스테인리스 선(線)을 이용하여 3차원 공간에 드로잉을 하듯 고양이 형상의 작품을 제작하였으며, 더불어 씨줄과 날줄처럼 엮이는 선들을 통하여 중첩된 면이 형성하는 독특한 입체감을 구현하고, 주변을 반사하는 각각의 선들이 구성하는 독자적인 양감을 통해 재료의 물성과 가능성을 보여주고자 하였다.\n\nThis work presents the form of a cat drawn in three-dimensional space with thin stainless-steel wires. Interwoven like warp and weft, the wires create overlapping planes that give rise to a distinctive sense of volume and spatial depth. The individual wires, each reflecting their surrounding environment, further contribute to a unique sense of mass and presence. Through this interplay of line, space, light, and reflection, the work explores the inherent material qualities of stainless steel and its expressive possibilities.",
+              "images": [
+                "/assets/artists/outdoor-exhibition/kim-dohoon/work-1-1.png"
+              ]
+            }
+          ]
+        },
+        {
+          "slug": "kim-sungbok",
+          "name_ko": "김성복",
+          "name_en": "Kim Sungbok",
+          "birth_year": "1964",
+          "nationality": "대한민국",
+          "bio": "주요 개인전\n2018 김성복 개인전, 사비나미술관, 서울\n2006 김성복 개인전, Gallery Tomos, 도쿄, 일본\n2002 김성복 야외 조각전, 세종문화회관, 서울\n\n2018 Kim Sung-bok Solo Exhibition, Savina Museum of Art, Seoul\n2006 Kim Sung-bok Solo Exhibition, Gallery Tomos, Tokyo, Japan\n2002 Kim Sung-bok Outdoor Sculpture Exhibition, Sejong Center for the Performing Arts, Seoul\n\n수상\n2025 제14회 한국미술평론가협회 작가상 수상\n2023 제22회 문신미술상 본상 수상\n2013 대한민국 국회의장 문화예술공로패\n\n2025 14th Korean Art Critics Association Artist Award\n2023 Grand Prize, 22nd Munshin Art Award\n2013 Citation for Contribution to Culture and the Arts, Speaker of the National Assembly of the Republic of Korea",
+          "intro": "",
+          "profile_image": "/assets/artists/outdoor-exhibition/kim-sungbok/profile.png",
+          "works": [
+            {
+              "title": "〈바람이 불어도 가야 한다〉\n Though the wind blows, we should go",
+              "year": "2020",
+              "material": "스테인리스 스틸(Stainless steel)",
+              "size": "230×110×335㎝",
+              "description": "삶은 영화같이 화려하지도 쨍하고 해가 뜨지도 않는다.\n어찌보면 구질구질하고 반복되는 일상이 권태롭다.\n하지만 오늘을 살 수 있다는것은 축복임을 잘 알고 있다.\n상처받고 불안한 사람에게 아직 희망이 있음을\nStainless steel 단조로 표현했다.\n\nLife is neither as dramatic as a film nor consistently bright and radiant. At times, the repetitive and mundane routines of everyday life can feel tedious. Nevertheless, I recognize that being able to live each day is, in itself, something to be grateful for. Through forged stainless steel, I express the presence of hope for those who experience hurt and anxiety, conveying the possibility of hope even in difficult circumstances.",
+              "images": [
+                "/assets/artists/outdoor-exhibition/kim-sungbok/work-1-1.jpeg"
+              ]
+            }
+          ]
+        },
+        {
+          "slug": "kim-taesue",
+          "name_ko": "김태수",
+          "name_en": "Kim Taesue",
+          "birth_year": "1960",
+          "nationality": "대한민국",
+          "bio": "주요 개인전\n2026 Nature in, Nature out, 표갤러리, 서울\n2011 ECO FLOW, 인사아트센터, 서울\n2006 The sounds of Life, 레드 밀 갤러리, 버몬트, 미국\n\n2026 Nature in, Nature out, PYO Gallery, Seoul, Korea\n2011 ECO FLOW, Insa Art Center, Seoul, Korea\n2006 The sounds of Life, Red Mill Gallery, V.S.C, VT, U.S.A\n\n주요 단체전\n2025 의정부지 일대조각전시, 2025 조각도시 서울, 서울\n2021 ISF 국제 조각페스타, 아리랑 어워드, 한가람 미술관, 서울\n2015 ECO FLOW, 오페라갤러리, 홍콩, 중국\n\n2025 Sculpture Exhibition around the Site of Uijeongbu, 2025 Sculpture City, Seoul\n2021 Arirang Awards, ISF(International Sculpture Festa) 2021, Seoul Arts Museum, Seoul\n2015 ECO FLOW, Gallery Opera, Hongkong, China",
+          "intro": "",
+          "profile_image": "/assets/artists/outdoor-exhibition/kim-taesue/profile.png",
+          "works": [
+            {
+              "title": "ECO FLOW Excitation(설레임)",
+              "year": "2018",
+              "material": "스테인리스 스틸에 우레탄 도장(Urethane paint on Stainless steel)",
+              "size": "300×160×120㎝",
+              "description": "자연의 변화 성장하는 생명의 힘을 표현\n\n작품들은 자연을 구성하는 생명체들을 통해 삶을 창조하는 생명으로서의 이미지를 표출합니다. 이는 베란다의 화초, 담벼락의 풀, 천변 길의 숲, 길 건너 매봉산에서의 체험이고 발견입니다. 유연한 선들의 반복은 보이지 않는 땅의 은밀한 울림을 표현합니다. \n-2008.09. 작가노트 발췌-\n\nThe Transformation of Nature and the Vital Force of Growth\n\nThe works present images of life as a creative force through living organisms that constitute nature. These images are drawn from experiences and discoveries encountered in everyday surroundings—from plants on a balcony and grasses along a wall to the woods along the riverside and Maebongsan across the street. The repetition of fluid lines expresses the subtle resonance of the earth beneath the surface.",
+              "images": [
+                "/assets/artists/outdoor-exhibition/kim-taesue/work-1-1.png"
+              ]
+            }
+          ]
+        },
+        {
+          "slug": "ji-yongho",
+          "name_ko": "지용호",
+          "name_en": "Ji Yongho",
+          "birth_year": "1978",
+          "nationality": "대한민국",
+          "bio": "주요 개인전\n2020 가나아트센터, 서울\n2013 아비다비 F1 경기장, 아부다비, 아랍에미리트\n2011 캔버스 인터내셔널 갤러리, 암스테르담, 네덜란드\n\n2020 Gana Art Center, Seoul\n2013 Abu Dhabi F1 Circuit, Abu Dhabi, UAE\n2011 Canvas International Art, Amsterdam\n\n주요 단체전\n2016 Let’s dance animal, 창미 미술관, 대만\n2011 Power of Making, 빅토리아 앤 알버트 뮤지엄, 런던\n2009 녹색 한국으로부터의 반향, 토탈 미술관, 서울\n\n2016 Let's dance animals, Chimei Museum, Taipei\n2011 Power of Making, Victoria and Albert Museum, London\n2010 Resonance from Green Korea, Total Museum of Contemporary Art, Seoul",
+          "intro": "",
+          "profile_image": null,
+          "works": [
+            {
+              "title": "Lion 3",
+              "year": "2008",
+              "material": "폐타이어, 스테인리스 스틸(Used Tire, Stainless steel)",
+              "size": "120x360x120㎝",
+              "description": "크게 벌린 입과 크고 날카로운 송곳니는 분노를 표출하는 본능과 내면을 보여주고 있다.\n작품 제작 초창기에는 방어적이고 약자의 자세를 취하고 있는 작품들을 제작했다. 적으로부터 위협을 받아 잔뜩 웅크린 모습을 표현하고 있다. 작가는 이를 조형적으로 드러내기 위해 한껏 내려간 등허리와 낮게 낮춘 자세, 아래로 내려간 꼬리로 표현했다.\n 출처: http://jiyongho.com/more-works/newsletter-16-january-04-2021/ \n\n지용호 작가는 폐타이어를 소재로 하여 실제 동물의 모습과 작가의 상상 속에서 만들어진 생물체들을 역동적인 모습으로 표현한다. 그는 실용성을 완전히 상실한 폐타이어를 사용하여 조형미와 예술성을 동시에 겸비한조각을 선보임으로써 국내외 미술계에서 큰 이슈화 되었다. 타이어로 이루어진 작품의 양감은 인간과 동물의 근육을 표현하는데 탁월하다. 지용호 작가는 10여 년간 다양한 동물과 인간을 접목한 시리즈 작을 소개하고 있다. 이를 통해 현대사회에서 없어서는 안 될 타이어는 폐기와 동시에 다시 예술적으로 재생산될 수 있음을 말하고 있으며, 인간의 문명이 진화되면 될수록 그 안에서 소외될 수 있는 동물 또한 보호해야 함을 시사한다.\n\nhttps://sculpia.co.kr/ARTISTS/?q=YToxOntzOjEyOiJrZXl3b3JkX3R5cGUiO3M6MzoiYWxsIjt9&bmode=view&idx=49887565&t=board",
+              "images": [
+                "/assets/artists/outdoor-exhibition/ji-yongho/work-1-1.jpeg"
+              ]
+            }
+          ]
+        },
+        {
+          "slug": "jang-sungjae",
+          "name_ko": "장성재",
+          "name_en": "Jang Sungjae",
+          "birth_year": "1973",
+          "nationality": "대한민국",
+          "bio": "주요 개인전\n2020 장성재 개인전, 갤러리 일호, 서울\n2013 장성재 개인전, 갤러리 그림손, 서울\n2002 장성재 개인전, 청주 예술의 전당, 청주\n\n2020 Jang Sungjae Solo Exhibition, Gallery Grimson, Seoul\n2013 Jang Sungjae Solo Exhibition, Gallery ilho, Seoul\n2002 Jang Sungjae Solo Exhibition, Cheongju Art Center, Cheongju\n\n주요 단체전\n2024 이천국제조각심포지엄 특별전 3인 부스전, 서희 테마파크, 이천\n2024 한국조각가 협회전, 코사갤러리, 서울\n2023 고양조각가협회 야외조각전, 일산 호수공원, 고양\n\n2024 International Sculpture Symposium Icheon – Special Exhibition, Three-Person Booth Exhibition, Seohui Theme Park, Icheon\n2024 Korean Sculptors Association Exhibition, KOSA Gallery, Seoul\n2023 Goyang Sculptors Association Outdoor Sculpture Exhibition, Ilsan Lake Park, Goyang",
+          "intro": "",
+          "profile_image": null,
+          "works": [
+            {
+              "title": "Rafting",
+              "year": "2023",
+              "material": "스테인리스 스틸(Stainless steel)",
+              "size": "300x100x100㎝",
+              "description": "나의 작업은 래프팅(Rafting)이라는 명제와 함께 물결이 만들어 내는 시간의 조형성을 모티브로 한다.\n물결에 의해 깎이고, 세월이 다듬어 완성되는 자연의 에너지를 곡선과 기하학적 패턴들의 조각을 통해 자연의 힘과 표정을 연출한다.\n나의 작업에서 발견할 수 있는 패턴들은, 시간과 공간에서의 리듬을 탑재한다. 특히 패턴은 고정된 무늬가 아니라, 연동되는 과정의 흐름이자 흔적이다. 이는 행위와 행위의 접점에서 형태가 태어나는 것이다. 그래서 나의 작업은 급류타기를 하는 듯한, 매 순간 재배열되는 듯한 역동적 구성의 연속으로 이루어진다고 할 수 있다.\n자연의 표면에서 일어나는 사건을 구조적으로 보여주자 하는 나의 작업 형식은 자연의 대상들이 그것을 조정하고 있는 바로 그 힘에 의해서 만들어짐을 보여준다고 할 수 있다.\n\nMy work is based on the formal qualities of time generated by the movement of waves, under the title Rafting.\nThrough sculptures composed of curves and geometric patterns, I explore the power and character of nature, evoking the energy of natural forms shaped by the erosion of waves and refined over time.\nThe patterns found in my work embody rhythms that unfold across time and space. Rather than fixed motifs, these patterns represent the flow and traces of an ongoing process. Forms emerge at the points of intersection between successive actions. In this sense, my work can be understood as a continuous sequence of dynamic compositions, reminiscent of navigating rapids, in which forms are constantly rearranged from one moment to the next.\nMy work seeks to structurally reveal the changes and phenomena that occur on the surface of nature. In doing so, it explores how natural forms are shaped by the forces that act upon and transform them.",
+              "images": [
+                "/assets/artists/outdoor-exhibition/jang-sungjae/work-1-1.png",
+                "/assets/artists/outdoor-exhibition/jang-sungjae/work-1-2.png"
+              ]
+            }
+          ]
+        },
+        {
+          "slug": "jeon-insik",
+          "name_ko": "전인식",
+          "name_en": "Jeon Insik",
+          "birth_year": "1970",
+          "nationality": "대한민국",
+          "bio": "주요 개인전\n2020 전인식 개인전, 라마다호텔별관 아트홀, 서울\n2018 전인식 개인전, 갤러리 Ponetive space, 파주\n2006 전인식 개인전, 세종문화회관 야외마당, 서울\n\n2020 Jeon Insik Solo Exhibition, Ramada Hotel Art Hall, Seoul\n2018 Jeon Insik Solo Exhibition, Ponetive Space Gallery, Paju\n2006 Jeon Insik Solo Exhibition, Sejong Center for the Performing Arts, Seoul\n\n주요 단체전\n2020 조형아트서울, 코엑스, 서울\n2019 중국 청도 한중일 조각교류전, 청도, 중국\n2019 거제바다미술제, 옥포수변공원, 거제\n\n2020 PLASTIC ART SEOUL 2020, COEX, Seoul\n2019 Korea–China–Japan Sculpture Exchange Exhibition, Qingdao, China\n2019 Geoje Sea Art Festival, Okpo Waterfront Park, Geoje",
+          "intro": "",
+          "profile_image": null,
+          "works": [
+            {
+              "title": "Perfume(향기)",
+              "year": "2021",
+              "material": "스테인리스 스틸에 우레탄 도장, 오석(Urethane paint on Stainless steel, obsidian)",
+              "size": "530x270x120㎝",
+              "description": "향기는 눈에 보이지 않지만 우리에게 기분 좋은 마음과 편안함을 가져다 주고 사라지지만 각자의 마음과 기억 속에서 맴돌며 미소를 짖게 한다.\n강렬한 색상이 덧입혀지고 철망 사이로 외부공간이 침투하면서 양감은 본격적으로 파괴되었다. 공간 속에서 부유하는 비물질적인 연기나 구름의 환영을 만들어내는 그의 철망 조각은 육중한 물질성을 포기하였다. 대신 작가가 희망하는 바대로 그의 조각은 주위 공간을 조각의 내부로 적극적으로 포용할 수 있게 되었다. 스테인리스 스틸 메쉬를 사용한 작품으로 선의 효과를 부각시켜 외부공간이 작품의 내부공간으로 침투하는 것을 보여주는 작업이다.\n\nFragrance is invisible, yet it brings a sense of pleasure and comfort. Although it fades away, it lingers in our minds and memories, bringing a smile to our faces.\nThe application of intense colors, together with the penetration of the surrounding space through the wire mesh, disrupts the conventional sense of volume. His wire-mesh sculptures evoke the illusion of immaterial smoke or clouds floating in space, moving away from the weight and solidity of conventional sculptural forms. In doing so, the sculptures actively incorporate the surrounding space into their interior.\nCreated using stainless-steel mesh, these works emphasize the visual effect of line and explore the way in which the surrounding space penetrates the interior of the sculpture.",
+              "images": [
+                "/assets/artists/outdoor-exhibition/jeon-insik/work-1-1.jpeg",
+                "/assets/artists/outdoor-exhibition/jeon-insik/work-1-2.png"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "venue_ko": "한중특별전",
+      "venue_slug": "korea-china-special",
+      "artists": [
+        {
+          "slug": "feng-zhengjie",
+          "name_ko": "펑정지에",
+          "name_en": "Feng Zhengjie",
+          "birth_year": "",
+          "nationality": "베이징",
+          "bio": "주요 개인전\n2009 Floral Life, 디갤러리, 서울\n2008  본색, 싱가포르 미술관, 싱가포르\n2007 Paintings of Feng Zhengjie, 틸튼 갤러리, 뉴욕, 미국\n\n2009 Floral Life, Die Gallery, Seoul, Korea\n2008 Primary Colours, Singapore Art Museum, Singapore\n2007 Paintings of Feng Zhengjie, Tilton Gallery, New York, USA\n\n주요 단체전\n2005 프라하 국제 현대미술 비엔날레, 프라하, 체코\n2002 제1회 광저우 트리엔날레, 광저우 미술관, 광저우, 중국\n2001 제1회 청두 비엔날레, 청두 현대미술관, 청두, 중국\n\n2005 Prague Biennale 2, Prague, Czech Republic\n2002 The 1st Guangzhou Triennial, Guangdong Museum of Art, Guangzhou, China\n2001 The 1st Chengdu Biennale, Chengdu Contemporary Art Museum, Chengdu, China",
+          "intro": "",
+          "profile_image": "/assets/artists/korea-china-special/feng-zhengjie/profile.jpeg",
+          "works": [
+            {
+              "title": "Chinese Portrait M Series 2007 No. 01",
+              "year": "2007",
+              "material": "캔버스에 유채",
+              "size": "210 x 400 cm",
+              "description": "",
+              "images": [
+                "/assets/artists/korea-china-special/feng-zhengjie/work-1-1.jpeg"
+              ]
+            },
+            {
+              "title": "Chinese Portrait K series 2009 No. 06",
+              "year": "2007",
+              "material": "캔버스에 유채",
+              "size": "210 x 210 cm",
+              "description": "",
+              "images": [
+                "/assets/artists/korea-china-special/feng-zhengjie/work-2-1.jpeg"
+              ]
+            },
+            {
+              "title": "Portrait 2009 No. 01(S)",
+              "year": "2009",
+              "material": "브론즈 채색",
+              "size": "39 x 39 x 28 cm",
+              "description": "",
+              "images": [
+                "/assets/artists/korea-china-special/feng-zhengjie/work-3-1.jpeg"
+              ]
+            },
+            {
+              "title": "Floating Floras -Classic series No. 06",
+              "year": "2013",
+              "material": "캔버스에 유채",
+              "size": "300 x 210 cm",
+              "description": "",
+              "images": [
+                "/assets/artists/korea-china-special/feng-zhengjie/work-4-1.jpeg"
+              ]
+            },
+            {
+              "title": "Portrait 2008 No. 02(S)",
+              "year": "2008",
+              "material": "브론즈 채색",
+              "size": "29x29x26cm",
+              "description": "",
+              "images": [
+                "/assets/artists/korea-china-special/feng-zhengjie/work-5-1.jpeg"
+              ]
+            },
+            {
+              "title": "Portrait 2008 No. 06(S)",
+              "year": "2008",
+              "material": "브론즈 채색",
+              "size": "53x40x35cm",
+              "description": "",
+              "images": [
+                "/assets/artists/korea-china-special/feng-zhengjie/work-6-1.jpeg"
+              ]
+            }
+          ]
+        },
+        {
+          "slug": "wang-qing-song",
+          "name_ko": "왕칭송",
+          "name_en": "Wang Qing Song",
+          "birth_year": "",
+          "nationality": "청두",
+          "bio": "주요 개인전\n2011 동방을 보라, 루카 사진 축제, 루카, 이탈리아\n2009 Hammer Projects: Wang Qingsong, 해머 미술관, 로스앤젤레스, 미국\n2007 China: Past, Present & Future, MEWO Kunsthalle, 메밍겐, 독일\n\n2011 Look East, Lucca Photo Fest, Lucca, Italy\n2009 Hammer Projects: Wang Qingsong, Hammer Museum, Los Angeles, USA\n2007 China: Past, Present & Future, MEWO Kunsthalle, Memmingen, Germany\n\n\n주요 단체전\n2026 과거를 통해 미래를 보다: 중국 현대 사진전, 밀드레드 레인 켐퍼 미술관, 세인트루이스, 미국\n2008 행동-카메라: 베이징 퍼포먼스 사진전, 벨킨 아트 갤러리, 밴쿠버, 캐나다\n2007 자본주의 현대 사진전, 아르티움 현대미술관, 비토리아, 스페인\n\n2026 Looking Back Toward the Future: Contemporary Photography from China, Mildred Lane Kemper Art Museum, St. Louis, USA\n2008 Action – Camera: Beijing Performance Photography, Morris and Helen Belkin Art Gallery, Vancouver, Canada\n2007 Capitalist Contemporary Photography, Artium, Vitoria-Gasteiz, Spain",
+          "intro": "",
+          "profile_image": "/assets/artists/korea-china-special/wang-qing-song/profile.jpeg",
+          "works": [
+            {
+              "title": "Follow You",
+              "year": "2013",
+              "material": "C - print",
+              "size": "180 x 300 cm",
+              "description": "",
+              "images": [
+                "/assets/artists/korea-china-special/wang-qing-song/work-1-1.jpeg"
+              ]
+            },
+            {
+              "title": "Temporary ward",
+              "year": "2008",
+              "material": "C - print",
+              "size": "170 x 300 cm",
+              "description": "",
+              "images": [
+                "/assets/artists/korea-china-special/wang-qing-song/work-2-1.jpeg"
+              ]
+            }
+          ]
+        },
+        {
+          "slug": "zhang-jian",
+          "name_ko": "장지엔",
+          "name_en": "Zhang Jian",
+          "birth_year": "",
+          "nationality": "베이징",
+          "bio": "주요 개인전\n2024 정원 장벽 너머로(Over the Garden Wall), 블루 쇼어 갤러리, 선전\n2020 구하기(Seeking), 세이프 헤이븐 갤러리, 홍콩\n2011 새로운 회화(The New Painting), 프랑크 슐라크 갤러리, 에센, 독일\n\n2024 Over the Garden Wall, Blue Shore Gallery, Shenzhen, China\n2024 Seeking, Safe Haven Gallery, Hong Kong\n2011 The New Painting, Galerie Frank Schlag & Cie., Essen, German\n\n주요 단체전\n2025 《시각의 영역(The Realm of Vision)》, 탕 컨템포러리 아트, 홍콩\n2008 《중국 뉴 웨이브》, 칠레 국립미술관, 산티아고, 칠레\n2006 《차이나 나우(China Now)》, 에슬 미술관, 클로스터노이부르크, 오스트리아\n\n2025 The Realm of Vision, Tang Contemporary Art, Hong Kong\n2008 China New Wave, National Museum of Fine Arts, Santiago, Chile\n2006 China Now, Essl Museum, Klosterneuburg, Austria",
+          "intro": "",
+          "profile_image": "/assets/artists/korea-china-special/zhang-jian/profile.jpeg",
+          "works": [
+            {
+              "title": "Flowers",
+              "year": "2005",
+              "material": "캔버스에 유채",
+              "size": "300x400 cm",
+              "description": "",
+              "images": [
+                "/assets/artists/korea-china-special/zhang-jian/work-1-1.jpeg"
+              ]
+            }
+          ]
+        },
+        {
+          "slug": "zhou-jinhua",
+          "name_ko": "저우진화",
+          "name_en": "Zhou Jinhua",
+          "birth_year": "",
+          "nationality": "쓰촨",
+          "bio": "주요 개인전\n2021 춘추(Spring and Autumn), 아트라보 갤러리(Art Labor Gallery), 상하이\n2010 진실한 황당함(Absurd Reality), 백예화랑(Gallery 100), 타이베이\n2009 일이 일어나기 전까진 모든 게 괜찮았다, 콘스탄츠 미술관, 독일\n\n주요 단체전\n2023 제9회 심천·홍콩 도시\\건축 바이엔날레(UABB), 심천\n2014 《동구·대화: 양안 청년 예술가 교류전》, 소카 아트센터, 베이징\n2007 《마주친 회화 10인전》, 중국미술관, 베이징",
+          "intro": "",
+          "profile_image": "/assets/artists/korea-china-special/zhou-jinhua/profile.jpeg",
+          "works": [
+            {
+              "title": "室内的日出峰(Indoor Sunrise Peak)",
+              "year": "2022",
+              "material": "캔버스에 아크릴",
+              "size": "150x200cm",
+              "description": "",
+              "images": [
+                "/assets/artists/korea-china-special/zhou-jinhua/work-1-1.jpeg"
+              ]
+            },
+            {
+              "title": "无题 (untitled)",
+              "year": "2015",
+              "material": "캔버스에 아크릴",
+              "size": "200x300cm",
+              "description": "",
+              "images": [
+                "/assets/artists/korea-china-special/zhou-jinhua/work-2-1.jpeg"
+              ]
+            }
+          ]
+        },
+        {
+          "slug": "zhao-nengzhi",
+          "name_ko": "자오넝즈",
+          "name_en": "Zhao Nengzhi",
+          "birth_year": "",
+          "nationality": "베이징",
+          "bio": "주요 개인전 \n2019 꿈틀거림(Wriggle)》, T6 갤러리, 베이징\n2008년 Image of Feeling, 아트 시즌스 갤러리, 취리히, 스위스\n2006 얼굴(Faces)》, LA 갤러리, 프랑크푸르트, 독일\n\n2019 Wriggle, T6 Gallery, Beijing, China\n2008 Image of Feeling, Art Seasons Gallery, Zurich, Switzerland\n2006 Faces, LA Galerie, Frankfurt, Germany\n\n\n주요 단체전\n2023 제10회 청두 비엔날레: 시간의 중력, 청두 미술관, 청두\n2008 중국, 사회주의적 리얼리즘을 넘어, 조선일보미술관, 서울\n2001 제32회 스위스 아트 바젤(Art Basel), 바젤, 스위스\n\n2023 The 10th Chengdu Biennale: The Gravity of Time, Chengdu Museum of Art, Chengdu, China\n2008 China: Beyond Socialist Realism, The Chosun Ilbo Museum, Seoul, Korea\n2001 Art Basel 32, Basel, Switzerland",
+          "intro": "",
+          "profile_image": "/assets/artists/korea-china-special/zhao-nengzhi/profile.jpeg",
+          "works": [
+            {
+              "title": "2005 N0. 04",
+              "year": "2005",
+              "material": "캔버스에 유채",
+              "size": "180x450cm",
+              "description": "",
+              "images": [
+                "/assets/artists/korea-china-special/zhao-nengzhi/work-1-1.jpeg"
+              ]
+            }
+          ]
+        },
+        {
+          "slug": "kimkeunjoong",
+          "name_ko": "김근중",
+          "name_en": "Kimkeunjoong",
+          "birth_year": "",
+          "nationality": "양평",
+          "bio": "주요 개인전\n2026 Blooming Layers: 존재의 흔적, 리드갤러리, 서울\n2023 Natural Being, 금산갤러리, 서울\n1993 김근중 개인전, 국제갤러리, 서울\n\n026 Blooming Layers: Traces of Existence, Leed Gallery, Seoul\n2023 Natural Being, Keumsan Gallery, Seoul\n1993 Solo Exhibition of Kimkeunjoong, Kukje Gallery, Seoul\n\n주요 단체전\n2026 Kiaf SEOUL 2026, 코엑스, 서울\n2026 서화무진, 대구미술관, 대구\n2025 인도 아트페어 한국문화원 특별전, NSIC 전시회장, 뉴델리\n\n2026 Kiaf SEOUL 2026, COEX, Seoul\n2026 When the Brush Moves, the World Continues, Daegu Art Museum, Daegu\n2025 India Art Fair Korean Cultural Centre Special Exhibition, NSIC Exhibition Grounds, New Delhi",
+          "intro": "",
+          "profile_image": "/assets/artists/korea-china-special/kimkeunjoong/profile.jpeg",
+          "works": [
+            {
+              "title": "꽃세상 Natural Being 7-5",
+              "year": "2007",
+              "material": "캔버스에 유채",
+              "size": "161.5x130cm",
+              "description": "",
+              "images": [
+                "/assets/artists/korea-china-special/kimkeunjoong/work-1-1.jpeg"
+              ]
+            }
+          ]
+        },
+        {
+          "slug": "unknown",
+          "name_ko": "김동유",
+          "name_en": "",
+          "birth_year": "",
+          "nationality": "대전",
+          "bio": "주요 개인전\n2026 Butterfly & Dripping, 이화익갤러리, 서울\n2019 김동유展 (크랙 연작 개인전), 노화랑, 서울\n2010 지독한 그리기, 성곡미술관, 서울\n\n2026 Butterfly & Dripping, Leehwaik Gallery, Seoul\n2019 Kim Dong Yoo Solo Exhibition, Gallery No, Seoul\n2010 KIM Dong Yoo: Figure 2 Figure, Sungkok Art Museum, Seoul\n\n\n주요 단체전\n2012 코리안 아이 (Korean Eye), 사치 갤러리, 런던\n2002 대전시립미술관 신소장품전, 대전시립미술관, 대전\n1999 금호미술관 개관 10주년 기념전, 금호미술관, 서울\n\n2012 Korean Eye, Saatchi Gallery, London\n2002 Daejeon Museum of Art New Acquisitions Exhibition, Daejeon Museum of Art, Daejeon\n1999 The 10th Anniversary Exhibition of Kumho Museum of Art, Kumho Museum of Art, Seoul",
+          "intro": "",
+          "profile_image": "/assets/artists/korea-china-special/unknown/profile.jpeg",
+          "works": [
+            {
+              "title": "반고흐 & 반고흐",
+              "year": "2022",
+              "material": "캔버스에 유채",
+              "size": "162.2x130.3cm",
+              "description": "",
+              "images": [
+                "/assets/artists/korea-china-special/unknown/work-1-1.jpeg"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "venue_ko": "아이파빌리온-미디어파트",
+      "venue_slug": "e-pavilion-media",
+      "artists": [
+        {
+          "slug": "daigo-ushi",
+          "name_ko": "다이고 우시 Daigo Ushi",
+          "name_en": "",
+          "birth_year": "",
+          "nationality": "사이타마현, 일본\nSaitama, Japan",
+          "bio": "주요 개인전\n2026 Resonance, 1000 Press 갤러리, 항저우, 중국\n2016 Healing Seaming, Liang 갤러리, 항저우, 중국\n\nSelected Solo Exhibitions\n2026 Resonance, 1000 Press Gallery, Hangzhou, China\n2016 Healing Seaming, Liang Gallery, Hangzhou, China\n\n\n주요 단체전\n2021 청두 비엔날레 2021, 청두현대미술관·톈푸미술관, 청두, 중국\n2013 상하이 예술디자인전, 파워 스테이션 오브 아트, 상하이, 중국\n2010 제1회 798 멀티미디어 아트 페스티벌, 798 예술구, 베이징, 중국\n2006 제4회 서울 국제 미디어아트 비엔날레: 두 개의 현실, 서울시립미술관, 서울, 대한민국\n2003 제7회 일본 미디어예술제, 도쿄도사진미술관, 도쿄, 일본\n\nSelected Group Exhibitions\n2021 Chengdu Biennale 2021, Chengdu Museum of Contemporary Art and Tianfu Art Museum, Chengdu, China.\n2013 Shanghai Art & Design Exhibition, Power Station of Art, Shanghai, China.\n2010 The 1st 798 Multimedia Art Festival, 798 Art Zone, Beijing, China.\n2006 The 4th Seoul International Media Art Biennale: Dual Realities, Seoul Museum of Art, Seoul, South Korea.\n2003 The 7th Japan Media Arts Festival, Tokyo Metropolitan Museum of Photography, Tokyo, Japan.",
+          "intro": "우시 다이고(牛大悟)는 현대미술을 기반으로 활동하는 아티스트로, 중의학(中醫學)의 사상을 출발점으로 신체·소리·인공지능의 관계를 탐구하고 있다. 중국에서의 오랜 체류와 리서치를 통해 동아시아의 사상과 문화를 연구해 왔으며, 최근에는 한국에서의 제작과 리서치도 이어가고 있다. 그는 XR 기술과 AI를 인간을 대체하는 기술이 아니라 장소와 사람들과의 관계를 학습하는 존재로 바라보며, 사운드 설치, 영상, 인터랙티브 미디어를 넘나드는 작업을 통해 기술과 동아시아의 사상이 교차하는 새로운 예술적 가능성을 탐구하고 있다.",
+          "profile_image": "/assets/artists/e-pavilion-media/daigo-ushi/profile.jpeg",
+          "works": [
+            {
+              "title": "〈D#31 AI 새장: 안양의 메아리〉, 2026, 단채널 비디오(4K), 컬러, 스테리오 사운드, 5,120 × 2,880 mm, 8분, 제8회 안양공공예술프로젝트(APAP8) 커미션.\n\nD#31 AI Birdcage : Echoes of Anyang, 2026, Single-channel video (4K), color, streo sound, 5,120 × 2,880 mm, 8 min., commissioned by the 8th Anyang Public Art Project (APAP8).",
+              "year": "",
+              "material": "",
+              "size": "",
+              "description": "17세기 후반, 간에이지(寛永寺)의 주지 스님은 에도의 우구이스가 아름답게 울지 않는다고 판단하고, 교토에서 3,500마리의 우구이스를 에도로 옮겼다는 전설이 전해진다. 그 새들이 놓였던 곳은 오늘날에도 도쿄의 지명인 우구이스다니(鶯谷) 로 남아 있다.\n\n본 작품에서 작가는 AI를 내장한 새장을 들고 도쿄에서 한국 안양으로 여행을 떠난다. 여행하는 동안 AI는 마이크를 통해 새소리와 사람들의 대화, 환경음을 실시간으로 수집·분석·기억한다. 축적된 경험과 주변 환경을 바탕으로 AI는 새소리를 실시간으로 생성하고 변화시키며, AI가 생성한 새소리를 새장에 내장된 스피커를 통해 들려준다. 여행이 계속될수록 AI는 새로운 경험을 학습하고, 그 소리는 사람과 장소와의 만남을 반영하며 끊임없이 변화한다. 여행의 끝에서 AI는 여정을 통해 축적한 기억과 안양의 환경을 바탕으로 새로운 새소리를 실시간으로 생성하여 공원에 울려 퍼지게 한다.\n\n본 작품은 AI나 세계화를 부정하지 않는다. 오히려 AI와 세계화가 가속화되는 시대에 문화와 가치관이 일방적으로 확산되는 것이 아니라, 서로 다른 문화와 지역이 상호 학습하며 각자의 개성을 존중하고 새로운 소통을 만들어 갈 수 있는 ‘Paradise’ 의 가능성과 그 양면성을 탐구하는 영상 작품이다.",
+              "images": [
+                "/assets/artists/e-pavilion-media/daigo-ushi/work-1-1.jpeg"
+              ]
+            }
+          ]
+        },
+        {
+          "slug": "jaehun-park",
+          "name_ko": "박재훈 Jaehun Park",
+          "name_en": "",
+          "birth_year": "",
+          "nationality": "서울, 한국\n암스테르담, 네덜란드\nSeoul, South Korea\nAmsterdam, the Netherlands",
+          "bio": "주요 개인전\n2026 과열된 풍차, Grote Kerk Alkmaar, 알크마르, 네덜란드\n2026 폴리곤의 순례자들, WWNN, 서울, 대한민국\n2023 파생 풍경, 성곡 미술관, 서울, 대한민국\n2022 밤을 위한 제의, Bradwolff Projects, 암스테르담, 네덜란드\n2021 실시간 연옥, 대안공간 루프, 서울, 대한민국\n\nSelected Solo Exhibitions\n2026 Overheated Windmill, Grote Kerk Alkmaar, Alkmaar, NL\n2026 Polygon Pilgrims, WWNN, Seoul, KR\n2023 Derivative Landscape, Sungkok Art Museum, Seoul\n2022 Ritual for the Night, Bradwolff Projects, Amsterdam\n2021 Real-time Limbo, Alternative Space Loop, Seoul\n\n주요 단체전\n2025 Shifting Reality, Bradwolff & Partners, 암스테르담, 네덜란드\n2024 눈 홉뜨기 : 미디어 파사드를 위한 제안, 대안공간 루프, 서울, 대한민국\n2023 베이징 비엔날레 - Earth Heat Flow: the Visitor Who Returns to Solar Time, 베이징, 중국\n2022 Topographic Atlas, JAN Museum, 암스텔벤, 네덜란드\n2022 예술평화: 0시의 현재, 울산시립미술관, 울산, 대한민국\n\nSelected Group Exhibitions\n2025 Shifting Realities, Bradwolff & Partners, Amsterdam, NL\n2024 Rolling Eyes : Proposals for Media Facade, Alternative Space LOOP, Seoul, KR\n2023 Beijing Biennial of Art - Earth Heat Flow: the Visitor Who Returns to Solar Time, Beijing, CN\n2022 Topographic Atlas, JAN Museum, Amstelveen, NL\n2022 Art and Peace: Let us begin again from zero o'clock, Ulsan Art Museum, Ulsan, KR",
+          "intro": "박재훈은 포인트 클라우드(point cloud)와 사진측량기술(photogrammetry)을 이용해 현실 세계의 사물을 3D 시뮬레이션으로 번역한다. 그는 직접 사물의 3D 데이터를 만들거나, 게임 개발자들이 만들어 놓은 레디메이드(ready-made) 데이터를 수집한 후 그것을 가공하고 분해하고 재조합해 가상의 디지털 공간에 배치한다. 이렇게 쌓아 올린 조각들은 현실의 구조와 법칙하에서는 성립할 수 없는 무대를 구성하는데, 이것은 현실 세계의 재현인 듯 보이면서도 어딘가 기이하고 인공적인 감각으로 점철되어 있다. 현실보다는 거울 환영에 더 가까운 이 3D 시뮬레이션은 무의식을 떠다니는 사물의 무작위 집합체처럼 보이기도 하고, 꿈을 부유하는 초현실주의자들의 회화처럼 비치기도 한다. \n\n그의 작업에는 인간 대신 각종 사물이 자리하는데, 이 사물들은 인간이 만들어 낸 동시대 욕망의 총체로서 하이퍼 자본주의(hyper-capitalism) 아래 모든 질서가 종속되고 재편되는 구조를 극명하게 보여준다. 수학적 알고리즘에 의해 철저히 계산된 가상의 물리 현상들은 개연성 없이 병치된 사물들과 함께 일상적 공간을 초현실적 공간으로 변모시킨다. 그의 작업은 종말을 향해 다가가는 이 시대 인류의 자화상이다. 박재훈은 종교가 가지던 위상마저 획득해 버린 자본주의의 파생 풍경을 기록하며 인류의 욕망이 가는 길은 어디인지를 질문한다.",
+          "profile_image": "/assets/artists/e-pavilion-media/jaehun-park/profile.jpeg",
+          "works": [
+            {
+              "title": "〈낙원의 위상학〉, 2026, 3D 시뮬레이션 비디오(4K), 컬러, 사운드, 5,120 × 2,880 mm, 00분 00초, 제8회 안양공공예술프로젝트(APAP8) 커미션.\n\nTopology of Paradise, 2026, 3D simulation video (4K), color, sound, 5,120 × 2,880 mm, 00 min. 00 sec., commissioned by the 8th Anyang Public Art Project (APAP8).",
+              "year": "",
+              "material": "",
+              "size": "",
+              "description": "위상학 (Topology)'은 형태가 늘어나거나 뒤틀려도 본질적인 연결 관계는 변하지 않는 수학적 개념이다. ‘낙원의 위상학’은 시대와 문화, 종교와 기술이 끊임없이 변화하더라도 인간이 품어온 '낙원', ‘무릉도원’ 이라는 이상향에 대한 갈망은 변하지 않는다는 역설에서 출발한다. 이 작품에서 낙원은 도달해야 할 목적지가 아니라 이미 존재하지만 끝내 인식하지 못하는 공간이며, 현실과 환상, 자연과 인공, 기억과 시뮬레이션이 서로 연결된 하나의 위상학적 구조로 제시한다.\n\n'낙원의 위상학'은 인간이 오래도록 꿈꾸어온 이상향의 풍경을 조망하는 3D 시뮬레이션 영상이다. 관객은 초현실적인 낙원의 공간을 유영하며 끝없이 확장되는 풍경 사이를 지나고, 그 안에서 현대 사회의 욕망이 남긴 작은 사건들과 조우한다. 자연은 알고리즘으로 재구성되고, 풍경은 소비의 이미지와 뒤섞이며, 낙원은 더 이상 발견되는 장소가 아니라 행복이라는 이데올로기를 끊임없이 생산하고 유지하지 시스템으로 변모한다. 작품은 끝없이 낙원을 찾아 헤매는 우리의 시선을 따라가며, 어쩌면 우리가 떠나고자 하는 이 현실이야말로 이미 가장 완전한 낙원이 아닌지 조용히 되묻는다.",
+              "images": [
+                "/assets/artists/e-pavilion-media/jaehun-park/work-1-1.png"
+              ]
+            }
+          ]
+        },
+        {
+          "slug": "studio-oleomingus",
+          "name_ko": "스튜디오 올레오밍구스 Studio Oleomingus",
+          "name_en": "",
+          "birth_year": "",
+          "nationality": "아마다바드, 인도\nAhmedabad, India",
+          "bio": "주요 개인전\n2023–24 《The Concentric Fictions of a Generous History》, Kill Screen 갤러리, 로스앤젤레스, 미국\n2020 《Notes in the Margins of History》, VGA Gallery 갤러리, 시카고, 미국\n2019 《Langoors in the Labyrinth》, Phoenix Gallery 갤러리, 레스터, 영국\n\nSelected Solo Exhibitions\n2023-24 The Concentric Fictions of a Generous History, Kill Screen, Los Angeles, CA USA\n2020 Notes in the Margins of History, VGA Gallery, Chicago, USA\n2019 Langoors in the Labyrinth, Phoenix Gallery, Leicester, England\n\n주요 단체전\n2025 《Beyond Gravity Festival》, Theatre IM Depot, 도르트문트, 독일\n2022 《Circades》, Espace fine (collectifespacefine), 파리, 프랑스\n2022 《Future Landing》, Serendipity Arts Festival, 고아, 인도\n2022 《Voluntary Attempts to Overcome Necessary Obstacles》, Elizabeth Foundation for the Arts, 뉴욕, 미국\n2019 《Videogames: Design / Play / Disrupt》, V&A Museum, 런던, 영국\n\nSelected Group Exhibitions\n2025 Beyond Gravity Festival, Theatre IM Depot, Dortmund, Germany\n2022 Circades, Espace fine (collectifespacefine), Paris, France.\n2022 Future Landing, Serendipity Arts Festival, Goa, India\n2022 Voluntary Attempts to Overcome Necessary Obstacles, Elizabeth Foundation for the Arts, New York, USA\n2019 Videogames: Design / Play / Disrupt, V&A Museum, London, England",
+          "intro": "나의 작업은 언어와 번역, 저자성에 대한 지속적인 관심에서 출발하며, 특히 식민주의적 폭력에 의해 가려진 역사 속에서 이들이 어떻게 작동하는지를 탐구한다. 전자문학의 형식을 통해 제작하는 나의 게임은 현대 인터넷의 방대한 데이터베이스와 절차적으로 매개된 시스템 안에서 개인과 집단의 정체성이 어떻게 기억되고, 상품화되며, 착취되는지를 살펴본다.\n\n나는 각각의 프로젝트를 어떤 역사에 덧붙이는 하나의 ‘정오표(erratum)’라고 생각한다. 정체성과 공동체, 인종과 젠더의 균열 속에서 발굴된 지하적(chthonic) 서사들, 권력의 압력 아래 공적 기억 속에 퇴적되거나 진보의 격동 속에서 찌꺼기처럼 버려진 이야기들에 이끌린다. 이러한 이야기들은 흔히 오늘날 끊임없는 갈등의 격전지가 되어버린 장소와 사람들에 관한 것이다. 그곳에서는 우리의 삶에 복수의 기록이 존재할 수 있다는 가능성을 말하는 것만으로도 억압적인 국가에 맞서는 저항의 한 형태가 된다.\n\n이처럼 살아 있는 역사의 현장에는 우화와 신앙, 오용과 오역이 복잡하게 뒤얽혀 있다. 그렇기에 각각의 게임은 정치적인 동시에 허구적이고, 역사적인 동시에 부조리한 것이 되며, 그것을 만드는 과정 역시 마찬가지다. 나는 의도적인 생략과 불완전한 결말로 가득한, 균열된 산문을 쓴다. 이를 통해 훼손된 풍경과 그 안에 살아가는 사람들에게 절실히 필요한 불투명성을 되돌려주고자 한다. 나에게 이러한 인터랙티브 픽션은 ‘알지 못함’의 상태에 익숙해지는 실천이며, 서로 얽혀 있으면서도 부분적일 수밖에 없는 지식을 하나의 가능한 진실로 받아들이는 방식이다. 동시에 식민 지배의 역사를 인간의 고통에 관한 어떤 유한한 분류체계 안에 완전히 구획하고 정리하려는 시도를 거부하는 일이기도 하다.",
+          "profile_image": "/assets/artists/e-pavilion-media/studio-oleomingus/profile.jpeg",
+          "works": [
+            {
+              "title": "〈낙원의 문 앞에서조차 내가 망설이는 것이 과연 이상한 일일까〉, 2026, 단채널 비디오(4K), 컬러, 사운드, 5,120 × 2,880 mm, 00분 00초, 제8회 안양공공예술프로젝트(APAP8) 커미션.\n\n Is it any wonder that I hesitate even at the gates of paradise?, 2026, Single-channel video (4K), color, sound, 5,120 × 2,880 mm, 00 min. 00 sec., commissioned by the 8th Anyang Public Art Project (APAP8).",
+              "year": "",
+              "material": "",
+              "size": "",
+              "description": "낙원은 시간의 시작과 그 끝에서 모습을 드러낸다. 모든 신앙의 끝에 덧붙는 하나의 결구처럼, ‘낙원’이라는 말 자체가 한때 ‘둘러싸인 것’을 의미했다는 사실은 그리 놀랍지 않다. 그리스의 군인이자 역사가였던 크세노폰은 pairi-daēza, 즉 인위적으로 경계를 두른 공간에 관해 기록했다. 메디아인의 언어에서 이 말을 되살려낸 이후, 그것은 바빌로니아인과 조로아스터교도들을 비롯한 수많은 이들의 언어를 거치며 이동했고, 마침내 이 둘러싸인 영역은 정원이 되고, 도시가 되며, 천상의 거처가 되었다.\n\n프톨레마이오스 시대의 72명 학자가 각자 독립적으로 이스라엘 민족의 세계에 관한 기록을 그리스어로 번역했을 때, 그들은 parádeisos en Edem, 곧 ‘에덴의 낙원’을 뜻하는 표현을 택했다. 콜리지가 측량할 수 없는 동굴 위에 자리한 쿠빌라이 칸의 재너두를 노래했을 때조차 그곳에는 벽으로 둘러싸인 정원이 있었다. 이 낙원의 정원들은 언제나 은밀한 벽으로 에워싸여 있었고, 신비로운 숲은 신성한 강과 협곡에 둘러싸여 있었다. 그러니 우리의 낙원이 언제나 손이 닿지 않는 곳, 산꼭대기나 비밀스러운 계곡, 지도 제작자의 인식이 미치지 못하는 너머에 자리해 온 것은 어쩌면 당연한 일이다.\n\n우리의 프로젝트는 바로 이러한 지식의 가장자리, 신앙의 경계에서 우리가 사는 세계가 낙원의 세계로 넘어가는 지점에 자리한다. 모든 낙원에는 경계가 필요하다. 낙원을 불러내는 일에는 언제나 이 불가능한 궁전의 윤곽을 찾아내려는 충동이 뒤따른다. 낙원을 실제로 목격한 이는 거의 없지만, 그곳은 언제나 풍부하고도 세밀하게 묘사되어 왔다.\n\n우리는 바로 그 경계에 서서 낙원을 찾아 나서는 일이 품고 있는 모든 위험과 모든 기쁨을 바라보고자 한다. 그리고 관람객을 지도 제작자들의 작업으로 초대한다. 이들의 유일한 임무는 지도의 가장자리 너머를 그리는 것이다. 비록 종이 위에서일 뿐이라도, 그들은 상상의 윤곽 깊숙한 곳으로 나아간다. 지도는 오랫동안 정복과 기만의 도구였지만, 그와 동시에 그만큼이나 간절한 열망과 희망의 산물이기도 했다.\n\n존재하지 않는 것을 지도에 그려 넣는 바로 그 행위를 통해 우리는 완전한 조화의 장소를 믿기 위해 필요한 황홀에 가까이 다가간다. 영원히 도래가 유예되는 낙원. 그것은 언제나 우리 세계의 시작과 끝에 존재해 왔다.",
+              "images": [
+                "/assets/artists/e-pavilion-media/studio-oleomingus/work-1-1.jpeg"
+              ]
+            }
+          ]
+        },
+        {
+          "slug": "che-jianquan",
+          "name_ko": "처 지엔취안 Che jianquan",
+          "name_en": "",
+          "birth_year": "",
+          "nationality": "광저우, 중국\nGuangzhou, China",
+          "bio": "주요 개인전\n2025 《Flowing Time》, Palazzo Vecchio, 피렌체, 이탈리아\n2025 《Water Scroll》, Tokyo Gallery + Beijing Tokyo Art Projects, 베이징, 중국\n2024 《The World Around Us》, 다신미술관, 대만\n2023 《Chronicle of Cartography》, Ox Warehouse, 마카오\n2022 《Che Jianquan: Moment by Moment》, 광둥미술관, 광저우, 중국\n\nSelected Solo Exhibitions\n2025 Flowing time,Palazzo Vecchio Florence Italy\n2025 Water scroll, Tokyo gallery+Beijing tokyo projects,Beijing \n2024 The world aroud us, Daxin Art Museum,Taiwan  \n2023 Chronicle of Cartography, Ox Warehouse, Macao\n2022 CheJianquan: Moment by Moment, Guangdong Museum of Art\n\n주요 단체전\n2026 《제16회 쿠리치바 국제비엔날레》, 오스카 니마이어 미술관, 쿠리치바, 브라질\n2026 《G.MAP》, 광주미디어아트플랫폼, 광주, 대한민국\n2025 《Renewal: A Century of Guangdong Art》, 상하이미술관, 상하이, 중국\n2024 《제60회 베니스 비엔날레 국제미술전》, 아르세날레 중국관, 베니스, 이탈리아\n2022 《제14회 아바나 비엔날레》, 아바나미술관, 아바나, 쿠바\n\nSelected Group Exhibitions\n2026 16th Curtiba Internationai Biennial, Museu Oscar Niemeyer,Curitiba, Brazil\n2026 G.MAP, Gwangju Media Art Platform  South Korea\n2025 Renewal: A Century of Guangdong Art, Shanghai Art Museum | Shanghai, China\n2024 Biennale Arte 2024（The 60th Edition of the International Art Exhibition, China Pavilion Arsenale,Venice,Italy\n2022 14 Bienal de la Habana, The Havana Art Museum,Cuba",
+          "intro": "처 지엔취안(Che Jianquan)은 회화, 다큐멘터리 영화, 글쓰기, 멀티스크린 비디오 설치 등 다양한 매체를 넘나들며 작업하는 작가다. 그의 오랜 예술적 탐구와 실천의 중심에는 회화 이미지와 영상 사이의 상호작용과 상호텍스트성에 대한 관심이 자리한다. 작품은 회화의 촉각적이고 수공적인 제작 방식과 영상의 미학적 특성 사이에서 발생하는 시각적 차이와 상호 영향을 탐구하는 한편, 자연의 역동성과 불가해함이 인간의 환경을 어떻게 형성하는지를 조명한다.\n\n나아가 처 지엔취안은 동시대 중국의 맥락에서 인간과 자연이 맺는 복잡한 관계와 역사와 집단기억이 서로 얽히는 방식을 작품을 통해 드러내고자 한다. 그의 작품은 이탈리아, 독일, 미국, 일본, 오스트리아, 대만을 비롯한 여러 국가와 지역의 주요 미술기관에서 소개되었으며, 세계 각지의 미술관과 문화기관, 개인 컬렉터의 소장품에 포함되어 있다.",
+          "profile_image": "/assets/artists/e-pavilion-media/che-jianquan/profile.jpeg",
+          "works": [
+            {
+              "title": "〈소요유〉, 스틸 프레임 AI 생성형 비디오(4K), 컬러, 사운드, 5,120 × 2,880 mm, 00분 00초, 제8회 안양공공예술프로젝트(APAP8) 커미션.\n\nThe carefree wandering, 2026, Still Frame AI-generated video (4K), color, sound, 5,120 × 2,880 mm, 00 min. 00 sec., commissioned by the 8th Anyang Public Art Project (APAP8).",
+              "year": "",
+              "material": "",
+              "size": "",
+              "description": "〈소요유(The Carefree Wandering)〉의 개념은 장자 철학의 핵심 사상에서 출발한다. ‘소요유’는 세속의 규범과 속박을 넘어 자유롭게 유영하는 정신적 경지를 의미한다. 고대로부터 인간은 유토피아와 무릉도원, 멋진 신세계에 이르기까지 이상적인 세계에 대한 다양한 상상을 만들어왔으며, 이러한 상상은 더 나은 세계를 향한 인류의 공통된 지향을 형성해왔다. 그러나 전쟁의 위협이 끊이지 않고 삶의 속도가 나날이 빨라지는 오늘날, 탄소 기반의 생명은 실리콘 기반의 생명으로부터 새로운 도전을 마주하고 있다. 이러한 시대에 우리가 잠시 머물며 쉴 수 있는 무릉도원과 같은 이상향은 여전히 존재할 수 있을까?\n\n영화가 태동하던 시기, 카메라의 기록 기능은 이전과 다른 새로운 시각의 세계를 열어 보였다. 작가는 〈파빌리온(Pavilion)〉 연작을 위해 약 10년에 걸쳐 산속의 한 정자를 수없이 관찰하고 기록하며, 동일한 풍경을 기상학적 관점에서 반복적으로 해석해왔다. 선택적으로 기록한다는 단순한 행위를 통해 다시금 관조적인 보기의 방식으로 돌아가 현실과 환영, 은폐와 드러남이라는 철학적 명제를 탐구한다. 이는 동시에 무성영화 시대의 순수하고 꾸밈없는 이미지에 보내는 오마주이기도 하다.\n\n이곳에서 날씨는 하나의 극장이 된다. 바람과 습도, 비와 눈을 비롯한 기상 현상은 이 극장을 바라보는 방식을 좌우하는 결정적인 힘으로 작용한다. 이들은 순식간에 무대의 분위기를 새롭게 쓰고, 장면 속 대상을 자의적으로 가리거나 드러내며 풍경을 출현시키고 다시 사라지게 한다. 동시에 풍경을 바라보는 행위는 시간의 흐름 속에서 지속되고 변화하며, 그 과정에서 시간 자체의 형상을 드러낸다.",
+              "images": [
+                "/assets/artists/e-pavilion-media/che-jianquan/work-1-1.jpeg"
+              ]
+            }
+          ]
+        },
+        {
+          "slug": "unknown",
+          "name_ko": "작가명",
+          "name_en": "국영문",
+          "birth_year": "",
+          "nationality": "국가명 (도시)",
+          "bio": "작가 약력(국영문)",
+          "intro": "",
+          "profile_image": null,
+          "works": [
+            {
+              "title": "작품캡션(국영문)",
+              "year": "",
+              "material": "",
+              "size": "",
+              "description": "작품설명",
+              "images": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "venue_ko": "308 아트크루",
+      "venue_slug": "308-art-crew",
+      "artists": [
+        {
+          "slug": "308-308-art-crew",
+          "name_ko": "308 아트크루 308 ART CREW",
+          "name_en": "",
+          "birth_year": "",
+          "nationality": "서울, 대한민국\nSeoul, South Korea",
+          "bio": "주요 단체전\n2026 《Sing! Sing! Sing! 마츠다 세이코 내한공연》, 인스파이어 아레나, 인천, 대한민국\n2025 《국가유산방문캠페인 ‘선사지질의 길’ 프로그램》, 전곡선사박물관, 경기, 대한민국\n2025 《서울 인공지능 엑스포 ‘MARS 2025’》, 코엑스, 서울, 대한민국\n2024 《FUMANISM》, 서울로봇인공지능과학관, 서울, 대한민국\n2023 《Color Bath Effect》, 광주디자인비엔날레, 광주, 대한민국\n2022 《MARVEL: The Reflection》, 현대카드 바이닐 앤 플라스틱, 서울, 대한민국\n\n\nSelected Group Exhibitions\n2026  Sing! Sing! Sing! Seiko Matsuda Live in Korea, INSPIRE Arena, Incheon, South Korea\n2025  Korea Heritage Visit Campaign: “Prehistoric Geology Trail” Program, Jeongok Prehistory Museum, Gyeonggi-do, South Korea\n2025  Seoul AI Expo “MARS 2025”, COEX, Seoul, South Korea\n2024  FUMANISM, Seoul Robot & AI Museum, Seoul, South Korea\n2023  Color Bath Effect, Gwangju Design Biennale, Gwangju, South Korea\n2022  MARVEL: The Reflection, Hyundai Card Vinyl & Plastic, Seoul, South Korea",
+          "intro": "308아트크루는 2018년 서울을 기반으로 결성된 예술 그룹이다. 체험형 공간 콘텐츠, 감각 기반 설치 연출, 전시 기획, 공간 디자인과 디렉팅을 중심으로 활동해왔다. 조명, 사운드, 향, 미디어, 인터랙티브 시스템, 관객 동선을 결합해 관객이 직접 이동하고 머무르며 감각하는 공간 경험을 만든다. FROM SENSE TO EXPERIENCE, Break the Fourth Wall을 주요 태도로 삼으며, 전시와 공연, 공공 프로젝트, 브랜드 협업을 오가며 감각 중심의 공간 작업을 이어가고 있다.\n\nGLAN / 강대경 — 프로듀서, 라이트 아티스트, 공간 디렉터CINCO / 이신호 — 모델러, 3D 페인터, 비주얼 아티스트\n크레딧\n작가: GLAN / 강대경\n제작: 308 ART CREW  \n프로듀서 / 라이트 아티스트: GLAN / 강대경\n공간 디렉터: CINCO / 이신호\n뉴미디어 아티스트: SEUNG / 안승\n사운드 아티스트: DOJIN / 백도진\n라이트 어시스턴트: NAYEON / 김나연",
+          "profile_image": null,
+          "works": [
+            {
+              "title": "〈빛의 폭포: 무릉의 입구〉, 2026, 장소특정형 프로젝션 맵핑·RGB 레이저 설치(미디어 서버·타임코드 제어, 방우 하우징, 인터락·비상차단 장치), 컬러, 사운드, 상설 루프 약 5분.\n\nWaterfall of Light: The Entrance to Mureung, 2026, Site-specific projection mapping and RGB laser installation (media server/timecode control, weatherproof housing, interlock and emergency shut-off), color, sound, approx. 5 min. loop.",
+              "year": "",
+              "material": "",
+              "size": "",
+              "description": "〈빛의 폭포: 무릉의 입구〉는 벽천광장의 인공폭포를 빛과 물이 교차하는 밤의 무릉도원으로 전환하는 장소특정형 레이저아트 작품이다. 프로젝션 맵핑과 레이저는 실제 물줄기와 석벽 위에 물결과 안개, 산수의 이미지를 겹쳐 익숙한 폭포의 풍경을 낯선 감각의 장소로 변화시킨다. 밤이 되면 폭포는 현실과 무릉도원의 경계를 잇는 하나의 문이 되고, 물은 빛을 받아들이는 막으로, 레이저는 흐르는 물의 시간과 방향을 따라가는 선으로 작동한다. 물이 잠시 멈추고 거슬러 오르는 장면을 지나 폭포 중앙에는 물안개와 달빛, 원형의 잔상과 산수의 깊이가 서서히 모여 ‘월문(月門)’을 형성하고, 이를 기점으로 빛과 풍경이 주변으로 확장되며 현실의 장소 위에 잠시 무릉도원의 감각을 펼쳐 보인다. 이 작품에서 무릉도원은 이상향의 풍경을 직접 재현하는 것이 아니라, 늘 존재하던 폭포와 수목, 광장과 산책로가 빛을 통해 평소와 다른 감각으로 읽히는 순간에 가깝다. 관람객은 산책로 끝에서 빛나는 폭포를 발견하고 물의 정지와 역류, 월문의 형성과 빛의 확장을 따라 잠시 다른 세계의 입구에 머물며, 빛이 서서히 잦아든 뒤 다시 익숙한 현실의 밤으로 돌아오게 된다.",
+              "images": [
+                "/assets/artists/308-art-crew/308-308-art-crew/work-1-1.png"
+              ]
+            },
+            {
+              "title": "〈오색운 五色雲: 빛의 기상〉, 2026, RGB 레이저·포그 머신 야간 설치(미디어 서버·타임코드 제어, 전원·방우 장치, 인터락·비상차단 장치), 컬러, 사운드, 가변 크기.\n\nOsaekun (Five-Colored Clouds): The Weather of Light, 2026, RGB laser and fog installation (media server/timecode control, power and weatherproofing, interlock and emergency shut-off), color, sound, dimensions variable.",
+              "year": "",
+              "material": "",
+              "size": "",
+              "description": "〈오색운 五色雲: 빛의 기상〉은 안양 파빌리온 앞의 열린 공기와 안개를 빛의 표면으로 삼아, 밤의 풍경 속에 끊임없이 생성되고 사라지는 구름을 그려내는 야간 레이저 설치작품이다. 포그 머신으로 형성된 얇은 안개층 위로 RGB 레이저의 다섯 가지 색채 흐름이 겹쳐지며, 빛은 공기 중에서 떠오르고 접히고 흩어지기를 반복하면서 시시각각 다른 형태의 ‘오색운(五色雲)’을 만들어낸다. 예로부터 상서로운 징조이자 이상적인 세계의 도래를 알리는 표상으로 여겨진 오색운은 이 작품에서 고정된 형상을 지닌 조형물이 아니라 빛과 공기, 시간의 변화에 따라 잠시 나타났다 사라지는 하나의 기상 현상으로 펼쳐진다. 관람객은 파빌리온 앞을 거닐며 공기 중에 떠오른 빛의 구름과 마주하고, 형태를 이루었다가 이내 흩어지는 빛의 움직임을 따라 익숙한 밤의 풍경이 잠시 낯선 풍경으로 변모하는 순간을 경험한다.",
+              "images": [
+                "/assets/artists/308-art-crew/308-308-art-crew/work-2-1.png"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
