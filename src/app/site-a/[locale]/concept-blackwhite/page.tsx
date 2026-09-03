@@ -343,6 +343,7 @@ export default function ConceptBlackWhitePage({ params }: PageProps) {
               allLabel={isKo ? '전체 부문 (ALL)' : 'ALL VENUES'}
               onArtistClick={(a) => setSelectedArtist(a)}
               showModalInternally={false}
+              theme="blackwhite"
             />
           </div>
         )}
@@ -353,6 +354,7 @@ export default function ConceptBlackWhitePage({ params }: PageProps) {
             <WorkGallery
               categories={workCategories}
               allLabel={isKo ? '전체 출품작 (ALL)' : 'ALL WORKS'}
+              theme="blackwhite"
             />
           </div>
         )}

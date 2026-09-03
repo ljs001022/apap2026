@@ -3,15 +3,22 @@
 import React, { useMemo } from 'react';
 import BlurFade from './BlurFade';
 import ArtistGrid from './ArtistGrid';
+import { CardTheme } from './ArtistCard';
 import { getVenues } from '@/lib/artists';
 
 interface ArtistSectionProps {
   t?: (key: string) => string;
   locale?: string;
   className?: string;
+  theme?: CardTheme;
 }
 
-export default function ArtistSection({ t, locale = 'ko', className = '' }: ArtistSectionProps) {
+export default function ArtistSection({
+  t,
+  locale = 'ko',
+  className = '',
+  theme = 'lime',
+}: ArtistSectionProps) {
   const venues = useMemo(() => getVenues(), []);
 
   // Map venues into generic CategoryGroup
@@ -25,6 +32,13 @@ export default function ArtistSection({ t, locale = 'ko', className = '' }: Arti
 
   const isKo = locale === 'ko';
 
+  const tagColor = {
+    lime: 'text-lime-400',
+    cyan: 'text-[#00E5FF]',
+    peach: 'text-rose-400',
+    blackwhite: 'text-white',
+  }[theme];
+
   return (
     <section
       id="exhibition"
@@ -34,7 +48,7 @@ export default function ArtistSection({ t, locale = 'ko', className = '' }: Arti
         {/* Header row */}
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 border-b border-white/10 pb-6">
           <BlurFade className="space-y-2">
-            <span className="text-[10px] md:text-xs font-mono text-lime-400 tracking-widest uppercase block font-bold">
+            <span className={`text-[10px] md:text-xs font-mono tracking-widest uppercase block font-bold ${tagColor}`}>
               [02] EXHIBITION — PARTICIPATING ARTISTS
             </span>
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-black uppercase text-white tracking-tight">
@@ -51,6 +65,7 @@ export default function ArtistSection({ t, locale = 'ko', className = '' }: Arti
         <ArtistGrid
           categories={categories}
           allLabel={isKo ? '전체 부문 (ALL)' : 'ALL VENUES'}
+          theme={theme}
         />
       </div>
     </section>

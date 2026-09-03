@@ -86,8 +86,8 @@ export default function ConceptCPage({ params }: PageProps) {
         <main>
           <HeroSection t={t} locale={locale} />
           <ConceptSection t={t} locale={locale} />
-          <ArtistSection t={t} locale={locale} />
-          <WorksSection t={t} locale={locale} />
+          <ArtistSection t={t} locale={locale} theme="peach" />
+          <WorksSection t={t} locale={locale} theme="peach" />
           <ProgramSection t={t} locale={locale} />
           <VisitSection t={t} locale={locale} />
           <NewsSection t={t} locale={locale} />

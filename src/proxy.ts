@@ -5,14 +5,17 @@ export function proxy(request: NextRequest) {
   const url = request.nextUrl.clone();
   const pathname = url.pathname;
 
-  // 1. 제외 경로 설정: /api, /admin, 정적 파일(images 등), Next.js 내부 에셋(_next)
+  // 1. 제외 경로 설정: /api, /admin, 정적 파일(images, assets 등), Next.js 내부 에셋(_next)
   if (
     pathname.startsWith('/api') ||
     pathname.startsWith('/admin') ||
     pathname.startsWith('/_next') ||
     pathname.includes('/images/') ||
+    pathname.includes('/assets/') ||
+    pathname.startsWith('/assets') ||
     pathname.includes('/favicon.ico') ||
-    pathname.startsWith('/uploads')
+    pathname.startsWith('/uploads') ||
+    /\.(png|jpe?g|gif|webp|svg|ico|mp4|webm|pdf|json|woff2?|ttf)$/i.test(pathname)
   ) {
     return NextResponse.next();
   }

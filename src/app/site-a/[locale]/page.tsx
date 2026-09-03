@@ -708,9 +708,9 @@ export default function SiteBPage({ params }: PageProps) {
         <div className="absolute inset-0 pointer-events-none z-0 hidden md:block">
           <div className="absolute top-[12%] right-[6%] w-[26vw] max-w-[340px]">
             <ScannedImageCard
-              src="/images/concept-b/88845ae5-620d-4323-bfb3-b459e0dd9754.jpg"
-              alt="안양파빌리온"
-              label="anyang_pavilion.png"
+              src="/assets/artists/outdoor-exhibition/kim-deok-han/work-1-1.png"
+              alt="김덕한 - OVERLAID"
+              label="kim_deok_han_overlaid.png"
               depth={0.03}
               delay={0}
               mousePos={mousePos}
@@ -718,9 +718,9 @@ export default function SiteBPage({ params }: PageProps) {
           </div>
           <div className="absolute top-[52%] right-[22%] w-[18vw] max-w-[230px]">
             <ScannedImageCard
-              src="/images/concept-b/b063889b-b5a2-43be-92d5-0a5d80731ef3.jpg"
-              alt="공공 설치 작품"
-              label="public_work_04.png"
+              src="/assets/artists/outdoor-exhibition/ji-yongho/work-1-1.jpeg"
+              alt="지용호 - Lion 3"
+              label="ji_yongho_lion3.jpeg"
               depth={0.06}
               delay={0.6}
               mousePos={mousePos}
@@ -728,9 +728,9 @@ export default function SiteBPage({ params }: PageProps) {
           </div>
           <div className="absolute bottom-[10%] right-[3%] w-[15vw] max-w-[200px]">
             <ScannedImageCard
-              src="/images/concept-b/f43e59c1-7592-41ed-8198-a436f0be1d54.jpg"
-              alt="설치 작품"
-              label="spiral_structure.png"
+              src="/assets/artists/308-art-crew/308-308-art-crew/work-1-1.png"
+              alt="308 아트크루"
+              label="308_art_crew.png"
               depth={0.045}
               delay={1.2}
               mousePos={mousePos}

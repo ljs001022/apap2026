@@ -4,11 +4,14 @@ import React, { useState } from 'react';
 import { Work, Artist } from '@/types/artist';
 import { ChevronLeft, ChevronRight, Image as ImageIcon } from 'lucide-react';
 
+import { CardTheme } from './ArtistCard';
+
 interface WorkCardProps {
   work: Work;
   artist?: Artist;
   className?: string;
   showArtistInfo?: boolean;
+  theme?: CardTheme;
 }
 
 export default function WorkCard({
@@ -16,6 +19,7 @@ export default function WorkCard({
   artist,
   className = '',
   showArtistInfo = true,
+  theme = 'lime',
 }: WorkCardProps) {
   const images = work.images || [];
   const hasImages = images.length > 0;
@@ -38,9 +42,36 @@ export default function WorkCard({
   const hasSize = Boolean(work.size && work.size.trim() !== '');
   const hasDescription = Boolean(work.description && work.description.trim() !== '');
 
+  const themeStyles = {
+    lime: {
+      card: 'bg-[#0b0f17]/90 border-white/10 hover:border-lime-400/40 rounded-xl',
+      artistText: 'text-lime-400 group-hover:text-lime-300',
+      badge: 'bg-black/75 border-white/15 text-white/90',
+      yearBadge: 'bg-white/10 border-white/15 text-white/80',
+    },
+    cyan: {
+      card: 'bg-[#04060A]/90 border-[#00E5FF]/20 hover:border-[#00E5FF] rounded-sm hover:shadow-[0_0_20px_rgba(0,229,255,0.15)]',
+      artistText: 'text-[#00E5FF]',
+      badge: 'bg-[#04060A]/90 border-[#00E5FF]/30 text-[#00E5FF]',
+      yearBadge: 'bg-[#00E5FF]/10 border-[#00E5FF]/30 text-[#00E5FF]',
+    },
+    peach: {
+      card: 'bg-white/[0.03] hover:bg-white/[0.08] backdrop-blur-md border-white/15 hover:border-rose-400/50 rounded-2xl',
+      artistText: 'text-rose-300',
+      badge: 'bg-black/50 border-rose-400/30 text-rose-200',
+      yearBadge: 'bg-rose-500/10 border-rose-400/30 text-rose-200',
+    },
+    blackwhite: {
+      card: 'bg-[#141414] hover:bg-[#1C1C1C] border-white hover:border-white rounded-none',
+      artistText: 'text-white font-extrabold',
+      badge: 'bg-[#002FA7] border-transparent text-white',
+      yearBadge: 'bg-[#002FA7] border-transparent text-white font-bold',
+    },
+  }[theme];
+
   return (
     <article
-      className={`group flex flex-col bg-[#0b0f17]/90 border border-white/10 hover:border-lime-400/40 rounded-xl overflow-hidden transition-all duration-300 shadow-md ${className}`}
+      className={`group flex flex-col border overflow-hidden transition-all duration-300 shadow-md ${themeStyles.card} ${className}`}
     >
       {/* ─── Image Gallery / Carousel ─── */}
       {hasImages && (
@@ -58,8 +89,8 @@ export default function WorkCard({
               <button
                 type="button"
                 onClick={handlePrev}
-                aria-label="Previous Image"
-                className="absolute left-2.5 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-black/70 hover:bg-black text-white/90 hover:text-white border border-white/20 flex items-center justify-center transition-all opacity-80 hover:opacity-100 cursor-pointer shadow-lg"
+                className="absolute left-2.5 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-black/75 hover:bg-black text-white flex items-center justify-center transition-transform active:scale-90 cursor-pointer border border-white/20 shadow-md z-10"
+                aria-label="Previous work image"
               >
                 <ChevronLeft className="w-4 h-4" />
               </button>
@@ -67,15 +98,15 @@ export default function WorkCard({
               <button
                 type="button"
                 onClick={handleNext}
-                aria-label="Next Image"
-                className="absolute right-2.5 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-black/70 hover:bg-black text-white/90 hover:text-white border border-white/20 flex items-center justify-center transition-all opacity-80 hover:opacity-100 cursor-pointer shadow-lg"
+                className="absolute right-2.5 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-black/75 hover:bg-black text-white flex items-center justify-center transition-transform active:scale-90 cursor-pointer border border-white/20 shadow-md z-10"
+                aria-label="Next work image"
               >
                 <ChevronRight className="w-4 h-4" />
               </button>
 
               {/* Counter / Dots */}
-              <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex items-center gap-1.5 bg-black/70 backdrop-blur-md px-2.5 py-1 rounded-full border border-white/15">
-                <span className="font-mono text-[10px] font-bold text-white tracking-widest">
+              <div className="absolute bottom-2.5 right-2.5 bg-black/80 backdrop-blur-md px-2.5 py-1 rounded-full font-mono text-[10px] text-white/90 border border-white/15">
+                <span>
                   {activeImgIndex + 1} / {images.length}
                 </span>
               </div>
@@ -84,7 +115,11 @@ export default function WorkCard({
 
           {/* Venue badge on top right */}
           {artist?.venue_ko && (
-            <span className="absolute top-3 right-3 font-mono text-[9px] font-bold text-white/90 bg-black/75 backdrop-blur-md border border-white/15 px-2.5 py-1 rounded-full uppercase tracking-wider">
+            <span
+              className={`absolute top-3 right-3 font-mono text-[9px] font-bold border px-2.5 py-1 uppercase tracking-wider ${
+                theme === 'blackwhite' ? 'rounded-sm' : 'rounded-full'
+              } ${themeStyles.badge}`}
+            >
               {artist.venue_ko}
             </span>
           )}
@@ -98,7 +133,7 @@ export default function WorkCard({
           <div className="flex flex-wrap items-center justify-between gap-2">
             {showArtistInfo && artist && (
               <div className="flex items-center gap-2">
-                <span className="font-bold text-sm text-lime-400 group-hover:text-lime-300 transition-colors">
+                <span className={`font-bold text-sm transition-colors ${themeStyles.artistText}`}>
                   {artist.name_ko}
                 </span>
                 {artist.name_en && artist.name_en !== '국영문' && (
@@ -110,7 +145,7 @@ export default function WorkCard({
             )}
 
             {hasYear && (
-              <span className="font-mono text-[11px] font-semibold text-white/80 bg-white/10 px-2.5 py-0.5 rounded border border-white/15 ml-auto">
+              <span className={`font-mono text-[11px] font-semibold px-2.5 py-0.5 rounded border ml-auto ${themeStyles.yearBadge}`}>
                 {work.year}
               </span>
             )}

@@ -3,6 +3,7 @@
 import React, { useMemo } from 'react';
 import BlurFade from './BlurFade';
 import WorkGallery from './WorkGallery';
+import { CardTheme } from './ArtistCard';
 import { getVenues } from '@/lib/artists';
 import { WorkWithArtist } from '@/types/artist';
 
@@ -10,9 +11,15 @@ interface WorksSectionProps {
   t?: (key: string) => string;
   locale?: string;
   className?: string;
+  theme?: CardTheme;
 }
 
-export default function WorksSection({ t, locale = 'ko', className = '' }: WorksSectionProps) {
+export default function WorksSection({
+  t,
+  locale = 'ko',
+  className = '',
+  theme = 'lime',
+}: WorksSectionProps) {
   const venues = useMemo(() => getVenues(), []);
 
   // Group works by venue
@@ -40,6 +47,13 @@ export default function WorksSection({ t, locale = 'ko', className = '' }: Works
 
   const isKo = locale === 'ko';
 
+  const tagColor = {
+    lime: 'text-lime-400',
+    cyan: 'text-[#00E5FF]',
+    peach: 'text-rose-400',
+    blackwhite: 'text-white',
+  }[theme];
+
   return (
     <section
       id="works"
@@ -49,7 +63,7 @@ export default function WorksSection({ t, locale = 'ko', className = '' }: Works
         {/* Header row */}
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 border-b border-white/10 pb-6">
           <BlurFade className="space-y-2">
-            <span className="text-[10px] md:text-xs font-mono text-lime-400 tracking-widest uppercase block font-bold">
+            <span className={`text-[10px] md:text-xs font-mono tracking-widest uppercase block font-bold ${tagColor}`}>
               [03] EXHIBITION GALLERY — WORKS &amp; PROJECTS
             </span>
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-black uppercase text-white tracking-tight">
@@ -58,14 +72,15 @@ export default function WorksSection({ t, locale = 'ko', className = '' }: Works
           </BlurFade>
 
           <p className="font-mono text-xs text-white/50 max-w-sm sm:text-right">
-            안양 도심 및 예술공원에 설치·상영되는 주요 작품 갤러리
+            제8회 안양공공예술프로젝트(APAP8) 주요 출품작 아카이브
           </p>
         </div>
 
-        {/* Work Gallery with Carousel & Categories */}
+        {/* Works Gallery with Venue Category Tabs */}
         <WorkGallery
           categories={categories}
-          allLabel={isKo ? '전체 출품작 (ALL)' : 'ALL WORKS'}
+          allLabel={isKo ? '전체 부문 (ALL)' : 'ALL VENUES'}
+          theme={theme}
         />
       </div>
     </section>
