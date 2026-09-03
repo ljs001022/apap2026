@@ -1,4 +1,4 @@
-﻿'use client';
+'use client';
 
 import React, { useState } from 'react';
 import { CardTheme } from './ArtistCard';
@@ -82,12 +82,15 @@ export default function PosterBannerSection({
             onClick={() => setIsZoomed(true)}
             className="relative aspect-[16/9] w-full overflow-hidden bg-[#FAF7D3] cursor-pointer"
           >
-            <img
-              src="/images/apap8_uniform.gif"
-              alt="제8회 안양공공예술프로젝트(APAP8) 공식 포스터 - ARTEX: 예술대전환"
-              className="w-full h-full object-contain sm:object-cover group-hover:scale-[1.012] transition-transform duration-700 ease-out"
-              loading="lazy"
-            />
+            <picture className="w-full h-full block">
+              <source type="image/webp" srcSet="/images/apap8_uniform.webp" />
+              <img
+                src="/images/apap8_uniform.gif"
+                alt={isKo ? "제8회 안양공공예술프로젝트(APAP8) 공식 포스터 - ARTEX: 예술대전환" : "The 8th Anyang Public Art Project (APAP8) Official Poster"}
+                className="w-full h-full object-contain sm:object-cover group-hover:scale-[1.012] transition-transform duration-700 ease-out"
+                loading="eager"
+              />
+            </picture>
           </div>
         </div>
       </section>
@@ -117,11 +120,14 @@ export default function PosterBannerSection({
               onClick={(e) => e.stopPropagation()}
               className="relative max-w-6xl max-h-[90vh] aspect-[16/9] w-full border border-white/20 rounded-lg overflow-hidden shadow-2xl bg-[#FAF7D3]"
             >
-              <img
-                src="/images/apap8_uniform.gif"
-                alt="제8회 안양공공예술프로젝트(APAP8) 공식 포스터"
-                className="w-full h-full object-contain"
-              />
+              <picture className="w-full h-full flex items-center justify-center">
+                <source type="image/webp" srcSet="/images/apap8_uniform.webp" />
+                <img
+                  src="/images/apap8_uniform.gif"
+                  alt={isKo ? "제8회 안양공공예술프로젝트(APAP8) 공식 포스터" : "The 8th Anyang Public Art Project (APAP8) Official Poster"}
+                  className="w-full h-full object-contain"
+                />
+              </picture>
             </motion.div>
           </motion.div>
         )}
