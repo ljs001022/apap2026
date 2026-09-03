@@ -7,6 +7,7 @@ import { motion } from 'framer-motion';
 import Header from '@/components/site-a/Header';
 import HeroSection from '@/components/site-a/HeroSection';
 import ConceptSection from '@/components/site-a/ConceptSection';
+import PosterBannerSection from '@/components/site-a/PosterBannerSection';
 import ArtistSection from '@/components/site-a/ArtistSection';
 import WorksSection from '@/components/site-a/WorksSection';
 import ProgramSection from '@/components/site-a/ProgramSection';
@@ -86,6 +87,7 @@ export default function ConceptCPage({ params }: PageProps) {
         <main>
           <HeroSection t={t} locale={locale} />
           <ConceptSection t={t} locale={locale} />
+          <PosterBannerSection locale={locale} theme="peach" />
           <ArtistSection t={t} locale={locale} theme="peach" />
           <WorksSection t={t} locale={locale} theme="peach" />
           <ProgramSection t={t} locale={locale} />

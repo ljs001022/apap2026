@@ -6,6 +6,8 @@ import ArtistGrid from './ArtistGrid';
 import { CardTheme } from './ArtistCard';
 import { getVenues } from '@/lib/artists';
 
+import { getLocalizedVenueName } from '@/lib/artistLocalization';
+
 interface ArtistSectionProps {
   t?: (key: string) => string;
   locale?: string;
@@ -20,17 +22,16 @@ export default function ArtistSection({
   theme = 'lime',
 }: ArtistSectionProps) {
   const venues = useMemo(() => getVenues(), []);
+  const isKo = locale === 'ko';
 
-  // Map venues into generic CategoryGroup
+  // Map venues into generic CategoryGroup with localized labels
   const categories = useMemo(() => {
     return venues.map((v) => ({
       id: v.venue_slug,
-      label: v.venue_ko,
+      label: getLocalizedVenueName(v.venue_slug, locale),
       items: v.artists,
     }));
-  }, [venues]);
-
-  const isKo = locale === 'ko';
+  }, [venues, locale]);
 
   const tagColor = {
     lime: 'text-lime-400',
@@ -49,7 +50,7 @@ export default function ArtistSection({
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 border-b border-white/10 pb-6">
           <BlurFade className="space-y-2">
             <span className={`text-[10px] md:text-xs font-mono tracking-widest uppercase block font-bold ${tagColor}`}>
-              [02] EXHIBITION — PARTICIPATING ARTISTS
+              {isKo ? '[02] 전시 — 참여 작가' : '[02] EXHIBITION — PARTICIPATING ARTISTS'}
             </span>
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-black uppercase text-white tracking-tight">
               {isKo ? '참여 작가' : 'Participating Artists'}
@@ -57,7 +58,9 @@ export default function ArtistSection({
           </BlurFade>
 
           <p className="font-mono text-xs text-white/50 max-w-sm sm:text-right">
-            제8회 안양공공예술프로젝트(APAP8) 공식 참여 작가 라인업
+            {isKo
+              ? '제8회 안양공공예술프로젝트(APAP8) 공식 참여 작가 라인업'
+              : 'Official Participating Artists Lineup for APAP8'}
           </p>
         </div>
 
@@ -66,6 +69,7 @@ export default function ArtistSection({
           categories={categories}
           allLabel={isKo ? '전체 부문 (ALL)' : 'ALL VENUES'}
           theme={theme}
+          locale={locale}
         />
       </div>
     </section>

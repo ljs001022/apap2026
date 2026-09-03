@@ -5,6 +5,12 @@ import { Artist } from '@/types/artist';
 import { getArtistInitials } from '@/lib/artists';
 import { Layers, ArrowUpRight } from 'lucide-react';
 
+import {
+  getLocalizedArtistName,
+  getLocalizedVenueName,
+  getLocalizedNationality,
+} from '@/lib/artistLocalization';
+
 export type CardTheme = 'lime' | 'cyan' | 'peach' | 'blackwhite';
 
 interface ArtistCardProps {
@@ -12,6 +18,7 @@ interface ArtistCardProps {
   onClick?: (artist: Artist) => void;
   className?: string;
   theme?: CardTheme;
+  locale?: string;
 }
 
 export default function ArtistCard({
@@ -19,22 +26,26 @@ export default function ArtistCard({
   onClick,
   className = '',
   theme = 'lime',
+  locale = 'ko',
 }: ArtistCardProps) {
+  const isKo = locale === 'ko';
   // Use artist profile image or fallback to their first artwork image
   const displayImage = artist.profile_image || artist.works?.[0]?.images?.[0] || null;
   const hasImage = Boolean(displayImage);
   const initials = getArtistInitials(artist);
 
-  // Clean English name (ignore placeholder values like '국영문')
-  const cleanNameEn =
-    artist.name_en && artist.name_en.trim() !== '' && artist.name_en !== '국영문'
-      ? artist.name_en.trim()
-      : null;
+  const { primary: displayName, secondary: subName } = getLocalizedArtistName(artist, locale);
 
-  // Clean nationality text (take first line if multi-line)
-  const cleanNationality = artist.nationality
-    ? artist.nationality.split('\n')[0].trim()
-    : '';
+  const localizedVenue = artist.venue_slug
+    ? getLocalizedVenueName(artist.venue_slug, locale)
+    : (isKo ? artist.venue_ko : (artist.venue_slug || artist.venue_ko));
+
+  const localizedNationality = getLocalizedNationality(artist.nationality || '', locale);
+
+  const worksCount = artist.works?.length || 0;
+  const worksLabel = isKo
+    ? `${worksCount}개 작품`
+    : `${worksCount} ${worksCount === 1 ? 'Work' : 'Works'}`;
 
   // Theme-specific styling classes
   const themeStyles = {
@@ -94,7 +105,7 @@ export default function ArtistCard({
         {hasImage ? (
           <img
             src={displayImage!}
-            alt={artist.name_ko}
+            alt={displayName}
             loading="lazy"
             className="w-full h-full object-cover object-top grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-500 ease-out"
           />
@@ -112,21 +123,21 @@ export default function ArtistCard({
         )}
 
         {/* Venue Badge */}
-        {artist.venue_ko && (
+        {localizedVenue && (
           <span
             className={`absolute top-3 left-3 font-mono text-[9px] font-bold border px-2.5 py-1 uppercase tracking-wider ${
               theme === 'blackwhite' ? 'rounded-sm' : 'rounded-full'
             } ${themeStyles.badge}`}
           >
-            {artist.venue_ko}
+            {localizedVenue}
           </span>
         )}
 
         {/* Works count badge */}
-        {artist.works && artist.works.length > 0 && (
+        {worksCount > 0 && (
           <span className="absolute bottom-3 right-3 flex items-center gap-1 font-mono text-[10px] font-medium text-white/80 bg-black/70 backdrop-blur-md border border-white/10 px-2 py-0.5 rounded">
             <Layers className={`w-3 h-3 ${themeStyles.icon}`} />
-            <span>{artist.works.length} {artist.works.length === 1 ? 'Work' : 'Works'}</span>
+            <span>{worksLabel}</span>
           </span>
         )}
       </div>
@@ -136,14 +147,14 @@ export default function ArtistCard({
         <div className="space-y-1">
           <div className="flex items-start justify-between gap-2">
             <h3 className={`text-base sm:text-lg font-bold text-white transition-colors leading-snug ${themeStyles.name}`}>
-              {artist.name_ko}
+              {displayName}
             </h3>
             <ArrowUpRight className={`w-4 h-4 transition-transform flex-shrink-0 mt-0.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 ${themeStyles.arrow}`} />
           </div>
 
-          {cleanNameEn && (
+          {subName && (
             <p className="font-mono text-xs text-white/50 group-hover:text-white/70 transition-colors truncate">
-              {cleanNameEn}
+              {subName}
             </p>
           )}
         </div>
@@ -151,10 +162,10 @@ export default function ArtistCard({
         {/* Metadata bottom row */}
         <div className="pt-2 border-t border-white/5 flex items-center justify-between text-xs font-mono text-white/40">
           <span className="truncate max-w-[70%]">
-            {cleanNationality || 'Artist'}
+            {localizedNationality || (isKo ? '참여 작가' : 'Artist')}
           </span>
           {artist.birth_year && artist.birth_year.trim() && (
-            <span>b.{artist.birth_year}</span>
+            <span>{isKo ? `${artist.birth_year}년생` : `b.${artist.birth_year}`}</span>
           )}
         </div>
       </div>

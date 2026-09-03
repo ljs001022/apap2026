@@ -7,6 +7,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import ConceptSwitcher from '@/components/site-a/ConceptSwitcher';
 import ArtistSection from '@/components/site-a/ArtistSection';
 import WorksSection from '@/components/site-a/WorksSection';
+import PosterBannerSection from '@/components/site-a/PosterBannerSection';
 
 // Types & interfaces
 interface PageProps {
@@ -805,6 +806,12 @@ export default function SiteBPage({ params }: PageProps) {
           </div>
         </div>
       </section>
+
+      {/* 5.5 Official Poster Banner Section */}
+      <PosterBannerSection
+        locale={validLocale}
+        theme="lime"
+      />
 
       {/* 6. Artists Section */}
       <ArtistSection locale={validLocale} />

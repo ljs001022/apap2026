@@ -36,16 +36,17 @@ export default function Header({ locale }: { locale: string }) {
     return () => { document.body.style.overflow = ''; };
   }, [isOpen]);
 
+  const isKo = locale === 'ko';
   const navLinks = [
-    { href: '#intro', label: 'Intro' },
-    { href: '#exhibition', label: 'Exhibition' },
-    { href: '#program', label: 'Program' },
-    { href: '#visit', label: 'Visit' },
-    { href: '#news', label: 'News' },
+    { href: '#intro', label: isKo ? '소개' : 'Intro' },
+    { href: '#exhibition', label: isKo ? '전시' : 'Exhibition' },
+    { href: '#program', label: isKo ? '프로그램' : 'Program' },
+    { href: '#visit', label: isKo ? '관람안내' : 'Visit' },
+    { href: '#news', label: isKo ? '새소식' : 'News' },
   ];
 
   const filteredNavLinks = isConceptC 
-    ? navLinks.filter(link => link.label !== 'Intro') 
+    ? navLinks.filter(link => link.href !== '#intro') 
     : navLinks;
 
   return (

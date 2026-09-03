@@ -10,6 +10,8 @@ import { getVenues, getAllWorksWithArtist } from '@/lib/artists';
 import ArtistGrid from '@/components/site-a/ArtistGrid';
 import WorkGallery from '@/components/site-a/WorkGallery';
 import ArtistModal from '@/components/site-a/ArtistModal';
+import PosterBannerSection from '@/components/site-a/PosterBannerSection';
+import { getLocalizedVenueName } from '@/lib/artistLocalization';
 
 interface PageProps {
   params: Promise<{
@@ -18,24 +20,26 @@ interface PageProps {
 }
 
 export default function ConceptBlackWhitePage({ params }: PageProps) {
-  const { locale } = React.use(params);
-  const isKo = locale === 'ko';
+  const resolvedParams = React.use(params);
+  const locale = resolvedParams.locale || 'ko';
+  const validLocale = ['ko', 'en'].includes(locale) ? locale : 'ko';
+  const isKo = validLocale === 'ko';
 
   const [activeTab, setActiveTab] = useState<'artists' | 'works' | 'map'>('artists');
   const [selectedArtist, setSelectedArtist] = useState<Artist | null>(null);
 
   const venues = useMemo(() => getVenues(), []);
 
-  // Category group for artists
+  // Category group for artists with localized labels
   const categories = useMemo(() => {
     return venues.map((v) => ({
       id: v.venue_slug,
-      label: v.venue_ko,
+      label: getLocalizedVenueName(v.venue_slug, validLocale),
       items: v.artists,
     }));
-  }, [venues]);
+  }, [venues, validLocale]);
 
-  // Category group for works
+  // Category group for works with localized labels
   const workCategories = useMemo(() => {
     return venues.map((v) => {
       const worksInVenue: WorkWithArtist[] = [];
@@ -51,11 +55,11 @@ export default function ConceptBlackWhitePage({ params }: PageProps) {
       });
       return {
         id: v.venue_slug,
-        label: v.venue_ko,
+        label: getLocalizedVenueName(v.venue_slug, validLocale),
         items: worksInVenue,
       };
     });
-  }, [venues]);
+  }, [venues, validLocale]);
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('#intro');
 
@@ -109,19 +113,13 @@ export default function ConceptBlackWhitePage({ params }: PageProps) {
               <a
                 key={item.href}
                 href={item.href}
-                className={`relative flex flex-col items-center gap-0.5 text-sm font-bold tracking-tight py-1 group transition-colors ${
+                className={`relative text-sm font-bold tracking-tight py-2 group transition-colors ${
                   activeSection === item.href ? 'text-white' : 'text-[#B9B9B9] hover:text-white'
                 }`}
               >
                 <span>{isKo ? item.labelKo : item.labelEn}</span>
-                <span className={`font-mono text-[9px] tracking-widest transition-colors ${
-                  activeSection === item.href ? 'text-white/90 font-semibold' : 'text-[#8C8C8C] group-hover:text-white/90'
-                }`}>
-                  {item.labelEn}
-                </span>
-                {/* Bottom line indicator placed cleanly below both text lines */}
                 <span
-                  className={`absolute -bottom-1 left-0 right-0 h-[2px] bg-white transition-all duration-200 ${
+                  className={`absolute bottom-0 left-0 right-0 h-[2px] bg-white transition-all duration-200 ${
                     activeSection === item.href ? 'opacity-100 scale-x-100' : 'opacity-0 scale-x-0 group-hover:opacity-100 group-hover:scale-x-100'
                   }`}
                 />
@@ -166,7 +164,6 @@ export default function ConceptBlackWhitePage({ params }: PageProps) {
                   className="flex items-baseline justify-between py-4 text-2xl font-black text-white hover:text-[#002FA7] transition-colors"
                 >
                   <span>{isKo ? item.labelKo : item.labelEn}</span>
-                  <span className="font-mono text-xs font-semibold text-[#8C8C8C]">{item.labelEn}</span>
                 </a>
               ))}
             </div>
@@ -297,12 +294,21 @@ export default function ConceptBlackWhitePage({ params }: PageProps) {
         </div>
       </section>
 
+      {/* ─── Official Poster Banner Section ─── */}
+      <PosterBannerSection
+        locale={validLocale}
+        theme="blackwhite"
+        className="border-b border-white"
+      />
+
       {/* ─── Section 02: 전시 (EXHIBITION) ─── */}
       <section id="exhibition" className="border-b border-white">
         <div className="flex justify-between items-center px-6 sm:px-10 lg:px-16 py-6 border-b border-white">
           <h2 className="text-2xl sm:text-3xl font-extrabold flex items-baseline gap-3">
             <span>{isKo ? '전시' : 'EXHIBITION'}</span>
-            <span className="font-mono text-xs font-semibold text-[#8C8C8C] tracking-widest">EXHIBITION — ARTISTS / WORKS / MAP</span>
+            <span className="font-mono text-xs font-semibold text-[#8C8C8C] tracking-widest">
+              {isKo ? '전시 — 참여 작가 / 출품작 / 전시 지도' : 'EXHIBITION — ARTISTS / WORKS / MAP'}
+            </span>
           </h2>
           <span className="font-mono font-black text-3xl sm:text-4xl text-transparent" style={{ WebkitTextStroke: '1.5px #FFFFFF' }}>02</span>
         </div>
@@ -344,6 +350,7 @@ export default function ConceptBlackWhitePage({ params }: PageProps) {
               onArtistClick={(a) => setSelectedArtist(a)}
               showModalInternally={false}
               theme="blackwhite"
+              locale={validLocale}
             />
           </div>
         )}
@@ -355,6 +362,7 @@ export default function ConceptBlackWhitePage({ params }: PageProps) {
               categories={workCategories}
               allLabel={isKo ? '전체 출품작 (ALL)' : 'ALL WORKS'}
               theme="blackwhite"
+              locale={validLocale}
             />
           </div>
         )}
@@ -540,6 +548,8 @@ export default function ConceptBlackWhitePage({ params }: PageProps) {
       <ArtistModal
         artist={selectedArtist}
         onClose={() => setSelectedArtist(null)}
+        locale={validLocale}
+        theme="blackwhite"
       />
 
       {/* Floating Concept Switcher */}

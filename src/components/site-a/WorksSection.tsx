@@ -7,6 +7,8 @@ import { CardTheme } from './ArtistCard';
 import { getVenues } from '@/lib/artists';
 import { WorkWithArtist } from '@/types/artist';
 
+import { getLocalizedVenueName } from '@/lib/artistLocalization';
+
 interface WorksSectionProps {
   t?: (key: string) => string;
   locale?: string;
@@ -21,8 +23,9 @@ export default function WorksSection({
   theme = 'lime',
 }: WorksSectionProps) {
   const venues = useMemo(() => getVenues(), []);
+  const isKo = locale === 'ko';
 
-  // Group works by venue
+  // Group works by venue with localized labels
   const categories = useMemo(() => {
     return venues.map((v) => {
       const worksInVenue: WorkWithArtist[] = [];
@@ -39,13 +42,11 @@ export default function WorksSection({
 
       return {
         id: v.venue_slug,
-        label: v.venue_ko,
+        label: getLocalizedVenueName(v.venue_slug, locale),
         items: worksInVenue,
       };
     });
-  }, [venues]);
-
-  const isKo = locale === 'ko';
+  }, [venues, locale]);
 
   const tagColor = {
     lime: 'text-lime-400',
@@ -64,7 +65,7 @@ export default function WorksSection({
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 border-b border-white/10 pb-6">
           <BlurFade className="space-y-2">
             <span className={`text-[10px] md:text-xs font-mono tracking-widest uppercase block font-bold ${tagColor}`}>
-              [03] EXHIBITION GALLERY — WORKS &amp; PROJECTS
+              {isKo ? '[03] 전시 갤러리 — 출품작' : '[03] EXHIBITION GALLERY — WORKS & PROJECTS'}
             </span>
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-black uppercase text-white tracking-tight">
               {isKo ? '출품작' : 'Works on View'}
@@ -72,7 +73,9 @@ export default function WorksSection({
           </BlurFade>
 
           <p className="font-mono text-xs text-white/50 max-w-sm sm:text-right">
-            제8회 안양공공예술프로젝트(APAP8) 주요 출품작 아카이브
+            {isKo
+              ? '제8회 안양공공예술프로젝트(APAP8) 주요 출품작 아카이브'
+              : 'Archive of Key Artworks & Commissions for APAP8'}
           </p>
         </div>
 
@@ -81,6 +84,7 @@ export default function WorksSection({
           categories={categories}
           allLabel={isKo ? '전체 부문 (ALL)' : 'ALL VENUES'}
           theme={theme}
+          locale={locale}
         />
       </div>
     </section>

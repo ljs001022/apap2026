@@ -4,6 +4,14 @@ import React, { useState } from 'react';
 import { Work, Artist } from '@/types/artist';
 import { ChevronLeft, ChevronRight, Image as ImageIcon } from 'lucide-react';
 
+import {
+  getLocalizedTitle,
+  getLocalizedMaterial,
+  getLocalizedDescription,
+  getLocalizedArtistName,
+  getLocalizedVenueName,
+} from '@/lib/artistLocalization';
+
 import { CardTheme } from './ArtistCard';
 
 interface WorkCardProps {
@@ -12,6 +20,7 @@ interface WorkCardProps {
   className?: string;
   showArtistInfo?: boolean;
   theme?: CardTheme;
+  locale?: string;
 }
 
 export default function WorkCard({
@@ -20,7 +29,9 @@ export default function WorkCard({
   className = '',
   showArtistInfo = true,
   theme = 'lime',
+  locale = 'ko',
 }: WorkCardProps) {
+  const isKo = locale === 'ko';
   const images = work.images || [];
   const hasImages = images.length > 0;
   const isMultiImage = images.length > 1;
@@ -37,10 +48,18 @@ export default function WorkCard({
     setActiveImgIndex((prev) => (prev === images.length - 1 ? 0 : prev + 1));
   };
 
+  const localizedTitle = getLocalizedTitle(work.title, locale);
+  const localizedMaterial = getLocalizedMaterial(work.material || '', locale);
+  const localizedDescription = getLocalizedDescription(work.description || '', locale);
+  const localizedVenue = artist?.venue_slug
+    ? getLocalizedVenueName(artist.venue_slug, locale)
+    : (isKo ? artist?.venue_ko : (artist?.venue_slug || artist?.venue_ko));
+  const artistNames = artist ? getLocalizedArtistName(artist, locale) : null;
+
   const hasYear = Boolean(work.year && work.year.trim() !== '');
-  const hasMaterial = Boolean(work.material && work.material.trim() !== '');
+  const hasMaterial = Boolean(localizedMaterial && localizedMaterial.trim() !== '');
   const hasSize = Boolean(work.size && work.size.trim() !== '');
-  const hasDescription = Boolean(work.description && work.description.trim() !== '');
+  const hasDescription = Boolean(localizedDescription && localizedDescription.trim() !== '');
 
   const themeStyles = {
     lime: {
@@ -78,7 +97,7 @@ export default function WorkCard({
         <div className="relative aspect-[16/10] w-full overflow-hidden bg-black select-none border-b border-white/10">
           <img
             src={images[activeImgIndex]}
-            alt={work.title.split('\n')[0]}
+            alt={localizedTitle}
             loading="lazy"
             className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.02]"
           />
@@ -114,13 +133,13 @@ export default function WorkCard({
           )}
 
           {/* Venue badge on top right */}
-          {artist?.venue_ko && (
+          {localizedVenue && (
             <span
               className={`absolute top-3 right-3 font-mono text-[9px] font-bold border px-2.5 py-1 uppercase tracking-wider ${
                 theme === 'blackwhite' ? 'rounded-sm' : 'rounded-full'
               } ${themeStyles.badge}`}
             >
-              {artist.venue_ko}
+              {localizedVenue}
             </span>
           )}
         </div>
@@ -131,14 +150,14 @@ export default function WorkCard({
         <div className="space-y-3.5">
           {/* Top meta tags */}
           <div className="flex flex-wrap items-center justify-between gap-2">
-            {showArtistInfo && artist && (
+            {showArtistInfo && artistNames && (
               <div className="flex items-center gap-2">
                 <span className={`font-bold text-sm transition-colors ${themeStyles.artistText}`}>
-                  {artist.name_ko}
+                  {artistNames.primary}
                 </span>
-                {artist.name_en && artist.name_en !== '국영문' && (
+                {artistNames.secondary && (
                   <span className="font-mono text-xs text-white/50">
-                    ({artist.name_en})
+                    ({artistNames.secondary})
                   </span>
                 )}
               </div>
@@ -151,33 +170,33 @@ export default function WorkCard({
             )}
           </div>
 
-          {/* Work Title (pre-line for KO + EN multi-lines) */}
-          <h4 className="text-base sm:text-lg font-extrabold text-white leading-snug whitespace-pre-line tracking-tight">
-            {work.title}
+          {/* Work Title */}
+          <h4 className="text-base sm:text-lg font-extrabold text-white leading-snug tracking-tight">
+            {localizedTitle}
           </h4>
 
           {/* Material & Size */}
           {(hasMaterial || hasSize) && (
             <div className="pt-2 border-t border-white/10 space-y-1 font-mono text-xs text-white/60">
               {hasMaterial && (
-                <p className="whitespace-pre-line leading-relaxed">
-                  <span className="text-white/40 mr-1.5 font-bold">재료 / Material:</span>
-                  {work.material}
+                <p className="leading-relaxed">
+                  <span className="text-white/40 mr-1.5 font-bold">{isKo ? '재료:' : 'Material:'}</span>
+                  {localizedMaterial}
                 </p>
               )}
               {hasSize && (
-                <p className="whitespace-pre-line leading-relaxed">
-                  <span className="text-white/40 mr-1.5 font-bold">크기 / Size:</span>
+                <p className="leading-relaxed">
+                  <span className="text-white/40 mr-1.5 font-bold">{isKo ? '크기:' : 'Size:'}</span>
                   {work.size}
                 </p>
               )}
             </div>
           )}
 
-          {/* Description (pre-line preserved) */}
+          {/* Description */}
           {hasDescription && (
             <div className="pt-3 text-xs sm:text-sm text-white/70 whitespace-pre-line leading-relaxed font-light border-t border-white/5 max-h-48 overflow-y-auto pr-1">
-              {work.description}
+              {localizedDescription}
             </div>
           )}
         </div>

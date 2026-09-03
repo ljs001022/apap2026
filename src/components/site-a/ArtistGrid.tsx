@@ -18,16 +18,20 @@ interface ArtistGridProps {
   onArtistClick?: (artist: Artist) => void;
   showModalInternally?: boolean;
   theme?: CardTheme;
+  locale?: string;
 }
 
 export default function ArtistGrid({
   categories,
-  allLabel = '전체 (ALL)',
+  allLabel,
   className = '',
   onArtistClick,
   showModalInternally = true,
   theme = 'lime',
+  locale = 'ko',
 }: ArtistGridProps) {
+  const isKo = locale === 'ko';
+  const effectiveAllLabel = allLabel || (isKo ? '전체 부문 (ALL)' : 'ALL VENUES');
   const [activeCategoryId, setActiveCategoryId] = useState<string>('all');
   const [selectedArtist, setSelectedArtist] = useState<Artist | null>(null);
 
@@ -89,7 +93,7 @@ export default function ArtistGrid({
             activeCategoryId === 'all' ? tabActiveStyles : tabInactiveStyles
           }`}
         >
-          <span>{allLabel}</span>
+          <span>{effectiveAllLabel}</span>
           <span
             className={`px-1.5 py-0.2 font-mono text-[10px] rounded-full ${
               activeCategoryId === 'all' ? 'bg-black/20 text-black font-extrabold' : 'bg-white/10 text-white/60'
@@ -134,13 +138,14 @@ export default function ArtistGrid({
               key={`${artist.slug}-${artist.venue_slug || ''}`}
               artist={artist}
               theme={theme}
+              locale={locale}
               onClick={handleCardClick}
             />
           ))}
         </div>
       ) : (
         <div className="p-16 text-center text-white/40 font-mono text-sm border border-dashed border-white/10 rounded-xl">
-          등록된 작가가 없습니다.
+          {isKo ? '등록된 작가가 없습니다.' : 'No artists found.'}
         </div>
       )}
 
@@ -149,6 +154,8 @@ export default function ArtistGrid({
         <ArtistModal
           artist={selectedArtist}
           onClose={() => setSelectedArtist(null)}
+          locale={locale}
+          theme={theme}
         />
       )}
     </div>

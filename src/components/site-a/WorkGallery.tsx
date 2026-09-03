@@ -16,14 +16,18 @@ interface WorkGalleryProps {
   allLabel?: string;
   className?: string;
   theme?: CardTheme;
+  locale?: string;
 }
 
 export default function WorkGallery({
   categories,
-  allLabel = '전체 (ALL)',
+  allLabel,
   className = '',
   theme = 'lime',
+  locale = 'ko',
 }: WorkGalleryProps) {
+  const isKo = locale === 'ko';
+  const effectiveAllLabel = allLabel || (isKo ? '전체 출품작 (ALL)' : 'ALL WORKS');
   const [activeCategoryId, setActiveCategoryId] = useState<string>('all');
 
   // Flatten all works
@@ -65,7 +69,7 @@ export default function WorkGallery({
             activeCategoryId === 'all' ? tabActiveStyles : tabInactiveStyles
           }`}
         >
-          <span>{allLabel}</span>
+          <span>{effectiveAllLabel}</span>
           <span
             className={`px-1.5 py-0.2 font-mono text-[10px] rounded-full ${
               activeCategoryId === 'all' ? 'bg-black/20 text-black font-extrabold' : 'bg-white/10 text-white/60'
@@ -106,12 +110,13 @@ export default function WorkGallery({
               artist={item.artist}
               showArtistInfo={true}
               theme={theme}
+              locale={locale}
             />
           ))}
         </div>
       ) : (
         <div className="p-16 text-center text-white/40 font-mono text-sm border border-dashed border-white/10 rounded-xl">
-          등록된 작품이 없습니다.
+          {isKo ? '등록된 작품이 없습니다.' : 'No works found.'}
         </div>
       )}
     </div>
