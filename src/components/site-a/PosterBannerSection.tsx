@@ -85,7 +85,7 @@ export default function PosterBannerSection({
             <picture className="w-full h-full block">
               <source type="image/webp" srcSet="/images/apap8_uniform.webp" />
               <img
-                src="/images/apap8_uniform.gif"
+                src="/images/APAP8_uniform.gif"
                 alt={isKo ? "제8회 안양공공예술프로젝트(APAP8) 공식 포스터 - ARTEX: 예술대전환" : "The 8th Anyang Public Art Project (APAP8) Official Poster"}
                 className="w-full h-full object-contain sm:object-cover group-hover:scale-[1.012] transition-transform duration-700 ease-out"
                 loading="eager"
@@ -123,7 +123,7 @@ export default function PosterBannerSection({
               <picture className="w-full h-full flex items-center justify-center">
                 <source type="image/webp" srcSet="/images/apap8_uniform.webp" />
                 <img
-                  src="/images/apap8_uniform.gif"
+                  src="/images/APAP8_uniform.gif"
                   alt={isKo ? "제8회 안양공공예술프로젝트(APAP8) 공식 포스터" : "The 8th Anyang Public Art Project (APAP8) Official Poster"}
                   className="w-full h-full object-contain"
                 />

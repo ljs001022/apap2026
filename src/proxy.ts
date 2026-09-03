@@ -10,11 +10,12 @@ export function proxy(request: NextRequest) {
     pathname.startsWith('/api') ||
     pathname.startsWith('/admin') ||
     pathname.startsWith('/_next') ||
+    pathname.startsWith('/images') ||
+    pathname.startsWith('/assets') ||
+    pathname.startsWith('/uploads') ||
     pathname.includes('/images/') ||
     pathname.includes('/assets/') ||
-    pathname.startsWith('/assets') ||
     pathname.includes('/favicon.ico') ||
-    pathname.startsWith('/uploads') ||
     /\.(png|jpe?g|gif|webp|svg|ico|mp4|webm|pdf|json|woff2?|ttf)$/i.test(pathname)
   ) {
     return NextResponse.next();
@@ -94,5 +95,16 @@ export function proxy(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ['/((?!_next/static|_next/image|favicon.ico).*)'],
+  matcher: [
+    /*
+     * Match all request paths except for:
+     * - api (API routes)
+     * - _next/static (static files)
+     * - _next/image (image optimization files)
+     * - favicon.ico, sitemap.xml, robots.txt (metadata files)
+     * - images, assets, uploads (public asset directories)
+     * - Any path with a file extension (e.g. .png, .jpg, .gif, .webp, .svg, .json, .ico)
+     */
+    '/((?!api|_next/static|_next/image|favicon.ico|sitemap.xml|robots.txt|images|assets|uploads|.*\\..*).*)',
+  ],
 };
