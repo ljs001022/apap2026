@@ -10,7 +10,6 @@ import { getVenues, getAllWorksWithArtist } from '@/lib/artists';
 import ArtistGrid from '@/components/site-a/ArtistGrid';
 import WorkGallery from '@/components/site-a/WorkGallery';
 import ArtistModal from '@/components/site-a/ArtistModal';
-import PosterBannerSection from '@/components/site-a/PosterBannerSection';
 import { getLocalizedVenueName } from '@/lib/artistLocalization';
 
 interface PageProps {
@@ -175,51 +174,18 @@ export default function ConceptBlackWhitePage({ params }: PageProps) {
         )}
       </AnimatePresence>
 
-      {/* ─── Section 0: Hero ─── */}
-      <section id="intro" className="relative mt-[68px] min-h-[82vh] border-b border-white flex flex-col justify-between overflow-hidden">
-        {/* Large Typographic Outline "8" */}
-        <div className="absolute right-[-2vw] top-1/2 -translate-y-1/2 font-mono font-black text-[clamp(280px,50vw,680px)] text-transparent select-none pointer-events-none z-0 leading-none opacity-20"
-             style={{ WebkitTextStroke: '2px rgba(255,255,255,0.4)' }}>
-          8
-        </div>
-
-        {/* Top meta */}
-        <div className="relative z-10 flex justify-between items-center px-6 sm:px-10 lg:px-16 pt-8 font-mono text-xs font-semibold tracking-widest text-[#B9B9B9]">
-          <span>THE 8TH ANYANG PUBLIC ART PROJECT</span>
-          <span>ANYANG, KR — 2026</span>
-        </div>
-
-        {/* Main Hero Typography */}
-        <div className="relative z-10 px-6 sm:px-10 lg:px-16 py-12 max-w-5xl space-y-4">
-          <h1 className="font-mono font-black text-[clamp(56px,10vw,140px)] leading-[0.88] tracking-tighter">
-            APAP8<span className="block text-[0.4em] font-light text-transparent mt-2" style={{ WebkitTextStroke: '1.5px #FFFFFF' }}>ANYANG 2026</span>
-          </h1>
-          <p className="text-xl sm:text-2xl font-extrabold text-white pt-2">
-            {isKo ? '제8회 안양공공예술프로젝트' : 'The 8th Anyang Public Art Project'}
-          </p>
-          <p className="text-sm sm:text-base font-normal text-[#B9B9B9] max-w-2xl leading-relaxed">
-            {isKo
-              ? '도시와 예술이 만나는 안양의 여덟 번째 실험. 흑백의 조형 그리드와 공공예술의 시그니처 톤으로 도심 전역을 새로운 시각적 층위로 재구성합니다.'
-              : 'The eighth experiment where the city meets art. Reorganizing Anyang across public spaces through monochrome archival grids and contemporary public artworks.'}
-          </p>
-        </div>
-
-        {/* Bottom Bar */}
-        <div className="relative z-10 flex flex-wrap justify-between items-end gap-6 px-6 sm:px-10 lg:px-16 py-6 border-t border-white/30 bg-[#0A0A0A]/40 backdrop-blur-sm">
-          <div>
-            <div className="font-mono font-bold text-lg sm:text-2xl text-white">2026.09.14 — 11.30</div>
-            <div className="text-xs sm:text-sm text-[#B9B9B9] mt-1">
-              {isKo ? '안양예술공원 · 안양파빌리온 · 안양 전역' : 'Anyang Art Park · Anyang Pavilion · Throughout Anyang'}
-            </div>
-          </div>
-          <div className="flex gap-3">
-            <a href="#visit" className="bg-white text-black font-bold text-sm px-6 py-3 rounded-full hover:bg-[#B9B9B9] transition-colors">
-              {isKo ? '관람 안내' : 'Visit Info'}
-            </a>
-            <a href="#exhibition" className="border border-white text-white font-bold text-sm px-6 py-3 rounded-full hover:bg-white hover:text-black transition-colors">
-              {isKo ? '전시 보기' : 'Exhibition'}
-            </a>
-          </div>
+      {/* ─── Section 0: Intro (APAP8 Uniform Poster Image Only) ─── */}
+      <section id="intro" className="relative mt-[68px] border-b border-white bg-black overflow-hidden flex items-center justify-center">
+        <div className="w-full aspect-[16/9] max-w-[1920px] max-h-[calc(100vh-68px)] mx-auto flex items-center justify-center bg-black">
+          <picture className="w-full h-full block">
+            <source type="image/webp" srcSet="/images/apap8_uniform.webp" />
+            <img
+              src="/images/apap8_uniform.gif"
+              alt={isKo ? "제8회 안양공공예술프로젝트(APAP8) 공식 포스터 - ARTEX: 예술대전환" : "The 8th Anyang Public Art Project (APAP8) Official Poster"}
+              className="w-full h-full object-contain block mx-auto"
+              loading="eager"
+            />
+          </picture>
         </div>
       </section>
 
@@ -293,13 +259,6 @@ export default function ConceptBlackWhitePage({ params }: PageProps) {
           </div>
         </div>
       </section>
-
-      {/* ─── Official Poster Banner Section ─── */}
-      <PosterBannerSection
-        locale={validLocale}
-        theme="blackwhite"
-        className="border-b border-white"
-      />
 
       {/* ─── Section 02: 전시 (EXHIBITION) ─── */}
       <section id="exhibition" className="border-b border-white">
