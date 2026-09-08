@@ -1,4 +1,4 @@
-﻿'use client';
+'use client';
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
@@ -78,11 +78,6 @@ export default function GnbHeader({ locale }: GnbHeaderProps) {
                   }`}
                 >
                   <span>{isKo ? item.labelKo : item.labelEn}</span>
-                  {isKo && (
-                    <span className="ml-1 font-mono text-[9px] text-[#5C5C5C] group-hover:text-[#8C8C8C] transition-colors">
-                      · {item.labelEn}
-                    </span>
-                  )}
                   <span
                     className={`absolute -bottom-0.5 left-0 right-0 h-[1.5px] bg-white transition-all duration-200 origin-left ${
                       active ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'
@@ -144,7 +139,6 @@ export default function GnbHeader({ locale }: GnbHeaderProps) {
                     <span className="text-2xl font-black">
                       {isKo ? item.labelKo : item.labelEn}
                     </span>
-                    <span className="font-mono text-xs text-[#5C5C5C]">{item.labelEn}</span>
                   </Link>
                 );
               })}
