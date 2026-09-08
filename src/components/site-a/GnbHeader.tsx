@@ -77,7 +77,7 @@ export default function GnbHeader({ locale }: GnbHeaderProps) {
                     active ? 'text-white' : 'text-[#8C8C8C] hover:text-white'
                   }`}
                 >
-                  <span>{isKo ? item.labelKo : item.labelEn}</span>
+                  <span>{item.labelEn}</span>
                   <span
                     className={`absolute -bottom-0.5 left-0 right-0 h-[1.5px] bg-white transition-all duration-200 origin-left ${
                       active ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'
@@ -137,7 +137,7 @@ export default function GnbHeader({ locale }: GnbHeaderProps) {
                     }`}
                   >
                     <span className="text-2xl font-black">
-                      {isKo ? item.labelKo : item.labelEn}
+                      {item.labelEn}
                     </span>
                   </Link>
                 );
