@@ -88,8 +88,13 @@ export function proxy(request: NextRequest) {
     return response;
   }
 
-  // 3.5. 8회차 레퍼런스(concept-a) 및 기존 컨셉 링크(concept-blackwhite)는 항상 Site A로 분기
+  // 3.5. 8회차 전용 서브페이지 및 레퍼런스는 항상 Site A로 분기
   if (
+    pathname.includes('/about') ||
+    pathname.includes('/exhibition') ||
+    pathname.includes('/program') ||
+    pathname.includes('/community') ||
+    (pathname.includes('/visit') && activeSiteCookie !== 'site-b') ||
     pathname.includes('/concept-a') ||
     pathname.includes('/concept-blackwhite') ||
     pathname.includes('/concept-bw')
