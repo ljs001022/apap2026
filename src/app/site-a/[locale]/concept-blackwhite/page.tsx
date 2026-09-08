@@ -481,7 +481,7 @@ export default function ConceptBlackWhitePage({ params }: PageProps) {
             <p className="text-sm text-[#B9B9B9] leading-relaxed">
               1회(2005)부터 7회까지의 모든 아카이브를 통합 허브에서 만나보세요.
             </p>
-            <Link href="/site-b/ko" className="inline-flex items-center gap-1.5 text-xs font-mono text-white underline underline-offset-4 pt-2">
+            <Link href={`/archive/${validLocale}`} className="inline-flex items-center gap-1.5 text-xs font-mono text-white underline underline-offset-4 pt-2">
               <span>APAP ARCHIVE → apap.or.kr</span>
               <ArrowUpRight className="w-3.5 h-3.5" />
             </Link>

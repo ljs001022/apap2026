@@ -39,13 +39,12 @@ export function proxy(request: NextRequest) {
   const activeSiteCookie = request.cookies.get('active_site')?.value;
 
   // 3. 도메인 분기 및 리라이트
-  if (host.includes('2026.apap.or.kr') || host.includes('apap8.or.kr')) {
-    // 사이트 A (8회차 랜딩페이지) 전용 도메인 접속 시
-    url.pathname = `/site-a${normalizedPath}`;
-    const response = NextResponse.rewrite(url);
-    response.cookies.set('active_site', 'site-a', { path: '/' });
-    return response;
-  }
+  const isSiteADomain =
+    host.includes('2026.apap.or.kr') ||
+    host.includes('apap8.or.kr') ||
+    host.includes('apap2026.vercel.app') ||
+    host.includes('apap2026') ||
+    host.includes('apap8');
 
   // 3.1. 아카이브 강제 진입 경로 (/archive) 처리
   if (pathname.startsWith('/archive')) {
@@ -73,7 +72,15 @@ export function proxy(request: NextRequest) {
     return response;
   }
 
-  // 3.3. root (/) 접근 시 언제나 8회차 랜딩(site-a)을 메인으로 초기화 및 쿠키 갱신
+  // 3.3. 사이트 A 전용 도메인 (apap2026.vercel.app, 2026.apap.or.kr 등) 접속 시 항상 Site A로 분기
+  if (isSiteADomain) {
+    url.pathname = `/site-a${normalizedPath}`;
+    const response = NextResponse.rewrite(url);
+    response.cookies.set('active_site', 'site-a', { path: '/' });
+    return response;
+  }
+
+  // 3.4. root (/) 접근 시 언제나 8회차 랜딩(site-a)을 메인으로 초기화 및 쿠키 갱신
   if (pathname === '/') {
     url.pathname = `/site-a/ko`;
     const response = NextResponse.rewrite(url);
@@ -81,12 +88,35 @@ export function proxy(request: NextRequest) {
     return response;
   }
 
-  // 3.4. 일반적인 다국어 경로 (/, /ko, /en 등) 접근 시 쿠키 상태에 따라 라우팅
+  // 3.5. 8회차 컨셉 페이지(/concept-b, /concept-c, /concept-blackwhite 등)는 항상 Site A로 분기
+  if (
+    pathname.includes('/concept-b') ||
+    pathname.includes('/concept-c') ||
+    pathname.includes('/concept-blackwhite') ||
+    pathname.includes('/concept-bw')
+  ) {
+    url.pathname = `/site-a${normalizedPath}`;
+    const response = NextResponse.rewrite(url);
+    response.cookies.set('active_site', 'site-a', { path: '/' });
+    return response;
+  }
+
+  // 3.6. 일반적인 다국어 경로 접근 시:
+  // 순수 언어 루트 경로(/ko, /en, /ja, /zh 등)는 기본적으로 8회차 메인 랜딩(site-a)으로 연결
+  const isPureLocaleRoot = locales.some((l) => pathname === `/${l}` || pathname === `/${l}/`);
+
+  if (isPureLocaleRoot) {
+    url.pathname = `/site-a${normalizedPath}`;
+    const response = NextResponse.rewrite(url);
+    response.cookies.set('active_site', 'site-a', { path: '/' });
+    return response;
+  }
+
   if (activeSiteCookie === 'site-b') {
     url.pathname = `/site-b${normalizedPath}`;
     return NextResponse.rewrite(url);
   } else {
-    // 기본값은 8회차 랜딩(site-a)으로 노출 (임시 우선 배포 정책)
+    // 기본값은 8회차 랜딩(site-a)으로 노출
     url.pathname = `/site-a${normalizedPath}`;
     const response = NextResponse.rewrite(url);
     response.cookies.set('active_site', 'site-a', { path: '/' });

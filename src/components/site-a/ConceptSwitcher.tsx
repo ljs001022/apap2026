@@ -29,6 +29,8 @@ export default function ConceptSwitcher({ locale }: { locale: string }) {
   };
 
   const handleSwitch = (concept: 'a' | 'b' | 'c' | 'bw') => {
+    // 8회차 랜딩(Site A)의 컨셉 전환이므로 active_site를 명시적으로 site-a로 설정
+    document.cookie = 'active_site=site-a; path=/; max-age=31536000';
     if (concept === 'a') {
       router.push(`/${locale}`);
     } else if (concept === 'b') {
