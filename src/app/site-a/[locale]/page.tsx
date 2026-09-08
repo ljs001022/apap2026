@@ -1,9 +1,10 @@
-'use client';
+﻿'use client';
 
 import React from 'react';
 import GnbHeader from '@/components/site-a/GnbHeader';
 import SectionCard from '@/components/site-a/SectionCard';
 import Footer from '@/components/site-a/Footer';
+import DustCanvas from '@/components/site-a/DustCanvas';
 import { MapPin, Calendar, Layers } from 'lucide-react';
 
 interface PageProps {
@@ -95,19 +96,25 @@ export default function SiteAPage({ params }: PageProps) {
     <div className="bg-[#0A0A0A] text-white font-sans antialiased">
       <GnbHeader locale={validLocale} />
 
-      {/* Main Container with vertical scroll snapping */}
-      <main className="h-screen overflow-y-auto overflow-x-hidden scroll-smooth snap-y snap-mandatory" style={{ scrollbarWidth: 'none' }}>
-        
+      {/* Main Container: 100dvh + 100vh fallback, vertical scroll snapping */}
+      <main
+        className="h-screen h-[100dvh] overflow-y-auto overflow-x-hidden scroll-smooth snap-y snap-mandatory hide-scrollbar"
+        style={{ height: '100vh', minHeight: '100dvh' }}
+      >
         {/* ── Section 0: Hero ── */}
         <section
           id="hero"
-          className="relative h-screen snap-start flex flex-col bg-black border-b border-white justify-between overflow-hidden"
+          className="relative h-screen h-[100dvh] snap-start flex flex-col bg-black border-b border-white justify-between overflow-hidden"
+          style={{ height: '100vh', minHeight: '100dvh' }}
         >
-          {/* Top spacer for fixed header */}
-          <div className="h-16 flex-shrink-0" />
+          {/* Subtle Dust overlay */}
+          <DustCanvas opacity={0.3} />
 
-          {/* Banner Container: 1920x800 desktop, 768x768 mobile */}
-          <div className="flex-1 w-full max-w-[1920px] max-h-[800px] mx-auto flex items-center justify-center px-4 sm:px-8 py-4 overflow-hidden">
+          {/* Top spacer for fixed header */}
+          <div className="h-14 sm:h-16 flex-shrink-0" />
+
+          {/* Banner Container */}
+          <div className="flex-1 w-full max-w-[1920px] max-h-[800px] mx-auto flex items-center justify-center px-3 sm:px-8 py-2 sm:py-4 overflow-hidden relative z-10">
             <div className="relative w-full h-full max-w-[1920px] max-h-[800px] aspect-[12/5] max-sm:aspect-square max-sm:max-h-[768px] overflow-hidden flex items-center justify-center bg-black">
               <picture className="w-full h-full block">
                 <source type="image/webp" srcSet="/images/apap8_uniform.webp" />
@@ -122,8 +129,8 @@ export default function SiteAPage({ params }: PageProps) {
           </div>
 
           {/* Ticker Bar */}
-          <div className="flex-shrink-0 bg-white text-black py-2.5 overflow-hidden whitespace-nowrap select-none border-t border-black">
-            <div className="inline-flex animate-[ticker_30s_linear_infinite] font-mono text-[11px] font-bold tracking-wider gap-12">
+          <div className="flex-shrink-0 bg-white text-black py-2 sm:py-2.5 overflow-hidden whitespace-nowrap select-none border-t border-black relative z-10">
+            <div className="inline-flex animate-[ticker_30s_linear_infinite] font-mono text-[10px] sm:text-[11px] font-bold tracking-wider gap-8 sm:gap-12">
               <span>{t.ticker}</span>
               <span>{t.ticker}</span>
               <span>{t.ticker}</span>
@@ -131,7 +138,7 @@ export default function SiteAPage({ params }: PageProps) {
           </div>
         </section>
 
-        {/* ── Section 01: About (Overview + Theme 2 blocks only) ── */}
+        {/* ── Section 01: About (Overview + Theme) ── */}
         <SectionCard
           id="about"
           index="01"
@@ -141,28 +148,28 @@ export default function SiteAPage({ params }: PageProps) {
           isKo={isKo}
           href={`/${validLocale}/about`}
           summary={
-            <div className="max-w-4xl space-y-6">
-              <h3 className="text-2xl sm:text-4xl lg:text-5xl font-extrabold leading-tight tracking-tight whitespace-pre-line">
+            <div className="max-w-4xl space-y-3 sm:space-y-6">
+              <h3 className="text-xl sm:text-3xl lg:text-4xl font-extrabold leading-tight tracking-tight whitespace-pre-line">
                 {t.about.heading}
               </h3>
 
-              <div className="grid md:grid-cols-2 gap-6 pt-2 border-t border-white/20">
-                <div className="space-y-2">
-                  <span className="font-mono text-[10px] font-bold text-[#8C8C8C] tracking-widest uppercase">
+              <div className="grid md:grid-cols-2 gap-3 sm:gap-6 pt-2 border-t border-white/20">
+                <div className="space-y-1 sm:space-y-2">
+                  <span className="font-mono text-[9px] sm:text-[10px] font-bold text-[#8C8C8C] tracking-widest uppercase">
                     OVERVIEW
                   </span>
-                  <p className="text-sm sm:text-base text-[#B9B9B9] leading-relaxed">
+                  <p className="text-xs sm:text-sm text-[#B9B9B9] leading-relaxed">
                     {t.about.overview}
                   </p>
                 </div>
-                <div className="space-y-2">
-                  <span className="font-mono text-[10px] font-bold text-[#8C8C8C] tracking-widest uppercase">
+                <div className="space-y-1 sm:space-y-2">
+                  <span className="font-mono text-[9px] sm:text-[10px] font-bold text-[#8C8C8C] tracking-widest uppercase">
                     THEME
                   </span>
-                  <h4 className="text-sm sm:text-base font-bold text-white">
+                  <h4 className="text-xs sm:text-sm font-bold text-white">
                     {t.about.themeTitle}
                   </h4>
-                  <p className="text-xs sm:text-sm text-[#B9B9B9] leading-relaxed">
+                  <p className="text-[11px] sm:text-xs text-[#B9B9B9] leading-relaxed">
                     {t.about.themeDesc}
                   </p>
                 </div>
@@ -181,35 +188,36 @@ export default function SiteAPage({ params }: PageProps) {
           isKo={isKo}
           href={`/${validLocale}/exhibition`}
           summary={
-            <div className="space-y-8 max-w-4xl">
-              <div className="flex gap-12 sm:gap-20">
+            <div className="space-y-3 sm:space-y-6 max-w-4xl">
+              {/* Stats Block: compact mobile numbers & gap */}
+              <div className="flex gap-8 sm:gap-16 lg:gap-20">
                 <div>
-                  <div className="font-mono font-black text-6xl sm:text-8xl text-white leading-none">
+                  <div className="font-mono font-black text-4xl sm:text-7xl md:text-8xl text-white leading-none">
                     {t.exhibition.artistCount}
                   </div>
-                  <div className="font-mono text-xs text-[#8C8C8C] mt-3 uppercase tracking-wider">
+                  <div className="font-mono text-[10px] sm:text-xs text-[#8C8C8C] mt-1.5 sm:mt-3 uppercase tracking-wider">
                     {t.exhibition.artistLabel}
                   </div>
                 </div>
-                <div className="border-l border-[#2E2E2E] pl-12 sm:pl-20">
-                  <div className="font-mono font-black text-6xl sm:text-8xl text-white leading-none">
+                <div className="border-l border-[#2E2E2E] pl-8 sm:pl-16 lg:pl-20">
+                  <div className="font-mono font-black text-4xl sm:text-7xl md:text-8xl text-white leading-none">
                     {t.exhibition.venueCount}
                   </div>
-                  <div className="font-mono text-xs text-[#8C8C8C] mt-3 uppercase tracking-wider">
+                  <div className="font-mono text-[10px] sm:text-xs text-[#8C8C8C] mt-1.5 sm:mt-3 uppercase tracking-wider">
                     {t.exhibition.venueLabel}
                   </div>
                 </div>
               </div>
 
-              <p className="text-[#B9B9B9] text-sm sm:text-base leading-relaxed max-w-2xl">
+              <p className="text-[#B9B9B9] text-xs sm:text-sm leading-relaxed max-w-2xl">
                 {t.exhibition.body}
               </p>
 
-              <div className="flex flex-wrap gap-2 text-xs font-mono text-white/60">
-                <span className="border border-white/20 px-3 py-1 bg-white/5">야외전시 Outdoor</span>
-                <span className="border border-white/20 px-3 py-1 bg-white/5">한중특별전 Special</span>
-                <span className="border border-white/20 px-3 py-1 bg-white/5">e-파빌리온 Media</span>
-                <span className="border border-white/20 px-3 py-1 bg-white/5">308 아트 크루 Crew</span>
+              <div className="flex flex-wrap gap-1.5 sm:gap-2 text-[10px] sm:text-xs font-mono text-white/70">
+                <span className="border border-white/20 px-2 py-0.5 sm:px-3 sm:py-1 bg-white/5">야외전시 Outdoor</span>
+                <span className="border border-white/20 px-2 py-0.5 sm:px-3 sm:py-1 bg-white/5">한중특별전 Special</span>
+                <span className="border border-white/20 px-2 py-0.5 sm:px-3 sm:py-1 bg-white/5">e-파빌리온 Media</span>
+                <span className="border border-white/20 px-2 py-0.5 sm:px-3 sm:py-1 bg-white/5">308 아트 크루 Crew</span>
               </div>
             </div>
           }
@@ -225,15 +233,15 @@ export default function SiteAPage({ params }: PageProps) {
           isKo={isKo}
           href={`/${validLocale}/program`}
           summary={
-            <div className="space-y-6 max-w-3xl">
-              <h3 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold leading-snug">
+            <div className="space-y-3 sm:space-y-5 max-w-3xl">
+              <h3 className="text-lg sm:text-2xl lg:text-3xl font-extrabold leading-snug">
                 {t.program.heading}
               </h3>
-              <p className="text-[#B9B9B9] text-sm sm:text-base leading-relaxed">
+              <p className="text-[#B9B9B9] text-xs sm:text-sm leading-relaxed">
                 {t.program.body}
               </p>
-              <div className="flex items-center gap-2 font-mono text-xs text-white/70 border border-white/20 p-3 w-fit bg-white/5">
-                <Calendar className="w-4 h-4 text-white" />
+              <div className="flex items-center gap-2 font-mono text-[11px] sm:text-xs text-white/70 border border-white/20 p-2 sm:p-2.5 w-fit bg-white/5">
+                <Calendar className="w-3.5 h-3.5 text-white flex-shrink-0" />
                 <span>{t.program.date}</span>
               </div>
             </div>
@@ -250,24 +258,24 @@ export default function SiteAPage({ params }: PageProps) {
           isKo={isKo}
           href={`/${validLocale}/community`}
           summary={
-            <div className="space-y-4 w-full max-w-3xl">
-              <h3 className="text-xs font-bold text-[#8C8C8C] font-mono uppercase tracking-widest">
+            <div className="space-y-2 sm:space-y-3 w-full max-w-3xl">
+              <h3 className="text-[10px] sm:text-xs font-bold text-[#8C8C8C] font-mono uppercase tracking-widest">
                 {t.community.heading}
               </h3>
               <ul className="divide-y divide-[#2E2E2E] border-y border-[#2E2E2E]">
                 {t.community.notices.map((n, i) => (
-                  <li key={i} className="flex items-center justify-between gap-4 py-3.5 hover:bg-white/[0.03] px-3 transition-colors">
-                    <div className="flex items-center gap-3 min-w-0">
-                      <span className={`text-[10px] font-bold font-mono px-2 py-0.5 ${
+                  <li key={i} className="flex items-center justify-between gap-3 py-2.5 sm:py-3.5 hover:bg-white/[0.03] px-1 sm:px-2 transition-colors">
+                    <div className="flex items-center gap-2 min-w-0">
+                      <span className={`text-[9px] sm:text-[10px] font-bold font-mono px-1.5 py-0.5 flex-shrink-0 ${
                         n.cat === '프레스' || n.cat === 'Press'
                           ? 'bg-white text-black'
                           : 'border border-white text-white'
                       }`}>
                         {n.cat}
                       </span>
-                      <span className="text-sm font-bold text-white truncate">{n.title}</span>
+                      <span className="text-xs sm:text-sm font-bold text-white truncate">{n.title}</span>
                     </div>
-                    <span className="font-mono text-xs text-[#8C8C8C] flex-shrink-0">{n.date}</span>
+                    <span className="font-mono text-[10px] sm:text-xs text-[#8C8C8C] flex-shrink-0">{n.date}</span>
                   </li>
                 ))}
               </ul>
@@ -285,17 +293,17 @@ export default function SiteAPage({ params }: PageProps) {
           isKo={isKo}
           href={`/${validLocale}/visit`}
           summary={
-            <div className="grid sm:grid-cols-2 gap-8 sm:gap-12 max-w-3xl">
-              <div className="space-y-2 border-l-2 border-white pl-4">
-                <div className="font-mono text-[10px] uppercase tracking-widest text-[#8C8C8C]">ADMISSION & HOURS</div>
-                <div className="text-2xl font-extrabold">{t.visit.admission}</div>
-                <div className="text-sm text-[#B9B9B9]">{t.visit.hours}</div>
+            <div className="grid sm:grid-cols-2 gap-4 sm:gap-8 max-w-3xl">
+              <div className="space-y-1 sm:space-y-2 border-l-2 border-white pl-3 sm:pl-4">
+                <div className="font-mono text-[9px] sm:text-[10px] uppercase tracking-widest text-[#8C8C8C]">ADMISSION & HOURS</div>
+                <div className="text-lg sm:text-2xl font-extrabold">{t.visit.admission}</div>
+                <div className="text-xs sm:text-sm text-[#B9B9B9]">{t.visit.hours}</div>
               </div>
-              <div className="space-y-2 border-l-2 border-white pl-4">
-                <div className="font-mono text-[10px] uppercase tracking-widest text-[#8C8C8C]">LOCATION & ACCESS</div>
+              <div className="space-y-1 sm:space-y-2 border-l-2 border-white pl-3 sm:pl-4">
+                <div className="font-mono text-[9px] sm:text-[10px] uppercase tracking-widest text-[#8C8C8C]">LOCATION & ACCESS</div>
                 <div className="flex items-start gap-1.5">
-                  <MapPin className="w-4 h-4 text-white mt-1 flex-shrink-0" />
-                  <div className="text-sm text-[#B9B9B9] leading-relaxed">
+                  <MapPin className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-white mt-1 flex-shrink-0" />
+                  <div className="text-xs sm:text-sm text-[#B9B9B9] leading-relaxed">
                     <span className="text-white font-bold">{t.visit.location}</span>
                     <br />
                     {t.visit.access}

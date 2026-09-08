@@ -36,3 +36,31 @@ body {
     display: none;
   }
 }
+
+@keyframes glitch {
+  0%, 92%, 100% {
+    transform: translate(0);
+    text-shadow: none;
+  }
+  93% {
+    transform: translate(-1.5px, 0.5px);
+    text-shadow: 1px 0 rgba(255, 255, 255, 0.7), -1px 0 rgba(120, 120, 120, 0.7);
+  }
+  95% {
+    transform: translate(1.5px, -0.5px);
+    text-shadow: -1px 0 rgba(255, 255, 255, 0.7), 1px 0 rgba(160, 160, 160, 0.7);
+  }
+  97% {
+    transform: translate(-0.8px, 0);
+    text-shadow: none;
+  }
+  99% {
+    transform: translate(0.8px, 0.5px);
+    text-shadow: 0.5px 0 rgba(255, 255, 255, 0.5);
+  }
+}
+
+.animate-glitch {
+  animation: glitch 3.5s infinite ease-in-out;
+}
+
