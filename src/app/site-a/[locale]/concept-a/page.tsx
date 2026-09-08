@@ -4,7 +4,6 @@ import React, { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import { Menu, X, ArrowUpRight } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
-import ConceptSwitcher from '@/components/site-a/ConceptSwitcher';
 import ArtistSection from '@/components/site-a/ArtistSection';
 import WorksSection from '@/components/site-a/WorksSection';
 import PosterBannerSection from '@/components/site-a/PosterBannerSection';
@@ -30,7 +29,7 @@ const dict = {
     admission: '요금: 무료',
     aboutQuery: 'query: 전시 소개',
     aboutTitle: '지능의 시대, 도시는 무엇을 상상하는가',
-    aboutDesc1: 'APAP 8은 공공예술และ 인공지능의 교차점을 탐구합니다. 안양의 열린 공간 곳곳에서 예술가와 기계 시스템이 함께 만든 작품들이 도시가 감각하고, 학습하고, 기억하는 방식을 질문합니다.',
+    aboutDesc1: 'APAP 8은 공공예술과 인공지능의 교차점을 탐구합니다. 안양의 열린 공간 곳곳에서 예술가와 기계 시스템이 함께 만든 작품들이 도시가 감각하고, 학습하고, 기억하는 방식을 질문합니다.',
     aboutDesc2: '제8회는 인공지능을 도구나 위협이 아닌 하나의 공공적 조건 — 우리가 이미 함께 살아가는 환경 — 으로 제안합니다.',
     directorTitle: '예술감독',
     directorBio: '"작가들에게 하나의 질문을 던졌습니다. 기계가 도시를 대신해 결정해서는 안 되는 것은 무엇인가. 그 대답들이 지금 안양의 거리에 서서, 당신의 대답을 기다립니다."',
@@ -131,11 +130,11 @@ const dict = {
   ja: {
     heroPrompt: '> generating: anyang public art project, 8th edition — art × artificial intelligence',
     heroTitle: 'APAP_8',
-    heroSubtitle: '知능시대의 예술',
+    heroSubtitle: '知能時代の芸術',
     date: '会期: 2026.11.13—12.20',
     site: '会場: 安養芸術公園 · 平村一帯',
     edition: '回数: 第8回',
-    admission: '料金: 무료',
+    admission: '料金: 無料',
     aboutQuery: 'query: 展覧会の紹介',
     aboutTitle: '知能의 時代, 都市は何を想像するのか',
     aboutDesc1: 'APAP 8은 공공예술과 인공지능의 교차점을 탐색합니다. 안양의 열린 공간 곳곳에서 예술가와 기계 시스템이 공동 제작한 작품들이 도시가 감각하고, 학습하고, 기억하는 방식을 질문합니다.',
@@ -148,7 +147,7 @@ const dict = {
     kr: '国内',
     intl: '海外',
     worksTitle: '新作プロジェクト',
-    worksQuery: '新作コミッション、生成중…',
+    worksQuery: '新作コミッション、生成中…',
     programTitle: 'プログラム',
     programQuery: '日程データ',
     talk: 'トーク',
@@ -167,7 +166,7 @@ const dict = {
     admissionLabel: '料金',
     admissionVal: '無料',
     transit: '公共交通',
-    transitVal: '1号線安養駅 → 마을버스 2번 · 4号선평촌역3번출구',
+    transitVal: '1号線安養駅 → 마을버스2번 · 4号선평촌역3번출구',
     newsTitle: 'ニュース',
     newsQuery: '最新アップデート',
     sponsorsTitle: '主催 · 主管 · プロジェクト',
@@ -192,7 +191,7 @@ const dict = {
     admission: '门票: 免费',
     aboutQuery: 'query: 展览介绍',
     aboutTitle: '智能时代，城市在想象什么',
-    aboutDesc1: 'APAP 8 探讨公共艺术与人工智能의교차점을 탐구합니다. Across open spaces, artists and machine systems co-produce works.',
+    aboutDesc1: 'APAP 8 探讨公共艺术与人工智能的交汇点。在安养的开放空间中，艺术家与机器系统共同创作的作品，拷问着城市感知、学习和记忆的方式。',
     aboutDesc2: '第八届项目将人工智能视为一种公共条件——一个我们已经共同生活的环境，而非单纯的工具或威胁。',
     directorTitle: '艺术总监',
     directorBio: '“我们向艺术家们提出了一个问题：机器绝不应该替城市决定什么？他们的回答现在就矗立在安养的街道上，等待着您的答案。”',
@@ -238,8 +237,8 @@ const dict = {
   }
 } as const;
 
-// 1. Perspective Wireframe Grid & connected particle canvas (Cyan theme)
-const WireframeCanvas = ({ accentColor = '#00E5FF' }: { accentColor?: string }) => {
+// 1. Perspective Wireframe Grid & connected particle canvas (Lime Green & Electric Blue theme)
+const WireframeCanvas = ({ accentColor = '#B4FF39' }: { accentColor?: string }) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
@@ -282,8 +281,8 @@ const WireframeCanvas = ({ accentColor = '#00E5FF' }: { accentColor?: string }) 
       const a = hexToRgb(accentColor);
       ctx.clearRect(0, 0, w, h);
 
-      // 3D Perspective Grid
-      ctx.strokeStyle = `rgba(${a[0]},${a[1]},${a[2]},0.05)`;
+      // 3D Perspective Grid (Using Electric Blue mixed with Lime)
+      ctx.strokeStyle = `rgba(42,92,255,0.06)`;
       ctx.lineWidth = 1;
       const horizon = h * 0.4;
 
@@ -306,7 +305,7 @@ const WireframeCanvas = ({ accentColor = '#00E5FF' }: { accentColor?: string }) 
         ctx.stroke();
       }
 
-      // Drift nodes & link lines
+      // Drift nodes & link lines (Lime Green)
       nodes.forEach((n) => {
         n.x += n.vx;
         n.y += n.vy;
@@ -365,9 +364,9 @@ const TypingPrompt = ({ text, delay = 25 }: { text: string; delay?: number }) =>
   }, [text, delay]);
 
   return (
-    <p className="font-mono text-[11px] sm:text-xs tracking-wider text-[#00E5FF]">
+    <p className="font-mono text-[11px] sm:text-xs tracking-wider text-[#B4FF39]">
       <span>{displayedText}</span>
-      <span className="animate-[pulse_1s_infinite] text-[#00E5FF] font-bold">▌</span>
+      <span className="animate-[pulse_1s_infinite] text-[#B4FF39] font-bold">▌</span>
     </p>
   );
 };
@@ -478,7 +477,7 @@ const ScannedImageCard = ({
 
   return (
     <div ref={containerRef} style={parallaxStyle} className="transition-transform duration-300 ease-out">
-      <div className="relative overflow-hidden border border-[#00E5FF]/35 bg-[#04060A]">
+      <div className="relative overflow-hidden border border-[#B4FF39]/35 bg-[#04060A]">
         <img src={src} alt={alt} className="block w-full h-auto object-cover aspect-[4/3] sm:aspect-auto" />
         {percent < 100 && (
           <>
@@ -487,7 +486,7 @@ const ScannedImageCard = ({
               style={{ opacity: 1 - percent / 100 }}
             />
             <div 
-              className="absolute left-0 right-0 h-[2px] bg-[#00E5FF] shadow-[0_0_16px_#00E5FF]"
+              className="absolute left-0 right-0 h-[2px] bg-[#B4FF39] shadow-[0_0_16px_#B4FF39]"
               style={{ top: `${percent}%` }}
             />
           </>
@@ -501,7 +500,7 @@ const ScannedImageCard = ({
   );
 };
 
-export default function ConceptBPage({ params }: PageProps) {
+export default function SiteBPage({ params }: PageProps) {
   const { locale } = React.use(params) as { locale: Locale };
   const validLocale = (['ko', 'en', 'ja', 'zh'].includes(locale) ? locale : 'ko') as Locale;
   const t = dict[validLocale];
@@ -598,31 +597,31 @@ export default function ConceptBPage({ params }: PageProps) {
 
   // Region & Category Switch CSS styles helper
   const tabStyle = (active: boolean) => ({
-    background: active ? '#00E5FF' : 'none',
-    border: `1px solid ${active ? '#00E5FF' : 'rgba(0,229,255,0.3)'}`,
+    background: active ? '#B4FF39' : 'none',
+    border: `1px solid ${active ? '#B4FF39' : 'rgba(180,255,57,0.3)'}`,
     color: active ? '#04060A' : '#EAF2F5',
   });
 
   return (
     <div 
-      className="min-h-screen bg-[#04060A] text-[#EAF2F5] font-sans overflow-x-hidden selection:bg-[#00E5FF]/20 selection:text-[#00E5FF] relative"
+      className="min-h-screen bg-[#04060A] text-[#EAF2F5] font-sans overflow-x-hidden selection:bg-[#B4FF39]/20 selection:text-[#B4FF39] relative"
       onMouseMove={handleMouseMove}
     >
       {/* 1. Canvas Background */}
-      <WireframeCanvas accentColor="#00E5FF" />
+      <WireframeCanvas accentColor="#B4FF39" />
 
       {/* 2. Fixed Header */}
       <header
         ref={headerRef}
-        className={`fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 py-4 transition-all duration-300 border-b border-[#00E5FF]/10 ${
+        className={`fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 py-4 transition-all duration-300 border-b border-[#B4FF39]/10 ${
           scrolled || menuOpen ? 'bg-[#04060A]/85 backdrop-blur-md' : 'bg-transparent'
         }`}
       >
         <Link 
-          href={`/site-a/${validLocale}/concept-b`} 
-          className="font-mono font-bold text-lg tracking-wider text-white select-none hover:text-[#00E5FF] transition-colors"
+          href={`/site-a/${validLocale}`} 
+          className="font-mono font-bold text-lg tracking-wider text-white select-none hover:text-[#B4FF39] transition-colors"
         >
-          APAP_8<span className="text-[#00E5FF] animate-pulse">▌</span>
+          APAP_8<span className="text-[#B4FF39] animate-pulse">▌</span>
         </Link>
 
         <div className="flex items-center gap-6">
@@ -634,7 +633,7 @@ export default function ConceptBPage({ params }: PageProps) {
                 href={ni.href}
                 onClick={(e) => handleGoTo(e, ni.href)}
                 className={`transition-colors py-1 ${
-                  activeSection === ni.href ? 'text-[#00E5FF]' : 'text-[#C4D6DD] hover:text-[#00E5FF]'
+                  activeSection === ni.href ? 'text-[#B4FF39]' : 'text-[#C4D6DD] hover:text-[#B4FF39]'
                 }`}
               >
                 {ni.label}
@@ -643,15 +642,15 @@ export default function ConceptBPage({ params }: PageProps) {
           </nav>
 
           {/* Lang Selector */}
-          <div className="flex border border-[#00E5FF]/25 rounded-sm overflow-hidden text-[10px] font-mono bg-black/40">
+          <div className="flex border border-[#B4FF39]/25 rounded-sm overflow-hidden text-[10px] font-mono bg-black/40">
             {(['ko', 'en'] as const).map((loc) => (
               <Link
                 key={loc}
-                href={`/site-a/${loc}/concept-b`}
+                href={`/site-a/${loc}`}
                 className={`px-2 py-1 uppercase transition-colors ${
                   validLocale === loc
-                    ? 'bg-[#00E5FF]/20 text-[#00E5FF] font-bold'
-                    : 'text-white/40 hover:text-[#00E5FF] hover:bg-white/5'
+                    ? 'bg-[#B4FF39]/20 text-[#B4FF39] font-bold'
+                    : 'text-white/40 hover:text-[#B4FF39] hover:bg-white/5'
                 }`}
               >
                 {loc}
@@ -662,7 +661,7 @@ export default function ConceptBPage({ params }: PageProps) {
           {/* Menu button for Mobile GNB */}
           <button
             onClick={() => setMenuOpen(!menuOpen)}
-            className="lg:hidden flex flex-col justify-center items-center gap-1.5 w-10 h-8 border border-[#00E5FF]/25 bg-black/20 text-[#EAF2F5] cursor-pointer hover:border-[#00E5FF] transition-colors"
+            className="lg:hidden flex flex-col justify-center items-center gap-1.5 w-10 h-8 border border-[#B4FF39]/25 bg-black/20 text-[#EAF2F5] cursor-pointer hover:border-[#B4FF39] transition-colors"
             aria-label={menuOpen ? t.menuClose : t.menuOpen}
           >
             {menuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
@@ -685,10 +684,10 @@ export default function ConceptBPage({ params }: PageProps) {
                   key={ni.href}
                   href={ni.href}
                   onClick={(e) => handleGoTo(e, ni.href)}
-                  className="flex items-baseline gap-4 py-3 border-b border-[#00E5FF]/10 text-white"
+                  className="flex items-baseline gap-4 py-3 border-b border-[#B4FF39]/10 text-white"
                 >
-                  <span className="font-mono text-xs text-[#00E5FF] min-w-8">{ni.num}</span>
-                  <span className="text-3xl font-bold hover:text-[#00E5FF] transition-colors">{ni.label}</span>
+                  <span className="font-mono text-xs text-[#B4FF39] min-w-8">{ni.num}</span>
+                  <span className="text-3xl font-bold hover:text-[#B4FF39] transition-colors">{ni.label}</span>
                 </a>
               ))}
             </nav>
@@ -747,11 +746,11 @@ export default function ConceptBPage({ params }: PageProps) {
             <DecryptedText text={t.heroTitle} />
           </h1>
           
-          <p className="font-semibold tracking-widest text-[#00E5FF] text-sm sm:text-2xl mt-2 select-none uppercase">
+          <p className="font-semibold tracking-widest text-[#B4FF39] text-sm sm:text-2xl mt-2 select-none uppercase">
             <DecryptedText text={t.heroSubtitle} />
           </p>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 w-full mt-10 pt-6 border-t border-[#00E5FF]/20 font-mono text-xs sm:text-sm text-[#8FAAB5]">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 w-full mt-10 pt-6 border-t border-[#B4FF39]/20 font-mono text-xs sm:text-sm text-[#8FAAB5]">
             <div>
               <span className="text-[#4A6570] block mb-1">DATE</span>
               {t.date.split(': ')[1] || t.date}
@@ -773,8 +772,8 @@ export default function ConceptBPage({ params }: PageProps) {
       </section>
 
       {/* 5. About Section */}
-      <section id="about" className="relative py-24 px-6 md:px-12 max-w-6xl mx-auto z-10 border-t border-[#00E5FF]/10">
-        <p className="font-mono text-xs text-[#00E5FF] tracking-wider mb-8">[01] ABOUT — {t.aboutQuery}</p>
+      <section id="about" className="relative py-24 px-6 md:px-12 max-w-6xl mx-auto z-10 border-t border-[#B4FF39]/10">
+        <p className="font-mono text-xs text-[#B4FF39] tracking-wider mb-8">[01] ABOUT — {t.aboutQuery}</p>
         
         <div className="grid md:grid-cols-12 gap-8 md:gap-12 items-start">
           <div className="md:col-span-5">
@@ -785,15 +784,15 @@ export default function ConceptBPage({ params }: PageProps) {
           <div className="md:col-span-7 flex flex-col gap-6 text-sm sm:text-base leading-relaxed text-[#B8CBD3]">
             <p>{t.aboutDesc1}</p>
             <p>{t.aboutDesc2}</p>
-            <div className="font-mono text-[10px] text-[#4A6570] border border-[#00E5FF]/15 px-4 py-3 bg-black/20 mt-4">
+            <div className="font-mono text-[10px] text-[#4A6570] border border-[#B4FF39]/15 px-4 py-3 bg-black/20 mt-4">
               model: apap-8-public · temperature: 0.8 · seed: 20261113
             </div>
           </div>
         </div>
 
         {/* Artistic Director Card */}
-        <div className="grid md:grid-cols-12 gap-6 mt-20 items-center border border-[#00E5FF]/15 p-6 sm:p-10 bg-[#00E5FF]/[0.02] rounded-md">
-          <div className="md:col-span-3 max-w-[200px] md:max-w-none mx-auto relative overflow-hidden border border-[#00E5FF]/25">
+        <div className="grid md:grid-cols-12 gap-6 mt-20 items-center border border-[#B4FF39]/15 p-6 sm:p-10 bg-[#B4FF39]/[0.02] rounded-md">
+          <div className="md:col-span-3 max-w-[200px] md:max-w-none mx-auto relative overflow-hidden border border-[#B4FF39]/25">
             <img src="/images/concept-b/9c0e4744-42e5-48c2-a691-864de0d19bad.jpg" alt="Artistic Director" className="block w-full h-auto" />
           </div>
           <div className="md:col-span-9 flex flex-col gap-3">
@@ -810,20 +809,20 @@ export default function ConceptBPage({ params }: PageProps) {
       {/* 5.5 Official Poster Banner Section */}
       <PosterBannerSection
         locale={validLocale}
-        theme="cyan"
+        theme="lime"
       />
 
       {/* 6. Artists Section */}
-      <ArtistSection locale={validLocale} theme="cyan" />
+      <ArtistSection locale={validLocale} />
 
       {/* 7. Works Section */}
-      <WorksSection locale={validLocale} theme="cyan" />
+      <WorksSection locale={validLocale} />
 
       {/* 8. Program Section */}
-      <section id="program" className="relative py-24 px-6 md:px-12 max-w-6xl mx-auto z-10 border-t border-[#00E5FF]/10">
+      <section id="program" className="relative py-24 px-6 md:px-12 max-w-6xl mx-auto z-10 border-t border-[#B4FF39]/10">
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
           <div>
-            <p className="font-mono text-xs text-[#00E5FF] tracking-wider mb-2">[04] PROGRAM — {t.programQuery}</p>
+            <p className="font-mono text-xs text-[#B4FF39] tracking-wider mb-2">[04] PROGRAM — {t.programQuery}</p>
             <h2 className="text-3xl sm:text-5xl font-bold text-white tracking-tight">
               <DecryptedText text={t.programTitle} />
             </h2>
@@ -845,19 +844,19 @@ export default function ConceptBPage({ params }: PageProps) {
         </div>
 
         {/* Programs List */}
-        <div className="border-t border-[#00E5FF]/20 divide-y divide-[#00E5FF]/10">
+        <div className="border-t border-[#B4FF39]/20 divide-y divide-[#B4FF39]/10">
           {filteredPrograms.map((pg, index) => (
             <div 
               key={index}
-              className="grid grid-cols-1 md:grid-cols-12 gap-4 py-6 items-center hover:bg-[#00E5FF]/[0.01] px-2 transition-colors duration-300"
+              className="grid grid-cols-1 md:grid-cols-12 gap-4 py-6 items-center hover:bg-[#B4FF39]/[0.01] px-2 transition-colors duration-300"
             >
               <div className="md:col-span-2 font-mono">
-                <div className="text-2xl font-bold text-[#00E5FF]">{pg.date}</div>
+                <div className="text-2xl font-bold text-[#B4FF39]">{pg.date}</div>
                 <div className="text-xs text-[#4A6570]">{pg.time}</div>
               </div>
               <div className="md:col-span-8">
                 <div className="flex items-center gap-3 mb-2 flex-wrap">
-                  <span className="font-mono text-[9px] text-[#00E5FF] border border-[#00E5FF]/40 px-2 py-0.5 uppercase bg-[#00E5FF]/5">
+                  <span className="font-mono text-[9px] text-[#B4FF39] border border-[#B4FF39]/40 px-2 py-0.5 uppercase bg-[#B4FF39]/5">
                     {t[pg.cat as 'talk' | 'workshop' | 'tour' | 'event']}
                   </span>
                   <span className="font-mono text-xs text-[#4A6570]">{pg.displayPlace}</span>
@@ -867,7 +866,7 @@ export default function ConceptBPage({ params }: PageProps) {
                 </div>
               </div>
               <div className="md:col-span-2 md:text-right">
-                <button className="border border-[#00E5FF]/35 hover:border-[#00E5FF] bg-transparent text-[#EAF2F5] hover:bg-[#00E5FF] hover:text-[#04060A] px-5 py-2 font-semibold text-xs transition-all tracking-wider font-mono cursor-pointer rounded-sm">
+                <button className="border border-[#B4FF39]/35 hover:border-[#B4FF39] bg-transparent text-[#EAF2F5] hover:bg-[#B4FF39] hover:text-[#04060A] px-5 py-2 font-semibold text-xs transition-all tracking-wider font-mono cursor-pointer rounded-sm">
                   {t.register}
                 </button>
               </div>
@@ -877,15 +876,15 @@ export default function ConceptBPage({ params }: PageProps) {
       </section>
 
       {/* 9. Visit Section */}
-      <section id="visit" className="relative py-24 px-6 md:px-12 max-w-6xl mx-auto z-10 border-t border-[#00E5FF]/10">
-        <p className="font-mono text-xs text-[#00E5FF] tracking-wider mb-2">[05] VISIT — {t.visitQuery}</p>
+      <section id="visit" className="relative py-24 px-6 md:px-12 max-w-6xl mx-auto z-10 border-t border-[#B4FF39]/10">
+        <p className="font-mono text-xs text-[#B4FF39] tracking-wider mb-2">[05] VISIT — {t.visitQuery}</p>
         <h2 className="text-3xl sm:text-5xl font-bold text-white tracking-tight mb-12">
           <DecryptedText text={t.visitTitle} />
         </h2>
 
         <div className="grid md:grid-cols-12 gap-8 items-start">
           {/* Embedded Google Maps */}
-          <div className="md:col-span-6 aspect-video md:aspect-[4/3] border border-[#00E5FF]/20 overflow-hidden bg-black/40 rounded-sm">
+          <div className="md:col-span-6 aspect-video md:aspect-[4/3] border border-[#B4FF39]/20 overflow-hidden bg-black/40 rounded-sm">
             <iframe 
               title="APAP Map" 
               src="https://maps.google.com/maps?q=%EA%B2%BD%EA%B8%B0%EB%8F%84%20%EC%95%88%EC%96%91%EC%8B%9C%20%EB%A7%8C%EC%95%88%EA%B5%AC%20%EC%98%88%EC%88%A0%EA%B3%B5%EC%9B%90%EB%A1%9C%20180&amp;z=15&amp;output=embed" 
@@ -894,7 +893,7 @@ export default function ConceptBPage({ params }: PageProps) {
           </div>
 
           {/* Details list */}
-          <div className="md:col-span-6 border-t border-[#00E5FF]/20 divide-y divide-[#00E5FF]/10 text-sm">
+          <div className="md:col-span-6 border-t border-[#B4FF39]/20 divide-y divide-[#B4FF39]/10 text-sm">
             <div className="grid grid-cols-3 py-4 gap-4">
               <span className="text-[#5A7A85] font-mono text-xs uppercase">{t.address}</span>
               <span className="col-span-2 text-white">{t.addressVal}</span>
@@ -909,7 +908,7 @@ export default function ConceptBPage({ params }: PageProps) {
             </div>
             <div className="grid grid-cols-3 py-4 gap-4">
               <span className="text-[#5A7A85] font-mono text-xs uppercase">{t.admissionLabel}</span>
-              <span className="col-span-2 text-[#00E5FF] font-bold">{t.admissionVal}</span>
+              <span className="col-span-2 text-[#B4FF39] font-bold">{t.admissionVal}</span>
             </div>
             <div className="grid grid-cols-3 py-4 gap-4">
               <span className="text-[#5A7A85] font-mono text-xs uppercase">{t.transit}</span>
@@ -920,8 +919,8 @@ export default function ConceptBPage({ params }: PageProps) {
       </section>
 
       {/* 10. News Section */}
-      <section id="news" className="relative py-24 px-6 md:px-12 max-w-6xl mx-auto z-10 border-t border-[#00E5FF]/10">
-        <p className="font-mono text-xs text-[#00E5FF] tracking-wider mb-2">[06] NEWS — {t.newsQuery}</p>
+      <section id="news" className="relative py-24 px-6 md:px-12 max-w-6xl mx-auto z-10 border-t border-[#B4FF39]/10">
+        <p className="font-mono text-xs text-[#B4FF39] tracking-wider mb-2">[06] NEWS — {t.newsQuery}</p>
         <h2 className="text-3xl sm:text-5xl font-bold text-white tracking-tight mb-12">
           <DecryptedText text={t.newsTitle} />
         </h2>
@@ -930,11 +929,11 @@ export default function ConceptBPage({ params }: PageProps) {
           {newsData.map((n, index) => (
             <a
               key={index}
-              href={`/site-a/${validLocale}/concept-b`}
-              className="block bg-[#00E5FF]/[0.01] hover:bg-[#00E5FF]/[0.03] border border-[#00E5FF]/15 hover:border-[#00E5FF] p-6 transition-all rounded-sm flex flex-col justify-between gap-12 group cursor-pointer"
+              href={`/site-a/${validLocale}`}
+              className="block bg-[#B4FF39]/[0.01] hover:bg-[#B4FF39]/[0.03] border border-[#B4FF39]/15 hover:border-[#B4FF39] p-6 transition-all rounded-sm flex flex-col justify-between gap-12 group cursor-pointer"
             >
               <div className="flex justify-between items-center font-mono text-[10px] text-[#5A7A85]">
-                <span className="text-[#00E5FF] font-bold">{n.cat}</span>
+                <span className="text-[#B4FF39] font-bold">{n.cat}</span>
                 <span>{n.date}</span>
               </div>
               <h3 className="text-base font-semibold leading-snug text-[#EAF2F5] group-hover:text-white transition-colors duration-300">
@@ -946,23 +945,23 @@ export default function ConceptBPage({ params }: PageProps) {
       </section>
 
       {/* 11. Sponsors Section */}
-      <section id="sponsors" className="relative py-24 px-6 md:px-12 max-w-6xl mx-auto z-10 border-t border-[#00E5FF]/10">
+      <section id="sponsors" className="relative py-24 px-6 md:px-12 max-w-6xl mx-auto z-10 border-t border-[#B4FF39]/10">
         <p className="font-mono text-xs text-[#5A7A85] tracking-wider mb-10 uppercase">{t.sponsorsTitle}</p>
         
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <div className="border border-[#00E5FF]/15 p-6 bg-black/30 rounded-sm flex flex-col gap-4">
+          <div className="border border-[#B4FF39]/15 p-6 bg-black/30 rounded-sm flex flex-col gap-4">
             <span className="font-mono text-[10px] text-[#5A7A85] tracking-widest uppercase">{t.hostedBy}</span>
             <div className="bg-white h-20 flex items-center justify-center p-4 rounded-sm">
               <img src="/images/concept-b/ccf2093a-c7be-4fd4-8bc2-1aabfa910b1d.jpg" alt="안양시" className="max-h-12 max-w-full object-contain filter grayscale" />
             </div>
           </div>
-          <div className="border border-[#00E5FF]/15 p-6 bg-black/30 rounded-sm flex flex-col gap-4">
+          <div className="border border-[#B4FF39]/15 p-6 bg-black/30 rounded-sm flex flex-col gap-4">
             <span className="font-mono text-[10px] text-[#5A7A85] tracking-widest uppercase">{t.organizedBy}</span>
             <div className="bg-white h-20 flex items-center justify-center p-4 rounded-sm">
               <img src="/images/concept-b/296b8365-65a3-45d5-999f-b7d31030a90a.jpg" alt="안양문화예술재단" className="max-h-12 max-w-full object-contain filter grayscale" />
             </div>
           </div>
-          <div className="border border-[#00E5FF]/15 p-6 bg-black/30 rounded-sm flex flex-col gap-4">
+          <div className="border border-[#B4FF39]/15 p-6 bg-black/30 rounded-sm flex flex-col gap-4">
             <span className="font-mono text-[10px] text-[#5A7A85] tracking-widest uppercase">{t.project}</span>
             <div className="bg-white h-20 flex items-center justify-center p-4 rounded-sm">
               <img src="/images/concept-b/edc83147-886b-44b4-abb9-fb02e4c61b67.jpg" alt="APAP" className="max-h-12 max-w-full object-contain filter grayscale" />
@@ -972,14 +971,14 @@ export default function ConceptBPage({ params }: PageProps) {
       </section>
 
       {/* 12. Footer */}
-      <footer className="relative z-10 border-t border-[#00E5FF]/20 bg-[#04060A] pt-16 pb-8">
+      <footer className="relative z-10 border-t border-[#B4FF39]/20 bg-[#04060A] pt-16 pb-8">
         <div className="max-w-6xl mx-auto px-6 md:px-12 flex flex-col gap-10">
-          <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-8 pb-10 border-b border-[#00E5FF]/12">
+          <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-8 pb-10 border-b border-[#B4FF39]/12">
             <div>
-              <p className="font-mono text-[10px] text-[#00E5FF] tracking-wider mb-2">&gt; {t.archiveBack}</p>
+              <p className="font-mono text-[10px] text-[#B4FF39] tracking-wider mb-2">&gt; {t.archiveBack}</p>
               <Link 
                 href={`/archive/${validLocale}`}
-                className="font-mono text-2xl sm:text-4xl font-bold text-white hover:text-[#00E5FF] transition-colors tracking-tight block"
+                className="font-mono text-2xl sm:text-4xl font-bold text-white hover:text-[#B4FF39] transition-colors tracking-tight block"
               >
                 APAP ARCHIVE ↗
               </Link>
@@ -991,7 +990,7 @@ export default function ConceptBPage({ params }: PageProps) {
                 href="https://instagram.com" 
                 target="_blank" 
                 rel="noopener noreferrer" 
-                className="w-12 h-12 border border-[#00E5FF]/25 hover:border-[#00E5FF] rounded-full flex items-center justify-center text-white/80 hover:text-white transition-colors"
+                className="w-12 h-12 border border-[#B4FF39]/25 hover:border-[#B4FF39] rounded-full flex items-center justify-center text-white/80 hover:text-white transition-colors"
                 aria-label="Instagram"
               >
                 <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8"><rect x="3" y="3" width="18" height="18" rx="5"></rect><circle cx="12" cy="12" r="4.2"></circle><circle cx="17.4" cy="6.6" r="1.2" fill="currentColor" stroke="none"></circle></svg>
@@ -1000,7 +999,7 @@ export default function ConceptBPage({ params }: PageProps) {
                 href="https://youtube.com" 
                 target="_blank" 
                 rel="noopener noreferrer" 
-                className="w-12 h-12 border border-[#00E5FF]/25 hover:border-[#00E5FF] rounded-full flex items-center justify-center text-white/80 hover:text-white transition-colors"
+                className="w-12 h-12 border border-[#B4FF39]/25 hover:border-[#B4FF39] rounded-full flex items-center justify-center text-white/80 hover:text-white transition-colors"
                 aria-label="YouTube"
               >
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8"><rect x="2.5" y="6" width="19" height="12.5" rx="3.5"></rect><path d="M10.2 9.7 15 12.2l-4.8 2.5z" fill="currentColor" stroke="none"></path></svg>
@@ -1009,7 +1008,7 @@ export default function ConceptBPage({ params }: PageProps) {
                 href="https://facebook.com" 
                 target="_blank" 
                 rel="noopener noreferrer" 
-                className="w-12 h-12 border border-[#00E5FF]/25 hover:border-[#00E5FF] rounded-full flex items-center justify-center text-white/80 hover:text-white transition-colors"
+                className="w-12 h-12 border border-[#B4FF39]/25 hover:border-[#B4FF39] rounded-full flex items-center justify-center text-white/80 hover:text-white transition-colors"
                 aria-label="Facebook"
               >
                 <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8"><path d="M14.5 8.5V6.8c0-.9.6-1.3 1.4-1.3h1.6V2.6h-2.6c-2.4 0-3.9 1.6-3.9 4v1.9H8.5v3h2.5V21h3.5v-9.5h2.6l.4-3z"></path></svg>
@@ -1027,15 +1026,12 @@ export default function ConceptBPage({ params }: PageProps) {
 
           {/* Large bottom transparent banner */}
           <div aria-hidden="true" className="w-full text-center overflow-hidden h-28 hidden sm:block relative">
-            <div className="font-mono text-[90px] md:text-[140px] font-bold tracking-widest text-transparent pointer-events-none select-none absolute left-1/2 -translate-x-1/2 top-4 w-full" style={{ WebkitTextStroke: '1px rgba(0,229,255,0.08)' }}>
+            <div className="font-mono text-[90px] md:text-[140px] font-bold tracking-widest text-transparent pointer-events-none select-none absolute left-1/2 -translate-x-1/2 top-4 w-full" style={{ WebkitTextStroke: '1px rgba(180,255,57,0.08)' }}>
               APAP_8 — 2026
             </div>
           </div>
         </div>
       </footer>
-
-      {/* 컨셉 선택용 플로팅 위젯 */}
-      <ConceptSwitcher locale={validLocale} />
     </div>
   );
 }
