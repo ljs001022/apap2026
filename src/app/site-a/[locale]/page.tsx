@@ -1,11 +1,15 @@
-﻿'use client';
+'use client';
 
-import React from 'react';
+import React, { useState, useMemo } from 'react';
 import GnbHeader from '@/components/site-a/GnbHeader';
 import SectionCard from '@/components/site-a/SectionCard';
 import Footer from '@/components/site-a/Footer';
 import DustCanvas from '@/components/site-a/DustCanvas';
-import { MapPin, Calendar, Layers } from 'lucide-react';
+import { MapPin, Calendar, Layers, Users, MessageCircle, ArrowUpRight, Clock, ChevronLeft, ChevronRight } from 'lucide-react';
+import ArtistGrid from '@/components/site-a/ArtistGrid';
+import { getVenues } from '@/lib/artists';
+import { getLocalizedVenueName } from '@/lib/artistLocalization';
+import Link from 'next/link';
 
 interface PageProps {
   params: Promise<{ locale: string }>;
@@ -17,80 +21,102 @@ export default function SiteAPage({ params }: PageProps) {
   const validLocale: 'ko' | 'en' = locale === 'en' ? 'en' : 'ko';
   const isKo = validLocale === 'ko';
 
+  const [communityPage, setCommunityPage] = useState(1);
+  const communityPerPage = 3;
+
   const t = {
     ko: {
       heroAlt: '제8회 안양공공예술프로젝트(APAP8) 공식 포스터',
       ticker: 'APAP8 2026.09.14 OPEN ● 안양공공예술프로젝트 ● 무료 관람 ● ARCHIVE → APAP.OR.KR',
-      about: {
-        heading: '도시 전체가 전시장이 되는\n여덟 번째 안양.',
-        overview: '제8회 안양공공예술프로젝트(APAP8)는 2005년부터 이어온 한국 유일의 공공예술 트리엔날레입니다. 안양예술공원과 도심 곳곳에서 국내외 21명 작가의 신작 커미션과 퍼블릭 프로그램을 선보입니다.',
-        themeTitle: '공존의 균형과 디지털 무릉도원',
-        themeDesc: '공공 공간과 예술의 상호작용을 통해 도시 공동체의 기억과 미래 가치를 재해석합니다.',
-      },
-      exhibition: {
-        artistCount: '21',
-        artistLabel: '참여 작가',
-        venueCount: '4',
-        venueLabel: '전시 부문',
-        body: '야외전시 · 한중특별전 · e-파빌리온 미디어 · 308 아트 크루 — 안양예술공원과 도심 공간에 설치된 신작 조각 및 미디어 아트를 선보입니다.',
-      },
-      program: {
-        heading: '개막 국제 컨퍼런스 & APAP8 도슨트 투어',
-        body: '참여 작가 및 국내외 기획진이 함께하는 라운드테이블, 전문 도슨트와 함께 안양예술공원 야외 공공조각을 탐방하는 시민 참여 걷기 프로그램.',
-        date: '2026.09 (예정) · 안양파빌리온 / 안양예술공원',
-      },
-      community: {
-        heading: '공지사항 & 보도자료',
-        notices: [
-          { cat: '공지', title: 'APAP8 공식 홈페이지 오픈 및 참여 작가 공개', date: '2026.09.14' },
-          { cat: '프레스', title: '제8회 안양공공예술프로젝트 개막 보도자료', date: '2026.09.14' },
-          { cat: '공지', title: '개막 주간 퍼블릭 프로그램 및 도슨트 투어 안내', date: '2026.09.07' },
-        ],
-      },
-      visit: {
-        admission: '관람료 무료',
-        location: '안양예술공원 · 경기도 안양시',
-        hours: '야외: 상시 관람 / 실내: 화–일 10:00–18:00 (월요일 휴관)',
-        access: '지하철 1호선 관악역 / 안양역 하차 후 마을버스 환승',
-      },
     },
     en: {
       heroAlt: 'The 8th Anyang Public Art Project (APAP8) Official Poster',
       ticker: 'APAP8 OPEN 2026.09.14 ● ANYANG PUBLIC ART ● FREE ADMISSION ● ARCHIVE → APAP.OR.KR',
-      about: {
-        heading: 'The Eighth Anyang,\nWhere the entire city becomes an open museum.',
-        overview: 'The 8th Anyang Public Art Project (APAP8) is Korea’s premier public art triennial running continuously since 2005. It presents newly commissioned site-specific works and public programs across Anyang.',
-        themeTitle: 'Balance in Coexistence & Digital Peach Blossom Spring',
-        themeDesc: 'Reinterpreting urban memories and futuristic communal values through public art interventions.',
-      },
-      exhibition: {
-        artistCount: '21',
-        artistLabel: 'Participating Artists',
-        venueCount: '4',
-        venueLabel: 'Exhibition Venues',
-        body: 'Outdoor Exhibition · Korea–China Special · E-Pavilion Media · 308 Art Crew — site-specific sculptures and media artworks across Anyang Art Park.',
-      },
-      program: {
-        heading: 'Opening International Conference & Docent Tour',
-        body: 'Curatorial roundtables with international artists, alongside docent-guided walking tours throughout the public sculpture paths.',
-        date: 'Sept. 2026 · Anyang Pavilion / Anyang Art Park',
-      },
-      community: {
-        heading: 'Notice & Press Releases',
-        notices: [
-          { cat: 'Notice', title: 'APAP8 Website Launch & Participating Artists Announced', date: '2026.09.14' },
-          { cat: 'Press', title: 'Press Release: Opening of the 8th Anyang Public Art Project', date: '2026.09.14' },
-          { cat: 'Notice', title: 'Opening Week Programs & Docent Tour Information', date: '2026.09.07' },
-        ],
-      },
-      visit: {
-        admission: 'Free Admission',
-        location: 'Anyang Art Park · Anyang, Gyeonggi-do',
-        hours: 'Outdoor: Always open / Indoor: Tue–Sun 10:00–18:00 (Closed Mon)',
-        access: 'Subway Line 1 Gwanak / Anyang Station → Village Bus Transfer',
-      },
     },
   }[validLocale];
+
+  // ─── Exhibition Data ───
+  const venues = useMemo(() => getVenues(), []);
+  const categories = useMemo(() => {
+    return venues.map((v) => ({
+      id: v.venue_slug,
+      label: getLocalizedVenueName(v.venue_slug, validLocale),
+      items: v.artists,
+    }));
+  }, [venues, validLocale]);
+
+  // ─── Program Data ───
+  const programs = [
+    {
+      num: '01',
+      category: isKo ? '퍼블릭 프로그램' : 'PUBLIC PROGRAM',
+      title: isKo ? 'APAP8 개막 국제 컨퍼런스' : 'APAP8 Opening International Conference',
+      desc: isKo
+        ? '국내외 참여 작가, 건축가, 큐레이터들이 한자리에 모여 ‘공존의 균형과 디지털 무릉도원’을 주제로 동시대 공공예술의 새로운 지형을 논의하는 오프닝 라운드테이블입니다.'
+        : 'An opening roundtable symposium bringing together participating artists, architects, and international curators to deliberate on the evolving landscapes of contemporary public art.',
+      date: isKo ? '2026년 9월 개막 주간 (상세 일정 공지 예정)' : 'Opening Week, Sept. 2026 (Schedule TBA)',
+      venue: isKo ? '안양파빌리온 메인홀' : 'Anyang Pavilion Main Hall',
+      target: isKo ? '일반 시민, 예술계 종사자 및 연구자' : 'Open to the Public, Researchers, and Artists',
+    },
+    {
+      num: '02',
+      category: isKo ? '도슨트 투어' : 'DOCENT TOUR',
+      title: isKo ? 'APAP8 공식 전문 도슨트 투어' : 'APAP8 Guided Docent Tour',
+      desc: isKo
+        ? '전문 해설사와 함께 안양예술공원 숲속 산책로와 도심 하천을 따라 설치된 1회부터 8회까지의 주요 야외 공공조각 및 신작 커미션을 깊이 있게 감상하는 도보 투어 프로그램입니다.'
+        : 'A guided architectural and artistic walking tour exploring the open-air sculptures and new commissions of APAP8 alongside historical highlights across Anyang Art Park.',
+      date: isKo ? '전시 기간 중 주말 상시 운영 (회당 60분)' : 'Weekends throughout Exhibition Period (60 min)',
+      venue: isKo ? '안양예술공원 일원 (출발: 안양파빌리온)' : 'Anyang Art Park (Departs from Anyang Pavilion)',
+      target: isKo ? '시민 및 관람객 누구나 (현장 및 사전 접수)' : 'All Visitors (Walk-in & Online reservation)',
+    },
+    {
+      num: '03',
+      category: isKo ? '시민 워크숍' : 'WORKSHOP',
+      title: isKo ? '작가 연계 공공예술 창작 워크숍' : 'Artist-Led Community Creative Workshop',
+      desc: isKo
+        ? '참여 작가와 함께 천연 안료, 전통 옻칠, 디지털 매체 등을 직접 체험하며 일상 공간에 어우러지는 작은 예술적 오브제를 제작해보는 참여형 예술 교육입니다.'
+        : 'Hands-on creative educational workshops collaborating with participating artists using natural materials, traditional lacquerware, and digital interactive mediums.',
+      date: isKo ? '2026년 10월 중 주말 4회 운영' : 'Four Sessions in Oct. 2026',
+      venue: isKo ? '안양파빌리온 교육실' : 'Anyang Pavilion Education Studio',
+      target: isKo ? '어린이, 청소년 및 가족 단위 관람객' : 'Youth & Family Audiences',
+    },
+  ];
+
+  // ─── Community Data ───
+  const communityItems = [
+    {
+      cat: isKo ? '공지' : 'Notice',
+      title: isKo ? 'APAP8 공식 홈페이지 오픈 및 참여 작가 공개' : 'APAP8 Official Website Launch & Artist Announcement',
+      date: '2026.09.14',
+      desc: isKo
+        ? '제8회 안양공공예술프로젝트 공식 웹사이트가 정식 오픈되었습니다. 야외전시 및 특별기획전에 참여하는 총 21명 작가 정보와 주요 출품작을 확인하실 수 있습니다.'
+        : 'The official platform for APAP8 has launched. Discover details on 21 participating artists across all venues.',
+    },
+    {
+      cat: isKo ? '프레스' : 'Press',
+      title: isKo ? '[보도자료] 제8회 안양공공예술프로젝트 개막 발표' : '[Press Release] The 8th Anyang Public Art Project Opens',
+      date: '2026.09.14',
+      desc: isKo
+        ? '안양문화예술재단은 ‘공존의 균형과 디지털 무릉도원’을 주제로 3년 만에 개최되는 트리엔날레의 종합 프레스킷을 배포합니다.'
+        : 'Anyang Foundation for Culture & Arts distributes the official press kit for the triennial.',
+    },
+    {
+      cat: isKo ? '공지' : 'Notice',
+      title: isKo ? '개막 주간 퍼블릭 프로그램 및 도슨트 투어 신청 안내' : 'Opening Week Public Programs & Docent Tour Registration',
+      date: '2026.09.07',
+      desc: isKo
+        ? '개막 국제 컨퍼런스 및 주말 정기 도슨트 투어 참여 접수가 시작됩니다. 전 프로그램은 시민 누구나 무료로 참여하실 수 있습니다.'
+        : 'Registration opens for the international symposium and weekend guided tours. Free for all citizens.',
+    },
+    {
+      cat: isKo ? '프레스' : 'Press',
+      title: isKo ? '[보도자료] 김덕한 작가 APAP8 신작 조각 야외 설치 완료' : '[Press] Artist Kim Deok Han Installs New Outdoor Sculpture',
+      date: '2026.08.30',
+      desc: isKo
+        ? '한국 현대미술의 대표 작가 김덕한의 대형 공공조각 <OVERLAID : 공존의 균형>이 안양예술공원 숲속 산책로에 성공적으로 안착했습니다.'
+        : 'Kim Deok Han completes installation of his monumental sculpture in Anyang Art Park.',
+    },
+  ];
 
   return (
     <div className="bg-[#0A0A0A] text-white font-sans antialiased">
@@ -114,9 +140,10 @@ export default function SiteAPage({ params }: PageProps) {
           <div className="h-14 sm:h-16 flex-shrink-0" />
 
           {/* Banner Container */}
-          <div className="flex-1 w-full max-w-[1920px] max-h-[800px] mx-auto flex items-center justify-center px-3 sm:px-8 py-2 sm:py-4 overflow-hidden relative z-10">
-            <div className="relative w-full h-full max-w-[1920px] max-h-[800px] aspect-[12/5] max-sm:aspect-square max-sm:max-h-[768px] overflow-hidden flex items-center justify-center bg-black">
+          <div className="flex-1 w-full max-w-[1200px] max-h-[800px] mx-auto flex items-center justify-center px-3 sm:px-8 py-2 sm:py-4 overflow-hidden relative z-10">
+            <div className="relative w-full h-full max-w-[1200px] max-h-[800px] aspect-[12/5] max-sm:aspect-square max-sm:max-h-[768px] overflow-hidden flex items-center justify-center bg-black">
               <picture className="w-full h-full block">
+                <source media="(max-width: 640px)" srcSet="/images/APAP8_uniform_square.gif" />
                 <source type="image/webp" srcSet="/images/apap8_uniform.webp" />
                 <img
                   src="/images/APAP8_uniform.gif"
@@ -146,34 +173,62 @@ export default function SiteAPage({ params }: PageProps) {
           labelEn="ABOUT"
           subtitle="OVERVIEW / THEME"
           isKo={isKo}
-          href={`/${validLocale}/about`}
           summary={
-            <div className="max-w-4xl space-y-3 sm:space-y-6">
-              <h3 className="text-xl sm:text-3xl lg:text-4xl font-extrabold leading-tight tracking-tight whitespace-pre-line">
-                {t.about.heading}
-              </h3>
+            <div className="w-full max-w-[1200px] mx-auto space-y-16">
+              <section className="space-y-6">
+                <div className="flex items-center gap-3 font-mono text-xs font-bold text-[#8C8C8C] uppercase tracking-wider border-b border-white/10 pb-2">
+                  <span className="bg-white text-black px-2 py-0.5 text-[10px] font-black">01</span>
+                  <span>{isKo ? '개요' : 'OVERVIEW'}</span>
+                </div>
+                <h2 className="text-2xl sm:text-4xl font-extrabold leading-snug">
+                  {isKo ? (
+                    <>도시 전체가 전시장이 되는<br />여덟 번째 안양<span className="text-white/40">.</span></>
+                  ) : (
+                    <>The Eighth Anyang,<br />Where the entire city becomes an open museum<span className="text-white/40">.</span></>
+                  )}
+                </h2>
+                <div className="text-base sm:text-lg text-[#B9B9B9] leading-relaxed space-y-4 font-light">
+                  <p>
+                    {isKo
+                      ? '제8회 안양공공예술프로젝트(APAP8)는 2005년 시작된 한국 유일의 공공예술 트리엔날레의 여덟 번째 에디션입니다. 3년마다 안양의 역사와 장소성, 시민의 삶을 현대 미술과 접목하여 도시 곳곳을 열린 야외 미술관으로 변모시켜 왔습니다.'
+                      : 'The 8th Anyang Public Art Project (APAP8) is the eighth edition of Korea’s premier public art triennial, held continuously since 2005. Every three years, APAP transforms the urban landscape of Anyang into an open-air public museum by connecting contemporary art with local history and communal memories.'}
+                  </p>
+                  <p>
+                    {isKo
+                      ? '이번 APAP8은 안양예술공원을 중심축으로 도심 녹지 공간, 하천, 유휴 공간 등 일상의 영역으로 공공예술의 지평을 넓힙니다. 국내외 21명의 현대미술 작가들이 안양의 고유한 맥락 속에서 제작한 사이트 스페시픽(Site-specific) 신작을 공개합니다.'
+                      : 'Focusing on Anyang Art Park and extending into urban green zones and public spaces, APAP8 introduces site-specific commissions created by 21 leading contemporary artists from Korea and abroad.'}
+                  </p>
+                </div>
+                <div className="flex flex-wrap gap-2 pt-4">
+                  {['#공공예술', '#트리엔날레', '#안양예술공원', '#커미션신작', '#김덕한', '#공존의균형'].map((tag) => (
+                    <span key={tag} className="text-xs font-mono border border-white/20 text-white/70 px-3.5 py-1.5 bg-white/5">
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              </section>
 
-              <div className="grid md:grid-cols-2 gap-3 sm:gap-6 pt-2 border-t border-white/20">
-                <div className="space-y-1 sm:space-y-2">
-                  <span className="font-mono text-[9px] sm:text-[10px] font-bold text-[#8C8C8C] tracking-widest uppercase">
-                    OVERVIEW
-                  </span>
-                  <p className="text-xs sm:text-sm text-[#B9B9B9] leading-relaxed">
-                    {t.about.overview}
+              <section className="space-y-6 pt-10 border-t border-white/20">
+                <div className="flex items-center gap-3 font-mono text-xs font-bold text-[#8C8C8C] uppercase tracking-wider border-b border-white/10 pb-2">
+                  <span className="bg-white text-black px-2 py-0.5 text-[10px] font-black">02</span>
+                  <span>{isKo ? '전시 주제' : 'EXHIBITION THEME'}</span>
+                </div>
+                <h3 className="text-2xl sm:text-3xl font-extrabold text-white">
+                  {isKo ? '공존의 균형과 디지털 무릉도원' : 'Balance in Coexistence & Digital Peach Blossom Spring'}
+                </h3>
+                <div className="text-sm sm:text-base text-[#B9B9B9] leading-relaxed space-y-4">
+                  <p>
+                    {isKo
+                      ? '안양(安養)이라는 지명이 담고 있는 ‘몸과 마음이 편안하고 자유로운 극락정토’라는 인문학적 기원에서 출발합니다. 기술 문명과 자연 생태, 전통과 미래가 교차하는 오늘의 전환기에서 공공예술이 제시할 수 있는 새로운 공존의 균형을 사유합니다.'
+                      : 'Deriving its concept from the historical etymology of Anyang—signifying an idyllic sanctuary where body and mind find peace—the theme contemplates a harmonious equilibrium between technological evolution, ecological sanctuary, and collective human memory.'}
+                  </p>
+                  <p>
+                    {isKo
+                      ? '야외 조각, 뉴미디어 인스톨레이션, 시민 참여형 프로젝트를 통해 가상과 실재, 전통 옻칠과 첨단 디지털 기술이 어우러지는 현대적 의미의 무릉도원을 시민들과 함께 구현합니다.'
+                      : 'Through outdoor sculptures, immersive media installations, and community-engaged workshops, APAP8 realizes a contemporary utopia where tactile craft and digital frontier meet in the shared public sphere.'}
                   </p>
                 </div>
-                <div className="space-y-1 sm:space-y-2">
-                  <span className="font-mono text-[9px] sm:text-[10px] font-bold text-[#8C8C8C] tracking-widest uppercase">
-                    THEME
-                  </span>
-                  <h4 className="text-xs sm:text-sm font-bold text-white">
-                    {t.about.themeTitle}
-                  </h4>
-                  <p className="text-[11px] sm:text-xs text-[#B9B9B9] leading-relaxed">
-                    {t.about.themeDesc}
-                  </p>
-                </div>
-              </div>
+              </section>
             </div>
           }
         />
@@ -186,39 +241,14 @@ export default function SiteAPage({ params }: PageProps) {
           labelEn="EXHIBITION"
           subtitle="ARTISTS / WORKS / VENUES"
           isKo={isKo}
-          href={`/${validLocale}/exhibition`}
           summary={
-            <div className="space-y-3 sm:space-y-6 max-w-4xl">
-              {/* Stats Block: compact mobile numbers & gap */}
-              <div className="flex gap-8 sm:gap-16 lg:gap-20">
-                <div>
-                  <div className="font-mono font-black text-4xl sm:text-7xl md:text-8xl text-white leading-none">
-                    {t.exhibition.artistCount}
-                  </div>
-                  <div className="font-mono text-[10px] sm:text-xs text-[#8C8C8C] mt-1.5 sm:mt-3 uppercase tracking-wider">
-                    {t.exhibition.artistLabel}
-                  </div>
-                </div>
-                <div className="border-l border-[#2E2E2E] pl-8 sm:pl-16 lg:pl-20">
-                  <div className="font-mono font-black text-4xl sm:text-7xl md:text-8xl text-white leading-none">
-                    {t.exhibition.venueCount}
-                  </div>
-                  <div className="font-mono text-[10px] sm:text-xs text-[#8C8C8C] mt-1.5 sm:mt-3 uppercase tracking-wider">
-                    {t.exhibition.venueLabel}
-                  </div>
-                </div>
-              </div>
-
-              <p className="text-[#B9B9B9] text-xs sm:text-sm leading-relaxed max-w-2xl">
-                {t.exhibition.body}
-              </p>
-
-              <div className="flex flex-wrap gap-1.5 sm:gap-2 text-[10px] sm:text-xs font-mono text-white/70">
-                <span className="border border-white/20 px-2 py-0.5 sm:px-3 sm:py-1 bg-white/5">야외전시 Outdoor</span>
-                <span className="border border-white/20 px-2 py-0.5 sm:px-3 sm:py-1 bg-white/5">한중특별전 Special</span>
-                <span className="border border-white/20 px-2 py-0.5 sm:px-3 sm:py-1 bg-white/5">e-파빌리온 Media</span>
-                <span className="border border-white/20 px-2 py-0.5 sm:px-3 sm:py-1 bg-white/5">308 아트 크루 Crew</span>
-              </div>
+            <div className="w-full max-w-[1200px] mx-auto">
+              <ArtistGrid
+                categories={categories}
+                allLabel={isKo ? '전체 부문 (ALL)' : 'ALL VENUES'}
+                theme="blackwhite"
+                locale={validLocale}
+              />
             </div>
           }
         />
@@ -231,19 +261,36 @@ export default function SiteAPage({ params }: PageProps) {
           labelEn="PROGRAM"
           subtitle="PUBLIC / WORKSHOP / TOUR"
           isKo={isKo}
-          href={`/${validLocale}/program`}
           summary={
-            <div className="space-y-3 sm:space-y-5 max-w-3xl">
-              <h3 className="text-lg sm:text-2xl lg:text-3xl font-extrabold leading-snug">
-                {t.program.heading}
-              </h3>
-              <p className="text-[#B9B9B9] text-xs sm:text-sm leading-relaxed">
-                {t.program.body}
-              </p>
-              <div className="flex items-center gap-2 font-mono text-[11px] sm:text-xs text-white/70 border border-white/20 p-2 sm:p-2.5 w-fit bg-white/5">
-                <Calendar className="w-3.5 h-3.5 text-white flex-shrink-0" />
-                <span>{t.program.date}</span>
-              </div>
+            <div className="w-full max-w-[1200px] mx-auto space-y-8 divide-y divide-white/20">
+              {programs.map((prog, idx) => (
+                <div key={idx} className={idx > 0 ? 'pt-10' : ''}>
+                  <div className="flex items-center gap-3 font-mono text-xs font-bold text-[#8C8C8C] mb-3">
+                    <span className="bg-white text-black px-2 py-0.5 text-[10px] font-black">{prog.num}</span>
+                    <span className="tracking-widest uppercase">{prog.category}</span>
+                  </div>
+                  <h2 className="text-2xl sm:text-3xl font-extrabold text-white mb-4">
+                    {prog.title}
+                  </h2>
+                  <p className="text-sm sm:text-base text-[#B9B9B9] leading-relaxed mb-6 font-light max-w-3xl">
+                    {prog.desc}
+                  </p>
+                  <div className="grid sm:grid-cols-3 gap-3 text-xs font-mono text-white/70 bg-white/[0.03] border border-white/10 p-4">
+                    <div className="flex items-center gap-2">
+                      <Calendar className="w-4 h-4 text-white/40 flex-shrink-0" />
+                      <span>{prog.date}</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <MapPin className="w-4 h-4 text-white/40 flex-shrink-0" />
+                      <span>{prog.venue}</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <Users className="w-4 h-4 text-white/40 flex-shrink-0" />
+                      <span>{prog.target}</span>
+                    </div>
+                  </div>
+                </div>
+              ))}
             </div>
           }
         />
@@ -256,29 +303,79 @@ export default function SiteAPage({ params }: PageProps) {
           labelEn="COMMUNITY"
           subtitle="NOTICE / PRESS"
           isKo={isKo}
-          href={`/${validLocale}/community`}
           summary={
-            <div className="space-y-2 sm:space-y-3 w-full max-w-3xl">
-              <h3 className="text-[10px] sm:text-xs font-bold text-[#8C8C8C] font-mono uppercase tracking-widest">
-                {t.community.heading}
-              </h3>
-              <ul className="divide-y divide-[#2E2E2E] border-y border-[#2E2E2E]">
-                {t.community.notices.map((n, i) => (
-                  <li key={i} className="flex items-center justify-between gap-3 py-2.5 sm:py-3.5 hover:bg-white/[0.03] px-1 sm:px-2 transition-colors">
-                    <div className="flex items-center gap-2 min-w-0">
-                      <span className={`text-[9px] sm:text-[10px] font-bold font-mono px-1.5 py-0.5 flex-shrink-0 ${
-                        n.cat === '프레스' || n.cat === 'Press'
-                          ? 'bg-white text-black'
-                          : 'border border-white text-white'
-                      }`}>
-                        {n.cat}
-                      </span>
-                      <span className="text-xs sm:text-sm font-bold text-white truncate">{n.title}</span>
+            <div className="w-full max-w-[1200px] mx-auto space-y-12">
+              <div className="space-y-4">
+                <div className="divide-y divide-white/15 border-y border-white/20">
+                  {communityItems.slice((communityPage - 1) * communityPerPage, communityPage * communityPerPage).map((item, idx) => (
+                    <div key={idx} className="py-6 hover:bg-white/[0.02] px-3 -mx-3 transition-colors space-y-2">
+                      <div className="flex items-center justify-between gap-4">
+                        <div className="flex items-center gap-2.5">
+                          <span className={`text-[10px] font-bold font-mono px-2 py-0.5 flex-shrink-0 ${
+                            item.cat === '프레스' || item.cat === 'Press' ? 'bg-white text-black' : 'border border-white text-white'
+                          }`}>
+                            {item.cat}
+                          </span>
+                          <span className="font-mono text-xs text-[#8C8C8C]">{item.date}</span>
+                        </div>
+                      </div>
+                      <h3 className="text-lg sm:text-xl font-bold text-white leading-snug">
+                        {item.title}
+                      </h3>
+                      <p className="text-xs sm:text-sm text-[#B9B9B9] leading-relaxed font-light">
+                        {item.desc}
+                      </p>
                     </div>
-                    <span className="font-mono text-[10px] sm:text-xs text-[#8C8C8C] flex-shrink-0">{n.date}</span>
-                  </li>
-                ))}
-              </ul>
+                  ))}
+                </div>
+
+                {/* Pagination Controls */}
+                {Math.ceil(communityItems.length / communityPerPage) > 1 && (
+                  <div className="flex items-center justify-center gap-4 pt-2">
+                    <button
+                      onClick={() => setCommunityPage(p => Math.max(1, p - 1))}
+                      disabled={communityPage === 1}
+                      className="w-8 h-8 flex items-center justify-center border border-white/20 hover:border-white hover:bg-white hover:text-black transition-colors disabled:opacity-30 disabled:pointer-events-none"
+                    >
+                      <ChevronLeft className="w-4 h-4" />
+                    </button>
+                    <span className="font-mono text-xs text-white/50">
+                      {communityPage} / {Math.ceil(communityItems.length / communityPerPage)}
+                    </span>
+                    <button
+                      onClick={() => setCommunityPage(p => Math.min(Math.ceil(communityItems.length / communityPerPage), p + 1))}
+                      disabled={communityPage === Math.ceil(communityItems.length / communityPerPage)}
+                      className="w-8 h-8 flex items-center justify-center border border-white/20 hover:border-white hover:bg-white hover:text-black transition-colors disabled:opacity-30 disabled:pointer-events-none"
+                    >
+                      <ChevronRight className="w-4 h-4" />
+                    </button>
+                  </div>
+                )}
+              </div>
+
+              {/* Inquiry Card */}
+              <div className="bg-white/[0.03] border border-white/20 p-6 sm:p-8 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
+                <div className="space-y-2">
+                  <h4 className="text-lg font-bold text-white flex items-center gap-2">
+                    <MessageCircle className="w-5 h-5 text-white" />
+                    <span>{isKo ? '실시간 문의 및 안내' : 'Direct Inquiry & Q&A'}</span>
+                  </h4>
+                  <p className="text-xs sm:text-sm text-[#B9B9B9] leading-relaxed max-w-xl">
+                    {isKo
+                      ? 'APAP8 관람, 도슨트 투어, 프레스 취재 문의는 카카오톡 공식 채널을 통해 가장 빠르게 답변 받으실 수 있습니다.'
+                      : 'For visitor assistance, docent reservations, or press queries, please connect through our official channel.'}
+                  </p>
+                </div>
+                <a
+                  href="https://pf.kakao.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="border border-white hover:bg-white hover:text-black transition-colors font-mono font-bold text-xs px-6 py-3 flex items-center gap-2 flex-shrink-0"
+                >
+                  <span>{isKo ? '카카오톡 채널 바로가기' : 'KAKAO TALK CHANNEL'}</span>
+                  <ArrowUpRight className="w-3.5 h-3.5" />
+                </a>
+              </div>
             </div>
           }
         />
@@ -291,24 +388,79 @@ export default function SiteAPage({ params }: PageProps) {
           labelEn="VISIT"
           subtitle="ADMISSION / LOCATION / HOURS"
           isKo={isKo}
-          href={`/${validLocale}/visit`}
           summary={
-            <div className="grid sm:grid-cols-2 gap-4 sm:gap-8 max-w-3xl">
-              <div className="space-y-1 sm:space-y-2 border-l-2 border-white pl-3 sm:pl-4">
-                <div className="font-mono text-[9px] sm:text-[10px] uppercase tracking-widest text-[#8C8C8C]">ADMISSION & HOURS</div>
-                <div className="text-lg sm:text-2xl font-extrabold">{t.visit.admission}</div>
-                <div className="text-xs sm:text-sm text-[#B9B9B9]">{t.visit.hours}</div>
-              </div>
-              <div className="space-y-1 sm:space-y-2 border-l-2 border-white pl-3 sm:pl-4">
-                <div className="font-mono text-[9px] sm:text-[10px] uppercase tracking-widest text-[#8C8C8C]">LOCATION & ACCESS</div>
-                <div className="flex items-start gap-1.5">
-                  <MapPin className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-white mt-1 flex-shrink-0" />
-                  <div className="text-xs sm:text-sm text-[#B9B9B9] leading-relaxed">
-                    <span className="text-white font-bold">{t.visit.location}</span>
-                    <br />
-                    {t.visit.access}
+            <div className="w-full max-w-[1200px] mx-auto space-y-12">
+              <div className="grid md:grid-cols-2 gap-8">
+                {/* Card 1: Admission & Hours */}
+                <div className="border border-white/20 p-6 sm:p-8 space-y-4 bg-white/[0.02]">
+                  <div className="flex items-center gap-2 text-xs font-mono font-bold text-[#8C8C8C] uppercase tracking-wider">
+                    <Clock className="w-4 h-4 text-white" />
+                    <span>{isKo ? '관람시간 및 관람료' : 'HOURS & ADMISSION'}</span>
+                  </div>
+                  <div className="text-2xl font-black text-white">
+                    {isKo ? '관람료 전액 무료' : 'Free Admission'}
+                  </div>
+                  <div className="text-sm text-[#B9B9B9] space-y-2 leading-relaxed">
+                    <p>
+                      <strong className="text-white">{isKo ? '야외 공공조각 전시' : 'Outdoor Sculptures'}:</strong>{' '}
+                      {isKo ? '연중 상시 개방 (24시간 관람 가능)' : 'Open 24/7 year-round'}
+                    </p>
+                    <p>
+                      <strong className="text-white">{isKo ? '실내 전시관 (안양파빌리온)' : 'Indoor Pavilions'}:</strong>{' '}
+                      {isKo ? '화요일 – 일요일 10:00 – 18:00 (입장 마감 17:30)' : 'Tue–Sun 10:00–18:00 (Last entry 17:30)'}
+                    </p>
+                    <p className="font-mono text-xs text-[#8C8C8C]">
+                      {isKo ? '※ 매주 월요일 휴관 (공휴일인 경우 익일 휴관)' : '※ Closed Mondays'}
+                    </p>
                   </div>
                 </div>
+
+                {/* Card 2: Location */}
+                <div className="border border-white/20 p-6 sm:p-8 space-y-4 bg-white/[0.02]">
+                  <div className="flex items-center gap-2 text-xs font-mono font-bold text-[#8C8C8C] uppercase tracking-wider">
+                    <MapPin className="w-4 h-4 text-white" />
+                    <span>{isKo ? '전시 장소 및 주소' : 'LOCATION & ADDRESS'}</span>
+                  </div>
+                  <div className="text-2xl font-black text-white">
+                    {isKo ? '안양예술공원 일원' : 'Anyang Art Park'}
+                  </div>
+                  <div className="text-sm text-[#B9B9B9] space-y-2 leading-relaxed">
+                    <p className="text-white font-medium">
+                      {isKo
+                        ? '경기도 안양시 만안구 예술공원로 180 (안양파빌리온)'
+                        : '180, Yesulgongwon-ro, Manan-gu, Anyang-si, Gyeonggi-do (Anyang Pavilion)'}
+                    </p>
+                    <p className="text-xs text-[#8C8C8C]">
+                      {isKo
+                        ? '안양예술공원 산책로, 안양파빌리온 메인홀, 안양천 변 야외 공간'
+                        : 'Anyang Art Park trails, Anyang Pavilion, and open urban spaces along Anyang Stream'}
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Historical Archive Banner */}
+              <div className="border border-white/30 p-6 sm:p-8 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 bg-white/[0.04]">
+                <div className="space-y-2">
+                  <div className="font-mono text-[10px] font-bold text-[#8C8C8C] uppercase tracking-widest">
+                    APAP ARCHIVE HUB
+                  </div>
+                  <h4 className="text-xl font-bold text-white">
+                    {isKo ? '역대 APAP (1회~7회) 아카이브 둘러보기' : 'Explore APAP Editions 1–7 Archives'}
+                  </h4>
+                  <p className="text-xs sm:text-sm text-[#B9B9B9] max-w-xl leading-relaxed">
+                    {isKo
+                      ? '2005년 제1회부터 축적된 역대 APAP의 모든 영구 설치 작품 및 전시 기록을 통합 아카이브에서 확인하실 수 있습니다.'
+                      : 'Browse permanent installations and documentation across past editions from 2005 to 2023.'}
+                  </p>
+                </div>
+                <Link
+                  href={`/archive/${validLocale}`}
+                  className="inline-flex items-center gap-2 font-mono text-xs font-bold px-6 py-3 bg-white text-black hover:bg-white/80 transition-colors flex-shrink-0"
+                >
+                  <span>{isKo ? '역대 아카이브 열기' : 'OPEN ARCHIVE'}</span>
+                  <ArrowUpRight className="w-3.5 h-3.5" />
+                </Link>
               </div>
             </div>
           }

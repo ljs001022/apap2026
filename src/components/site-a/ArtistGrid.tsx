@@ -1,14 +1,118 @@
 'use client';
 
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import { Artist } from '@/types/artist';
 import ArtistCard, { CardTheme } from './ArtistCard';
 import ArtistModal from './ArtistModal';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 export interface CategoryGroup<T> {
   id: string;
   label: string;
   items: T[];
+}
+
+function PaginatedArtistCarousel({ artists, theme, locale, onArtistClick }: { artists: Artist[], theme: CardTheme, locale: string, onArtistClick: (artist: Artist) => void }) {
+  const [itemsPerPage, setItemsPerPage] = useState(4);
+  const [currentPage, setCurrentPage] = useState(0);
+  const scrollRef = React.useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handleResize = () => setItemsPerPage(window.innerWidth >= 1024 ? 8 : 4);
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  const pages = useMemo(() => {
+    const p = [];
+    for (let i = 0; i < artists.length; i += itemsPerPage) {
+      p.push(artists.slice(i, i + itemsPerPage));
+    }
+    return p;
+  }, [artists, itemsPerPage]);
+
+  const handleScroll = (e: React.UIEvent<HTMLDivElement>) => {
+    const target = e.currentTarget;
+    const pageIndex = Math.round(target.scrollLeft / target.clientWidth);
+    if (pageIndex !== currentPage) {
+      setCurrentPage(pageIndex);
+    }
+  };
+
+  const scrollToPage = (pageIdx: number) => {
+    if (scrollRef.current) {
+      scrollRef.current.scrollTo({
+        left: pageIdx * scrollRef.current.clientWidth,
+        behavior: 'smooth',
+      });
+    }
+  };
+
+  return (
+    <div className="space-y-6">
+      <div 
+        ref={scrollRef}
+        className="flex overflow-x-auto snap-x snap-mandatory hide-scrollbar border-y border-[#2E2E2E]"
+        onScroll={handleScroll}
+      >
+        {pages.map((page, pageIdx) => (
+          <div 
+            key={pageIdx} 
+            className="w-full flex-shrink-0 snap-start grid grid-cols-2 lg:grid-cols-4 grid-rows-2 divide-x divide-y divide-[#2E2E2E] bg-[#0A0A0A]"
+          >
+            {page.map((artist) => (
+              <ArtistCard
+                key={`${artist.slug}-${artist.venue_slug || ''}`}
+                artist={artist}
+                theme={theme}
+                locale={locale}
+                onClick={onArtistClick}
+              />
+            ))}
+            {/* Fill empty slots in the last page if needed to maintain grid structure */}
+            {Array.from({ length: itemsPerPage - page.length }).map((_, i) => (
+              <div key={`empty-${i}`} className="bg-[#0A0A0A] border-[#2E2E2E]" />
+            ))}
+          </div>
+        ))}
+      </div>
+      
+      {/* Pagination indicators & Arrows */}
+      {pages.length > 1 && (
+        <div className="flex items-center justify-center gap-6">
+          <button
+            onClick={() => scrollToPage(Math.max(0, currentPage - 1))}
+            disabled={currentPage === 0}
+            className="hidden md:flex w-10 h-10 border border-white/20 hover:border-white hover:bg-white hover:text-black items-center justify-center transition-colors disabled:opacity-30 disabled:pointer-events-none text-white"
+            aria-label="Previous Page"
+          >
+            <ChevronLeft className="w-5 h-5" />
+          </button>
+          
+          <div className="flex justify-center gap-3">
+            {pages.map((_, idx) => (
+              <button
+                key={idx} 
+                onClick={() => scrollToPage(idx)}
+                className={`w-2 h-2 rounded-full transition-colors cursor-pointer ${idx === currentPage ? 'bg-white' : 'bg-white/20 hover:bg-white/50'}`}
+                aria-label={`Go to page ${idx + 1}`}
+              />
+            ))}
+          </div>
+
+          <button
+            onClick={() => scrollToPage(Math.min(pages.length - 1, currentPage + 1))}
+            disabled={currentPage === pages.length - 1}
+            className="hidden md:flex w-10 h-10 border border-white/20 hover:border-white hover:bg-white hover:text-black items-center justify-center transition-colors disabled:opacity-30 disabled:pointer-events-none text-white"
+            aria-label="Next Page"
+          >
+            <ChevronRight className="w-5 h-5" />
+          </button>
+        </div>
+      )}
+    </div>
+  );
 }
 
 interface ArtistGridProps {
@@ -126,23 +230,26 @@ export default function ArtistGrid({
 
       {/* ─── Responsive Grid ─── */}
       {displayedArtists.length > 0 ? (
-        <div
-          className={
-            theme === 'blackwhite'
-              ? 'grid grid-cols-2 md:grid-cols-4 divide-x divide-y divide-white border border-white'
-              : 'grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 sm:gap-6'
-          }
-        >
-          {displayedArtists.map((artist) => (
-            <ArtistCard
-              key={`${artist.slug}-${artist.venue_slug || ''}`}
-              artist={artist}
-              theme={theme}
-              locale={locale}
-              onClick={handleCardClick}
-            />
-          ))}
-        </div>
+        theme === 'blackwhite' ? (
+          <PaginatedArtistCarousel 
+            artists={displayedArtists} 
+            theme={theme} 
+            locale={locale} 
+            onArtistClick={handleCardClick} 
+          />
+        ) : (
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 sm:gap-6">
+            {displayedArtists.map((artist) => (
+              <ArtistCard
+                key={`${artist.slug}-${artist.venue_slug || ''}`}
+                artist={artist}
+                theme={theme}
+                locale={locale}
+                onClick={handleCardClick}
+              />
+            ))}
+          </div>
+        )
       ) : (
         <div className="p-16 text-center text-white/40 font-mono text-sm border border-dashed border-white/10 rounded-xl">
           {isKo ? '등록된 작가가 없습니다.' : 'No artists found.'}

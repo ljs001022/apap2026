@@ -1,4 +1,4 @@
-﻿'use client';
+'use client';
 
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -31,13 +31,17 @@ export default function ArtistModal({
 }: ArtistModalProps) {
   const [currentWorkIndex, setCurrentWorkIndex] = useState(0);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [zoomedImage, setZoomedImage] = useState<string | null>(null);
 
   // Close on ESC key and lock body scroll
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') onClose();
+      if (e.key === 'Escape') {
+        if (zoomedImage) setZoomedImage(null);
+        else onClose();
+      }
     };
-    if (artist) {
+    if (artist || zoomedImage) {
       window.addEventListener('keydown', handleKeyDown);
       document.body.style.overflow = 'hidden';
     }
@@ -45,12 +49,13 @@ export default function ArtistModal({
       window.removeEventListener('keydown', handleKeyDown);
       document.body.style.overflow = '';
     };
-  }, [artist, onClose]);
+  }, [artist, zoomedImage, onClose]);
 
   // Reset indices when artist changes
   useEffect(() => {
     setCurrentWorkIndex(0);
     setCurrentImageIndex(0);
+    setZoomedImage(null);
   }, [artist]);
 
   if (!artist) return null;
@@ -84,14 +89,19 @@ export default function ArtistModal({
   };
 
   return (
+    <>
     <AnimatePresence>
-      <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 md:p-8 bg-black/85 backdrop-blur-md">
+      <div 
+        className="fixed inset-0 z-[70] flex justify-center p-4 pt-24 sm:p-8 sm:pt-28 md:p-12 md:pt-32 pb-8 bg-black/85 backdrop-blur-md"
+        onClick={onClose}
+      >
         <motion.div
           initial={{ opacity: 0, scale: 0.96, y: 12 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
           exit={{ opacity: 0, scale: 0.96, y: 12 }}
           transition={{ duration: 0.22, ease: 'easeOut' }}
-          className="relative w-full max-w-5xl max-h-[92vh] bg-[#0A0A0A] border border-white/20 shadow-2xl overflow-hidden flex flex-col"
+          className="relative w-full max-w-5xl max-h-full bg-[#0A0A0A] border border-white/20 shadow-2xl overflow-hidden flex flex-col"
+          onClick={(e) => e.stopPropagation()}
         >
           {/* Header */}
           <div className="sticky top-0 z-20 flex items-center justify-between px-6 py-4 bg-[#0A0A0A]/95 backdrop-blur-md border-b border-white/15">
@@ -232,11 +242,14 @@ export default function ArtistModal({
                 <div className="grid lg:grid-cols-12 gap-6 bg-white/[0.02] border border-white/15 p-5 sm:p-6">
                   <div className="lg:col-span-6 flex flex-col justify-center">
                     {currentWorkImage ? (
-                      <div className="relative aspect-[4/3] w-full overflow-hidden bg-black border border-white/10 flex items-center justify-center">
+                      <div 
+                        className="relative aspect-[4/3] w-full overflow-hidden bg-black border border-white/10 flex items-center justify-center cursor-zoom-in group"
+                        onClick={() => setZoomedImage(currentWorkImage)}
+                      >
                         <img
                           src={currentWorkImage}
                           alt={getLocalizedTitle(currentWork.title, locale)}
-                          className="w-full h-full object-contain"
+                          className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300"
                         />
                       </div>
                     ) : (
@@ -311,5 +324,40 @@ export default function ArtistModal({
         </motion.div>
       </div>
     </AnimatePresence>
+
+    {/* Fullscreen Zoom Overlay */}
+    <AnimatePresence>
+      {zoomedImage && (
+        <div 
+          className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/95 backdrop-blur-xl cursor-zoom-out"
+          onClick={() => setZoomedImage(null)}
+        >
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.95 }}
+            transition={{ duration: 0.2 }}
+            className="relative max-w-[95vw] max-h-[95vh] flex items-center justify-center"
+          >
+            <img
+              src={zoomedImage}
+              alt="Zoomed artwork"
+              className="max-w-full max-h-full object-contain"
+            />
+            <button
+              onClick={(e) => {
+                e.stopPropagation();
+                setZoomedImage(null);
+              }}
+              className="absolute -top-4 -right-4 sm:top-0 sm:-right-12 w-10 h-10 rounded-full bg-white/10 hover:bg-white text-white hover:text-black flex items-center justify-center transition-colors border border-white/20"
+              aria-label="Close zoom"
+            >
+              <X className="w-5 h-5" />
+            </button>
+          </motion.div>
+        </div>
+      )}
+    </AnimatePresence>
+    </>
   );
 }

@@ -21,27 +21,77 @@ export default function GnbHeader({ locale }: GnbHeaderProps) {
   const isKo = locale === 'ko';
   const [scrolled, setScrolled] = useState(false);
   const [drawerOpen, setDrawerOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState<string>('');
   const pathname = usePathname();
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 10);
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
+    const scrollContainer = document.querySelector('main');
+    
+    const handleScroll = () => {
+      const scrollPos = scrollContainer ? scrollContainer.scrollTop : window.scrollY;
+      setScrolled(scrollPos > 10);
+    };
+
+    if (scrollContainer) {
+      scrollContainer.addEventListener('scroll', handleScroll, { passive: true });
+    } else {
+      window.addEventListener('scroll', handleScroll, { passive: true });
+    }
+
+    return () => {
+      if (scrollContainer) scrollContainer.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('scroll', handleScroll);
+    };
   }, []);
 
-  useEffect(() => { setDrawerOpen(false); }, [pathname]);
+  // Intersection Observer for ScrollSpy
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setActiveSection(entry.target.id);
+          }
+        });
+      },
+      {
+        root: document.querySelector('main'),
+        rootMargin: '-50% 0px -50% 0px',
+        threshold: 0,
+      }
+    );
+
+    NAV_ITEMS.forEach((item) => {
+      const el = document.getElementById(item.href);
+      if (el) observer.observe(el);
+    });
+    
+    const hero = document.getElementById('hero');
+    if (hero) observer.observe(hero);
+
+    return () => observer.disconnect();
+  }, [pathname]);
+
+  useEffect(() => { setDrawerOpen(false); }, [pathname, activeSection]);
 
   useEffect(() => {
     document.body.style.overflow = drawerOpen ? 'hidden' : '';
     return () => { document.body.style.overflow = ''; };
   }, [drawerOpen]);
 
-  const isActive = (href: string) => {
-    const segment = `/${locale}/${href}`;
-    return pathname === segment || pathname.startsWith(`${segment}/`);
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
+    if (pathname === `/${locale}`) {
+      e.preventDefault();
+      const el = document.getElementById(id);
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth' });
+        setActiveSection(id);
+        setDrawerOpen(false);
+      }
+    }
   };
 
-  const navHref = (slug: string) => `/${locale}/${slug}`;
+  const navHref = (slug: string) => `/${locale}/#${slug}`;
 
   return (
     <>
@@ -52,8 +102,8 @@ export default function GnbHeader({ locale }: GnbHeaderProps) {
             : 'bg-[#0A0A0A]/80 backdrop-blur-sm border-transparent'
         }`}
       >
-        <div className="max-w-[1440px] mx-auto flex items-center justify-between h-[64px] px-6 sm:px-10 lg:px-16">
-          <Link href={`/${locale}`} className="flex items-center gap-3 group">
+        <div className="max-w-[1200px] mx-auto flex items-center justify-between h-[64px] px-6 sm:px-10 lg:px-16">
+          <Link href={`/${locale}`} className="flex items-center gap-3 group" onClick={(e) => handleNavClick(e, 'hero')}>
             <span className="font-mono font-black text-xl tracking-tighter border-2 border-white px-2 py-0.5 leading-none group-hover:bg-white group-hover:text-black transition-colors">
               APAP<b>8</b>
             </span>
@@ -68,11 +118,12 @@ export default function GnbHeader({ locale }: GnbHeaderProps) {
 
           <nav className="hidden md:flex items-center gap-6 lg:gap-8">
             {NAV_ITEMS.map((item) => {
-              const active = isActive(item.href);
+              const active = activeSection === item.href;
               return (
                 <Link
                   key={item.href}
                   href={navHref(item.href)}
+                  onClick={(e) => handleNavClick(e, item.href)}
                   className={`relative text-xs font-bold tracking-wide py-1 group transition-colors ${
                     active ? 'text-white' : 'text-[#8C8C8C] hover:text-white'
                   }`}
@@ -127,18 +178,20 @@ export default function GnbHeader({ locale }: GnbHeaderProps) {
           >
             <nav className="flex-1 px-8 pt-10 space-y-1 divide-y divide-[#1E1E1E]">
               {NAV_ITEMS.map((item) => {
-                const active = isActive(item.href);
+                const active = activeSection === item.href;
                 return (
                   <Link
                     key={item.href}
                     href={navHref(item.href)}
+                    onClick={(e) => handleNavClick(e, item.href)}
                     className={`flex items-baseline justify-between py-5 transition-colors ${
                       active ? 'text-white' : 'text-[#8C8C8C]'
                     }`}
                   >
                     <span className="text-2xl font-black">
-                      {item.labelEn}
+                      {isKo ? item.labelKo : item.labelEn}
                     </span>
+                    <span className="font-mono text-xs text-[#5C5C5C]">{item.labelEn}</span>
                   </Link>
                 );
               })}
