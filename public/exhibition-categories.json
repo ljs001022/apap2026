@@ -91,59 +91,13 @@
         "ko": "한국과 중국 현대미술 작가들의 작품을 통해 우리가 꿈꾸는 삶과 세계를 살펴보는 특별전",
         "en": "A special exhibition exploring the life and world we dream of through works by contemporary artists from Korea and China."
       },
-      "missingArtists": [
-        {
-          "name_ko": "오용길",
-          "name_en": "Oh Yong-gil"
-        },
-        {
-          "name_ko": "윤진섭",
-          "name_en": "Yoon Jin-seop"
-        },
-        {
-          "name_ko": "이길우",
-          "name_en": "Lee Gil-woo"
-        },
-        {
-          "name_ko": "이후창",
-          "name_en": "Lee Hoo-chang"
-        },
-        {
-          "name_ko": "최순녕",
-          "name_en": "Choi Soon-nyeong"
-        },
-        {
-          "name_ko": "홍경택",
-          "name_en": "Hong Kyoung-tack"
-        },
-        {
-          "name_ko": "김윤아",
-          "name_en": "Kim Yoon-ah"
-        },
-        {
-          "name_ko": "임혜정",
-          "name_en": "Lim Hye-jung"
-        },
-        {
-          "name_ko": "정영남",
-          "name_en": "Jung Young-nam"
-        }
-      ]
+      "missingArtists": []
     }
   ],
   "missingFromManifest": {
-    "note": "프로필/작품 이미지가 미확보된 작가 10인으로, 카드는 생성하지 않고 전시 카테고리 설명에서 안내",
+    "note": "프로필/작품 이미지가 미확보된 작가로, 카드는 생성하지 않고 전시 카테고리 설명에서 안내",
     "artists": [
-      "유영운",
-      "오용길",
-      "윤진섭",
-      "이길우",
-      "이후창",
-      "최순녕",
-      "홍경택",
-      "김윤아",
-      "임혜정",
-      "정영남"
+      "유영운"
     ]
   }
 }
