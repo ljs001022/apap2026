@@ -1,4 +1,4 @@
-﻿'use client';
+'use client';
 
 import React from 'react';
 import Link from 'next/link';
@@ -51,56 +51,76 @@ export default function VisitPage({ params }: PageProps) {
         </div>
 
         {/* Info Grid */}
-        <div className="grid md:grid-cols-2 gap-8 mb-12">
+        <div className="grid md:grid-cols-2 gap-4 sm:gap-6 lg:gap-8 mb-8 sm:mb-12">
           {/* Card 1: Admission & Hours */}
-          <div className="border border-white/20 p-6 sm:p-8 space-y-4 bg-white/[0.02]">
-            <div className="flex items-center gap-2 text-xs font-mono font-bold text-[#8C8C8C] uppercase tracking-wider">
-              <Clock className="w-4 h-4 text-white" />
-              <span>{isKo ? '관람시간 및 관람료' : 'HOURS & ADMISSION'}</span>
+          <div className="border border-white/20 p-4 sm:p-6 lg:p-8 space-y-3 sm:space-y-4 bg-white/[0.02]">
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-2 text-[11px] sm:text-xs font-mono font-bold text-[#8C8C8C] uppercase tracking-wider">
+                <Clock className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-white" />
+                <span>{isKo ? '관람시간 및 관람료' : 'HOURS & ADMISSION'}</span>
+              </div>
+              <span className="font-mono text-[10px] sm:text-xs bg-white text-black px-2 py-0.5 font-bold">
+                {isKo ? '전액 무료' : 'FREE ADMISSION'}
+              </span>
             </div>
 
-            <div className="text-2xl font-black text-white">
+            <div className="text-xl sm:text-2xl font-black text-white">
               {isKo ? '관람료 전액 무료' : 'Free Admission'}
             </div>
 
-            <div className="text-sm text-[#B9B9B9] space-y-2 leading-relaxed">
+            <div className="text-sm sm:text-base text-[#B9B9B9] space-y-2.5 leading-relaxed font-light">
               <p>
-                <strong className="text-white">{isKo ? '야외 공공조각 전시' : 'Outdoor Sculptures'}:</strong>{' '}
+                <strong className="text-white font-medium">{isKo ? '야외 공공조각 전시' : 'Outdoor Sculptures'}:</strong>{' '}
                 {isKo ? '연중 상시 개방 (24시간 관람 가능)' : 'Open 24/7 year-round'}
               </p>
               <p>
-                <strong className="text-white">{isKo ? '실내 전시관 (안양파빌리온)' : 'Indoor Pavilions'}:</strong>{' '}
+                <strong className="text-white font-medium">{isKo ? '실내 전시관 (안양파빌리온)' : 'Indoor Pavilions'}:</strong>{' '}
                 {isKo ? '화요일 – 일요일 10:00 – 18:00 (입장 마감 17:30)' : 'Tue–Sun 10:00–18:00 (Last entry 17:30)'}
               </p>
-              <p className="font-mono text-xs text-[#8C8C8C]">
+              <p className="font-mono text-xs sm:text-sm text-[#8C8C8C]">
                 {isKo ? '※ 매주 월요일 휴관 (공휴일인 경우 익일 휴관)' : '※ Closed Mondays'}
               </p>
+              <div className="pt-2.5 sm:pt-3 border-t border-white/10 text-xs sm:text-sm font-mono text-white/70 space-y-1">
+                <div>
+                  <span className="text-[#8C8C8C]">{isKo ? '■ 운영기간: ' : '■ Period: '}</span>
+                  <span>{isKo ? '2026년 9월 30일(수) ~ 11월 29일(일)' : 'Sept 30 – Nov 29, 2026'}</span>
+                </div>
+                <div>
+                  <span className="text-[#8C8C8C]">{isKo ? '■ 개막식: ' : '■ Opening: '}</span>
+                  <span>{isKo ? '2026.9.30.(수) 19:00 (308 아트크루 레이저 공연 연계)' : 'Sept 30, 2026 19:00 (308 Art Crew Laser Show)'}</span>
+                </div>
+              </div>
             </div>
           </div>
 
           {/* Card 2: Location */}
-          <div className="border border-white/20 p-6 sm:p-8 space-y-4 bg-white/[0.02]">
-            <div className="flex items-center gap-2 text-xs font-mono font-bold text-[#8C8C8C] uppercase tracking-wider">
-              <MapPin className="w-4 h-4 text-white" />
-              <span>{isKo ? '전시 장소 및 주소' : 'LOCATION & ADDRESS'}</span>
+          <div className="border border-white/20 p-4 sm:p-6 lg:p-8 space-y-3 sm:space-y-4 bg-white/[0.02]">
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-2 text-[11px] sm:text-xs font-mono font-bold text-[#8C8C8C] uppercase tracking-wider">
+                <MapPin className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-white" />
+                <span>{isKo ? '전시 장소 및 주소' : 'LOCATION & ADDRESS'}</span>
+              </div>
+              <span className="font-mono text-[10px] sm:text-xs border border-white/40 text-white/90 px-2 py-0.5 font-bold">
+                {isKo ? '안양파빌리온' : 'PAVILION'}
+              </span>
             </div>
 
-            <div className="text-2xl font-black text-white">
+            <div className="text-xl sm:text-2xl font-black text-white">
               {isKo ? '안양예술공원 일원' : 'Anyang Art Park'}
             </div>
 
-            <div className="text-sm text-[#B9B9B9] space-y-2 leading-relaxed">
+            <div className="text-sm sm:text-base text-[#B9B9B9] space-y-2.5 leading-relaxed font-light">
               <p className="text-white font-medium">
                 {isKo
                   ? '경기도 안양시 만안구 예술공원로 180 (안양파빌리온)'
                   : '180, Yesulgongwon-ro, Manan-gu, Anyang-si, Gyeonggi-do (Anyang Pavilion)'}
               </p>
-              <p className="text-xs text-[#8C8C8C]">
+              <p className="text-xs sm:text-sm text-[#8C8C8C]">
                 {isKo
                   ? '안양예술공원 산책로, 안양파빌리온 메인홀, 안양천 변 야외 공간'
                   : 'Anyang Art Park trails, Anyang Pavilion, and open urban spaces along Anyang Stream'}
               </p>
-              <p className="font-mono text-xs text-white/70 flex items-center gap-1.5 pt-2">
+              <p className="font-mono text-xs sm:text-sm text-white/70 flex items-center gap-1.5 pt-1.5 border-t border-white/10">
                 <Phone className="w-3.5 h-3.5" />
                 <span>031-687-0500 (안양문화예술재단 APAP 사업부)</span>
               </p>
@@ -109,29 +129,29 @@ export default function VisitPage({ params }: PageProps) {
         </div>
 
         {/* Directions & Transportation */}
-        <div className="border border-white/20 p-6 sm:p-8 mb-12 space-y-6">
-          <h3 className="text-xl font-extrabold text-white flex items-center gap-2">
-            <Bus className="w-5 h-5 text-white" />
+        <div className="border border-white/20 p-4 sm:p-6 lg:p-8 mb-8 sm:mb-12 space-y-4 sm:space-y-6">
+          <h3 className="text-lg sm:text-xl font-extrabold text-white flex items-center gap-2">
+            <Bus className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
             <span>{isKo ? '대중교통 이용 안내' : 'Public Transportation'}</span>
           </h3>
 
-          <div className="grid sm:grid-cols-2 gap-6 text-sm text-[#B9B9B9] leading-relaxed">
-            <div className="space-y-2 border-l-2 border-white/30 pl-4">
-              <h4 className="font-bold text-white font-mono text-xs uppercase tracking-wider">
+          <div className="grid sm:grid-cols-2 gap-4 sm:gap-6 text-sm sm:text-base text-[#B9B9B9] leading-relaxed">
+            <div className="space-y-1.5 border-l-2 border-white/30 pl-3.5 sm:pl-4">
+              <h4 className="font-bold text-white font-mono text-xs sm:text-sm uppercase tracking-wider">
                 {isKo ? '지하철 1호선 관악역 하차' : 'Subway Line 1 Gwanak Stn'}
               </h4>
-              <p>
+              <p className="font-light">
                 {isKo
                   ? '2번 출구 앞 버스정류장에서 마을버스 6-2번 환승 → 안양예술공원 종점 하차 (도보 2분)'
                   : 'Exit 2 → Village Bus 6-2 → Anyang Art Park Terminus (2 min walk)'}
               </p>
             </div>
 
-            <div className="space-y-2 border-l-2 border-white/30 pl-4">
-              <h4 className="font-bold text-white font-mono text-xs uppercase tracking-wider">
+            <div className="space-y-1.5 border-l-2 border-white/30 pl-3.5 sm:pl-4">
+              <h4 className="font-bold text-white font-mono text-xs sm:text-sm uppercase tracking-wider">
                 {isKo ? '지하철 1호선 안양역 하차' : 'Subway Line 1 Anyang Stn'}
               </h4>
-              <p>
+              <p className="font-light">
                 {isKo
                   ? '1번 출구 맞은편 정류장에서 시내버스 2번 환승 → 안양예술공원 사거리 하차 (도보 5분)'
                   : 'Exit 1 → Bus 2 → Anyang Art Park Intersection (5 min walk)'}
@@ -141,15 +161,15 @@ export default function VisitPage({ params }: PageProps) {
         </div>
 
         {/* Historical Archive Banner */}
-        <div className="border border-white/30 p-6 sm:p-8 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 bg-white/[0.04]">
-          <div className="space-y-2">
-            <div className="font-mono text-[10px] font-bold text-[#8C8C8C] uppercase tracking-widest">
+        <div className="border border-white/30 p-4 sm:p-6 lg:p-8 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 sm:gap-6 bg-white/[0.04]">
+          <div className="space-y-1.5">
+            <div className="font-mono text-[10px] sm:text-xs font-bold text-[#8C8C8C] uppercase tracking-widest">
               APAP ARCHIVE HUB
             </div>
-            <h4 className="text-xl font-bold text-white">
-              {isKo ? '역대 APAP (1회~7회) 아카이브 둘러보기' : 'Explore APAP Editions 1–7 Archives'}
+            <h4 className="text-lg sm:text-xl font-bold text-white">
+              {isKo ? '역대 APAP (1회~7회) 아카이브' : 'APAP Editions 1–7 Archives'}
             </h4>
-            <p className="text-xs sm:text-sm text-[#B9B9B9] max-w-xl leading-relaxed">
+            <p className="text-xs sm:text-sm text-[#B9B9B9] max-w-xl leading-relaxed font-light">
               {isKo
                 ? '2005년 제1회부터 축적된 역대 APAP의 모든 영구 설치 작품 및 전시 기록을 통합 아카이브에서 확인하실 수 있습니다.'
                 : 'Browse permanent installations and documentation across past editions from 2005 to 2023.'}
@@ -158,9 +178,9 @@ export default function VisitPage({ params }: PageProps) {
 
           <Link
             href={`/archive/${validLocale}`}
-            className="inline-flex items-center gap-2 font-mono text-xs font-bold px-6 py-3 bg-white text-black hover:bg-white/80 transition-colors flex-shrink-0"
+            className="inline-flex items-center justify-center gap-2 font-mono text-[11px] sm:text-xs font-bold px-4 py-2 sm:px-6 sm:py-3 bg-white text-black hover:bg-white/80 transition-colors flex-shrink-0 w-full sm:w-auto"
           >
-            <span>{isKo ? '역대 아카이브 열기' : 'OPEN ARCHIVE'}</span>
+            <span>{isKo ? '바로가기' : 'GO TO ARCHIVE'}</span>
             <ArrowUpRight className="w-3.5 h-3.5" />
           </Link>
         </div>

@@ -34,7 +34,7 @@ export default function CommunityPage({ params }: PageProps) {
       title: isKo ? '[보도자료] 제8회 안양공공예술프로젝트 개막 발표' : '[Press Release] The 8th Anyang Public Art Project Opens',
       date: '2026.09.14',
       desc: isKo
-        ? '안양문화예술재단은 ‘공존의 균형과 디지털 무릉도원’을 주제로 3년 만에 개최되는 트리엔날레의 종합 프레스킷을 배포합니다.'
+        ? '안양문화예술재단은 ‘ArteX : 예술대전환’을 주제로 3년 만에 개최되는 트리엔날레의 종합 프레스킷을 배포합니다.'
         : 'Anyang Foundation for Culture & Arts distributes the official press kit for the triennial.',
     },
     {

@@ -1,4 +1,4 @@
-﻿'use client';
+'use client';
 
 import React, { useState, useMemo } from 'react';
 import Link from 'next/link';
@@ -58,11 +58,7 @@ export default function ExhibitionPage({ params }: PageProps) {
             <h1 className="text-4xl sm:text-6xl font-black tracking-tight mt-2 text-white">
               {isKo ? '전시' : 'EXHIBITION'}
             </h1>
-            <p className="text-xs sm:text-sm text-[#8C8C8C] font-mono mt-2">
-              {isKo
-                ? '작가 카드를 클릭하면 상세 프로필과 출품 작품을 확인하실 수 있습니다.'
-                : 'Click an artist card to view their profile and participating artworks.'}
-            </p>
+
           </div>
           <span
             className="font-mono font-black text-5xl sm:text-7xl text-transparent select-none"
