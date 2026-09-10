@@ -1,26 +1,57 @@
 {
   "label": "05",
-  "hours": {
+  "general": {
     "admission": "전액 무료",
-    "outdoor": {
-      "label": "야외 공공조각 전시",
-      "value": "연중 상시 개방 (24시간 관람 가능)"
-    },
-    "indoor": {
-      "label": "실내 전시관 (안양파빌리온)",
-      "value": "화요일 – 일요일 10:00 – 18:00 (입장 마감 17:30)",
-      "note": "매주 월요일 휴관 (공휴일인 경우 익일 휴관)"
-    }
-  },
-  "location": {
-    "area": "안양예술공원 일원",
-    "address": "경기도 안양시 만안구 예술공원로 180 (안양파빌리온)",
-    "spots": "안양예술공원 산책로, 안양파빌리온 메인홀, 안양천 변 야외 공간"
+    "inquiry": "031-687-0548"
   },
   "eventPeriod": {
     "duration": "2026년 9월 30일(수) ~ 11월 29일(일)",
-    "opening": "2026.9.30.(수) 19:00~20:00, 308 아트크루 레이저 공연 연계"
+    "opening": "2026.9.30.(수) 18:00, 안양파빌리온 앞 벽천광장"
   },
+  "venueDetails": [
+    {
+      "id": "i-pavilion",
+      "name": "아이 파빌리온",
+      "nameEn": "i Pavilion",
+      "location": "안양파빌리온 (안양시 만안구 예술공원로 180)",
+      "hours": "화 - 금 10:00 – 18:00 / 토, 일 10:00 – 19:00",
+      "closed": "매주 월요일 휴관 (10.5.(월) 대체공휴일 개관, 10.6.(화) 휴관)"
+    },
+    {
+      "id": "night-utopia",
+      "name": "밤의 도원경",
+      "nameEn": "Night Utopia",
+      "location": "안양파빌리온 앞 광장 일대",
+      "hours": "화 - 일 19:00 – 22:00",
+      "closed": "매주 월요일 휴무 (10.5.(월) 대체공휴일 운영, 10.6.(화) 휴무)",
+      "works": [
+        {
+          "title": "〈빛의 폭포〉(2026)",
+          "schedule": "매 정시부터 15분간 상영"
+        },
+        {
+          "title": "〈오색운〉(2026)",
+          "schedule": "매시 15분부터 정시까지 상영"
+        }
+      ]
+    },
+    {
+      "id": "open-ground",
+      "name": "오픈 그라운드",
+      "nameEn": "Open Ground",
+      "location": "안양파빌리온 앞 광장, 안양박물관 야외, 안양예술공원 내 공동의 장",
+      "hours": "상시관람 (24시간 연중 개방)",
+      "closed": "연중무휴"
+    },
+    {
+      "id": "dreaming-utopia",
+      "name": "우리가 꿈꾸는 도원",
+      "nameEn": "The Utopia We Dream Of",
+      "location": "아르테자이 상가동 1층 오감갤러리 (만안구 경수대로1166번길 9 201동), 오픈 스쿨 (동안구 학의로 71, 한가람 한양아파트 맞은편)",
+      "hours": "화 - 일 10:00 – 18:00",
+      "closed": "매주 월요일 휴관 (10.5.(월) 대체공휴일 개관, 10.6.(화) 휴관)"
+    }
+  ],
   "archiveHub": {
     "title": "역대 APAP (1회~7회) 아카이브",
     "description": "2005년 제1회부터 축적된 역대 APAP의 모든 영구 설치 작품 및 전시 기록을 통합 아카이브에서 확인하실 수 있습니다.",
@@ -30,10 +61,17 @@
   "footer": {
     "orgName": "APAP 8 (안양공공예술프로젝트)",
     "orgInfo": "안양문화예술재단 APAP 사무국 | 경기도 안양시 만안구 예술공원로 103",
+    "inquiry": "문의: 031-687-0548",
     "copyright": "© 2026 Anyang Foundation for Culture & Arts. All rights reserved.",
     "links": [
-      { "label": "메인 아카이브 복귀", "url": "https://apap2026.vercel.app/archive/ko" },
-      { "label": "재단 홈페이지", "url": "https://www.ayac.or.kr" }
+      {
+        "label": "메인 아카이브 복귀",
+        "url": "https://apap2026.vercel.app/archive/ko"
+      },
+      {
+        "label": "재단 홈페이지",
+        "url": "https://www.ayac.or.kr"
+      }
     ]
   }
 }

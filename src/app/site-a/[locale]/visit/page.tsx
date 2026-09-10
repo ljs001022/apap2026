@@ -87,7 +87,7 @@ export default function VisitPage({ params }: PageProps) {
                 </div>
                 <div>
                   <span className="text-[#8C8C8C]">{isKo ? '■ 개막식: ' : '■ Opening: '}</span>
-                  <span>{isKo ? '2026.9.30.(수) 19:00 (308 아트크루 레이저 공연 연계)' : 'Sept 30, 2026 19:00 (308 Art Crew Laser Show)'}</span>
+                  <span>{isKo ? '2026.9.30.(수) 18:00 (안양파빌리온 앞 벽천광장)' : 'Sept 30, 2026 18:00 (Cascade Square)'}</span>
                 </div>
               </div>
             </div>
@@ -122,8 +122,76 @@ export default function VisitPage({ params }: PageProps) {
               </p>
               <p className="font-mono text-xs sm:text-sm text-white/70 flex items-center gap-1.5 pt-1.5 border-t border-white/10">
                 <Phone className="w-3.5 h-3.5" />
-                <span>031-687-0500 (안양문화예술재단 APAP 사업부)</span>
+                <span>031-687-0548 (안양문화예술재단 APAP 사업부)</span>
               </p>
+            </div>
+          </div>
+        </div>
+
+        {/* 4 Venues Detail Section (NEW from visit.json) */}
+        <div className="border border-white/20 p-4 sm:p-6 lg:p-8 mb-8 sm:mb-12 space-y-6 bg-white/[0.02]">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-white/10 pb-4">
+            <h3 className="text-xl sm:text-2xl font-black text-white flex items-center gap-2.5">
+              <span>{isKo ? '전시장 4대 구역별 상세 안내' : '4 VENUE DETAILS'}</span>
+            </h3>
+            <span className="font-mono text-xs text-[#8C8C8C]">아이 파빌리온 · 밤의 도원경 · 오픈 그라운드 · 우리가 꿈꾸는 도원</span>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
+            <div className="border border-white/15 p-5 bg-white/[0.01] space-y-2">
+              <div className="flex justify-between items-center pb-1.5 border-b border-white/10">
+                <h4 className="text-base sm:text-lg font-bold text-white">
+                  {isKo ? '1. 아이 파빌리온' : '1. i Pavilion'}
+                </h4>
+                <span className="text-xs font-mono bg-white/10 text-white/80 px-2 py-0.5">실내 미디어·설치</span>
+              </div>
+              <div className="text-xs sm:text-sm font-mono text-[#D4D4D4] space-y-1">
+                <div>■ 위치: 안양파빌리온 (만안구 예술공원로 180)</div>
+                <div>■ 운영: 화 - 금 10:00 – 18:00 / 토, 일 10:00 – 19:00</div>
+                <div className="text-[#8C8C8C]">■ 휴관: 매주 월요일 휴관 (10.5.(월) 대체공휴일 개관, 10.6.(화) 휴관)</div>
+              </div>
+            </div>
+
+            <div className="border border-white/15 p-5 bg-white/[0.01] space-y-2">
+              <div className="flex justify-between items-center pb-1.5 border-b border-white/10">
+                <h4 className="text-base sm:text-lg font-bold text-white">
+                  {isKo ? '2. 밤의 도원경' : '2. Night Utopia'}
+                </h4>
+                <span className="text-xs font-mono bg-white/10 text-white/80 px-2 py-0.5">야외 미디어아트</span>
+              </div>
+              <div className="text-xs sm:text-sm font-mono text-[#D4D4D4] space-y-1">
+                <div>■ 위치: 안양파빌리온 앞 광장 일대</div>
+                <div>■ 운영: 화 - 일 19:00 – 22:00 (월요일 휴무 / 10.5 정상운영, 10.6 휴무)</div>
+                <div className="text-white font-medium">■ 상영: 〈빛의 폭포〉 매 정시 15분간 / 〈오색운〉 매시 15분~정시 상영</div>
+              </div>
+            </div>
+
+            <div className="border border-white/15 p-5 bg-white/[0.01] space-y-2">
+              <div className="flex justify-between items-center pb-1.5 border-b border-white/10">
+                <h4 className="text-base sm:text-lg font-bold text-white">
+                  {isKo ? '3. 오픈 그라운드' : '3. Open Ground'}
+                </h4>
+                <span className="text-xs font-mono bg-white text-black px-2 py-0.5 font-bold">24시간 상시개방</span>
+              </div>
+              <div className="text-xs sm:text-sm font-mono text-[#D4D4D4] space-y-1">
+                <div>■ 위치: 안양파빌리온 앞 광장, 안양박물관 야외, 공원 내 공동의 장</div>
+                <div>■ 운영: 상시관람 (24시간 자유 개방)</div>
+                <div className="text-[#8C8C8C]">■ 휴관: 연중무휴</div>
+              </div>
+            </div>
+
+            <div className="border border-white/15 p-5 bg-white/[0.01] space-y-2">
+              <div className="flex justify-between items-center pb-1.5 border-b border-white/10">
+                <h4 className="text-base sm:text-lg font-bold text-white">
+                  {isKo ? '4. 특별전: 우리가 꿈꾸는 도원' : '4. Special Exhibition'}
+                </h4>
+                <span className="text-xs font-mono bg-white/10 text-white/80 px-2 py-0.5">한중 특별전</span>
+              </div>
+              <div className="text-xs sm:text-sm font-mono text-[#D4D4D4] space-y-1">
+                <div>■ 위치: 아르테자이 상가 1층 오감갤러리, 평촌 학운공원 오픈 스쿨</div>
+                <div>■ 운영: 화 - 일 10:00 – 18:00</div>
+                <div className="text-[#8C8C8C]">■ 휴관: 매주 월요일 휴관 (10.5.(월) 개관, 10.6.(화) 휴관)</div>
+              </div>
             </div>
           </div>
         </div>
