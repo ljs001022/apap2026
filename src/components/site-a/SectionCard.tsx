@@ -28,18 +28,18 @@ export default function SectionCard({
   summary,
   isKo,
   id,
-  contentAlign = 'center',
+  contentAlign = 'start',
 }: SectionCardProps) {
   return (
     <section
       id={id}
-      className="relative h-[100dvh] flex flex-col border-b border-white snap-start overflow-hidden bg-[#0A0A0A]"
+      className="relative h-[100dvh] flex flex-col pt-16 border-b border-white snap-start overflow-hidden bg-[#0A0A0A]"
     >
       {/* Background DUST particle effect (lightweight, responsive) */}
       <DustCanvas opacity={0.25} />
 
       {/* Section Header Row - Compact padding for mobile */}
-      <div className="relative z-10 flex justify-between items-center px-4 py-3.5 sm:px-10 sm:py-5 lg:px-16 border-b border-white flex-shrink-0 bg-[#0A0A0A]/70 backdrop-blur-sm">
+      <div className="relative z-10 flex justify-between items-center px-4 py-2 sm:px-10 sm:py-3 lg:px-16 border-b border-white flex-shrink-0 bg-[#0A0A0A]/70 backdrop-blur-sm">
         <h2 className="flex items-baseline gap-2 sm:gap-3">
           <span className="text-title font-extrabold tracking-tight">
             {isKo ? labelKo : labelEn}
@@ -61,9 +61,7 @@ export default function SectionCard({
 
       {/* Summary Content */}
       <motion.div
-        className={`relative z-10 flex-1 flex flex-col px-4 ${
-          contentAlign === 'start' ? 'py-4 sm:py-6' : 'py-6 sm:py-10'
-        } sm:px-10 lg:px-16 overflow-y-auto overflow-x-hidden hide-scrollbar`}
+        className="relative z-10 flex-1 flex flex-col px-4 sm:px-10 lg:px-16 pt-2.5 pb-6 sm:pt-4 sm:pb-8 overflow-y-auto overflow-x-hidden hide-scrollbar"
         initial={{ opacity: 0, y: 15 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: '-40px' }}
@@ -71,9 +69,9 @@ export default function SectionCard({
       >
         <div
           className={`w-full flex flex-col ${
-            contentAlign === 'start'
-              ? 'justify-start mt-0 mb-auto pb-10 sm:pb-20'
-              : 'justify-center m-auto min-h-full pb-16 sm:pb-24'
+            contentAlign === 'center'
+              ? 'justify-center my-auto'
+              : 'justify-start mt-0 mb-auto'
           }`}
         >
           {summary}

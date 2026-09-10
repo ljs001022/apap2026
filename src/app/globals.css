@@ -80,3 +80,21 @@ body {
   animation: glitch 3.5s infinite ease-in-out;
 }
 
+@keyframes ticker {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-ticker {
+  animation: ticker 35s linear infinite;
+}
+
+.animate-ticker:hover {
+  animation-play-state: paused;
+}
+
+

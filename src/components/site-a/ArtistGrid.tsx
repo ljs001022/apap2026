@@ -57,7 +57,7 @@ function PaginatedArtistCarousel({ artists, theme, locale, onArtistClick }: { ar
   };
 
   return (
-    <div className="space-y-4 sm:space-y-6">
+    <div className="space-y-2 sm:space-y-3">
       <div 
         ref={scrollRef}
         className="flex overflow-x-auto snap-x snap-mandatory hide-scrollbar border-y border-[#2E2E2E]"
@@ -140,33 +140,20 @@ export default function ArtistGrid({
   locale = 'ko',
 }: ArtistGridProps) {
   const isKo = locale === 'ko';
-  const effectiveAllLabel = allLabel || (isKo ? '전체 부문 (ALL)' : 'ALL VENUES');
-  const [activeCategoryId, setActiveCategoryId] = useState<string>('all');
+  const [activeCategoryId, setActiveCategoryId] = useState<string>(categories[0]?.id || '');
   const [selectedArtist, setSelectedArtist] = useState<Artist | null>(null);
 
-  // Flatten all artists for 'all' tab
-  const allArtists = useMemo(() => {
-    const seen = new Set<string>();
-    const list: Artist[] = [];
-    categories.forEach((cat) => {
-      cat.items.forEach((artist) => {
-        if (!seen.has(artist.slug)) {
-          seen.add(artist.slug);
-          list.push(artist);
-        }
-      });
-    });
-    return list;
-  }, [categories]);
+  useEffect(() => {
+    if (categories.length > 0 && (!activeCategoryId || !categories.some((c) => c.id === activeCategoryId))) {
+      setActiveCategoryId(categories[0].id);
+    }
+  }, [categories, activeCategoryId]);
 
   // Current filtered artists
   const displayedArtists = useMemo(() => {
-    if (activeCategoryId === 'all') {
-      return allArtists;
-    }
-    const currentCat = categories.find((c) => c.id === activeCategoryId);
+    const currentCat = categories.find((c) => c.id === activeCategoryId) || categories[0];
     return currentCat ? currentCat.items : [];
-  }, [activeCategoryId, categories, allArtists]);
+  }, [activeCategoryId, categories]);
 
   const handleCardClick = (artist: Artist) => {
     if (onArtistClick) {
@@ -192,25 +179,9 @@ export default function ArtistGrid({
   }[theme];
 
   return (
-    <div className={`space-y-4 sm:space-y-6 ${className}`}>
+    <div className={`space-y-2 sm:space-y-3 ${className}`}>
       {/* ─── Category / Venue Tabs ─── */}
       <div className="sticky top-0 z-20 bg-[#0A0A0A] flex items-center gap-2 overflow-x-auto pb-2.5 pt-1 scroll-smooth hide-scrollbar select-none border-b border-white/10">
-        <button
-          type="button"
-          onClick={() => setActiveCategoryId('all')}
-          className={`flex items-center gap-2 px-3 sm:px-4 py-2 sm:py-2.5 text-caption sm:text-body font-bold transition-all whitespace-nowrap cursor-pointer ${
-            activeCategoryId === 'all' ? tabActiveStyles : tabInactiveStyles
-          }`}
-        >
-          <span>{effectiveAllLabel}</span>
-          <span
-            className={`px-1.5 py-0.2 font-mono text-[10px] rounded-full ${
-              activeCategoryId === 'all' ? 'bg-black/20 text-black font-extrabold' : 'bg-white/10 text-white/60'
-            }`}
-          >
-            {allArtists.length}
-          </span>
-        </button>
 
         {categories.map((cat) => (
           <button

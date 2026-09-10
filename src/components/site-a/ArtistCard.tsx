@@ -122,16 +122,6 @@ export default function ArtistCard({
           </div>
         )}
 
-        {/* Venue Badge */}
-        {localizedVenue && (
-          <span
-            className={`absolute top-3 left-3 font-mono text-badge font-bold border px-2.5 py-1 uppercase tracking-wider ${
-              theme === 'blackwhite' ? 'rounded-sm' : 'rounded-full'
-            } ${themeStyles.badge}`}
-          >
-            {localizedVenue}
-          </span>
-        )}
 
         {/* Works count badge */}
         {worksCount > 0 && (
@@ -143,20 +133,12 @@ export default function ArtistCard({
       </div>
 
       {/* Info Area */}
-      <div className="p-3.5 sm:p-5 flex flex-col gap-1.5 justify-between min-h-[110px] sm:min-h-[120px] max-h-[150px] sm:max-h-[160px] flex-1">
-        <div className="space-y-0.5">
-          <div className="flex items-start justify-between gap-2">
-            <h3 className={`text-card-title font-bold text-white transition-colors leading-snug break-keep ${themeStyles.name}`}>
-              {displayName}
-            </h3>
-            <ArrowUpRight className={`w-4 h-4 transition-transform flex-shrink-0 mt-0.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 ${themeStyles.arrow}`} />
-          </div>
-
-          {subName && (
-            <p className="font-mono font-normal text-caption text-white/50 group-hover:text-white/70 transition-colors truncate">
-              {subName}
-            </p>
-          )}
+      <div className="p-2.5 sm:p-3.5 flex flex-col justify-between min-h-[72px] sm:min-h-[85px] flex-1">
+        <div className="flex items-start justify-between gap-2">
+          <h3 className={`text-[16px] font-bold text-white transition-colors leading-snug break-keep ${themeStyles.name}`}>
+            {displayName}
+          </h3>
+          <ArrowUpRight className={`w-4 h-4 transition-transform flex-shrink-0 mt-0.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 ${themeStyles.arrow}`} />
         </div>
 
         {/* Metadata bottom row */}
