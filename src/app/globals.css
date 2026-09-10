@@ -14,6 +14,22 @@ html {
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+
+  /* Fluid Typography for Mobile-First Readability */
+  --text-title: clamp(1.3rem, 4vw + 0.5rem, 2.25rem);
+  --text-title--line-height: 1.2;
+
+  --text-card-title: clamp(1.125rem, 3vw + 0.5rem, 1.25rem);
+  --text-card-title--line-height: 1.2;
+
+  --text-body: clamp(0.875rem, 1.5vw + 0.5rem, 0.9375rem);
+  --text-body--line-height: 1.5;
+
+  --text-caption: clamp(0.8125rem, 1.5vw + 0.4rem, 0.875rem);
+  --text-caption--line-height: 1.4;
+
+  --text-badge: clamp(0.6875rem, 1vw + 0.4rem, 0.75rem);
+  --text-badge--line-height: 1.4;
 }
 
 @media (prefers-color-scheme: dark) {

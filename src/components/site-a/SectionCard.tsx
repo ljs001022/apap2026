@@ -16,6 +16,8 @@ interface SectionCardProps {
   isKo: boolean;
   /** 섹션 id (앵커/스냅 타깃) */
   id: string;
+  /** 콘텐츠 수직 정렬 ('center' 기본, 'start' 상단 고정) */
+  contentAlign?: 'center' | 'start';
 }
 
 export default function SectionCard({
@@ -26,12 +28,12 @@ export default function SectionCard({
   summary,
   isKo,
   id,
+  contentAlign = 'center',
 }: SectionCardProps) {
   return (
     <section
       id={id}
-      className="relative h-screen h-[100dvh] flex flex-col border-b border-white snap-start overflow-hidden bg-[#0A0A0A]"
-      style={{ height: '100vh', minHeight: '100dvh' }}
+      className="relative h-[100dvh] flex flex-col border-b border-white snap-start overflow-hidden bg-[#0A0A0A]"
     >
       {/* Background DUST particle effect (lightweight, responsive) */}
       <DustCanvas opacity={0.25} />
@@ -39,17 +41,17 @@ export default function SectionCard({
       {/* Section Header Row - Compact padding for mobile */}
       <div className="relative z-10 flex justify-between items-center px-4 py-3.5 sm:px-10 sm:py-5 lg:px-16 border-b border-white flex-shrink-0 bg-[#0A0A0A]/70 backdrop-blur-sm">
         <h2 className="flex items-baseline gap-2 sm:gap-3">
-          <span className="text-xl sm:text-3xl font-extrabold tracking-tight">
+          <span className="text-title font-extrabold tracking-tight">
             {isKo ? labelKo : labelEn}
           </span>
-          <span className="font-mono text-[9px] sm:text-[10px] font-semibold text-[#6C6C6C] tracking-widest hidden xs:inline">
+          <span className="font-mono text-caption font-semibold text-[#6C6C6C] tracking-widest hidden xs:inline">
             {labelEn} — {subtitle}
           </span>
         </h2>
 
         {/* Section number with subtle CSS glitch effect */}
         <span
-          className="font-mono font-black text-3xl sm:text-5xl text-transparent select-none animate-glitch"
+          className="font-mono font-black text-title sm:text-5xl text-transparent select-none animate-glitch"
           style={{ WebkitTextStroke: '1.5px rgba(255,255,255,0.22)' }}
           aria-hidden
         >
@@ -59,13 +61,21 @@ export default function SectionCard({
 
       {/* Summary Content */}
       <motion.div
-        className="relative z-10 flex-1 flex flex-col px-4 py-6 sm:px-10 sm:py-10 lg:px-16 overflow-y-auto overflow-x-hidden hide-scrollbar"
+        className={`relative z-10 flex-1 flex flex-col px-4 ${
+          contentAlign === 'start' ? 'py-4 sm:py-6' : 'py-6 sm:py-10'
+        } sm:px-10 lg:px-16 overflow-y-auto overflow-x-hidden hide-scrollbar`}
         initial={{ opacity: 0, y: 15 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: '-40px' }}
         transition={{ duration: 0.45, ease: 'easeOut' }}
       >
-        <div className="m-auto w-full pb-16 sm:pb-24 flex flex-col justify-center min-h-full">
+        <div
+          className={`w-full flex flex-col ${
+            contentAlign === 'start'
+              ? 'justify-start mt-0 mb-auto pb-10 sm:pb-20'
+              : 'justify-center m-auto min-h-full pb-16 sm:pb-24'
+          }`}
+        >
           {summary}
         </div>
       </motion.div>

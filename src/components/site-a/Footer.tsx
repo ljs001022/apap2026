@@ -8,12 +8,12 @@ export default function Footer({ locale }: { locale: string }) {
   const navT = useTranslations('nav');
 
   return (
-    <footer className="border-t border-white/5 bg-[#050505] py-12 px-6 relative z-10 text-[11px] md:text-xs text-white/40">
+    <footer className="border-t border-white/5 bg-[#050505] py-12 px-6 relative z-10 text-caption text-white/40">
       <div className="container mx-auto max-w-[1200px] flex flex-col md:flex-row justify-between items-center md:items-start space-y-8 md:space-y-0">
         <div className="space-y-2 text-center md:text-left">
           <p className="font-extrabold text-white/80 tracking-wider">APAP 8 (안양공공예술프로젝트)</p>
           <p>안양문화예술재단 APAP 사무국 | 경기도 안양시 만안구 예술공원로 103</p>
-          <p className="text-[10px] text-white/30 pt-2">© 2026 Anyang Foundation for Culture & Arts. All rights reserved.</p>
+          <p className="text-caption text-white/50 text-white/30 pt-2">© 2026 Anyang Foundation for Culture & Arts. All rights reserved.</p>
         </div>
         
         <div className="flex flex-wrap justify-center items-center gap-4 sm:gap-6">

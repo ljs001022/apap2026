@@ -22,6 +22,8 @@ export default function SiteAPage({ params }: PageProps) {
   const isKo = validLocale === 'ko';
 
   const [communityPage, setCommunityPage] = useState(1);
+  const [aboutTab, setAboutTab] = useState<'overview' | 'theme'>('overview');
+  const [programTab, setProgramTab] = useState(0);
   const communityPerPage = 3;
 
   const t = {
@@ -124,14 +126,12 @@ export default function SiteAPage({ params }: PageProps) {
 
       {/* Main Container: 100dvh + 100vh fallback, vertical scroll snapping */}
       <main
-        className="h-screen h-[100dvh] overflow-y-auto overflow-x-hidden scroll-smooth snap-y snap-mandatory hide-scrollbar"
-        style={{ height: '100vh', minHeight: '100dvh' }}
+        className="h-[100dvh] overflow-y-auto overflow-x-hidden scroll-smooth snap-y snap-mandatory hide-scrollbar"
       >
         {/* ── Section 0: Hero ── */}
         <section
           id="hero"
-          className="relative h-screen h-[100dvh] snap-start flex flex-col bg-black border-b border-white justify-between overflow-hidden"
-          style={{ height: '100vh', minHeight: '100dvh' }}
+          className="relative h-[100dvh] snap-start flex flex-col bg-black border-b border-white justify-between overflow-hidden"
         >
           {/* Subtle Dust overlay */}
           <DustCanvas opacity={0.3} />
@@ -174,66 +174,85 @@ export default function SiteAPage({ params }: PageProps) {
           subtitle="OVERVIEW / THEME"
           isKo={isKo}
           summary={
-            <div className="w-full max-w-[1200px] mx-auto space-y-16">
-              <section className="space-y-6">
-                <div className="flex items-center gap-3 font-mono text-xs font-bold text-[#8C8C8C] uppercase tracking-wider border-b border-white/10 pb-2">
-                  <span className="bg-white text-black px-2 py-0.5 text-[10px] font-black">01</span>
-                  <span>{isKo ? '개요' : 'OVERVIEW'}</span>
-                </div>
-                <h2 className="text-2xl sm:text-4xl font-extrabold leading-snug">
-                  {isKo ? (
-                    <>도시 전체가 전시장이 되는<br />여덟 번째 안양<span className="text-white/40">.</span></>
-                  ) : (
-                    <>The Eighth Anyang,<br />Where the entire city becomes an open museum<span className="text-white/40">.</span></>
-                  )}
-                </h2>
-                <div className="text-base sm:text-lg text-[#B9B9B9] leading-relaxed space-y-4 font-light">
-                  <p>
-                    {isKo
-                      ? '제8회 안양공공예술프로젝트(APAP8)는 2005년 시작된 한국 유일의 공공예술 트리엔날레의 여덟 번째 에디션입니다. 3년마다 안양의 역사와 장소성, 시민의 삶을 현대 미술과 접목하여 도시 곳곳을 열린 야외 미술관으로 변모시켜 왔습니다.'
-                      : 'The 8th Anyang Public Art Project (APAP8) is the eighth edition of Korea’s premier public art triennial, held continuously since 2005. Every three years, APAP transforms the urban landscape of Anyang into an open-air public museum by connecting contemporary art with local history and communal memories.'}
-                  </p>
-                  <p>
-                    {isKo
-                      ? '이번 APAP8은 안양예술공원을 중심축으로 도심 녹지 공간, 하천, 유휴 공간 등 일상의 영역으로 공공예술의 지평을 넓힙니다. 국내외 21명의 현대미술 작가들이 안양의 고유한 맥락 속에서 제작한 사이트 스페시픽(Site-specific) 신작을 공개합니다.'
-                      : 'Focusing on Anyang Art Park and extending into urban green zones and public spaces, APAP8 introduces site-specific commissions created by 21 leading contemporary artists from Korea and abroad.'}
-                  </p>
-                </div>
-                <div className="flex flex-wrap gap-2 pt-4">
-                  {['#공공예술', '#트리엔날레', '#안양예술공원', '#커미션신작', '#김덕한', '#공존의균형'].map((tag) => (
-                    <span key={tag} className="text-xs font-mono border border-white/20 text-white/70 px-3.5 py-1.5 bg-white/5">
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-              </section>
+            <div className="w-full max-w-[1200px] mx-auto">
+              {/* Tabs */}
+              <div className="flex items-center gap-6 border-b border-white/20 mb-6 sm:mb-8">
+                <button 
+                  onClick={() => setAboutTab('overview')} 
+                  className={`pb-3 font-mono text-sm sm:text-base font-bold tracking-wider uppercase transition-colors border-b-2 cursor-pointer ${aboutTab === 'overview' ? 'border-white text-white' : 'border-transparent text-white/40 hover:text-white/70'}`}
+                >
+                  {isKo ? '01 개요' : '01 OVERVIEW'}
+                </button>
+                <button 
+                  onClick={() => setAboutTab('theme')} 
+                  className={`pb-3 font-mono text-sm sm:text-base font-bold tracking-wider uppercase transition-colors border-b-2 cursor-pointer ${aboutTab === 'theme' ? 'border-white text-white' : 'border-transparent text-white/40 hover:text-white/70'}`}
+                >
+                  {isKo ? '02 전시 주제' : '02 THEME'}
+                </button>
+              </div>
 
-              <section className="space-y-6 pt-10 border-t border-white/20">
-                <div className="flex items-center gap-3 font-mono text-xs font-bold text-[#8C8C8C] uppercase tracking-wider border-b border-white/10 pb-2">
-                  <span className="bg-white text-black px-2 py-0.5 text-[10px] font-black">02</span>
-                  <span>{isKo ? '전시 주제' : 'EXHIBITION THEME'}</span>
-                </div>
-                <h3 className="text-2xl sm:text-3xl font-extrabold text-white">
-                  {isKo ? '공존의 균형과 디지털 무릉도원' : 'Balance in Coexistence & Digital Peach Blossom Spring'}
-                </h3>
-                <div className="text-sm sm:text-base text-[#B9B9B9] leading-relaxed space-y-4">
-                  <p>
-                    {isKo
-                      ? '안양(安養)이라는 지명이 담고 있는 ‘몸과 마음이 편안하고 자유로운 극락정토’라는 인문학적 기원에서 출발합니다. 기술 문명과 자연 생태, 전통과 미래가 교차하는 오늘의 전환기에서 공공예술이 제시할 수 있는 새로운 공존의 균형을 사유합니다.'
-                      : 'Deriving its concept from the historical etymology of Anyang—signifying an idyllic sanctuary where body and mind find peace—the theme contemplates a harmonious equilibrium between technological evolution, ecological sanctuary, and collective human memory.'}
-                  </p>
-                  <p>
-                    {isKo
-                      ? '야외 조각, 뉴미디어 인스톨레이션, 시민 참여형 프로젝트를 통해 가상과 실재, 전통 옻칠과 첨단 디지털 기술이 어우러지는 현대적 의미의 무릉도원을 시민들과 함께 구현합니다.'
-                      : 'Through outdoor sculptures, immersive media installations, and community-engaged workshops, APAP8 realizes a contemporary utopia where tactile craft and digital frontier meet in the shared public sphere.'}
-                  </p>
-                </div>
-              </section>
+              {/* Grid Overlay for perfectly fixed tab position */}
+              <div className="grid grid-cols-1 grid-rows-1">
+                <section className={`col-start-1 row-start-1 space-y-6 transition-all duration-300 ${aboutTab === 'overview' ? 'opacity-100 z-10 pointer-events-auto translate-y-0' : 'opacity-0 z-0 pointer-events-none translate-y-4'}`}>
+                  <div className="flex items-center gap-3 font-mono text-caption font-bold text-[#8C8C8C] uppercase tracking-wider border-b border-white/10 pb-2">
+                    <span className="bg-white text-black px-2 py-0.5 text-badge font-black">01</span>
+                    <span>{isKo ? '개요' : 'OVERVIEW'}</span>
+                  </div>
+                  <h2 className="text-title font-extrabold leading-snug">
+                    {isKo ? (
+                      <>도시 전체가 전시장이 되는<br />여덟 번째 안양<span className="text-white/40">.</span></>
+                    ) : (
+                      <>The Eighth Anyang,<br />Where the entire city becomes an open museum<span className="text-white/40">.</span></>
+                    )}
+                  </h2>
+                  <div className="text-body text-[#B9B9B9] leading-relaxed space-y-4 font-light">
+                    <p>
+                      {isKo
+                        ? '제8회 안양공공예술프로젝트(APAP8)는 2005년 시작된 한국 유일의 공공예술 트리엔날레의 여덟 번째 에디션입니다. 3년마다 안양의 역사와 장소성, 시민의 삶을 현대 미술과 접목하여 도시 곳곳을 열린 야외 미술관으로 변모시켜 왔습니다.'
+                        : 'The 8th Anyang Public Art Project (APAP8) is the eighth edition of Korea’s premier public art triennial, held continuously since 2005. Every three years, APAP transforms the urban landscape of Anyang into an open-air public museum by connecting contemporary art with local history and communal memories.'}
+                    </p>
+                    <p>
+                      {isKo
+                        ? '이번 APAP8은 안양예술공원을 중심축으로 도심 녹지 공간, 하천, 유휴 공간 등 일상의 영역으로 공공예술의 지평을 넓힙니다. 국내외 21명의 현대미술 작가들이 안양의 고유한 맥락 속에서 제작한 사이트 스페시픽(Site-specific) 신작을 공개합니다.'
+                        : 'Focusing on Anyang Art Park and extending into urban green zones and public spaces, APAP8 introduces site-specific commissions created by 21 leading contemporary artists from Korea and abroad.'}
+                    </p>
+                  </div>
+                  <div className="flex flex-wrap gap-2 pt-4">
+                    {['#공공예술', '#트리엔날레', '#안양예술공원', '#커미션신작', '#김덕한', '#공존의균형'].map((tag) => (
+                      <span key={tag} className="text-caption font-mono border border-white/20 text-white/70 px-3.5 py-1.5 bg-white/5">
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                </section>
+
+                <section className={`col-start-1 row-start-1 space-y-6 transition-all duration-300 ${aboutTab === 'theme' ? 'opacity-100 z-10 pointer-events-auto translate-y-0' : 'opacity-0 z-0 pointer-events-none translate-y-4'}`}>
+                  <div className="flex items-center gap-3 font-mono text-caption font-bold text-[#8C8C8C] uppercase tracking-wider border-b border-white/10 pb-2">
+                    <span className="bg-white text-black px-2 py-0.5 text-badge font-black">02</span>
+                    <span>{isKo ? '전시 주제' : 'EXHIBITION THEME'}</span>
+                  </div>
+                  <h3 className="text-title font-extrabold text-white">
+                    {isKo ? '공존의 균형과 디지털 무릉도원' : 'Balance in Coexistence & Digital Peach Blossom Spring'}
+                  </h3>
+                  <div className="text-body text-[#B9B9B9] leading-relaxed space-y-4 font-light">
+                    <p>
+                      {isKo
+                        ? '안양(安養)이라는 지명이 담고 있는 ‘몸과 마음이 편안하고 자유로운 극락정토’라는 인문학적 기원에서 출발합니다. 기술 문명과 자연 생태, 전통과 미래가 교차하는 오늘의 전환기에서 공공예술이 제시할 수 있는 새로운 공존의 균형을 사유합니다.'
+                        : 'Deriving its concept from the historical etymology of Anyang—signifying an idyllic sanctuary where body and mind find peace—the theme contemplates a harmonious equilibrium between technological evolution, ecological sanctuary, and collective human memory.'}
+                    </p>
+                    <p>
+                      {isKo
+                        ? '야외 조각, 뉴미디어 인스톨레이션, 시민 참여형 프로젝트를 통해 가상과 실재, 전통 옻칠과 첨단 디지털 기술이 어우러지는 현대적 의미의 무릉도원을 시민들과 함께 구현합니다.'
+                        : 'Through outdoor sculptures, immersive media installations, and community-engaged workshops, APAP8 realizes a contemporary utopia where tactile craft and digital frontier meet in the shared public sphere.'}
+                    </p>
+                  </div>
+                </section>
+              </div>
             </div>
           }
         />
 
-        {/* ── Section 02: Exhibition ── */}
+                {/* ── Section 02: Exhibition ── */}
         <SectionCard
           id="exhibition"
           index="02"
@@ -241,6 +260,7 @@ export default function SiteAPage({ params }: PageProps) {
           labelEn="EXHIBITION"
           subtitle="ARTISTS / WORKS / VENUES"
           isKo={isKo}
+          contentAlign="start"
           summary={
             <div className="w-full max-w-[1200px] mx-auto">
               <ArtistGrid
@@ -262,35 +282,53 @@ export default function SiteAPage({ params }: PageProps) {
           subtitle="PUBLIC / WORKSHOP / TOUR"
           isKo={isKo}
           summary={
-            <div className="w-full max-w-[1200px] mx-auto space-y-8 divide-y divide-white/20">
-              {programs.map((prog, idx) => (
-                <div key={idx} className={idx > 0 ? 'pt-10' : ''}>
-                  <div className="flex items-center gap-3 font-mono text-xs font-bold text-[#8C8C8C] mb-3">
-                    <span className="bg-white text-black px-2 py-0.5 text-[10px] font-black">{prog.num}</span>
-                    <span className="tracking-widest uppercase">{prog.category}</span>
+            <div className="w-full max-w-[1200px] mx-auto">
+              {/* Program Tabs */}
+              <div className="flex items-center gap-4 sm:gap-6 border-b border-white/20 mb-6 sm:mb-8 overflow-x-auto hide-scrollbar snap-x">
+                {programs.map((prog, idx) => (
+                  <button 
+                    key={idx}
+                    onClick={() => setProgramTab(idx)} 
+                    className={`pb-3 font-mono text-sm sm:text-base font-bold tracking-wider uppercase transition-colors border-b-2 whitespace-nowrap snap-start flex-shrink-0 cursor-pointer ${programTab === idx ? 'border-white text-white' : 'border-transparent text-white/40 hover:text-white/70'}`}
+                  >
+                    {prog.num} {prog.category}
+                  </button>
+                ))}
+              </div>
+
+              {/* Program Tab Content with Grid Overlay */}
+              <div className="grid grid-cols-1 grid-rows-1">
+                {programs.map((prog, idx) => (
+                  <div
+                    key={idx}
+                    className={`col-start-1 row-start-1 flex flex-col gap-6 sm:gap-8 transition-all duration-300 ${programTab === idx ? 'opacity-100 z-10 pointer-events-auto translate-y-0' : 'opacity-0 z-0 pointer-events-none translate-y-4'}`}
+                  >
+                    <div>
+                      <h2 className="text-title font-extrabold text-white mb-4 leading-snug">
+                        {prog.title}
+                      </h2>
+                      <p className="text-body text-[#B9B9B9] font-light leading-relaxed">
+                        {prog.desc}
+                      </p>
+                    </div>
+                    
+                    <div className="grid gap-3 text-caption font-mono text-white/70 bg-white/[0.03] border border-white/10 p-5 sm:p-6 mt-auto max-w-3xl">
+                      <div className="flex items-start gap-3">
+                        <Calendar className="w-4 h-4 text-white/40 flex-shrink-0 mt-0.5" />
+                        <span>{prog.date}</span>
+                      </div>
+                      <div className="flex items-start gap-3">
+                        <MapPin className="w-4 h-4 text-white/40 flex-shrink-0 mt-0.5" />
+                        <span>{prog.venue}</span>
+                      </div>
+                      <div className="flex items-start gap-3">
+                        <Users className="w-4 h-4 text-white/40 flex-shrink-0 mt-0.5" />
+                        <span>{prog.target}</span>
+                      </div>
+                    </div>
                   </div>
-                  <h2 className="text-2xl sm:text-3xl font-extrabold text-white mb-4">
-                    {prog.title}
-                  </h2>
-                  <p className="text-sm sm:text-base text-[#B9B9B9] leading-relaxed mb-6 font-light max-w-3xl">
-                    {prog.desc}
-                  </p>
-                  <div className="grid sm:grid-cols-3 gap-3 text-xs font-mono text-white/70 bg-white/[0.03] border border-white/10 p-4">
-                    <div className="flex items-center gap-2">
-                      <Calendar className="w-4 h-4 text-white/40 flex-shrink-0" />
-                      <span>{prog.date}</span>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <MapPin className="w-4 h-4 text-white/40 flex-shrink-0" />
-                      <span>{prog.venue}</span>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <Users className="w-4 h-4 text-white/40 flex-shrink-0" />
-                      <span>{prog.target}</span>
-                    </div>
-                  </div>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
           }
         />
@@ -306,7 +344,7 @@ export default function SiteAPage({ params }: PageProps) {
           summary={
             <div className="w-full max-w-[1200px] mx-auto space-y-12">
               <div className="space-y-4">
-                <div className="divide-y divide-white/15 border-y border-white/20">
+                <div className="divide-y divide-white/15 border-y border-white/20 min-h-[460px] sm:min-h-[480px]">
                   {communityItems.slice((communityPage - 1) * communityPerPage, communityPage * communityPerPage).map((item, idx) => (
                     <div key={idx} className="py-6 hover:bg-white/[0.02] px-3 -mx-3 transition-colors space-y-2">
                       <div className="flex items-center justify-between gap-4">
@@ -319,10 +357,10 @@ export default function SiteAPage({ params }: PageProps) {
                           <span className="font-mono text-xs text-[#8C8C8C]">{item.date}</span>
                         </div>
                       </div>
-                      <h3 className="text-lg sm:text-xl font-bold text-white leading-snug">
+                      <h3 className="text-base sm:text-card-title font-bold text-white leading-snug">
                         {item.title}
                       </h3>
-                      <p className="text-xs sm:text-sm text-[#B9B9B9] leading-relaxed font-light">
+                      <p className="text-caption text-[#B9B9B9] leading-relaxed font-light">
                         {item.desc}
                       </p>
                     </div>
@@ -353,26 +391,19 @@ export default function SiteAPage({ params }: PageProps) {
                 )}
               </div>
 
-              {/* Inquiry Card */}
-              <div className="bg-white/[0.03] border border-white/20 p-6 sm:p-8 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
-                <div className="space-y-2">
-                  <h4 className="text-lg font-bold text-white flex items-center gap-2">
-                    <MessageCircle className="w-5 h-5 text-white" />
-                    <span>{isKo ? '실시간 문의 및 안내' : 'Direct Inquiry & Q&A'}</span>
-                  </h4>
-                  <p className="text-xs sm:text-sm text-[#B9B9B9] leading-relaxed max-w-xl">
-                    {isKo
-                      ? 'APAP8 관람, 도슨트 투어, 프레스 취재 문의는 카카오톡 공식 채널을 통해 가장 빠르게 답변 받으실 수 있습니다.'
-                      : 'For visitor assistance, docent reservations, or press queries, please connect through our official channel.'}
-                  </p>
+              {/* Minimal Inquiry Card */}
+              <div className="bg-white/[0.03] border border-white/20 p-4 sm:p-5 flex flex-col sm:flex-row items-center justify-between gap-4">
+                <div className="flex items-center gap-3">
+                  <MessageCircle className="w-5 h-5 text-white" />
+                  <span className="text-body font-bold text-white">{isKo ? '실시간 문의 및 안내' : 'Direct Inquiry & Q&A'}</span>
                 </div>
                 <a
                   href="https://pf.kakao.com"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="border border-white hover:bg-white hover:text-black transition-colors font-mono font-bold text-xs px-6 py-3 flex items-center gap-2 flex-shrink-0"
+                  className="border border-white hover:bg-white hover:text-black transition-colors font-mono font-bold text-xs px-4 py-2.5 flex items-center gap-2 flex-shrink-0 w-full sm:w-auto justify-center"
                 >
-                  <span>{isKo ? '카카오톡 채널 바로가기' : 'KAKAO TALK CHANNEL'}</span>
+                  <span>{isKo ? '카카오톡 채널' : 'KAKAO CHANNEL'}</span>
                   <ArrowUpRight className="w-3.5 h-3.5" />
                 </a>
               </div>
@@ -445,10 +476,10 @@ export default function SiteAPage({ params }: PageProps) {
                   <div className="font-mono text-[10px] font-bold text-[#8C8C8C] uppercase tracking-widest">
                     APAP ARCHIVE HUB
                   </div>
-                  <h4 className="text-xl font-bold text-white">
+                  <h4 className="text-card-title font-bold text-white">
                     {isKo ? '역대 APAP (1회~7회) 아카이브 둘러보기' : 'Explore APAP Editions 1–7 Archives'}
                   </h4>
-                  <p className="text-xs sm:text-sm text-[#B9B9B9] max-w-xl leading-relaxed">
+                  <p className="text-caption text-[#B9B9B9] max-w-xl leading-relaxed">
                     {isKo
                       ? '2005년 제1회부터 축적된 역대 APAP의 모든 영구 설치 작품 및 전시 기록을 통합 아카이브에서 확인하실 수 있습니다.'
                       : 'Browse permanent installations and documentation across past editions from 2005 to 2023.'}

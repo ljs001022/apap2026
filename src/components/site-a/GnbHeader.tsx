@@ -107,10 +107,10 @@ export default function GnbHeader({ locale }: GnbHeaderProps) {
             <span className="font-mono font-black text-xl tracking-tighter border-2 border-white px-2 py-0.5 leading-none group-hover:bg-white group-hover:text-black transition-colors">
               APAP<b>8</b>
             </span>
-            <span className="hidden sm:block text-[11px] font-semibold text-[#B9B9B9] leading-snug">
+            <span className="hidden sm:block text-caption font-semibold text-[#B9B9B9] leading-snug">
               제8회 안양공공예술프로젝트
               <br />
-              <span className="font-mono text-[9px] text-[#8C8C8C]">
+              <span className="font-mono text-badge sm:text-caption text-[#8C8C8C]">
                 The 8th Anyang Public Art Project
               </span>
             </span>
@@ -124,7 +124,7 @@ export default function GnbHeader({ locale }: GnbHeaderProps) {
                   key={item.href}
                   href={navHref(item.href)}
                   onClick={(e) => handleNavClick(e, item.href)}
-                  className={`relative text-xs font-bold tracking-wide py-1 group transition-colors ${
+                  className={`relative text-caption font-bold tracking-wide py-1 group transition-colors ${
                     active ? 'text-white' : 'text-[#8C8C8C] hover:text-white'
                   }`}
                 >
@@ -140,7 +140,7 @@ export default function GnbHeader({ locale }: GnbHeaderProps) {
           </nav>
 
           <div className="flex items-center gap-4">
-            <div className="flex items-center gap-2 font-mono text-[11px] font-bold">
+            <div className="flex items-center gap-2 font-mono text-caption font-bold">
               <Link
                 href={`/ko${pathname.replace(`/${locale}`, '')}`}
                 className={`transition-colors ${isKo ? 'text-white' : 'text-[#5C5C5C] hover:text-white'}`}
@@ -157,7 +157,7 @@ export default function GnbHeader({ locale }: GnbHeaderProps) {
             </div>
             <button
               onClick={() => setDrawerOpen(!drawerOpen)}
-              className="md:hidden font-mono text-[11px] font-bold tracking-widest px-3 py-1.5 border border-[#2E2E2E] hover:border-white transition-colors"
+              className="md:hidden font-mono text-caption font-bold tracking-widest px-3 py-1.5 border border-[#2E2E2E] hover:border-white transition-colors"
               aria-label={drawerOpen ? 'Close menu' : 'Open menu'}
             >
               {drawerOpen ? 'CLOSE' : 'MENU'}
@@ -191,12 +191,12 @@ export default function GnbHeader({ locale }: GnbHeaderProps) {
                     <span className="text-2xl font-black">
                       {isKo ? item.labelKo : item.labelEn}
                     </span>
-                    <span className="font-mono text-xs text-[#5C5C5C]">{item.labelEn}</span>
+                    <span className="font-mono text-caption text-[#5C5C5C]">{item.labelEn}</span>
                   </Link>
                 );
               })}
             </nav>
-            <div className="px-8 pb-10 border-t border-[#1E1E1E] pt-6 font-mono text-xs text-[#5C5C5C]">
+            <div className="px-8 pb-10 border-t border-[#1E1E1E] pt-6 font-mono text-caption text-[#5C5C5C]">
               APAP 2026 · BLACK &amp; WHITE EDITION
             </div>
           </motion.div>

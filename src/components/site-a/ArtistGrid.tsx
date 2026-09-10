@@ -24,6 +24,13 @@ function PaginatedArtistCarousel({ artists, theme, locale, onArtistClick }: { ar
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
+  useEffect(() => {
+    setCurrentPage(0);
+    if (scrollRef.current) {
+      scrollRef.current.scrollLeft = 0;
+    }
+  }, [artists]);
+
   const pages = useMemo(() => {
     const p = [];
     for (let i = 0; i < artists.length; i += itemsPerPage) {
@@ -50,7 +57,7 @@ function PaginatedArtistCarousel({ artists, theme, locale, onArtistClick }: { ar
   };
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-4 sm:space-y-6">
       <div 
         ref={scrollRef}
         className="flex overflow-x-auto snap-x snap-mandatory hide-scrollbar border-y border-[#2E2E2E]"
@@ -72,45 +79,43 @@ function PaginatedArtistCarousel({ artists, theme, locale, onArtistClick }: { ar
             ))}
             {/* Fill empty slots in the last page if needed to maintain grid structure */}
             {Array.from({ length: itemsPerPage - page.length }).map((_, i) => (
-              <div key={`empty-${i}`} className="bg-[#0A0A0A] border-[#2E2E2E]" />
+              <div key={`empty-${i}`} className="bg-[#0A0A0A] border-[#2E2E2E] h-full min-h-[100px]" />
             ))}
           </div>
         ))}
       </div>
       
       {/* Pagination indicators & Arrows */}
-      {pages.length > 1 && (
-        <div className="flex items-center justify-center gap-6">
-          <button
-            onClick={() => scrollToPage(Math.max(0, currentPage - 1))}
-            disabled={currentPage === 0}
-            className="hidden md:flex w-10 h-10 border border-white/20 hover:border-white hover:bg-white hover:text-black items-center justify-center transition-colors disabled:opacity-30 disabled:pointer-events-none text-white"
-            aria-label="Previous Page"
-          >
-            <ChevronLeft className="w-5 h-5" />
-          </button>
-          
-          <div className="flex justify-center gap-3">
-            {pages.map((_, idx) => (
-              <button
-                key={idx} 
-                onClick={() => scrollToPage(idx)}
-                className={`w-2 h-2 rounded-full transition-colors cursor-pointer ${idx === currentPage ? 'bg-white' : 'bg-white/20 hover:bg-white/50'}`}
-                aria-label={`Go to page ${idx + 1}`}
-              />
-            ))}
-          </div>
-
-          <button
-            onClick={() => scrollToPage(Math.min(pages.length - 1, currentPage + 1))}
-            disabled={currentPage === pages.length - 1}
-            className="hidden md:flex w-10 h-10 border border-white/20 hover:border-white hover:bg-white hover:text-black items-center justify-center transition-colors disabled:opacity-30 disabled:pointer-events-none text-white"
-            aria-label="Next Page"
-          >
-            <ChevronRight className="w-5 h-5" />
-          </button>
+      <div className={`flex items-center justify-center gap-6 min-h-[40px] pt-1 sm:pt-2 transition-opacity duration-200 ${pages.length > 1 ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}>
+        <button
+          onClick={() => scrollToPage(Math.max(0, currentPage - 1))}
+          disabled={currentPage === 0}
+          className="hidden md:flex w-10 h-10 border border-white/20 hover:border-white hover:bg-white hover:text-black items-center justify-center transition-colors disabled:opacity-30 disabled:pointer-events-none text-white"
+          aria-label="Previous Page"
+        >
+          <ChevronLeft className="w-5 h-5" />
+        </button>
+        
+        <div className="flex justify-center gap-3">
+          {pages.map((_, idx) => (
+            <button
+              key={idx} 
+              onClick={() => scrollToPage(idx)}
+              className={`w-2 h-2 rounded-full transition-colors cursor-pointer ${idx === currentPage ? 'bg-white' : 'bg-white/20 hover:bg-white/50'}`}
+              aria-label={`Go to page ${idx + 1}`}
+            />
+          ))}
         </div>
-      )}
+
+        <button
+          onClick={() => scrollToPage(Math.min(pages.length - 1, currentPage + 1))}
+          disabled={currentPage === pages.length - 1}
+          className="hidden md:flex w-10 h-10 border border-white/20 hover:border-white hover:bg-white hover:text-black items-center justify-center transition-colors disabled:opacity-30 disabled:pointer-events-none text-white"
+          aria-label="Next Page"
+        >
+          <ChevronRight className="w-5 h-5" />
+        </button>
+      </div>
     </div>
   );
 }
@@ -187,13 +192,13 @@ export default function ArtistGrid({
   }[theme];
 
   return (
-    <div className={`space-y-8 ${className}`}>
+    <div className={`space-y-4 sm:space-y-6 ${className}`}>
       {/* ─── Category / Venue Tabs ─── */}
-      <div className="flex items-center gap-2 overflow-x-auto pb-2 scroll-smooth hide-scrollbar select-none border-b border-white/10">
+      <div className="sticky top-0 z-20 bg-[#0A0A0A] flex items-center gap-2 overflow-x-auto pb-2.5 pt-1 scroll-smooth hide-scrollbar select-none border-b border-white/10">
         <button
           type="button"
           onClick={() => setActiveCategoryId('all')}
-          className={`flex items-center gap-2 px-4 py-2.5 text-xs sm:text-sm font-bold transition-all whitespace-nowrap cursor-pointer ${
+          className={`flex items-center gap-2 px-3 sm:px-4 py-2 sm:py-2.5 text-caption sm:text-body font-bold transition-all whitespace-nowrap cursor-pointer ${
             activeCategoryId === 'all' ? tabActiveStyles : tabInactiveStyles
           }`}
         >
@@ -212,7 +217,7 @@ export default function ArtistGrid({
             key={cat.id}
             type="button"
             onClick={() => setActiveCategoryId(cat.id)}
-            className={`flex items-center gap-2 px-4 py-2.5 text-xs sm:text-sm font-bold transition-all whitespace-nowrap cursor-pointer ${
+            className={`flex items-center gap-2 px-3 sm:px-4 py-2 sm:py-2.5 text-caption sm:text-body font-bold transition-all whitespace-nowrap cursor-pointer ${
               activeCategoryId === cat.id ? tabActiveStyles : tabInactiveStyles
             }`}
           >
@@ -251,7 +256,7 @@ export default function ArtistGrid({
           </div>
         )
       ) : (
-        <div className="p-16 text-center text-white/40 font-mono text-sm border border-dashed border-white/10 rounded-xl">
+        <div className="p-16 text-center text-white/40 font-mono text-body border border-dashed border-white/10 rounded-xl">
           {isKo ? '등록된 작가가 없습니다.' : 'No artists found.'}
         </div>
       )}

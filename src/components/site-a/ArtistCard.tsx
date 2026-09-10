@@ -98,7 +98,7 @@ export default function ArtistCard({
           onClick?.(artist);
         }
       }}
-      className={`group relative flex flex-col border overflow-hidden cursor-pointer transition-all duration-300 shadow-md ${themeStyles.card} ${className}`}
+      className={`group relative flex flex-col h-full border overflow-hidden cursor-pointer transition-all duration-300 shadow-md ${themeStyles.card} ${className}`}
     >
       {/* Visual / Image area */}
       <div className="relative aspect-square w-full overflow-hidden bg-gradient-to-br from-zinc-900 to-black flex items-center justify-center border-b border-white/10">
@@ -116,7 +116,7 @@ export default function ArtistCard({
             >
               {initials}
             </div>
-            <span className="font-mono text-[10px] tracking-widest text-white/30 group-hover:text-white/50 uppercase mt-3">
+            <span className="font-mono text-badge tracking-widest text-white/30 group-hover:text-white/50 uppercase mt-3">
               APAP8 ARTIST
             </span>
           </div>
@@ -125,7 +125,7 @@ export default function ArtistCard({
         {/* Venue Badge */}
         {localizedVenue && (
           <span
-            className={`absolute top-3 left-3 font-mono text-[9px] font-bold border px-2.5 py-1 uppercase tracking-wider ${
+            className={`absolute top-3 left-3 font-mono text-badge font-bold border px-2.5 py-1 uppercase tracking-wider ${
               theme === 'blackwhite' ? 'rounded-sm' : 'rounded-full'
             } ${themeStyles.badge}`}
           >
@@ -135,7 +135,7 @@ export default function ArtistCard({
 
         {/* Works count badge */}
         {worksCount > 0 && (
-          <span className="absolute bottom-3 right-3 flex items-center gap-1 font-mono text-[10px] font-medium text-white/80 bg-black/70 backdrop-blur-md border border-white/10 px-2 py-0.5 rounded">
+          <span className="absolute bottom-3 right-3 flex items-center gap-1 font-mono text-badge font-medium text-white/80 bg-black/70 backdrop-blur-md border border-white/10 px-2 py-0.5 rounded">
             <Layers className={`w-3 h-3 ${themeStyles.icon}`} />
             <span>{worksLabel}</span>
           </span>
@@ -143,24 +143,24 @@ export default function ArtistCard({
       </div>
 
       {/* Info Area */}
-      <div className="p-4 sm:p-5 flex flex-col justify-between flex-1 gap-3">
-        <div className="space-y-1">
+      <div className="p-3.5 sm:p-5 flex flex-col gap-1.5 justify-between min-h-[110px] sm:min-h-[120px] max-h-[150px] sm:max-h-[160px] flex-1">
+        <div className="space-y-0.5">
           <div className="flex items-start justify-between gap-2">
-            <h3 className={`text-base sm:text-lg font-bold text-white transition-colors leading-snug ${themeStyles.name}`}>
+            <h3 className={`text-card-title font-bold text-white transition-colors leading-snug break-keep ${themeStyles.name}`}>
               {displayName}
             </h3>
             <ArrowUpRight className={`w-4 h-4 transition-transform flex-shrink-0 mt-0.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 ${themeStyles.arrow}`} />
           </div>
 
           {subName && (
-            <p className="font-mono text-xs text-white/50 group-hover:text-white/70 transition-colors truncate">
+            <p className="font-mono font-normal text-caption text-white/50 group-hover:text-white/70 transition-colors truncate">
               {subName}
             </p>
           )}
         </div>
 
         {/* Metadata bottom row */}
-        <div className="pt-2 border-t border-white/5 flex items-center justify-between text-xs font-mono text-white/40">
+        <div className="flex items-center justify-between text-caption font-mono text-white/40 pt-1">
           <span className="truncate max-w-[70%]">
             {localizedNationality || (isKo ? '참여 작가' : 'Artist')}
           </span>

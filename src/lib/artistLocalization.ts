@@ -123,20 +123,32 @@ export function getLocalizedArtistName(
   locale: string = 'ko'
 ): { primary: string; secondary?: string } {
   const isKo = locale === 'ko';
-  const cleanEn =
+  let cleanEn =
     artist.name_en && artist.name_en !== '국영문' && artist.name_en.trim() !== ''
       ? artist.name_en.trim()
       : null;
+  let cleanKo = artist.name_ko;
+
+  if (!cleanEn) {
+    const lastHangulIndex = cleanKo.search(/[가-힣][^가-힣]*$/);
+    if (lastHangulIndex !== -1) {
+      const rest = cleanKo.slice(lastHangulIndex + 1).trim();
+      if (/[A-Za-z]/.test(rest)) {
+        cleanKo = cleanKo.slice(0, lastHangulIndex + 1).trim();
+        cleanEn = rest;
+      }
+    }
+  }
 
   if (isKo) {
     return {
-      primary: artist.name_ko,
+      primary: cleanKo,
       secondary: cleanEn || undefined,
     };
   } else {
     return {
-      primary: cleanEn || artist.name_ko,
-      secondary: cleanEn ? artist.name_ko : undefined,
+      primary: cleanEn || cleanKo,
+      secondary: cleanEn ? cleanKo : undefined,
     };
   }
 }

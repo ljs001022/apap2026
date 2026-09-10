@@ -105,7 +105,7 @@ export default function ArtistModal({
         >
           {/* Header */}
           <div className="sticky top-0 z-20 flex items-center justify-between px-6 py-4 bg-[#0A0A0A]/95 backdrop-blur-md border-b border-white/15">
-            <div className="flex items-center gap-2.5 font-mono text-xs font-bold uppercase tracking-wider text-white">
+            <div className="flex items-center gap-2.5 font-mono text-caption font-bold uppercase tracking-wider text-white">
               <span className="bg-white text-black px-2 py-0.5 text-[10px] font-black">
                 {isKo ? '참여 작가' : 'ARTIST'}
               </span>
@@ -139,7 +139,7 @@ export default function ArtistModal({
                   />
                 ) : (
                   <div className="w-full h-full flex flex-col items-center justify-center bg-zinc-950 p-2">
-                    <div className="w-10 h-10 rounded-full border border-white/30 flex items-center justify-center font-mono font-black text-sm text-white/80">
+                    <div className="w-10 h-10 rounded-full border border-white/30 flex items-center justify-center font-mono font-black text-body text-white/80">
                       {initials}
                     </div>
                   </div>
@@ -148,17 +148,17 @@ export default function ArtistModal({
 
               <div className="space-y-3 flex-1">
                 <div>
-                  <h2 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight leading-tight">
+                  <h2 className="text-title font-extrabold text-white tracking-tight leading-tight">
                     {displayName}
                   </h2>
                   {subName && (
-                    <p className="font-mono text-sm sm:text-base text-white/50 mt-0.5">
+                    <p className="font-mono text-body text-white/50 mt-0.5">
                       {subName}
                     </p>
                   )}
                 </div>
 
-                <div className="flex flex-wrap items-center gap-2.5 pt-1 text-xs font-mono text-white/60">
+                <div className="flex flex-wrap items-center gap-2.5 pt-1 text-caption font-mono text-white/60">
                   {localizedNationality && (
                     <div className="flex items-center gap-1.5 bg-white/5 px-2.5 py-1 border border-white/10">
                       <MapPin className="w-3 h-3 text-white/70" />
@@ -187,16 +187,16 @@ export default function ArtistModal({
             {(artist.intro || localizedBio) && (
               <div className="pt-6 space-y-4">
                 {artist.intro && (
-                  <div className="text-sm text-white/80 leading-relaxed whitespace-pre-line">
+                  <div className="text-body text-white/80 leading-relaxed whitespace-pre-line">
                     {getLocalizedDescription(artist.intro, locale)}
                   </div>
                 )}
                 {localizedBio && (
                   <div className="space-y-2">
-                    <h3 className="font-mono text-xs font-bold tracking-wider uppercase text-white/60">
+                    <h3 className="font-mono text-caption font-bold tracking-wider uppercase text-white/60">
                       {isKo ? '주요 약력 및 전시' : 'BIOGRAPHY'}
                     </h3>
-                    <div className="text-xs text-white/70 leading-relaxed whitespace-pre-line bg-white/[0.03] p-4 border border-white/10 font-mono">
+                    <div className="text-caption text-white/70 leading-relaxed whitespace-pre-line bg-white/[0.03] p-4 border border-white/10 font-mono">
                       {localizedBio}
                     </div>
                   </div>
@@ -209,10 +209,10 @@ export default function ArtistModal({
               <div className="pt-6 space-y-5">
                 <div className="flex items-center justify-between border-b border-white/15 pb-3">
                   <div className="flex items-baseline gap-3">
-                    <h3 className="font-mono text-xs font-bold tracking-wider uppercase text-white">
+                    <h3 className="font-mono text-caption font-bold tracking-wider uppercase text-white">
                       {isKo ? '출품 작품' : 'PARTICIPATING WORKS'}
                     </h3>
-                    <span className="font-mono text-xs text-white/50">
+                    <span className="font-mono text-caption text-white/50">
                       {currentWorkIndex + 1} / {works.length}
                     </span>
                   </div>
@@ -253,7 +253,7 @@ export default function ArtistModal({
                         />
                       </div>
                     ) : (
-                      <div className="aspect-[4/3] w-full bg-zinc-950 border border-white/10 flex items-center justify-center text-xs font-mono text-white/40">
+                      <div className="aspect-[4/3] w-full bg-zinc-950 border border-white/10 flex items-center justify-center text-caption font-mono text-white/40">
                         NO WORK IMAGE
                       </div>
                     )}
@@ -277,25 +277,25 @@ export default function ArtistModal({
 
                   <div className="lg:col-span-6 flex flex-col justify-between space-y-4">
                     <div className="space-y-3">
-                      <h4 className="text-xl sm:text-2xl font-extrabold text-white tracking-tight leading-snug">
+                      <h4 className="text-title font-extrabold text-white tracking-tight leading-snug">
                         {getLocalizedTitle(currentWork.title, locale)}
                       </h4>
 
-                      <div className="space-y-1.5 text-xs font-mono text-white/60 border-l-2 border-white/30 pl-3">
+                      <div className="space-y-1.5 text-caption font-mono text-white/60 border-l-2 border-white/30 pl-3">
                         {currentWork.year && <div>{isKo ? `제작년도: ${currentWork.year}` : `Year: ${currentWork.year}`}</div>}
                         {currentWork.material && <div>{isKo ? `재료: ${getLocalizedMaterial(currentWork.material, locale)}` : `Medium: ${getLocalizedMaterial(currentWork.material, locale)}`}</div>}
                         {currentWork.size && <div>{isKo ? `크기: ${currentWork.size}` : `Dimensions: ${currentWork.size}`}</div>}
                       </div>
 
                       {currentWork.description && (
-                        <div className="text-xs sm:text-sm text-white/80 leading-relaxed whitespace-pre-line pt-2">
+                        <div className="text-body text-white/80 leading-relaxed whitespace-pre-line pt-2">
                           {getLocalizedDescription(currentWork.description, locale)}
                         </div>
                       )}
                     </div>
 
                     {works.length > 1 && (
-                      <div className="pt-4 border-t border-white/10 flex items-center justify-between font-mono text-xs text-white/50">
+                      <div className="pt-4 border-t border-white/10 flex items-center justify-between font-mono text-caption text-white/50">
                         <span>
                           {isKo ? `총 ${works.length}개 출품작 중 ${currentWorkIndex + 1}번째` : `Work ${currentWorkIndex + 1} of ${works.length}`}
                         </span>
