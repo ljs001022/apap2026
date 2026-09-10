@@ -5,6 +5,7 @@ import { Artist } from '@/types/artist';
 import ArtistCard, { CardTheme } from './ArtistCard';
 import ArtistModal from './ArtistModal';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
+import exhibitionCategoriesData from '../../../public/exhibition-categories.json';
 
 export interface CategoryGroup<T> {
   id: string;
@@ -155,6 +156,13 @@ export default function ArtistGrid({
     return currentCat ? currentCat.items : [];
   }, [activeCategoryId, categories]);
 
+  // Current Venue Description & Official Name from exhibition-categories.json
+  const currentVenueInfo = useMemo(() => {
+    return exhibitionCategoriesData.categories.find(
+      (c) => c.id === activeCategoryId || c.manifestVenueSlug === activeCategoryId
+    );
+  }, [activeCategoryId]);
+
   const handleCardClick = (artist: Artist) => {
     if (onArtistClick) {
       onArtistClick(artist);
@@ -203,6 +211,36 @@ export default function ArtistGrid({
           </button>
         ))}
       </div>
+
+      {/* ─── Official Venue Banner (Inverted White Box) ─── */}
+      {currentVenueInfo && (
+        <div className="bg-white text-black p-4 sm:p-5 border border-white my-3 shadow-md">
+          <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1 mb-2 border-b border-black/15 pb-2">
+            <div className="flex flex-wrap items-baseline gap-2 sm:gap-3">
+              <span className="font-mono text-[10px] font-black uppercase bg-black text-white px-2 py-0.5 tracking-wider">
+                OFFICIAL VENUE
+              </span>
+              <h3 className="text-lg sm:text-xl font-black tracking-tight">
+                {isKo ? currentVenueInfo.officialName.ko : currentVenueInfo.officialName.en}
+              </h3>
+            </div>
+            <span className="font-mono text-xs font-bold text-black/60">
+              {isKo ? currentVenueInfo.subtitle?.ko : currentVenueInfo.subtitle?.en}
+            </span>
+          </div>
+          <p className="text-xs sm:text-sm leading-relaxed text-black/90 font-medium">
+            {isKo ? currentVenueInfo.description.ko : currentVenueInfo.description.en}
+          </p>
+          {currentVenueInfo.missingArtists && currentVenueInfo.missingArtists.length > 0 && (
+            <div className="mt-2.5 pt-2 border-t border-black/10 text-[11px] font-mono text-black/75 flex flex-wrap items-center gap-1.5">
+              <span className="font-bold text-black bg-black/10 px-1.5 py-0.5">추가 참여 작가 (자료 준비 중)</span>
+              <span>
+                {currentVenueInfo.missingArtists.map((a: { name_ko: string; name_en: string }) => (isKo ? a.name_ko : a.name_en)).join(', ')}
+              </span>
+            </div>
+          )}
+        </div>
+      )}
 
       {/* ─── Responsive Grid ─── */}
       {displayedArtists.length > 0 ? (

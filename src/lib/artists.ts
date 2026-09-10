@@ -32,11 +32,13 @@ export function getManifest(): ArtistsManifest {
   return manifest;
 }
 
+const VENUE_ORDER = ['e-pavilion-media', 'outdoor-exhibition', '308-art-crew', 'korea-china-special'];
+
 /**
- * Returns venues with artists having venue context attached
+ * Returns venues with artists having venue context attached, sorted by official exhibition category order
  */
 export function getVenues(): Venue[] {
-  return manifest.venues.map((venue) => ({
+  const venues = manifest.venues.map((venue) => ({
     ...venue,
     artists: venue.artists.map((artist) => ({
       ...artist,
@@ -44,6 +46,12 @@ export function getVenues(): Venue[] {
       venue_slug: venue.venue_slug,
     })),
   }));
+
+  return venues.sort((a, b) => {
+    const orderA = VENUE_ORDER.indexOf(a.venue_slug);
+    const orderB = VENUE_ORDER.indexOf(b.venue_slug);
+    return (orderA === -1 ? 99 : orderA) - (orderB === -1 ? 99 : orderB);
+  });
 }
 
 /**

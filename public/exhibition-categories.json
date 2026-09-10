@@ -1,0 +1,149 @@
+{
+  "categories": [
+    {
+      "order": 1,
+      "id": "e-pavilion-media",
+      "manifestVenueSlug": "e-pavilion-media",
+      "tabLabel": {
+        "ko": "안양파빌리온",
+        "en": "Anyang Pavilion"
+      },
+      "officialName": {
+        "ko": "아이 파빌리온",
+        "en": "i Pavilion"
+      },
+      "subtitle": {
+        "ko": "안양파빌리온 실내 미디어아트 & 설치전",
+        "en": "Indoor Media Art & Installations at Anyang Pavilion"
+      },
+      "description": {
+        "ko": "인공지능(AI)을 주제로 한 미디어아트와 조각·설치 등 다양한 장르를 통해 가상과 현실, 인간과 기술의 관계 속 오늘날의 무릉도원을 탐색하는 전시",
+        "en": "Exploring today's utopian paradise at the intersection of virtuality, reality, humanity, and technology through AI media art, sculpture, and installations."
+      },
+      "missingArtists": [
+        {
+          "name_ko": "유영운",
+          "name_en": "Yoo Young-woon"
+        }
+      ]
+    },
+    {
+      "order": 2,
+      "id": "outdoor-exhibition",
+      "manifestVenueSlug": "outdoor-exhibition",
+      "tabLabel": {
+        "ko": "야외전시",
+        "en": "Outdoor Exhibition"
+      },
+      "officialName": {
+        "ko": "오픈 그라운드",
+        "en": "Open Ground"
+      },
+      "subtitle": {
+        "ko": "자연과 호흡하는 야외 조각 및 공공조형물",
+        "en": "Outdoor Sculptures & Public Installations Breathing with Nature"
+      },
+      "description": {
+        "ko": "자연과 도시가 어우러진 풍경 속 새로운 공공예술의 가능성을 제시하는 야외 조각전",
+        "en": "An outdoor sculpture exhibition proposing new possibilities for public art within the harmony of nature and urban landscape."
+      },
+      "missingArtists": []
+    },
+    {
+      "order": 3,
+      "id": "308-art-crew",
+      "manifestVenueSlug": "308-art-crew",
+      "tabLabel": {
+        "ko": "308아트",
+        "en": "308 Art Crew"
+      },
+      "officialName": {
+        "ko": "밤의 도원경",
+        "en": "Night Utopia"
+      },
+      "subtitle": {
+        "ko": "야외 레이저·미디어아트 특별 프로젝트",
+        "en": "Outdoor Laser & Media Art Special Project"
+      },
+      "description": {
+        "ko": "빛과 영상, 사운드로 안양예술공원의 밤을 감각적인 풍경으로 전환하는 야외 미디어아트",
+        "en": "Outdoor media art transforming the night of Anyang Art Park into a sensory landscape with light, video, and sound."
+      },
+      "missingArtists": []
+    },
+    {
+      "order": 4,
+      "id": "korea-china-special",
+      "manifestVenueSlug": "korea-china-special",
+      "tabLabel": {
+        "ko": "한중특별전",
+        "en": "Korea-China Special"
+      },
+      "officialName": {
+        "ko": "특별전: 우리가 꿈꾸는 도원",
+        "en": "Special Exhibition: The Utopia We Dream Of"
+      },
+      "subtitle": {
+        "ko": "한·중 현대미술 거장 특별 교류전",
+        "en": "Korea-China Contemporary Masters Special Exchange Exhibition"
+      },
+      "description": {
+        "ko": "한국과 중국 현대미술 작가들의 작품을 통해 우리가 꿈꾸는 삶과 세계를 살펴보는 특별전",
+        "en": "A special exhibition exploring the life and world we dream of through works by contemporary artists from Korea and China."
+      },
+      "missingArtists": [
+        {
+          "name_ko": "오용길",
+          "name_en": "Oh Yong-gil"
+        },
+        {
+          "name_ko": "윤진섭",
+          "name_en": "Yoon Jin-seop"
+        },
+        {
+          "name_ko": "이길우",
+          "name_en": "Lee Gil-woo"
+        },
+        {
+          "name_ko": "이후창",
+          "name_en": "Lee Hoo-chang"
+        },
+        {
+          "name_ko": "최순녕",
+          "name_en": "Choi Soon-nyeong"
+        },
+        {
+          "name_ko": "홍경택",
+          "name_en": "Hong Kyoung-tack"
+        },
+        {
+          "name_ko": "김윤아",
+          "name_en": "Kim Yoon-ah"
+        },
+        {
+          "name_ko": "임혜정",
+          "name_en": "Lim Hye-jung"
+        },
+        {
+          "name_ko": "정영남",
+          "name_en": "Jung Young-nam"
+        }
+      ]
+    }
+  ],
+  "missingFromManifest": {
+    "note": "프로필/작품 이미지가 미확보된 작가 10인으로, 카드는 생성하지 않고 전시 카테고리 설명에서 안내",
+    "artists": [
+      "유영운",
+      "오용길",
+      "윤진섭",
+      "이길우",
+      "이후창",
+      "최순녕",
+      "홍경택",
+      "김윤아",
+      "임혜정",
+      "정영남"
+    ]
+  }
+}
