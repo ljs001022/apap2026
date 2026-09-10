@@ -176,9 +176,9 @@ export default function SiteAPage({ params }: PageProps) {
           <div className="h-14 sm:h-16 flex-shrink-0" />
 
           {/* Banner Container */}
-          <div className="flex-1 w-full max-w-[1200px] max-h-[800px] mx-auto flex items-center justify-center px-3 sm:px-8 py-2 sm:py-4 overflow-hidden relative z-10">
-            <div className="relative w-full h-full max-w-[1200px] max-h-[800px] aspect-[12/5] max-sm:aspect-square max-sm:max-h-[768px] overflow-hidden flex items-center justify-center bg-black">
-              <picture className="w-full h-full block">
+          <div className="flex-1 min-h-0 w-full mx-auto flex items-center justify-center px-3 sm:px-0 py-2 sm:py-0 overflow-hidden relative z-10">
+            <div className="relative w-full h-full max-sm:aspect-square max-sm:max-h-[768px] overflow-hidden flex items-center justify-center bg-black">
+              <picture className="w-full h-full flex items-center justify-center">
                 <source
                   media="(max-width: 640px)"
                   srcSet="/images/APAP8_uniform_square.gif"
@@ -187,7 +187,7 @@ export default function SiteAPage({ params }: PageProps) {
                 <img
                   src="/images/APAP8_uniform.gif"
                   alt={t.heroAlt}
-                  className="w-full h-full object-contain"
+                  className="w-full h-full object-contain sm:object-fill"
                   loading="eager"
                 />
               </picture>
@@ -279,8 +279,8 @@ export default function SiteAPage({ params }: PageProps) {
                       </h3>
                       <p className="text-body text-[#B9B9B9] font-light leading-relaxed line-clamp-2">
                         {isKo
-                          ? '아르떼엑스(Arte X)는 예술과 첨단기술의 융합을 통해 공공예술의 새로운 가능성과 문화예술 경험을 확장하고, 공간·장르·매체의 경계를 넘나드는 융복합 콘텐츠로 시민참여와 상호작용을 활성화합니다.'
-                          : 'ArteX merges art and cutting-edge technology to expand the horizons of public art, activating civic engagement across spatial, disciplinary, and media boundaries.'}
+                          ? '제8회 안양공공예술프로젝트(APAP8)는 "Arte X : 예술 대전환_안양 무릉도원"을 주제로 하여 진행됩니다. 안양은 안양천과 그 지천을 중심으로 도시와 자연의 공존이 현실화한 공간입니다.'
+                          : 'The 8th Anyang Public Art Project (APAP8) unfolds under the theme "Arte X : Art Transformation_Anyang Peach Blossom Spring", reinterpreting paradise through art where city and nature coexist.'}
                       </p>
                     </div>
                     <div className="flex items-center justify-between pt-1.5 border-t border-white/10 text-xs font-mono text-white/50 group-hover:text-white transition-colors">
@@ -457,16 +457,16 @@ export default function SiteAPage({ params }: PageProps) {
                         : 'ArteX = Art + Transformation / Expansion / Experience'}
                     </div>
 
-                    <div className="text-base lg:text-lg text-[#D4D4D4] leading-relaxed space-y-3 font-light">
+                    <div className="text-base lg:text-lg text-[#D4D4D4] leading-relaxed space-y-4 font-light">
                       <p>
                         {isKo
-                          ? '아르떼엑스(Arte X)는 예술과 첨단기술의 융합을 통해 공공예술의 새로운 가능성과 문화예술 경험을 확장하고, 공간·장르·매체의 경계를 넘나드는 융복합 콘텐츠로 시민참여와 상호작용을 활성화합니다.'
-                          : 'ArteX merges art and cutting-edge technology to expand the horizons of public art, activating civic engagement across spatial, disciplinary, and media boundaries.'}
+                          ? '제8회 안양공공예술프로젝트(APAP8)는 "Arte X : 예술 대전환_안양 무릉도원"을 주제로 하여 진행됩니다. 안양은 안양천과 그 지천을 중심으로 하여 도시와 자연의 공존이 현실화한 공간입니다. 이번 프로젝트는 이러한 안양의 지역적 특성을 살려 예술을 통해 무릉도원을 재해석하고자 합니다. 야외 조각과 설치, 회화와 미디어아트 등 장르 간 경계를 확장하는 다양한 작품을 통해, 시민과 함께 호흡하며 일상 속에 자연스럽게 스며드는 예술 축제의 장을 펼쳐 보일 예정입니다.'
+                          : 'The 8th Anyang Public Art Project (APAP8) unfolds under the theme "Arte X : Art Transformation_Anyang Peach Blossom Spring." Anyang is a space where urban living and nature coexist along the Anyang Stream and its tributaries. Reinterpreting paradise through art, APAP8 expands boundaries across sculpture, installation, painting, and media art to create an art festival naturally woven into everyday life.'}
                       </p>
                       <p>
                         {isKo
-                          ? '작품 재정비를 기반으로 자연·예술·기술이 조화를 이루는 지속가능한 예술공원의 무릉도원 문화예술 생태계를 구축하고자 합니다.'
-                          : 'Building upon the restoration of existing works, APAP8 establishes a sustainable utopian eco-cultural sanctuary where nature, art, and technology coexist.'}
+                          ? '진정한 무릉도원은 특정한 물리적 시공간을 의미하는 것은 아닐 것입니다. 심신의 피로를 달래고, 고단한 삶의 무게를 잠시나마 내려놓을 수 있는 순간이 온다면 바로 그 순간 각자가 있는 그곳이 무릉도원이 될 수 있습니다. APAP8은 예술을 통해 각자의 무릉도원을 만들어 보고자 합니다. 퇴근길에 잠시 들린 전시장, 가족과 산책 중 우연히 마주친 야외 조각과 미디어 아트가 우리의 마음을 움직이고, 바쁜 삶 속에서 잠시 잊었던 감각을 깨울 수 있다면 예술은 공공의 영역에서 사회적 역할을 충실히 하는 것이라고 말할 수 있을 것입니다. 안양시가 예술로 펼쳐 놓은 축제의 장, 《Arte X : 예술 대전환_안양 무릉도원》은 안양 시민뿐 아니라, 무릉도원을 찾는 모든 이들을 환영합니다.'
+                          : 'A true paradise is not confined to a specific physical time or place. Whenever one can soothe weariness and set down life’s burdens, that very place becomes a paradise. If an exhibition visited on the commute home or an outdoor sculpture and media artwork encountered while strolling can move our hearts and awaken forgotten senses, art fulfills its vital social role in the public realm. The festive haven presented by Anyang City, "Arte X : Art Transformation_Anyang Peach Blossom Spring," warmly welcomes citizens and all who journey to discover paradise.'}
                       </p>
                     </div>
 
@@ -1674,16 +1674,16 @@ export default function SiteAPage({ params }: PageProps) {
             </p>
           </div>
 
-          <div className="text-body text-[#B9B9B9] leading-relaxed space-y-3 font-light">
+          <div className="text-body text-[#B9B9B9] leading-relaxed space-y-4 font-light">
             <p>
               {isKo
-                ? '아르떼엑스(Arte X)는 예술과 첨단기술의 융합을 통해 공공예술의 새로운 가능성과 문화예술 경험을 확장하고, 공간·장르·매체의 경계를 넘나드는 융복합 콘텐츠로 시민참여와 상호작용을 활성화합니다.'
-                : 'ArteX merges art and cutting-edge technology to expand the horizons of public art, activating civic engagement and interactive experiences across spatial, disciplinary, and media boundaries.'}
+                ? '제8회 안양공공예술프로젝트(APAP8)는 "Arte X : 예술 대전환_안양 무릉도원"을 주제로 하여 진행됩니다. 안양은 안양천과 그 지천을 중심으로 하여 도시와 자연의 공존이 현실화한 공간입니다. 이번 프로젝트는 이러한 안양의 지역적 특성을 살려 예술을 통해 무릉도원을 재해석하고자 합니다. 야외 조각과 설치, 회화와 미디어아트 등 장르 간 경계를 확장하는 다양한 작품을 통해, 시민과 함께 호흡하며 일상 속에 자연스럽게 스며드는 예술 축제의 장을 펼쳐 보일 예정입니다.'
+                : 'The 8th Anyang Public Art Project (APAP8) unfolds under the theme "Arte X : Art Transformation_Anyang Peach Blossom Spring." Anyang is a space where urban living and nature coexist along the Anyang Stream and its tributaries. Reinterpreting paradise through art, APAP8 expands boundaries across sculpture, installation, painting, and media art to create an art festival naturally woven into everyday life.'}
             </p>
             <p>
               {isKo
-                ? '작품 재정비를 기반으로 자연·예술·기술이 조화를 이루는 지속가능한 예술공원의 무릉도원 문화예술 생태계를 구축하고자 합니다.'
-                : 'Building upon the restoration and reimagining of existing works, APAP8 establishes a sustainable utopian eco-cultural sanctuary where nature, art, and technology coexist.'}
+                ? '진정한 무릉도원은 특정한 물리적 시공간을 의미하는 것은 아닐 것입니다. 심신의 피로를 달래고, 고단한 삶의 무게를 잠시나마 내려놓을 수 있는 순간이 온다면 바로 그 순간 각자가 있는 그곳이 무릉도원이 될 수 있습니다. APAP8은 예술을 통해 각자의 무릉도원을 만들어 보고자 합니다. 퇴근길에 잠시 들린 전시장, 가족과 산책 중 우연히 마주친 야외 조각과 미디어 아트가 우리의 마음을 움직이고, 바쁜 삶 속에서 잠시 잊었던 감각을 깨울 수 있다면 예술은 공공의 영역에서 사회적 역할을 충실히 하는 것이라고 말할 수 있을 것입니다. 안양시가 예술로 펼쳐 놓은 축제의 장, 《Arte X : 예술 대전환_안양 무릉도원》은 안양 시민뿐 아니라, 무릉도원을 찾는 모든 이들을 환영합니다.'
+                : 'A true paradise is not confined to a specific physical time or place. Whenever one can soothe weariness and set down life’s burdens, that very place becomes a paradise. If an exhibition visited on the commute home or an outdoor sculpture and media artwork encountered while strolling can move our hearts and awaken forgotten senses, art fulfills its vital social role in the public realm. The festive haven presented by Anyang City, "Arte X : Art Transformation_Anyang Peach Blossom Spring," warmly welcomes citizens and all who journey to discover paradise.'}
             </p>
           </div>
 

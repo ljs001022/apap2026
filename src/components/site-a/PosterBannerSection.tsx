@@ -48,7 +48,7 @@ export default function PosterBannerSection({
 
   return (
     <>
-      <section className={`relative py-10 md:py-14 px-5 sm:px-6 max-w-6xl mx-auto z-10 ${className}`}>
+      <section className={`relative py-10 md:py-14 px-5 sm:px-6 max-w-[1400px] mx-auto z-10 ${className}`}>
         <div className={`relative border overflow-hidden transition-all duration-300 group ${themeStyles.container}`}>
           {/* Header row */}
           <div className={`flex flex-wrap items-center justify-between px-5 sm:px-8 py-3.5 border-b font-mono text-xs gap-3 ${themeStyles.header}`}>
