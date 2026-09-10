@@ -1,0 +1,39 @@
+{
+  "label": "05",
+  "hours": {
+    "admission": "전액 무료",
+    "outdoor": {
+      "label": "야외 공공조각 전시",
+      "value": "연중 상시 개방 (24시간 관람 가능)"
+    },
+    "indoor": {
+      "label": "실내 전시관 (안양파빌리온)",
+      "value": "화요일 – 일요일 10:00 – 18:00 (입장 마감 17:30)",
+      "note": "매주 월요일 휴관 (공휴일인 경우 익일 휴관)"
+    }
+  },
+  "location": {
+    "area": "안양예술공원 일원",
+    "address": "경기도 안양시 만안구 예술공원로 180 (안양파빌리온)",
+    "spots": "안양예술공원 산책로, 안양파빌리온 메인홀, 안양천 변 야외 공간"
+  },
+  "eventPeriod": {
+    "duration": "2026년 9월 30일(수) ~ 11월 29일(일)",
+    "opening": "2026.9.30.(수) 19:00~20:00, 308 아트크루 레이저 공연 연계"
+  },
+  "archiveHub": {
+    "title": "역대 APAP (1회~7회) 아카이브",
+    "description": "2005년 제1회부터 축적된 역대 APAP의 모든 영구 설치 작품 및 전시 기록을 통합 아카이브에서 확인하실 수 있습니다.",
+    "linkText": "바로가기",
+    "linkUrl": "https://apap2026.vercel.app/archive/ko"
+  },
+  "footer": {
+    "orgName": "APAP 8 (안양공공예술프로젝트)",
+    "orgInfo": "안양문화예술재단 APAP 사무국 | 경기도 안양시 만안구 예술공원로 103",
+    "copyright": "© 2026 Anyang Foundation for Culture & Arts. All rights reserved.",
+    "links": [
+      { "label": "메인 아카이브 복귀", "url": "https://apap2026.vercel.app/archive/ko" },
+      { "label": "재단 홈페이지", "url": "https://www.ayac.or.kr" }
+    ]
+  }
+}
