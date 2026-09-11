@@ -1,10 +1,12 @@
-﻿'use client';
+'use client';
 
 import React, { useState } from 'react';
 import Link from 'next/link';
 import GnbHeader from '@/components/site-a/GnbHeader';
 import Footer from '@/components/site-a/Footer';
-import { ArrowLeft, ArrowUpRight, MessageCircle, HelpCircle } from 'lucide-react';
+import SectionDetailModal from '@/components/site-a/SectionDetailModal';
+import { getCommunityItems, CommunityItem } from '@/lib/community';
+import { ArrowLeft, ArrowUpRight, MessageCircle } from 'lucide-react';
 
 interface PageProps {
   params: Promise<{ locale: string }>;
@@ -17,46 +19,9 @@ export default function CommunityPage({ params }: PageProps) {
   const isKo = validLocale === 'ko';
 
   const [activeTab, setActiveTab] = useState<'all' | 'notice' | 'press'>('all');
+  const [selectedNotice, setSelectedNotice] = useState<CommunityItem | null>(null);
 
-  const items = [
-    {
-      cat: isKo ? '공지' : 'Notice',
-      type: 'notice',
-      title: isKo ? 'APAP8 공식 홈페이지 오픈 및 참여 작가 공개' : 'APAP8 Official Website Launch & Artist Announcement',
-      date: '2026.09.14',
-      desc: isKo
-        ? '제8회 안양공공예술프로젝트 공식 웹사이트가 정식 오픈되었습니다. 야외전시 및 특별기획전에 참여하는 총 21명 작가 정보와 주요 출품작을 확인하실 수 있습니다.'
-        : 'The official platform for APAP8 has launched. Discover details on 21 participating artists across all venues.',
-    },
-    {
-      cat: isKo ? '프레스' : 'Press',
-      type: 'press',
-      title: isKo ? '[보도자료] 제8회 안양공공예술프로젝트 개막 발표' : '[Press Release] The 8th Anyang Public Art Project Opens',
-      date: '2026.09.14',
-      desc: isKo
-        ? '안양문화예술재단은 ‘ArteX : 예술대전환’을 주제로 3년 만에 개최되는 트리엔날레의 종합 프레스킷을 배포합니다.'
-        : 'Anyang Foundation for Culture & Arts distributes the official press kit for the triennial.',
-    },
-    {
-      cat: isKo ? '공지' : 'Notice',
-      type: 'notice',
-      title: isKo ? '개막 주간 퍼블릭 프로그램 및 도슨트 투어 신청 안내' : 'Opening Week Public Programs & Docent Tour Registration',
-      date: '2026.09.07',
-      desc: isKo
-        ? '개막 국제 컨퍼런스 및 주말 정기 도슨트 투어 참여 접수가 시작됩니다. 전 프로그램은 시민 누구나 무료로 참여하실 수 있습니다.'
-        : 'Registration opens for the international symposium and weekend guided tours. Free for all citizens.',
-    },
-    {
-      cat: isKo ? '프레스' : 'Press',
-      type: 'press',
-      title: isKo ? '[보도자료] 김덕한 작가 APAP8 신작 조각 야외 설치 완료' : '[Press] Artist Kim Deok Han Installs New Outdoor Sculpture',
-      date: '2026.08.30',
-      desc: isKo
-        ? '한국 현대미술의 대표 작가 김덕한의 대형 공공조각 <OVERLAID : 공존의 균형>이 안양예술공원 숲속 산책로에 성공적으로 안착했습니다.'
-        : 'Kim Deok Han completes installation of his monumental sculpture in Anyang Art Park.',
-    },
-  ];
-
+  const items = getCommunityItems(validLocale);
   const filteredItems = activeTab === 'all' ? items : items.filter((item) => item.type === activeTab);
 
   return (
@@ -123,22 +88,40 @@ export default function CommunityPage({ params }: PageProps) {
 
         {/* Notice & Press Articles List */}
         <div className="divide-y divide-white/15 border-y border-white/20 mb-16">
-          {filteredItems.map((item, idx) => (
-            <div key={idx} className="py-6 hover:bg-white/[0.02] px-3 -mx-3 transition-colors space-y-2">
+          {filteredItems.map((item) => (
+            <div
+              key={item.id}
+              role="button"
+              tabIndex={0}
+              onClick={() => setSelectedNotice(item)}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                  e.preventDefault();
+                  setSelectedNotice(item);
+                }
+              }}
+              className="py-6 hover:bg-white/[0.03] px-4 -mx-4 transition-all space-y-2.5 cursor-pointer group rounded-sm"
+            >
               <div className="flex items-center justify-between gap-4">
                 <div className="flex items-center gap-2.5">
-                  <span className={`text-[10px] font-bold font-mono px-2 py-0.5 ${
-                    item.type === 'press' ? 'bg-white text-black' : 'border border-white text-white'
-                  }`}>
+                  <span
+                    className={`text-[10px] font-bold font-mono px-2 py-0.5 ${
+                      item.type === 'press' ? 'bg-white text-black' : 'border border-white text-white'
+                    }`}
+                  >
                     {item.cat}
                   </span>
                   <span className="font-mono text-xs text-[#8C8C8C]">{item.date}</span>
                 </div>
+                <div className="flex items-center gap-1.5 text-xs font-mono text-white/40 group-hover:text-white transition-colors">
+                  <span className="hidden sm:inline">{isKo ? '클릭하여 상세 보기' : 'VIEW DETAILS'}</span>
+                  <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                </div>
               </div>
-              <h3 className="text-lg sm:text-xl font-bold text-white leading-snug">
+              <h3 className="text-lg sm:text-xl font-bold text-white leading-snug group-hover:text-white transition-colors">
                 {item.title}
               </h3>
-              <p className="text-xs sm:text-sm text-[#B9B9B9] leading-relaxed font-light">
+              <p className="text-xs sm:text-sm text-[#B9B9B9] leading-relaxed font-light line-clamp-2">
                 {item.desc}
               </p>
             </div>
@@ -170,6 +153,46 @@ export default function CommunityPage({ params }: PageProps) {
           </a>
         </div>
       </main>
+
+      {/* Notice Detail Modal */}
+      <SectionDetailModal
+        isOpen={selectedNotice !== null}
+        onClose={() => setSelectedNotice(null)}
+        category={selectedNotice ? `${selectedNotice.cat} · ${selectedNotice.date}` : ''}
+        title={selectedNotice?.title || ''}
+      >
+        {selectedNotice && (
+          <div className="space-y-5">
+            <div className="flex items-center gap-3 pb-3 border-b border-white/10">
+              <span
+                className={`text-xs font-bold font-mono px-2.5 py-0.5 ${
+                  selectedNotice.type === 'press'
+                    ? 'bg-white text-black'
+                    : 'border border-white text-white'
+                }`}
+              >
+                {selectedNotice.cat}
+              </span>
+              <span className="font-mono text-xs text-[#8C8C8C]">
+                {selectedNotice.date}
+              </span>
+            </div>
+
+            <div className="space-y-3.5 text-sm sm:text-base text-[#D4D4D4] leading-relaxed font-light">
+              {selectedNotice.content.map((paragraph, idx) => (
+                <p key={idx} className="whitespace-pre-line">
+                  {paragraph}
+                </p>
+              ))}
+            </div>
+
+            <div className="pt-5 border-t border-white/10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-xs font-mono text-[#8C8C8C]">
+              <span>■ {isKo ? '문의: 안양문화예술재단 APAP 사업부 (031-687-0548)' : 'Inquiries: Anyang Foundation for Culture & Arts (031-687-0548)'}</span>
+              <span className="text-white/60">APAP8 · BLACK & WHITE EDITION</span>
+            </div>
+          </div>
+        )}
+      </SectionDetailModal>
 
       <Footer locale={validLocale} />
     </div>

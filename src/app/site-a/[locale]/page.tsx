@@ -26,6 +26,7 @@ import {
 } from 'lucide-react';
 import ArtistGrid from '@/components/site-a/ArtistGrid';
 import { getVenues } from '@/lib/artists';
+import { getCommunityItems, CommunityItem } from '@/lib/community';
 import { getLocalizedVenueName } from '@/lib/artistLocalization';
 import Link from 'next/link';
 
@@ -75,88 +76,8 @@ export default function SiteAPage({ params }: PageProps) {
   }, [venues, validLocale]);
 
   // ─── Community Data (8 items for rich pagination) ───
-  const communityItems = [
-    {
-      cat: isKo ? '공지' : 'Notice',
-      title: isKo
-        ? 'APAP8 공식 홈페이지 오픈 및 참여 작가 공개'
-        : 'APAP8 Official Website Launch & Artist Announcement',
-      date: '2026.09.14',
-      desc: isKo
-        ? '제8회 안양공공예술프로젝트 공식 웹사이트가 정식 오픈되었습니다. 야외전시 및 특별기획전에 참여하는 국내외 41인/팀 작가 정보와 주요 출품작을 확인하실 수 있습니다.'
-        : 'The official platform for APAP8 has launched. Discover details on 41 participating artists across all venues.',
-    },
-    {
-      cat: isKo ? '프레스' : 'Press',
-      title: isKo
-        ? '[보도자료] 제8회 안양공공예술프로젝트 개막 발표'
-        : '[Press Release] The 8th Anyang Public Art Project Opens',
-      date: '2026.09.14',
-      desc: isKo
-        ? '안양문화예술재단은 ‘ArteX : 예술대전환’(부제: 안양 무릉도원)을 주제로 3년 만에 개최되는 트리엔날레의 종합 프레스킷을 배포합니다.'
-        : 'Anyang Foundation for Culture & Arts releases the official press kit for APAP8 under the theme "ArteX : Art Transformation" (Subtitle: Anyang Peach Blossom Spring).',
-    },
-    {
-      cat: isKo ? '공지' : 'Notice',
-      title: isKo
-        ? '개막 주간 도원 릴레이 및 도슨트 투어 신청 안내'
-        : 'Opening Week Dowon Relay & Docent Tour Registration',
-      date: '2026.09.07',
-      desc: isKo
-        ? '도원 릴레이 시민참여 프로그램 및 주말 정기 도슨트 투어 참여 접수가 시작됩니다. 전 프로그램은 시민 누구나 무료로 참여하실 수 있습니다.'
-        : 'Registration opens for Dowon Relay civic engagement programs and weekend guided tours. Free for all citizens.',
-    },
-    {
-      cat: isKo ? '프레스' : 'Press',
-      title: isKo
-        ? '[보도자료] 김덕한 작가 APAP8 신작 조각 야외 설치 완료'
-        : '[Press] Artist Kim Deok Han Installs New Outdoor Sculpture',
-      date: '2026.08.30',
-      desc: isKo
-        ? '한국 현대미술의 대표 작가 김덕한의 대형 공공조각 <OVERLAID : 공존의 균형>이 안양예술공원 숲속 산책로에 성공적으로 안착했습니다.'
-        : 'Kim Deok Han completes installation of his monumental sculpture in Anyang Art Park.',
-    },
-    {
-      cat: isKo ? '공지' : 'Notice',
-      title: isKo
-        ? 'APAP 서포터즈 <도원지기> 1차 서류 합격자 발표'
-        : 'APAP Supporters <Dowonjigi> 1st Selection Results',
-      date: '2026.08.20',
-      desc: isKo
-        ? '제8회 안양공공예술프로젝트와 함께할 청년 서포터즈 <도원지기> 모집에 응해주신 모든 분들께 감사드립니다. 면접 일정을 개별 안내드립니다.'
-        : 'Thank you to all applicants for the APAP8 Youth Supporters <Dowonjigi>. Individual interview notices have been sent.',
-    },
-    {
-      cat: isKo ? '프레스' : 'Press',
-      title: isKo
-        ? '[보도자료] 안양예술공원 내 APAP8 공공조각 보존수복 프로젝트 완료'
-        : '[Press] Completion of Public Sculpture Restoration in Anyang Art Park',
-      date: '2026.08.15',
-      desc: isKo
-        ? '역대 APAP 영구 설치 조각 중 12점에 대한 정밀 클리닝 및 보존수복 작업을 완료하여 더욱 쾌적한 야외 관람 환경을 조성했습니다.'
-        : 'Conservation and cleaning of 12 permanent works in Anyang Art Park completed for enhanced viewing experience.',
-    },
-    {
-      cat: isKo ? '공지' : 'Notice',
-      title: isKo
-        ? '안양 무릉도원 숏폼 영상 공모전 접수 시작'
-        : 'Anyang Peach Blossom Spring Short-form Video Contest Open',
-      date: '2026.08.01',
-      desc: isKo
-        ? '시민의 시선으로 담아낸 안양예술공원과 공공예술의 매력을 공유하는 숏폼 영상 공모전을 개최합니다. 총 상금 1,000만 원 규모입니다.'
-        : 'Submit your creative short-form videos highlighting Anyang Art Park and public artworks. Total prize pool 10M KRW.',
-    },
-    {
-      cat: isKo ? '프레스' : 'Press',
-      title: isKo
-        ? '[보도자료] KBS <열린음악회> APAP8 특집 안양 녹화 확정'
-        : '[Press] KBS <Open Concert> Confirmed for APAP8 Special Broadcast',
-      date: '2026.07.25',
-      desc: isKo
-        ? '오는 9월 30일 개막식과 연계하여 안양예술공원 특설무대에서 KBS 열린음악회 APAP8 특집 녹화가 진행됩니다.'
-        : 'KBS Open Concert special recording confirmed at Anyang Art Park on Sept 30 in conjunction with the opening ceremony.',
-    },
-  ];
+  const communityItems = getCommunityItems(validLocale);
+  const [selectedCommunityItem, setSelectedCommunityItem] = useState<CommunityItem | null>(null);
 
   return (
     <div className="bg-[#0A0A0A] text-white font-sans antialiased">
@@ -1111,10 +1032,19 @@ export default function SiteAPage({ params }: PageProps) {
                       (communityPage - 1) * 3,
                       communityPage * 3
                     )
-                    .map((item, idx) => (
+                    .map((item) => (
                       <div
-                        key={idx}
-                        className="py-3 px-2 transition-colors space-y-1"
+                        key={item.id}
+                        role="button"
+                        tabIndex={0}
+                        onClick={() => setSelectedCommunityItem(item)}
+                        onKeyDown={(e) => {
+                          if (e.key === 'Enter' || e.key === ' ') {
+                            e.preventDefault();
+                            setSelectedCommunityItem(item);
+                          }
+                        }}
+                        className="py-3 px-2 hover:bg-white/[0.04] transition-colors space-y-1 cursor-pointer group"
                       >
                         <div className="flex items-center justify-between gap-4">
                           <div className="flex items-center gap-2">
@@ -1131,8 +1061,9 @@ export default function SiteAPage({ params }: PageProps) {
                               {item.date}
                             </span>
                           </div>
+                          <ArrowUpRight className="w-3.5 h-3.5 text-white/30 group-hover:text-white group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
                         </div>
-                        <h3 className="text-sm font-bold text-white leading-snug">
+                        <h3 className="text-sm font-bold text-white leading-snug group-hover:text-white">
                           {item.title}
                         </h3>
                         <p className="text-xs text-[#B9B9B9] line-clamp-2 leading-relaxed font-light">
@@ -1181,31 +1112,49 @@ export default function SiteAPage({ params }: PageProps) {
                         (communityPcPage - 1) * 6,
                         communityPcPage * 6
                       )
-                      .map((item, idx) => (
+                      .map((item) => (
                         <div
-                          key={idx}
-                          className="p-4 border border-white/10 hover:border-white/40 bg-white/[0.01] hover:bg-white/[0.03] transition-all space-y-2 group"
+                          key={item.id}
+                          role="button"
+                          tabIndex={0}
+                          onClick={() => setSelectedCommunityItem(item)}
+                          onKeyDown={(e) => {
+                            if (e.key === 'Enter' || e.key === ' ') {
+                              e.preventDefault();
+                              setSelectedCommunityItem(item);
+                            }
+                          }}
+                          className="p-4 border border-white/10 hover:border-white/60 bg-white/[0.01] hover:bg-white/[0.04] transition-all space-y-2 group cursor-pointer flex flex-col justify-between"
                         >
-                          <div className="flex items-center justify-between">
-                            <span
-                              className={`text-xs font-bold font-mono px-2 py-0.5 flex-shrink-0 ${
-                                item.cat === '프레스' || item.cat === 'Press'
-                                  ? 'bg-white text-black'
-                                  : 'border border-white text-white'
-                              }`}
-                            >
-                              {item.cat}
-                            </span>
-                            <span className="font-mono text-xs lg:text-sm text-[#8C8C8C]">
-                              {item.date}
-                            </span>
+                          <div className="space-y-2">
+                            <div className="flex items-center justify-between">
+                              <span
+                                className={`text-xs font-bold font-mono px-2 py-0.5 flex-shrink-0 ${
+                                  item.cat === '프레스' || item.cat === 'Press'
+                                    ? 'bg-white text-black'
+                                    : 'border border-white text-white'
+                                }`}
+                              >
+                                {item.cat}
+                              </span>
+                              <div className="flex items-center gap-2">
+                                <span className="font-mono text-xs lg:text-sm text-[#8C8C8C]">
+                                  {item.date}
+                                </span>
+                                <ArrowUpRight className="w-4 h-4 text-white/30 group-hover:text-white group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
+                              </div>
+                            </div>
+                            <h3 className="text-base lg:text-lg font-bold text-white leading-snug group-hover:text-white">
+                              {item.title}
+                            </h3>
+                            <p className="text-xs lg:text-sm text-[#B9B9B9] line-clamp-2 leading-relaxed font-light">
+                              {item.desc}
+                            </p>
                           </div>
-                          <h3 className="text-base lg:text-lg font-bold text-white leading-snug group-hover:text-white">
-                            {item.title}
-                          </h3>
-                          <p className="text-xs lg:text-sm text-[#B9B9B9] line-clamp-2 leading-relaxed font-light">
-                            {item.desc}
-                          </p>
+                          <div className="pt-2 flex items-center justify-between text-[11px] font-mono text-white/40 group-hover:text-white/80 transition-colors border-t border-white/5">
+                            <span>{isKo ? '클릭하여 상세 정보 보기' : 'CLICK TO VIEW DETAILS'}</span>
+                            <span className="text-white/30 group-hover:text-white">→</span>
+                          </div>
                         </div>
                       ))}
                   </div>
@@ -1986,6 +1935,46 @@ export default function SiteAPage({ params }: PageProps) {
             </div>
           </div>
         </div>
+      </SectionDetailModal>
+
+      {/* Community / Notice Detail Modal */}
+      <SectionDetailModal
+        isOpen={selectedCommunityItem !== null}
+        onClose={() => setSelectedCommunityItem(null)}
+        category={selectedCommunityItem ? `${selectedCommunityItem.cat} · ${selectedCommunityItem.date}` : ''}
+        title={selectedCommunityItem?.title || ''}
+      >
+        {selectedCommunityItem && (
+          <div className="space-y-5">
+            <div className="flex items-center gap-3 pb-3 border-b border-white/10">
+              <span
+                className={`text-xs font-bold font-mono px-2.5 py-0.5 ${
+                  selectedCommunityItem.cat === '프레스' || selectedCommunityItem.cat === 'Press'
+                    ? 'bg-white text-black'
+                    : 'border border-white text-white'
+                }`}
+              >
+                {selectedCommunityItem.cat}
+              </span>
+              <span className="font-mono text-xs text-[#8C8C8C]">
+                {selectedCommunityItem.date}
+              </span>
+            </div>
+
+            <div className="space-y-3.5 text-sm sm:text-base text-[#D4D4D4] leading-relaxed font-light">
+              {selectedCommunityItem.content.map((paragraph, idx) => (
+                <p key={idx} className="whitespace-pre-line">
+                  {paragraph}
+                </p>
+              ))}
+            </div>
+
+            <div className="pt-5 border-t border-white/10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-xs font-mono text-[#8C8C8C]">
+              <span>■ {isKo ? '문의: 안양문화예술재단 APAP 사업부 (031-687-0548)' : 'Inquiries: Anyang Foundation for Culture & Arts (031-687-0548)'}</span>
+              <span className="text-white/60">APAP8 · BLACK & WHITE EDITION</span>
+            </div>
+          </div>
+        )}
       </SectionDetailModal>
     </div>
   );
