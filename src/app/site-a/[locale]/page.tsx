@@ -102,13 +102,21 @@ export default function SiteAPage({ params }: PageProps) {
               <picture className="w-full h-full flex items-center justify-center">
                 <source
                   media="(max-width: 640px)"
-                  srcSet="/images/APAP8_uniform_square.gif"
+                  type="image/webp"
+                  srcSet="/images/main-768x768.webp"
                 />
-                <source type="image/webp" srcSet="/images/apap8_uniform.webp" />
+                <source
+                  media="(max-width: 640px)"
+                  srcSet="/images/main-768x768.jpg"
+                />
+                <source
+                  type="image/webp"
+                  srcSet="/images/main-1920x800.webp"
+                />
                 <img
-                  src="/images/APAP8_uniform.gif"
+                  src="/images/main-1920x800.jpg"
                   alt={t.heroAlt}
-                  className="w-full h-full object-contain sm:object-fill"
+                  className="w-full h-full object-contain"
                   loading="eager"
                 />
               </picture>

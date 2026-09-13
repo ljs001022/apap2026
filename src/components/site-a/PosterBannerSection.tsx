@@ -80,14 +80,14 @@ export default function PosterBannerSection({
           {/* Poster Image Container */}
           <div
             onClick={() => setIsZoomed(true)}
-            className="relative aspect-[16/9] w-full overflow-hidden bg-[#FAF7D3] cursor-pointer"
+            className="relative aspect-[12/5] w-full overflow-hidden bg-[#FAF7D3] cursor-pointer"
           >
             <picture className="w-full h-full block">
-              <source type="image/webp" srcSet="/images/apap8_uniform.webp" />
+              <source type="image/webp" srcSet="/images/main-1920x800.webp" />
               <img
-                src="/images/APAP8_uniform.gif"
+                src="/images/main-1920x800.jpg"
                 alt={isKo ? "제8회 안양공공예술프로젝트(APAP8) 공식 포스터 - ARTEX: 예술대전환" : "The 8th Anyang Public Art Project (APAP8) Official Poster"}
-                className="w-full h-full object-contain sm:object-cover group-hover:scale-[1.012] transition-transform duration-700 ease-out"
+                className="w-full h-full object-contain group-hover:scale-[1.012] transition-transform duration-700 ease-out"
                 loading="eager"
               />
             </picture>
@@ -118,12 +118,12 @@ export default function PosterBannerSection({
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.95, opacity: 0 }}
               onClick={(e) => e.stopPropagation()}
-              className="relative max-w-6xl max-h-[90vh] aspect-[16/9] w-full border border-white/20 rounded-lg overflow-hidden shadow-2xl bg-[#FAF7D3]"
+              className="relative max-w-6xl max-h-[90vh] aspect-[12/5] w-full border border-white/20 rounded-lg overflow-hidden shadow-2xl bg-[#FAF7D3]"
             >
               <picture className="w-full h-full flex items-center justify-center">
-                <source type="image/webp" srcSet="/images/apap8_uniform.webp" />
+                <source type="image/webp" srcSet="/images/main-1920x800.webp" />
                 <img
-                  src="/images/APAP8_uniform.gif"
+                  src="/images/main-1920x800.jpg"
                   alt={isKo ? "제8회 안양공공예술프로젝트(APAP8) 공식 포스터" : "The 8th Anyang Public Art Project (APAP8) Official Poster"}
                   className="w-full h-full object-contain"
                 />
