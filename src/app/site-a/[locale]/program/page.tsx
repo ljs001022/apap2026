@@ -150,32 +150,32 @@ export default function ProgramPage({ params }: PageProps) {
                 {
                   name: isKo ? '도슨트와 함께하는 APAP8' : 'Guided Docent with APAP8',
                   price: isKo ? '무료' : 'Free',
-                  schedule: isKo ? '11:00 / 14:00 / 16:00 (1일 3회)' : '11:00 / 14:00 / 16:00 (Daily 3x)',
-                  duration: isKo ? '45분 내외' : 'Approx. 45 min',
+                  location: isKo ? '안양파빌리온' : 'Anyang Pavilion',
+                  schedule: isKo ? '11:00, 14:00, 16:00 (1일 3회 운영 / 45분 내외)' : '11:00, 14:00, 16:00 (Daily 3x / Approx. 45 min)',
                   content: isKo
-                    ? '아이 파빌리온, 오픈 그라운드(안양파빌리온 광장 등) 주요 작품 해설'
-                    : 'Major artwork commentaries at i Pavilion and Open Ground',
+                    ? 'APAP8 실내외 주요 작품 해설'
+                    : 'APAP8 indoor & outdoor highlight artworks commentary',
                   reservation: isKo ? '현장 참여 가능 / 10인 이상 단체 사전 예약' : 'Walk-in / Advance booking for groups 10+',
                 },
                 {
-                  name: isKo ? '〈특별전: 우리가 꿈꾸는 도원〉 도슨트' : 'Special Exhibition Docent',
+                  name: isKo ? '〈특별전: 우리가 꿈꾸는 도원〉 도슨트 해설' : 'Special Exhibition Docent Commentary',
                   price: isKo ? '무료' : 'Free',
-                  schedule: isKo ? '10:30 - 16:40 (매시 00, 20, 40분)' : '10:30–16:40 (Every 20 min)',
-                  duration: isKo ? '10분 내외' : 'Approx. 10 min',
+                  location: isKo ? '아르테자이 상가, 오픈 스쿨' : 'Arte Zai Commercial, Open School',
+                  schedule: isKo ? '상시운영 (10분 내외)' : 'Always operating (Approx. 10 min)',
                   content: isKo
-                    ? '중국 작가(장지엔, 펑정지에 등) 및 한국 작가(오용길, 이후창 등) 참여 작품 해설'
-                    : 'Commentary on participating Korean and Chinese contemporary artists',
+                    ? '주요 작품 해설'
+                    : 'Key exhibition artworks commentary',
                   reservation: isKo ? '현장 참여 가능 / 10인 이상 단체 사전 예약' : 'Walk-in / Advance booking for groups 10+',
                 },
                 {
                   name: isKo ? 'APAP8 스페셜 투어-나이트' : 'APAP8 Special Night Tour',
                   price: isKo ? '유료 (5천원)' : 'Paid (KRW 5,000)',
-                  schedule: isKo ? '10.16. - 11.6.(매주 금) 19:00' : 'Oct 16 – Nov 6 (Fri) 19:00',
-                  duration: isKo ? '90분 내외' : 'Approx. 90 min',
+                  location: isKo ? '안양파빌리온' : 'Anyang Pavilion',
+                  schedule: isKo ? '10.16. ~ 11.6.(매주 금요일) 19:00 (90분 내외)' : 'Oct 16 – Nov 6 (Every Fri) 19:00 (90 min)',
                   content: isKo
-                    ? 'APAP 1~7회 역사적 명작 해설 및 야간 〈밤의 도원경〉 관람 안내'
-                    : 'Commentary on past editions 1–7 and "Night Utopia" tour',
-                  reservation: isKo ? '네이버 예약 / 현장 / 전화(031-687-0548)' : 'Naver Booking / Walk-in / Phone (031-687-0548)',
+                    ? 'APAP 야외 주요 작품 해설'
+                    : 'APAP outdoor key artworks commentary',
+                  reservation: isKo ? '네이버·전화 예약 또는 현장 참여 가능' : 'Naver / Phone booking or walk-in available',
                 },
               ].map((tour, idx) => (
                 <div key={idx} className="bg-white/[0.02] border border-white/15 p-5 space-y-3 flex flex-col justify-between">
@@ -196,8 +196,8 @@ export default function ProgramPage({ params }: PageProps) {
                       {tour.name}
                     </h3>
                     <div className="text-xs font-mono text-[#8C8C8C] space-y-0.5 pt-1 border-t border-white/10">
-                      <div>■ {tour.schedule}</div>
-                      <div>■ {tour.duration}</div>
+                      <div>■ {isKo ? '시작장소:' : 'Location:'} {tour.location}</div>
+                      <div>■ {isKo ? '운영일정:' : 'Schedule:'} {tour.schedule}</div>
                     </div>
                     <p className="text-xs text-white/80 font-light leading-relaxed pt-1">
                       {tour.content}

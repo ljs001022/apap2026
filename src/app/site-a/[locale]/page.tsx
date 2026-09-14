@@ -258,7 +258,7 @@ export default function SiteAPage({ params }: PageProps) {
               {/* PC VIEW (>= md): Tab Navigation & Expanded Inline Content */}
               <div className="hidden md:block">
                 {/* Tab Buttons */}
-                <div className="flex border-b border-white/20 mb-6">
+                <div className="flex border-b border-white/20 mb-6 overflow-x-auto lg:overflow-visible hide-scrollbar">
                   <button
                     type="button"
                     onClick={() => setAboutPcTab('overview')}
@@ -683,11 +683,11 @@ export default function SiteAPage({ params }: PageProps) {
               {/* PC VIEW (>= md): Tab Navigation & Expanded Inline Content */}
               <div className="hidden md:block">
                 {/* Tab Buttons */}
-                <div className="flex border-b border-white/20 mb-6 overflow-x-auto">
+                <div className="flex border-b border-white/20 mb-6 overflow-x-auto lg:overflow-visible hide-scrollbar">
                   <button
                     type="button"
                     onClick={() => setProgramPcTab('citizen')}
-                    className={`px-6 py-3 font-mono text-sm lg:text-base font-bold transition-all border-b-2 -mb-[2px] whitespace-nowrap ${
+                    className={`px-4 lg:px-6 py-2.5 lg:py-3 font-mono text-sm lg:text-base font-bold transition-all border-b-2 -mb-[2px] whitespace-nowrap ${
                       programPcTab === 'citizen'
                         ? 'border-white text-white bg-white/5'
                         : 'border-transparent text-[#8C8C8C] hover:text-white'
@@ -698,7 +698,7 @@ export default function SiteAPage({ params }: PageProps) {
                   <button
                     type="button"
                     onClick={() => setProgramPcTab('docent')}
-                    className={`px-6 py-3 font-mono text-sm lg:text-base font-bold transition-all border-b-2 -mb-[2px] whitespace-nowrap ${
+                    className={`px-4 lg:px-6 py-2.5 lg:py-3 font-mono text-sm lg:text-base font-bold transition-all border-b-2 -mb-[2px] whitespace-nowrap ${
                       programPcTab === 'docent'
                         ? 'border-white text-white bg-white/5'
                         : 'border-transparent text-[#8C8C8C] hover:text-white'
@@ -709,7 +709,7 @@ export default function SiteAPage({ params }: PageProps) {
                   <button
                     type="button"
                     onClick={() => setProgramPcTab('forum')}
-                    className={`px-6 py-3 font-mono text-sm lg:text-base font-bold transition-all border-b-2 -mb-[2px] whitespace-nowrap ${
+                    className={`px-4 lg:px-6 py-2.5 lg:py-3 font-mono text-sm lg:text-base font-bold transition-all border-b-2 -mb-[2px] whitespace-nowrap ${
                       programPcTab === 'forum'
                         ? 'border-white text-white bg-white/5'
                         : 'border-transparent text-[#8C8C8C] hover:text-white'
@@ -720,7 +720,7 @@ export default function SiteAPage({ params }: PageProps) {
                   <button
                     type="button"
                     onClick={() => setProgramPcTab('broadcast')}
-                    className={`px-6 py-3 font-mono text-sm lg:text-base font-bold transition-all border-b-2 -mb-[2px] whitespace-nowrap ${
+                    className={`px-4 lg:px-6 py-2.5 lg:py-3 font-mono text-sm lg:text-base font-bold transition-all border-b-2 -mb-[2px] whitespace-nowrap ${
                       programPcTab === 'broadcast'
                         ? 'border-white text-white bg-white/5'
                         : 'border-transparent text-[#8C8C8C] hover:text-white'
@@ -844,14 +844,14 @@ export default function SiteAPage({ params }: PageProps) {
                           </h4>
                           <p className="text-xs text-[#B9B9B9] font-light leading-relaxed">
                             {isKo
-                              ? '아이 파빌리온, 오픈 그라운드(안양파빌리온 광장 등) 주요 작품 해설'
-                              : 'Commentary on i Pavilion and Open Ground highlights.'}
+                              ? 'APAP8 실내외 주요 작품 해설'
+                              : 'Commentary on APAP8 indoor & outdoor highlight artworks.'}
                           </p>
                         </div>
                         <div className="text-xs font-mono text-[#8C8C8C] pt-2 border-t border-white/10 space-y-1">
-                          <div>■ 시간: 11:00 / 14:00 / 16:00 (1일 3회)</div>
-                          <div>■ 장소: 안양파빌리온 등</div>
-                          <div>■ 참여: 현장 참여 / 10인 이상 사전예약</div>
+                          <div>■ 시작장소: {isKo ? '안양파빌리온' : 'Anyang Pavilion'}</div>
+                          <div>■ 운영시간: 11:00, 14:00, 16:00 (1일 3회 / 45분 내외)</div>
+                          <div>■ 참여방법: {isKo ? '현장 참여 가능 / 10인 이상 단체 사전 예약' : 'Walk-in / Advance booking for groups 10+'}</div>
                         </div>
                       </div>
 
@@ -863,18 +863,18 @@ export default function SiteAPage({ params }: PageProps) {
                             <span className="text-xs font-mono text-[#8C8C8C]">10분 내외</span>
                           </div>
                           <h4 className="text-base font-bold text-white">
-                            {isKo ? '〈특별전: 우리가 꿈꾸는 도원〉' : 'Special Exhibition Docent'}
+                            {isKo ? '〈특별전: 우리가 꿈꾸는 도원〉 도슨트 해설' : 'Special Exhibition Docent'}
                           </h4>
                           <p className="text-xs text-[#B9B9B9] font-light leading-relaxed">
                             {isKo
-                              ? '중국 작가(장지엔, 펑정지에 등)와 한국 작가(오용길, 이후창 등) 참여 작품 해설'
-                              : 'Commentary on Korea-China contemporary masters.'}
+                              ? '주요 작품 해설'
+                              : 'Commentary on key exhibition artworks.'}
                           </p>
                         </div>
                         <div className="text-xs font-mono text-[#8C8C8C] pt-2 border-t border-white/10 space-y-1">
-                          <div>■ 시간: 10:30 - 16:40 (매시 00, 20, 40분)</div>
-                          <div>■ 장소: 아르테자이 상가, 오픈 스쿨</div>
-                          <div>■ 참여: 현장 참여 / 10인 이상 사전예약</div>
+                          <div>■ 시작장소: {isKo ? '아르테자이 상가, 오픈 스쿨' : 'Arte Zai Commercial, Open School'}</div>
+                          <div>■ 운영시간: {isKo ? '상시운영 (10분 내외)' : 'Always operating (Approx. 10 min)'}</div>
+                          <div>■ 참여방법: {isKo ? '현장 참여 가능 / 10인 이상 단체 사전 예약' : 'Walk-in / Advance booking for groups 10+'}</div>
                         </div>
                       </div>
 
@@ -882,22 +882,22 @@ export default function SiteAPage({ params }: PageProps) {
                       <div className="border border-white/20 p-5 bg-white/[0.02] space-y-3 flex flex-col justify-between">
                         <div className="space-y-2">
                           <div className="flex justify-between items-start">
-                            <span className="text-xs font-mono border border-white/60 text-white px-2 py-0.5 font-bold">유료 5,000원</span>
+                            <span className="text-xs font-mono border border-white/60 text-white px-2 py-0.5 font-bold">{isKo ? '유료 (5천원)' : 'Paid (KRW 5,000)'}</span>
                             <span className="text-xs font-mono text-[#8C8C8C]">90분 내외</span>
                           </div>
                           <h4 className="text-base font-bold text-white">
-                            {isKo ? 'APAP8 스페셜 투어-나이트' : 'Special Night Tour'}
+                            {isKo ? 'APAP8 스페셜 투어-나이트' : 'APAP8 Special Night Tour'}
                           </h4>
                           <p className="text-xs text-[#B9B9B9] font-light leading-relaxed">
                             {isKo
-                              ? 'APAP 1~7회 역사적 명작 해설 및 야간 〈밤의 도원경〉 관람 안내'
-                              : 'Past editions 1–7 highlights and Night Utopia tour.'}
+                              ? 'APAP 야외 주요 작품 해설'
+                              : 'Commentary on APAP outdoor key artworks.'}
                           </p>
                         </div>
                         <div className="text-xs font-mono text-[#8C8C8C] pt-2 border-t border-white/10 space-y-1">
-                          <div>■ 일정: 10.16. ~ 11.6.(매주 금) 19:00</div>
-                          <div>■ 장소: 안양파빌리온 등</div>
-                          <div>■ 예약: 네이버/전화(031-687-0548)/현장</div>
+                          <div>■ 시작장소: {isKo ? '안양파빌리온' : 'Anyang Pavilion'}</div>
+                          <div>■ 운영일정: {isKo ? '10.16. ~ 11.6.(매주 금요일) 19:00 (90분 내외)' : 'Oct 16 – Nov 6 (Every Fri) 19:00 (90 min)'}</div>
+                          <div>■ 예약: {isKo ? '네이버·전화 예약 또는 현장 참여 가능' : 'Naver / Phone booking or walk-in available'}</div>
                         </div>
                       </div>
                     </div>
@@ -1436,7 +1436,7 @@ export default function SiteAPage({ params }: PageProps) {
                         <span className="text-xs font-mono bg-white text-black px-2 py-0.5 font-bold">24시간 상시개방</span>
                       </div>
                       <div className="text-xs font-mono text-[#D4D4D4] space-y-1">
-                        <div>■ 위치: 안양파빌리온 앞 광장, 안양박물관 야외, 공원 내 공동의 장</div>
+                        <div>■ 위치: {isKo ? '안양파빌리온 앞 광장, 안양박물관 야외, 안양예술공원 내 구)공동의 장' : 'Pavilion Plaza, Anyang Museum Outdoor, Former Community Plaza'}</div>
                         <div>■ 운영: 상시관람 (24시간 자유 개방)</div>
                         <div className="text-[#8C8C8C]">■ 휴관: 연중무휴</div>
                       </div>
@@ -1451,7 +1451,7 @@ export default function SiteAPage({ params }: PageProps) {
                         <span className="text-xs font-mono bg-white/10 text-white/80 px-2 py-0.5">한중 특별전</span>
                       </div>
                       <div className="text-xs font-mono text-[#D4D4D4] space-y-1">
-                        <div>■ 위치: 아르테자이 상가 1층 오감갤러리, 평촌 오픈 스쿨</div>
+                        <div>■ 위치: {isKo ? '아르테자이 상가 1층 오감갤러리, 오픈 스쿨' : 'Arte Zai 1F Ogam Gallery, Open School'}</div>
                         <div>■ 운영: 화 - 일 10:00 – 18:00</div>
                         <div className="text-[#8C8C8C]">■ 휴관: 매주 월요일 휴관 (10.5.(월) 개관, 10.6.(화) 휴관)</div>
                       </div>
@@ -1818,11 +1818,12 @@ export default function SiteAPage({ params }: PageProps) {
                 <span className="text-[10px] font-mono bg-white text-black px-1.5 py-0.2 font-bold">무료 (45분)</span>
               </div>
               <p className="text-caption text-[#B9B9B9] font-light">
-                아이 파빌리온, 오픈 그라운드(안양파빌리온 광장 등) 주요 작품 해설
+                {isKo ? 'APAP8 실내외 주요 작품 해설' : 'APAP8 indoor & outdoor highlight artworks commentary'}
               </p>
               <div className="text-[11px] font-mono text-[#8C8C8C] pt-1 border-t border-white/10 space-y-0.5">
-                <div>■ 운영: 11:00 / 14:00 / 16:00 (1일 3회 운영)</div>
-                <div>■ 참여: 현장 참여 / 10인 이상 단체 사전 예약</div>
+                <div>■ 시작장소: {isKo ? '안양파빌리온' : 'Anyang Pavilion'}</div>
+                <div>■ 운영시간: 11:00, 14:00, 16:00 (1일 3회 운영 / 45분 내외)</div>
+                <div>■ 참여방법: {isKo ? '현장 참여 가능 / 10인 이상 단체 사전 예약' : 'Walk-in / Advance booking for groups 10+'}</div>
               </div>
             </div>
 
@@ -1830,16 +1831,17 @@ export default function SiteAPage({ params }: PageProps) {
             <div className="border border-white/15 p-3.5 bg-white/[0.02] space-y-1.5">
               <div className="flex justify-between items-center">
                 <span className="text-white font-bold text-caption font-mono">
-                  {isKo ? '2. 〈특별전: 우리가 꿈꾸는 도원〉 해설' : '2. Special Exhibition Docent'}
+                  {isKo ? '2. 〈특별전: 우리가 꿈꾸는 도원〉 도슨트 해설' : '2. Special Exhibition Docent'}
                 </span>
                 <span className="text-[10px] font-mono bg-white text-black px-1.5 py-0.2 font-bold">무료 (10분)</span>
               </div>
               <p className="text-caption text-[#B9B9B9] font-light">
-                중국 작가(장지엔, 펑정지에 등) 및 한국 작가(오용길, 이후창 등) 참여 작품 해설
+                {isKo ? '주요 작품 해설' : 'Key exhibition artworks commentary'}
               </p>
               <div className="text-[11px] font-mono text-[#8C8C8C] pt-1 border-t border-white/10 space-y-0.5">
-                <div>■ 운영: 10:30 - 16:40 (매시 00분, 20분, 40분 시작)</div>
-                <div>■ 장소: 아르테자이 상가, 평촌 학운공원 오픈 스쿨</div>
+                <div>■ 시작장소: {isKo ? '아르테자이 상가, 오픈 스쿨' : 'Arte Zai Commercial, Open School'}</div>
+                <div>■ 운영시간: {isKo ? '상시운영 (10분 내외)' : 'Always operating (Approx. 10 min)'}</div>
+                <div>■ 참여방법: {isKo ? '현장 참여 가능 / 10인 이상 단체 사전 예약' : 'Walk-in / Advance booking for groups 10+'}</div>
               </div>
             </div>
 
@@ -1849,14 +1851,15 @@ export default function SiteAPage({ params }: PageProps) {
                 <span className="text-white font-bold text-caption font-mono">
                   {isKo ? '3. APAP8 스페셜 투어-나이트' : '3. Special Night Tour'}
                 </span>
-                <span className="text-[10px] font-mono border border-white/60 text-white px-1.5 py-0.2 font-bold">유료 5천원</span>
+                <span className="text-[10px] font-mono border border-white/60 text-white px-1.5 py-0.2 font-bold">{isKo ? '유료 5천원' : 'Paid 5,000 KRW'}</span>
               </div>
               <p className="text-caption text-[#B9B9B9] font-light">
-                APAP 1~7회 작품 해설 및 야간 〈밤의 도원경〉 관람 안내
+                {isKo ? 'APAP 야외 주요 작품 해설' : 'APAP outdoor key artworks commentary'}
               </p>
               <div className="text-[11px] font-mono text-[#8C8C8C] pt-1 border-t border-white/10 space-y-0.5">
-                <div>■ 일정: 10.16. ~ 11.6.(매주 금) 19:00 (90분)</div>
-                <div>■ 예약: 네이버·전화(031-687-0548) 또는 현장 접수</div>
+                <div>■ 시작장소: {isKo ? '안양파빌리온' : 'Anyang Pavilion'}</div>
+                <div>■ 운영일정: {isKo ? '10.16. ~ 11.6.(매주 금요일) 19:00 (90분 내외)' : 'Oct 16 – Nov 6 (Every Fri) 19:00 (90 min)'}</div>
+                <div>■ 예약방법: {isKo ? '네이버·전화 예약 또는 현장 참여 가능' : 'Naver / Phone booking or walk-in available'}</div>
               </div>
             </div>
           </div>

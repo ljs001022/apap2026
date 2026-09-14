@@ -565,7 +565,7 @@ export default function SiteBPage({ params }: PageProps) {
     { date: '11.28', time: '14:00', cat: 'workshop', title: { ko: '시민 워크숍 — 나의 도시 데이터 그리기', en: 'Citizen Workshop — Drawing My City Data', ja: 'Citizen Workshop', zh: '市民工作坊——描绘我的城市数据' }, place: { ko: '평촌중앙공원', en: 'Pyeongchon Central Park', ja: '平村中央公園', zh: '平村中央公园' } },
     { date: '12.05', time: '15:00', cat: 'talk', title: { ko: '라운드테이블 — 공공예술과 AI 윤리', en: 'Roundtable — Public Art & AI Ethics', ja: '座談会 — 公共芸術とAI倫理', zh: '圆桌会议——公共艺术与AI伦理' }, place: { ko: '안양파빌리온', en: 'Anyang Pavilion', ja: '安養パビリオン', zh: '安养展馆' } },
     { date: '12.12', time: '11:00', cat: 'tour', title: { ko: '도슨트 투어 — 평촌 코스', en: 'Docent Tour — Pyeongchon Route', ja: 'ガイドツアー — 平村コース', zh: '导览参观——平村路线' }, place: { ko: '평촌 일대', en: 'Pyeongchon Area', ja: '平村一帯', zh: '平村附近' } },
-    { date: '12.19', time: '14:00', cat: 'workshop', title: { ko: '어린이 워크숍 — 로봇에게 그림 가르치기', en: 'Kids Workshop — Teaching a Robot to Draw', ja: '子供ワークショップ — ロボットに絵を教える', zh: '儿童工作坊——教机器人画画' }, place: { ko: '학운공원', en: 'Haguun Park', ja: '鶴雲公園', zh: 'Flux Park' } },
+    { date: '12.19', time: '14:00', cat: 'workshop', title: { ko: '어린이 워크숍 — 로봇에게 그림 가르치기', en: 'Kids Workshop — Teaching a Robot to Draw', ja: '子供ワークショップ — ロボットに絵を教える', zh: '儿童工作坊——教机器人画画' }, place: { ko: '오픈 스쿨', en: 'Open School', ja: 'オープンスクール', zh: '开放学校' } },
     { date: '12.20', time: '17:00', cat: 'event', title: { ko: '폐막 프로그램 — 도시의 대답', en: 'Closing Program — The City Replies', ja: '閉幕プログラム — 都市の答え', zh: '闭幕活动——城市的回答' }, place: { ko: '안양예술공원', en: 'Anyang Art Park', ja: '安養芸術公園', zh: '安养艺术公园' } }
   ];
 

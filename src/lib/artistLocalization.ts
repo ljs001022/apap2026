@@ -12,19 +12,49 @@ export function hasEnglish(text: string): boolean {
 }
 
 /**
+ * Formats a work title with standard angle brackets if not already present.
+ */
+export function formatArtworkTitle(title: string): string {
+  if (!title) return '';
+  const trimmed = title.trim();
+  if (trimmed.startsWith('<') || trimmed.startsWith('〈') || trimmed.startsWith('《') || trimmed.startsWith('「')) {
+    return trimmed;
+  }
+  return `<${trimmed}>`;
+}
+
+/**
  * Returns the localized work title.
  */
 export function getLocalizedTitle(title: string, locale: string = 'ko'): string {
   if (!title) return '';
   const isKo = locale === 'ko';
   const lines = title.split(/\n+/).map((l) => l.trim()).filter(Boolean);
+  let resolved = isKo ? lines[0] : (lines[1] || lines[0]);
+  if (lines.length >= 2) {
+    const koLine = lines.find((l) => hasKorean(l));
+    const enLine = lines.find((l) => !hasKorean(l) && hasEnglish(l));
+    if (isKo && koLine) resolved = koLine;
+    else if (!isKo && enLine) resolved = enLine;
+  }
+  return formatArtworkTitle(resolved);
+}
+
+/**
+ * Returns the localized size string.
+ */
+export function getLocalizedSize(size: string, locale: string = 'ko'): string {
+  if (!size) return '';
+  const isKo = locale === 'ko';
+  const lines = size.split(/\n+/).map((l) => l.trim()).filter(Boolean);
   if (lines.length >= 2) {
     const koLine = lines.find((l) => hasKorean(l));
     const enLine = lines.find((l) => !hasKorean(l) && hasEnglish(l));
     if (isKo && koLine) return koLine;
     if (!isKo && enLine) return enLine;
+    return isKo ? lines[0] : (lines[1] || lines[0]);
   }
-  return isKo ? lines[0] : (lines[1] || lines[0]);
+  return size;
 }
 
 /**

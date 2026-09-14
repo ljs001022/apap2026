@@ -72,14 +72,14 @@ export function getCommunityItems(locale: string = 'ko'): CommunityItem[] {
       content: isKo
         ? [
             'APAP8 개막 주간을 맞아 시민과 함께하는 퍼블릭 프로그램 \'도원 릴레이\' 및 정기 도슨트 투어의 사전 참가 신청 접수를 시작합니다.',
-            '■ 정규 도슨트 투어 (무료)\n- 운영: 매일 11:00 / 14:00 / 16:00 (1일 3회, 회당 45분)\n- 코스: 안양파빌리온 및 야외 주요 설치 작품 해설',
-            '■ 특별전 해설 (무료)\n- 운영: 10:30~16:40 (매시 00, 20, 40분 진행, 10분 코스)\n- 장소: 오감갤러리 및 학운공원 오픈스쿨',
-            '■ 스페셜 나이트 투어 (유료 5,000원)\n- 운영: 10.16 ~ 11.6 매주 금요일 19:00 (90분 코스)\n- 코스: APAP 역사적 명작 및 야간 〈밤의 도원경〉 관람',
+            '■ 도슨트와 함께하는 APAP8 (무료)\n- 운영시간: 11:00, 14:00, 16:00 (1일 3회 운영 / 45분 내외)\n- 시작장소: 안양파빌리온\n- 주요내용: APAP8 실내외 주요 작품 해설\n- 참여방법: 현장 참여 가능 / 10인 이상 단체 사전 예약',
+            '■ 〈특별전: 우리가 꿈꾸는 도원〉 도슨트 해설 (무료)\n- 운영시간: 상시운영 (10분 내외)\n- 시작장소: 아르테자이 상가, 오픈 스쿨\n- 주요내용: 주요 작품 해설\n- 참여방법: 현장 참여 가능 / 10인 이상 단체 사전 예약',
+            '■ APAP8 스페셜 투어-나이트 (유료, 5천원)\n- 운영일정: 10.16. ~ 11.6.(매주 금요일) 19:00 (90분 내외)\n- 시작장소: 안양파빌리온\n- 주요내용: APAP 야외 주요 작품 해설\n- 예약: 네이버·전화 예약 또는 현장 참여 가능',
             '모든 정규 프로그램은 현장 참여 및 단체 사전 예약이 가능하며, 상세 문의는 안양문화예술재단 APAP 사업부(031-687-0548)로 문의해 주시기 바랍니다.',
           ]
         : [
             'Registration has opened for the "Dowon Relay" civic engagement programs and weekend guided docent tours celebrating APAP8.',
-            '■ Regular Docent Tours (Free): Daily at 11:00 / 14:00 / 16:00 (3 times daily, approx. 45 min).\n■ Special Exhibition Docent (Free): 10:30–16:40 (every 20 min).\n■ Special Night Tour (Paid KRW 5,000): Every Friday 19:00 from Oct 16 to Nov 6 (90 min).',
+            '■ Guided Docent with APAP8 (Free): 11:00, 14:00, 16:00 (Daily 3x / Approx. 45 min) at Anyang Pavilion.\n■ 〈Special Exhibition: The Utopia We Dream Of〉 Docent Commentary (Free): Always operating (Approx. 10 min) at Arte Zai & Open School.\n■ APAP8 Special Night Tour (Paid KRW 5,000): Every Friday 19:00 from Oct 16 to Nov 6 (Approx. 90 min) at Anyang Pavilion.',
             'Inquiries: Anyang Foundation for Culture & Arts APAP Division (031-687-0548).',
           ],
     },

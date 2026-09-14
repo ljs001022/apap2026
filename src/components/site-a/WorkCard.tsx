@@ -10,6 +10,7 @@ import {
   getLocalizedDescription,
   getLocalizedArtistName,
   getLocalizedVenueName,
+  getLocalizedSize,
 } from '@/lib/artistLocalization';
 
 import { CardTheme } from './ArtistCard';
@@ -187,7 +188,7 @@ export default function WorkCard({
               {hasSize && (
                 <p className="leading-relaxed">
                   <span className="text-white/40 mr-1.5 font-bold">{isKo ? '크기:' : 'Size:'}</span>
-                  {work.size}
+                  {getLocalizedSize(work.size, locale)}
                 </p>
               )}
             </div>

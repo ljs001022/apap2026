@@ -13,6 +13,7 @@ import {
   getLocalizedDescription,
   getLocalizedTitle,
   getLocalizedMaterial,
+  getLocalizedSize,
 } from '@/lib/artistLocalization';
 import { CardTheme } from './ArtistCard';
 
@@ -276,20 +277,26 @@ export default function ArtistModal({
                   </div>
 
                   <div className="lg:col-span-6 flex flex-col justify-between space-y-4">
-                    <div className="space-y-3">
-                      <h4 className="text-title font-extrabold text-white tracking-tight leading-snug">
+                    <div className="space-y-4">
+                      <h4 className="text-2xl sm:text-3xl font-black text-white tracking-tight leading-snug">
                         {getLocalizedTitle(currentWork.title, locale)}
                       </h4>
 
-                      <div className="space-y-1.5 text-caption font-mono text-white/60 border-l-2 border-white/30 pl-3">
+                      <div className="space-y-1.5 text-caption font-mono text-white/70 border-l-2 border-white/40 pl-3.5 py-0.5">
                         {currentWork.year && <div>{isKo ? `제작년도: ${currentWork.year}` : `Year: ${currentWork.year}`}</div>}
                         {currentWork.material && <div>{isKo ? `재료: ${getLocalizedMaterial(currentWork.material, locale)}` : `Medium: ${getLocalizedMaterial(currentWork.material, locale)}`}</div>}
-                        {currentWork.size && <div>{isKo ? `크기: ${currentWork.size}` : `Dimensions: ${currentWork.size}`}</div>}
+                        {currentWork.size && <div>{isKo ? `크기: ${getLocalizedSize(currentWork.size, locale)}` : `Dimensions: ${getLocalizedSize(currentWork.size, locale)}`}</div>}
                       </div>
 
-                      {currentWork.description && (
-                        <div className="text-body text-white/80 leading-relaxed whitespace-pre-line pt-2">
+                      {currentWork.description && currentWork.description.trim() !== '' ? (
+                        <div className="text-body text-white/90 leading-relaxed whitespace-pre-line pt-1">
                           {getLocalizedDescription(currentWork.description, locale)}
+                        </div>
+                      ) : (
+                        <div className="text-caption font-mono text-white/40 leading-relaxed pt-1">
+                          {isKo
+                            ? '※ 본 출품작의 상세 해설 및 비평은 전시 현장 도록 및 오디오 가이드를 통해 제공됩니다.'
+                            : '※ Detailed artwork commentary is provided via the on-site exhibition catalog and official guide.'}
                         </div>
                       )}
                     </div>

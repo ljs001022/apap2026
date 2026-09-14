@@ -2,6 +2,7 @@ import React from 'react';
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages } from 'next-intl/server';
 import { notFound } from 'next/navigation';
+import PeachBlossomCanvas from '@/components/site-a/PeachBlossomCanvas';
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -24,6 +25,7 @@ export default async function SiteBLayout({ children, params }: LayoutProps) {
 
   return (
     <NextIntlClientProvider messages={messages} locale={locale}>
+      <PeachBlossomCanvas />
       {children}
     </NextIntlClientProvider>
   );

@@ -174,7 +174,7 @@ export default function VisitPage({ params }: PageProps) {
                 <span className="text-xs font-mono bg-white text-black px-2 py-0.5 font-bold">24시간 상시개방</span>
               </div>
               <div className="text-xs sm:text-sm font-mono text-[#D4D4D4] space-y-1">
-                <div>■ 위치: 안양파빌리온 앞 광장, 안양박물관 야외, 공원 내 공동의 장</div>
+                <div>■ 위치: {isKo ? '안양파빌리온 앞 광장, 안양박물관 야외, 안양예술공원 내 구)공동의 장' : 'Pavilion Plaza, Anyang Museum Outdoor, Former Community Plaza'}</div>
                 <div>■ 운영: 상시관람 (24시간 자유 개방)</div>
                 <div className="text-[#8C8C8C]">■ 휴관: 연중무휴</div>
               </div>
@@ -188,7 +188,7 @@ export default function VisitPage({ params }: PageProps) {
                 <span className="text-xs font-mono bg-white/10 text-white/80 px-2 py-0.5">한중 특별전</span>
               </div>
               <div className="text-xs sm:text-sm font-mono text-[#D4D4D4] space-y-1">
-                <div>■ 위치: 아르테자이 상가 1층 오감갤러리, 평촌 학운공원 오픈 스쿨</div>
+                <div>■ 위치: {isKo ? '아르테자이 상가 1층 오감갤러리, 오픈 스쿨' : 'Arte Zai 1F Ogam Gallery, Open School'}</div>
                 <div>■ 운영: 화 - 일 10:00 – 18:00</div>
                 <div className="text-[#8C8C8C]">■ 휴관: 매주 월요일 휴관 (10.5.(월) 개관, 10.6.(화) 휴관)</div>
               </div>
