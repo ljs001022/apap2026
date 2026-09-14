@@ -31,7 +31,7 @@ export default function BlurFade({
   return (
     <div
       ref={ref}
-      className={`transition-all duration-[1200ms] ease-out ${className}`}
+      className={`transition-all duration-[1400ms] ease-[cubic-bezier(0.22,1,0.36,1)] ${className}`}
       style={{
         opacity: inView ? 1 : 0,
         filter: inView ? 'blur(0px)' : 'blur(10px)',

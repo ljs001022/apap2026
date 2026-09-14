@@ -2,7 +2,6 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import DustCanvas from './DustCanvas';
 
 interface SectionCardProps {
   /** 섹션 번호: "01", "02", ... */
@@ -35,9 +34,6 @@ export default function SectionCard({
       id={id}
       className="relative h-[100dvh] flex flex-col pt-16 border-b border-white snap-start overflow-hidden bg-[#0A0A0A]"
     >
-      {/* Background DUST particle effect (lightweight, responsive) */}
-      <DustCanvas opacity={0.25} />
-
       {/* Section Header Row - Compact padding for mobile */}
       <div className="relative z-10 flex justify-between items-center px-4 py-2 sm:px-10 sm:py-3 lg:px-16 border-b border-white flex-shrink-0 bg-[#0A0A0A]/70 backdrop-blur-sm">
         <h2 className="flex items-baseline gap-2 sm:gap-3">
@@ -59,13 +55,13 @@ export default function SectionCard({
         </span>
       </div>
 
-      {/* Summary Content */}
+      {/* Summary Content - Slow & smooth fade-in */}
       <motion.div
         className="relative z-10 flex-1 flex flex-col px-4 sm:px-10 lg:px-16 pt-2.5 pb-6 sm:pt-4 sm:pb-8 overflow-y-auto overflow-x-hidden hide-scrollbar"
-        initial={{ opacity: 0, y: 15 }}
+        initial={{ opacity: 0, y: 22 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: '-40px' }}
-        transition={{ duration: 0.45, ease: 'easeOut' }}
+        transition={{ duration: 1.15, ease: [0.22, 1, 0.36, 1] }}
       >
         <div
           className={`w-full flex flex-col ${

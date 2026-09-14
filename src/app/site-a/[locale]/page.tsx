@@ -5,7 +5,7 @@ import GnbHeader from '@/components/site-a/GnbHeader';
 import SectionCard from '@/components/site-a/SectionCard';
 import SectionDetailModal from '@/components/site-a/SectionDetailModal';
 import Footer from '@/components/site-a/Footer';
-import DustCanvas from '@/components/site-a/DustCanvas';
+import MapModal from '@/components/site-a/MapModal';
 import {
   MapPin,
   Calendar,
@@ -43,6 +43,9 @@ export default function SiteAPage({ params }: PageProps) {
   // Mobile modal states
   const [aboutModalItem, setAboutModalItem] = useState<'overview' | 'theme' | 'credits' | null>(null);
   const [programModalItem, setProgramModalItem] = useState<'citizen' | 'docent' | 'forum' | 'broadcast' | null>(null);
+  
+  // Map Modal state
+  const [isMapModalOpen, setIsMapModalOpen] = useState(false);
 
   // PC Tab states
   const [aboutPcTab, setAboutPcTab] = useState<'overview' | 'theme' | 'credits'>('overview');
@@ -90,9 +93,6 @@ export default function SiteAPage({ params }: PageProps) {
           id="hero"
           className="relative h-[100dvh] snap-start flex flex-col bg-black border-b border-white justify-between overflow-hidden"
         >
-          {/* Subtle Dust overlay */}
-          <DustCanvas opacity={0.3} />
-
           {/* Top spacer for fixed header */}
           <div className="h-14 sm:h-16 flex-shrink-0" />
 
@@ -1198,23 +1198,33 @@ export default function SiteAPage({ params }: PageProps) {
                 )}
               </div>
 
-              {/* Inquiry Card */}
+              {/* SNS Links */}
               <div className="bg-white/[0.03] border border-white/20 px-3 py-2 sm:px-6 sm:py-3.5 flex flex-row items-center justify-between gap-2 sm:gap-4">
                 <div className="flex items-center gap-2 sm:gap-3 min-w-0">
-                  <MessageCircle className="w-4 h-4 sm:w-5 sm:h-5 text-white flex-shrink-0" />
                   <span className="text-[11px] xs:text-xs sm:text-base font-bold text-white truncate whitespace-nowrap">
-                    {isKo ? '실시간 문의 및 운영 안내' : 'Direct Inquiry & Q&A'}
+                    {isKo ? '공식 소셜 미디어' : 'Official Social Media'}
                   </span>
                 </div>
-                <a
-                  href="https://pf.kakao.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="border border-white hover:bg-white hover:text-black transition-colors font-mono font-bold text-[10px] sm:text-xs lg:text-sm px-2.5 sm:px-4 py-1 sm:py-2 flex items-center gap-1.5 flex-shrink-0 whitespace-nowrap"
-                >
-                  <span>{isKo ? '카카오톡 채널 바로가기' : 'KAKAO CHANNEL'}</span>
-                  <ArrowUpRight className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
-                </a>
+                <div className="flex items-center gap-2 sm:gap-3">
+                  <a
+                    href="https://www.instagram.com/apap.anyang/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-8 h-8 sm:w-10 sm:h-10 border border-white/20 hover:border-white hover:bg-white hover:text-black transition-colors flex items-center justify-center rounded-full text-white"
+                    aria-label="Instagram"
+                  >
+                    <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4 sm:w-5 sm:h-5"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                  </a>
+                  <a
+                    href="https://www.facebook.com/apap.anyang"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-8 h-8 sm:w-10 sm:h-10 border border-white/20 hover:border-white hover:bg-white hover:text-black transition-colors flex items-center justify-center rounded-full text-white"
+                    aria-label="Facebook"
+                  >
+                    <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4 sm:w-5 sm:h-5"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+                  </a>
+                </div>
               </div>
             </div>
           }
@@ -1306,11 +1316,20 @@ export default function SiteAPage({ params }: PageProps) {
                     <div className="flex items-center justify-between pb-2 border-b border-white/10">
                       <div className="flex items-center gap-2 text-xs font-mono font-bold text-[#8C8C8C] uppercase tracking-wider">
                         <MapPin className="w-4 h-4 text-white flex-shrink-0" />
-                        <span>{isKo ? '오시는 길' : 'LOCATION & TRANSIT'}</span>
+                        <span>{isKo ? '오시는 길' : 'LOCATION'}</span>
                       </div>
-                      <span className="font-mono text-[10px] border border-white/40 text-white/90 px-2 py-0.5 font-bold">
-                        {isKo ? '안양파빌리온' : 'PAVILION'}
-                      </span>
+                      <div className="flex items-center gap-2">
+                        <button
+                          onClick={() => setIsMapModalOpen(true)}
+                          className="font-mono text-[10px] border border-white hover:bg-white hover:text-black transition-colors px-2 py-0.5 font-bold flex items-center gap-1 text-white"
+                        >
+                          <MapPin className="w-3 h-3" />
+                          <span>{isKo ? '지도보기' : 'MAP'}</span>
+                        </button>
+                        <span className="font-mono text-[10px] border border-white/40 text-white/90 px-2 py-0.5 font-bold">
+                          {isKo ? '안양파빌리온' : 'PAVILION'}
+                        </span>
+                      </div>
                     </div>
 
                     <div className="space-y-1.5 text-xs text-[#D4D4D4] font-light">
@@ -1330,13 +1349,15 @@ export default function SiteAPage({ params }: PageProps) {
                       {isKo ? '역대 APAP (1회~7회) 아카이브' : 'APAP Editions 1–7 Archives'}
                     </h4>
                   </div>
-                  <Link
-                    href={`/archive/${validLocale}`}
+                  <a
+                    href="https://www.apap.or.kr:446/"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="inline-flex items-center justify-center gap-1 font-mono text-[11px] font-bold px-3 py-1.5 bg-white text-black hover:bg-white/80 transition-colors flex-shrink-0 whitespace-nowrap"
                   >
                     <span>{isKo ? '바로가기' : 'GO TO ARCHIVE'}</span>
                     <ArrowUpRight className="w-3 h-3" />
-                  </Link>
+                  </a>
                 </div>
               </div>
 
@@ -1466,12 +1487,21 @@ export default function SiteAPage({ params }: PageProps) {
                       <MapPin className="w-5 h-5 text-white flex-shrink-0" />
                       <span>{isKo ? '03 전시 장소 및 오시는 길' : '03 LOCATION & ACCESS'}</span>
                     </div>
-                    <span className="font-mono text-xs lg:text-sm border border-white/30 text-white/80 px-3 py-1 font-bold">
-                      {isKo ? '메인 거점: 안양파빌리온' : 'MAIN: ANYANG PAVILION'}
-                    </span>
+                    <div className="flex items-center gap-2">
+                      <button
+                        onClick={() => setIsMapModalOpen(true)}
+                        className="font-mono text-xs lg:text-sm border border-white hover:bg-white hover:text-black transition-colors px-3 py-1 font-bold flex items-center gap-1.5 text-white"
+                      >
+                        <MapPin className="w-3.5 h-3.5" />
+                        <span>{isKo ? '지도보기' : 'VIEW MAP'}</span>
+                      </button>
+                      <span className="font-mono text-xs lg:text-sm border border-white/30 text-white/80 px-3 py-1 font-bold hidden sm:block">
+                        {isKo ? '메인 거점: 안양파빌리온' : 'MAIN: ANYANG PAVILION'}
+                      </span>
+                    </div>
                   </div>
 
-                  <div className="grid grid-cols-3 gap-6 pt-1">
+                  <div className="grid grid-cols-2 gap-6 pt-1">
                     {/* Main Area */}
                     <div className="space-y-1.5 border-r border-white/10 pr-4">
                       <span className="font-mono text-xs lg:text-sm text-[#8C8C8C] font-semibold block">
@@ -1482,19 +1512,6 @@ export default function SiteAPage({ params }: PageProps) {
                       </div>
                       <p className="text-xs lg:text-sm text-[#B9B9B9] font-light">
                         {isKo ? '산책로, 안양파빌리온 메인홀, 안양천 변 야외 공간' : 'Trails, Pavilion Main Hall, Anyang Stream'}
-                      </p>
-                    </div>
-
-                    {/* Address & Tel */}
-                    <div className="space-y-1.5 border-r border-white/10 pr-4">
-                      <span className="font-mono text-xs lg:text-sm text-[#8C8C8C] font-semibold block">
-                        ■ {isKo ? '주소 및 문의' : 'Address & Inquiry'}
-                      </span>
-                      <div className="text-sm lg:text-base font-medium text-white">
-                        {isKo ? '경기도 안양시 만안구 예술공원로 180' : '180, Yesulgongwon-ro, Manan-gu'}
-                      </div>
-                      <p className="text-xs lg:text-sm font-mono text-[#8C8C8C]">
-                        {isKo ? 'APAP 사무국 문의: 031-687-0548' : 'Tel: +82-31-687-0548'}
                       </p>
                     </div>
 
@@ -1527,13 +1544,15 @@ export default function SiteAPage({ params }: PageProps) {
                     </p>
                   </div>
 
-                  <Link
-                    href={`/archive/${validLocale}`}
+                  <a
+                    href="https://www.apap.or.kr:446/"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="inline-flex items-center justify-center gap-2 font-mono text-sm lg:text-base font-bold px-6 py-3.5 bg-white text-black hover:bg-white/80 transition-colors flex-shrink-0 whitespace-nowrap"
                   >
                     <span>{isKo ? '바로가기' : 'GO TO ARCHIVE'}</span>
                     <ArrowUpRight className="w-4 h-4" />
-                  </Link>
+                  </a>
                 </div>
               </div>
             </div>
@@ -1545,6 +1564,12 @@ export default function SiteAPage({ params }: PageProps) {
           <Footer locale={validLocale} />
         </div>
       </main>
+
+      <MapModal
+        isOpen={isMapModalOpen}
+        onClose={() => setIsMapModalOpen(false)}
+        isKo={isKo}
+      />
 
       {/* ── Mobile Detail Modals (Retained for mobile view) ── */}
       <SectionDetailModal
@@ -1981,7 +2006,7 @@ export default function SiteAPage({ params }: PageProps) {
             </div>
 
             <div className="pt-5 border-t border-white/10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-xs font-mono text-[#8C8C8C]">
-              <span>■ {isKo ? '문의: 안양문화예술재단 APAP 사업부 (031-687-0548)' : 'Inquiries: Anyang Foundation for Culture & Arts (031-687-0548)'}</span>
+              <span>■ {isKo ? '주최: 안양문화예술재단' : 'Hosted by Anyang Foundation for Culture & Arts'}</span>
               <span className="text-white/60">APAP8 · BLACK & WHITE EDITION</span>
             </div>
           </div>

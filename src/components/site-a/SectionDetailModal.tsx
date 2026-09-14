@@ -2,7 +2,8 @@
 
 import React, { useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X } from 'lucide-react';
+import { X, ChevronLeft, ChevronRight } from 'lucide-react';
+import Image from 'next/image';
 
 interface SectionDetailModalProps {
   isOpen: boolean;
@@ -10,6 +11,8 @@ interface SectionDetailModalProps {
   category: string;
   title: string;
   children: React.ReactNode;
+  /** 모달 내 이미지 갤러리 (선택). 여러 장 추가 가능한 확장 구조 */
+  images?: string[];
 }
 
 export default function SectionDetailModal({
@@ -18,7 +21,10 @@ export default function SectionDetailModal({
   category,
   title,
   children,
+  images = [],
 }: SectionDetailModalProps) {
+  const [imgIdx, setImgIdx] = React.useState(0);
+
   // Close on ESC and lock body scroll
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -36,11 +42,17 @@ export default function SectionDetailModal({
     };
   }, [isOpen, onClose]);
 
+  // 이미지 인덱스 리셋
+  useEffect(() => {
+    if (isOpen) setImgIdx(0);
+  }, [isOpen]);
+
   return (
     <AnimatePresence>
       {isOpen && (
         <div
-          className="fixed inset-0 z-[70] flex items-center justify-center p-4 sm:p-6 md:p-10 bg-black/85 backdrop-blur-md"
+          className="fixed inset-0 z-[70] flex items-center justify-center p-4 sm:p-6 md:p-10"
+          style={{ background: 'rgba(0,0,0,0.6)', backdropFilter: 'blur(14px)' }}
           onClick={onClose}
         >
           <motion.div
@@ -73,6 +85,39 @@ export default function SectionDetailModal({
 
             {/* Modal Scrollable Body */}
             <div className="flex-1 overflow-y-auto p-4 sm:p-6 space-y-4 text-body text-[#B9B9B9] hide-scrollbar">
+              {/* 이미지 갤러리 (images가 있을 때만) */}
+              {images.length > 0 && (
+                <div className="relative w-full aspect-[4/3] bg-black border border-white/10 overflow-hidden">
+                  <Image
+                    src={images[imgIdx]}
+                    alt={`${title} 이미지 ${imgIdx + 1}`}
+                    fill
+                    className="object-contain"
+                    sizes="(max-width: 768px) 100vw, 672px"
+                  />
+                  {images.length > 1 && (
+                    <>
+                      <button
+                        onClick={() => setImgIdx((i) => (i - 1 + images.length) % images.length)}
+                        className="absolute left-2 top-1/2 -translate-y-1/2 w-8 h-8 bg-black/60 hover:bg-black flex items-center justify-center border border-white/20 hover:border-white transition-colors"
+                        aria-label="이전 이미지"
+                      >
+                        <ChevronLeft className="w-4 h-4" />
+                      </button>
+                      <button
+                        onClick={() => setImgIdx((i) => (i + 1) % images.length)}
+                        className="absolute right-2 top-1/2 -translate-y-1/2 w-8 h-8 bg-black/60 hover:bg-black flex items-center justify-center border border-white/20 hover:border-white transition-colors"
+                        aria-label="다음 이미지"
+                      >
+                        <ChevronRight className="w-4 h-4" />
+                      </button>
+                      <div className="absolute bottom-2 right-3 font-mono text-[10px] text-white/60 bg-black/50 px-1.5 py-0.5">
+                        {imgIdx + 1} / {images.length}
+                      </div>
+                    </>
+                  )}
+                </div>
+              )}
               {children}
             </div>
 

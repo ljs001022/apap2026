@@ -4,6 +4,7 @@ import React from 'react';
 import Link from 'next/link';
 import GnbHeader from '@/components/site-a/GnbHeader';
 import Footer from '@/components/site-a/Footer';
+import MapModal from '@/components/site-a/MapModal';
 import { ArrowLeft, ArrowUpRight, MapPin, Clock, Bus, Car, Info, Phone } from 'lucide-react';
 
 interface PageProps {
@@ -15,6 +16,7 @@ export default function VisitPage({ params }: PageProps) {
   const locale = resolvedParams.locale || 'ko';
   const validLocale = ['ko', 'en'].includes(locale) ? locale : 'ko';
   const isKo = validLocale === 'ko';
+  const [isMapModalOpen, setIsMapModalOpen] = React.useState(false);
 
   return (
     <div className="min-h-screen bg-[#0A0A0A] text-white font-sans antialiased flex flex-col justify-between">
@@ -100,9 +102,18 @@ export default function VisitPage({ params }: PageProps) {
                 <MapPin className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-white" />
                 <span>{isKo ? '전시 장소 및 주소' : 'LOCATION & ADDRESS'}</span>
               </div>
-              <span className="font-mono text-[10px] sm:text-xs border border-white/40 text-white/90 px-2 py-0.5 font-bold">
-                {isKo ? '안양파빌리온' : 'PAVILION'}
-              </span>
+              <div className="flex items-center gap-2">
+                <button
+                  onClick={() => setIsMapModalOpen(true)}
+                  className="font-mono text-[10px] sm:text-xs border border-white hover:bg-white hover:text-black transition-colors px-2.5 py-0.5 font-bold flex items-center gap-1 text-white cursor-pointer"
+                >
+                  <MapPin className="w-3 h-3" />
+                  <span>{isKo ? '지도보기' : 'VIEW MAP'}</span>
+                </button>
+                <span className="font-mono text-[10px] sm:text-xs border border-white/40 text-white/90 px-2 py-0.5 font-bold">
+                  {isKo ? '안양파빌리온' : 'PAVILION'}
+                </span>
+              </div>
             </div>
 
             <div className="text-xl sm:text-2xl font-black text-white">
@@ -244,15 +255,23 @@ export default function VisitPage({ params }: PageProps) {
             </p>
           </div>
 
-          <Link
-            href={`/archive/${validLocale}`}
+          <a
+            href="https://www.apap.or.kr:446/"
+            target="_blank"
+            rel="noopener noreferrer"
             className="inline-flex items-center justify-center gap-2 font-mono text-[11px] sm:text-xs font-bold px-4 py-2 sm:px-6 sm:py-3 bg-white text-black hover:bg-white/80 transition-colors flex-shrink-0 w-full sm:w-auto"
           >
             <span>{isKo ? '바로가기' : 'GO TO ARCHIVE'}</span>
             <ArrowUpRight className="w-3.5 h-3.5" />
-          </Link>
+          </a>
         </div>
       </main>
+
+      <MapModal
+        isOpen={isMapModalOpen}
+        onClose={() => setIsMapModalOpen(false)}
+        isKo={isKo}
+      />
 
       <Footer locale={validLocale} />
     </div>

@@ -93,7 +93,8 @@ export default function ArtistModal({
     <>
     <AnimatePresence>
       <div 
-        className="fixed inset-0 z-[70] flex justify-center p-4 pt-24 sm:p-8 sm:pt-28 md:p-12 md:pt-32 pb-8 bg-black/85 backdrop-blur-md"
+        className="fixed inset-0 z-[70] flex justify-center p-4 pt-24 sm:p-8 sm:pt-28 md:p-12 md:pt-32 pb-8"
+        style={{ background: 'rgba(0,0,0,0.6)', backdropFilter: 'blur(14px)' }}
         onClick={onClose}
       >
         <motion.div

@@ -976,12 +976,14 @@ export default function SiteBPage({ params }: PageProps) {
           <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-8 pb-10 border-b border-[#B4FF39]/12">
             <div>
               <p className="font-mono text-[10px] text-[#B4FF39] tracking-wider mb-2">&gt; {t.archiveBack}</p>
-              <Link 
-                href={`/archive/${validLocale}`}
+              <a 
+                href="https://www.apap.or.kr:446/"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="font-mono text-2xl sm:text-4xl font-bold text-white hover:text-[#B4FF39] transition-colors tracking-tight block"
               >
                 APAP ARCHIVE ↗
-              </Link>
+              </a>
             </div>
             
             {/* Socials */}
