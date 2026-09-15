@@ -94,12 +94,12 @@ export default function SiteAPage({ params }: PageProps) {
           className="relative h-[100dvh] snap-start flex flex-col bg-black border-b border-white justify-between overflow-hidden"
         >
           {/* Top spacer for fixed header */}
-          <div className="h-14 sm:h-16 flex-shrink-0" />
+          <div className="h-16 sm:h-20 flex-shrink-0" />
 
           {/* Banner Container */}
           <div className="flex-1 min-h-0 w-full mx-auto flex items-center justify-center px-3 sm:px-0 py-2 sm:py-0 overflow-hidden relative z-10">
             <div className="relative w-full h-full max-sm:aspect-square max-sm:max-h-[768px] overflow-hidden flex items-center justify-center bg-black">
-              <picture className="w-full h-full flex items-center justify-center">
+              <picture className="w-full h-full flex items-center justify-center animate-ken-burns origin-center">
                 <source
                   media="(max-width: 640px)"
                   type="image/webp"
@@ -122,6 +122,25 @@ export default function SiteAPage({ params }: PageProps) {
               </picture>
             </div>
           </div>
+
+          {/* Scroll Down Indicator (Landing A Scroll Hint) */}
+          <a
+            href={`/${validLocale}/#about`}
+            onClick={(e) => {
+              e.preventDefault();
+              const el = document.getElementById('about');
+              if (el) el.scrollIntoView({ behavior: 'smooth' });
+            }}
+            className="absolute z-20 bottom-12 sm:bottom-14 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1 group cursor-pointer"
+            aria-label={isKo ? '소개 섹션으로 스크롤' : 'Scroll to About section'}
+          >
+            <span className="font-mono text-[9px] tracking-[0.22em] text-white/50 group-hover:text-white transition-colors uppercase">
+              SCROLL
+            </span>
+            <div className="w-[1.5px] h-6 sm:h-7 bg-white/20 overflow-hidden relative rounded-full">
+              <span className="block w-full h-full bg-gradient-to-b from-white via-white to-transparent animate-scroll-hint" />
+            </div>
+          </a>
 
           {/* Ticker Bar */}
           <div className="flex-shrink-0 bg-white text-black py-2 sm:py-2.5 overflow-hidden whitespace-nowrap select-none border-t border-black relative z-10 w-full flex">
@@ -258,7 +277,7 @@ export default function SiteAPage({ params }: PageProps) {
               {/* PC VIEW (>= md): Tab Navigation & Expanded Inline Content */}
               <div className="hidden md:block">
                 {/* Tab Buttons */}
-                <div className="flex border-b border-white/20 mb-6 overflow-x-auto lg:overflow-visible hide-scrollbar">
+                <div className="flex border-b border-white/20 mb-6 overflow-x-auto lg:overflow-visible hide-scrollbar stagger-item">
                   <button
                     type="button"
                     onClick={() => setAboutPcTab('overview')}
@@ -296,7 +315,7 @@ export default function SiteAPage({ params }: PageProps) {
 
                 {/* Tab 1: Overview */}
                 {aboutPcTab === 'overview' && (
-                  <div className="space-y-6">
+                  <div key="overview" className="space-y-6 animate-tab-content">
                     <div>
                       <span className="font-mono text-xs font-bold text-[#8C8C8C] tracking-wider uppercase block mb-1">
                         01 OVERVIEW
@@ -367,7 +386,7 @@ export default function SiteAPage({ params }: PageProps) {
 
                 {/* Tab 2: Theme */}
                 {aboutPcTab === 'theme' && (
-                  <div className="space-y-6">
+                  <div key="theme" className="space-y-6 animate-tab-content">
                     <div>
                       <span className="font-mono text-xs font-bold text-[#8C8C8C] tracking-wider uppercase block mb-1">
                         02 EXHIBITION THEME
@@ -425,7 +444,7 @@ export default function SiteAPage({ params }: PageProps) {
 
                 {/* Tab 3: Credits */}
                 {aboutPcTab === 'credits' && (
-                  <div className="space-y-6">
+                  <div key="credits" className="space-y-6 animate-tab-content">
                     <div>
                       <span className="font-mono text-xs font-bold text-[#8C8C8C] tracking-wider uppercase block mb-1">
                         03 CREDITS
@@ -683,7 +702,7 @@ export default function SiteAPage({ params }: PageProps) {
               {/* PC VIEW (>= md): Tab Navigation & Expanded Inline Content */}
               <div className="hidden md:block">
                 {/* Tab Buttons */}
-                <div className="flex border-b border-white/20 mb-6 overflow-x-auto lg:overflow-visible hide-scrollbar">
+                <div className="flex border-b border-white/20 mb-6 overflow-x-auto lg:overflow-visible hide-scrollbar stagger-item">
                   <button
                     type="button"
                     onClick={() => setProgramPcTab('citizen')}
@@ -732,7 +751,7 @@ export default function SiteAPage({ params }: PageProps) {
 
                 {/* Tab 1: Citizen Programs (도원 릴레이) */}
                 {programPcTab === 'citizen' && (
-                  <div className="space-y-6">
+                  <div key="citizen" className="space-y-6 animate-tab-content">
                     <div>
                       <span className="font-mono text-xs font-bold text-[#8C8C8C] tracking-wider uppercase block mb-1">
                         01 CITIZEN ENGAGEMENT
@@ -815,7 +834,7 @@ export default function SiteAPage({ params }: PageProps) {
 
                 {/* Tab 2: Docent Tour (3 tours from leaflet) */}
                 {programPcTab === 'docent' && (
-                  <div className="space-y-6">
+                  <div key="docent" className="space-y-6 animate-tab-content">
                     <div>
                       <span className="font-mono text-xs font-bold text-[#8C8C8C] tracking-wider uppercase block mb-1">
                         02 GUIDED DOCENT TOURS
@@ -906,7 +925,7 @@ export default function SiteAPage({ params }: PageProps) {
 
                 {/* Tab 3: Forum & Symposium (NEW) */}
                 {programPcTab === 'forum' && (
-                  <div className="space-y-6">
+                  <div key="forum" className="space-y-6 animate-tab-content">
                     <div>
                       <span className="font-mono text-xs font-bold text-[#8C8C8C] tracking-wider uppercase block mb-1">
                         03 PUBLIC ART FORUM & SYMPOSIUM
@@ -971,7 +990,7 @@ export default function SiteAPage({ params }: PageProps) {
 
                 {/* Tab 4: Broadcast */}
                 {programPcTab === 'broadcast' && (
-                  <div className="space-y-6">
+                  <div key="broadcast" className="space-y-6 animate-tab-content">
                     <div>
                       <span className="font-mono text-xs font-bold text-[#8C8C8C] tracking-wider uppercase block mb-1">
                         04 MEDIA & BROADCAST PARTNERSHIP
@@ -1199,7 +1218,7 @@ export default function SiteAPage({ params }: PageProps) {
               </div>
 
               {/* SNS Links */}
-              <div className="bg-white/[0.03] border border-white/20 px-3 py-2 sm:px-6 sm:py-3.5 flex flex-row items-center justify-between gap-2 sm:gap-4">
+              <div className="bg-white/[0.03] border border-white/20 px-3 py-2 sm:px-6 sm:py-3.5 flex flex-row items-center justify-between gap-2 sm:gap-4 stagger-item">
                 <div className="flex items-center gap-2 sm:gap-3 min-w-0">
                   <span className="text-[11px] xs:text-xs sm:text-base font-bold text-white truncate whitespace-nowrap">
                     {isKo ? '공식 소셜 미디어' : 'Official Social Media'}
@@ -1244,7 +1263,7 @@ export default function SiteAPage({ params }: PageProps) {
               <div className="block md:hidden space-y-2.5">
                 <div className="grid grid-cols-1 gap-2.5">
                   {/* Mobile Card 1: Admission & Hours */}
-                  <div className="border border-white/20 p-3.5 space-y-2.5 bg-white/[0.02] flex flex-col justify-between">
+                  <div className="border border-white/20 p-3.5 space-y-2.5 bg-white/[0.02] flex flex-col justify-between stagger-item">
                     <div className="flex items-center justify-between pb-2 border-b border-white/10">
                       <div className="flex items-center gap-2 text-xs font-mono font-bold text-[#8C8C8C] uppercase tracking-wider">
                         <Clock className="w-4 h-4 text-white flex-shrink-0" />
@@ -1282,7 +1301,7 @@ export default function SiteAPage({ params }: PageProps) {
                   </div>
 
                   {/* Mobile Card 2: 4 Venue Details */}
-                  <div className="border border-white/20 p-3.5 space-y-2 bg-white/[0.02]">
+                  <div className="border border-white/20 p-3.5 space-y-2 bg-white/[0.02] stagger-item">
                     <div className="flex items-center justify-between pb-1.5 border-b border-white/10">
                       <div className="flex items-center gap-1.5 text-xs font-mono font-bold text-[#8C8C8C] uppercase tracking-wider">
                         <Layers className="w-3.5 h-3.5 text-white flex-shrink-0" />
@@ -1312,7 +1331,7 @@ export default function SiteAPage({ params }: PageProps) {
                   </div>
 
                   {/* Mobile Card 3: Location & Access */}
-                  <div className="border border-white/20 p-3.5 space-y-2.5 bg-white/[0.02] flex flex-col justify-between">
+                  <div className="border border-white/20 p-3.5 space-y-2.5 bg-white/[0.02] flex flex-col justify-between stagger-item">
                     <div className="flex items-center justify-between pb-2 border-b border-white/10">
                       <div className="flex items-center gap-2 text-xs font-mono font-bold text-[#8C8C8C] uppercase tracking-wider">
                         <MapPin className="w-4 h-4 text-white flex-shrink-0" />
@@ -1340,7 +1359,7 @@ export default function SiteAPage({ params }: PageProps) {
                 </div>
 
                 {/* Mobile Streamlined Historical Archive Banner */}
-                <div className="border border-white/30 px-3.5 py-2.5 flex flex-row items-center justify-between gap-3 bg-white/[0.04]">
+                <div className="border border-white/30 px-3.5 py-2.5 flex flex-row items-center justify-between gap-3 bg-white/[0.04] stagger-item">
                   <div className="space-y-0.5 min-w-0">
                     <span className="font-mono text-[9.5px] font-bold text-[#8C8C8C] uppercase tracking-widest block">
                       APAP ARCHIVE
@@ -1364,7 +1383,7 @@ export default function SiteAPage({ params }: PageProps) {
               {/* PC VIEW (>= md): Top-to-Bottom Vertical Section Layout & Enlarged Fonts */}
               <div className="hidden md:block space-y-6">
                 {/* 01: Schedule & Hours */}
-                <div className="border border-white/20 p-6 lg:p-7 bg-white/[0.02] space-y-4">
+                <div className="border border-white/20 p-6 lg:p-7 bg-white/[0.02] space-y-4 stagger-item">
                   <div className="flex items-center justify-between pb-3 border-b border-white/10">
                     <div className="flex items-center gap-2.5 text-base lg:text-lg font-mono font-bold text-white uppercase tracking-wider">
                       <Clock className="w-5 h-5 text-white flex-shrink-0" />
@@ -1408,7 +1427,7 @@ export default function SiteAPage({ params }: PageProps) {
                 </div>
 
                 {/* 02: 4 Venues Detail (venueDetails from visit.json) */}
-                <div className="border border-white/20 p-6 lg:p-7 bg-white/[0.02] space-y-4">
+                <div className="border border-white/20 p-6 lg:p-7 bg-white/[0.02] space-y-4 stagger-item">
                   <div className="flex items-center justify-between pb-3 border-b border-white/10">
                     <div className="flex items-center gap-2.5 text-base lg:text-lg font-mono font-bold text-white uppercase tracking-wider">
                       <Layers className="w-5 h-5 text-white flex-shrink-0" />
@@ -1481,7 +1500,7 @@ export default function SiteAPage({ params }: PageProps) {
                 </div>
 
                 {/* 03: Location & Directions */}
-                <div className="border border-white/20 p-6 lg:p-7 bg-white/[0.02] space-y-4">
+                <div className="border border-white/20 p-6 lg:p-7 bg-white/[0.02] space-y-4 stagger-item">
                   <div className="flex items-center justify-between pb-3 border-b border-white/10">
                     <div className="flex items-center gap-2.5 text-base lg:text-lg font-mono font-bold text-white uppercase tracking-wider">
                       <MapPin className="w-5 h-5 text-white flex-shrink-0" />
@@ -1529,7 +1548,7 @@ export default function SiteAPage({ params }: PageProps) {
                 </div>
 
                 {/* 04: Historical Archive Banner */}
-                <div className="border border-white/30 p-6 lg:p-7 flex flex-row items-center justify-between gap-6 bg-white/[0.04]">
+                <div className="border border-white/30 p-6 lg:p-7 flex flex-row items-center justify-between gap-6 bg-white/[0.04] stagger-item">
                   <div className="space-y-1.5">
                     <div className="font-mono text-xs font-bold text-[#8C8C8C] uppercase tracking-widest">
                       APAP ARCHIVE HUB

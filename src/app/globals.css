@@ -97,4 +97,161 @@ body {
   animation-play-state: paused;
 }
 
+/* ── Landing A: Ken Burns Subtle Breathing Motion ── */
+@keyframes kenBurns {
+  0% {
+    transform: scale(1) translateY(0);
+  }
+  100% {
+    transform: scale(1.05) translateY(-1%);
+  }
+}
+
+.animate-ken-burns {
+  animation: kenBurns 24s ease-in-out infinite alternate;
+  will-change: transform;
+}
+
+/* ── Landing A: Minimalist Vertical Scroll Hint ── */
+@keyframes scrollHint {
+  0% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  25% {
+    opacity: 1;
+  }
+  70% {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+}
+
+.animate-scroll-hint {
+  animation: scrollHint 2.2s ease-in-out infinite;
+}
+
+/* ── Option 1: Scroll Snap Section Stagger Motion ── */
+.section-stagger-container .stagger-child,
+.section-stagger-container .stagger-item,
+.section-stagger-container [role="button"] {
+  opacity: 0;
+  transform: translateY(26px);
+  transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+              transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
+}
+
+.section-active .stagger-child,
+.section-active .stagger-item,
+.section-active [role="button"] {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Stagger sequence delays for cards and blocks */
+.section-active .stagger-delay-1,
+.section-active .stagger-item:nth-child(1),
+.section-active [role="button"]:nth-child(1),
+.section-active .stagger-child:nth-child(1) {
+  transition-delay: 0.12s;
+}
+
+.section-active .stagger-delay-2,
+.section-active .stagger-item:nth-child(2),
+.section-active [role="button"]:nth-child(2),
+.section-active .stagger-child:nth-child(2) {
+  transition-delay: 0.22s;
+}
+
+.section-active .stagger-delay-3,
+.section-active .stagger-item:nth-child(3),
+.section-active [role="button"]:nth-child(3),
+.section-active .stagger-child:nth-child(3) {
+  transition-delay: 0.32s;
+}
+
+.section-active .stagger-delay-4,
+.section-active .stagger-item:nth-child(4),
+.section-active [role="button"]:nth-child(4),
+.section-active .stagger-child:nth-child(4) {
+  transition-delay: 0.42s;
+}
+
+.section-active .stagger-delay-5,
+.section-active .stagger-item:nth-child(5),
+.section-active [role="button"]:nth-child(5),
+.section-active .stagger-child:nth-child(5) {
+  transition-delay: 0.52s;
+}
+
+.section-active .stagger-delay-6,
+.section-active .stagger-item:nth-child(6),
+.section-active [role="button"]:nth-child(6),
+.section-active .stagger-child:nth-child(6) {
+  transition-delay: 0.62s;
+}
+
+.section-active .stagger-delay-7,
+.section-active .stagger-item:nth-child(7),
+.section-active [role="button"]:nth-child(7),
+.section-active .stagger-child:nth-child(7) {
+  transition-delay: 0.72s;
+}
+
+.section-active .stagger-delay-8,
+.section-active .stagger-item:nth-child(8),
+.section-active [role="button"]:nth-child(8),
+.section-active .stagger-child:nth-child(8) {
+  transition-delay: 0.82s;
+}
+
+/* ── Tab Content Stagger & Switch Motion ── */
+@keyframes tabContentEnter {
+  0% {
+    opacity: 0;
+    transform: translateY(22px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.section-stagger-container .animate-tab-content {
+  opacity: 0;
+  transform: translateY(22px);
+}
+
+.section-active .animate-tab-content {
+  opacity: 1;
+  transform: translateY(0);
+  animation: tabContentEnter 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation-delay: 0.15s;
+}
+
+.section-active .animate-tab-content > *:nth-child(1) {
+  animation: tabContentEnter 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation-delay: 0.18s;
+}
+
+.section-active .animate-tab-content > *:nth-child(2) {
+  animation: tabContentEnter 0.55s cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation-delay: 0.28s;
+}
+
+.section-active .animate-tab-content > *:nth-child(3) {
+  animation: tabContentEnter 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation-delay: 0.38s;
+}
+
+.section-active .animate-tab-content > *:nth-child(4) {
+  animation: tabContentEnter 0.65s cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation-delay: 0.48s;
+}
+
 

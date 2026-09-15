@@ -29,7 +29,7 @@ export default function GnbHeader({ locale }: GnbHeaderProps) {
     
     const handleScroll = () => {
       const scrollPos = scrollContainer ? scrollContainer.scrollTop : window.scrollY;
-      setScrolled(scrollPos > 10);
+      setScrolled(scrollPos > 20);
     };
 
     if (scrollContainer) {
@@ -96,13 +96,17 @@ export default function GnbHeader({ locale }: GnbHeaderProps) {
   return (
     <>
       <header
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 border-b ${
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ease-out border-b ${
           scrolled
-            ? 'bg-[#0A0A0A]/95 backdrop-blur-md border-[#2E2E2E]'
-            : 'bg-[#0A0A0A]/80 backdrop-blur-sm border-transparent'
+            ? 'bg-[#0A0A0A]/75 backdrop-blur-xl border-white/15 shadow-xl'
+            : 'bg-gradient-to-b from-[#0A0A0A]/85 via-[#0A0A0A]/40 to-transparent border-transparent'
         }`}
       >
-        <div className="max-w-[1200px] mx-auto flex items-center justify-between h-[64px] px-6 sm:px-10 lg:px-16">
+        <div
+          className={`max-w-[1200px] mx-auto flex items-center justify-between px-6 sm:px-10 lg:px-16 transition-all duration-300 ease-out ${
+            scrolled ? 'h-[54px] sm:h-[60px]' : 'h-[72px] sm:h-[80px]'
+          }`}
+        >
           <Link href={`/${locale}`} className="flex items-center gap-3 group" onClick={(e) => handleNavClick(e, 'hero')}>
             <span className="font-mono font-black text-xl tracking-tighter border-2 border-white px-2 py-0.5 leading-none group-hover:bg-white group-hover:text-black transition-colors">
               APAP<b>8</b>

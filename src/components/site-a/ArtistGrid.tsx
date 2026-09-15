@@ -189,7 +189,7 @@ export default function ArtistGrid({
   return (
     <div className={`space-y-2 sm:space-y-3 ${className}`}>
       {/* ─── Category / Venue Tabs ─── */}
-      <div className="sticky top-0 z-20 bg-[#0A0A0A] flex items-center gap-2 overflow-x-auto pb-2.5 pt-1 scroll-smooth hide-scrollbar select-none border-b border-white/10">
+      <div className="sticky top-0 z-20 bg-[#0A0A0A] flex items-center gap-2 overflow-x-auto pb-2.5 pt-1 scroll-smooth hide-scrollbar select-none border-b border-white/10 stagger-item">
 
         {categories.map((cat) => (
           <button
@@ -214,7 +214,7 @@ export default function ArtistGrid({
 
       {/* ─── Official Venue Banner (Inverted White Box) ─── */}
       {currentVenueInfo && (
-        <div className="bg-white text-black p-4 sm:p-5 border border-white my-3 shadow-md">
+        <div key={`venue-${activeCategoryId}`} className="bg-white text-black p-4 sm:p-5 border border-white my-3 shadow-md stagger-item animate-tab-content">
           <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1 mb-2 border-b border-black/15 pb-2">
             <div className="flex flex-wrap items-baseline gap-2 sm:gap-3">
               <span className="font-mono text-[10px] font-black uppercase bg-black text-white px-2 py-0.5 tracking-wider">
@@ -243,32 +243,34 @@ export default function ArtistGrid({
       )}
 
       {/* ─── Responsive Grid ─── */}
-      {displayedArtists.length > 0 ? (
-        theme === 'blackwhite' ? (
-          <PaginatedArtistCarousel 
-            artists={displayedArtists} 
-            theme={theme} 
-            locale={locale} 
-            onArtistClick={handleCardClick} 
-          />
+      <div key={`grid-${activeCategoryId}`} className="animate-tab-content">
+        {displayedArtists.length > 0 ? (
+          theme === 'blackwhite' ? (
+            <PaginatedArtistCarousel 
+              artists={displayedArtists} 
+              theme={theme} 
+              locale={locale} 
+              onArtistClick={handleCardClick} 
+            />
+          ) : (
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 sm:gap-6">
+              {displayedArtists.map((artist) => (
+                <ArtistCard
+                  key={`${artist.slug}-${artist.venue_slug || ''}`}
+                  artist={artist}
+                  theme={theme}
+                  locale={locale}
+                  onClick={handleCardClick}
+                />
+              ))}
+            </div>
+          )
         ) : (
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 sm:gap-6">
-            {displayedArtists.map((artist) => (
-              <ArtistCard
-                key={`${artist.slug}-${artist.venue_slug || ''}`}
-                artist={artist}
-                theme={theme}
-                locale={locale}
-                onClick={handleCardClick}
-              />
-            ))}
+          <div className="p-16 text-center text-white/40 font-mono text-body border border-dashed border-white/10 rounded-xl">
+            {isKo ? '등록된 작가가 없습니다.' : 'No artists found.'}
           </div>
-        )
-      ) : (
-        <div className="p-16 text-center text-white/40 font-mono text-body border border-dashed border-white/10 rounded-xl">
-          {isKo ? '등록된 작가가 없습니다.' : 'No artists found.'}
-        </div>
-      )}
+        )}
+      </div>
 
       {/* ─── Internal Modal ─── */}
       {showModalInternally && (
