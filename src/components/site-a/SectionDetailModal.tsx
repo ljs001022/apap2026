@@ -92,6 +92,7 @@ export default function SectionDetailModal({
                     src={images[imgIdx]}
                     alt={`${title} 이미지 ${imgIdx + 1}`}
                     fill
+                    unoptimized
                     className="object-contain"
                     sizes="(max-width: 768px) 100vw, 672px"
                   />

@@ -1,8 +1,8 @@
 'use client';
 
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, ZoomIn, ArrowUpRight } from 'lucide-react';
+import { X, ZoomIn, ArrowUpRight, MapPin } from 'lucide-react';
 import Image from 'next/image';
 
 interface MapModalProps {
@@ -12,6 +12,7 @@ interface MapModalProps {
 }
 
 export default function MapModal({ isOpen, onClose, isKo }: MapModalProps) {
+  const [imgError, setImgError] = useState(false);
   // Close on ESC and lock body scroll
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -81,16 +82,32 @@ export default function MapModal({ isOpen, onClose, isKo }: MapModalProps) {
 
             {/* Modal Body - Image */}
             <div className="flex-1 overflow-auto bg-[#080808] p-2 sm:p-4 md:p-6 flex items-center justify-center relative min-h-0">
-              <div className="relative w-full h-full max-w-[880px] max-h-[880px] flex items-center justify-center">
-                <Image
-                  src="/images/map-venues.png"
-                  alt={isKo ? '제8회 안양공공예술프로젝트(APAP8) 전시장소 지도' : 'APAP8 Exhibition Venues Map'}
-                  width={1556}
-                  height={1590}
-                  className="max-w-full max-h-full w-auto h-auto object-contain select-none"
-                  priority
-                />
-              </div>
+              {imgError ? (
+                <div className="flex flex-col items-center justify-center text-center p-8 border border-dashed border-white/20 max-w-md space-y-3">
+                  <MapPin className="w-10 h-10 text-white/50" />
+                  <h4 className="text-lg font-bold text-white">
+                    {isKo ? '전시장소 지도 준비 중입니다' : 'Venue Map is Being Prepared'}
+                  </h4>
+                  <p className="text-xs text-[#8C8C8C] leading-relaxed">
+                    {isKo
+                      ? '상세 전시장 구역 및 동선 안내 지도가 준비 중입니다. 문의사항은 APAP 사무국(031-687-0548)으로 연락 바랍니다.'
+                      : 'The detailed venue map will be updated soon. Please contact the APAP office for inquiries.'}
+                  </p>
+                </div>
+              ) : (
+                <div className="relative w-full h-full max-w-[880px] max-h-[880px] flex items-center justify-center">
+                  <Image
+                    src="/images/map-venues.png"
+                    alt={isKo ? '제8회 안양공공예술프로젝트(APAP8) 전시장소 지도' : 'APAP8 Exhibition Venues Map'}
+                    width={1556}
+                    height={1590}
+                    className="max-w-full max-h-full w-auto h-auto object-contain select-none"
+                    priority
+                    unoptimized
+                    onError={() => setImgError(true)}
+                  />
+                </div>
+              )}
             </div>
 
             {/* Modal Footer */}

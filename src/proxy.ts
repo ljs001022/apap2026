@@ -41,10 +41,8 @@ export function proxy(request: NextRequest) {
   // 3. 도메인 분기 및 리라이트
   const isSiteADomain =
     host.includes('2026.apap.or.kr') ||
-    host.includes('apap8.or.kr') ||
     host.includes('apap2026.vercel.app') ||
-    host.includes('apap2026') ||
-    host.includes('apap8');
+    host.includes('apap2026');
 
   // 3.1. 아카이브 강제 진입 경로 (/archive) 처리
   if (pathname.startsWith('/archive')) {

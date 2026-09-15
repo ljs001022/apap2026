@@ -1,7 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 import { NextIntlClientProvider } from 'next-intl';
-import { getMessages } from 'next-intl/server';
+import { getMessages, setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import ArchiveHeader from './ArchiveHeader';
 
@@ -12,8 +12,13 @@ interface LayoutProps {
   }>;
 }
 
-export default async function SiteALayout({ children, params }: LayoutProps) {
+export function generateStaticParams() {
+  return [{ locale: 'ko' }, { locale: 'en' }, { locale: 'ja' }, { locale: 'zh' }];
+}
+
+export default async function SiteBLayout({ children, params }: LayoutProps) {
   const { locale } = await params;
+  setRequestLocale(locale);
 
   const locales = ['ko', 'en', 'ja', 'zh'];
   if (!locales.includes(locale)) {

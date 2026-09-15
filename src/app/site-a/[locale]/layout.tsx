@@ -1,6 +1,6 @@
 import React from 'react';
 import { NextIntlClientProvider } from 'next-intl';
-import { getMessages } from 'next-intl/server';
+import { getMessages, setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import DustCanvas from '@/components/site-a/DustCanvas';
 
@@ -11,8 +11,13 @@ interface LayoutProps {
   }>;
 }
 
-export default async function SiteBLayout({ children, params }: LayoutProps) {
+export function generateStaticParams() {
+  return [{ locale: 'ko' }, { locale: 'en' }, { locale: 'ja' }, { locale: 'zh' }];
+}
+
+export default async function SiteALayout({ children, params }: LayoutProps) {
   const { locale } = await params;
+  setRequestLocale(locale);
 
   // 지원하는 로케일인지 검증
   const locales = ['ko', 'en', 'ja', 'zh'];

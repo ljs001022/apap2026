@@ -9,6 +9,14 @@ interface PageProps {
   }>;
 }
 
+export function generateStaticParams() {
+  const locales = ['ko', 'en', 'ja', 'zh'];
+  const editions = ['1', '7', '8'];
+  return locales.flatMap((locale) =>
+    editions.map((edition) => ({ locale, edition }))
+  );
+}
+
 interface ArchiveEdition {
   num: number;
   year: string;
