@@ -142,6 +142,8 @@ export default function ArtistModal({
                   <img
                     src={displayImage!}
                     alt={displayName}
+                    loading="lazy"
+                    decoding="async"
                     className="w-full h-full object-cover object-top"
                   />
                 ) : (
@@ -256,6 +258,8 @@ export default function ArtistModal({
                         <img
                           src={currentWorkImage}
                           alt={getLocalizedTitle(currentWork, locale)}
+                          loading="eager"
+                          decoding="async"
                           className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300"
                         />
                       </div>
@@ -275,7 +279,7 @@ export default function ArtistModal({
                               imgIdx === currentImageIndex ? 'border-white' : 'border-white/20 opacity-50 hover:opacity-80'
                             }`}
                           >
-                            <img src={img} alt="" className="w-full h-full object-cover" />
+                            <img src={img} alt="" loading="lazy" decoding="async" className="w-full h-full object-cover" />
                           </button>
                         ))}
                       </div>
@@ -360,6 +364,7 @@ export default function ArtistModal({
             <img
               src={zoomedImage}
               alt="Zoomed artwork"
+              decoding="async"
               className="max-w-full max-h-full object-contain"
             />
             <button

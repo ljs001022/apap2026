@@ -107,6 +107,7 @@ export default function ArtistCard({
             src={displayImage!}
             alt={displayName}
             loading="lazy"
+            decoding="async"
             className="w-full h-full object-cover object-top grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-500 ease-out"
           />
         ) : (

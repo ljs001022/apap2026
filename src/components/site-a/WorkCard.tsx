@@ -100,6 +100,7 @@ export default function WorkCard({
             src={images[activeImgIndex]}
             alt={localizedTitle}
             loading="lazy"
+            decoding="async"
             className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.02]"
           />
 
