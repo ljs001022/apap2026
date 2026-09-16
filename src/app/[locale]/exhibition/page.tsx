@@ -71,7 +71,6 @@ export default function ExhibitionPage({ params }: PageProps) {
         {/* Integrated Artists Grid */}
         <ArtistGrid
           categories={categories}
-          allLabel={isKo ? '전체 부문 (ALL)' : 'ALL VENUES'}
           onArtistClick={(artist) => setSelectedArtist(artist)}
           showModalInternally={false}
           theme="blackwhite"

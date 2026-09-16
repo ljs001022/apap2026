@@ -67,7 +67,6 @@ export default function ArtistSection({
         {/* Artist Grid with Venue Category Tabs & Modal */}
         <ArtistGrid
           categories={categories}
-          allLabel={isKo ? '전체 부문 (ALL)' : 'ALL VENUES'}
           theme={theme}
           locale={locale}
         />

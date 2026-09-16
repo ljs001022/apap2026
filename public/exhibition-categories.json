@@ -97,6 +97,28 @@
           "name_en": "Lee Gil-woo"
         }
       ]
+    },
+    {
+      "order": 5,
+      "id": "media-art-open-call",
+      "manifestVenueSlug": "media-art-open-call",
+      "tabLabel": {
+        "ko": "미디어아트 공모작가",
+        "en": "Media Art Open Call"
+      },
+      "officialName": {
+        "ko": "APAP8 미디어아트 작품공모 당선작가전",
+        "en": "APAP8 Media Art Open Call Selected Artists"
+      },
+      "subtitle": {
+        "ko": "동시대 예술과 디지털 테크놀로지의 융합 미디어아트 10인전",
+        "en": "Convergence of Contemporary Art & Digital Technology: 10 Selected Media Artists"
+      },
+      "description": {
+        "ko": "인공지능(AI)과 첨단 디지털 기술을 매개로 현대 사회와 인간, 자연에 대한 새로운 사유를 제시하는 공모 당선 작가 10인의 미디어아트 출품작",
+        "en": "Media artworks by 10 selected open-call artists presenting new reflections on contemporary society, humanity, and nature through AI and advanced digital technologies."
+      },
+      "missingArtists": []
     }
   ],
   "missingFromManifest": {

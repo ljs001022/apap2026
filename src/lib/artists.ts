@@ -32,7 +32,13 @@ export function getManifest(): ArtistsManifest {
   return manifest;
 }
 
-const VENUE_ORDER = ['e-pavilion-media', 'outdoor-exhibition', '308-art-crew', 'korea-china-special'];
+const VENUE_ORDER = [
+  'e-pavilion-media',
+  'outdoor-exhibition',
+  '308-art-crew',
+  'korea-china-special',
+  'media-art-open-call',
+];
 
 /**
  * Returns venues with artists having venue context attached, sorted by official exhibition category order

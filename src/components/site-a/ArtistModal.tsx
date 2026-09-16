@@ -70,8 +70,13 @@ export default function ArtistModal({
   const localizedVenue = artist.venue_slug
     ? getLocalizedVenueName(artist.venue_slug, locale)
     : (isKo ? artist.venue_ko : (artist.venue_slug || artist.venue_ko));
-  const localizedNationality = getLocalizedNationality(artist.nationality || '', locale);
-  const localizedBio = getLocalizedBio(artist.bio || '', locale);
+  const localizedNationality = getLocalizedNationality(artist, locale);
+  const localizedBio = isKo
+    ? (artist.bio_ko || getLocalizedBio(artist.bio || '', locale))
+    : (artist.bio_en || getLocalizedBio(artist.bio || '', locale));
+  const introText = isKo
+    ? (artist.intro_ko || getLocalizedDescription(artist.intro || '', locale))
+    : (artist.intro_en || getLocalizedDescription(artist.intro || '', locale));
 
   const works = artist.works || [];
   const hasWorks = works.length > 0;
@@ -186,11 +191,11 @@ export default function ArtistModal({
             </div>
 
             {/* 2. Intro / Bio */}
-            {(artist.intro || localizedBio) && (
+            {(introText || localizedBio) && (
               <div className="pt-6 space-y-4">
-                {artist.intro && (
+                {introText && (
                   <div className="text-body text-white/80 leading-relaxed whitespace-pre-line">
-                    {getLocalizedDescription(artist.intro, locale)}
+                    {introText}
                   </div>
                 )}
                 {localizedBio && (
@@ -250,7 +255,7 @@ export default function ArtistModal({
                       >
                         <img
                           src={currentWorkImage}
-                          alt={getLocalizedTitle(currentWork.title, locale)}
+                          alt={getLocalizedTitle(currentWork, locale)}
                           className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300"
                         />
                       </div>
@@ -280,18 +285,23 @@ export default function ArtistModal({
                   <div className="lg:col-span-6 flex flex-col justify-between space-y-4">
                     <div className="space-y-4">
                       <h4 className="text-2xl sm:text-3xl font-black text-white tracking-tight leading-snug">
-                        {getLocalizedTitle(currentWork.title, locale)}
+                        {getLocalizedTitle(currentWork, locale)}
                       </h4>
 
                       <div className="space-y-1.5 text-caption font-mono text-white/70 border-l-2 border-white/40 pl-3.5 py-0.5">
                         {currentWork.year && <div>{isKo ? `제작년도: ${currentWork.year}` : `Year: ${currentWork.year}`}</div>}
-                        {currentWork.material && <div>{isKo ? `재료: ${getLocalizedMaterial(currentWork.material, locale)}` : `Medium: ${getLocalizedMaterial(currentWork.material, locale)}`}</div>}
+                        {(currentWork.material || currentWork.medium_ko || currentWork.medium_en) && (
+                          <div>{isKo ? `재료: ${getLocalizedMaterial(currentWork, locale)}` : `Medium: ${getLocalizedMaterial(currentWork, locale)}`}</div>
+                        )}
+                        {currentWork.duration && (
+                          <div>{isKo ? `러닝타임: ${currentWork.duration}` : `Duration: ${currentWork.duration}`}</div>
+                        )}
                         {currentWork.size && <div>{isKo ? `크기: ${getLocalizedSize(currentWork.size, locale)}` : `Dimensions: ${getLocalizedSize(currentWork.size, locale)}`}</div>}
                       </div>
 
-                      {currentWork.description && currentWork.description.trim() !== '' ? (
+                      {((currentWork.description && currentWork.description.trim() !== '') || currentWork.description_ko || currentWork.description_en) ? (
                         <div className="text-body text-white/90 leading-relaxed whitespace-pre-line pt-1">
-                          {getLocalizedDescription(currentWork.description, locale)}
+                          {getLocalizedDescription(currentWork, locale)}
                         </div>
                       ) : (
                         <div className="text-caption font-mono text-white/40 leading-relaxed pt-1">

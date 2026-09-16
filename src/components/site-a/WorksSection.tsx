@@ -82,7 +82,6 @@ export default function WorksSection({
         {/* Works Gallery with Venue Category Tabs */}
         <WorkGallery
           categories={categories}
-          allLabel={isKo ? '전체 부문 (ALL)' : 'ALL VENUES'}
           theme={theme}
           locale={locale}
         />

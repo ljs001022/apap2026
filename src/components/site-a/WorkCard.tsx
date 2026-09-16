@@ -49,9 +49,9 @@ export default function WorkCard({
     setActiveImgIndex((prev) => (prev === images.length - 1 ? 0 : prev + 1));
   };
 
-  const localizedTitle = getLocalizedTitle(work.title, locale);
-  const localizedMaterial = getLocalizedMaterial(work.material || '', locale);
-  const localizedDescription = getLocalizedDescription(work.description || '', locale);
+  const localizedTitle = getLocalizedTitle(work, locale);
+  const localizedMaterial = getLocalizedMaterial(work, locale);
+  const localizedDescription = getLocalizedDescription(work, locale);
   const localizedVenue = artist?.venue_slug
     ? getLocalizedVenueName(artist.venue_slug, locale)
     : (isKo ? artist?.venue_ko : (artist?.venue_slug || artist?.venue_ko));
@@ -176,13 +176,19 @@ export default function WorkCard({
             {localizedTitle}
           </h4>
 
-          {/* Material & Size */}
-          {(hasMaterial || hasSize) && (
+          {/* Material & Size & Duration */}
+          {(hasMaterial || hasSize || work.duration) && (
             <div className="pt-2 border-t border-white/10 space-y-1 font-mono text-xs text-white/60">
               {hasMaterial && (
                 <p className="leading-relaxed">
                   <span className="text-white/40 mr-1.5 font-bold">{isKo ? '재료:' : 'Material:'}</span>
                   {localizedMaterial}
+                </p>
+              )}
+              {work.duration && (
+                <p className="leading-relaxed">
+                  <span className="text-white/40 mr-1.5 font-bold">{isKo ? '러닝타임:' : 'Duration:'}</span>
+                  {work.duration}
                 </p>
               )}
               {hasSize && (

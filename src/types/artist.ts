@@ -5,6 +5,14 @@ export interface Work {
   size: string;
   description: string;
   images: string[];
+  title_ko?: string;
+  title_en?: string;
+  medium_ko?: string;
+  medium_en?: string;
+  duration?: string;
+  description_ko?: string;
+  description_en?: string;
+  image_file_hints?: string[];
 }
 
 export interface Artist {
@@ -19,6 +27,12 @@ export interface Artist {
   works: Work[];
   venue_ko?: string;
   venue_slug?: string;
+  bio_ko?: string;
+  bio_en?: string;
+  intro_ko?: string;
+  intro_en?: string;
+  city_country_ko?: string;
+  city_country_en?: string;
 }
 
 export interface Venue {

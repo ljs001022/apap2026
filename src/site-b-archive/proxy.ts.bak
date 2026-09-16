@@ -1,0 +1,143 @@
+import { NextResponse } from 'next/server';
+import type { NextRequest } from 'next/server';
+import { ACTIVE_LOCALES } from './i18n/config';
+
+export function proxy(request: NextRequest) {
+  const url = request.nextUrl.clone();
+  const pathname = url.pathname;
+
+  // 1. 제외 경로 설정: /api, /admin, 정적 파일(images, assets 등), Next.js 내부 에셋(_next)
+  if (
+    pathname.startsWith('/api') ||
+    pathname.startsWith('/admin') ||
+    pathname.startsWith('/_next') ||
+    pathname.startsWith('/images') ||
+    pathname.startsWith('/assets') ||
+    pathname.startsWith('/uploads') ||
+    pathname.includes('/images/') ||
+    pathname.includes('/assets/') ||
+    pathname.includes('/favicon.ico') ||
+    /\.(png|jpe?g|gif|webp|svg|ico|mp4|webm|pdf|json|woff2?|ttf)$/i.test(pathname)
+  ) {
+    return NextResponse.next();
+  }
+
+  // 2. 도메인(Host) 및 다국어(Locale) 감지
+  const host = request.headers.get('x-forwarded-host') || request.headers.get('host') || '';
+  const locales = ACTIVE_LOCALES;
+  
+  // 주소에 로케일(ko/en/ja/zh)이 누락되어 있는지 확인
+  const pathnameIsMissingLocale = locales.every(
+    (locale) => !pathname.startsWith(`/${locale}/`) && pathname !== `/${locale}`
+  );
+
+  // 로케일이 누락된 경우 기본값(ko)을 주입한 노멀라이즈된 경로 생성
+  const normalizedPath = pathnameIsMissingLocale
+    ? `/ko${pathname === '/' ? '' : pathname}`
+    : pathname;
+
+  // active_site 쿠키 확인 (로컬 개발 및 단일 도메인 테스트용 라우팅 상태 유지)
+  const activeSiteCookie = request.cookies.get('active_site')?.value;
+
+  // 3. 도메인 분기 및 리라이트
+  const isSiteADomain =
+    host.includes('2026.apap.or.kr') ||
+    host.includes('apap2026.vercel.app') ||
+    host.includes('apap2026');
+
+  // 3.1. 아카이브 강제 진입 경로 (/archive) 처리
+  if (pathname.startsWith('/archive')) {
+    const cleanPath = pathname.replace('/archive', '');
+    const archivePathIsMissingLocale = locales.every(
+      (locale) => !cleanPath.startsWith(`/${locale}/`) && cleanPath !== `/${locale}`
+    );
+    const targetPath = archivePathIsMissingLocale ? `/ko${cleanPath === '/' ? '' : cleanPath}` : cleanPath;
+    
+    url.pathname = `/site-b${targetPath}`;
+    const response = NextResponse.rewrite(url);
+    response.cookies.set('active_site', 'site-b', { path: '/' });
+    return response;
+  }
+
+  // 3.2. 명시적으로 site-a나 site-b 경로로 직접 들어온 경우 쿠키 세팅
+  if (pathname.startsWith('/site-a')) {
+    const response = NextResponse.next();
+    response.cookies.set('active_site', 'site-a', { path: '/' });
+    return response;
+  }
+  if (pathname.startsWith('/site-b')) {
+    const response = NextResponse.next();
+    response.cookies.set('active_site', 'site-b', { path: '/' });
+    return response;
+  }
+
+  // 3.3. 사이트 A 전용 도메인 (apap2026.vercel.app, 2026.apap.or.kr 등) 접속 시 항상 Site A로 분기
+  if (isSiteADomain) {
+    url.pathname = `/site-a${normalizedPath}`;
+    const response = NextResponse.rewrite(url);
+    response.cookies.set('active_site', 'site-a', { path: '/' });
+    return response;
+  }
+
+  // 3.4. root (/) 접근 시 언제나 8회차 랜딩(site-a)을 메인으로 초기화 및 쿠키 갱신
+  if (pathname === '/') {
+    url.pathname = `/site-a/ko`;
+    const response = NextResponse.rewrite(url);
+    response.cookies.set('active_site', 'site-a', { path: '/' });
+    return response;
+  }
+
+  // 3.5. 8회차 전용 서브페이지 및 레퍼런스는 항상 Site A로 분기
+  if (
+    pathname.includes('/about') ||
+    pathname.includes('/exhibition') ||
+    pathname.includes('/program') ||
+    pathname.includes('/community') ||
+    (pathname.includes('/visit') && activeSiteCookie !== 'site-b') ||
+    pathname.includes('/concept-a') ||
+    pathname.includes('/concept-blackwhite') ||
+    pathname.includes('/concept-bw')
+  ) {
+    url.pathname = `/site-a${normalizedPath}`;
+    const response = NextResponse.rewrite(url);
+    response.cookies.set('active_site', 'site-a', { path: '/' });
+    return response;
+  }
+
+  // 3.6. 일반적인 다국어 경로 접근 시:
+  // 순수 언어 루트 경로(/ko, /en, /ja, /zh 등)는 기본적으로 8회차 메인 랜딩(site-a)으로 연결
+  const isPureLocaleRoot = locales.some((l) => pathname === `/${l}` || pathname === `/${l}/`);
+
+  if (isPureLocaleRoot) {
+    url.pathname = `/site-a${normalizedPath}`;
+    const response = NextResponse.rewrite(url);
+    response.cookies.set('active_site', 'site-a', { path: '/' });
+    return response;
+  }
+
+  if (activeSiteCookie === 'site-b') {
+    url.pathname = `/site-b${normalizedPath}`;
+    return NextResponse.rewrite(url);
+  } else {
+    // 기본값은 8회차 랜딩(site-a)으로 노출
+    url.pathname = `/site-a${normalizedPath}`;
+    const response = NextResponse.rewrite(url);
+    response.cookies.set('active_site', 'site-a', { path: '/' });
+    return response;
+  }
+}
+
+export const config = {
+  matcher: [
+    /*
+     * Match all request paths except for:
+     * - api (API routes)
+     * - _next/static (static files)
+     * - _next/image (image optimization files)
+     * - favicon.ico, sitemap.xml, robots.txt (metadata files)
+     * - images, assets, uploads (public asset directories)
+     * - Any path with a file extension (e.g. .png, .jpg, .gif, .webp, .svg, .json, .ico)
+     */
+    '/((?!api|_next/static|_next/image|favicon.ico|sitemap.xml|robots.txt|images|assets|uploads|.*\\..*).*)',
+  ],
+};

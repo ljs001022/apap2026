@@ -40,7 +40,7 @@ export default function ArtistCard({
     ? getLocalizedVenueName(artist.venue_slug, locale)
     : (isKo ? artist.venue_ko : (artist.venue_slug || artist.venue_ko));
 
-  const localizedNationality = getLocalizedNationality(artist.nationality || '', locale);
+  const localizedNationality = getLocalizedNationality(artist, locale);
 
   const worksCount = artist.works?.length || 0;
   const worksLabel = isKo

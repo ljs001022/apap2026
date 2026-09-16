@@ -123,7 +123,6 @@ function PaginatedArtistCarousel({ artists, theme, locale, onArtistClick }: { ar
 
 interface ArtistGridProps {
   categories: CategoryGroup<Artist>[];
-  allLabel?: string;
   className?: string;
   onArtistClick?: (artist: Artist) => void;
   showModalInternally?: boolean;
@@ -133,7 +132,6 @@ interface ArtistGridProps {
 
 export default function ArtistGrid({
   categories,
-  allLabel,
   className = '',
   onArtistClick,
   showModalInternally = true,

@@ -26,8 +26,29 @@ export function formatArtworkTitle(title: string): string {
 /**
  * Returns the localized work title.
  */
-export function getLocalizedTitle(title: string, locale: string = 'ko'): string {
-  if (!title) return '';
+/**
+ * Returns the localized work title.
+ */
+export function getLocalizedWorkTitle(
+  work: { title?: string; title_ko?: string; title_en?: string },
+  locale: string = 'ko'
+): string {
+  const isKo = locale === 'ko';
+  if (isKo && work.title_ko && work.title_ko.trim()) {
+    return formatArtworkTitle(work.title_ko);
+  }
+  if (!isKo && work.title_en && work.title_en.trim()) {
+    return formatArtworkTitle(work.title_en);
+  }
+  return getLocalizedTitle(work.title || '', locale);
+}
+
+export function getLocalizedTitle(titleOrWork: any, locale: string = 'ko'): string {
+  if (!titleOrWork) return '';
+  if (typeof titleOrWork === 'object') {
+    return getLocalizedWorkTitle(titleOrWork, locale);
+  }
+  const title = String(titleOrWork);
   const isKo = locale === 'ko';
   const lines = title.split(/\n+/).map((l) => l.trim()).filter(Boolean);
   let resolved = isKo ? lines[0] : (lines[1] || lines[0]);
@@ -60,8 +81,26 @@ export function getLocalizedSize(size: string, locale: string = 'ko'): string {
 /**
  * Returns the localized material string.
  */
-export function getLocalizedMaterial(material: string, locale: string = 'ko'): string {
-  if (!material) return '';
+export function getLocalizedWorkMaterial(
+  work: { material?: string; medium_ko?: string; medium_en?: string },
+  locale: string = 'ko'
+): string {
+  const isKo = locale === 'ko';
+  if (isKo && work.medium_ko && work.medium_ko.trim()) {
+    return work.medium_ko;
+  }
+  if (!isKo && work.medium_en && work.medium_en.trim()) {
+    return work.medium_en;
+  }
+  return getLocalizedMaterial(work.material || '', locale);
+}
+
+export function getLocalizedMaterial(materialOrWork: any, locale: string = 'ko'): string {
+  if (!materialOrWork) return '';
+  if (typeof materialOrWork === 'object') {
+    return getLocalizedWorkMaterial(materialOrWork, locale);
+  }
+  const material = String(materialOrWork);
   const isKo = locale === 'ko';
   const lines = material.split(/\n+/).map((l) => l.trim()).filter(Boolean);
   if (lines.length >= 2) {
@@ -89,8 +128,26 @@ export function getLocalizedMaterial(material: string, locale: string = 'ko'): s
 /**
  * Returns localized description.
  */
-export function getLocalizedDescription(description: string, locale: string = 'ko'): string {
-  if (!description) return '';
+export function getLocalizedWorkDescription(
+  work: { description?: string; description_ko?: string; description_en?: string },
+  locale: string = 'ko'
+): string {
+  const isKo = locale === 'ko';
+  if (isKo && work.description_ko && work.description_ko.trim()) {
+    return work.description_ko;
+  }
+  if (!isKo && work.description_en && work.description_en.trim()) {
+    return work.description_en;
+  }
+  return getLocalizedDescription(work.description || '', locale);
+}
+
+export function getLocalizedDescription(descriptionOrTarget: any, locale: string = 'ko'): string {
+  if (!descriptionOrTarget) return '';
+  if (typeof descriptionOrTarget === 'object') {
+    return getLocalizedWorkDescription(descriptionOrTarget, locale);
+  }
+  const description = String(descriptionOrTarget);
   const isKo = locale === 'ko';
   const paragraphs = description.split(/\n\n+/).map((p) => p.trim()).filter(Boolean);
   if (paragraphs.length <= 1) return description;
@@ -112,16 +169,51 @@ export function getLocalizedDescription(description: string, locale: string = 'k
 
   if (isKo) {
     return koParas.join('\n\n') || description;
-} else {
+  } else {
     return enParas.join('\n\n') || koParas.join('\n\n') || description;
   }
 }
 
 /**
+ * Returns localized intro.
+ */
+export function getLocalizedArtistIntro(
+  artist: { intro?: string; intro_ko?: string; intro_en?: string },
+  locale: string = 'ko'
+): string {
+  const isKo = locale === 'ko';
+  if (isKo && artist.intro_ko && artist.intro_ko.trim()) {
+    return artist.intro_ko;
+  }
+  if (!isKo && artist.intro_en && artist.intro_en.trim()) {
+    return artist.intro_en;
+  }
+  return getLocalizedDescription(artist.intro || '', locale);
+}
+
+/**
  * Returns localized bio.
  */
-export function getLocalizedBio(bio: string, locale: string = 'ko'): string {
-  if (!bio) return '';
+export function getLocalizedArtistBio(
+  artist: { bio?: string; bio_ko?: string; bio_en?: string },
+  locale: string = 'ko'
+): string {
+  const isKo = locale === 'ko';
+  if (isKo && artist.bio_ko && artist.bio_ko.trim()) {
+    return artist.bio_ko;
+  }
+  if (!isKo && artist.bio_en && artist.bio_en.trim()) {
+    return artist.bio_en;
+  }
+  return getLocalizedBio(artist.bio || '', locale);
+}
+
+export function getLocalizedBio(bioOrArtist: any, locale: string = 'ko'): string {
+  if (!bioOrArtist) return '';
+  if (typeof bioOrArtist === 'object') {
+    return getLocalizedArtistBio(bioOrArtist, locale);
+  }
+  const bio = String(bioOrArtist);
   const isKo = locale === 'ko';
   const blocks = bio.split(/\n\n+/).map((b) => b.trim()).filter(Boolean);
   if (blocks.length === 4) {
@@ -193,6 +285,7 @@ export function getLocalizedVenueName(venueSlug: string, locale: string = 'ko'):
     'outdoor-exhibition': { ko: '야외전시', en: 'Outdoor Exhibition' },
     '308-art-crew': { ko: '308아트', en: '308 Art Crew' },
     'korea-china-special': { ko: '한중특별전', en: 'Korea-China Special' },
+    'media-art-open-call': { ko: '미디어아트 공모작가', en: 'Media Art Open Call' },
   };
 
   const found = venueMap[venueSlug];
@@ -202,11 +295,26 @@ export function getLocalizedVenueName(venueSlug: string, locale: string = 'ko'):
   return venueSlug;
 }
 
-/**
- * Returns localized nationality string.
- */
-export function getLocalizedNationality(nationality: string, locale: string = 'ko'): string {
-  if (!nationality) return '';
+export function getLocalizedArtistNationality(
+  artist: { nationality?: string; city_country_ko?: string; city_country_en?: string },
+  locale: string = 'ko'
+): string {
+  const isKo = locale === 'ko';
+  if (isKo && artist.city_country_ko && artist.city_country_ko.trim()) {
+    return artist.city_country_ko;
+  }
+  if (!isKo && artist.city_country_en && artist.city_country_en.trim()) {
+    return artist.city_country_en;
+  }
+  return getLocalizedNationality(artist.nationality || '', locale);
+}
+
+export function getLocalizedNationality(nationalityOrArtist: any, locale: string = 'ko'): string {
+  if (!nationalityOrArtist) return '';
+  if (typeof nationalityOrArtist === 'object') {
+    return getLocalizedArtistNationality(nationalityOrArtist, locale);
+  }
+  const nationality = String(nationalityOrArtist);
   const isKo = locale === 'ko';
   const clean = nationality.split(/\n+/)[0].trim();
   if (isKo) return clean;
