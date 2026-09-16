@@ -618,7 +618,7 @@ export default function SiteBPage({ params }: PageProps) {
         }`}
       >
         <Link 
-          href={`/site-a/${validLocale}`} 
+          href={`/${validLocale}`} 
           className="font-mono font-bold text-lg tracking-wider text-white select-none hover:text-[#B4FF39] transition-colors"
         >
           APAP_8<span className="text-[#B4FF39] animate-pulse">▌</span>
@@ -646,7 +646,7 @@ export default function SiteBPage({ params }: PageProps) {
             {(['ko', 'en'] as const).map((loc) => (
               <Link
                 key={loc}
-                href={`/site-a/${loc}`}
+                href={`/${loc}`}
                 className={`px-2 py-1 uppercase transition-colors ${
                   validLocale === loc
                     ? 'bg-[#B4FF39]/20 text-[#B4FF39] font-bold'
@@ -929,7 +929,7 @@ export default function SiteBPage({ params }: PageProps) {
           {newsData.map((n, index) => (
             <a
               key={index}
-              href={`/site-a/${validLocale}`}
+              href={`/${validLocale}`}
               className="block bg-[#B4FF39]/[0.01] hover:bg-[#B4FF39]/[0.03] border border-[#B4FF39]/15 hover:border-[#B4FF39] p-6 transition-all rounded-sm flex flex-col justify-between gap-12 group cursor-pointer"
             >
               <div className="flex justify-between items-center font-mono text-[10px] text-[#5A7A85]">
