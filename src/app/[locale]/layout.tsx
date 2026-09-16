@@ -3,6 +3,7 @@ import { NextIntlClientProvider } from 'next-intl';
 import { getMessages, setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import DustCanvas from '@/components/site-a/DustCanvas';
+import { ACTIVE_LOCALES, Locale } from '@/i18n/config';
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -12,16 +13,15 @@ interface LayoutProps {
 }
 
 export function generateStaticParams() {
-  return [{ locale: 'ko' }, { locale: 'en' }, { locale: 'ja' }, { locale: 'zh' }];
+  return ACTIVE_LOCALES.map((locale) => ({ locale }));
 }
 
 export default async function SiteALayout({ children, params }: LayoutProps) {
   const { locale } = await params;
   setRequestLocale(locale);
 
-  // 지원하는 로케일인지 검증
-  const locales = ['ko', 'en', 'ja', 'zh'];
-  if (!locales.includes(locale)) {
+  // 지원하는 활성 로케일인지 검증 (비활성화된 ja, zh는 404 반환)
+  if (!ACTIVE_LOCALES.includes(locale as Locale)) {
     notFound();
   }
 

@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
+import { ACTIVE_LOCALES } from './i18n/config';
 
 export function proxy(request: NextRequest) {
   const url = request.nextUrl.clone();
@@ -23,7 +24,7 @@ export function proxy(request: NextRequest) {
 
   // 2. 도메인(Host) 및 다국어(Locale) 감지
   const host = request.headers.get('x-forwarded-host') || request.headers.get('host') || '';
-  const locales = ['ko', 'en', 'ja', 'zh'];
+  const locales = ACTIVE_LOCALES;
   
   // 주소에 로케일(ko/en/ja/zh)이 누락되어 있는지 확인
   const pathnameIsMissingLocale = locales.every(

@@ -7,6 +7,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import ArtistSection from '@/components/site-a/ArtistSection';
 import WorksSection from '@/components/site-a/WorksSection';
 import PosterBannerSection from '@/components/site-a/PosterBannerSection';
+import { ACTIVE_LOCALES } from '@/i18n/config';
 
 // Types & interfaces
 interface PageProps {
@@ -643,7 +644,7 @@ export default function SiteBPage({ params }: PageProps) {
 
           {/* Lang Selector */}
           <div className="flex border border-[#B4FF39]/25 rounded-sm overflow-hidden text-[10px] font-mono bg-black/40">
-            {(['ko', 'en'] as const).map((loc) => (
+            {ACTIVE_LOCALES.map((loc) => (
               <Link
                 key={loc}
                 href={`/${loc}`}

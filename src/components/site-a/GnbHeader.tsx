@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
+import { ACTIVE_LOCALES, LOCALE_LABELS, Locale } from '@/i18n/config';
 
 interface GnbHeaderProps {
   locale: string;
@@ -145,19 +146,17 @@ export default function GnbHeader({ locale }: GnbHeaderProps) {
 
           <div className="flex items-center gap-4">
             <div className="flex items-center gap-2 font-mono text-caption font-bold">
-              <Link
-                href={`/ko${pathname.replace(`/${locale}`, '')}`}
-                className={`transition-colors ${isKo ? 'text-white' : 'text-[#5C5C5C] hover:text-white'}`}
-              >
-                KR
-              </Link>
-              <span className="text-[#2E2E2E]">|</span>
-              <Link
-                href={`/en${pathname.replace(`/${locale}`, '')}`}
-                className={`transition-colors ${!isKo ? 'text-white' : 'text-[#5C5C5C] hover:text-white'}`}
-              >
-                EN
-              </Link>
+              {ACTIVE_LOCALES.map((loc, idx) => (
+                <React.Fragment key={loc}>
+                  {idx > 0 && <span className="text-[#2E2E2E]">|</span>}
+                  <Link
+                    href={`/${loc}${pathname.replace(`/${locale}`, '')}`}
+                    className={`transition-colors ${locale === loc ? 'text-white' : 'text-[#5C5C5C] hover:text-white'}`}
+                  >
+                    {LOCALE_LABELS[loc]}
+                  </Link>
+                </React.Fragment>
+              ))}
             </div>
             <button
               onClick={() => setDrawerOpen(!drawerOpen)}
