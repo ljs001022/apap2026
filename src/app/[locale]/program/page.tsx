@@ -226,8 +226,8 @@ export default function ProgramPage({ params }: PageProps) {
               </h2>
               <p className="text-base sm:text-lg text-[#B9B9B9] font-light leading-relaxed mt-2">
                 {isKo
-                  ? '공공예술의 미래 담론을 형성하고 APAP8의 성과와 비전을 학술적·실천적으로 공유하는 2개 세션의 토론 프로그램입니다.'
-                  : 'Scholarly discussions establishing future public art discourses and reflecting on APAP8 outcomes.'}
+                  ? 'APAP8의 기획 방향과 공공예술의 동시대적 가치를 고찰하고 시민과 함께 안양공공예술프로젝트가 나아갈 미래 방향을 모색하는 담론형성의 장입니다.'
+                  : 'Scholarly discussions reflecting on the curatorial direction of APAP8 and exploring future directions of public art together with citizens.'}
               </p>
             </div>
 

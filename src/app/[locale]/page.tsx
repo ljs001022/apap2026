@@ -652,8 +652,8 @@ export default function SiteAPage({ params }: PageProps) {
                       </h3>
                       <p className="text-body text-[#B9B9B9] font-light leading-relaxed line-clamp-2">
                         {isKo
-                          ? '공공예술의 미래 담론을 형성하고 APAP8의 성과와 아시아 공공예술로의 도약을 학술적으로 모색하는 토론회입니다.'
-                          : 'Scholarly discussions establishing future public art discourses and reflecting on APAP8 outcomes.'}
+                          ? 'APAP8의 기획 방향과 공공예술의 동시대적 가치를 고찰하고 시민과 함께 안양공공예술프로젝트가 나아갈 미래 방향을 모색하는 담론형성의 장입니다.'
+                          : 'Scholarly discussions reflecting on the curatorial direction of APAP8 and exploring future directions of public art together with citizens.'}
                       </p>
                     </div>
                     <div className="flex items-center justify-between pt-1.5 border-t border-white/10 text-xs font-mono text-white/50 group-hover:text-white transition-colors">
@@ -935,8 +935,8 @@ export default function SiteAPage({ params }: PageProps) {
                       </h3>
                       <p className="text-sm lg:text-base text-[#B9B9B9] mt-2 font-light">
                         {isKo
-                          ? '공공예술의 동시대적 가치와 미래 방향을 학술적으로 고찰하고, APAP8의 성과를 아시아 공공예술 네트워크로 확산하는 학술 프로그램입니다.'
-                          : 'Scholarly forums proposing future directions and reflecting on APAP8 outcomes.'}
+                          ? 'APAP8의 기획 방향과 공공예술의 동시대적 가치를 고찰하고 시민과 함께 안양공공예술프로젝트가 나아갈 미래 방향을 모색하는 담론형성의 장입니다.'
+                          : 'Scholarly discussions reflecting on the curatorial direction of APAP8 and exploring future directions of public art together with citizens.'}
                       </p>
                     </div>
 
@@ -1920,8 +1920,8 @@ export default function SiteAPage({ params }: PageProps) {
         <div className="space-y-4">
           <p className="text-caption text-[#B9B9B9] leading-relaxed font-light">
             {isKo
-              ? '공공예술의 미래 담론을 형성하고 APAP8의 성과를 공유하는 2개의 학술 세션입니다.'
-              : 'Scholarly discussions establishing future public art discourses and reflecting on APAP8 outcomes.'}
+              ? 'APAP8의 기획 방향과 공공예술의 동시대적 가치를 고찰하고 시민과 함께 안양공공예술프로젝트가 나아갈 미래 방향을 모색하는 담론형성의 장입니다.'
+              : 'Scholarly discussions reflecting on the curatorial direction of APAP8 and exploring future directions of public art together with citizens.'}
           </p>
 
           <div className="space-y-3">
