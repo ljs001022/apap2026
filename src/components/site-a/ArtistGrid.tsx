@@ -231,7 +231,9 @@ export default function ArtistGrid({
           </p>
           {currentVenueInfo.missingArtists && currentVenueInfo.missingArtists.length > 0 && (
             <div className="mt-2.5 pt-2 border-t border-black/10 text-[11px] font-mono text-black/75 flex flex-wrap items-center gap-1.5">
-              <span className="font-bold text-black bg-black/10 px-1.5 py-0.5">추가 참여 작가 (자료 준비 중)</span>
+              <span className="font-bold text-black bg-black/10 px-1.5 py-0.5">
+                {isKo ? '추가 참여 작가' : 'Additional Participating Artists'}
+              </span>
               <span>
                 {currentVenueInfo.missingArtists.map((a: { name_ko: string; name_en: string }) => (isKo ? a.name_ko : a.name_en)).join(', ')}
               </span>
