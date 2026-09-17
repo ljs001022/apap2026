@@ -4,7 +4,7 @@ import React from 'react';
 import Link from 'next/link';
 import GnbHeader from '@/components/site-a/GnbHeader';
 import Footer from '@/components/site-a/Footer';
-import { ArrowLeft } from 'lucide-react';
+import { ArrowLeft, Video } from 'lucide-react';
 
 interface PageProps {
   params: Promise<{ locale: string }>;
@@ -246,6 +246,61 @@ export default function AboutPage({ params }: PageProps) {
                     {artist}
                   </span>
                 ))}
+              </div>
+            </div>
+          </section>
+
+          {/* Block 4: Promotional Video */}
+          <section className="space-y-6">
+            <div className="flex items-center gap-3 font-mono text-xs font-bold text-[#8C8C8C] uppercase tracking-wider border-b border-white/10 pb-2">
+              <span className="bg-white text-black px-2 py-0.5 text-[10px] font-black">04</span>
+              <span>{isKo ? '홍보영상' : 'PROMOTIONAL VIDEO'}</span>
+            </div>
+
+            <div>
+              <h2 className="text-2xl sm:text-4xl font-extrabold leading-snug">
+                {isKo ? 'APAP8 공식 홍보영상 & 티저' : 'APAP8 Official Promo Video & Teaser'}
+              </h2>
+              <p className="font-mono text-xs sm:text-sm text-[#8C8C8C] mt-2">
+                {isKo
+                  ? 'ArteX : 예술대전환_안양 무릉도원 미디어 티저 및 현장 영상'
+                  : 'ArteX : Art Transformation Teaser & On-site Media'}
+              </p>
+            </div>
+
+            <div className="border border-white/30 bg-black p-4 sm:p-6 space-y-4">
+              <div className="relative w-full aspect-video border border-dashed border-white/30 bg-[#0C0C0C] flex flex-col items-center justify-center p-6 text-center group overflow-hidden">
+                <div className="absolute inset-0 opacity-15 bg-[radial-gradient(#fff_1px,transparent_1px)] [background-size:16px_16px] pointer-events-none" />
+                <div className="relative z-10 mb-4 inline-flex items-center gap-2 border border-white/40 bg-black/80 px-3 py-1 font-mono text-[10px] text-white">
+                  <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+                  <span>YOUTUBE EMBED READY</span>
+                </div>
+                <div className="relative z-10 w-16 h-16 sm:w-20 sm:h-20 rounded-full border-2 border-white/60 bg-white/10 flex items-center justify-center mb-4 shadow-[0_0_20px_rgba(255,255,255,0.1)]">
+                  <Video className="w-8 h-8 sm:w-10 sm:h-10 text-white ml-0.5" />
+                </div>
+                <h4 className="relative z-10 text-base sm:text-lg font-bold text-white mb-1">
+                  {isKo ? 'APAP8 공식 홍보영상이 곧 공개됩니다' : 'APAP8 Official Promo Video Coming Soon'}
+                </h4>
+                <p className="relative z-10 text-xs text-[#8C8C8C] max-w-md font-light leading-relaxed">
+                  {isKo
+                    ? '유튜브 영상 등록 준비가 완료되었습니다. 영상 공개 시 본 화면에서 고화질로 바로 시청하실 수 있습니다.'
+                    : 'Ready for YouTube integration. The video player will stream directly here once published.'}
+                </p>
+              </div>
+
+              <div className="bg-white/[0.02] border border-white/10 p-4 grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs font-mono">
+                <div>
+                  <span className="text-[#8C8C8C] block text-[10px]">■ {isKo ? '영상 제목' : 'TITLE'}</span>
+                  <span className="text-white font-medium">{isKo ? 'APAP8 ArteX : 예술대전환 공식 티저' : 'APAP8 ArteX Official Teaser'}</span>
+                </div>
+                <div>
+                  <span className="text-[#8C8C8C] block text-[10px]">■ {isKo ? '주최 / 주관' : 'ORGANIZER'}</span>
+                  <span className="text-white font-medium">{isKo ? '안양시 · 안양문화예술재단' : 'Anyang City & AFAC'}</span>
+                </div>
+                <div>
+                  <span className="text-[#8C8C8C] block text-[10px]">■ {isKo ? '공개 플랫폼' : 'PLATFORM'}</span>
+                  <span className="text-white font-medium">YouTube (1080p 60fps)</span>
+                </div>
               </div>
             </div>
           </section>
