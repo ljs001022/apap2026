@@ -1329,7 +1329,7 @@ export default function SiteAPage({ params }: PageProps) {
                 </div>
                 <div className="flex items-center gap-2 sm:gap-3">
                   <a
-                    href="https://www.instagram.com/apap.anyang/"
+                    href="https://instagram.com/apap.official"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="w-8 h-8 sm:w-10 sm:h-10 border border-white/20 hover:border-white hover:bg-white hover:text-black transition-colors flex items-center justify-center rounded-full text-white"
@@ -1338,7 +1338,7 @@ export default function SiteAPage({ params }: PageProps) {
                     <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4 sm:w-5 sm:h-5"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
                   </a>
                   <a
-                    href="https://www.facebook.com/apap.anyang"
+                    href="https://www.facebook.com/AnyangPublicArtProject/"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="w-8 h-8 sm:w-10 sm:h-10 border border-white/20 hover:border-white hover:bg-white hover:text-black transition-colors flex items-center justify-center rounded-full text-white"
@@ -1565,7 +1565,7 @@ export default function SiteAPage({ params }: PageProps) {
                       </div>
                       <div className="text-xs font-mono text-[#D4D4D4] space-y-1">
                         <div>■ 위치: 안양파빌리온 앞 광장 일대</div>
-                        <div>■ 운영: 화 - 일 19:00 – 22:00 (월요일 휴무 / 10.5 정상운영, 10.6 휴무)</div>
+                        <div>■ 운영: 화 - 일 19:00 – 22:00 (월요일 휴무 / 10.5.(월) 정상운영, 10.6.(화) 휴무)</div>
                         <div className="text-white font-medium">■ 상영: 〈빛의 폭포〉 매 정시 15분간 / 〈오색운〉 매시 15분~정시 상영</div>
                       </div>
                     </div>
@@ -1627,13 +1627,13 @@ export default function SiteAPage({ params }: PageProps) {
                     {/* Main Area */}
                     <div className="space-y-1.5 border-r border-white/10 pr-4">
                       <span className="font-mono text-xs lg:text-sm text-[#8C8C8C] font-semibold block">
-                        ■ {isKo ? '행사장' : 'Venue'}
+                        ■ {isKo ? '장소' : 'Venue'}
                       </span>
                       <div className="text-base lg:text-lg font-bold text-white">
-                        {isKo ? '안양예술공원 일원' : 'Anyang Art Park'}
+                        {isKo ? '안양예술공원 일대' : 'Anyang Art Park Area'}
                       </div>
                       <p className="text-xs lg:text-sm text-[#B9B9B9] font-light">
-                        {isKo ? '산책로, 안양파빌리온 메인홀, 안양천 변 야외 공간' : 'Trails, Pavilion Main Hall, Anyang Stream'}
+                        {isKo ? '안양파빌리온 및 안양예술공원 일대, 학운공원 내 오픈스쿨' : 'Anyang Pavilion, Anyang Art Park Area, Open School in Hagun Park'}
                       </p>
                     </div>
 

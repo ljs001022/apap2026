@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ChevronLeft, ChevronRight, Sparkles } from 'lucide-react';
+import { ChevronLeft, ChevronRight, ArrowUpRight, Sparkles } from 'lucide-react';
 
 interface HeroSliderProps {
   locale: 'ko' | 'en';
@@ -20,18 +20,8 @@ interface PavilionWork {
   slug: string;
 }
 
+// 다이고 우시 제외한 3개 대표 작품 (박재훈, 스튜디오 올레오밍구스, 처 지엔취안)
 const PAVILION_WORKS: PavilionWork[] = [
-  {
-    id: 'daigo-ushi',
-    titleKo: '〈D#31 AI 새장: 안양의 메아리〉',
-    titleEn: '〈D#31 AI Birdcage : Echoes of Anyang〉',
-    artistKo: '다이고 우시',
-    artistEn: 'Daigo Ushi',
-    genreKo: '단채널 비디오(4K) · 8분',
-    genreEn: 'Single-channel video (4K) · 8 min.',
-    image: '/assets/artists/e-pavilion-media/daigo-ushi/work-1-1.webp',
-    slug: 'daigo-ushi',
-  },
   {
     id: 'jaehun-park',
     titleKo: '〈낙원의 위상학〉',
@@ -67,27 +57,69 @@ const PAVILION_WORKS: PavilionWork[] = [
   },
 ];
 
+// 총 4개 슬라이드: 0 = 메인 포스터, 1 = 박재훈, 2 = 스튜디오 올레오밍구스, 3 = 처 지엔취안
+const TOTAL_SLIDES = 1 + PAVILION_WORKS.length; // 4
+
 export default function HeroSlider({ locale }: HeroSliderProps) {
   const isKo = locale === 'ko';
-  // Total 2 slides: 0 = Main Poster, 1 = Anyang Pavilion 2x2 Grid
-  const [currentSlide, setCurrentSlide] = useState<0 | 1>(0);
+  const [currentSlide, setCurrentSlide] = useState<number>(0);
   const [isPaused, setIsPaused] = useState(false);
   const touchStartX = useRef<number | null>(null);
+  const timerRef = useRef<NodeJS.Timeout | null>(null);
+
+  // 타이머 실행 함수
+  const startTimer = useCallback(() => {
+    if (timerRef.current) {
+      clearInterval(timerRef.current);
+    }
+    timerRef.current = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % TOTAL_SLIDES);
+    }, 6000);
+  }, []);
+
+  // 사용자 수동 조작 시 타이머 초기화 (기존 타이머 제거 후 새로 6초 재시작)
+  const resetTimer = useCallback(() => {
+    if (timerRef.current) {
+      clearInterval(timerRef.current);
+      timerRef.current = null;
+    }
+    if (!isPaused) {
+      startTimer();
+    }
+  }, [isPaused, startTimer]);
+
+  // Autoplay (6초) 및 마우스 hover 시 일시 정지 처리
+  useEffect(() => {
+    if (isPaused) {
+      if (timerRef.current) {
+        clearInterval(timerRef.current);
+        timerRef.current = null;
+      }
+    } else {
+      startTimer();
+    }
+    return () => {
+      if (timerRef.current) {
+        clearInterval(timerRef.current);
+        timerRef.current = null;
+      }
+    };
+  }, [isPaused, startTimer]);
 
   const nextSlide = useCallback(() => {
-    setCurrentSlide((prev) => (prev === 0 ? 1 : 0));
-  }, []);
+    setCurrentSlide((prev) => (prev + 1) % TOTAL_SLIDES);
+    resetTimer();
+  }, [resetTimer]);
 
   const prevSlide = useCallback(() => {
-    setCurrentSlide((prev) => (prev === 0 ? 1 : 0));
-  }, []);
+    setCurrentSlide((prev) => (prev - 1 + TOTAL_SLIDES) % TOTAL_SLIDES);
+    resetTimer();
+  }, [resetTimer]);
 
-  // Autoplay (6 seconds)
-  useEffect(() => {
-    if (isPaused) return;
-    const interval = setInterval(nextSlide, 6000);
-    return () => clearInterval(interval);
-  }, [isPaused, nextSlide]);
+  const goToSlide = useCallback((index: number) => {
+    setCurrentSlide(index);
+    resetTimer();
+  }, [resetTimer]);
 
   // Keyboard navigation
   const handleKeyDown = (e: React.KeyboardEvent) => {
@@ -123,6 +155,9 @@ export default function HeroSlider({ locale }: HeroSliderProps) {
     if (el) el.scrollIntoView({ behavior: 'smooth' });
   };
 
+  // 현재 슬라이드가 작품 슬라이드인 경우(1, 2, 3) 해당 작품 데이터
+  const activeWork = currentSlide > 0 ? PAVILION_WORKS[currentSlide - 1] : null;
+
   return (
     <div
       className="relative w-full h-full max-sm:aspect-square max-sm:max-h-[768px] overflow-hidden flex items-center justify-center bg-black select-none group focus:outline-none"
@@ -132,20 +167,21 @@ export default function HeroSlider({ locale }: HeroSliderProps) {
       onMouseLeave={() => setIsPaused(false)}
       onTouchStart={handleTouchStart}
       onTouchEnd={handleTouchEnd}
-      aria-label={isKo ? '메인 포스터 및 아이파빌리온 대표작 슬라이더' : 'Main Poster & i Pavilion Slider'}
+      aria-label={isKo ? '메인 포스터 및 대표 출품작 슬라이더' : 'Main Poster & Featured Artworks Slider'}
     >
       {/* Slide Layer */}
       <div className="relative w-full h-full flex items-center justify-center overflow-hidden">
         <AnimatePresence mode="wait">
           {currentSlide === 0 ? (
-            /* ── Slide 1: Main Poster (Clean, No Zoom) ── */
+            /* ── Slide 1: Main Poster (Clean, Responsive Picture) ── */
             <motion.div
               key="slide-poster"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.5, ease: 'easeInOut' }}
-              className="w-full h-full flex items-center justify-center"
+              className="w-full h-full flex items-center justify-center cursor-pointer"
+              onClick={scrollToExhibition}
             >
               <picture className="w-full h-full flex items-center justify-center">
                 <source
@@ -169,65 +205,72 @@ export default function HeroSlider({ locale }: HeroSliderProps) {
                 />
               </picture>
             </motion.div>
-          ) : (
-            /* ── Slide 2: Anyang Pavilion (2x2 Grid, Grayscale -> Color on Hover) ── */
+          ) : activeWork ? (
+            /* ── Slides 2, 3, 4: Individual Artwork Still Frame Slides ── */
             <motion.div
-              key="slide-pavilion-2x2"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.5, ease: 'easeInOut' }}
-              className="w-full h-full p-2 pb-13 sm:p-3.5 sm:pb-16 flex flex-col justify-center items-center bg-black"
+              key={`slide-work-${activeWork.id}`}
+              initial={{ opacity: 0, scale: 0.98 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 1.02 }}
+              transition={{ duration: 0.6, ease: 'easeOut' }}
+              className="relative w-full h-full flex items-center justify-center bg-[#070707] cursor-pointer group/slide"
+              onClick={scrollToExhibition}
             >
-              <div className="w-full h-full max-w-[1400px] grid grid-cols-2 grid-rows-2 gap-2 sm:gap-3">
-                {PAVILION_WORKS.map((work, idx) => (
-                  <div
-                    key={work.id}
-                    role="button"
-                    tabIndex={0}
-                    onClick={scrollToExhibition}
-                    className="relative group/quadrant overflow-hidden bg-[#0C0C0C] border border-white/20 hover:border-white transition-all duration-300 flex items-center justify-center cursor-pointer"
-                  >
-                    {/* Background Still Image: Grayscale by default, Full Color on cursor hover */}
-                    <img
-                      src={work.image}
-                      alt={isKo ? `${work.artistKo} - ${work.titleKo}` : `${work.artistEn} - ${work.titleEn}`}
-                      className="w-full h-full object-cover grayscale contrast-105 group-hover/quadrant:grayscale-0 group-hover/quadrant:scale-105 transition-all duration-500 ease-out"
-                      loading="eager"
-                    />
+              {/* Subtle ambient blur background */}
+              <img
+                src={activeWork.image}
+                alt=""
+                aria-hidden="true"
+                className="absolute inset-0 w-full h-full object-cover blur-2xl opacity-30 scale-110 pointer-events-none"
+              />
 
-                    {/* Dark gradient for crisp text legibility */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent pointer-events-none transition-opacity duration-300 group-hover/quadrant:from-black/70" />
+              {/* Main Still Image */}
+              <div className="relative w-full h-full flex items-center justify-center p-2 sm:p-4 pb-14 sm:pb-16">
+                <img
+                  src={activeWork.image}
+                  alt={isKo ? `${activeWork.artistKo} - ${activeWork.titleKo}` : `${activeWork.artistEn} - ${activeWork.titleEn}`}
+                  className="max-w-full max-h-full object-contain border border-white/10 shadow-2xl transition-transform duration-700 ease-out group-hover/slide:scale-[1.01]"
+                  loading="eager"
+                />
+              </div>
 
-                    {/* Top-left number badge */}
-                    <div className="absolute top-2 left-2 sm:top-3 sm:left-3 pointer-events-none">
-                      <span className="font-mono text-[9px] sm:text-[10px] font-black px-1.5 py-0.5 bg-black/80 border border-white/30 text-white group-hover/quadrant:bg-white group-hover/quadrant:text-black group-hover/quadrant:border-white transition-colors">
-                        0{idx + 1}
-                      </span>
-                    </div>
+              {/* Gradient Scrims for text legibility */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-black/60 pointer-events-none" />
 
-                    {/* Top-right subtle hint on hover */}
-                    <div className="absolute top-2 right-2 sm:top-3 sm:right-3 opacity-0 group-hover/quadrant:opacity-100 transition-opacity duration-300 pointer-events-none hidden sm:flex items-center gap-1 bg-black/80 border border-white/40 px-2 py-0.5">
-                      <Sparkles className="w-3 h-3 text-white" />
-                      <span className="font-mono text-[9px] font-bold text-white uppercase tracking-wider">
-                        COLOR ON
-                      </span>
-                    </div>
+              {/* Top-Left: Badge & Section Info */}
+              <div className="absolute top-3 left-3 sm:top-5 sm:left-6 flex items-center gap-2 pointer-events-none">
+                <span className="font-mono text-[9px] sm:text-[11px] font-black px-2 py-0.5 bg-white text-black tracking-wider">
+                  0{currentSlide + 1}
+                </span>
+                <span className="font-mono text-[9px] sm:text-[11px] font-bold text-white/90 bg-black/70 border border-white/25 px-2 py-0.5 tracking-wider uppercase backdrop-blur-sm">
+                  {isKo ? '안양파빌리온 대표작' : 'ANYANG PAVILION'}
+                </span>
+              </div>
 
-                    {/* Bottom Work Information */}
-                    <div className="absolute bottom-2 left-2 right-2 sm:bottom-3 sm:left-3 sm:right-3 pointer-events-none transition-transform duration-300 space-y-0.5">
-                      <div className="font-mono text-[9px] sm:text-[11px] text-[#A3A3A3] group-hover/quadrant:text-white/90 transition-colors uppercase tracking-wider truncate">
-                        {isKo ? work.artistKo : work.artistEn}
-                      </div>
-                      <h4 className="text-[11px] sm:text-xs md:text-sm font-bold text-white truncate drop-shadow-md">
-                        {isKo ? work.titleKo : work.titleEn}
-                      </h4>
-                    </div>
-                  </div>
-                ))}
+              {/* Top-Right: Detail Action Hint */}
+              <div className="absolute top-3 right-3 sm:top-5 sm:right-6 pointer-events-none hidden sm:flex items-center gap-1.5 bg-black/70 border border-white/25 px-2.5 py-1 text-white/90 group-hover/slide:bg-white group-hover/slide:text-black group-hover/slide:border-white transition-all backdrop-blur-sm">
+                <span className="font-mono text-[10px] font-bold uppercase tracking-wider">
+                  {isKo ? '전시 바로가기' : 'VIEW EXHIBITION'}
+                </span>
+                <ArrowUpRight className="w-3.5 h-3.5 transition-transform group-hover/slide:translate-x-0.5 group-hover/slide:-translate-y-0.5" />
+              </div>
+
+              {/* Bottom Artwork Information */}
+              <div className="absolute bottom-3 left-3 right-28 sm:bottom-5 sm:left-6 sm:right-40 pointer-events-none space-y-1 sm:space-y-1.5">
+                <div className="flex items-center gap-2">
+                  <span className="font-mono text-[10px] sm:text-xs font-bold text-[#E5E5E5] bg-black/60 border-b border-white/40 px-1.5 py-0.5 tracking-wider uppercase">
+                    {isKo ? activeWork.artistKo : activeWork.artistEn}
+                  </span>
+                  <span className="font-mono text-[9px] sm:text-[11px] text-white/60 tracking-wider">
+                    {isKo ? activeWork.genreKo : activeWork.genreEn}
+                  </span>
+                </div>
+                <h3 className="text-sm sm:text-lg md:text-xl font-black text-white tracking-tight drop-shadow-lg line-clamp-1">
+                  {isKo ? activeWork.titleKo : activeWork.titleEn}
+                </h3>
               </div>
             </motion.div>
-          )}
+          ) : null}
         </AnimatePresence>
       </div>
 
@@ -235,7 +278,7 @@ export default function HeroSlider({ locale }: HeroSliderProps) {
       <button
         onClick={prevSlide}
         aria-label={isKo ? '이전 슬라이드' : 'Previous slide'}
-        className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 z-20 w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center border border-white/40 bg-black/60 text-white/80 hover:text-white hover:border-white hover:bg-white/10 active:scale-95 transition-all backdrop-blur-sm"
+        className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 z-20 w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center border border-white/40 bg-black/60 text-white/80 hover:text-white hover:border-white hover:bg-white/10 active:scale-95 transition-all backdrop-blur-sm cursor-pointer"
       >
         <ChevronLeft className="w-5 h-5 sm:w-6 sm:h-6" />
       </button>
@@ -243,40 +286,38 @@ export default function HeroSlider({ locale }: HeroSliderProps) {
       <button
         onClick={nextSlide}
         aria-label={isKo ? '다음 슬라이드' : 'Next slide'}
-        className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 z-20 w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center border border-white/40 bg-black/60 text-white/80 hover:text-white hover:border-white hover:bg-white/10 active:scale-95 transition-all backdrop-blur-sm"
+        className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 z-20 w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center border border-white/40 bg-black/60 text-white/80 hover:text-white hover:border-white hover:bg-white/10 active:scale-95 transition-all backdrop-blur-sm cursor-pointer"
       >
         <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6" />
       </button>
 
-      {/* Pagination & Counter (Bottom-Right, 2 slides) */}
+      {/* Pagination & Counter (Bottom-Right, 4 slides) */}
       <div className="absolute bottom-3 sm:bottom-4 right-3 sm:right-6 z-20 flex items-center gap-2 bg-black/85 backdrop-blur-md border border-white/25 px-2.5 py-1.5 shadow-xl">
-        {/* Slide Counter: 01 / 02 or 02 / 02 */}
+        {/* Slide Counter: 01 / 04 ~ 04 / 04 */}
         <span className="font-mono text-[10px] sm:text-[11px] font-bold text-white tracking-widest">
-          {String(currentSlide + 1).padStart(2, '0')}&nbsp;/&nbsp;02
+          {String(currentSlide + 1).padStart(2, '0')}&nbsp;/&nbsp;0{TOTAL_SLIDES}
         </span>
 
         <span className="w-[1px] h-3 bg-white/20 mx-0.5" />
 
-        {/* 2 Indicator Bars */}
+        {/* 4 Indicator Bars */}
         <div className="flex items-center gap-1.5">
-          <button
-            onClick={() => setCurrentSlide(0)}
-            aria-label={isKo ? '1번 포스터 슬라이드로 이동' : 'Go to poster slide'}
-            className={`h-1.5 transition-all duration-200 rounded-none ${
-              currentSlide === 0
-                ? 'w-5 sm:w-6 bg-white'
-                : 'w-2 bg-white/30 hover:bg-white/60'
-            }`}
-          />
-          <button
-            onClick={() => setCurrentSlide(1)}
-            aria-label={isKo ? '2번 파빌리온 슬라이드로 이동' : 'Go to pavilion slide'}
-            className={`h-1.5 transition-all duration-200 rounded-none ${
-              currentSlide === 1
-                ? 'w-5 sm:w-6 bg-white'
-                : 'w-2 bg-white/30 hover:bg-white/60'
-            }`}
-          />
+          {Array.from({ length: TOTAL_SLIDES }).map((_, idx) => (
+            <button
+              key={idx}
+              onClick={() => goToSlide(idx)}
+              aria-label={
+                isKo
+                  ? `${idx + 1}번 슬라이드로 이동`
+                  : `Go to slide ${idx + 1}`
+              }
+              className={`h-1.5 transition-all duration-300 rounded-none cursor-pointer ${
+                currentSlide === idx
+                  ? 'w-5 sm:w-6 bg-white'
+                  : 'w-2 bg-white/30 hover:bg-white/60'
+              }`}
+            />
+          ))}
         </div>
       </div>
     </div>

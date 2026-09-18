@@ -117,7 +117,7 @@ export default function VisitPage({ params }: PageProps) {
             </div>
 
             <div className="text-xl sm:text-2xl font-black text-white">
-              {isKo ? '안양예술공원 일원' : 'Anyang Art Park'}
+              {isKo ? '안양예술공원 일대' : 'Anyang Art Park Area'}
             </div>
 
             <div className="text-sm sm:text-base text-[#B9B9B9] space-y-2.5 leading-relaxed font-light">
@@ -128,8 +128,8 @@ export default function VisitPage({ params }: PageProps) {
               </p>
               <p className="text-xs sm:text-sm text-[#8C8C8C]">
                 {isKo
-                  ? '안양예술공원 산책로, 안양파빌리온 메인홀, 안양천 변 야외 공간'
-                  : 'Anyang Art Park trails, Anyang Pavilion, and open urban spaces along Anyang Stream'}
+                  ? '안양파빌리온 및 안양예술공원 일대, 학운공원 내 오픈스쿨'
+                  : 'Anyang Pavilion, Anyang Art Park Area, Open School in Hagun Park'}
               </p>
               <p className="font-mono text-xs sm:text-sm text-white/70 flex items-center gap-1.5 pt-1.5 border-t border-white/10">
                 <Phone className="w-3.5 h-3.5" />
@@ -172,7 +172,7 @@ export default function VisitPage({ params }: PageProps) {
               </div>
               <div className="text-xs sm:text-sm font-mono text-[#D4D4D4] space-y-1">
                 <div>■ 위치: 안양파빌리온 앞 광장 일대</div>
-                <div>■ 운영: 화 - 일 19:00 – 22:00 (월요일 휴무 / 10.5 정상운영, 10.6 휴무)</div>
+                <div>■ 운영: 화 - 일 19:00 – 22:00 (월요일 휴무 / 10.5.(월) 정상운영, 10.6.(화) 휴무)</div>
                 <div className="text-white font-medium">■ 상영: 〈빛의 폭포〉 매 정시 15분간 / 〈오색운〉 매시 15분~정시 상영</div>
               </div>
             </div>

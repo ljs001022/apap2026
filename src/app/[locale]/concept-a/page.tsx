@@ -990,7 +990,7 @@ export default function SiteBPage({ params }: PageProps) {
             {/* Socials */}
             <div className="flex gap-3">
               <a 
-                href="https://instagram.com" 
+                href="https://instagram.com/apap.official" 
                 target="_blank" 
                 rel="noopener noreferrer" 
                 className="w-12 h-12 border border-[#B4FF39]/25 hover:border-[#B4FF39] rounded-full flex items-center justify-center text-white/80 hover:text-white transition-colors"
@@ -1008,7 +1008,7 @@ export default function SiteBPage({ params }: PageProps) {
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8"><rect x="2.5" y="6" width="19" height="12.5" rx="3.5"></rect><path d="M10.2 9.7 15 12.2l-4.8 2.5z" fill="currentColor" stroke="none"></path></svg>
               </a>
               <a 
-                href="https://facebook.com" 
+                href="https://www.facebook.com/AnyangPublicArtProject/" 
                 target="_blank" 
                 rel="noopener noreferrer" 
                 className="w-12 h-12 border border-[#B4FF39]/25 hover:border-[#B4FF39] rounded-full flex items-center justify-center text-white/80 hover:text-white transition-colors"

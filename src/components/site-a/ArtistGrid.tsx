@@ -19,7 +19,7 @@ function PaginatedArtistCarousel({ artists, theme, locale, onArtistClick }: { ar
   const scrollRef = React.useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const handleResize = () => setItemsPerPage(window.innerWidth >= 1024 ? 8 : 4);
+    const handleResize = () => setItemsPerPage(window.innerWidth >= 768 ? 8 : 4);
     handleResize();
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
@@ -67,7 +67,7 @@ function PaginatedArtistCarousel({ artists, theme, locale, onArtistClick }: { ar
         {pages.map((page, pageIdx) => (
           <div 
             key={pageIdx} 
-            className="w-full flex-shrink-0 snap-start grid grid-cols-2 lg:grid-cols-4 grid-rows-2 divide-x divide-y divide-[#2E2E2E] bg-[#0A0A0A]"
+            className="w-full flex-shrink-0 snap-start grid grid-cols-2 md:grid-cols-4 grid-rows-2 divide-x divide-y divide-[#2E2E2E] bg-[#0A0A0A]"
           >
             {page.map((artist) => (
               <ArtistCard
@@ -229,16 +229,6 @@ export default function ArtistGrid({
           <p className="text-xs sm:text-sm leading-relaxed text-black/90 font-medium">
             {isKo ? currentVenueInfo.description.ko : currentVenueInfo.description.en}
           </p>
-          {currentVenueInfo.missingArtists && currentVenueInfo.missingArtists.length > 0 && (
-            <div className="mt-2.5 pt-2 border-t border-black/10 text-[11px] font-mono text-black/75 flex flex-wrap items-center gap-1.5">
-              <span className="font-bold text-black bg-black/10 px-1.5 py-0.5">
-                {isKo ? '추가 참여 작가' : 'Additional Participating Artists'}
-              </span>
-              <span>
-                {currentVenueInfo.missingArtists.map((a: { name_ko: string; name_en: string }) => (isKo ? a.name_ko : a.name_en)).join(', ')}
-              </span>
-            </div>
-          )}
         </div>
       )}
 
