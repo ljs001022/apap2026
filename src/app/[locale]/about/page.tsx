@@ -5,6 +5,7 @@ import Link from 'next/link';
 import GnbHeader from '@/components/site-a/GnbHeader';
 import Footer from '@/components/site-a/Footer';
 import { ArrowLeft, Video } from 'lucide-react';
+import { PARTICIPATING_ARTISTS, COMPETITION_WINNERS } from '@/lib/credits';
 
 interface PageProps {
   params: Promise<{ locale: string }>;
@@ -207,20 +208,18 @@ export default function AboutPage({ params }: PageProps) {
                 <span className="font-mono text-sm text-white font-bold">
                   ■ {isKo ? '참여작가 (31인/팀)' : 'PARTICIPATING ARTISTS (31)'}
                 </span>
-                <span className="font-mono text-xs text-[#8C8C8C]">가나다순 / Alphabetical</span>
+                <span className="font-mono text-xs text-[#8C8C8C]">{isKo ? '가나다순' : 'Alphabetical'}</span>
               </div>
               <div className="flex flex-wrap gap-2 pt-1">
-                {[
-                  '308 아트크루', '권치규', '김근중', '김덕한', '김도훈', '김동유', '김성복', '김윤아',
-                  '김태수', '다이고 우시', '박재훈', '스튜디오 올레오밍구스', '양태근', '오용길', '왕칭송',
-                  '유영운', '윤진섭', '이길우', '이후창', '임혜정', '자오넝즈', '장성재', '장지엔',
-                  '저우진화', '전인식', '정영남', '지용호', '처 지엔취안', '최순녕', '펑정지에', '홍경택'
-                ].map((artist) => (
+                {(isKo
+                  ? PARTICIPATING_ARTISTS
+                  : [...PARTICIPATING_ARTISTS].sort((a, b) => a.nameEn.localeCompare(b.nameEn))
+                ).map((artist) => (
                   <span
-                    key={artist}
+                    key={artist.nameEn}
                     className="text-xs sm:text-sm font-mono border border-white/20 text-white/90 px-3.5 py-1.5 bg-white/5 hover:border-white transition-colors"
                   >
-                    {artist}
+                    {isKo ? artist.nameKo : artist.nameEn}
                   </span>
                 ))}
               </div>
@@ -232,18 +231,18 @@ export default function AboutPage({ params }: PageProps) {
                 <span className="font-mono text-sm text-[#B9B9B9] font-bold">
                   ■ {isKo ? 'APAP8 미디어아트 작품 공모 당선 작가 (10팀)' : 'MEDIA ART COMPETITION WINNERS (10)'}
                 </span>
-                <span className="font-mono text-xs text-[#8C8C8C]">신진·미디어 작가전</span>
+                <span className="font-mono text-xs text-[#8C8C8C]">{isKo ? '신진·미디어 작가전' : 'Media Art Open Call'}</span>
               </div>
               <div className="flex flex-wrap gap-2 pt-1">
-                {[
-                  '김남표(글램포지)', '김리아', '박선재(팝시클)', '박은영', '이어진',
-                  '이창기', '임도원', '임주원', '진진아', 'Hyp-파장(소수정x서재은)'
-                ].map((artist) => (
+                {(isKo
+                  ? COMPETITION_WINNERS
+                  : [...COMPETITION_WINNERS].sort((a, b) => a.nameEn.localeCompare(b.nameEn))
+                ).map((artist) => (
                   <span
-                    key={artist}
+                    key={artist.nameEn}
                     className="text-xs sm:text-sm font-mono border border-white/10 text-white/70 px-3 py-1 bg-white/[0.02]"
                   >
-                    {artist}
+                    {isKo ? artist.nameKo : artist.nameEn}
                   </span>
                 ))}
               </div>

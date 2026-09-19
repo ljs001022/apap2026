@@ -29,6 +29,7 @@ import ArtistGrid from '@/components/site-a/ArtistGrid';
 import { getVenues } from '@/lib/artists';
 import { getCommunityItems, CommunityItem } from '@/lib/community';
 import { getLocalizedVenueName } from '@/lib/artistLocalization';
+import { PARTICIPATING_ARTISTS, COMPETITION_WINNERS } from '@/lib/credits';
 import Link from 'next/link';
 
 interface PageProps {
@@ -505,20 +506,18 @@ export default function SiteAPage({ params }: PageProps) {
                         <span className="font-mono text-xs text-white font-bold">
                           ■ {isKo ? '참여작가 (31인/팀)' : 'PARTICIPATING ARTISTS (31)'}
                         </span>
-                        <span className="font-mono text-[11px] text-[#8C8C8C]">가나다순</span>
+                        <span className="font-mono text-[11px] text-[#8C8C8C]">{isKo ? '가나다순' : 'Alphabetical'}</span>
                       </div>
                       <div className="flex flex-wrap gap-2 pt-1">
-                        {[
-                          '308 아트크루', '권치규', '김근중', '김덕한', '김도훈', '김동유', '김성복', '김윤아',
-                          '김태수', '다이고 우시', '박재훈', '스튜디오 올레오밍구스', '양태근', '오용길', '왕칭송',
-                          '유영운', '윤진섭', '이길우', '이후창', '임혜정', '자오넝즈', '장성재', '장지엔',
-                          '저우진화', '전인식', '정영남', '지용호', '처 지엔취안', '최순녕', '펑정지에', '홍경택'
-                        ].map((artist) => (
+                        {(isKo
+                          ? PARTICIPATING_ARTISTS
+                          : [...PARTICIPATING_ARTISTS].sort((a, b) => a.nameEn.localeCompare(b.nameEn))
+                        ).map((artist) => (
                           <span
-                            key={artist}
+                            key={artist.nameEn}
                             className="text-xs font-mono border border-white/20 text-white/90 px-3 py-1.5 bg-white/5 hover:border-white transition-colors"
                           >
-                            {artist}
+                            {isKo ? artist.nameKo : artist.nameEn}
                           </span>
                         ))}
                       </div>
@@ -530,18 +529,18 @@ export default function SiteAPage({ params }: PageProps) {
                         <span className="font-mono text-xs text-[#B9B9B9] font-bold">
                           ■ {isKo ? 'APAP8 미디어아트 작품 공모 당선 작가 (10팀)' : 'MEDIA ART COMPETITION WINNERS (10)'}
                         </span>
-                        <span className="font-mono text-[11px] text-[#8C8C8C]">신진·미디어 작가전</span>
+                        <span className="font-mono text-[11px] text-[#8C8C8C]">{isKo ? '신진·미디어 작가전' : 'Media Art Open Call'}</span>
                       </div>
                       <div className="flex flex-wrap gap-2 pt-1">
-                        {[
-                          '김남표(글램포지)', '김리아', '박선재(팝시클)', '박은영', '이어진',
-                          '이창기', '임도원', '임주원', '진진아', 'Hyp-파장(소수정x서재은)'
-                        ].map((artist) => (
+                        {(isKo
+                          ? COMPETITION_WINNERS
+                          : [...COMPETITION_WINNERS].sort((a, b) => a.nameEn.localeCompare(b.nameEn))
+                        ).map((artist) => (
                           <span
-                            key={artist}
+                            key={artist.nameEn}
                             className="text-xs font-mono border border-white/10 text-white/70 px-2.5 py-1 bg-white/[0.02]"
                           >
-                            {artist}
+                            {isKo ? artist.nameKo : artist.nameEn}
                           </span>
                         ))}
                       </div>
@@ -1180,7 +1179,7 @@ export default function SiteAPage({ params }: PageProps) {
                           <div className="flex items-center gap-2">
                             <span
                               className={`text-[9px] font-bold font-mono px-1.5 py-0.5 flex-shrink-0 ${
-                                item.cat === '프레스' || item.cat === 'Press'
+                                item.cat === '보도자료' || item.cat === 'Press' || item.type === 'press'
                                   ? 'bg-white text-black'
                                   : 'border border-white text-white'
                               }`}
@@ -1193,10 +1192,10 @@ export default function SiteAPage({ params }: PageProps) {
                           </div>
                           <ArrowUpRight className="w-3.5 h-3.5 text-white/30 group-hover:text-white group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
                         </div>
-                        <h3 className="text-sm font-bold text-white leading-snug group-hover:text-white">
+                        <h3 className="text-sm font-bold text-white leading-snug group-hover:text-white line-clamp-1">
                           {item.title}
                         </h3>
-                        <p className="text-xs text-[#B9B9B9] line-clamp-2 leading-relaxed font-light">
+                        <p className="text-xs text-[#B9B9B9] line-clamp-2 leading-relaxed font-light min-h-[2.25rem]">
                           {item.desc}
                         </p>
                       </div>
@@ -1260,7 +1259,7 @@ export default function SiteAPage({ params }: PageProps) {
                             <div className="flex items-center justify-between">
                               <span
                                 className={`text-xs font-bold font-mono px-2 py-0.5 flex-shrink-0 ${
-                                  item.cat === '프레스' || item.cat === 'Press'
+                                  item.cat === '보도자료' || item.cat === 'Press' || item.type === 'press'
                                     ? 'bg-white text-black'
                                     : 'border border-white text-white'
                                 }`}
@@ -1840,20 +1839,18 @@ export default function SiteAPage({ params }: PageProps) {
               <span className="font-mono text-xs font-bold text-white">
                 {isKo ? '■ 참여작가 (31인/팀)' : '■ PARTICIPATING ARTISTS (31)'}
               </span>
-              <span className="font-mono text-[10px] text-[#8C8C8C]">가나다순</span>
+              <span className="font-mono text-[10px] text-[#8C8C8C]">{isKo ? '가나다순' : 'Alphabetical'}</span>
             </div>
             <div className="flex flex-wrap gap-1.5 pt-1">
-              {[
-                '308 아트크루', '권치규', '김근중', '김덕한', '김도훈', '김동유', '김성복', '김윤아',
-                '김태수', '다이고 우시', '박재훈', '스튜디오 올레오밍구스', '양태근', '오용길', '왕칭송',
-                '유영운', '윤진섭', '이길우', '이후창', '임혜정', '자오넝즈', '장성재', '장지엔',
-                '저우진화', '전인식', '정영남', '지용호', '처 지엔취안', '최순녕', '펑정지에', '홍경택'
-              ].map((artist) => (
+              {(isKo
+                ? PARTICIPATING_ARTISTS
+                : [...PARTICIPATING_ARTISTS].sort((a, b) => a.nameEn.localeCompare(b.nameEn))
+              ).map((artist) => (
                 <span
-                  key={artist}
+                  key={artist.nameEn}
                   className="text-xs font-mono border border-white/20 text-white/90 px-2.5 py-1 bg-white/5"
                 >
-                  {artist}
+                  {isKo ? artist.nameKo : artist.nameEn}
                 </span>
               ))}
             </div>
@@ -1865,18 +1862,18 @@ export default function SiteAPage({ params }: PageProps) {
               <span className="font-mono text-xs font-bold text-[#B9B9B9]">
                 {isKo ? '■ 미디어아트 공모 당선 작가 (10팀)' : '■ COMPETITION WINNERS (10)'}
               </span>
-              <span className="font-mono text-[10px] text-[#8C8C8C]">신진 작가전</span>
+              <span className="font-mono text-[10px] text-[#8C8C8C]">{isKo ? '신진 작가전' : 'Media Art Open Call'}</span>
             </div>
             <div className="flex flex-wrap gap-1.5 pt-1">
-              {[
-                '김남표(글램포지)', '김리아', '박선재(팝시클)', '박은영', '이어진',
-                '이창기', '임도원', '임주원', '진진아', 'Hyp-파장(소수정x서재은)'
-              ].map((artist) => (
+              {(isKo
+                ? COMPETITION_WINNERS
+                : [...COMPETITION_WINNERS].sort((a, b) => a.nameEn.localeCompare(b.nameEn))
+              ).map((artist) => (
                 <span
-                  key={artist}
+                  key={artist.nameEn}
                   className="text-[11px] font-mono border border-white/10 text-white/70 px-2 py-0.5 bg-white/[0.02]"
                 >
-                  {artist}
+                  {isKo ? artist.nameKo : artist.nameEn}
                 </span>
               ))}
             </div>
@@ -2166,7 +2163,9 @@ export default function SiteAPage({ params }: PageProps) {
             <div className="flex items-center gap-3 pb-3 border-b border-white/10">
               <span
                 className={`text-xs font-bold font-mono px-2.5 py-0.5 ${
-                  selectedCommunityItem.cat === '프레스' || selectedCommunityItem.cat === 'Press'
+                  selectedCommunityItem.cat === '보도자료' ||
+                  selectedCommunityItem.cat === 'Press' ||
+                  selectedCommunityItem.type === 'press'
                     ? 'bg-white text-black'
                     : 'border border-white text-white'
                 }`}

@@ -37,11 +37,11 @@ export function getCommunityItems(locale: string = 'ko'): CommunityItem[] {
     },
     {
       id: 'notice-02',
-      cat: isKo ? '프레스' : 'Press',
+      cat: isKo ? '보도자료' : 'Press',
       type: 'press',
       title: isKo
-        ? '[보도자료] 제8회 안양공공예술프로젝트 개막 발표'
-        : '[Press Release] The 8th Anyang Public Art Project Opens',
+        ? '제8회 안양공공예술프로젝트 개막 발표'
+        : 'The 8th Anyang Public Art Project Opens',
       date: '2026.09.14',
       desc: isKo
         ? '안양문화예술재단은 ‘ArteX : 예술대전환’(부제: 안양 무릉도원)을 주제로 3년 만에 개최되는 트리엔날레의 종합 프레스킷을 배포합니다.'
@@ -85,11 +85,11 @@ export function getCommunityItems(locale: string = 'ko'): CommunityItem[] {
     },
     {
       id: 'notice-04',
-      cat: isKo ? '프레스' : 'Press',
+      cat: isKo ? '보도자료' : 'Press',
       type: 'press',
       title: isKo
-        ? '[보도자료] 김덕한 작가 APAP8 신작 조각 야외 설치 완료'
-        : '[Press] Artist Kim Deok Han Installs New Outdoor Sculpture',
+        ? '김덕한 작가 APAP8 신작 조각 야외 설치 완료'
+        : 'Artist Kim Deok Han Installs New Outdoor Sculpture',
       date: '2026.08.30',
       desc: isKo
         ? '한국 현대미술의 대표 작가 김덕한의 대형 공공조각 <OVERLAID : 공존의 균형>이 안양예술공원 숲속 산책로에 성공적으로 안착했습니다.'
@@ -131,11 +131,11 @@ export function getCommunityItems(locale: string = 'ko'): CommunityItem[] {
     },
     {
       id: 'notice-06',
-      cat: isKo ? '프레스' : 'Press',
+      cat: isKo ? '보도자료' : 'Press',
       type: 'press',
       title: isKo
-        ? '[보도자료] 안양예술공원 내 APAP8 공공조각 보존수복 프로젝트 완료'
-        : '[Press] Completion of Public Sculpture Restoration in Anyang Art Park',
+        ? '안양예술공원 내 APAP8 공공조각 보존수복 프로젝트 완료'
+        : 'Completion of Public Sculpture Restoration in Anyang Art Park',
       date: '2026.08.15',
       desc: isKo
         ? '역대 APAP 영구 설치 조각 중 12점에 대한 정밀 클리닝 및 보존수복 작업을 완료하여 더욱 쾌적한 야외 관람 환경을 조성했습니다.'
@@ -177,11 +177,11 @@ export function getCommunityItems(locale: string = 'ko'): CommunityItem[] {
     },
     {
       id: 'notice-08',
-      cat: isKo ? '프레스' : 'Press',
+      cat: isKo ? '보도자료' : 'Press',
       type: 'press',
       title: isKo
-        ? '[보도자료] KBS <열린음악회> APAP8 특집 안양 녹화 확정'
-        : '[Press] KBS <Open Concert> Confirmed for APAP8 Special Broadcast',
+        ? 'KBS <열린음악회> APAP8 특집 안양 녹화 확정'
+        : 'KBS <Open Concert> Confirmed for APAP8 Special Broadcast',
       date: '2026.07.25',
       desc: isKo
         ? '오는 9월 30일 개막식과 연계하여 안양예술공원 특설무대에서 KBS 열린음악회 APAP8 특집 녹화가 진행됩니다.'
