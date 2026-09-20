@@ -64,33 +64,45 @@ export default function HeroSlider({ locale }: HeroSliderProps) {
   const isKo = locale === 'ko';
   const [currentSlide, setCurrentSlide] = useState<number>(0);
   const [isPaused, setIsPaused] = useState(false);
-  const touchStartX = useRef<number | null>(null);
+  const [isDesktop, setIsDesktop] = useState(false);
   const timerRef = useRef<NodeJS.Timeout | null>(null);
 
-  // 타이머 실행 함수
+  // 화면 크기 체크 (모바일 환경에서는 슬라이더 타이머 비활성화)
+  useEffect(() => {
+    const checkIsDesktop = () => {
+      setIsDesktop(window.innerWidth >= 768);
+    };
+    checkIsDesktop();
+    window.addEventListener('resize', checkIsDesktop);
+    return () => window.removeEventListener('resize', checkIsDesktop);
+  }, []);
+
+  // 타이머 실행 함수 (데스크톱에서만 작동)
   const startTimer = useCallback(() => {
     if (timerRef.current) {
       clearInterval(timerRef.current);
     }
+    if (!isDesktop) return;
+
     timerRef.current = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % TOTAL_SLIDES);
     }, 6000);
-  }, []);
+  }, [isDesktop]);
 
-  // 사용자 수동 조작 시 타이머 초기화 (기존 타이머 제거 후 새로 6초 재시작)
+  // 사용자 수동 조작 시 타이머 초기화 (데스크톱)
   const resetTimer = useCallback(() => {
     if (timerRef.current) {
       clearInterval(timerRef.current);
       timerRef.current = null;
     }
-    if (!isPaused) {
+    if (!isPaused && isDesktop) {
       startTimer();
     }
-  }, [isPaused, startTimer]);
+  }, [isPaused, isDesktop, startTimer]);
 
   // Autoplay (6초) 및 마우스 hover 시 일시 정지 처리
   useEffect(() => {
-    if (isPaused) {
+    if (!isDesktop || isPaused) {
       if (timerRef.current) {
         clearInterval(timerRef.current);
         timerRef.current = null;
@@ -104,7 +116,7 @@ export default function HeroSlider({ locale }: HeroSliderProps) {
         timerRef.current = null;
       }
     };
-  }, [isPaused, startTimer]);
+  }, [isDesktop, isPaused, startTimer]);
 
   const nextSlide = useCallback(() => {
     setCurrentSlide((prev) => (prev + 1) % TOTAL_SLIDES);
@@ -121,32 +133,13 @@ export default function HeroSlider({ locale }: HeroSliderProps) {
     resetTimer();
   }, [resetTimer]);
 
-  // Keyboard navigation
+  // Keyboard navigation (데스크톱)
   const handleKeyDown = (e: React.KeyboardEvent) => {
     if (e.key === 'ArrowLeft') {
       prevSlide();
     } else if (e.key === 'ArrowRight') {
       nextSlide();
     }
-  };
-
-  // Touch swipe handling
-  const handleTouchStart = (e: React.TouchEvent) => {
-    touchStartX.current = e.touches[0].clientX;
-  };
-
-  const handleTouchEnd = (e: React.TouchEvent) => {
-    if (touchStartX.current === null) return;
-    const touchEndX = e.changedTouches[0].clientX;
-    const diff = touchStartX.current - touchEndX;
-    if (Math.abs(diff) > 40) {
-      if (diff > 0) {
-        nextSlide();
-      } else {
-        prevSlide();
-      }
-    }
-    touchStartX.current = null;
   };
 
   const scrollToExhibition = (e: React.MouseEvent) => {
@@ -159,142 +152,159 @@ export default function HeroSlider({ locale }: HeroSliderProps) {
   const activeWork = currentSlide > 0 ? PAVILION_WORKS[currentSlide - 1] : null;
 
   return (
-    <div
-      className="relative w-full h-full max-sm:aspect-square max-sm:max-h-[768px] overflow-hidden flex items-center justify-center bg-black select-none group focus:outline-none"
-      tabIndex={0}
-      onKeyDown={handleKeyDown}
-      onMouseEnter={() => setIsPaused(true)}
-      onMouseLeave={() => setIsPaused(false)}
-      onTouchStart={handleTouchStart}
-      onTouchEnd={handleTouchEnd}
-      aria-label={isKo ? '메인 포스터 및 대표 출품작 슬라이더' : 'Main Poster & Featured Artworks Slider'}
-    >
-      {/* Slide Layer */}
-      <div className="relative w-full h-full flex items-center justify-center overflow-hidden">
-        <AnimatePresence mode="wait">
-          {currentSlide === 0 ? (
-            /* ── Slide 1: Main Poster (Clean, Responsive Picture) ── */
-            <motion.div
-              key="slide-poster"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.5, ease: 'easeInOut' }}
-              className="w-full h-full flex items-center justify-center cursor-pointer"
-              onClick={scrollToExhibition}
-            >
-              <picture className="w-full h-full flex items-center justify-center">
-                <source
-                  media="(max-width: 640px)"
-                  type="image/webp"
-                  srcSet="/images/main-768x768.webp"
-                />
-                <source
-                  media="(max-width: 640px)"
-                  srcSet="/images/main-768x768.jpg"
-                />
-                <source
-                  type="image/webp"
-                  srcSet="/images/main-1920x800.webp"
-                />
-                <img
-                  src="/images/main-1920x800.jpg"
-                  alt={isKo ? '제8회 안양공공예술프로젝트(APAP8) 공식 포스터' : 'The 8th Anyang Public Art Project (APAP8) Official Poster'}
-                  className="w-full h-full object-contain pointer-events-none"
-                  loading="eager"
-                />
-              </picture>
-            </motion.div>
-          ) : activeWork ? (
-            /* ── Slides 2, 3, 4: Individual Artwork Still Frame Slides ── */
-            <motion.div
-              key={`slide-work-${activeWork.id}`}
-              initial={{ opacity: 0, scale: 0.98 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 1.02 }}
-              transition={{ duration: 0.6, ease: 'easeOut' }}
-              className="relative w-full h-full flex items-center justify-center bg-[#070707] cursor-pointer group/slide"
-              onClick={scrollToExhibition}
-            >
-              {/* Subtle ambient blur background */}
-              <img
-                src={activeWork.image}
-                alt=""
-                aria-hidden="true"
-                className="absolute inset-0 w-full h-full object-cover blur-2xl opacity-30 scale-110 pointer-events-none"
-              />
-
-              {/* Main Still Image */}
-              <div className="relative w-full h-full flex items-center justify-center p-2 sm:p-4 pb-14 sm:pb-16">
-                <img
-                  src={activeWork.image}
-                  alt={isKo ? `${activeWork.artistKo} - ${activeWork.titleKo}` : `${activeWork.artistEn} - ${activeWork.titleEn}`}
-                  className="max-w-full max-h-full object-contain border border-white/10 shadow-2xl transition-transform duration-700 ease-out group-hover/slide:scale-[1.01]"
-                  loading="eager"
-                />
-              </div>
-
-              {/* Gradient Scrims for text legibility */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-black/60 pointer-events-none" />
-
-              {/* Top-Left: Artist Name & Artwork Title Only */}
-              <div className="absolute top-3 left-3 sm:top-5 sm:left-6 flex flex-col gap-1 sm:gap-1.5 pointer-events-none max-w-[85%] sm:max-w-2xl z-10">
-                <span className="font-mono text-xs sm:text-sm font-bold text-white/90 tracking-wider uppercase bg-black/75 border border-white/20 px-2 sm:px-2.5 py-0.5 sm:py-1 backdrop-blur-sm inline-block w-fit">
-                  {isKo ? activeWork.artistKo : activeWork.artistEn}
-                </span>
-                <h3 className="text-sm sm:text-lg md:text-xl font-black text-white tracking-tight drop-shadow-lg line-clamp-1 bg-black/75 px-2 sm:px-2.5 py-1 backdrop-blur-sm inline-block max-w-full">
-                  {isKo ? activeWork.titleKo : activeWork.titleEn}
-                </h3>
-              </div>
-            </motion.div>
-          ) : null}
-        </AnimatePresence>
+    <div className="relative w-full h-full flex items-center justify-center bg-black select-none">
+      {/* ── MOBILE VIEW (< md): ONLY Poster (No artwork slides, no arrows, no pagination) ── */}
+      <div
+        className="block md:hidden w-full h-full max-sm:aspect-square max-sm:max-h-[768px] overflow-hidden flex items-center justify-center cursor-pointer"
+        onClick={scrollToExhibition}
+        aria-label={isKo ? '제8회 안양공공예술프로젝트(APAP8) 공식 포스터' : 'The 8th Anyang Public Art Project (APAP8) Official Poster'}
+      >
+        <picture className="w-full h-full flex items-center justify-center">
+          <source
+            media="(max-width: 640px)"
+            type="image/webp"
+            srcSet="/images/main-768x768.webp"
+          />
+          <source
+            media="(max-width: 640px)"
+            srcSet="/images/main-768x768.jpg"
+          />
+          <img
+            src="/images/main-768x768.jpg"
+            alt={isKo ? '제8회 안양공공예술프로젝트(APAP8) 공식 포스터' : 'The 8th Anyang Public Art Project (APAP8) Official Poster'}
+            className="w-full h-full object-contain pointer-events-none"
+            loading="eager"
+          />
+        </picture>
       </div>
 
-      {/* Navigation Arrows (Left / Right) */}
-      <button
-        onClick={prevSlide}
-        aria-label={isKo ? '이전 슬라이드' : 'Previous slide'}
-        className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 z-20 w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center border border-white/40 bg-black/60 text-white/80 hover:text-white hover:border-white hover:bg-white/10 active:scale-95 transition-all backdrop-blur-sm cursor-pointer"
+      {/* ── DESKTOP VIEW (>= md): Full Slider with Poster + 3 Artwork Stills, Arrows & Pagination ── */}
+      <div
+        className="hidden md:flex relative w-full h-full overflow-hidden items-center justify-center group focus:outline-none"
+        tabIndex={0}
+        onKeyDown={handleKeyDown}
+        onMouseEnter={() => setIsPaused(true)}
+        onMouseLeave={() => setIsPaused(false)}
+        aria-label={isKo ? '메인 포스터 및 대표 출품작 슬라이더' : 'Main Poster & Featured Artworks Slider'}
       >
-        <ChevronLeft className="w-5 h-5 sm:w-6 sm:h-6" />
-      </button>
+        {/* Slide Layer */}
+        <div className="relative w-full h-full flex items-center justify-center overflow-hidden">
+          <AnimatePresence mode="wait">
+            {currentSlide === 0 ? (
+              /* ── Slide 1: Main Poster ── */
+              <motion.div
+                key="slide-poster"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.5, ease: 'easeInOut' }}
+                className="w-full h-full flex items-center justify-center cursor-pointer"
+                onClick={scrollToExhibition}
+              >
+                <picture className="w-full h-full flex items-center justify-center">
+                  <source
+                    type="image/webp"
+                    srcSet="/images/main-1920x800.webp"
+                  />
+                  <img
+                    src="/images/main-1920x800.jpg"
+                    alt={isKo ? '제8회 안양공공예술프로젝트(APAP8) 공식 포스터' : 'The 8th Anyang Public Art Project (APAP8) Official Poster'}
+                    className="w-full h-full object-contain pointer-events-none"
+                    loading="eager"
+                  />
+                </picture>
+              </motion.div>
+            ) : activeWork ? (
+              /* ── Slides 2, 3, 4: Individual Artwork Still Frame Slides ── */
+              <motion.div
+                key={`slide-work-${activeWork.id}`}
+                initial={{ opacity: 0, scale: 0.98 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 1.02 }}
+                transition={{ duration: 0.6, ease: 'easeOut' }}
+                className="relative w-full h-full flex items-center justify-center bg-[#070707] cursor-pointer group/slide"
+                onClick={scrollToExhibition}
+              >
+                {/* Subtle ambient blur background */}
+                <img
+                  src={activeWork.image}
+                  alt=""
+                  aria-hidden="true"
+                  className="absolute inset-0 w-full h-full object-cover blur-2xl opacity-30 scale-110 pointer-events-none"
+                />
 
-      <button
-        onClick={nextSlide}
-        aria-label={isKo ? '다음 슬라이드' : 'Next slide'}
-        className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 z-20 w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center border border-white/40 bg-black/60 text-white/80 hover:text-white hover:border-white hover:bg-white/10 active:scale-95 transition-all backdrop-blur-sm cursor-pointer"
-      >
-        <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6" />
-      </button>
+                {/* Main Still Image */}
+                <div className="relative w-full h-full flex items-center justify-center p-2 sm:p-4 pb-14 sm:pb-16">
+                  <img
+                    src={activeWork.image}
+                    alt={isKo ? `${activeWork.artistKo} - ${activeWork.titleKo}` : `${activeWork.artistEn} - ${activeWork.titleEn}`}
+                    className="max-w-full max-h-full object-contain border border-white/10 shadow-2xl transition-transform duration-700 ease-out group-hover/slide:scale-[1.01]"
+                    loading="eager"
+                  />
+                </div>
 
-      {/* Pagination & Counter (Bottom-Right, 4 slides) */}
-      <div className="absolute bottom-3 sm:bottom-4 right-3 sm:right-6 z-20 flex items-center gap-2 bg-black/85 backdrop-blur-md border border-white/25 px-2.5 py-1.5 shadow-xl">
-        {/* Slide Counter: 01 / 04 ~ 04 / 04 */}
-        <span className="font-mono text-[10px] sm:text-[11px] font-bold text-white tracking-widest">
-          {String(currentSlide + 1).padStart(2, '0')}&nbsp;/&nbsp;0{TOTAL_SLIDES}
-        </span>
+                {/* Gradient Scrims for text legibility */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-black/60 pointer-events-none" />
 
-        <span className="w-[1px] h-3 bg-white/20 mx-0.5" />
+                {/* Top-Left: Artist Name & Artwork Title Only */}
+                <div className="absolute top-3 left-3 sm:top-5 sm:left-6 flex flex-col gap-1 sm:gap-1.5 pointer-events-none max-w-[85%] sm:max-w-2xl z-10">
+                  <span className="font-mono text-xs sm:text-sm font-bold text-white/90 tracking-wider uppercase bg-black/75 border border-white/20 px-2 sm:px-2.5 py-0.5 sm:py-1 backdrop-blur-sm inline-block w-fit">
+                    {isKo ? activeWork.artistKo : activeWork.artistEn}
+                  </span>
+                  <h3 className="text-sm sm:text-lg md:text-xl font-black text-white tracking-tight drop-shadow-lg line-clamp-1 bg-black/75 px-2 sm:px-2.5 py-1 backdrop-blur-sm inline-block max-w-full">
+                    {isKo ? activeWork.titleKo : activeWork.titleEn}
+                  </h3>
+                </div>
+              </motion.div>
+            ) : null}
+          </AnimatePresence>
+        </div>
 
-        {/* 4 Indicator Bars */}
-        <div className="flex items-center gap-1.5">
-          {Array.from({ length: TOTAL_SLIDES }).map((_, idx) => (
-            <button
-              key={idx}
-              onClick={() => goToSlide(idx)}
-              aria-label={
-                isKo
-                  ? `${idx + 1}번 슬라이드로 이동`
-                  : `Go to slide ${idx + 1}`
-              }
-              className={`h-1.5 transition-all duration-300 rounded-none cursor-pointer ${
-                currentSlide === idx
-                  ? 'w-5 sm:w-6 bg-white'
-                  : 'w-2 bg-white/30 hover:bg-white/60'
-              }`}
-            />
-          ))}
+        {/* Navigation Arrows (Left / Right) */}
+        <button
+          onClick={prevSlide}
+          aria-label={isKo ? '이전 슬라이드' : 'Previous slide'}
+          className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 z-20 w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center border border-white/40 bg-black/60 text-white/80 hover:text-white hover:border-white hover:bg-white/10 active:scale-95 transition-all backdrop-blur-sm cursor-pointer"
+        >
+          <ChevronLeft className="w-5 h-5 sm:w-6 sm:h-6" />
+        </button>
+
+        <button
+          onClick={nextSlide}
+          aria-label={isKo ? '다음 슬라이드' : 'Next slide'}
+          className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 z-20 w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center border border-white/40 bg-black/60 text-white/80 hover:text-white hover:border-white hover:bg-white/10 active:scale-95 transition-all backdrop-blur-sm cursor-pointer"
+        >
+          <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6" />
+        </button>
+
+        {/* Pagination & Counter (Bottom-Right, 4 slides) */}
+        <div className="absolute bottom-3 sm:bottom-4 right-3 sm:right-6 z-20 flex items-center gap-2 bg-black/85 backdrop-blur-md border border-white/25 px-2.5 py-1.5 shadow-xl">
+          {/* Slide Counter: 01 / 04 ~ 04 / 04 */}
+          <span className="font-mono text-[10px] sm:text-[11px] font-bold text-white tracking-widest">
+            {String(currentSlide + 1).padStart(2, '0')}&nbsp;/&nbsp;0{TOTAL_SLIDES}
+          </span>
+
+          <span className="w-[1px] h-3 bg-white/20 mx-0.5" />
+
+          {/* 4 Indicator Bars */}
+          <div className="flex items-center gap-1.5">
+            {Array.from({ length: TOTAL_SLIDES }).map((_, idx) => (
+              <button
+                key={idx}
+                onClick={() => goToSlide(idx)}
+                aria-label={
+                  isKo
+                    ? `${idx + 1}번 슬라이드로 이동`
+                    : `Go to slide ${idx + 1}`
+                }
+                className={`h-1.5 transition-all duration-300 rounded-none cursor-pointer ${
+                  currentSlide === idx
+                    ? 'w-5 sm:w-6 bg-white'
+                    : 'w-2 bg-white/30 hover:bg-white/60'
+                }`}
+              />
+            ))}
+          </div>
         </div>
       </div>
     </div>
