@@ -25,6 +25,7 @@ import {
   Compass,
   Award,
   Download,
+  Play,
 } from 'lucide-react';
 import ArtistGrid from '@/components/site-a/ArtistGrid';
 import { getVenues } from '@/lib/artists';
@@ -103,7 +104,7 @@ export default function SiteAPage({ params }: PageProps) {
           {/* Top spacer for fixed header */}
           <div className="h-16 sm:h-20 flex-shrink-0" />
 
-          {/* Hero Slider with Main Poster (No Zoom) & i Pavilion 4 Representative Stills */}
+          {/* Hero Slider with Main Poster & i Pavilion 4 Representative Stills */}
           <div className="flex-1 min-h-0 w-full mx-auto flex items-center justify-center px-3 sm:px-0 py-2 sm:py-0 overflow-hidden relative z-10">
             <HeroSlider locale={validLocale} />
           </div>
@@ -381,7 +382,7 @@ export default function SiteAPage({ params }: PageProps) {
                       </div>
                       <div>
                         <span className="text-[#8C8C8C] block text-[11px] lg:text-xs font-bold mb-1">■ {isKo ? '장소' : 'VENUE'}</span>
-                        <span className="text-white font-medium">{isKo ? '안양예술공원 일대 및 안양파빌리온' : 'Anyang Art Park & Anyang Pavilion'}</span>
+                        <span className="text-white font-medium">{isKo ? '안양예술공원 일대 및 안양파빌리온, 학운공원 내 오픈스쿨' : 'Anyang Art Park Area, Anyang Pavilion & Open School in Hagun Park'}</span>
                       </div>
                       <div>
                         <span className="text-[#8C8C8C] block text-[11px] lg:text-xs font-bold mb-1">■ {isKo ? '사업규모' : 'SCALE'}</span>
@@ -1175,6 +1176,12 @@ export default function SiteAPage({ params }: PageProps) {
                                 <span>{item.previewType === 'download_only' ? (isKo ? '리플렛' : 'PDF') : 'PDF'}</span>
                               </span>
                             )}
+                            {item.videoUrl && (
+                              <span className="inline-flex items-center gap-0.5 text-[9px] font-mono text-red-300 bg-red-500/20 border border-red-500/40 px-1 py-0.2">
+                                <Play className="w-2.5 h-2.5 fill-current" />
+                                <span>{isKo ? '다시보기' : 'VIDEO'}</span>
+                              </span>
+                            )}
                           </div>
                           <ArrowUpRight className="w-3.5 h-3.5 text-white/30 group-hover:text-white group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
                         </div>
@@ -1260,6 +1267,12 @@ export default function SiteAPage({ params }: PageProps) {
                                   <span className="inline-flex items-center gap-1 text-[11px] font-mono text-white/80 bg-white/10 border border-white/20 px-2 py-0.5">
                                     <Download className="w-3 h-3" />
                                     <span>{item.previewType === 'download_only' ? (isKo ? '리플렛 다운로드' : 'LEAFLET') : 'PDF'}</span>
+                                  </span>
+                                )}
+                                {item.videoUrl && (
+                                  <span className="inline-flex items-center gap-1 text-[11px] font-mono text-red-300 bg-red-500/20 border border-red-500/40 px-2 py-0.5">
+                                    <Play className="w-3 h-3 fill-current" />
+                                    <span>{isKo ? '다큐 다시보기' : 'VIDEO'}</span>
                                   </span>
                                 )}
                                 <ArrowUpRight className="w-4 h-4 text-white/30 group-hover:text-white group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
@@ -1620,12 +1633,9 @@ export default function SiteAPage({ params }: PageProps) {
                       <span className="font-mono text-xs lg:text-sm text-[#8C8C8C] font-semibold block">
                         ■ {isKo ? '장소' : 'Venue'}
                       </span>
-                      <div className="text-base lg:text-lg font-bold text-white">
-                        {isKo ? '안양예술공원 일대' : 'Anyang Art Park Area'}
+                      <div className="text-sm lg:text-base font-bold text-white leading-relaxed">
+                        {isKo ? '안양예술공원 일대 및 안양파빌리온, 학운공원 내 오픈스쿨' : 'Anyang Art Park Area, Anyang Pavilion & Open School in Hagun Park'}
                       </div>
-                      <p className="text-xs lg:text-sm text-[#B9B9B9] font-light">
-                        {isKo ? '안양파빌리온 및 안양예술공원 일대, 학운공원 내 오픈스쿨' : 'Anyang Pavilion, Anyang Art Park Area, Open School in Hagun Park'}
-                      </p>
                     </div>
 
                     {/* Public Transit */}
@@ -1717,7 +1727,7 @@ export default function SiteAPage({ params }: PageProps) {
             </div>
             <div>
               <span className="text-[#8C8C8C] block text-[11px] font-bold">■ {isKo ? '장소' : 'VENUE'}</span>
-              <span className="text-white font-medium">{isKo ? '안양예술공원 일대 및 안양파빌리온' : 'Anyang Art Park & Anyang Pavilion'}</span>
+              <span className="text-white font-medium">{isKo ? '안양예술공원 일대 및 안양파빌리온, 학운공원 내 오픈스쿨' : 'Anyang Art Park Area, Anyang Pavilion & Open School in Hagun Park'}</span>
             </div>
             <div>
               <span className="text-[#8C8C8C] block text-[11px] font-bold">■ {isKo ? '사업규모' : 'SCALE'}</span>

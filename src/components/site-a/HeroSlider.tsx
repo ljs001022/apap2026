@@ -20,8 +20,19 @@ interface PavilionWork {
   slug: string;
 }
 
-// 다이고 우시 제외한 3개 대표 작품 (박재훈, 스튜디오 올레오밍구스, 처 지엔취안)
+// 안양파빌리온 메인 작가 4명 (다이고 우시, 박재훈, 스튜디오 올레오밍구스, 처 지엔취안)
 const PAVILION_WORKS: PavilionWork[] = [
+  {
+    id: 'daigo-ushi',
+    titleKo: '〈D#31 AI 새장: 안양의 메아리〉',
+    titleEn: '〈D#31 AI Birdcage : Echoes of Anyang〉',
+    artistKo: '다이고 우시',
+    artistEn: 'Daigo Ushi',
+    genreKo: '단채널 비디오(4K)',
+    genreEn: 'Single-channel video (4K)',
+    image: '/assets/artists/e-pavilion-media/daigo-ushi/work-1-1.webp',
+    slug: 'daigo-ushi',
+  },
   {
     id: 'jaehun-park',
     titleKo: '〈낙원의 위상학〉',
@@ -57,8 +68,8 @@ const PAVILION_WORKS: PavilionWork[] = [
   },
 ];
 
-// 총 4개 슬라이드: 0 = 메인 포스터, 1 = 박재훈, 2 = 스튜디오 올레오밍구스, 3 = 처 지엔취안
-const TOTAL_SLIDES = 1 + PAVILION_WORKS.length; // 4
+// 총 5개 슬라이드: 0 = 메인 포스터, 1 = 다이고 우시, 2 = 박재훈, 3 = 스튜디오 올레오밍구스, 4 = 처 지엔취안
+const TOTAL_SLIDES = 1 + PAVILION_WORKS.length; // 5
 
 export default function HeroSlider({ locale }: HeroSliderProps) {
   const isKo = locale === 'ko';
@@ -118,6 +129,25 @@ export default function HeroSlider({ locale }: HeroSliderProps) {
     };
   }, [isDesktop, isPaused, startTimer]);
 
+  // 헤더 로고 클릭 시 메인 포스터(슬라이드 0)로 복귀
+  useEffect(() => {
+    const handleReset = () => {
+      setCurrentSlide(0);
+      if (timerRef.current) {
+        clearInterval(timerRef.current);
+        timerRef.current = null;
+      }
+      if (!isPaused && isDesktop) {
+        timerRef.current = setInterval(() => {
+          setCurrentSlide((prev) => (prev + 1) % TOTAL_SLIDES);
+        }, 6000);
+      }
+    };
+
+    window.addEventListener('reset-hero-slider', handleReset);
+    return () => window.removeEventListener('reset-hero-slider', handleReset);
+  }, [isPaused, isDesktop]);
+
   const nextSlide = useCallback(() => {
     setCurrentSlide((prev) => (prev + 1) % TOTAL_SLIDES);
     resetTimer();
@@ -155,8 +185,7 @@ export default function HeroSlider({ locale }: HeroSliderProps) {
     <div className="relative w-full h-full flex items-center justify-center bg-black select-none">
       {/* ── MOBILE VIEW (< md): ONLY Poster (No artwork slides, no arrows, no pagination) ── */}
       <div
-        className="block md:hidden w-full h-full max-sm:aspect-square max-sm:max-h-[768px] overflow-hidden flex items-center justify-center cursor-pointer"
-        onClick={scrollToExhibition}
+        className="block md:hidden w-full h-full max-sm:aspect-square max-sm:max-h-[768px] overflow-hidden flex items-center justify-center cursor-default"
         aria-label={isKo ? '제8회 안양공공예술프로젝트(APAP8) 공식 포스터' : 'The 8th Anyang Public Art Project (APAP8) Official Poster'}
       >
         <picture className="w-full h-full flex items-center justify-center">
@@ -178,7 +207,7 @@ export default function HeroSlider({ locale }: HeroSliderProps) {
         </picture>
       </div>
 
-      {/* ── DESKTOP VIEW (>= md): Full Slider with Poster + 3 Artwork Stills, Arrows & Pagination ── */}
+      {/* ── DESKTOP VIEW (>= md): Full Slider with Poster + 4 Artwork Stills, Arrows & Pagination ── */}
       <div
         className="hidden md:flex relative w-full h-full overflow-hidden items-center justify-center group focus:outline-none"
         tabIndex={0}
@@ -198,10 +227,9 @@ export default function HeroSlider({ locale }: HeroSliderProps) {
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
                 transition={{ duration: 0.5, ease: 'easeInOut' }}
-                className="w-full h-full flex items-center justify-center cursor-pointer"
-                onClick={scrollToExhibition}
+                className="w-full h-full flex items-center justify-center cursor-default"
               >
-                <picture className="w-full h-full flex items-center justify-center">
+                <picture className="w-full h-full block">
                   <source
                     type="image/webp"
                     srcSet="/images/main-1920x800.webp"
@@ -209,13 +237,13 @@ export default function HeroSlider({ locale }: HeroSliderProps) {
                   <img
                     src="/images/main-1920x800.jpg"
                     alt={isKo ? '제8회 안양공공예술프로젝트(APAP8) 공식 포스터' : 'The 8th Anyang Public Art Project (APAP8) Official Poster'}
-                    className="w-full h-full object-contain pointer-events-none"
+                    className="w-full h-full object-fill pointer-events-none"
                     loading="eager"
                   />
                 </picture>
               </motion.div>
             ) : activeWork ? (
-              /* ── Slides 2, 3, 4: Individual Artwork Still Frame Slides ── */
+              /* ── Slides 2, 3, 4, 5: Individual Artwork Still Frame Slides ── */
               <motion.div
                 key={`slide-work-${activeWork.id}`}
                 initial={{ opacity: 0, scale: 0.98 }}
@@ -277,16 +305,16 @@ export default function HeroSlider({ locale }: HeroSliderProps) {
           <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6" />
         </button>
 
-        {/* Pagination & Counter (Bottom-Right, 4 slides) */}
+        {/* Pagination & Counter (Bottom-Right, 5 slides) */}
         <div className="absolute bottom-3 sm:bottom-4 right-3 sm:right-6 z-20 flex items-center gap-2 bg-black/85 backdrop-blur-md border border-white/25 px-2.5 py-1.5 shadow-xl">
-          {/* Slide Counter: 01 / 04 ~ 04 / 04 */}
+          {/* Slide Counter: 01 / 05 ~ 05 / 05 */}
           <span className="font-mono text-[10px] sm:text-[11px] font-bold text-white tracking-widest">
             {String(currentSlide + 1).padStart(2, '0')}&nbsp;/&nbsp;0{TOTAL_SLIDES}
           </span>
 
           <span className="w-[1px] h-3 bg-white/20 mx-0.5" />
 
-          {/* 4 Indicator Bars */}
+          {/* 5 Indicator Bars */}
           <div className="flex items-center gap-1.5">
             {Array.from({ length: TOTAL_SLIDES }).map((_, idx) => (
               <button

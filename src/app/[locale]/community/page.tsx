@@ -6,7 +6,7 @@ import GnbHeader from '@/components/site-a/GnbHeader';
 import Footer from '@/components/site-a/Footer';
 import SectionDetailModal from '@/components/site-a/SectionDetailModal';
 import { getCommunityItems, CommunityItem } from '@/lib/community';
-import { ArrowLeft, ArrowUpRight, MessageCircle, Download } from 'lucide-react';
+import { ArrowLeft, ArrowUpRight, MessageCircle, Download, Play } from 'lucide-react';
 import NoticeModalContent from '@/components/community/NoticeModalContent';
 
 interface PageProps {
@@ -118,6 +118,12 @@ export default function CommunityPage({ params }: PageProps) {
                       <span className="hidden xs:inline-flex items-center gap-1 text-[10px] font-mono text-white/80 bg-white/10 border border-white/20 px-2 py-0.5">
                         <Download className="w-2.5 h-2.5" />
                         <span>{item.previewType === 'download_only' ? (isKo ? '리플렛 다운로드' : 'LEAFLET') : 'PDF'}</span>
+                      </span>
+                    )}
+                    {item.videoUrl && (
+                      <span className="hidden xs:inline-flex items-center gap-1 text-[10px] font-mono text-red-300 bg-red-500/20 border border-red-500/40 px-2 py-0.5">
+                        <Play className="w-2.5 h-2.5 fill-current" />
+                        <span>{isKo ? '영상 다시보기' : 'VIDEO'}</span>
                       </span>
                     )}
                   </div>

@@ -102,7 +102,7 @@ export default function AboutPage({ params }: PageProps) {
               </div>
               <div>
                 <span className="text-[#8C8C8C] block text-[11px]">{isKo ? '■ 장소' : '■ VENUE'}</span>
-                <span className="text-white font-medium">{isKo ? '안양예술공원 일대 및 안양파빌리온' : 'Anyang Art Park & Anyang Pavilion'}</span>
+                <span className="text-white font-medium">{isKo ? '안양예술공원 일대 및 안양파빌리온, 학운공원 내 오픈스쿨' : 'Anyang Art Park Area, Anyang Pavilion & Open School in Hagun Park'}</span>
               </div>
             </div>
 

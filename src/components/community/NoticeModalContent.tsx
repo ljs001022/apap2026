@@ -2,7 +2,7 @@
 
 import React from 'react';
 import Image from 'next/image';
-import { Download, ExternalLink, FileText, ArrowDownToLine } from 'lucide-react';
+import { Download, ExternalLink, FileText, ArrowDownToLine, Play } from 'lucide-react';
 import { CommunityItem } from '@/lib/community';
 
 interface NoticeModalContentProps {
@@ -10,7 +10,33 @@ interface NoticeModalContentProps {
   isKo: boolean;
 }
 
+function renderLineWithLinks(text: string) {
+  const urlRegex = /(https?:\/\/[^\s]+)/g;
+  if (!text.match(urlRegex)) return text;
+
+  const parts = text.split(urlRegex);
+  return parts.map((part, i) => {
+    if (part.match(urlRegex)) {
+      return (
+        <a
+          key={i}
+          href={part}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-white underline underline-offset-4 decoration-white/50 hover:decoration-white hover:text-white font-mono break-all inline-flex items-center gap-1 mx-1"
+        >
+          <span>{part}</span>
+          <ExternalLink className="w-3 h-3 inline-block flex-shrink-0" />
+        </a>
+      );
+    }
+    return part;
+  });
+}
+
 export default function NoticeModalContent({ item, isKo }: NoticeModalContentProps) {
+  const isPoster = item.pdfDownloadName?.includes('포스터') || item.id === 'notice-keyvisual';
+
   return (
     <div className="space-y-6">
       {/* Top Meta Status Bar */}
@@ -28,16 +54,30 @@ export default function NoticeModalContent({ item, isKo }: NoticeModalContentPro
           <span className="font-mono text-xs text-[#8C8C8C]">{item.date}</span>
         </div>
 
-        {item.pdfUrl && (
-          <div className="flex items-center gap-1.5 text-xs font-mono text-white/90 bg-white/10 px-2.5 py-1 border border-white/20">
-            <ArrowDownToLine className="w-3.5 h-3.5 text-white" />
-            <span>
-              {item.previewType === 'download_only'
-                ? (isKo ? `리플렛 다운로드 (${item.pdfSize})` : `LEAFLET (${item.pdfSize})`)
-                : (isKo ? `PDF 첨부 (${item.pdfSize})` : `PDF (${item.pdfSize})`)}
-            </span>
-          </div>
-        )}
+        <div className="flex items-center gap-2">
+          {item.pdfUrl && (
+            <div className="flex items-center gap-1.5 text-xs font-mono text-white/90 bg-white/10 px-2.5 py-1 border border-white/20">
+              <ArrowDownToLine className="w-3.5 h-3.5 text-white" />
+              <span>
+                {item.previewType === 'download_only'
+                  ? (isKo ? `리플렛 다운로드 (${item.pdfSize})` : `LEAFLET (${item.pdfSize})`)
+                  : (isKo ? `PDF 첨부 (${item.pdfSize})` : `PDF (${item.pdfSize})`)}
+              </span>
+            </div>
+          )}
+
+          {item.videoUrl && (
+            <a
+              href={item.videoUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-1.5 text-xs font-mono text-white bg-red-600/30 hover:bg-red-600 px-2.5 py-1 border border-red-500/50 transition-colors"
+            >
+              <Play className="w-3 h-3 fill-current" />
+              <span>{isKo ? '다시보기 영상' : 'YOUTUBE'}</span>
+            </a>
+          )}
+        </div>
       </div>
 
       {/* Main Notice Paragraphs with Structured Box for bullet lists */}
@@ -62,7 +102,7 @@ export default function NoticeModalContent({ item, isKo }: NoticeModalContentPro
                         : 'leading-relaxed text-[#B9B9B9]'
                     }
                   >
-                    {line}
+                    {renderLineWithLinks(line)}
                   </div>
                 ))}
               </div>
@@ -71,7 +111,7 @@ export default function NoticeModalContent({ item, isKo }: NoticeModalContentPro
 
           return (
             <p key={idx} className="whitespace-pre-line">
-              {paragraph}
+              {renderLineWithLinks(paragraph)}
             </p>
           );
         })}
@@ -81,7 +121,7 @@ export default function NoticeModalContent({ item, isKo }: NoticeModalContentPro
       {item.previewType === 'image' && item.previewImage && (
         <div className="pt-2 space-y-3.5 border-t border-white/10">
           <div className="flex items-center justify-between text-xs font-mono text-[#8C8C8C]">
-            <span className="font-bold text-white/90">■ {isKo ? '메인 키비주얼 포스터 (A2)' : 'MAIN KEY VISUAL POSTER'}</span>
+            <span className="font-bold text-white/90">{isKo ? '■ 메인 키비주얼 포스터 (A2)' : '■ MAIN KEY VISUAL POSTER'}</span>
             <span className="text-[11px] text-white/60 bg-white/5 border border-white/10 px-2 py-0.5">
               {item.pdfSize}
             </span>
@@ -180,12 +220,12 @@ export default function NoticeModalContent({ item, isKo }: NoticeModalContentPro
         <div className="pt-2 space-y-3.5 border-t border-white/10">
           <div className="flex items-center justify-between text-xs font-mono text-[#8C8C8C]">
             <span className="font-bold text-white/90">
-              ■ {item.id === 'notice-01'
+              ■ {isPoster
                 ? (isKo ? '공식 메인 포스터(키비주얼) 미리보기' : 'OFFICIAL KEY VISUAL POSTER PREVIEW')
                 : (isKo ? '개막식 초청장 미리보기' : 'OPENING INVITATION PREVIEW')}
             </span>
             <span className="text-[11px] text-white/60 bg-white/5 border border-white/10 px-2 py-0.5">
-              {item.id === 'notice-01' ? 'A2' : '1080×1920'} · {item.pdfSize}
+              {isPoster ? 'A2' : '1080×1920'} · {item.pdfSize}
             </span>
           </div>
 
@@ -209,15 +249,51 @@ export default function NoticeModalContent({ item, isKo }: NoticeModalContentPro
             </a>
             <a
               href={item.pdfUrl}
-              download={item.pdfDownloadName || (item.id === 'notice-01' ? 'APAP8_공식포스터_A2.pdf' : 'APAP8_초청장.pdf')}
+              download={item.pdfDownloadName || (isPoster ? 'APAP8_공식포스터_A2.pdf' : 'APAP8_개막식_초청장.pdf')}
               className="min-h-[42px] px-5 py-2 bg-white text-black font-mono text-xs font-bold hover:bg-neutral-200 flex items-center justify-center gap-2 transition-all cursor-pointer"
             >
               <Download className="w-3.5 h-3.5" />
               <span>
-                {item.id === 'notice-01'
+                {isPoster
                   ? (isKo ? `포스터 다운로드 (${item.pdfSize || 'PDF'})` : 'DOWNLOAD POSTER')
                   : (isKo ? `초청장 다운로드 (${item.pdfSize || 'PDF'})` : 'DOWNLOAD')}
               </span>
+            </a>
+          </div>
+        </div>
+      )}
+
+      {/* ── Case 4: Video Preview (KBS 1TV Documentary Replay) ── */}
+      {item.previewType === 'video' && item.videoUrl && (
+        <div className="pt-2 space-y-3.5 border-t border-white/10">
+          <div className="flex items-center justify-between text-xs font-mono text-[#8C8C8C]">
+            <span className="font-bold text-white/90">
+              ■ {isKo ? 'KBS 1TV 다큐멘터리 다시보기 영상' : 'KBS 1TV DOCUMENTARY REPLAY'}
+            </span>
+            <span className="text-[11px] text-white/70 bg-red-600/20 border border-red-500/40 px-2 py-0.5">
+              YouTube · 1080p Full HD
+            </span>
+          </div>
+
+          <div className="relative w-full aspect-video bg-neutral-950 border border-white/20 rounded overflow-hidden shadow-2xl">
+            <iframe
+              src="https://www.youtube-nocookie.com/embed/4zB7LXO7Ydo"
+              title={item.title}
+              className="w-full h-full border-0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowFullScreen
+            />
+          </div>
+
+          <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-end gap-2.5 pt-1">
+            <a
+              href={item.videoUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="min-h-[44px] px-6 py-2.5 bg-red-600 hover:bg-red-700 text-white font-mono text-xs sm:text-sm font-bold flex items-center justify-center gap-2 transition-all cursor-pointer shadow-lg"
+            >
+              <ExternalLink className="w-4 h-4" />
+              <span>{isKo ? 'YouTube에서 전체 영상 시청하기' : 'WATCH ON YOUTUBE'}</span>
             </a>
           </div>
         </div>

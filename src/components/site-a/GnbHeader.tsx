@@ -80,8 +80,14 @@ export default function GnbHeader({ locale }: GnbHeaderProps) {
     return () => { document.body.style.overflow = ''; };
   }, [drawerOpen]);
 
+  const isMainPage = () => {
+    const currentPath = pathname ? pathname.replace(/\/+$/, '') : '';
+    const targetPath = `/${locale}`.replace(/\/+$/, '');
+    return currentPath === targetPath || currentPath === '';
+  };
+
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
-    if (pathname === `/${locale}`) {
+    if (isMainPage()) {
       e.preventDefault();
       const el = document.getElementById(id);
       if (el) {
@@ -89,6 +95,32 @@ export default function GnbHeader({ locale }: GnbHeaderProps) {
         setActiveSection(id);
         setDrawerOpen(false);
       }
+    }
+  };
+
+  const handleLogoClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    if (typeof window !== 'undefined') {
+      window.dispatchEvent(new CustomEvent('reset-hero-slider'));
+    }
+
+    if (isMainPage()) {
+      e.preventDefault();
+      const el = document.getElementById('hero');
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth' });
+      }
+      const scrollContainer = document.querySelector('main');
+      if (scrollContainer) {
+        scrollContainer.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      if (typeof window !== 'undefined' && window.location.hash) {
+        history.replaceState(null, '', `/${locale}/`);
+      }
+      setActiveSection('');
+      setDrawerOpen(false);
+    } else {
+      setDrawerOpen(false);
     }
   };
 
@@ -108,7 +140,7 @@ export default function GnbHeader({ locale }: GnbHeaderProps) {
             scrolled ? 'h-[54px] sm:h-[60px]' : 'h-[72px] sm:h-[80px]'
           }`}
         >
-          <Link href={`/${locale}`} className="flex items-center gap-3 group" onClick={(e) => handleNavClick(e, 'hero')}>
+          <Link href={`/${locale}/`} className="flex items-center gap-3 group" onClick={handleLogoClick}>
             <span className="font-mono font-black text-xl tracking-tighter border-2 border-white px-2 py-0.5 leading-none group-hover:bg-white group-hover:text-black transition-colors">
               APAP<b>8</b>
             </span>
