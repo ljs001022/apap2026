@@ -6,12 +6,12 @@
       "artists": [
         {
           "slug": "daigo-ushi",
-          "name_ko": "다이고 우시 Daigo Ushi",
-          "name_en": "",
-          "birth_year": "",
-          "nationality": "사이타마현, 일본\nSaitama, Japan",
-          "bio": "주요 개인전\n2026 Resonance, 1000 Press 갤러리, 항저우, 중국\n2016 Healing Seaming, Liang 갤러리, 항저우, 중국\n\nSelected Solo Exhibitions\n2026 Resonance, 1000 Press Gallery, Hangzhou, China\n2016 Healing Seaming, Liang Gallery, Hangzhou, China\n\n\n주요 단체전\n2021 청두 비엔날레 2021, 청두현대미술관·톈푸미술관, 청두, 중국\n2013 상하이 예술디자인전, 파워 스테이션 오브 아트, 상하이, 중국\n2010 제1회 798 멀티미디어 아트 페스티벌, 798 예술구, 베이징, 중국\n2006 제4회 서울 국제 미디어아트 비엔날레: 두 개의 현실, 서울시립미술관, 서울, 대한민국\n2003 제7회 일본 미디어예술제, 도쿄도사진미술관, 도쿄, 일본\n\nSelected Group Exhibitions\n2021 Chengdu Biennale 2021, Chengdu Museum of Contemporary Art and Tianfu Art Museum, Chengdu, China.\n2013 Shanghai Art & Design Exhibition, Power Station of Art, Shanghai, China.\n2010 The 1st 798 Multimedia Art Festival, 798 Art Zone, Beijing, China.\n2006 The 4th Seoul International Media Art Biennale: Dual Realities, Seoul Museum of Art, Seoul, South Korea.\n2003 The 7th Japan Media Arts Festival, Tokyo Metropolitan Museum of Photography, Tokyo, Japan.",
-          "intro": "우시 다이고(牛大悟)는 현대미술을 기반으로 활동하는 아티스트로, 중의학(中醫學)의 사상을 출발점으로 신체·소리·인공지능의 관계를 탐구하고 있다. 중국에서의 오랜 체류와 리서치를 통해 동아시아의 사상과 문화를 연구해 왔으며, 최근에는 한국에서의 제작과 리서치도 이어가고 있다. 그는 XR 기술과 AI를 인간을 대체하는 기술이 아니라 장소와 사람들과의 관계를 학습하는 존재로 바라보며, 사운드 설치, 영상, 인터랙티브 미디어를 넘나드는 작업을 통해 기술과 동아시아의 사상이 교차하는 새로운 예술적 가능성을 탐구하고 있다.",
+          "name_ko": "다이고 우시",
+          "name_en": "Daigo Ushi",
+          "birth_year": "1979",
+          "nationality": "가나가와현, 일본\nKanagawa, Japan",
+          "bio": "주요 2인전\n2026 《Resonance》, 1000 Press 갤러리, 항저우, 중국\n2016 《Healing Seaming》, Liang 갤러리, 항저우, 중국\n\nSelected Duo Exhibitions\n2026 Resonance, 1000 Press Gallery, Hangzhou, China\n2016 Healing Seaming, Liang Gallery, Hangzhou, China\n\n\n주요 단체전\n2021 《2021 청두 비엔날레: Super Fusion》, 청두 톈푸미술관·청두현대미술관, 청두, 중국\n2013 《상하이 예술디자인전》, 파워 스테이션 오브 아트, 상하이, 중국\n2010 《제1회 798 멀티미디어 아트 페스티벌》, 798 예술구, 베이징, 중국\n2006 《제4회 서울 국제 미디어아트 비엔날레: 두 개의 현실》, 서울시립미술관, 서울, 대한민국\n2004 《제7회 일본 미디어예술제》, 도쿄도사진미술관, 도쿄, 일본\n\nSelected Group Exhibitions\n2021 2021 Chengdu Biennale: Super Fusion, Chengdu Tianfu Art Museum and Chengdu Museum of Contemporary Art, Chengdu, China\n2013 Shanghai Art & Design Exhibition, Power Station of Art, Shanghai, China\n2010 The 1st 798 Multimedia Art Festival, 798 Art Zone, Beijing, China\n2006 The 4th Seoul International Media Art Biennale: Dual Realities, Seoul Museum of Art, Seoul, South Korea\n2004 The 7th Japan Media Arts Festival, Tokyo Metropolitan Museum of Photography, Tokyo, Japan",
+          "intro": "다이고 우시는 현대미술을 기반으로 신체와 소리, 기술이 서로 관계 맺는 방식에 주목해 왔다. 중의학(中醫學)에서 발견한 신체와 환경에 대한 관점을 출발점으로, 중국에서의 오랜 체류와 연구를 통해 동아시아의 사상과 문화를 탐구해 왔다. 이러한 관심은 XR과 인공지능(AI)을 다루는 방식으로 이어진다. 작가는 기술을 인간의 감각과 행위를 대신하는 수단이 아니라 주변의 움직임과 소리를 감지하며 관계를 만들어가는 또 다른 존재로 바라본다. 사운드 설치와 영상, 인터랙티브 미디어를 넘나들며 동아시아의 사상과 동시대 기술이 교차하는 지점에서 새로운 관계의 가능성을 탐색한다.",
           "profile_image": "/assets/artists/e-pavilion-media/daigo-ushi/profile.webp",
           "works": [
             {
@@ -19,7 +19,7 @@
               "year": "2026",
               "material": "단채널 비디오(4K), 컬러, 스테레오 사운드, 8분\n\nSingle-channel video (4K), color, stereo sound, 8 min.",
               "size": "5,120 × 2,880 mm",
-              "description": "17세기 후반, 간에이지(寛永寺)의 주지 스님은 에도의 우구이스가 아름답게 울지 않는다고 판단하고, 교토에서 3,500마리의 우구이스를 에도로 옮겼다는 전설이 전해진다. 그 새들이 놓였던 곳은 오늘날에도 도쿄의 지명인 우구이스다니(鶯谷) 로 남아 있다.\n\n본 작품에서 작가는 AI를 내장한 새장을 들고 도쿄에서 한국 안양으로 여행을 떠난다. 여행하는 동안 AI는 마이크를 통해 새소리와 사람들의 대화, 환경음을 실시간으로 수집·분석·기억한다. 축적된 경험과 주변 환경을 바탕으로 AI는 새소리를 실시간으로 생성하고 변화시키며, AI가 생성한 새소리를 새장에 내장된 스피커를 통해 들려준다. 여행이 계속될수록 AI는 새로운 경험을 학습하고, 그 소리는 사람과 장소와의 만남을 반영하며 끊임없이 변화한다. 여행의 끝에서 AI는 여정을 통해 축적한 기억과 안양의 환경을 바탕으로 새로운 새소리를 실시간으로 생성하여 공원에 울려 퍼지게 한다.\n\n본 작품은 AI나 세계화를 부정하지 않는다. 오히려 AI와 세계화가 가속화되는 시대에 문화와 가치관이 일방적으로 확산되는 것이 아니라, 서로 다른 문화와 지역이 상호 학습하며 각자의 개성을 존중하고 새로운 소통을 만들어 갈 수 있는 ‘Paradise’ 의 가능성과 그 양면성을 탐구하는 영상 작품이다.",
+              "description": "〈D#31 AI 새장: 안양의 메아리〉(2026)는 17세기 후반 교토의 우구이스 3,500마리를 에도로 옮겼다는 전설에서 출발한다. 작가는 과거 새들이 한 지역에서 다른 지역으로 옮겨졌던 이야기를 오늘날 국경을 넘나드는 기술과 문화의 이동에 겹쳐보며, AI가 내장된 새장과 함께 도쿄에서 안양으로 향한다. 여정 동안 새장 속 인공지능(AI)은 마이크를 통해 새소리와 사람들의 대화, 주변의 환경음을 실시간으로 수집하고 기억하며, 이를 바탕으로 새로운 새소리를 만들어낸다. 새로운 장소와 사람을 만날 때마다 소리는 조금씩 달라지고, 여정의 끝에는 안양에서 보고 들은 것들이 새로운 울음이 되어 공원에 퍼져 나간다. 작품은 AI와 세계화가 가속화되는 오늘날 하나의 문화와 가치가 일방적으로 확산하기보다, 서로 다른 지역이 각자의 차이를 간직한 채 영향을 주고받을 가능성을 보여준다. 이를 통해 기술과 이동이 만들어낼 수 있는 동시대적 ‘무릉도원’의 가능성과 그 양면성을 질문한다.",
               "images": [
                 "/assets/artists/e-pavilion-media/daigo-ushi/work-1-1.webp"
               ]
@@ -28,20 +28,20 @@
         },
         {
           "slug": "jaehun-park",
-          "name_ko": "박재훈 Jaehun Park",
-          "name_en": "",
-          "birth_year": "",
-          "nationality": "서울, 한국\n암스테르담, 네덜란드\nSeoul, South Korea\nAmsterdam, the Netherlands",
-          "bio": "주요 개인전\n2026 과열된 풍차, Grote Kerk Alkmaar, 알크마르, 네덜란드\n2026 폴리곤의 순례자들, WWNN, 서울, 대한민국\n2023 파생 풍경, 성곡 미술관, 서울, 대한민국\n2022 밤을 위한 제의, Bradwolff Projects, 암스테르담, 네덜란드\n2021 실시간 연옥, 대안공간 루프, 서울, 대한민국\n\nSelected Solo Exhibitions\n2026 Overheated Windmill, Grote Kerk Alkmaar, Alkmaar, NL\n2026 Polygon Pilgrims, WWNN, Seoul, KR\n2023 Derivative Landscape, Sungkok Art Museum, Seoul\n2022 Ritual for the Night, Bradwolff Projects, Amsterdam\n2021 Real-time Limbo, Alternative Space Loop, Seoul\n\n주요 단체전\n2025 Shifting Reality, Bradwolff & Partners, 암스테르담, 네덜란드\n2024 눈 홉뜨기 : 미디어 파사드를 위한 제안, 대안공간 루프, 서울, 대한민국\n2023 베이징 비엔날레 - Earth Heat Flow: the Visitor Who Returns to Solar Time, 베이징, 중국\n2022 Topographic Atlas, JAN Museum, 암스텔벤, 네덜란드\n2022 예술평화: 0시의 현재, 울산시립미술관, 울산, 대한민국\n\nSelected Group Exhibitions\n2025 Shifting Realities, Bradwolff & Partners, Amsterdam, NL\n2024 Rolling Eyes : Proposals for Media Facade, Alternative Space LOOP, Seoul, KR\n2023 Beijing Biennial of Art - Earth Heat Flow: the Visitor Who Returns to Solar Time, Beijing, CN\n2022 Topographic Atlas, JAN Museum, Amstelveen, NL\n2022 Art and Peace: Let us begin again from zero o'clock, Ulsan Art Museum, Ulsan, KR",
-          "intro": "박재훈은 포인트 클라우드(point cloud)와 사진측량기술(photogrammetry)을 이용해 현실 세계의 사물을 3D 시뮬레이션으로 번역한다. 그는 직접 사물의 3D 데이터를 만들거나, 게임 개발자들이 만들어 놓은 레디메이드(ready-made) 데이터를 수집한 후 그것을 가공하고 분해하고 재조합해 가상의 디지털 공간에 배치한다. 이렇게 쌓아 올린 조각들은 현실의 구조와 법칙하에서는 성립할 수 없는 무대를 구성하는데, 이것은 현실 세계의 재현인 듯 보이면서도 어딘가 기이하고 인공적인 감각으로 점철되어 있다. 현실보다는 거울 환영에 더 가까운 이 3D 시뮬레이션은 무의식을 떠다니는 사물의 무작위 집합체처럼 보이기도 하고, 꿈을 부유하는 초현실주의자들의 회화처럼 비치기도 한다. \n\n그의 작업에는 인간 대신 각종 사물이 자리하는데, 이 사물들은 인간이 만들어 낸 동시대 욕망의 총체로서 하이퍼 자본주의(hyper-capitalism) 아래 모든 질서가 종속되고 재편되는 구조를 극명하게 보여준다. 수학적 알고리즘에 의해 철저히 계산된 가상의 물리 현상들은 개연성 없이 병치된 사물들과 함께 일상적 공간을 초현실적 공간으로 변모시킨다. 그의 작업은 종말을 향해 다가가는 이 시대 인류의 자화상이다. 박재훈은 종교가 가지던 위상마저 획득해 버린 자본주의의 파생 풍경을 기록하며 인류의 욕망이 가는 길은 어디인지를 질문한다.",
+          "name_ko": "박재훈",
+          "name_en": "Jaehun Park",
+          "birth_year": "1986",
+          "nationality": "서울, 한국 / 암스테르담, 네덜란드\nSeoul, South Korea / Amsterdam, the Netherlands",
+          "bio": "주요 개인전\n2026 《과열된 풍차》, Grote Kerk Alkmaar, 알크마르, 네덜란드\n2026 《폴리곤의 순례자들》, WWNN, 서울, 대한민국\n2023 《파생 풍경》, 성곡미술관, 서울, 대한민국\n2022 《밤을 위한 제의, Bradwolff Projects》, 암스테르담, 네덜란드\n2021 《실시간 연옥》, 대안공간 루프, 서울, 대한민국\n\nSelected Solo Exhibitions\n2026 Overheated Windmill, Grote Kerk Alkmaar, Alkmaar, Netherlands\n2026 Polygon Pilgrims, WWNN, Seoul, South Korea\n2023 Derivative Landscape, Sungkok Art Museum, Seoul, South Korea\n2022 Ritual for the Night, Bradwolff Projects, Amsterdam, Netherlands\n2021 Real-time Limbo, Alternative Space Loop, Seoul, South Korea\n\n\n주요 단체전\n2025 《Shifting Reality, Bradwolff & Partners》, 암스테르담, 네덜란드\n2024 《눈 홉뜨기 : 미디어 파사드를 위한 제안》, 대안공간 루프, 서울, 대한민국\n2022 - 2023 《제1회 베이징 아트 비엔날레 – 대지열류: 태양의 시간으로 돌아온 방문자》, 베이징, 중국\n2022 《Topographic Atlas》, JAN Museum, 암스텔벤, 네덜란드\n2022 《예술평화: 0시의 현재》, 울산시립미술관, 울산, 대한민국\n\nSelected Group Exhibitions\n2025 Shifting Realities, Bradwolff & Partners, Amsterdam, Netherlands\n2024 Rolling Eyes : Proposals for Media Facade, Alternative Space LOOP, Seoul, South Korea\n2022 - 2023 The First Beijing Biennial – Earth Heat Flow: The Visitor Who Returns to Solar Time, Beijing, China\n2022 Topographic Atlas, JAN Museum, Amstelveen, Netherlands\n2022 Art and Peace: Let us begin again from zero o'clock, Ulsan Art Museum, Ulsan, South Korea",
+          "intro": "박재훈은 포인트 클라우드와 사진측량 기술을 이용해 현실의 사물을 3D 데이터로 변환하고, 이를 가공·분해·재조합해 가상의 디지털 공간을 구축한다. 현실에서 수집하거나 게임을 위해 제작된 레디메이드 데이터가 뒤섞인 공간은 현실을 닮았지만, 현실의 질서로는 성립할 수 없는 기이하고 인공적인 풍경을 만들어낸다. 그 안을 채우는 각종 사물은 인간이 만들어낸 동시대 욕망의 총체로, 자본주의의 질서 속에서 끊임없이 생산되고 소비되는 세계를 비춘다. 작가는 현실과 가상의 경계를 교란하는 초현실적 풍경을 통해 인간의 욕망이 만들어낸 세계가 어디를 향하고 있는지 질문한다.",
           "profile_image": "/assets/artists/e-pavilion-media/jaehun-park/profile.webp",
           "works": [
             {
               "title": "〈낙원의 위상학〉\n\n〈Topology of Paradise〉",
               "year": "2026",
-              "material": "3D 시뮬레이션 비디오(4K), 컬러, 사운드\n\n3D simulation video (4K), color, sound",
-              "size": "5,120 × 2,880 mm",
-              "description": "위상학 (Topology)'은 형태가 늘어나거나 뒤틀려도 본질적인 연결 관계는 변하지 않는 수학적 개념이다. ‘낙원의 위상학’은 시대와 문화, 종교와 기술이 끊임없이 변화하더라도 인간이 품어온 '낙원', ‘무릉도원’ 이라는 이상향에 대한 갈망은 변하지 않는다는 역설에서 출발한다. 이 작품에서 낙원은 도달해야 할 목적지가 아니라 이미 존재하지만 끝내 인식하지 못하는 공간이며, 현실과 환상, 자연과 인공, 기억과 시뮬레이션이 서로 연결된 하나의 위상학적 구조로 제시한다.\n\n'낙원의 위상학'은 인간이 오래도록 꿈꾸어온 이상향의 풍경을 조망하는 3D 시뮬레이션 영상이다. 관객은 초현실적인 낙원의 공간을 유영하며 끝없이 확장되는 풍경 사이를 지나고, 그 안에서 현대 사회의 욕망이 남긴 작은 사건들과 조우한다. 자연은 알고리즘으로 재구성되고, 풍경은 소비의 이미지와 뒤섞이며, 낙원은 더 이상 발견되는 장소가 아니라 행복이라는 이데올로기를 끊임없이 생산하고 유지하지 시스템으로 변모한다. 작품은 끝없이 낙원을 찾아 헤매는 우리의 시선을 따라가며, 어쩌면 우리가 떠나고자 하는 이 현실이야말로 이미 가장 완전한 낙원이 아닌지 조용히 되묻는다.",
+              "material": "3D 시뮬레이션 비디오(4K), 컬러, 사운드, 6분 9초\n\n3D simulation video (4K), color, sound, 6 min. 9 sec.",
+              "size": "",
+              "description": "〈낙원의 위상학〉(2026)는 형태가 늘어나거나 뒤틀려도 본질적인 연결 관계는 유지된다는 수학적 개념인 ‘위상학(Topology)’에서 출발한다. 시대와 문화, 종교와 기술이 끊임없이 변화해왔지만, 인간이 품어온 낙원과 이상향에 대한 갈망은 여전히 이어지고 있다. 작품은 이러한 오래된 갈망을 3D 시뮬레이션으로 구현하며 현실과 환상, 자연과 인공, 기억과 시뮬레이션이 뒤섞인 초현실적인 세계를 만들어낸다. 관람객은 끝없이 확장되는 공간을 유영하며 그 안에 투영된 동시대의 욕망과 마주한다. 자연이 알고리즘으로 재구성되고 풍경이 소비의 이미지와 뒤섞이는 과정에서, 낙원은 어딘가에 존재하는 완전한 장소가 아니라 행복에 대한 이상을 끊임없이 만들어내고 좇게 하는 구조로 드러난다. 끝없이 더 나은 낙원을 찾아 나서는 시선의 끝에서, 작품은 우리가 벗어나고자 했던 현실과 우리가 꿈꾸어온 낙원이 과연 얼마나 다른 것인지 돌아보게 한다.",
               "images": [
                 "/assets/artists/e-pavilion-media/jaehun-park/work-1-1.webp"
               ]
@@ -50,20 +50,20 @@
         },
         {
           "slug": "studio-oleomingus",
-          "name_ko": "스튜디오 올레오밍구스 Studio Oleomingus",
-          "name_en": "",
+          "name_ko": "스튜디오 올레오밍구스",
+          "name_en": "Studio Oleomingus",
           "birth_year": "",
-          "nationality": "아마다바드, 인도\nAhmedabad, India",
-          "bio": "주요 개인전\n2023–24 《The Concentric Fictions of a Generous History》, Kill Screen 갤러리, 로스앤젤레스, 미국\n2020 《Notes in the Margins of History》, VGA Gallery 갤러리, 시카고, 미국\n2019 《Langoors in the Labyrinth》, Phoenix Gallery 갤러리, 레스터, 영국\n\nSelected Solo Exhibitions\n2023-24 The Concentric Fictions of a Generous History, Kill Screen, Los Angeles, CA USA\n2020 Notes in the Margins of History, VGA Gallery, Chicago, USA\n2019 Langoors in the Labyrinth, Phoenix Gallery, Leicester, England\n\n주요 단체전\n2025 《Beyond Gravity Festival》, Theatre IM Depot, 도르트문트, 독일\n2022 《Circades》, Espace fine (collectifespacefine), 파리, 프랑스\n2022 《Future Landing》, Serendipity Arts Festival, 고아, 인도\n2022 《Voluntary Attempts to Overcome Necessary Obstacles》, Elizabeth Foundation for the Arts, 뉴욕, 미국\n2019 《Videogames: Design / Play / Disrupt》, V&A Museum, 런던, 영국\n\nSelected Group Exhibitions\n2025 Beyond Gravity Festival, Theatre IM Depot, Dortmund, Germany\n2022 Circades, Espace fine (collectifespacefine), Paris, France.\n2022 Future Landing, Serendipity Arts Festival, Goa, India\n2022 Voluntary Attempts to Overcome Necessary Obstacles, Elizabeth Foundation for the Arts, New York, USA\n2019 Videogames: Design / Play / Disrupt, V&A Museum, London, England",
-          "intro": "나의 작업은 언어와 번역, 저자성에 대한 지속적인 관심에서 출발하며, 특히 식민주의적 폭력에 의해 가려진 역사 속에서 이들이 어떻게 작동하는지를 탐구한다. 전자문학의 형식을 통해 제작하는 나의 게임은 현대 인터넷의 방대한 데이터베이스와 절차적으로 매개된 시스템 안에서 개인과 집단의 정체성이 어떻게 기억되고, 상품화되며, 착취되는지를 살펴본다.\n\n나는 각각의 프로젝트를 어떤 역사에 덧붙이는 하나의 ‘정오표(erratum)’라고 생각한다. 정체성과 공동체, 인종과 젠더의 균열 속에서 발굴된 지하적(chthonic) 서사들, 권력의 압력 아래 공적 기억 속에 퇴적되거나 진보의 격동 속에서 찌꺼기처럼 버려진 이야기들에 이끌린다. 이러한 이야기들은 흔히 오늘날 끊임없는 갈등의 격전지가 되어버린 장소와 사람들에 관한 것이다. 그곳에서는 우리의 삶에 복수의 기록이 존재할 수 있다는 가능성을 말하는 것만으로도 억압적인 국가에 맞서는 저항의 한 형태가 된다.\n\n이처럼 살아 있는 역사의 현장에는 우화와 신앙, 오용과 오역이 복잡하게 뒤얽혀 있다. 그렇기에 각각의 게임은 정치적인 동시에 허구적이고, 역사적인 동시에 부조리한 것이 되며, 그것을 만드는 과정 역시 마찬가지다. 나는 의도적인 생략과 불완전한 결말로 가득한, 균열된 산문을 쓴다. 이를 통해 훼손된 풍경과 그 안에 살아가는 사람들에게 절실히 필요한 불투명성을 되돌려주고자 한다. 나에게 이러한 인터랙티브 픽션은 ‘알지 못함’의 상태에 익숙해지는 실천이며, 서로 얽혀 있으면서도 부분적일 수밖에 없는 지식을 하나의 가능한 진실로 받아들이는 방식이다. 동시에 식민 지배의 역사를 인간의 고통에 관한 어떤 유한한 분류체계 안에 완전히 구획하고 정리하려는 시도를 거부하는 일이기도 하다.",
+          "nationality": "",
+          "bio": "주요 개인전\n2023–24 《The Concentric Fictions of a Generous History》, Kill Screen 갤러리, 로스앤젤레스, 미국\n2019 《Notes in the Margins of History》, VGA 갤러리, 시카고, 미국\n2019 《Langoors in the Labyrinth》, Phoenix 갤러리, 레스터, 영국\n\nSelected Solo Exhibitions\n2023-24 The Concentric Fictions of a Generous History, Kill Screen, Los Angeles, CA USA\n2019 Notes in the Margins of History, VGA Gallery, Chicago, USA\n2019 Langoors in the Labyrinth, Phoenix Gallery, Leicester, England\n\n\n주요 단체전\n2025 《Beyond Gravity Festival》, Theatre IM Depot, 도르트문트, 독일\n2022 《Circades》, Espace fine(collectifespacefine), 파리, 프랑스\n2022 《Future Landing》, Serendipity Arts Festival, 고아, 인도\n2022 《Voluntary Attempts to Overcome Necessary Obstacles》, 엘리자베스 예술재단, 뉴욕, 미국\n2019 《Videogames: Design / Play / Disrupt》, 빅토리아 앨버트 박물관(V&A), 런던, 영국\n\nSelected Group Exhibitions\n2025 Beyond Gravity Festival, Theatre IM Depot, Dortmund, Germany\n2022 Circades, Espace fine (collectifespacefine), Paris, France\n2022 Future Landing, Serendipity Arts Festival, Goa, India\n2022 Voluntary Attempts to Overcome Necessary Obstacles, Elizabeth Foundation for the Arts, New York, USA\n2019 Videogames: Design / Play / Disrupt, Victoria and Albert Museum (V&A), London, England",
+          "intro": "스튜디오 올레오밍구스는 언어와 번역, 저자성에 대한 관심을 바탕으로 식민주의적 폭력에 의해 가려지거나 누락된 역사와 기억을 탐구한다. 특히 무엇이 역사로 기록되고 기억되는지, 그 과정에서 어떤 목소리가 선택되거나 배제되는지에 주목하며 전자문학과 게임의 형식을 통해 개인과 집단의 기억을 둘러싼 권력의 구조를 살펴본다. 이러한 맥락에서 작가는 각각의 작업을 기존의 역사에 덧붙이는 하나의 ‘정오표(erratum)’로 바라본다. 공적 기록에서 밀려나거나 사라진 이야기를 다시 불러내되 하나의 완결된 역사로 복원하기보다, 의도적인 생략과 불완전한 서사를 통해 서로 충돌하고 교차하는 복수의 기록과 진실이 공존할 가능성을 탐구한다.",
           "profile_image": "/assets/artists/e-pavilion-media/studio-oleomingus/profile.webp",
           "works": [
             {
               "title": "〈낙원의 문 앞에서조차 내가 망설이는 것이 과연 이상한 일일까〉\n\n〈Is it any wonder that I hesitate even at the gates of paradise?〉",
               "year": "2026",
-              "material": "단채널 비디오(4K), 컬러, 사운드\n\nSingle-channel video (4K), color, sound",
-              "size": "5,120 × 2,880 mm",
-              "description": "낙원은 시간의 시작과 그 끝에서 모습을 드러낸다. 모든 신앙의 끝에 덧붙는 하나의 결구처럼, ‘낙원’이라는 말 자체가 한때 ‘둘러싸인 것’을 의미했다는 사실은 그리 놀랍지 않다. 그리스의 군인이자 역사가였던 크세노폰은 pairi-daēza, 즉 인위적으로 경계를 두른 공간에 관해 기록했다. 메디아인의 언어에서 이 말을 되살려낸 이후, 그것은 바빌로니아인과 조로아스터교도들을 비롯한 수많은 이들의 언어를 거치며 이동했고, 마침내 이 둘러싸인 영역은 정원이 되고, 도시가 되며, 천상의 거처가 되었다.\n\n프톨레마이오스 시대의 72명 학자가 각자 독립적으로 이스라엘 민족의 세계에 관한 기록을 그리스어로 번역했을 때, 그들은 parádeisos en Edem, 곧 ‘에덴의 낙원’을 뜻하는 표현을 택했다. 콜리지가 측량할 수 없는 동굴 위에 자리한 쿠빌라이 칸의 재너두를 노래했을 때조차 그곳에는 벽으로 둘러싸인 정원이 있었다. 이 낙원의 정원들은 언제나 은밀한 벽으로 에워싸여 있었고, 신비로운 숲은 신성한 강과 협곡에 둘러싸여 있었다. 그러니 우리의 낙원이 언제나 손이 닿지 않는 곳, 산꼭대기나 비밀스러운 계곡, 지도 제작자의 인식이 미치지 못하는 너머에 자리해 온 것은 어쩌면 당연한 일이다.\n\n우리의 프로젝트는 바로 이러한 지식의 가장자리, 신앙의 경계에서 우리가 사는 세계가 낙원의 세계로 넘어가는 지점에 자리한다. 모든 낙원에는 경계가 필요하다. 낙원을 불러내는 일에는 언제나 이 불가능한 궁전의 윤곽을 찾아내려는 충동이 뒤따른다. 낙원을 실제로 목격한 이는 거의 없지만, 그곳은 언제나 풍부하고도 세밀하게 묘사되어 왔다.\n\n우리는 바로 그 경계에 서서 낙원을 찾아 나서는 일이 품고 있는 모든 위험과 모든 기쁨을 바라보고자 한다. 그리고 관람객을 지도 제작자들의 작업으로 초대한다. 이들의 유일한 임무는 지도의 가장자리 너머를 그리는 것이다. 비록 종이 위에서일 뿐이라도, 그들은 상상의 윤곽 깊숙한 곳으로 나아간다. 지도는 오랫동안 정복과 기만의 도구였지만, 그와 동시에 그만큼이나 간절한 열망과 희망의 산물이기도 했다.\n\n존재하지 않는 것을 지도에 그려 넣는 바로 그 행위를 통해 우리는 완전한 조화의 장소를 믿기 위해 필요한 황홀에 가까이 다가간다. 영원히 도래가 유예되는 낙원. 그것은 언제나 우리 세계의 시작과 끝에 존재해 왔다.",
+              "material": "단채널 비디오(4K), 컬러, 사운드, 5분 30초\n\nSingle-channel video (4K), color, sound, 5 min. 30 sec.",
+              "size": "",
+              "description": "〈낙원의 문 앞에서조차 내가 망설이는 것이 과연 이상한 일일까〉(2026)는 인간이 오랫동안 낙원을 상상하고 그 경계를 그려온 역사에 주목한다. ‘낙원(paradise)’의 어원은 인위적으로 경계를 두른 공간을 의미하는 고대 페르시아어 ‘pairi-daēza’로 거슬러 올라간다. 그리스의 역사가 크세노폰의 기록에도 등장하는 이 말은 여러 시대와 언어를 거치며 정원이 되고 도시가 되었으며, 마침내 에덴과 같은 천상의 거처를 의미하게 되었다. 그러나 낙원은 구체적으로 묘사될수록 역설적으로 산 너머와 비밀스러운 계곡, 지도의 가장자리처럼 쉽게 도달하거나 확인할 수 없는 곳에 자리해 왔다. 작품은 이러한 낙원의 역사와 미지의 세계에 경계를 부여하고 가시화해온 지도의 관계를 따라간다. 지도는 세계를 구획하고 정복하는 도구인 동시에, 아직 존재하지 않는 장소를 상상하고 그곳을 향한 열망과 희망을 투영하는 수단이기도 하다. 작가는 관람객을 지도 제작 작업에 초대해 지도의 가장자리 너머, 아직 그려지지 않은 낙원의 윤곽을 직접 그려보게 한다. 존재하지 않는 장소를 지도 위에 그려 넣는 행위는 끝내 도달할 수 없으면서도 끊임없이 묘사되고 다시 그려져 온 낙원의 역설과 그곳을 향한 인간의 오래된 열망을 드러낸다.",
               "images": [
                 "/assets/artists/e-pavilion-media/studio-oleomingus/work-1-1.webp"
               ]
@@ -72,20 +72,20 @@
         },
         {
           "slug": "che-jianquan",
-          "name_ko": "처 지엔취안 Che jianquan",
-          "name_en": "",
+          "name_ko": "처 지엔취안",
+          "name_en": "Che Jianquan",
           "birth_year": "",
-          "nationality": "광저우, 중국\nGuangzhou, China",
-          "bio": "주요 개인전\n2025 《Flowing Time》, Palazzo Vecchio, 피렌체, 이탈리아\n2025 《Water Scroll》, Tokyo Gallery + Beijing Tokyo Art Projects, 베이징, 중국\n2024 《The World Around Us》, 다신미술관, 대만\n2023 《Chronicle of Cartography》, Ox Warehouse, 마카오\n2022 《Che Jianquan: Moment by Moment》, 광둥미술관, 광저우, 중국\n\nSelected Solo Exhibitions\n2025 Flowing time,Palazzo Vecchio Florence Italy\n2025 Water scroll, Tokyo gallery+Beijing tokyo projects,Beijing \n2024 The world aroud us, Daxin Art Museum,Taiwan  \n2023 Chronicle of Cartography, Ox Warehouse, Macao\n2022 CheJianquan: Moment by Moment, Guangdong Museum of Art\n\n주요 단체전\n2026 《제16회 쿠리치바 국제비엔날레》, 오스카 니마이어 미술관, 쿠리치바, 브라질\n2026 《G.MAP》, 광주미디어아트플랫폼, 광주, 대한민국\n2025 《Renewal: A Century of Guangdong Art》, 상하이미술관, 상하이, 중국\n2024 《제60회 베니스 비엔날레 국제미술전》, 아르세날레 중국관, 베니스, 이탈리아\n2022 《제14회 아바나 비엔날레》, 아바나미술관, 아바나, 쿠바\n\nSelected Group Exhibitions\n2026 16th Curtiba Internationai Biennial, Museu Oscar Niemeyer,Curitiba, Brazil\n2026 G.MAP, Gwangju Media Art Platform  South Korea\n2025 Renewal: A Century of Guangdong Art, Shanghai Art Museum | Shanghai, China\n2024 Biennale Arte 2024（The 60th Edition of the International Art Exhibition, China Pavilion Arsenale,Venice,Italy\n2022 14 Bienal de la Habana, The Havana Art Museum,Cuba",
-          "intro": "처 지엔취안(Che Jianquan)은 회화, 다큐멘터리 영화, 글쓰기, 멀티스크린 비디오 설치 등 다양한 매체를 넘나들며 작업하는 작가다. 그의 오랜 예술적 탐구와 실천의 중심에는 회화 이미지와 영상 사이의 상호작용과 상호텍스트성에 대한 관심이 자리한다. 작품은 회화의 촉각적이고 수공적인 제작 방식과 영상의 미학적 특성 사이에서 발생하는 시각적 차이와 상호 영향을 탐구하는 한편, 자연의 역동성과 불가해함이 인간의 환경을 어떻게 형성하는지를 조명한다.\n\n나아가 처 지엔취안은 동시대 중국의 맥락에서 인간과 자연이 맺는 복잡한 관계와 역사와 집단기억이 서로 얽히는 방식을 작품을 통해 드러내고자 한다. 그의 작품은 이탈리아, 독일, 미국, 일본, 오스트리아, 대만을 비롯한 여러 국가와 지역의 주요 미술기관에서 소개되었으며, 세계 각지의 미술관과 문화기관, 개인 컬렉터의 소장품에 포함되어 있다.",
+          "nationality": "",
+          "bio": "주요 개인전\n2025 《Flowing Time》, Palazzo Vecchio, 피렌체, 이탈리아\n2025 《Water Scroll》, Tokyo Gallery + Beijing Tokyo Art Projects, 베이징, 중국\n2024 《The World Around Us》, 다신미술관, 타이난, 대만\n2023 《Chronicle of Cartography》, Ox Warehouse, 마카오, 중국\n2022 《Che Jianquan: Moment by Moment》, 광둥미술관, 광저우, 중국\n\nSelected Solo Exhibitions\n2025 Flowing time,Palazzo Vecchio, Florence, Italy\n2025 Water scroll, Tokyo gallery+Beijing tokyo projects, Beijing, China\n2024 The world around us, Daxin Art Museum, Tainan, Taiwan\n2023 Chronicle of Cartography, Ox Warehouse, Macao, China\n2022 Che Jianquan: Moment by Moment, Guangdong Museum of Art, Guangzhou, China\n\n\n주요 단체전\n2026 《제16회 쿠리치바 국제비엔날레: LIMIARES》, 오스카 니마이어 미술관, 쿠리치바, 브라질\n2026 《완전한 것들의 틈》, 광주미디어아트플랫폼, 광주, 대한민국\n2025 《Renewal: A Century of Guangdong Art》, 상하이미술관, 상하이, 중국\n2024 《제60회 베니스 비엔날레 국제미술전》, 아르세날레 중국관, 베니스, 이탈리아\n2022 《제14회 하바나 비엔날레: 공명–중국 현대미술전》, 호세 마르티 쿠바 국립도서관, 아바나, 쿠바\n\nSelected Group Exhibitions\n2026 16th Curitiba International Biennial: LIMIARES (Thresholds), Oscar Niemeyer Museum, Curitiba, Brazil\n2026 The Gap Within The Whole, Gwangju Media Art Platform, Gwangju, South Korea\n2025 Renewal: A Century of Guangdong Art, Shanghai Art Museum, Shanghai, China\n2024 Biennale Arte 2024: 60th International Art Exhibition, China Pavilion, Arsenale, Venice, Italy\n2022 14 Bienal de La Habana: Resonance – Chinese Contemporary Art Exhibition, Biblioteca Nacional de Cuba José Martí, Havana, Cuba",
+          "intro": "처 지엔취안은 회화와 다큐멘터리 영화, 글쓰기, 다채널 비디오 설치 등 다양한 매체를 아우르는 작업을 이어왔다. 특히 회화와 영상이 서로 영향을 주고받는 방식에 주목하며, 회화의 물질적 특성과 영상이 지닌 시각적 특성을 작업 안에서 교차시킨다. 이러한 매체적 탐구를 바탕으로 작가는 자연과 인간의 관계로 관심을 확장해왔다. 변화하고 예측하기 어려운 자연이 인간의 삶과 환경에 미치는 영향을 살피며, 동시대 중국의 맥락에서 인간과 자연, 역사와 집단기억이 복잡하게 얽혀 있는 양상을 다양한 매체를 통해 다룬다.",
           "profile_image": "/assets/artists/e-pavilion-media/che-jianquan/profile.webp",
           "works": [
             {
               "title": "〈소요유〉\n\n〈The carefree wandering〉",
               "year": "2026",
-              "material": "스틸 프레임 AI 생성형 비디오(4K), 컬러, 사운드\n\nStill Frame AI-generated video (4K), color, sound",
-              "size": "5,120 × 2,880 mm",
-              "description": "〈소요유(The Carefree Wandering)〉의 개념은 장자 철학의 핵심 사상에서 출발한다. ‘소요유’는 세속의 규범과 속박을 넘어 자유롭게 유영하는 정신적 경지를 의미한다. 고대로부터 인간은 유토피아와 무릉도원, 멋진 신세계에 이르기까지 이상적인 세계에 대한 다양한 상상을 만들어왔으며, 이러한 상상은 더 나은 세계를 향한 인류의 공통된 지향을 형성해왔다. 그러나 전쟁의 위협이 끊이지 않고 삶의 속도가 나날이 빨라지는 오늘날, 탄소 기반의 생명은 실리콘 기반의 생명으로부터 새로운 도전을 마주하고 있다. 이러한 시대에 우리가 잠시 머물며 쉴 수 있는 무릉도원과 같은 이상향은 여전히 존재할 수 있을까?\n\n영화가 태동하던 시기, 카메라의 기록 기능은 이전과 다른 새로운 시각의 세계를 열어 보였다. 작가는 〈파빌리온(Pavilion)〉 연작을 위해 약 10년에 걸쳐 산속의 한 정자를 수없이 관찰하고 기록하며, 동일한 풍경을 기상학적 관점에서 반복적으로 해석해왔다. 선택적으로 기록한다는 단순한 행위를 통해 다시금 관조적인 보기의 방식으로 돌아가 현실과 환영, 은폐와 드러남이라는 철학적 명제를 탐구한다. 이는 동시에 무성영화 시대의 순수하고 꾸밈없는 이미지에 보내는 오마주이기도 하다.\n\n이곳에서 날씨는 하나의 극장이 된다. 바람과 습도, 비와 눈을 비롯한 기상 현상은 이 극장을 바라보는 방식을 좌우하는 결정적인 힘으로 작용한다. 이들은 순식간에 무대의 분위기를 새롭게 쓰고, 장면 속 대상을 자의적으로 가리거나 드러내며 풍경을 출현시키고 다시 사라지게 한다. 동시에 풍경을 바라보는 행위는 시간의 흐름 속에서 지속되고 변화하며, 그 과정에서 시간 자체의 형상을 드러낸다.",
+              "material": "스틸 프레임 AI 생성형 비디오(4K), 컬러, 사운드, 4분 20초\n\nStill Frame AI-generated video (4K), color, sound, 4 min. 20 sec.",
+              "size": "",
+              "description": "〈소요유〉(2026)는 세속의 규범과 속박을 넘어 자유롭게 유영하는 정신적 경지를 뜻하는 장자의 ‘소요유(逍遙遊)’ 개념에서 출발한다. 인간은 오래전부터 유토피아와 무릉도원과 같은 이상향을 그려왔으며, 작가는 이러한 오랜 상상을 오늘날의 변화하는 현실 속에서 다시 바라본다. 이는 약 10년에 걸쳐 산속의 한 정자를 반복해서 관찰하고 기록해온 〈파빌리온〉 연작과도 맞닿아 있다. 동일한 장소를 지속해서 바라보며 시간과 날씨에 따라 달라지는 풍경을 담아온 작가는 이번 작업에서도 바람과 습도, 비와 눈이 풍경을 가리고 다시 드러내는 순간에 주목한다. 끊임없이 출현하고 사라지는 풍경을 따라가며 현실과 환영, 은폐와 드러남의 경계를 오가는 장면을 통해 고정되지 않고 변화하는 세계의 모습을 보여준다.",
               "images": [
                 "/assets/artists/e-pavilion-media/che-jianquan/work-1-1.webp"
               ]
@@ -101,7 +101,7 @@
         {
           "slug": "kim-deok-han",
           "name_ko": "김덕한",
-          "name_en": "Kim Deok Han",
+          "name_en": "Kim Deokhan",
           "birth_year": "1981",
           "nationality": "대한민국",
           "bio": "주요 개인전\n2025 Layered Time, Forms of Memory, 화이트스톤 갤러리, 서울\n2024 TRACE OF TIME, 화이트스톤 갤러리, 베이징, 중국\n2020  Journey Through the Veil of Time, 이응노미술관, 대전\n\n2025 Layered Time, Forms of Memory, Whitestone Gallery, Seoul\n2024 TRACE OF TIME, Whitestone Gallery, Beijing, China\n2020 Journey Through the Veil of Time, Lee Ungno Museum, Daejeon\n\n주요 단체전\n2025 한국현대미술특별전 : 축(꺾이지 않는 마음), 주인도한국문화원, 뉴델리, 인도\n2023 KEEM & KIM'S GLOWING OVERLAID HOUR, 아트베이스 26SQM (박서보 재단), 서울, 한국\n2022 달의 심장, 해의 심장, 선화랑 개관 45주년 기념전, 선화랑, 서울, 한국\n\n2025 Special Exhibition of Korean Contemporary Art: Axis (An Unbreakable Spirit), Korean Cultural Center India, New Delhi, India\n2023 KEEM & KIM'S GLOWING OVERLAID HOUR, Art Base 26SQM (Park Seo Bo Foundation), Seoul\n2022 The Heart of the Moon, The Heart of the Sun (45th Anniversary Exhibition), Sun Gallery, Seoul",
@@ -123,7 +123,7 @@
         {
           "slug": "yang-tae-geun",
           "name_ko": "양태근",
-          "name_en": "Yang Tae Geun",
+          "name_en": "Yang Taegeun",
           "birth_year": "1959",
           "nationality": "대한민국",
           "bio": "주요 개인전\n2025 생명의 하모니, 네오아트 기획 초대개인전, 네오아트센터, 청주\n2024 성남문화재단 초대개인전, 성남문화재단, 성남\n2023 멋진 신세계의 욕망, 바우지움조각미술관, 고성\n\n2025 Harmony of Life, Neo Art Center, Cheongju\n2024 Invited Solo Exhibition, Seongnam Cultural Foundation, Seongnam\n2023 Brave New World Desire, Bauzium Sculpture Museum, Goseong\n\n주요 단체전\n2026 서울국제조각페스타, 코엑스, 서울\n2025 제5회 한•일 현대조각의 비전, 갤러리 끼, 파주\n2024 한•중 조각교류전, 시안대학교, 시안, 중국\n\n2026 International Sculpture Festa 2026 in Seoul, COEX, Seoul\n2025 The 5th Vision of Korea•Japan Contemporary Sculpture Exhibition, Gallery KKI, Paju\n2024 Korea-China Sculpture Exchange Exhibition at Xi'an University, Xi'an, China",
@@ -145,7 +145,7 @@
         {
           "slug": "kwon-chi-gyu",
           "name_ko": "권치규",
-          "name_en": "Kwon Chi-gyu",
+          "name_en": "Kwon Chigyu",
           "birth_year": "1968",
           "nationality": "대한민국",
           "bio": "주요 개인전\n2023 제28회 포스코미술관 개인전, 포스코센터, 서울\n2022 제25회 RE:TURN / SILIENCE, TYTART 스튜디오&갤러리, 뉴욕\n2010 제17회 인사아트센터 초대전, 인사아트센터, 서울\n\n2023 28th POSCO Museum solo exhibition, Posco center, Seoul\n2022 25th RE:TRUN/SILIENCE, TYTART STUDIO & GALLERY, New york\n2010 17th Insa art center special invitation exhibition, Insa Art Center, Seoul\n\n주요 단체전\n2026 국제조각페스타, 코엑스, 서울\n2025 상하이 아트페어, 상하이, 중국\n2024 서울리즘–LA : 서울 현대미술의 시선, 갤러리 웨스턴, LA, 미국\n\n2026 International Sculpture Festa, COEX, Seoul\n2025 Shanghai Art Fair, Shanghai, Chaina\n2024 Seoulism-LA: A Perspective on Seoul’s Contemporary Art, Gallery Western, LA, USA",
@@ -233,7 +233,7 @@
         {
           "slug": "ji-yongho",
           "name_ko": "지용호",
-          "name_en": "Ji Yongho",
+          "name_en": "J Yong-ho",
           "birth_year": "1978",
           "nationality": "대한민국",
           "bio": "주요 개인전\n2020 가나아트센터, 서울\n2013 아비다비 F1 경기장, 아부다비, 아랍에미리트\n2011 캔버스 인터내셔널 갤러리, 암스테르담, 네덜란드\n\n2020 Gana Art Center, Seoul\n2013 Abu Dhabi F1 Circuit, Abu Dhabi, UAE\n2011 Canvas International Art, Amsterdam\n\n주요 단체전\n2016 Let’s dance animal, 창미 미술관, 대만\n2011 Power of Making, 빅토리아 앤 알버트 뮤지엄, 런던\n2009 녹색 한국으로부터의 반향, 토탈 미술관, 서울\n\n2016 Let's dance animals, Chimei Museum, Taipei\n2011 Power of Making, Victoria and Albert Museum, London\n2010 Resonance from Green Korea, Total Museum of Contemporary Art, Seoul",
@@ -573,7 +573,7 @@
         {
           "slug": "yoon-jinsup-a-k-a-donsu",
           "name_ko": "윤진섭 a.k.a. Donsu",
-          "name_en": "Yoon Jinsup a.k.a. Donsu",
+          "name_en": "Yoon Jinsup",
           "birth_year": "",
           "nationality": "",
           "bio": "주요 개인전 \n2024년 사물의 언어, 2기적 팩토리, 안양\n2014년 La chose chose Chose's cheese (초대전), 아트스페이스 휴, 파주\n1987년 윤진섭 퍼포먼스그룹 창단실연, 거대한 눈Ⅰ, 대학로, 서울\n\nMain Solo Exhibitions\n2024 The Language of Things, 2 Miracle Factory, Anyang\n2014 La chose chose Chose's cheeze, Art Space Hue, Paju\n1987 Yoon Jin Sup Performance Group Foundation Performance , Daehak-ro, Seoul\n\n주요 단체전\n2023  한국 실험미술 1960-70년대, 아카이브 섹션, 국립현대미술관, 서울 \n2019  안평과 한글-나랏말싸미, 자하미술관, 서울\n1980 제7회 S.T그룹전, 동덕미술관, 서울\n\nMain Group Exhibitions\n2023 Only the Young: Experimental Art in Korea, 1960s–1970s , National Museum of Modern and Contemporary Art, Seoul\n2019 Anpyeong and Hangeul - Naratmalssami, Zaha Museum, Seoul\n1980 The 7th S.T (Space & Time) Group Exhibition, Dongduk Art Museum, Seoul",
@@ -709,7 +709,7 @@
         {
           "slug": "jeong-young-nam",
           "name_ko": "정영남",
-          "name_en": "Jeong Young Nam",
+          "name_en": "Jeong Youngnam",
           "birth_year": "",
           "nationality": "",
           "bio": "주요 그룹전\n2026 작은작품 선물, MH GALLERY, 안산\n2025 제29회 관악현대미술대전, 평촌아트센터, 안양\n2016 FROM　NOW, 성남아트센터, 성남\n\n2026 Small Artworks Gift, MH GALLERY, Ansan\n2025 The 29th Gwanak Contemporary Fine Art Exhibition, Pyeongchon Art Hall, Anyang\n2016 FROM NOW, Seongnam Arts Center, Seongnam",
@@ -775,7 +775,7 @@
         {
           "slug": "lee-gil-woo",
           "name_ko": "이길우",
-          "name_en": "",
+          "name_en": "Lee Gil-woo",
           "birth_year": "",
           "nationality": "",
           "bio": "3. 주요 개인전\n2024 아이러니한 24, Scott & Jae Gallery, 로스 엔젤레스\n2012 서로 다른 개념의 두 가지 치유, Joiart Gallery, 북경\n2011 New York State of Mind, White Box Gallery, 뉴욕\n\nMain Solo Exhibition\n2024 Ironic 24, Scott & Jae Gallery, LA\n2012 Two Different Concepts of Healing, Joiart Gallery, Beijing\n2011 New York State of Mind, White Box Gallery, New York\n\n4. 주요 단체전\n2025 한국미술 특별전(축-꺾이지 않는 마음), 주인도 한국 문화원, 뉴델리\n2018 Korean's Spirit Ⅱ, Artvera's Gallery, 제네바, 스위스\n2012 코리아아이, 사치갤러리, 영국\n\nMain Group Exhibition\n2025 Special Exhibition of Korean Art 《Axis – Unwavering Heart》, Korean Cultural Centre India, New Delhi\n2018 Korean's Spirit Ⅱ, Artvera's Gallery, Geneva\n2012 Korean Eye 2012, Saatchi Gallery, London",
@@ -799,33 +799,33 @@
       "venue_slug": "308-art-crew",
       "artists": [
         {
-          "slug": "308-308-art-crew",
-          "name_ko": "308 아트크루 308 ART CREW",
-          "name_en": "",
+          "slug": "308-art-crew",
+          "name_ko": "308 아트크루",
+          "name_en": "308 ART CREW",
           "birth_year": "",
-          "nationality": "서울, 대한민국\nSeoul, South Korea",
-          "bio": "주요 단체전\n2026 《Sing! Sing! Sing! 마츠다 세이코 내한공연》, 인스파이어 아레나, 인천, 대한민국\n2025 《국가유산방문캠페인 ‘선사지질의 길’ 프로그램》, 전곡선사박물관, 경기, 대한민국\n2025 《서울 인공지능 엑스포 ‘MARS 2025’》, 코엑스, 서울, 대한민국\n2024 《FUMANISM》, 서울로봇인공지능과학관, 서울, 대한민국\n2023 《Color Bath Effect》, 광주디자인비엔날레, 광주, 대한민국\n2022 《MARVEL: The Reflection》, 현대카드 바이닐 앤 플라스틱, 서울, 대한민국\n\n\nSelected Group Exhibitions\n2026  Sing! Sing! Sing! Seiko Matsuda Live in Korea, INSPIRE Arena, Incheon, South Korea\n2025  Korea Heritage Visit Campaign: “Prehistoric Geology Trail” Program, Jeongok Prehistory Museum, Gyeonggi-do, South Korea\n2025  Seoul AI Expo “MARS 2025”, COEX, Seoul, South Korea\n2024  FUMANISM, Seoul Robot & AI Museum, Seoul, South Korea\n2023  Color Bath Effect, Gwangju Design Biennale, Gwangju, South Korea\n2022  MARVEL: The Reflection, Hyundai Card Vinyl & Plastic, Seoul, South Korea",
-          "intro": "308아트크루는 2018년 서울을 기반으로 결성된 예술 그룹이다. 체험형 공간 콘텐츠, 감각 기반 설치 연출, 전시 기획, 공간 디자인과 디렉팅을 중심으로 활동해왔다. 조명, 사운드, 향, 미디어, 인터랙티브 시스템, 관객 동선을 결합해 관객이 직접 이동하고 머무르며 감각하는 공간 경험을 만든다. FROM SENSE TO EXPERIENCE, Break the Fourth Wall을 주요 태도로 삼으며, 전시와 공연, 공공 프로젝트, 브랜드 협업을 오가며 감각 중심의 공간 작업을 이어가고 있다.\n\nGLAN / 강대경 — 프로듀서, 라이트 아티스트, 공간 디렉터CINCO / 이신호 — 모델러, 3D 페인터, 비주얼 아티스트\n크레딧\n작가: GLAN / 강대경\n제작: 308 ART CREW  \n프로듀서 / 라이트 아티스트: GLAN / 강대경\n공간 디렉터: CINCO / 이신호\n뉴미디어 아티스트: SEUNG / 안승\n사운드 아티스트: DOJIN / 백도진\n라이트 어시스턴트: NAYEON / 김나연",
-          "profile_image": null,
+          "nationality": "",
+          "bio": "주요 프로젝트\n2026 Sing! Sing! Sing! 마츠다 세이코 내한공연, 인스파이어 아레나, 인천, 대한민국\n2025 국가유산방문캠페인 ‘선사지질의 길’ 프로그램, 전곡선사박물관, 경기, 대한민국\n2025 《서울 인공지능 엑스포 ‘MARS 2025’》, 코엑스, 서울, 대한민국\n2024 《FUMANISM》, 서울로봇인공지능과학관, 서울, 대한민국\n2023 〈Color Bath Effect〉, 《제10회 광주디자인비엔날레: Meet Design》, 광주시립미술관, 광주, 한국\n2022 《MARVEL: The Reflection》, 현대카드 바이닐앤플라스틱, 서울, 대한민국\n\nSelected Projects\n2026 Sing! Sing! Sing! Seiko Matsuda Live in Korea, INSPIRE Arena, Incheon, South Korea\n2025 Korea Heritage Visit Campaign: “Prehistoric Geology Trail” Program, Jeongok Prehistory Museum, Gyeonggi-do, South Korea\n2025 Seoul AI Expo “MARS 2025”, COEX, Seoul, South Korea\n2024 FUMANISM, Seoul Robot & AI Museum, Seoul, South Korea\n2023 Color Bath Effect, 10th Gwangju Design Biennale: Meet Design, Gwangju Museum of Art, Gwangju, South Korea\n2022 MARVEL: The Reflection, Hyundai Card Vinyl & Plastic, Seoul, South Korea",
+          "intro": "308 아트크루는 2018년 서울을 기반으로 결성된 예술 그룹이다. 체험형 공간 콘텐츠와 감각 기반의 설치 연출, 전시 기획, 공간 디자인과 디렉팅을 중심으로 활동해 왔다. 조명과 사운드, 향, 미디어, 인터랙티브 시스템을 공간의 동선과 결합해 관람객이 직접 이동하고 머무르며 다양한 감각을 경험할 수 있는 환경을 만든다. ‘FROM SENSE TO EXPERIENCE’와 ‘Break the Fourth Wall’을 주요 태도로 삼아 전시와 공연, 공공 프로젝트, 브랜드 협업 등 다양한 영역을 오가며 감각을 중심으로 한 공간 작업을 이어가고 있다.\n\n[국문 크레딧]\n작가: GLAN(강대경)\n제작: 308 아트크루\n프로듀서 / 라이트 아티스트: GLAN(강대경)\n공간 디렉터: CINCO(이신호)\n뉴미디어 아티스트: SEUNG(안승)\n사운드 아티스트: DOJIN(백도진)\n라이트 어시스턴트: NAYEON(김나연)\n\n[영문 크레딧]\nArtist: GLAN (Kang Dae Kyung)\nProduction: 308 ART CREW\nProducer / Light Artist: GLAN (Kang Dae Kyung)\nSpatial Director: CINCO (Lee Shin Ho)\nNew Media Artist: SEUNG (Ahn Seung)\nSound Artist: DOJIN (Baek Do Jin)\nLighting Assistant: NAYEON (Kim Na Yeon)",
+          "profile_image": "/assets/artists/e-pavilion-media/308-art-crew/profile.webp",
           "works": [
             {
               "title": "〈빛의 폭포: 무릉의 입구〉\n\n〈Waterfall of Light: The Entrance to Mureung〉",
               "year": "2026",
-              "material": "장소특정형 프로젝션 맵핑·RGB 레이저 설치, 컬러, 사운드, 약 5분\n\nSite-specific projection mapping and RGB laser installation, color, sound, approx. 5 min.",
-              "size": "가변 설치 (폭 약 20–30m, 높이 약 15–20m)\n\nDimensions variable",
-              "description": "〈빛의 폭포: 무릉의 입구〉는 벽천광장의 인공폭포를 빛과 물이 교차하는 밤의 무릉도원으로 전환하는 장소특정형 레이저아트 작품이다. 프로젝션 맵핑과 레이저는 실제 물줄기와 석벽 위에 물결과 안개, 산수의 이미지를 겹쳐 익숙한 폭포의 풍경을 낯선 감각의 장소로 변화시킨다. 밤이 되면 폭포는 현실과 무릉도원의 경계를 잇는 하나의 문이 되고, 물은 빛을 받아들이는 막으로, 레이저는 흐르는 물의 시간과 방향을 따라가는 선으로 작동한다. 물이 잠시 멈추고 거슬러 오르는 장면을 지나 폭포 중앙에는 물안개와 달빛, 원형의 잔상과 산수의 깊이가 서서히 모여 ‘월문(月門)’을 형성하고, 이를 기점으로 빛과 풍경이 주변으로 확장되며 현실의 장소 위에 잠시 무릉도원의 감각을 펼쳐 보인다. 이 작품에서 무릉도원은 이상향의 풍경을 직접 재현하는 것이 아니라, 늘 존재하던 폭포와 수목, 광장과 산책로가 빛을 통해 평소와 다른 감각으로 읽히는 순간에 가깝다. 관람객은 산책로 끝에서 빛나는 폭포를 발견하고 물의 정지와 역류, 월문의 형성과 빛의 확장을 따라 잠시 다른 세계의 입구에 머물며, 빛이 서서히 잦아든 뒤 다시 익숙한 현실의 밤으로 돌아오게 된다.",
+              "material": "장소특정형 프로젝션 맵핑·RGB 레이저 설치(미디어 서버·타임코드 제어, 방우 하우징, 인터락·비상차단 장치), 컬러, 사운드, 상설 루프 약 5분\n\nSite-specific projection mapping and RGB laser installation (media server/timecode control, weatherproof housing, interlock and emergency shut-off), color, sound, approx. 5 min. loop",
+              "size": "",
+              "description": "〈빛의 폭포: 무릉의 입구〉(2026)는 벽천광장의 인공폭포에 프로젝션 맵핑과 레이저를 결합한 장소특정형 미디어아트 작품이다. 실제 물줄기와 석벽 위로 물결과 안개, 산수의 이미지가 포개어지면서 폭포의 풍경은 빛과 물이 뒤섞인 새로운 장면으로 변화한다. 물은 빛을 투과하고 반사하는 표면이 되고, 레이저는 흐르는 물의 움직임과 방향을 따라 공간을 가로지른다. 물이 잠시 멈추거나 거슬러 오르는 듯한 장면에 이어 폭포 중앙에는 물안개와 달빛, 원형의 잔상과 산수의 이미지가 모여 ‘월문(月門)’을 형성한다. 월문을 중심으로 빛과 이미지가 폭포와 주변 공간으로 확장되면서, 익숙한 공원의 풍경 위에 현실과 상상이 교차하는 무릉도원의 이미지를 만들어낸다. 관람객은 변화하는 빛과 물의 흐름을 따라 잠시 다른 세계를 경험하고, 빛이 서서히 잦아들면서 다시 익숙한 현실의 풍경으로 돌아온다.",
               "images": [
-                "/assets/artists/308-art-crew/308-308-art-crew/work-1-1.webp"
+                "/assets/artists/e-pavilion-media/308-art-crew/work-1-1.webp"
               ]
             },
             {
               "title": "〈오색운 五色雲: 빛의 기상〉\n\n〈Osaekun (Five-Colored Clouds): The Weather of Light〉",
               "year": "2026",
-              "material": "RGB 레이저·포그 머신 야간 설치, 컬러, 사운드\n\nRGB laser and fog installation, color, sound",
-              "size": "가변 크기 (연도 약 100–150m 구간)\n\nDimensions variable",
-              "description": "〈오색운 五色雲: 빛의 기상〉은 안양 파빌리온 앞의 열린 공기와 안개를 빛의 표면으로 삼아, 밤의 풍경 속에 끊임없이 생성되고 사라지는 구름을 그려내는 야간 레이저 설치작품이다. 포그 머신으로 형성된 얇은 안개층 위로 RGB 레이저의 다섯 가지 색채 흐름이 겹쳐지며, 빛은 공기 중에서 떠오르고 접히고 흩어지기를 반복하면서 시시각각 다른 형태의 ‘오색운(五色雲)’을 만들어낸다. 예로부터 상서로운 징조이자 이상적인 세계의 도래를 알리는 표상으로 여겨진 오색운은 이 작품에서 고정된 형상을 지닌 조형물이 아니라 빛과 공기, 시간의 변화에 따라 잠시 나타났다 사라지는 하나의 기상 현상으로 펼쳐진다. 관람객은 파빌리온 앞을 거닐며 공기 중에 떠오른 빛의 구름과 마주하고, 형태를 이루었다가 이내 흩어지는 빛의 움직임을 따라 익숙한 밤의 풍경이 잠시 낯선 풍경으로 변모하는 순간을 경험한다.",
+              "material": "RGB 레이저·포그 머신 야간 설치(미디어 서버·타임코드 제어, 전원·방우 장치, 인터락·비상차단 장치), 컬러, 사운드, 가변 크기\n\nRGB laser and fog installation (media server/timecode control, power and weatherproofing, interlock and emergency shut-off), color, sound, dimensions variable",
+              "size": "",
+              "description": "〈오색운 五色雲: 빛의 기상〉(2026)은 일정한 형태 없이 흐르고 변화하는 공기의 움직임을 빛으로 포착한다. 포그 머신이 만들어낸 얇은 안개층 사이로 RGB 레이저의 다섯 가지 색이 퍼지며, 평소에는 눈에 보이지 않던 공기의 흐름에 따라 빛의 형태가 생성되고 흩어지기를 반복한다. 이 과정에서 밤의 공기 중에는 시시각각 모습을 달리하는 ‘오색운(五色雲)’이 나타난다. 예로부터 오색운은 상서로운 징조이자 이상적인 세계의 도래를 알리는 표상으로 여겨져 왔다. 작품은 이러한 오색운을 하나의 고정된 이미지로 재현하지 않고, 빛과 안개, 주변 환경의 변화에 따라 잠시 나타났다 사라지는 기상 현상으로 구현한다. 관람객은 안양파빌리온 주변을 거닐며 매 순간 형태를 달리하는 빛의 구름을 마주하고, 평소에는 의식하지 못했던 공기와 빛의 변화를 감각하게 된다.",
               "images": [
-                "/assets/artists/308-art-crew/308-308-art-crew/work-2-1.webp"
+                "/assets/artists/e-pavilion-media/308-art-crew/work-2-1.webp"
               ]
             }
           ]
@@ -839,7 +839,7 @@
         {
           "slug": "kim-nampyo",
           "name_ko": "김남표(글램포지)",
-          "name_en": "Kim Nampyo",
+          "name_en": "Kim Nampyo (Glamforge)",
           "birth_year": "1970",
           "nationality": "서울, 한국\nSeoul, South Korea",
           "bio": "주요 개인전\n2026 《Memento Mori》, 갤러리 미르, 대구, 대한민국\n2025 《경험은 회화를 배반한다》, 호리아트스페이스, 서울, 대한민국\n2025 《누가 회화를 두려워하랴?》, 성남큐브미술관, 경기도, 대한민국\n\n주요 단체전\n2026 《풍경 속으로》, 한주아트스페이스, 경기도, 대한민국\n2025 《연작에 대하여: 회화의 가능성》, 갤러리 팔(PaL), 서울, 대한민국\n2025 《표현의 궤적》, 디스코스 온 아트, 서울, 대한민국\n\nSelected Solo Exhibitions\n2026 Memento Mori, Gallery Mir, Daegu, South Korea\n2025 Experience Betrays Painting, Hori art space, Seoul, South Korea\n2025 Who's Afraid of Painting?, Seongnam Cube Art Museum, Gyeonggi-do, South Korea\n\nSelected Group Exhibitions\n2026 Into the Landscape, Hanju Art Space, Gyeonggi-do, South Korea\n2025 On Series: The Possibilities of Painting, Gallery PaL, Seoul, South Korea\n2025 Trajectories of Expression, Discourse on Art, Seoul, South Korea",
@@ -1186,8 +1186,8 @@
         },
         {
           "slug": "hyp-pajang",
-          "name_ko": "Hyp-파장(소수정x서재은)",
-          "name_en": "Hyp-Pajang (So Soojung x Suh Jae-Eun)",
+          "name_ko": "Hyp-파장(소수정, 서재은)",
+          "name_en": "Hyp-Pajang (So Soojung & Suh Jae-Eun)",
           "birth_year": "",
           "nationality": "서울, 한국\nSeoul, South Korea",
           "bio": "주요 단체전\n2026 《Verb Log》, MinnAnimate Animation Festival, 미네소타, 미국\n2026 《Haze of the Hollow》, Video Art Night, AT&T Discovery District, 달라스, 미국\n2026 《Boids of Belonging》 ISEA(International Symposium on Electronic/Emerging Art), 두바이, 아랍에미리트\n2025 《Boids of Belonging V2》, Soundgazing360° Audiovisual Festival, 베를린, 독일\n2025 《Boids of Belonging V2》, B-Dome, 베를린, 독일\n2025 《Boids of Belonging》, MinnAnimate Animation Festival, 미네소타, 미국\n\nSelected Group Exhibitions\n2026 Verb Log, MinnAnimate Animation Festival, Minnesota, USA\n2026 Haze of the Hollow, Video Art Night, AT&T Discovery District, Dallas, USA\n2026 Boids of Belonging, ISEA2026 (International Symposium on Electronic/Emerging Art), Dubai, UAE\n2025 Boids of Belonging V2, Soundgazing360 Audiovisual Festival, Berlin, Germany\n2025 Boids of Belonging V2, B-Dome, Berlin, Germany\n2025 Boids of Belonging, MinnAnimate Animation Festival, Minnesota, USA",

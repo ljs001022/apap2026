@@ -90,7 +90,7 @@ export default function MapModal({ isOpen, onClose, isKo }: MapModalProps) {
                   </h4>
                   <p className="text-xs text-[#8C8C8C] leading-relaxed">
                     {isKo
-                      ? '상세 전시장 구역 및 동선 안내 지도는 현장 안내센터에서 배포 중입니다. 문의사항은 APAP 사무국(031-687-0548)으로 연락 바랍니다.'
+                      ? '상세 전시장 구역 및 동선 안내 지도는 현장 안내센터에서 배포 중입니다. 문의사항은 공공예술부(031-687-0548)으로 연락 바랍니다.'
                       : 'The detailed venue map is available at the on-site information center. Please contact the APAP office for inquiries.'}
                   </p>
                 </div>

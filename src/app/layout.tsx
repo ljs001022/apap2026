@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     template: '%s | APAP8',
   },
   description:
-    '제8회 안양공공예술프로젝트 (APAP8) — ArteX : 예술대전환_안양 무릉도원. 2026.09.30 ~ 11.29 안양예술공원 및 안양파빌리온 일원.',
+    '제8회 안양공공예술프로젝트 (APAP8) — Arte X : 예술 대전환_안양 무릉도원. 2026.09.30 ~ 11.29 안양예술공원 및 안양파빌리온 일원.',
   keywords: [
     'APAP',
     'APAP8',
@@ -28,8 +28,8 @@ export const metadata: Metadata = {
     '트리엔날레',
     '안양예술공원',
     '안양파빌리온',
-    'ArteX',
-    '예술대전환',
+    'Arte X',
+    '예술 대전환',
     '무릉도원',
   ],
   alternates: {
@@ -38,7 +38,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'APAP8 | 제8회 안양공공예술프로젝트 (2026)',
     description:
-      '제8회 안양공공예술프로젝트 (APAP8) — ArteX : 예술대전환_안양 무릉도원. 2026.09.30 ~ 11.29',
+      '제8회 안양공공예술프로젝트 (APAP8) — Arte X : 예술 대전환_안양 무릉도원. 2026.09.30 ~ 11.29',
     url: 'https://2026.apap.or.kr',
     siteName: 'APAP8',
     images: [
@@ -56,7 +56,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'APAP8 | 제8회 안양공공예술프로젝트 (2026)',
     description:
-      '제8회 안양공공예술프로젝트 (APAP8) — ArteX : 예술대전환_안양 무릉도원.',
+      '제8회 안양공공예술프로젝트 (APAP8) — Arte X : 예술 대전환_안양 무릉도원.',
     images: ['https://2026.apap.or.kr/images/main-1920x800.jpg'],
   },
   robots: {

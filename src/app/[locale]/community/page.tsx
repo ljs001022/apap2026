@@ -6,7 +6,8 @@ import GnbHeader from '@/components/site-a/GnbHeader';
 import Footer from '@/components/site-a/Footer';
 import SectionDetailModal from '@/components/site-a/SectionDetailModal';
 import { getCommunityItems, CommunityItem } from '@/lib/community';
-import { ArrowLeft, ArrowUpRight, MessageCircle } from 'lucide-react';
+import { ArrowLeft, ArrowUpRight, MessageCircle, Download } from 'lucide-react';
+import NoticeModalContent from '@/components/community/NoticeModalContent';
 
 interface PageProps {
   params: Promise<{ locale: string }>;
@@ -88,44 +89,56 @@ export default function CommunityPage({ params }: PageProps) {
 
         {/* Notice & Press Articles List */}
         <div className="divide-y divide-white/15 border-y border-white/20 mb-16">
-          {filteredItems.map((item) => (
-            <div
-              key={item.id}
-              role="button"
-              tabIndex={0}
-              onClick={() => setSelectedNotice(item)}
-              onKeyDown={(e) => {
-                if (e.key === 'Enter' || e.key === ' ') {
-                  e.preventDefault();
-                  setSelectedNotice(item);
-                }
-              }}
-              className="py-6 hover:bg-white/[0.03] px-4 -mx-4 transition-all space-y-2.5 cursor-pointer group rounded-sm"
-            >
-              <div className="flex items-center justify-between gap-4">
-                <div className="flex items-center gap-2.5">
-                  <span
-                    className={`text-[10px] font-bold font-mono px-2 py-0.5 ${
-                      item.type === 'press' ? 'bg-white text-black' : 'border border-white text-white'
-                    }`}
-                  >
-                    {item.cat}
-                  </span>
-                  <span className="font-mono text-xs text-[#8C8C8C]">{item.date}</span>
+          {filteredItems.length > 0 ? (
+            filteredItems.map((item) => (
+              <div
+                key={item.id}
+                role="button"
+                tabIndex={0}
+                onClick={() => setSelectedNotice(item)}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    setSelectedNotice(item);
+                  }
+                }}
+                className="py-6 hover:bg-white/[0.03] px-4 -mx-4 transition-all space-y-2.5 cursor-pointer group rounded-sm"
+              >
+                <div className="flex items-center justify-between gap-4">
+                  <div className="flex items-center gap-2.5">
+                    <span
+                      className={`text-[10px] font-bold font-mono px-2 py-0.5 ${
+                        item.type === 'press' ? 'bg-white text-black' : 'border border-white text-white'
+                      }`}
+                    >
+                      {item.cat}
+                    </span>
+                    <span className="font-mono text-xs text-[#8C8C8C]">{item.date}</span>
+                    {item.pdfUrl && (
+                      <span className="hidden xs:inline-flex items-center gap-1 text-[10px] font-mono text-white/80 bg-white/10 border border-white/20 px-2 py-0.5">
+                        <Download className="w-2.5 h-2.5" />
+                        <span>{item.previewType === 'download_only' ? (isKo ? '리플렛 다운로드' : 'LEAFLET') : 'PDF'}</span>
+                      </span>
+                    )}
+                  </div>
+                  <div className="flex items-center gap-1.5 text-xs font-mono text-white/40 group-hover:text-white transition-colors">
+                    <span className="hidden sm:inline">{isKo ? '클릭하여 상세 보기' : 'VIEW DETAILS'}</span>
+                    <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                  </div>
                 </div>
-                <div className="flex items-center gap-1.5 text-xs font-mono text-white/40 group-hover:text-white transition-colors">
-                  <span className="hidden sm:inline">{isKo ? '클릭하여 상세 보기' : 'VIEW DETAILS'}</span>
-                  <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-                </div>
+                <h3 className="text-lg sm:text-xl font-bold text-white leading-snug group-hover:text-white transition-colors">
+                  {item.title}
+                </h3>
+                <p className="text-xs sm:text-sm text-[#B9B9B9] leading-relaxed font-light line-clamp-2">
+                  {item.desc}
+                </p>
               </div>
-              <h3 className="text-lg sm:text-xl font-bold text-white leading-snug group-hover:text-white transition-colors">
-                {item.title}
-              </h3>
-              <p className="text-xs sm:text-sm text-[#B9B9B9] leading-relaxed font-light line-clamp-2">
-                {item.desc}
-              </p>
+            ))
+          ) : (
+            <div className="py-12 text-center text-[#8C8C8C] font-mono text-xs">
+              {isKo ? '등록된 게시글이 없습니다.' : 'No articles available.'}
             </div>
-          ))}
+          )}
         </div>
 
         {/* Inquiry Card */}
@@ -162,35 +175,7 @@ export default function CommunityPage({ params }: PageProps) {
         title={selectedNotice?.title || ''}
       >
         {selectedNotice && (
-          <div className="space-y-5">
-            <div className="flex items-center gap-3 pb-3 border-b border-white/10">
-              <span
-                className={`text-xs font-bold font-mono px-2.5 py-0.5 ${
-                  selectedNotice.type === 'press'
-                    ? 'bg-white text-black'
-                    : 'border border-white text-white'
-                }`}
-              >
-                {selectedNotice.cat}
-              </span>
-              <span className="font-mono text-xs text-[#8C8C8C]">
-                {selectedNotice.date}
-              </span>
-            </div>
-
-            <div className="space-y-3.5 text-sm sm:text-base text-[#D4D4D4] leading-relaxed font-light">
-              {selectedNotice.content.map((paragraph, idx) => (
-                <p key={idx} className="whitespace-pre-line">
-                  {paragraph}
-                </p>
-              ))}
-            </div>
-
-            <div className="pt-5 border-t border-white/10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-xs font-mono text-[#8C8C8C]">
-              <span>■ {isKo ? '문의: 안양문화예술재단 APAP 사업부 (031-687-0548)' : 'Inquiries: Anyang Foundation for Culture & Arts (031-687-0548)'}</span>
-              <span className="text-white/60">APAP8 · BLACK & WHITE EDITION</span>
-            </div>
-          </div>
+          <NoticeModalContent item={selectedNotice} isKo={isKo} />
         )}
       </SectionDetailModal>
 

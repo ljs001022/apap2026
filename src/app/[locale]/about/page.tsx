@@ -143,15 +143,15 @@ export default function AboutPage({ params }: PageProps) {
 
             <div>
               <h3 className="text-3xl sm:text-4xl font-black text-white">
-                {isKo ? 'ArteX : 예술대전환' : 'ArteX : Art Transformation'}
+                {isKo ? 'Arte X : 예술 대전환' : 'Arte X : Art Transformation'}
               </h3>
               <div className="font-mono text-sm text-[#8C8C8C] font-semibold mt-1">
                 {isKo ? '부제: 안양 무릉도원' : 'Subtitle: Anyang Peach Blossom Spring'}
               </div>
               <p className="font-mono text-xs text-white/70 mt-2 bg-white/[0.04] border-l-2 border-white px-3 py-1.5">
                 {isKo
-                  ? 'ArteX = Art + Transformation / Expansion / Experience (예술대전환, 예술의 확장, 예술의 새로운 경험)'
-                  : 'ArteX = Art + Transformation / Expansion / Experience'}
+                  ? 'Arte X = Art + Transformation / Expansion / Experience (예술 대전환, 예술의 확장, 예술의 새로운 경험)'
+                  : 'Arte X = Art + Transformation / Expansion / Experience'}
               </p>
             </div>
 
@@ -262,8 +262,8 @@ export default function AboutPage({ params }: PageProps) {
               </h2>
               <p className="font-mono text-xs sm:text-sm text-[#8C8C8C] mt-2">
                 {isKo
-                  ? 'ArteX : 예술대전환_안양 무릉도원 미디어 티저 및 현장 영상'
-                  : 'ArteX : Art Transformation Teaser & On-site Media'}
+                  ? 'Arte X : 예술 대전환_안양 무릉도원 미디어 티저 및 현장 영상'
+                  : 'Arte X : Art Transformation Teaser & On-site Media'}
               </p>
             </div>
 
@@ -290,7 +290,7 @@ export default function AboutPage({ params }: PageProps) {
               <div className="bg-white/[0.02] border border-white/10 p-4 grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs font-mono">
                 <div>
                   <span className="text-[#8C8C8C] block text-[10px]">■ {isKo ? '영상 제목' : 'TITLE'}</span>
-                  <span className="text-white font-medium">{isKo ? 'APAP8 ArteX : 예술대전환 공식 티저' : 'APAP8 ArteX Official Teaser'}</span>
+                  <span className="text-white font-medium">{isKo ? 'APAP8 Arte X : 예술 대전환 공식 티저' : 'APAP8 Arte X Official Teaser'}</span>
                 </div>
                 <div>
                   <span className="text-[#8C8C8C] block text-[10px]">■ {isKo ? '주최 / 주관' : 'ORGANIZER'}</span>

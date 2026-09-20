@@ -40,7 +40,7 @@ export default async function SiteBLayout({ children, params }: LayoutProps) {
         <footer className="w-full border-t border-slate-200 bg-white py-8 md:py-10 text-xs text-slate-500">
           <div className="container mx-auto px-4 sm:px-6 flex flex-col md:flex-row justify-between items-center gap-6 md:gap-0">
             <div className="space-y-1 text-center md:text-left">
-              <p className="font-semibold text-slate-700 text-sm">안양공공예술프로젝트 (APAP 사무국)</p>
+              <p className="font-semibold text-slate-700 text-sm">안양공공예술프로젝트 (공공예술부)</p>
               <p>경기도 안양시 만안구 예술공원로 103 | info@apap.or.kr</p>
               <p className="text-[10px] text-slate-400 pt-1">© 2026 Anyang Foundation for Culture &amp; Arts. All rights reserved.</p>
             </div>

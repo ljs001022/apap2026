@@ -133,7 +133,7 @@ export default function VisitPage({ params }: PageProps) {
               </p>
               <p className="font-mono text-xs sm:text-sm text-white/70 flex items-center gap-1.5 pt-1.5 border-t border-white/10">
                 <Phone className="w-3.5 h-3.5" />
-                <span>031-687-0548 (안양문화예술재단 APAP 사업부)</span>
+                <span>031-687-0548 (안양문화예술재단 공공예술부)</span>
               </p>
             </div>
           </div>

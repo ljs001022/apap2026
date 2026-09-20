@@ -51,7 +51,7 @@ export default function SectionDetailModal({
     <AnimatePresence>
       {isOpen && (
         <div
-          className="fixed inset-0 z-[70] flex items-center justify-center p-4 sm:p-6 md:p-10"
+          className="fixed inset-0 z-[70] flex items-center justify-center p-2.5 sm:p-6 md:p-10"
           style={{ background: 'rgba(0,0,0,0.6)', backdropFilter: 'blur(14px)' }}
           onClick={onClose}
         >
@@ -60,16 +60,16 @@ export default function SectionDetailModal({
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.96, y: 15 }}
             transition={{ duration: 0.25, ease: 'easeOut' }}
-            className="relative w-full max-w-3xl max-h-[85vh] bg-[#121212] border border-white/20 shadow-2xl flex flex-col overflow-hidden text-white"
+            className="relative w-full max-w-3xl max-h-[92vh] sm:max-h-[85vh] bg-[#121212] border border-white/20 shadow-2xl flex flex-col overflow-hidden text-white"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Modal Header */}
-            <div className="flex items-start justify-between p-4 sm:p-6 border-b border-white/10 bg-[#161616]">
-              <div className="space-y-1 pr-6">
+            <div className="flex items-start justify-between p-3.5 sm:p-6 border-b border-white/10 bg-[#161616]">
+              <div className="space-y-1 pr-4 sm:pr-6">
                 <span className="font-mono text-caption text-[#8C8C8C] uppercase tracking-wider font-bold">
                   {category}
                 </span>
-                <h3 className="text-lg sm:text-2xl font-black text-white leading-snug">
+                <h3 className="text-base sm:text-2xl font-black text-white leading-snug">
                   {title}
                 </h3>
               </div>
@@ -84,7 +84,7 @@ export default function SectionDetailModal({
             </div>
 
             {/* Modal Scrollable Body */}
-            <div className="flex-1 overflow-y-auto p-4 sm:p-6 space-y-4 text-body text-[#B9B9B9] hide-scrollbar">
+            <div className="flex-1 overflow-y-auto p-3.5 sm:p-6 space-y-4 text-body text-[#B9B9B9] hide-scrollbar">
               {/* 이미지 갤러리 (images가 있을 때만) */}
               {images.length > 0 && (
                 <div className="relative w-full aspect-[4/3] bg-black border border-white/10 overflow-hidden">

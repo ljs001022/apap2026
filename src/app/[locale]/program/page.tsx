@@ -243,7 +243,7 @@ export default function ProgramPage({ params }: PageProps) {
                 </h3>
                 <p className="text-xs sm:text-sm text-[#B9B9B9] font-light leading-relaxed">
                   {isKo
-                    ? '인공지능과 첨단기술이 융합하는 시대, 공공예술의 사회적 역할과 예술대전환의 미래 담론을 모색합니다.'
+                    ? '인공지능과 첨단기술이 융합하는 시대, 공공예술의 사회적 역할과 예술 대전환의 미래 담론을 모색합니다.'
                     : 'Exploring the social role and transformation of public art in the era of AI and cutting-edge technologies.'}
                 </p>
                 <div className="text-xs font-mono text-[#8C8C8C] pt-2 border-t border-white/10 space-y-0.5">

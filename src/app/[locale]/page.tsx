@@ -24,12 +24,14 @@ import {
   Tv,
   Compass,
   Award,
+  Download,
 } from 'lucide-react';
 import ArtistGrid from '@/components/site-a/ArtistGrid';
 import { getVenues } from '@/lib/artists';
 import { getCommunityItems, CommunityItem } from '@/lib/community';
 import { getLocalizedVenueName } from '@/lib/artistLocalization';
 import { PARTICIPATING_ARTISTS, COMPETITION_WINNERS } from '@/lib/credits';
+import NoticeModalContent from '@/components/community/NoticeModalContent';
 import Link from 'next/link';
 
 interface PageProps {
@@ -64,12 +66,12 @@ export default function SiteAPage({ params }: PageProps) {
     ko: {
       heroAlt: '제8회 안양공공예술프로젝트(APAP8) 공식 포스터',
       ticker:
-        'APAP8 2026.09.30 OPEN ● 안양공공예술프로젝트 ● ArteX : 예술대전환 ● 무료 관람 ● ARCHIVE → APAP.OR.KR',
+        'APAP8 2026.09.30 OPEN ● 안양공공예술프로젝트 ● Arte X : 예술 대전환 ● 무료 관람 ● ARCHIVE → APAP.OR.KR',
     },
     en: {
       heroAlt: 'The 8th Anyang Public Art Project (APAP8) Official Poster',
       ticker:
-        'APAP8 OPEN 2026.09.30 ● ANYANG PUBLIC ART ● ArteX : ART TRANSFORMATION ● FREE ADMISSION ● ARCHIVE → APAP.OR.KR',
+        'APAP8 OPEN 2026.09.30 ● ANYANG PUBLIC ART ● Arte X : ART TRANSFORMATION ● FREE ADMISSION ● ARCHIVE → APAP.OR.KR',
     },
   }[validLocale];
 
@@ -203,7 +205,7 @@ export default function SiteAPage({ params }: PageProps) {
                         </span>
                       </div>
                       <h3 className="text-sm font-extrabold text-white leading-snug">
-                        {isKo ? 'ArteX : 예술대전환' : 'ArteX : Art Transformation'}
+                        {isKo ? 'Arte X : 예술 대전환' : 'Arte X : Art Transformation'}
                         <span className="block text-[11px] font-mono text-[#8C8C8C] font-normal mt-0.5">
                           {isKo ? '부제: 안양 무릉도원' : 'Subtitle: Anyang Peach Blossom Spring'}
                         </span>
@@ -275,7 +277,7 @@ export default function SiteAPage({ params }: PageProps) {
                       <h3 className="text-sm font-extrabold text-white leading-snug">
                         {isKo ? 'APAP8 공식 홍보영상 & 티저' : 'APAP8 Official Promo Video'}
                         <span className="block text-[11px] font-mono text-[#8C8C8C] font-normal mt-0.5">
-                          {isKo ? 'ArteX : 예술대전환 미디어 티저' : 'ArteX : Art Transformation Teaser'}
+                          {isKo ? 'Arte X : 예술 대전환 미디어 티저' : 'Arte X : Art Transformation Teaser'}
                         </span>
                       </h3>
                       <p className="text-body text-[#B9B9B9] font-light leading-relaxed line-clamp-2">
@@ -421,7 +423,7 @@ export default function SiteAPage({ params }: PageProps) {
                         02 EXHIBITION THEME
                       </span>
                       <h3 className="text-2xl lg:text-3xl font-extrabold text-white leading-snug">
-                        {isKo ? 'ArteX : 예술대전환' : 'ArteX : Art Transformation'}
+                        {isKo ? 'Arte X : 예술 대전환' : 'Arte X : Art Transformation'}
                       </h3>
                       <span className="text-sm lg:text-base font-mono text-[#8C8C8C] mt-1 block">
                         {isKo ? '부제: 안양 무릉도원' : 'Subtitle: Anyang Peach Blossom Spring'}
@@ -430,8 +432,8 @@ export default function SiteAPage({ params }: PageProps) {
 
                     <div className="bg-white/[0.04] border-l-4 border-white px-5 py-3 text-xs lg:text-sm font-mono text-white/90">
                       {isKo
-                        ? 'ArteX = Art + Transformation / Expansion / Experience (예술대전환, 예술의 확장, 예술의 새로운 경험)'
-                        : 'ArteX = Art + Transformation / Expansion / Experience'}
+                        ? 'Arte X = Art + Transformation / Expansion / Experience (예술 대전환, 예술의 확장, 예술의 새로운 경험)'
+                        : 'Arte X = Art + Transformation / Expansion / Experience'}
                     </div>
 
                     <div className="text-base lg:text-lg text-[#D4D4D4] leading-relaxed space-y-4 font-light">
@@ -445,28 +447,6 @@ export default function SiteAPage({ params }: PageProps) {
                           ? '진정한 무릉도원은 특정한 물리적 시공간을 의미하는 것은 아닐 것입니다. 심신의 피로를 달래고, 고단한 삶의 무게를 잠시나마 내려놓을 수 있는 순간이 온다면 바로 그 순간 각자가 있는 그곳이 무릉도원이 될 수 있습니다. APAP8은 예술을 통해 각자의 무릉도원을 만들어 보고자 합니다. 퇴근길에 잠시 들린 전시장, 가족과 산책 중 우연히 마주친 야외 조각과 미디어 아트가 우리의 마음을 움직이고, 바쁜 삶 속에서 잠시 잊었던 감각을 깨울 수 있다면 예술은 공공의 영역에서 사회적 역할을 충실히 하는 것이라고 말할 수 있을 것입니다. 안양시가 예술로 펼쳐 놓은 축제의 장, 《Arte X : 예술 대전환_안양 무릉도원》은 안양 시민뿐 아니라, 무릉도원을 찾는 모든 이들을 환영합니다.'
                           : 'A true paradise is not confined to a specific physical time or place. Whenever one can soothe weariness and set down life’s burdens, that very place becomes a paradise. If an exhibition visited on the commute home or an outdoor sculpture and media artwork encountered while strolling can move our hearts and awaken forgotten senses, art fulfills its vital social role in the public realm. The festive haven presented by Anyang City, "Arte X : Art Transformation_Anyang Peach Blossom Spring," warmly welcomes citizens and all who journey to discover paradise.'}
                       </p>
-                    </div>
-
-                    {/* 3 Core Pillars */}
-                    <div className="grid grid-cols-3 gap-4 pt-2">
-                      <div className="border border-white/20 p-4 bg-white/[0.02] space-y-1.5">
-                        <span className="font-mono text-xs text-white font-bold block">01 자연·생태계 조화</span>
-                        <p className="text-xs lg:text-sm text-[#B9B9B9] font-light">
-                          안양예술공원의 자연 지형과 생태를 보존하며 조화를 이루는 친환경 공공미술
-                        </p>
-                      </div>
-                      <div className="border border-white/20 p-4 bg-white/[0.02] space-y-1.5">
-                        <span className="font-mono text-xs text-white font-bold block">02 예술·첨단기술 융합</span>
-                        <p className="text-xs lg:text-sm text-[#B9B9B9] font-light">
-                          미디어아트, 인터랙티브 테크, AI를 접목한 동시대 융복합 예술 경험
-                        </p>
-                      </div>
-                      <div className="border border-white/20 p-4 bg-white/[0.02] space-y-1.5">
-                        <span className="font-mono text-xs text-white font-bold block">03 시민참여의 확장</span>
-                        <p className="text-xs lg:text-sm text-[#B9B9B9] font-light">
-                          관람객이 능동적 창작 주체로 참여하는 쌍방향 공공예술 커뮤니티
-                        </p>
-                      </div>
                     </div>
                   </div>
                 )}
@@ -560,8 +540,8 @@ export default function SiteAPage({ params }: PageProps) {
                       </h3>
                       <p className="font-mono text-xs text-[#8C8C8C] mt-1">
                         {isKo
-                          ? 'ArteX : 예술대전환_안양 무릉도원 공식 티저 및 미디어 영상'
-                          : 'ArteX : Art Transformation Official Teaser & Media Video'}
+                          ? 'Arte X : 예술 대전환_안양 무릉도원 공식 티저 및 미디어 영상'
+                          : 'Arte X : Art Transformation Official Teaser & Media Video'}
                       </p>
                     </div>
 
@@ -608,7 +588,7 @@ export default function SiteAPage({ params }: PageProps) {
                       <div className="bg-white/[0.02] border border-white/10 p-4 grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs font-mono">
                         <div>
                           <span className="text-[#8C8C8C] block text-[10px]">■ {isKo ? '영상 제목' : 'TITLE'}</span>
-                          <span className="text-white font-medium">{isKo ? 'APAP8 ArteX : 예술대전환 공식 티저' : 'APAP8 ArteX Official Teaser'}</span>
+                          <span className="text-white font-medium">{isKo ? 'APAP8 Arte X : 예술 대전환 공식 티저' : 'APAP8 Arte X Official Teaser'}</span>
                         </div>
                         <div>
                           <span className="text-[#8C8C8C] block text-[10px]">■ {isKo ? '주최 / 주관' : 'ORGANIZER'}</span>
@@ -1055,7 +1035,7 @@ export default function SiteAPage({ params }: PageProps) {
                           </h4>
                           <p className="text-xs lg:text-sm text-[#B9B9B9] font-light leading-relaxed mt-2">
                             {isKo
-                              ? '인공지능과 첨단기술이 융합하는 시대, 공공예술의 사회적 역할과 예술대전환의 미래 담론을 모색합니다.'
+                              ? '인공지능과 첨단기술이 융합하는 시대, 공공예술의 사회적 역할과 예술 대전환의 미래 담론을 모색합니다.'
                               : 'Exploring the social role and transformation of public art in the era of AI and cutting-edge technologies.'}
                           </p>
                         </div>
@@ -1189,6 +1169,12 @@ export default function SiteAPage({ params }: PageProps) {
                             <span className="font-mono text-[11px] text-[#8C8C8C]">
                               {item.date}
                             </span>
+                            {item.pdfUrl && (
+                              <span className="inline-flex items-center gap-0.5 text-[9px] font-mono text-white/80 bg-white/10 border border-white/20 px-1 py-0.2">
+                                <Download className="w-2.5 h-2.5" />
+                                <span>{item.previewType === 'download_only' ? (isKo ? '리플렛' : 'PDF') : 'PDF'}</span>
+                              </span>
+                            )}
                           </div>
                           <ArrowUpRight className="w-3.5 h-3.5 text-white/30 group-hover:text-white group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
                         </div>
@@ -1232,10 +1218,10 @@ export default function SiteAPage({ params }: PageProps) {
                 )}
               </div>
 
-              {/* PC VIEW (>= md): 6 items per page with enlarged fonts & 2-column layout */}
+              {/* PC VIEW (>= md): 1-column layout */}
               <div className="hidden md:block">
                 <div className="border-t border-b border-white/20 py-2">
-                  <div className="grid grid-cols-2 gap-x-8 gap-y-5">
+                  <div className="grid grid-cols-1 gap-y-3.5">
                     {communityItems
                       .slice(
                         (communityPcPage - 1) * 6,
@@ -1270,6 +1256,12 @@ export default function SiteAPage({ params }: PageProps) {
                                 <span className="font-mono text-xs lg:text-sm text-[#8C8C8C]">
                                   {item.date}
                                 </span>
+                                {item.pdfUrl && (
+                                  <span className="inline-flex items-center gap-1 text-[11px] font-mono text-white/80 bg-white/10 border border-white/20 px-2 py-0.5">
+                                    <Download className="w-3 h-3" />
+                                    <span>{item.previewType === 'download_only' ? (isKo ? '리플렛 다운로드' : 'LEAFLET') : 'PDF'}</span>
+                                  </span>
+                                )}
                                 <ArrowUpRight className="w-4 h-4 text-white/30 group-hover:text-white group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
                               </div>
                             </div>
@@ -1396,7 +1388,7 @@ export default function SiteAPage({ params }: PageProps) {
                           {isKo ? '관람문의' : 'Contact'}
                         </span>
                         <div className="text-[#D4D4D4] font-light text-[12px]">
-                          <span>031-687-0548 (APAP 사무국)</span>
+                          <span>031-687-0548 (공공예술부)</span>
                         </div>
                       </div>
                     </div>
@@ -1763,7 +1755,7 @@ export default function SiteAPage({ params }: PageProps) {
         isOpen={aboutModalItem === 'theme'}
         onClose={() => setAboutModalItem(null)}
         category={isKo ? '02 전시 주제' : '02 EXHIBITION THEME'}
-        title={isKo ? 'ArteX : 예술대전환' : 'ArteX : Art Transformation'}
+        title={isKo ? 'Arte X : 예술 대전환' : 'Arte X : Art Transformation'}
       >
         <div className="space-y-4">
           <div>
@@ -1772,8 +1764,8 @@ export default function SiteAPage({ params }: PageProps) {
             </div>
             <p className="font-mono text-xs sm:text-sm text-white/80 mt-2 bg-white/[0.04] border-l-2 border-white px-3 py-1.5">
               {isKo
-                ? 'ArteX = Art + Transformation / Expansion / Experience (예술대전환, 예술의 확장, 예술의 새로운 경험)'
-                : 'ArteX = Art + Transformation / Expansion / Experience'}
+                ? 'Arte X = Art + Transformation / Expansion / Experience (예술 대전환, 예술의 확장, 예술의 새로운 경험)'
+                : 'Arte X = Art + Transformation / Expansion / Experience'}
             </p>
           </div>
 
@@ -1788,27 +1780,6 @@ export default function SiteAPage({ params }: PageProps) {
                 ? '진정한 무릉도원은 특정한 물리적 시공간을 의미하는 것은 아닐 것입니다. 심신의 피로를 달래고, 고단한 삶의 무게를 잠시나마 내려놓을 수 있는 순간이 온다면 바로 그 순간 각자가 있는 그곳이 무릉도원이 될 수 있습니다. APAP8은 예술을 통해 각자의 무릉도원을 만들어 보고자 합니다. 퇴근길에 잠시 들린 전시장, 가족과 산책 중 우연히 마주친 야외 조각과 미디어 아트가 우리의 마음을 움직이고, 바쁜 삶 속에서 잠시 잊었던 감각을 깨울 수 있다면 예술은 공공의 영역에서 사회적 역할을 충실히 하는 것이라고 말할 수 있을 것입니다. 안양시가 예술로 펼쳐 놓은 축제의 장, 《Arte X : 예술 대전환_안양 무릉도원》은 안양 시민뿐 아니라, 무릉도원을 찾는 모든 이들을 환영합니다.'
                 : 'A true paradise is not confined to a specific physical time or place. Whenever one can soothe weariness and set down life’s burdens, that very place becomes a paradise. If an exhibition visited on the commute home or an outdoor sculpture and media artwork encountered while strolling can move our hearts and awaken forgotten senses, art fulfills its vital social role in the public realm. The festive haven presented by Anyang City, "Arte X : Art Transformation_Anyang Peach Blossom Spring," warmly welcomes citizens and all who journey to discover paradise.'}
             </p>
-          </div>
-
-          {/* 3 Core Directions */}
-          <div className="space-y-2 pt-2 border-t border-white/10">
-            <div className="text-caption font-mono text-[#8C8C8C] uppercase tracking-wider">
-              {isKo ? '3대 핵심 방향' : 'THREE CORE PILLARS'}
-            </div>
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 text-caption">
-              <div className="border border-white/10 p-2.5 bg-white/[0.02]">
-                <strong className="text-white block mb-1">01 자연·생태계 조화</strong>
-                <span className="text-[#8C8C8C] font-light">안양예술공원 지형과 자연환경을 존중하는 친환경 공공미술</span>
-              </div>
-              <div className="border border-white/10 p-2.5 bg-white/[0.02]">
-                <strong className="text-white block mb-1">02 예술·첨단기술 융합</strong>
-                <span className="text-[#8C8C8C] font-light">미디어아트와 기술을 결합한 동시대 융복합 콘텐츠</span>
-              </div>
-              <div className="border border-white/10 p-2.5 bg-white/[0.02]">
-                <strong className="text-white block mb-1">03 시민참여의 확장</strong>
-                <span className="text-[#8C8C8C] font-light">시민이 창작과 향유의 주체가 되는 인터랙티브 플랫폼</span>
-              </div>
-            </div>
           </div>
         </div>
       </SectionDetailModal>
@@ -1890,8 +1861,8 @@ export default function SiteAPage({ params }: PageProps) {
         <div className="space-y-4">
           <p className="font-mono text-xs text-[#8C8C8C]">
             {isKo
-              ? 'ArteX : 예술대전환_안양 무릉도원 미디어 티저 및 영상'
-              : 'ArteX : Art Transformation Official Teaser & Video'}
+              ? 'Arte X : 예술 대전환_안양 무릉도원 미디어 티저 및 영상'
+              : 'Arte X : Art Transformation Official Teaser & Video'}
           </p>
 
           {/* YouTube Video Container (Configured via PROMO_YOUTUBE_ID) */}
@@ -1929,7 +1900,7 @@ export default function SiteAPage({ params }: PageProps) {
             <div className="bg-white/[0.02] border border-white/10 p-3 space-y-1 text-xs font-mono">
               <div className="flex justify-between">
                 <span className="text-[#8C8C8C]">■ {isKo ? '제목' : 'TITLE'}</span>
-                <span className="text-white">{isKo ? 'APAP8 ArteX : 예술대전환 티저' : 'APAP8 ArteX Teaser'}</span>
+                <span className="text-white">{isKo ? 'APAP8 Arte X : 예술 대전환 티저' : 'APAP8 Arte X Teaser'}</span>
               </div>
               <div className="flex justify-between">
                 <span className="text-[#8C8C8C]">■ {isKo ? '플랫폼' : 'PLATFORM'}</span>
@@ -2159,37 +2130,7 @@ export default function SiteAPage({ params }: PageProps) {
         title={selectedCommunityItem?.title || ''}
       >
         {selectedCommunityItem && (
-          <div className="space-y-5">
-            <div className="flex items-center gap-3 pb-3 border-b border-white/10">
-              <span
-                className={`text-xs font-bold font-mono px-2.5 py-0.5 ${
-                  selectedCommunityItem.cat === '보도자료' ||
-                  selectedCommunityItem.cat === 'Press' ||
-                  selectedCommunityItem.type === 'press'
-                    ? 'bg-white text-black'
-                    : 'border border-white text-white'
-                }`}
-              >
-                {selectedCommunityItem.cat}
-              </span>
-              <span className="font-mono text-xs text-[#8C8C8C]">
-                {selectedCommunityItem.date}
-              </span>
-            </div>
-
-            <div className="space-y-3.5 text-sm sm:text-base text-[#D4D4D4] leading-relaxed font-light">
-              {selectedCommunityItem.content.map((paragraph, idx) => (
-                <p key={idx} className="whitespace-pre-line">
-                  {paragraph}
-                </p>
-              ))}
-            </div>
-
-            <div className="pt-5 border-t border-white/10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-xs font-mono text-[#8C8C8C]">
-              <span>■ {isKo ? '주최: 안양문화예술재단' : 'Hosted by Anyang Foundation for Culture & Arts'}</span>
-              <span className="text-white/60">APAP8 · BLACK & WHITE EDITION</span>
-            </div>
-          </div>
+          <NoticeModalContent item={selectedCommunityItem} isKo={isKo} />
         )}
       </SectionDetailModal>
     </div>

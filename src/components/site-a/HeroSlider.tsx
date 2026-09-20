@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ChevronLeft, ChevronRight, ArrowUpRight, Sparkles } from 'lucide-react';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 interface HeroSliderProps {
   locale: 'ko' | 'en';
@@ -237,40 +237,14 @@ export default function HeroSlider({ locale }: HeroSliderProps) {
               {/* Gradient Scrims for text legibility */}
               <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-black/60 pointer-events-none" />
 
-              {/* Top-Left: Badge & Artwork Info (Mobile & Desktop Unified) */}
-              <div className="absolute top-3 left-3 sm:top-5 sm:left-6 flex flex-col gap-1.5 sm:gap-2.5 pointer-events-none max-w-[85%] sm:max-w-2xl z-10">
-                {/* Badges */}
-                <div className="flex items-center gap-2">
-                  <span className="font-mono text-[9px] sm:text-[11px] font-black px-2 py-0.5 bg-white text-black tracking-wider">
-                    0{currentSlide + 1}
-                  </span>
-                  <span className="font-mono text-[9px] sm:text-[11px] font-bold text-white/90 bg-black/70 border border-white/25 px-2 py-0.5 tracking-wider uppercase backdrop-blur-sm">
-                    {isKo ? '안양파빌리온 대표작' : 'ANYANG PAVILION'}
-                  </span>
-                </div>
-
-                {/* Artwork Description (placed under badges for both Mobile & PC) */}
-                <div className="space-y-1 sm:space-y-1.5 pt-0.5">
-                  <div className="flex items-center gap-1.5 sm:gap-2.5 flex-wrap">
-                    <span className="font-mono text-[10px] sm:text-xs font-bold text-[#E5E5E5] bg-black/80 border-b border-white/40 px-1.5 py-0.5 sm:px-2 sm:py-0.5 tracking-wider uppercase backdrop-blur-sm">
-                      {isKo ? activeWork.artistKo : activeWork.artistEn}
-                    </span>
-                    <span className="font-mono text-[9px] sm:text-[11px] text-white/70 bg-black/60 px-1.5 py-0.5 sm:px-2 sm:py-0.5 backdrop-blur-sm tracking-wider">
-                      {isKo ? activeWork.genreKo : activeWork.genreEn}
-                    </span>
-                  </div>
-                  <h3 className="text-xs sm:text-lg md:text-xl font-black text-white tracking-tight drop-shadow-lg line-clamp-1 bg-black/70 px-1.5 py-0.5 sm:px-2.5 sm:py-1 backdrop-blur-sm inline-block max-w-full">
-                    {isKo ? activeWork.titleKo : activeWork.titleEn}
-                  </h3>
-                </div>
-              </div>
-
-              {/* Top-Right: Detail Action Hint */}
-              <div className="absolute top-3 right-3 sm:top-5 sm:right-6 pointer-events-none hidden sm:flex items-center gap-1.5 bg-black/70 border border-white/25 px-2.5 py-1 text-white/90 group-hover/slide:bg-white group-hover/slide:text-black group-hover/slide:border-white transition-all backdrop-blur-sm">
-                <span className="font-mono text-[10px] font-bold uppercase tracking-wider">
-                  {isKo ? '전시 바로가기' : 'VIEW EXHIBITION'}
+              {/* Top-Left: Artist Name & Artwork Title Only */}
+              <div className="absolute top-3 left-3 sm:top-5 sm:left-6 flex flex-col gap-1 sm:gap-1.5 pointer-events-none max-w-[85%] sm:max-w-2xl z-10">
+                <span className="font-mono text-xs sm:text-sm font-bold text-white/90 tracking-wider uppercase bg-black/75 border border-white/20 px-2 sm:px-2.5 py-0.5 sm:py-1 backdrop-blur-sm inline-block w-fit">
+                  {isKo ? activeWork.artistKo : activeWork.artistEn}
                 </span>
-                <ArrowUpRight className="w-3.5 h-3.5 transition-transform group-hover/slide:translate-x-0.5 group-hover/slide:-translate-y-0.5" />
+                <h3 className="text-sm sm:text-lg md:text-xl font-black text-white tracking-tight drop-shadow-lg line-clamp-1 bg-black/75 px-2 sm:px-2.5 py-1 backdrop-blur-sm inline-block max-w-full">
+                  {isKo ? activeWork.titleKo : activeWork.titleEn}
+                </h3>
               </div>
             </motion.div>
           ) : null}

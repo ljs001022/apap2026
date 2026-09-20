@@ -86,7 +86,7 @@ export default function PosterBannerSection({
               <source type="image/webp" srcSet="/images/main-1920x800.webp" />
               <img
                 src="/images/main-1920x800.jpg"
-                alt={isKo ? "제8회 안양공공예술프로젝트(APAP8) 공식 포스터 - ARTEX: 예술대전환" : "The 8th Anyang Public Art Project (APAP8) Official Poster"}
+                alt={isKo ? "제8회 안양공공예술프로젝트(APAP8) 공식 포스터 - Arte X: 예술 대전환" : "The 8th Anyang Public Art Project (APAP8) Official Poster"}
                 className="w-full h-full object-contain group-hover:scale-[1.012] transition-transform duration-700 ease-out"
                 loading="eager"
               />
