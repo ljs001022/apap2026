@@ -60,7 +60,7 @@ export default function SiteAPage({ params }: PageProps) {
   const [programPcTab, setProgramPcTab] = useState<'citizen' | 'docent' | 'forum' | 'broadcast'>('citizen');
 
   // Pagination states
-  const [communityPage, setCommunityPage] = useState(1); // Mobile (3 per page)
+  const [communityPage, setCommunityPage] = useState(1); // Mobile (4 per page)
   const [communityPcPage, setCommunityPcPage] = useState(1); // PC (6 per page)
 
   const t = {
@@ -208,13 +208,13 @@ export default function SiteAPage({ params }: PageProps) {
                       <h3 className="text-sm font-extrabold text-white leading-snug">
                         {isKo ? 'Arte X : 예술 대전환' : 'Arte X : Art Transformation'}
                         <span className="block text-[11px] font-mono text-[#8C8C8C] font-normal mt-0.5">
-                          {isKo ? '부제: 안양 무릉도원' : 'Subtitle: Anyang Peach Blossom Spring'}
+                          {isKo ? '부제: 안양 무릉도원' : 'Subtitle: Anyang Paradise'}
                         </span>
                       </h3>
                       <p className="text-body text-[#B9B9B9] font-light leading-relaxed line-clamp-2">
                         {isKo
                           ? '제8회 안양공공예술프로젝트(APAP8)는 "Arte X : 예술 대전환_안양 무릉도원"을 주제로 하여 진행됩니다. 안양은 안양천과 그 지천을 중심으로 도시와 자연의 공존이 현실화한 공간입니다.'
-                          : 'The 8th Anyang Public Art Project (APAP8) unfolds under the theme "Arte X : Art Transformation_Anyang Peach Blossom Spring", reinterpreting paradise through art where city and nature coexist.'}
+                          : 'The 8th Anyang Public Art Project (APAP8) unfolds under the theme "Arte X : Art Transformation_Anyang Paradise", reinterpreting paradise through art where city and nature coexist.'}
                       </p>
                     </div>
                     <div className="flex items-center justify-between pt-1.5 border-t border-white/10 text-xs font-mono text-white/50 group-hover:text-white transition-colors">
@@ -427,7 +427,7 @@ export default function SiteAPage({ params }: PageProps) {
                         {isKo ? 'Arte X : 예술 대전환' : 'Arte X : Art Transformation'}
                       </h3>
                       <span className="text-sm lg:text-base font-mono text-[#8C8C8C] mt-1 block">
-                        {isKo ? '부제: 안양 무릉도원' : 'Subtitle: Anyang Peach Blossom Spring'}
+                        {isKo ? '부제: 안양 무릉도원' : 'Subtitle: Anyang Paradise'}
                       </span>
                     </div>
 
@@ -441,12 +441,12 @@ export default function SiteAPage({ params }: PageProps) {
                       <p>
                         {isKo
                           ? '제8회 안양공공예술프로젝트(APAP8)는 "Arte X : 예술 대전환_안양 무릉도원"을 주제로 하여 진행됩니다. 안양은 안양천과 그 지천을 중심으로 하여 도시와 자연의 공존이 현실화한 공간입니다. 이번 프로젝트는 이러한 안양의 지역적 특성을 살려 예술을 통해 무릉도원을 재해석하고자 합니다. 야외 조각과 설치, 회화와 미디어아트 등 장르 간 경계를 확장하는 다양한 작품을 통해, 시민과 함께 호흡하며 일상 속에 자연스럽게 스며드는 예술 축제의 장을 펼쳐 보일 예정입니다.'
-                          : 'The 8th Anyang Public Art Project (APAP8) unfolds under the theme "Arte X : Art Transformation_Anyang Peach Blossom Spring." Anyang is a space where urban living and nature coexist along the Anyang Stream and its tributaries. Reinterpreting paradise through art, APAP8 expands boundaries across sculpture, installation, painting, and media art to create an art festival naturally woven into everyday life.'}
+                          : 'The 8th Anyang Public Art Project (APAP8) unfolds under the theme "Arte X : Art Transformation_Anyang Paradise." Anyang is a space where urban living and nature coexist along the Anyang Stream and its tributaries. Reinterpreting paradise through art, APAP8 expands boundaries across sculpture, installation, painting, and media art to create an art festival naturally woven into everyday life.'}
                       </p>
                       <p>
                         {isKo
                           ? '진정한 무릉도원은 특정한 물리적 시공간을 의미하는 것은 아닐 것입니다. 심신의 피로를 달래고, 고단한 삶의 무게를 잠시나마 내려놓을 수 있는 순간이 온다면 바로 그 순간 각자가 있는 그곳이 무릉도원이 될 수 있습니다. APAP8은 예술을 통해 각자의 무릉도원을 만들어 보고자 합니다. 퇴근길에 잠시 들린 전시장, 가족과 산책 중 우연히 마주친 야외 조각과 미디어 아트가 우리의 마음을 움직이고, 바쁜 삶 속에서 잠시 잊었던 감각을 깨울 수 있다면 예술은 공공의 영역에서 사회적 역할을 충실히 하는 것이라고 말할 수 있을 것입니다. 안양시가 예술로 펼쳐 놓은 축제의 장, 《Arte X : 예술 대전환_안양 무릉도원》은 안양 시민뿐 아니라, 무릉도원을 찾는 모든 이들을 환영합니다.'
-                          : 'A true paradise is not confined to a specific physical time or place. Whenever one can soothe weariness and set down life’s burdens, that very place becomes a paradise. If an exhibition visited on the commute home or an outdoor sculpture and media artwork encountered while strolling can move our hearts and awaken forgotten senses, art fulfills its vital social role in the public realm. The festive haven presented by Anyang City, "Arte X : Art Transformation_Anyang Peach Blossom Spring," warmly welcomes citizens and all who journey to discover paradise.'}
+                          : 'A true paradise is not confined to a specific physical time or place. Whenever one can soothe weariness and set down life’s burdens, that very place becomes a paradise. If an exhibition visited on the commute home or an outdoor sculpture and media artwork encountered while strolling can move our hearts and awaken forgotten senses, art fulfills its vital social role in the public realm. The festive haven presented by Anyang City, "Arte X : Art Transformation_Anyang Paradise," warmly welcomes citizens and all who journey to discover paradise.'}
                       </p>
                     </div>
                   </div>
@@ -1134,13 +1134,13 @@ export default function SiteAPage({ params }: PageProps) {
           isKo={isKo}
           summary={
             <div className="w-full max-w-[1200px] mx-auto space-y-3 sm:space-y-4">
-              {/* MOBILE VIEW (< md): 3 items per page */}
+              {/* MOBILE VIEW (< md): 4 items per page */}
               <div className="block md:hidden">
                 <div className="border-t border-b border-white/20 divide-y divide-white/10">
                   {communityItems
                     .slice(
-                      (communityPage - 1) * 3,
-                      communityPage * 3
+                      (communityPage - 1) * 4,
+                      communityPage * 4
                     )
                     .map((item) => (
                       <div
@@ -1196,7 +1196,7 @@ export default function SiteAPage({ params }: PageProps) {
                 </div>
 
                 {/* Mobile Pagination */}
-                {Math.ceil(communityItems.length / 3) > 1 && (
+                {Math.ceil(communityItems.length / 4) > 1 && (
                   <div className="flex items-center justify-center gap-4 pt-2">
                     <button
                       type="button"
@@ -1207,16 +1207,16 @@ export default function SiteAPage({ params }: PageProps) {
                       <ChevronLeft className="w-3.5 h-3.5" />
                     </button>
                     <span className="font-mono text-xs text-white/50">
-                      {communityPage} / {Math.ceil(communityItems.length / 3)}
+                      {communityPage} / {Math.ceil(communityItems.length / 4)}
                     </span>
                     <button
                       type="button"
                       onClick={() =>
                         setCommunityPage((p) =>
-                          Math.min(Math.ceil(communityItems.length / 3), p + 1)
+                          Math.min(Math.ceil(communityItems.length / 4), p + 1)
                         )
                       }
-                      disabled={communityPage === Math.ceil(communityItems.length / 3)}
+                      disabled={communityPage === Math.ceil(communityItems.length / 4)}
                       className="w-7 h-7 flex items-center justify-center border border-white/20 hover:border-white hover:bg-white hover:text-black transition-colors disabled:opacity-30 disabled:pointer-events-none cursor-pointer"
                     >
                       <ChevronRight className="w-3.5 h-3.5" />
@@ -1770,7 +1770,7 @@ export default function SiteAPage({ params }: PageProps) {
         <div className="space-y-4">
           <div>
             <div className="font-mono text-sm text-[#8C8C8C] font-semibold">
-              {isKo ? '부제: 안양 무릉도원' : 'Subtitle: Anyang Peach Blossom Spring'}
+              {isKo ? '부제: 안양 무릉도원' : 'Subtitle: Anyang Paradise'}
             </div>
             <p className="font-mono text-xs sm:text-sm text-white/80 mt-2 bg-white/[0.04] border-l-2 border-white px-3 py-1.5">
               {isKo
@@ -1783,12 +1783,12 @@ export default function SiteAPage({ params }: PageProps) {
             <p>
               {isKo
                 ? '제8회 안양공공예술프로젝트(APAP8)는 "Arte X : 예술 대전환_안양 무릉도원"을 주제로 하여 진행됩니다. 안양은 안양천과 그 지천을 중심으로 하여 도시와 자연의 공존이 현실화한 공간입니다. 이번 프로젝트는 이러한 안양의 지역적 특성을 살려 예술을 통해 무릉도원을 재해석하고자 합니다. 야외 조각과 설치, 회화와 미디어아트 등 장르 간 경계를 확장하는 다양한 작품을 통해, 시민과 함께 호흡하며 일상 속에 자연스럽게 스며드는 예술 축제의 장을 펼쳐 보일 예정입니다.'
-                : 'The 8th Anyang Public Art Project (APAP8) unfolds under the theme "Arte X : Art Transformation_Anyang Peach Blossom Spring." Anyang is a space where urban living and nature coexist along the Anyang Stream and its tributaries. Reinterpreting paradise through art, APAP8 expands boundaries across sculpture, installation, painting, and media art to create an art festival naturally woven into everyday life.'}
+                : 'The 8th Anyang Public Art Project (APAP8) unfolds under the theme "Arte X : Art Transformation_Anyang Paradise." Anyang is a space where urban living and nature coexist along the Anyang Stream and its tributaries. Reinterpreting paradise through art, APAP8 expands boundaries across sculpture, installation, painting, and media art to create an art festival naturally woven into everyday life.'}
             </p>
             <p>
               {isKo
                 ? '진정한 무릉도원은 특정한 물리적 시공간을 의미하는 것은 아닐 것입니다. 심신의 피로를 달래고, 고단한 삶의 무게를 잠시나마 내려놓을 수 있는 순간이 온다면 바로 그 순간 각자가 있는 그곳이 무릉도원이 될 수 있습니다. APAP8은 예술을 통해 각자의 무릉도원을 만들어 보고자 합니다. 퇴근길에 잠시 들린 전시장, 가족과 산책 중 우연히 마주친 야외 조각과 미디어 아트가 우리의 마음을 움직이고, 바쁜 삶 속에서 잠시 잊었던 감각을 깨울 수 있다면 예술은 공공의 영역에서 사회적 역할을 충실히 하는 것이라고 말할 수 있을 것입니다. 안양시가 예술로 펼쳐 놓은 축제의 장, 《Arte X : 예술 대전환_안양 무릉도원》은 안양 시민뿐 아니라, 무릉도원을 찾는 모든 이들을 환영합니다.'
-                : 'A true paradise is not confined to a specific physical time or place. Whenever one can soothe weariness and set down life’s burdens, that very place becomes a paradise. If an exhibition visited on the commute home or an outdoor sculpture and media artwork encountered while strolling can move our hearts and awaken forgotten senses, art fulfills its vital social role in the public realm. The festive haven presented by Anyang City, "Arte X : Art Transformation_Anyang Peach Blossom Spring," warmly welcomes citizens and all who journey to discover paradise.'}
+                : 'A true paradise is not confined to a specific physical time or place. Whenever one can soothe weariness and set down life’s burdens, that very place becomes a paradise. If an exhibition visited on the commute home or an outdoor sculpture and media artwork encountered while strolling can move our hearts and awaken forgotten senses, art fulfills its vital social role in the public realm. The festive haven presented by Anyang City, "Arte X : Art Transformation_Anyang Paradise," warmly welcomes citizens and all who journey to discover paradise.'}
             </p>
           </div>
         </div>

@@ -115,7 +115,19 @@
               "size": "250 x 500 x 500cm",
               "description": "<OVERLAID : 공존의 균형>은 서로 다른 색과 형태가 하나의 공간 안에서 조화를 이루는 과정을 표현한 공공 조형물이다. 오방색으로 구성된 구체들은 각각 시간, 기억, 관계의 층위를 상징하며, 수직으로 중첩된 구조를 통해 축적과 균형의 의미를 드러낸다. 중앙의 자연석은 시간의 중심이자 장소의 기억을 상징하며, 주변의 수직 조형물들은 그 주위를 감싸며 공존과 연결의 질서를 형성한다. \n\nOVERLAID: Harmony of Coexistence is a public sculpture that expresses the harmony of diverse colors and forms within a shared space. The spheres, composed of the five traditional Korean colors (Obangsaek), symbolize the layered dimensions of time, memory, and relationships. Their vertically stacked arrangement conveys the accumulation of experiences and the pursuit of balance. At the center, a natural stone represents the core of time and the memory of place, while the surrounding vertical sculptures embrace it, creating an ordered structure that embodies coexistence, connection, and harmony.",
               "images": [
-                "/assets/artists/outdoor-exhibition/kim-deok-han/work-1-1.webp"
+                "/assets/artists/outdoor-exhibition/kim-deok-han/work-1-1.webp",
+                "/assets/artists/outdoor-exhibition/kim-deok-han/work-1-2.webp"
+              ]
+            },
+            {
+              "title": "〈OVERLAID : Compressed Series〉\n\n〈OVERLAID : Compressed Series〉",
+              "year": "2026",
+              "material": "옻칠, 캔버스\n\nOttchil (Korean lacquer) on canvas",
+              "size": "",
+              "description": "〈OVERLAID : Compressed Series〉(2026)는 전통 옻칠 재료의 물성과 현대적 회화 매체를 결합하여, 시간의 축적과 겹침(Overlaid)의 과정을 시각화한 연작이다. 옻을 칠하고 말리고 갈아내는 반복적인 행위를 통해 화면 위에는 보이지 않는 시간과 노동의 층위가 압축되어 드러난다.",
+              "images": [
+                "/assets/artists/outdoor-exhibition/kim-deok-han/work-2-1.webp",
+                "/assets/artists/outdoor-exhibition/kim-deok-han/work-2-2.webp"
               ]
             }
           ]
@@ -403,6 +415,17 @@
               "images": [
                 "/assets/artists/korea-china-special/wang-qingsong/work-2-1.webp"
               ]
+            },
+            {
+              "title": "〈One World, One Dream〉\n\n〈One World, One Dream〉",
+              "year": "2014",
+              "material": "C-프린트\n\nC-Print",
+              "size": "180 × 225 cm (좌/우 2패널)",
+              "description": "대규모 연출과 무대 장치를 통해 동시대 중국 사회의 급격한 근대화와 자본주의적 욕망의 스펙터클을 비판적 시선으로 담아낸 대형 사진 작업이다.",
+              "images": [
+                "/assets/artists/korea-china-special/wang-qingsong/work-3-1.webp",
+                "/assets/artists/korea-china-special/wang-qingsong/work-3-2.webp"
+              ]
             }
           ]
         },
@@ -424,6 +447,46 @@
               "description": "장지엔의 작품은 베이징의 허우하이(后海), 천안문 광장, 공원 등 사회적 역사와 개인의 기억이 교차하는 공공장소를 중심으로 전개된다. 작가는 현대 도시의 화려함보다는 일상적이고 차분한 풍경에 주목하며, 이를 특유의 부드럽고 몽환적인 색조와 섬세한 붓질로 화면에 담아낸다. 빛과 그림자의 오묘한 변주가 만들어내는 그의 풍경은 마치 아련한 기억 속의 한 장면을 들여다보는 듯한 서정적인 분위기와 멜랑콜리를 자아낸다. 특히 작가의 회화 속 공공장소들은 단순한 공간의 묘사를 넘어, 급격한 현대화 과정에서 개인이 겪는 상실감과 고독, 그리고 시간의 흐름을 투영하는 특별한 상징적 매개체로 기능한다. 시각적 자극 대신 고요한 사유의 공간을 제시하는 그의 작품은 관람객에게 도시의 일상 이면에 숨겨진 실존적 정서와 사적인 서사를 발견하게 만드는 은은하고도 강렬한 통로로 작용한다.\n\nZhang Jian’s artistic universe unfolds around public spaces where social history and personal memory intersect, such as Beijing's Houhai, Tiananmen Square, and public parks. Rather than focusing on the glamor of modern cities, the artist draws attention to ordinary, tranquil landscapes, capturing them on canvas with his signature soft, dreamlike tones and delicate brushstrokes. His landscapes, created through the subtle interplay of light and shadow, evoke a lyrical atmosphere and melancholy, as if peering into a scene from a fading memory.In particular, the public spaces in his paintings transcend mere geographical depictions; they serve as unique symbolic mediums that project the sense of loss, solitude, and the passage of time experienced by individuals amidst rapid modernization. Rejecting visual stimulation in favor of presenting a space for quiet contemplation, his work acts as a subtle yet powerful conduit that allows viewers to discover the existential emotions and private narratives hidden beneath the surface of daily urban life.",
               "images": [
                 "/assets/artists/korea-china-special/zhang-jian/work-1-1.webp"
+              ]
+            },
+            {
+              "title": "〈后海系列 2005 (Houhai Series 2005)〉\n\n〈Houhai Series 2005〉",
+              "year": "2005",
+              "material": "캔버스에 유채\n\nOil on canvas",
+              "size": "250 × 140 cm",
+              "description": "베이징의 역사적 호수 후하이(后海)의 물결과 빛의 반사, 수면 아래로 어른거리는 풍경을 특유의 잔잔하고 몽환적인 붓터치로 포착한 대표 연작이다.",
+              "images": [
+                "/assets/artists/korea-china-special/zhang-jian/work-2-1.webp"
+              ]
+            },
+            {
+              "title": "〈后海系列 2011 (Houhai Series 2011)〉\n\n〈Houhai Series 2011〉",
+              "year": "2011",
+              "material": "캔버스에 유채\n\nOil on canvas",
+              "size": "250 × 200 cm",
+              "description": "자연과 도시의 고요한 공존 속에서 시간의 흐름과 수면의 미묘한 색채 변화를 서정적으로 담아낸 풍경화이다.",
+              "images": [
+                "/assets/artists/korea-china-special/zhang-jian/work-3-1.webp"
+              ]
+            },
+            {
+              "title": "〈天安门之冬 2005 (Winter in Tian An Men 2005)〉\n\n〈Winter in Tian An Men 2005〉",
+              "year": "2005",
+              "material": "캔버스에 유채\n\nOil on canvas",
+              "size": "300 × 200 cm",
+              "description": "겨울 천안문 광장의 적막하고 장엄한 정경을 은은한 백색과 회색조의 톤으로 해석하여 역사적 공간의 차분한 공기감을 전달한다.",
+              "images": [
+                "/assets/artists/korea-china-special/zhang-jian/work-4-1.webp"
+              ]
+            },
+            {
+              "title": "〈画室001 (Studio 001)〉\n\n〈Studio 001〉",
+              "year": "1997",
+              "material": "캔버스에 유채\n\nOil on canvas",
+              "size": "140 × 170 cm",
+              "description": "작가의 작업실 내부 정경과 창을 통해 들어오는 빛을 섬세하게 묘사하여 회화적 사유의 시초를 보여주는 초기작이다.",
+              "images": [
+                "/assets/artists/korea-china-special/zhang-jian/work-5-1.webp"
               ]
             }
           ]
@@ -457,6 +520,16 @@
               "images": [
                 "/assets/artists/korea-china-special/zhou-jinhua/work-2-1.webp"
               ]
+            },
+            {
+              "title": "〈春天 (Spring)〉\n\n〈Spring〉",
+              "year": "2022",
+              "material": "캔버스에 아크릴\n\nAcrylic on canvas",
+              "size": "100 × 120 cm",
+              "description": "극도로 축소된 미니어처적 인물 군상과 광활한 여백의 대조를 통해 동시대 현대인의 고립과 연대의 풍경을 우화적으로 그린다.",
+              "images": [
+                "/assets/artists/korea-china-special/zhou-jinhua/work-3-1.webp"
+              ]
             }
           ]
         },
@@ -478,6 +551,36 @@
               "description": "자오넝즈의 작품은 인간의 얼굴과 신체를 거대하게 확대하고 왜곡하는 독창적인 ‘표정(Expression)’ 시리즈를 통해 전개된다. 작가는 자신이 직접 촬영한 인물 사진을 바탕으로 눈이나 입 등 특정 이목구비를 극대화하거나 부풀려진 형상으로 캔버스를 가득 채운다. 수많은 층으로 겹친 거친 붓질과 왜곡된 형상은 마치 굴절된 거울에 비친 듯한 기괴함과 밀폐된 공기 속의 공포감을 자아낸다. 작가는 상업화된 현대 사회 속에서 개인이 느끼는 소외감, 불안, 우울 등의 심리적 징후를 인간의 피부와 몸짓, 눈빛이라는 생물학적 매개체로 환원시킨다. 그의 인물들은 정치적 메시지나 서사적 성격을 띠지 않는 대신, 고통과 침묵 속에서 인간 본연의 지독한 나약함과 실존적 고독을 고스란히 노출한다. 시각적 아름다움을 거부하고 내면의 파동을 시각화하는 작가의 회화와 조각은 관람객에게 현대 사회의 이면을 정면으로 마주하게 만드는 차갑고도 강렬한 거울로 기능한다.\n\nZhao Nengzhi’s artistic universe unfolds through his unique Expression series, which significantly enlarges and distorts the human face and body. Based on photographs of figures he takes himself, he fills the canvas by exaggerating specific facial features like the eyes or mouth, transforming them into inflated forms. The coarse, multi-layered brushstrokes and warped shapes evoke a sense of the grotesque—as if reflected in a refracted mirror—and a claustrophobic dread.The artist translates the psychological symptoms of modern society, such as alienation, anxiety, and depression, into the biological mediums of human skin, gestures, and gazes. Rather than carrying political messages or narrative qualities, his figures expose the profound vulnerability and existential solitude of humanity amid pain and silence. Rejecting conventional visual beauty to visualize internal tremors, his paintings and sculptures serve as a cold yet powerful mirror that forces viewers to confront the raw underbelly of contemporary society.",
               "images": [
                 "/assets/artists/korea-china-special/zhao-nengzhi/work-1-1.webp"
+              ]
+            },
+            {
+              "title": "〈身体的寓言 No. 23 (Fable of the Body No. 23)〉\n\n〈Fable of the Body No. 23〉",
+              "year": "2022",
+              "material": "캔버스에 유채\n\nOil on canvas",
+              "size": "230 × 180 cm",
+              "description": "인간 신체의 왜곡과 감정적 응축을 강렬한 붓질과 색채로 표현하여 인간 실존의 불안과 내면의 에너지를 드러낸다.",
+              "images": [
+                "/assets/artists/korea-china-special/zhao-nengzhi/work-2-1.webp"
+              ]
+            },
+            {
+              "title": "〈身体的寓言 No. 24 (Fable of the Body No. 24)〉\n\n〈Fable of the Body No. 24〉",
+              "year": "2022",
+              "material": "캔버스에 유채\n\nOil on canvas",
+              "size": "180 × 230 cm",
+              "description": "신체의 윤곽이 해체되고 재구성되는 과정을 통해 물질적 육체 너머의 심리적 파동을 포착한다.",
+              "images": [
+                "/assets/artists/korea-china-special/zhao-nengzhi/work-3-1.webp"
+              ]
+            },
+            {
+              "title": "〈身体的寓言 No. 27 (Fable of the Body No. 27)〉\n\n〈Fable of the Body No. 27〉",
+              "year": "2022",
+              "material": "캔버스에 유채\n\nOil on canvas",
+              "size": "180 × 230 cm",
+              "description": "어둠과 빛이 충돌하는 화면 속에서 원초적인 생명력과 본능적 감각의 표출을 극대화한 작품이다.",
+              "images": [
+                "/assets/artists/korea-china-special/zhao-nengzhi/work-4-1.webp"
               ]
             }
           ]
@@ -501,6 +604,36 @@
               "images": [
                 "/assets/artists/korea-china-special/kimkeunjoong/work-1-1.webp"
               ]
+            },
+            {
+              "title": "〈Natural Being-There or Here 26-20〉\n\n〈Natural Being-There or Here 26-20〉",
+              "year": "2026",
+              "material": "캔버스에 아크릴\n\nAcrylic on canvas",
+              "size": "162.5 × 130.5 cm",
+              "description": "전통 모란화의 형상을 현대 회화의 기호와 자유로운 붓터치로 환원하여 자연과 인간 존재의 근원적 생명력을 환기한다.",
+              "images": [
+                "/assets/artists/korea-china-special/kimkeunjoong/work-2-1.webp"
+              ]
+            },
+            {
+              "title": "〈Natural Being-There or Here 26-21〉\n\n〈Natural Being-There or Here 26-21〉",
+              "year": "2026",
+              "material": "캔버스에 아크릴\n\nAcrylic on canvas",
+              "size": "162.5 × 130.5 cm",
+              "description": "꽃이라는 소재를 통해 존재의 생성과 소멸, 유희와 초월의 경계를 경쾌하면서도 깊이 있는 색면으로 구축한다.",
+              "images": [
+                "/assets/artists/korea-china-special/kimkeunjoong/work-3-1.webp"
+              ]
+            },
+            {
+              "title": "〈존재 26-18 (Being 26-18)〉\n\n〈Being 26-18〉",
+              "year": "2026",
+              "material": "캔버스에 아크릴\n\nAcrylic on canvas",
+              "size": "162.5 × 130.5 cm",
+              "description": "형상과 비형상의 경계에서 피어나는 원초적 생명성을 명상적이면서도 직관적인 붓질로 완성한 신작이다.",
+              "images": [
+                "/assets/artists/korea-china-special/kimkeunjoong/work-4-1.webp"
+              ]
             }
           ]
         },
@@ -522,6 +655,36 @@
               "description": "김동유의 <반 고흐 & 반 고흐>는 작가의 시그니처인 '이중 이미지' 기법을 극대화하여 미술사의 아이콘을 재해석한 대표작이다. 멀리서 보면 서양 미술사에서 가장 위대한 화가인 빈센트 반 고흐의 자화상이 화면을 압도한다. 그러나 작품에 가까이 다가서는 순간, 거대한 형상은 사라지고 격자 모양으로 배열된 수백 개의 작은 고흐 초상화들이 모습을 드러낸다. 이 작품은 디지털 프린팅이 아닌 작가의 정교한 붓질로 완성된 지독한 노동의 산물이다. 작가는 동일 인물의 초상을 무수히 중첩하는 방식으로 고흐의 내면적 고독과 분열을 시각화한다. 나아가 현대 사회에서 명작과 예술가의 이미지가 어떻게 대량 복제되고 소비되는지 그 허무함을 질문한다. 관람객의 거리에 따라 인식을 변화시키는 이 작품은 아날로그 회화가 도달할 수 있는 현대 미술의 새로운 영토를 보여준다.\n\nKim Dong Yoo’s Van Gogh & Van Gogh is a definitive masterpiece that reinterprets an art historical icon by maximizing the artist's signature \"double image\" technique. Viewed from a distance, the self-portrait of Vincent van Gogh—one of the greatest painters in art history—dominates the canvas. However, the moment one steps closer, the massive image dissolves, revealing hundreds of miniature portraits of Van Gogh meticulously arranged in a grid.This piece is the result of an intensely laborious process, finely rendered by the artist's own hand rather than digital printing. By overlapping portraits of the exact same individual, Kim visualizes Van Gogh's inner solitude and fragmentation. Furthermore, it questions the emptiness of how masterpiece images and artists are mass-replicated and consumed in contemporary society. By altering visual perception based on the viewer’s distance, this artwork showcases a new territory in contemporary art achieved through analog brushstrokes.",
               "images": [
                 "/assets/artists/korea-china-special/kim-dong-yoo/work-1-1.webp"
+              ]
+            },
+            {
+              "title": "〈Marilyn Monroe(John F. Kennedy)〉\n\n〈Marilyn Monroe(John F. Kennedy)〉",
+              "year": "2020",
+              "material": "캔버스에 유채\n\nOil on canvas",
+              "size": "162.2 × 130.3 cm",
+              "description": "수많은 존 F. 케네디의 작은 초상들이 모여 거대한 마릴린 먼로의 얼굴을 이루는 작가 특유의 이중 이미지 회화이다.",
+              "images": [
+                "/assets/artists/korea-china-special/kim-dong-yoo/work-2-1.webp"
+              ]
+            },
+            {
+              "title": "〈Butterflies-Pensive Bodhisattva〉\n\n〈Butterflies-Pensive Bodhisattva〉",
+              "year": "2014",
+              "material": "린넨에 아크릴\n\nAcrylic on linen",
+              "size": "116.8 × 91 cm",
+              "description": "수천 마리의 나비 형상이 집적되어 반가사유상의 오묘한 미소와 실루엣을 빚어내는 정교한 픽셀 회화이다.",
+              "images": [
+                "/assets/artists/korea-china-special/kim-dong-yoo/work-3-1.webp"
+              ]
+            },
+            {
+              "title": "〈모나리자 (Mona Lisa)〉\n\n〈Mona Lisa〉",
+              "year": "2019",
+              "material": "캔버스에 유채\n\nOil on canvas",
+              "size": "194 × 132 cm",
+              "description": "서양 미술사의 영원한 걸작 모나리자를 현대적인 픽셀 집적 기법으로 재해석하여 이미지 소비와 시각 인식의 본질을 묻는다.",
+              "images": [
+                "/assets/artists/korea-china-special/kim-dong-yoo/work-4-1.webp"
               ]
             }
           ]
@@ -566,6 +729,36 @@
               "description": "오용길의 예술 세계는 조선시대 겸재 정선의 진경산수화 전통을 현대적 감각으로 복원하고 확장하는 데서 출발한다. 작가는 자연을 직접 관찰하고 그리는 사생(寫生)을 바탕으로, 박제된 자연이 아닌 우리가 살아가는 산천의 친근한 풍경과 봄꽃이 흐드러진 일상의 자연을 생동감 있게 화면에 담아낸다. 전통 동양화가 지닌 여백과 선 중심의 필묵법에 서양화의 과감한 구도와 역광 효과를 조화롭게 수용하여 독자적인 ‘수묵 풍경’ 화풍을 구축했다. 그의 회화는 먹의 은은한 변주 위에 얹어진, 산뜻하고 화사한 채색을 통해, 자연이 뿜어내는 눈 부신 빛과 생명력을 찬란하게 예찬한다. 전통 수묵담채화의 깊이감을 유지하면서도 현대적 조형미를 획득한 작가의 작품은 단순한 풍경의 재현을 넘어선다. 관람객에게 삭막한 도시 현실을 위로하는 고요한 사유의 공간을 선사하며, 시대를 초월해 면면히 이어져 온 한국적 정서와 서정성의 극치를 온전히 마주하게 만드는 따뜻하고 강렬한 통로로 기능한다.\n\nOh Yong-gil’s artistic universe begins with restoring and expanding the tradition of Jingyeong Sansuhwa (true-view landscape painting) established by Jeong Seon during the Joseon Dynasty, filtering it through a contemporary sensibility. Based on thorough on-site sketching, the artist vividly captures the familiar landscapes of Korea's living mountains and rivers, alongside the ordinary nature of fully blooming spring flowers, rather than presenting a fossilized view of the environment. By harmoniously integrating traditional East Asian ink-and-wash methods focused on negative space and line with the bold compositions and backlighting effects of Western painting, he has forged a unique style of \"ink-and-wash landscape painting\".Through vibrant, fresh coloring layered over the subtle modulations of ink, his paintings radiantly celebrate the brilliant light and vitality emanating from nature. While maintaining the depth of traditional ink and light-color painting, his work achieves a contemporary formal beauty that transcends mere landscape reproduction. It offers viewers a serene space for contemplation to soothe the desolation of urban reality, functioning as a warm yet powerful conduit that confronts them with the pinnacle of lyrical, timeless Korean sentiment.",
               "images": [
                 "/assets/artists/korea-china-special/oh-yong-gil/work-1-1.webp"
+              ]
+            },
+            {
+              "title": "〈덕천폭포 가는 길〉\n\n〈On the Way to Deokcheon Waterfall〉",
+              "year": "2017",
+              "material": "화선지에 수묵담채\n\nInk and light color on Korean paper",
+              "size": "121 × 181 cm",
+              "description": "맑고 투명한 수묵담채의 필치로 안양 일대의 청명한 자연과 폭포로 향하는 산세를 생생하게 포착한 실경산수이다.",
+              "images": [
+                "/assets/artists/korea-china-special/oh-yong-gil/work-2-1.webp"
+              ]
+            },
+            {
+              "title": "〈太行 萬仙山 郭亮村 (Mount Taihang Wanxian Mountain Guoliang Village)〉\n\n〈Guoliang Village on Mount Taihang〉",
+              "year": "2015",
+              "material": "화선지에 수묵담채\n\nInk and light color on Korean paper",
+              "size": "121 × 182 cm",
+              "description": "중국 태항산의 웅장한 절벽과 곽량촌의 험준한 자연을 섬세하고 절제된 먹선으로 담아낸 장엄한 산수화이다.",
+              "images": [
+                "/assets/artists/korea-china-special/oh-yong-gil/work-3-1.webp"
+              ]
+            },
+            {
+              "title": "〈武吏仙景 (Muri Scenic Beauty)〉\n\n〈Muri Scenic Beauty〉",
+              "year": "2016",
+              "material": "화선지에 수묵담채\n\nInk and light color on Korean paper",
+              "size": "149 × 252 cm",
+              "description": "구름과 안개가 감도는 신비로운 선경(仙景)을 현대적 한국화의 격조 높은 조형미로 완성한 대작이다.",
+              "images": [
+                "/assets/artists/korea-china-special/oh-yong-gil/work-4-1.webp"
               ]
             }
           ]
@@ -695,13 +888,45 @@
           "profile_image": "/assets/artists/korea-china-special/lim-hyejung/profile.webp",
           "works": [
             {
-              "title": "<Take a break>",
+              "title": "〈Just that we grow〉\n\n〈Just that we grow〉",
               "year": "2025",
-              "material": "캔버스에 혼합재료",
-              "size": "34.8 × 27.3 cm",
-              "description": "임혜정은 이상과 현실의 경계가 흐려지는 지점인 \"유토피아 = 현실(Utopia = Reality)\"이라는 화두를 제시한다. 작가에게 유토피아는 영원히 고정된 낙원이 아니라, 사막과 꽃이 만발한 정원을 오가며 끊임없이 다듬어지고 변형되는 살아 움직이는 풍경이다. 화면 속 유기적인 형태와 사물들은 엄격한 상징성에 갇히지 않으며, 작가 본인의 사유의 결이자 내면을 비추는 일기처럼 기능한다. 작가는 사실적 묘사에서 벗어나 세계를 독창적으로 재해석하고 변형함으로써, 관람객이 시각적 감상을 넘어 작품 속 내면의 서사로 걸어 들어오도록 청한다. 이 몽환적이고 감각적인 공간은 누구에게나 이미 존재하지만 깊이 숨 쉬어 보지 못했던 자신만의 '무릉도원'을 발견하게 하는 초대장이다. 관람객은 작가가 구축한 세계에 머물며 감수성과 감정이 빚어내는 새로운 사유의 가능성을 마주하게 된다.\n\nLim Hye-jung presents the core theme of \"Utopia = Reality,\" a point where the boundaries between the ideal and the real blur. For the artist, utopia is not an eternally fixed paradise, but a living, breathing landscape that is constantly refined and transformed, moving between a barren desert and a garden in full bloom. The organic shapes and objects on the canvas are not confined to rigid symbolism; instead, they function like a personal diary that reflects the layers of her thoughts and inner self. Moving away from realistic depiction, the artist uniquely reinterprets and transforms the world, inviting viewers to step beyond mere visual appreciation and walk into the inner narrative woven within the artwork. This dreamlike and sensory space serves as an invitation to discover one's own 'Mureungdowon' (peach blossom spring)—a place that already exists within everyone, yet has not been deeply breathed in. Immersed in the world built by the artist, viewers encounter new possibilities of contemplation brought forth by sensitivity and emotion.",
+              "material": "캔버스에 혼합재료\n\nMixed media on canvas",
+              "size": "80.3 × 65.1 cm",
+              "description": "작가에게 유토피아는 영원히 고정된 낙원이 아니라, 사막과 꽃이 만발한 정원을 오가며 끊임없이 다듬어지고 변형되는 살아 움직이는 풍경이다.",
               "images": [
                 "/assets/artists/korea-china-special/lim-hyejung/work-1-1.webp"
+              ]
+            },
+            {
+              "title": "〈Effortlessly chirping birds〉\n\n〈Effortlessly chirping birds〉",
+              "year": "2025",
+              "material": "캔버스에 혼합재료\n\nMixed media on canvas",
+              "size": "60.5 × 182 cm (좌/우)",
+              "description": "화면 속 유기적인 형태와 사물들은 엄격한 상징성에 갇히지 않으며, 작가 본인의 사유의 결이자 내면을 비추는 일기처럼 기능한다.",
+              "images": [
+                "/assets/artists/korea-china-special/lim-hyejung/work-2-1.webp",
+                "/assets/artists/korea-china-special/lim-hyejung/work-2-2.webp"
+              ]
+            },
+            {
+              "title": "〈Look at me or Wait for the daffodiles〉\n\n〈Look at me or Wait for the daffodiles〉",
+              "year": "2025",
+              "material": "캔버스에 혼합재료\n\nMixed media on canvas",
+              "size": "91 × 60.5 cm",
+              "description": "이 몽환적이고 감각적인 공간은 누구에게나 이미 존재하지만 깊이 숨 쉬어 보지 못했던 자신만의 '무릉도원'을 발견하게 하는 초대장이다.",
+              "images": [
+                "/assets/artists/korea-china-special/lim-hyejung/work-3-1.webp"
+              ]
+            },
+            {
+              "title": "〈You are going to grow up〉\n\n〈You are going to grow up〉",
+              "year": "2025",
+              "material": "캔버스에 혼합재료\n\nMixed media on canvas",
+              "size": "65.1 × 136.5 cm (좌/우)",
+              "description": "관람객은 작가가 구축한 세계에 머물며 감수성과 감정이 빚어내는 새로운 사유의 가능성을 마주하게 된다.",
+              "images": [
+                "/assets/artists/korea-china-special/lim-hyejung/work-4-1.webp",
+                "/assets/artists/korea-china-special/lim-hyejung/work-4-2.webp"
               ]
             }
           ]
@@ -747,6 +972,26 @@
               "images": [
                 "/assets/artists/korea-china-special/choi-soon-young/work-1-1.webp"
               ]
+            },
+            {
+              "title": "〈모짜르트와 거닐다(walk with Mozart)-1〉\n\n〈Walk with Mozart-1〉",
+              "year": "2019",
+              "material": "한지에 수묵채색\n\nSuMuk and mixed media color on Korean paper",
+              "size": "175.5 × 145 cm",
+              "description": "모차르트의 클래식 선율이 주는 음악적 감흥을 한지 위에 맑은 수묵과 서정적 색채의 율동으로 시각화한 수작이다.",
+              "images": [
+                "/assets/artists/korea-china-special/choi-soon-young/work-2-1.webp"
+              ]
+            },
+            {
+              "title": "〈봄 리듬(rhythm of spring)〉\n\n〈Rhythm of Spring〉",
+              "year": "2019",
+              "material": "한지에 수묵채색 및 캔버스\n\nSuMuk and gouache color on Korean paper on canvas",
+              "size": "150 × 150 cm",
+              "description": "만물이 소생하는 봄의 생동감을 부드러운 먹의 번짐과 경쾌한 점과 선의 리듬으로 직조해낸 회화 작업이다.",
+              "images": [
+                "/assets/artists/korea-china-special/choi-soon-young/work-3-1.webp"
+              ]
             }
           ]
         },
@@ -769,6 +1014,66 @@
               "images": [
                 "/assets/artists/korea-china-special/hong-kyoungtack/work-1-1.webp"
               ]
+            },
+            {
+              "title": "〈PLUR DMSR〉\n\n〈PLUR DMSR〉",
+              "year": "2005",
+              "material": "린넨에 아크릴과 오일\n\nAcrylic and oil on linen",
+              "size": "181 × 227 cm",
+              "description": "‘Peace, Love, Unity, Respect’를 화두로 강렬한 원색과 패턴, 화려한 정물들의 밀집을 통해 현대 소비문명의 황홀경을 표현한다.",
+              "images": [
+                "/assets/artists/korea-china-special/hong-kyoungtack/work-2-1.webp"
+              ]
+            },
+            {
+              "title": "〈Skull〉\n\n〈Skull〉",
+              "year": "2008",
+              "material": "린넨에 아크릴 및 유채\n\nAcrylic and oil on linen",
+              "size": "200 × 200 cm",
+              "description": "화려한 꽃과 장식물들 사이로 배치된 해골 모티프를 통해 현대판 바니타스(Vanitas)와 생명의 유한성을 환기한다.",
+              "images": [
+                "/assets/artists/korea-china-special/hong-kyoungtack/work-3-1.webp"
+              ]
+            },
+            {
+              "title": "〈내게로 오라 (Come to me)〉\n\n〈Come to Me〉",
+              "year": "2009",
+              "material": "캔버스에 아크릴 및 유채\n\nAcrylic and oil on canvas",
+              "size": "120 × 290 cm",
+              "description": "성스러운 종교화의 도상과 세속적 대중문화의 이미지가 극적인 대비를 이루며 관객의 시선을 압도하는 파노라마 회화이다.",
+              "images": [
+                "/assets/artists/korea-china-special/hong-kyoungtack/work-4-1.webp"
+              ]
+            },
+            {
+              "title": "〈반추 1 (Reflection 1)〉\n\n〈Reflection 1〉",
+              "year": "2013",
+              "material": "린넨에 유채\n\nOil on linen",
+              "size": "218 × 291 cm",
+              "description": "반사되는 거울과 구형의 오브제 속에 투영된 시각적 환영을 치밀하고 완벽한 극사실적 테크닉으로 구축했다.",
+              "images": [
+                "/assets/artists/korea-china-special/hong-kyoungtack/work-5-1.webp"
+              ]
+            },
+            {
+              "title": "〈반추 2 (Reflection 2)〉\n\n〈Reflection 2〉",
+              "year": "2013",
+              "material": "린넨에 유채\n\nOil on linen",
+              "size": "200 × 200 cm",
+              "description": "빛과 그림자, 사물의 표면이 빚어내는 무한한 굴절의 공간을 통해 회화의 환영주의를 극한으로 밀어붙인 대작이다.",
+              "images": [
+                "/assets/artists/korea-china-special/hong-kyoungtack/work-6-1.webp"
+              ]
+            },
+            {
+              "title": "〈죽음의 승리 2 (The Triumph of Death 2)〉\n\n〈The Triumph of Death 2〉",
+              "year": "2016",
+              "material": "린넨에 아크릴 및 유채\n\nAcrylic and oil on linen",
+              "size": "200 × 200 cm",
+              "description": "중세 제단화의 구성을 현대적 사물과 장치들로 재구성하여 현대인이 마주하는 파국과 구원의 서사를 장엄하게 펼친다.",
+              "images": [
+                "/assets/artists/korea-china-special/hong-kyoungtack/work-7-1.webp"
+              ]
             }
           ]
         },
@@ -788,7 +1093,62 @@
               "material": "순지에 향불, 장지에 배접 및 코팅\nIncense on Sunji, Lined and Coated on Jangji",
               "size": "500 × 190 cm",
               "description": "이길우의 작품 세계는 동양적 사유와 현대적 스펙터클이 만나는 거대한 '융합의 장'이다. 작가의 가장 독창적인 방법론은 한지를 향(香)이나 인두로 태워 무수한 구멍을 내고, 그 균열 사이로 다른 이미지를 중첩하는 '향불 작업'이다. 그는 이 노동집약적인 프로세스를 통해 서로 다른 시공간의 인물이나 대중문화의 아이콘을 하나의 화면에 겹치게 한다. 이를 통해 동양과 서양, 전통과 현대, 그리고 성(聖)과 속(俗)의 경계를 허물며 이질적인 가치들이 어떻게 공존하고 충돌하는지 탐구한다. 화면을 가득 채운 무수한 구멍들은 단순한 물리적 흔적을 넘어, 소멸과 생성, 치유와 흔적에 대한 회화적 은유다. 전통 회화의 메커니즘을 해체하고 재구성하는 작가의 실험은 현대 사회의 다층적인 단면을 투영하며 아날로그적 붓질과 불이 도달할 수 있는 현대 한국화의 새로운 가능성을 증명한다.\n\nThe artistic world of Lee Gil Woo serves as a massive 'arena of fusion' where Eastern philosophy meets contemporary spectacle. His most unique methodology involves burning countless holes into Hanji (traditional Korean handmade paper) using incense or a soldering iron, and then overlapping different images through these fissures. Through this labor-intensive process, the artist superimposes figures from different times and spaces or pop culture icons onto a single canvas.In doing so, he dissolves the boundaries between East and West, tradition and modernity, as well as the sacred and the profane, exploring how disparate values coexist and collide. The myriad of holes filling the screen transcend mere physical traces; they are painterly metaphors for erasure and generation, healing and vestige. His experimentation in deconstructing and reconstructing the mechanisms of traditional painting reflects the multilayered facets of modern society, proving the new possibilities of contemporary Korean painting achieved through analog brushstrokes and fire.",
-              "images": []
+              "images": [
+                "/assets/artists/korea-china-special/lee-gil-woo/work-1-1.webp"
+              ]
+            },
+            {
+              "title": "〈All kinds of things 025-7〉\n\n〈All kinds of things 025-7〉",
+              "year": "2025",
+              "material": "순지에 향불, 장지에 배접 및 코팅\n\nIncense burn on Korean paper, mounted and coated on Jangji",
+              "size": "120 × 85 cm",
+              "description": "향불로 태운 한지 구멍들의 미세한 중첩을 통해 동서양의 다양한 사물과 상징들이 하나의 화면에서 공존하는 시각적 층위를 형성한다.",
+              "images": [
+                "/assets/artists/korea-china-special/lee-gil-woo/work-2-1.webp"
+              ]
+            },
+            {
+              "title": "〈All kinds of things 025-5〉\n\n〈All kinds of things 025-5〉",
+              "year": "2025",
+              "material": "순지에 향불, 장지에 배접 및 코팅\n\nIncense burn on Korean paper, mounted and coated on Jangji",
+              "size": "140 × 185 cm",
+              "description": "향불의 흔적이 빚어내는 반투명한 레이어는 물질과 비물질, 소멸과 생성이 교차하는 현대사회의 다층적 풍경을 포착한다.",
+              "images": [
+                "/assets/artists/korea-china-special/lee-gil-woo/work-3-1.webp"
+              ]
+            },
+            {
+              "title": "〈여행자 1〉\n\n〈Traveler 1〉",
+              "year": "2025",
+              "material": "순지에 향불, 장지에 배접 및 코팅\n\nIncense burn on Korean paper, mounted and coated on Jangji",
+              "size": "140 × 185 cm",
+              "description": "시간과 공간을 횡단하는 존재로서의 ‘여행자’를 향불 작업 특유의 번짐과 여백, 중첩된 선을 통해 은유적으로 형상화한다.",
+              "images": [
+                "/assets/artists/korea-china-special/lee-gil-woo/work-4-1.webp"
+              ]
+            }
+          ]
+        },
+        {
+          "slug": "yoo-young-wun",
+          "name_ko": "유영운",
+          "name_en": "Yoo Young-wun",
+          "birth_year": "1966",
+          "nationality": "대한민국\nSouth Korea",
+          "bio": "주요 개인전\n2022 《괴물들의 침묵》, 인사아트센터, 서울, 대한민국\n2018 《동작그만》, 스페이스K, 서울, 대한민국\n2014 《대중문화의 영웅》, 갤러리현대, 서울, 대한민국\n\nSelected Solo Exhibitions\n2022 Silence of Monsters, Insa Art Center, Seoul, South Korea\n2018 Freeze, Space K, Seoul, South Korea\n2014 Heroes of Popular Culture, Gallery Hyundai, Seoul, South Korea",
+          "intro": "유영운은 잡지, 인쇄 팜플렛, 스티로폼과 같은 일상적 매체를 조합하여 대중문화와 미디어가 주조한 영웅과 우상의 이미지를 해학적이고 풍자적인 입체 조각으로 형상화한다. 복제된 미디어의 표피성을 인쇄물의 물리적 겹침으로 치환하여 현대사회의 시각적 허상과 소비주의를 날카롭게 성찰한다.",
+          "profile_image": "/assets/artists/korea-china-special/yoo-young-wun/profile.webp",
+          "works": [
+            {
+              "title": "〈Elvis〉\n\n〈Elvis〉",
+              "year": "2008",
+              "material": "잡지, 팜플렛, 스티로폼\n\nMagazines, pamphlets, styrofoam",
+              "size": "200 × 280 × 80 cm",
+              "description": "〈Elvis〉(2008)는 20세기 록앤롤의 전설적인 아이콘 엘비스 프레슬리를 대중 인쇄 매체의 단면과 질감을 통해 실체화한 조각 작품이다. 대중매체에 의해 생산되고 소비되며 신화화된 인물의 외피를 다채로운 인쇄물 조각으로 구축함으로써, 우상의 이면에 감춰진 미디어의 환영과 허구성을 위트 있게 질문한다.",
+              "images": [
+                "/assets/artists/korea-china-special/yoo-young-wun/work-1-1.webp",
+                "/assets/artists/korea-china-special/yoo-young-wun/work-1-2.webp"
+              ]
             }
           ]
         }
@@ -806,7 +1166,7 @@
           "nationality": "",
           "bio": "주요 프로젝트\n2026 Sing! Sing! Sing! 마츠다 세이코 내한공연, 인스파이어 아레나, 인천, 대한민국\n2025 국가유산방문캠페인 ‘선사지질의 길’ 프로그램, 전곡선사박물관, 경기, 대한민국\n2025 《서울 인공지능 엑스포 ‘MARS 2025’》, 코엑스, 서울, 대한민국\n2024 《FUMANISM》, 서울로봇인공지능과학관, 서울, 대한민국\n2023 〈Color Bath Effect〉, 《제10회 광주디자인비엔날레: Meet Design》, 광주시립미술관, 광주, 한국\n2022 《MARVEL: The Reflection》, 현대카드 바이닐앤플라스틱, 서울, 대한민국\n\nSelected Projects\n2026 Sing! Sing! Sing! Seiko Matsuda Live in Korea, INSPIRE Arena, Incheon, South Korea\n2025 Korea Heritage Visit Campaign: “Prehistoric Geology Trail” Program, Jeongok Prehistory Museum, Gyeonggi-do, South Korea\n2025 Seoul AI Expo “MARS 2025”, COEX, Seoul, South Korea\n2024 FUMANISM, Seoul Robot & AI Museum, Seoul, South Korea\n2023 Color Bath Effect, 10th Gwangju Design Biennale: Meet Design, Gwangju Museum of Art, Gwangju, South Korea\n2022 MARVEL: The Reflection, Hyundai Card Vinyl & Plastic, Seoul, South Korea",
           "intro": "308 아트크루는 2018년 서울을 기반으로 결성된 예술 그룹이다. 체험형 공간 콘텐츠와 감각 기반의 설치 연출, 전시 기획, 공간 디자인과 디렉팅을 중심으로 활동해 왔다. 조명과 사운드, 향, 미디어, 인터랙티브 시스템을 공간의 동선과 결합해 관람객이 직접 이동하고 머무르며 다양한 감각을 경험할 수 있는 환경을 만든다. ‘FROM SENSE TO EXPERIENCE’와 ‘Break the Fourth Wall’을 주요 태도로 삼아 전시와 공연, 공공 프로젝트, 브랜드 협업 등 다양한 영역을 오가며 감각을 중심으로 한 공간 작업을 이어가고 있다.\n\n[국문 크레딧]\n작가: GLAN(강대경)\n제작: 308 아트크루\n프로듀서 / 라이트 아티스트: GLAN(강대경)\n공간 디렉터: CINCO(이신호)\n뉴미디어 아티스트: SEUNG(안승)\n사운드 아티스트: DOJIN(백도진)\n라이트 어시스턴트: NAYEON(김나연)\n\n[영문 크레딧]\nArtist: GLAN (Kang Dae Kyung)\nProduction: 308 ART CREW\nProducer / Light Artist: GLAN (Kang Dae Kyung)\nSpatial Director: CINCO (Lee Shin Ho)\nNew Media Artist: SEUNG (Ahn Seung)\nSound Artist: DOJIN (Baek Do Jin)\nLighting Assistant: NAYEON (Kim Na Yeon)",
-          "profile_image": "/assets/artists/e-pavilion-media/308-art-crew/profile.webp",
+          "profile_image": "/assets/artists/308-art-crew/308-art-crew/profile.webp",
           "works": [
             {
               "title": "〈빛의 폭포: 무릉의 입구〉\n\n〈Waterfall of Light: The Entrance to Mureung〉",
@@ -815,7 +1175,7 @@
               "size": "",
               "description": "〈빛의 폭포: 무릉의 입구〉(2026)는 벽천광장의 인공폭포에 프로젝션 맵핑과 레이저를 결합한 장소특정형 미디어아트 작품이다. 실제 물줄기와 석벽 위로 물결과 안개, 산수의 이미지가 포개어지면서 폭포의 풍경은 빛과 물이 뒤섞인 새로운 장면으로 변화한다. 물은 빛을 투과하고 반사하는 표면이 되고, 레이저는 흐르는 물의 움직임과 방향을 따라 공간을 가로지른다. 물이 잠시 멈추거나 거슬러 오르는 듯한 장면에 이어 폭포 중앙에는 물안개와 달빛, 원형의 잔상과 산수의 이미지가 모여 ‘월문(月門)’을 형성한다. 월문을 중심으로 빛과 이미지가 폭포와 주변 공간으로 확장되면서, 익숙한 공원의 풍경 위에 현실과 상상이 교차하는 무릉도원의 이미지를 만들어낸다. 관람객은 변화하는 빛과 물의 흐름을 따라 잠시 다른 세계를 경험하고, 빛이 서서히 잦아들면서 다시 익숙한 현실의 풍경으로 돌아온다.",
               "images": [
-                "/assets/artists/e-pavilion-media/308-art-crew/work-1-1.webp"
+                "/assets/artists/308-art-crew/308-art-crew/work-1-1.webp"
               ]
             },
             {
@@ -825,7 +1185,7 @@
               "size": "",
               "description": "〈오색운 五色雲: 빛의 기상〉(2026)은 일정한 형태 없이 흐르고 변화하는 공기의 움직임을 빛으로 포착한다. 포그 머신이 만들어낸 얇은 안개층 사이로 RGB 레이저의 다섯 가지 색이 퍼지며, 평소에는 눈에 보이지 않던 공기의 흐름에 따라 빛의 형태가 생성되고 흩어지기를 반복한다. 이 과정에서 밤의 공기 중에는 시시각각 모습을 달리하는 ‘오색운(五色雲)’이 나타난다. 예로부터 오색운은 상서로운 징조이자 이상적인 세계의 도래를 알리는 표상으로 여겨져 왔다. 작품은 이러한 오색운을 하나의 고정된 이미지로 재현하지 않고, 빛과 안개, 주변 환경의 변화에 따라 잠시 나타났다 사라지는 기상 현상으로 구현한다. 관람객은 안양파빌리온 주변을 거닐며 매 순간 형태를 달리하는 빛의 구름을 마주하고, 평소에는 의식하지 못했던 공기와 빛의 변화를 감각하게 된다.",
               "images": [
-                "/assets/artists/e-pavilion-media/308-art-crew/work-2-1.webp"
+                "/assets/artists/308-art-crew/308-art-crew/work-2-1.webp"
               ]
             }
           ]

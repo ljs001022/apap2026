@@ -29,7 +29,7 @@ export function getCommunityItems(locale: string = 'ko'): CommunityItem[] {
       date: '2026.09.20',
       desc: isKo
         ? '제8회 안양공공예술프로젝트(APAP8) 《Arte X : 예술 대전환_안양 무릉도원》의 시작을 알리는 개막식에 시민 여러분을 초대합니다.'
-        : 'Invitation to the Opening Ceremony of the 8th Anyang Public Art Project (APAP8) "Arte X : Art Transformation_Anyang Peach Blossom Spring".',
+        : 'Invitation to the Opening Ceremony of the 8th Anyang Public Art Project (APAP8) "Arte X : Art Transformation_Anyang Paradise".',
       pdfUrl: '/notice/apap8_invitation.pdf',
       pdfDownloadName: 'APAP8_개막식_초청장.pdf',
       pdfSize: '1.2 MB',
@@ -41,7 +41,7 @@ export function getCommunityItems(locale: string = 'ko'): CommunityItem[] {
             '시민과 예술가가 함께 어우러지는 뜻깊은 개막 행사에 많은 관심과 참석을 부탁드립니다.',
           ]
         : [
-            'We cordially invite you to the opening ceremony of the 8th Anyang Public Art Project (APAP8) "Arte X : Art Transformation_Anyang Peach Blossom Spring".',
+            'We cordially invite you to the opening ceremony of the 8th Anyang Public Art Project (APAP8) "Arte X : Art Transformation_Anyang Paradise".',
             '• Date & Time: Wednesday, September 30, 2026, 17:00\n• Location: Anyang Art Park Cascade Square Special Stage\n• Program: Pre-ceremony performance, opening declaration & congratulatory remarks, artist introduction, opening performance & lighting ceremony\n• Inquiries: Anyang Foundation for Culture & Arts Public Art Department (031-687-0548)',
             'We warmly welcome your presence and participation in this memorable opening celebration where citizens and artists unite.',
           ],
@@ -87,7 +87,7 @@ export function getCommunityItems(locale: string = 'ko'): CommunityItem[] {
       date: '2026.09.16',
       desc: isKo
         ? '제8회 안양공공예술프로젝트(APAP8)의 공식 메인 포스터(키비주얼)를 공개합니다. 기획 주제인 「Arte X : 예술 대전환_안양 무릉도원」을 시각적으로 구현했습니다.'
-        : 'Unveiling the official key visual for APAP8, visually embodying the curatorial theme "Arte X : Art Transformation_Anyang Peach Blossom Spring".',
+        : 'Unveiling the official key visual for APAP8, visually embodying the curatorial theme "Arte X : Art Transformation_Anyang Paradise".',
       pdfUrl: '/notice/poster_A2_yellow_CMYK.pdf',
       pdfDownloadName: 'APAP8_공식포스터_키비주얼_A2.pdf',
       pdfSize: '7.8 MB',
@@ -103,7 +103,7 @@ export function getCommunityItems(locale: string = 'ko'): CommunityItem[] {
           ]
         : [
             'We are pleased to unveil the official main poster (key visual) for the 8th Anyang Public Art Project (APAP8).',
-            'The key visual focuses on visually manifesting APAP8’s curatorial theme, "Arte X : Art Transformation_Anyang Peach Blossom Spring." It dynamically captures the landscape of "Anyang Utopia" where art, city, and nature converge through the integration of nature, art, and cutting-edge technology.',
+            'The key visual focuses on visually manifesting APAP8’s curatorial theme, "Arte X : Art Transformation_Anyang Paradise." It dynamically captures the landscape of "Anyang Utopia" where art, city, and nature converge through the integration of nature, art, and cutting-edge technology.',
             'The poster incorporates three key symbolic design elements:',
             '• Architectural & Typographic Harmony: Reinterpreting the silhouette of the iconic Anyang Pavilion combined with the Korean consonant \'ㅇ\' (ieung).\n• Vitality of Nature and Art: Visualizing ecological vitality through the motif of a fish fin gliding through the Anyang Stream.\n• Art Transformation via Technology: Metaphorically portraying spatial expansion and artistic paradigm shift as one passes through the central gateway.',
             'Furthermore, the traditional shades of the utopian peach (pink, blue) are reinterpreted into modern, futuristic gradients, completing a fantastic vision of contemporary paradise embraced by technology.',
