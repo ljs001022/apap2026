@@ -98,7 +98,7 @@ export default function ArtistModal({
     <>
     <AnimatePresence>
       <div 
-        className="fixed inset-0 z-[70] flex justify-center p-4 pt-24 sm:p-8 sm:pt-28 md:p-12 md:pt-32 pb-8"
+        className="fixed inset-0 z-[70] flex justify-center p-3 sm:p-8 pt-20 sm:pt-28 md:p-12 md:pt-32 pb-6"
         style={{ background: 'rgba(0,0,0,0.6)', backdropFilter: 'blur(14px)' }}
         onClick={onClose}
       >
@@ -107,26 +107,26 @@ export default function ArtistModal({
           animate={{ opacity: 1, scale: 1, y: 0 }}
           exit={{ opacity: 0, scale: 0.96, y: 12 }}
           transition={{ duration: 0.22, ease: 'easeOut' }}
-          className="relative w-full max-w-5xl max-h-full bg-[#0A0A0A] border border-white/20 shadow-2xl overflow-hidden flex flex-col"
+          className="relative w-full max-w-5xl max-h-full bg-[#0A0A0A] border border-white/20 shadow-2xl overflow-hidden flex flex-col min-w-0"
           onClick={(e) => e.stopPropagation()}
         >
           {/* Header */}
-          <div className="sticky top-0 z-20 flex items-center justify-between px-6 py-4 bg-[#0A0A0A]/95 backdrop-blur-md border-b border-white/15">
-            <div className="flex items-center gap-2.5 font-mono text-caption font-bold uppercase tracking-wider text-white">
-              <span className="bg-white text-black px-2 py-0.5 text-[10px] font-black">
+          <div className="sticky top-0 z-20 flex items-center justify-between px-5 sm:px-6 py-3.5 sm:py-4 bg-[#0A0A0A]/95 backdrop-blur-md border-b border-white/15">
+            <div className="flex items-center gap-2.5 font-mono text-caption font-bold uppercase tracking-wider text-white min-w-0">
+              <span className="bg-white text-black px-2 py-0.5 text-[10px] font-black flex-shrink-0">
                 {isKo ? '참여 작가' : 'ARTIST'}
               </span>
               {localizedVenue && (
                 <>
-                  <span className="text-white/30">/</span>
-                  <span className="text-white/70">{localizedVenue}</span>
+                  <span className="text-white/30 flex-shrink-0">/</span>
+                  <span className="text-white/70 truncate">{localizedVenue}</span>
                 </>
               )}
             </div>
 
             <button
               onClick={onClose}
-              className="w-8 h-8 rounded-full border border-white/20 hover:border-white text-white/70 hover:text-white flex items-center justify-center transition-colors cursor-pointer"
+              className="w-8 h-8 rounded-full border border-white/20 hover:border-white text-white/70 hover:text-white flex items-center justify-center transition-colors cursor-pointer flex-shrink-0 ml-2"
               aria-label={isKo ? '닫기' : 'Close'}
             >
               <X className="w-4 h-4" />
@@ -134,9 +134,9 @@ export default function ArtistModal({
           </div>
 
           {/* Scrollable Body */}
-          <div className="p-6 sm:p-8 overflow-y-auto space-y-8 divide-y divide-white/15">
+          <div className="p-4 sm:p-8 overflow-y-auto overflow-x-hidden space-y-6 sm:space-y-8 divide-y divide-white/15 min-w-0 w-full">
             {/* 1. Artist Profile Block */}
-            <div className="flex flex-col sm:flex-row gap-6 sm:gap-8 items-start">
+            <div className="flex flex-col sm:flex-row gap-5 sm:gap-8 items-start min-w-0 w-full">
               <div className="w-24 h-24 sm:w-32 sm:h-32 flex-shrink-0 border border-white/20 bg-zinc-900 overflow-hidden">
                 {hasProfileImage ? (
                   <img
@@ -155,7 +155,7 @@ export default function ArtistModal({
                 )}
               </div>
 
-              <div className="space-y-3 flex-1">
+              <div className="space-y-3 flex-1 min-w-0 w-full">
                 <div>
                   <h2 className="text-title font-extrabold text-white tracking-tight leading-tight">
                     {displayName}
@@ -248,11 +248,11 @@ export default function ArtistModal({
                   )}
                 </div>
 
-                <div className="grid lg:grid-cols-12 gap-6 bg-white/[0.02] border border-white/15 p-5 sm:p-6">
-                  <div className="lg:col-span-6 flex flex-col justify-center">
+                <div className="grid lg:grid-cols-12 gap-6 bg-white/[0.02] border border-white/15 p-4 sm:p-6 min-w-0 w-full max-w-full overflow-hidden">
+                  <div className="lg:col-span-6 flex flex-col justify-center min-w-0 w-full max-w-full">
                     {currentWorkImage ? (
                       <div 
-                        className="relative aspect-[4/3] w-full overflow-hidden bg-black border border-white/10 flex items-center justify-center cursor-zoom-in group"
+                        className="relative aspect-[4/3] w-full max-w-full overflow-hidden bg-black border border-white/10 flex items-center justify-center cursor-zoom-in group"
                         onClick={() => setZoomedImage(currentWorkImage)}
                       >
                         <img
@@ -264,19 +264,19 @@ export default function ArtistModal({
                         />
                       </div>
                     ) : (
-                      <div className="aspect-[4/3] w-full bg-zinc-950 border border-white/10 flex items-center justify-center text-caption font-mono text-white/40">
+                      <div className="aspect-[4/3] w-full max-w-full bg-zinc-950 border border-white/10 flex items-center justify-center text-caption font-mono text-white/40">
                         NO WORK IMAGE
                       </div>
                     )}
 
                     {workImages.length > 1 && (
-                      <div className="flex gap-2 mt-3 overflow-x-auto pb-1">
+                      <div className="flex gap-2 mt-3 overflow-x-auto pb-1 w-full max-w-full min-w-0 hide-scrollbar">
                         {workImages.map((img, imgIdx) => (
                           <button
                             key={imgIdx}
                             onClick={() => setCurrentImageIndex(imgIdx)}
-                            className={`relative w-14 h-14 flex-shrink-0 border transition-all cursor-pointer ${
-                              imgIdx === currentImageIndex ? 'border-white' : 'border-white/20 opacity-50 hover:opacity-80'
+                            className={`relative w-12 h-12 sm:w-14 sm:h-14 flex-shrink-0 border transition-all cursor-pointer ${
+                              imgIdx === currentImageIndex ? 'border-white ring-1 ring-white' : 'border-white/20 opacity-50 hover:opacity-80'
                             }`}
                           >
                             <img src={img} alt="" loading="lazy" decoding="async" className="w-full h-full object-cover" />
@@ -286,7 +286,7 @@ export default function ArtistModal({
                     )}
                   </div>
 
-                  <div className="lg:col-span-6 flex flex-col justify-between space-y-4">
+                  <div className="lg:col-span-6 flex flex-col justify-between space-y-4 min-w-0 w-full break-words">
                     <div className="space-y-4">
                       <h4 className="text-2xl sm:text-3xl font-black text-white tracking-tight leading-snug">
                         {getLocalizedTitle(currentWork, locale)}
