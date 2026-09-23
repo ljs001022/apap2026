@@ -209,7 +209,7 @@ export default function GnbHeader({ locale }: GnbHeaderProps) {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -16 }}
             transition={{ duration: 0.2, ease: 'easeOut' }}
-            className="fixed inset-0 z-40 bg-[#0A0A0A] pt-[64px] flex flex-col md:hidden"
+            className="fixed inset-0 z-40 bg-[#0A0A0A] pt-[72px] sm:pt-[80px] flex flex-col md:hidden"
           >
             <nav className="flex-1 px-8 pt-10 space-y-1 divide-y divide-[#1E1E1E]">
               {NAV_ITEMS.map((item) => {

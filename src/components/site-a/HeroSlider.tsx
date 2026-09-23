@@ -178,25 +178,21 @@ export default function HeroSlider({ locale }: HeroSliderProps) {
     if (el) el.scrollIntoView({ behavior: 'smooth' });
   };
 
-  // 현재 슬라이드가 작품 슬라이드인 경우(1, 2, 3) 해당 작품 데이터
+  // 현재 슬라이드가 작품 슬라이드인 경우(1, 2, 3, 4) 해당 작품 데이터
   const activeWork = currentSlide > 0 ? PAVILION_WORKS[currentSlide - 1] : null;
 
   return (
     <div className="relative w-full h-full flex items-center justify-center bg-black select-none">
       {/* ── MOBILE VIEW (< md): ONLY Poster (No artwork slides, no arrows, no pagination) ── */}
       <div
-        className="block md:hidden w-full h-full max-sm:aspect-square max-sm:max-h-[768px] overflow-hidden flex items-center justify-center cursor-default"
+        className="block md:hidden w-full h-full overflow-hidden flex items-center justify-center cursor-default"
         aria-label={isKo ? '제8회 안양공공예술프로젝트(APAP8) 공식 포스터' : 'The 8th Anyang Public Art Project (APAP8) Official Poster'}
       >
         <picture className="w-full h-full flex items-center justify-center">
           <source
-            media="(max-width: 640px)"
             type="image/webp"
+            media="(max-width: 767px)"
             srcSet="/images/main-768x768.webp"
-          />
-          <source
-            media="(max-width: 640px)"
-            srcSet="/images/main-768x768.jpg"
           />
           <img
             src="/images/main-768x768.jpg"
