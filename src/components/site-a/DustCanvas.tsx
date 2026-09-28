@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useRef, useEffect } from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 
 interface DustCanvasProps {
   className?: string;
@@ -11,12 +11,33 @@ interface DustCanvasProps {
  * DustCanvas — "미래지향 시안" reference 기반
  * 화면 전체에 아주 작은 미세 먼지/파티클 점(지름 2~4px)들이
  * 무작위 방향으로 매우 천천히 유영하는 앰비언트 효과.
+ * 모달창(작가 모달, 작품 확대창 등)이 열리면 이펙트가 자동으로 숨겨져 작품을 가리지 않습니다.
  */
 export default function DustCanvas({
   className = '',
   opacity = 0.9,
 }: DustCanvasProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  // 모달 오픈 여부 (body overflow 감지)
+  useEffect(() => {
+    const checkModal = () => {
+      setIsModalOpen(document.body.style.overflow === 'hidden');
+    };
+    checkModal();
+
+    const observer = new MutationObserver((mutations) => {
+      for (const m of mutations) {
+        if (m.attributeName === 'style') {
+          checkModal();
+        }
+      }
+    });
+
+    observer.observe(document.body, { attributes: true, attributeFilter: ['style'] });
+    return () => observer.disconnect();
+  }, []);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -96,7 +117,11 @@ export default function DustCanvas({
       ref={canvasRef}
       aria-hidden="true"
       className={`pointer-events-none ${className}`}
-      style={{ willChange: 'transform' }}
+      style={{
+        opacity: isModalOpen ? 0 : 1,
+        transition: 'opacity 0.25s ease-out',
+        willChange: 'opacity, transform',
+      }}
     />
   );
 }

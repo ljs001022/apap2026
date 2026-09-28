@@ -30,7 +30,7 @@ export default async function SiteALayout({ children, params }: LayoutProps) {
 
   return (
     <NextIntlClientProvider messages={messages} locale={locale}>
-      <DustCanvas className="fixed inset-0 w-full h-full pointer-events-none z-20" opacity={0.85} />
+      <DustCanvas className="fixed inset-0 w-full h-full pointer-events-none z-[35]" opacity={0.85} />
       {children}
     </NextIntlClientProvider>
   );

@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
+import { createPortal } from 'react-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Artist, Work } from '@/types/artist';
 import { getArtistInitials } from '@/lib/artists';
@@ -30,9 +31,14 @@ export default function ArtistModal({
   locale = 'ko',
   theme = 'blackwhite',
 }: ArtistModalProps) {
+  const [mounted, setMounted] = useState(false);
   const [currentWorkIndex, setCurrentWorkIndex] = useState(0);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [zoomedImage, setZoomedImage] = useState<string | null>(null);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   // Close on ESC key and lock body scroll
   useEffect(() => {
@@ -59,7 +65,7 @@ export default function ArtistModal({
     setZoomedImage(null);
   }, [artist]);
 
-  if (!artist) return null;
+  if (!artist || !mounted) return null;
 
   const isKo = locale === 'ko';
   const displayImage = artist.profile_image || artist.works?.[0]?.images?.[0] || null;
@@ -94,12 +100,12 @@ export default function ArtistModal({
     setCurrentImageIndex(0);
   };
 
-  return (
+  return createPortal(
     <>
     <AnimatePresence>
       <div 
         className="fixed inset-0 z-[70] flex justify-center p-3 sm:p-8 pt-20 sm:pt-28 md:p-12 md:pt-32 pb-6"
-        style={{ background: 'rgba(0,0,0,0.6)', backdropFilter: 'blur(14px)' }}
+        style={{ background: 'rgba(0,0,0,0.97)', backdropFilter: 'blur(20px)' }}
         onClick={onClose}
       >
         <motion.div
@@ -381,6 +387,7 @@ export default function ArtistModal({
         </div>
       )}
     </AnimatePresence>
-    </>
+    </>,
+    document.body
   );
 }

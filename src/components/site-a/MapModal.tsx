@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
+import { createPortal } from 'react-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, ZoomIn, ArrowUpRight, MapPin } from 'lucide-react';
 import Image from 'next/image';
@@ -12,7 +13,13 @@ interface MapModalProps {
 }
 
 export default function MapModal({ isOpen, onClose, isKo }: MapModalProps) {
+  const [mounted, setMounted] = useState(false);
   const [imgError, setImgError] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
   // Close on ESC and lock body scroll
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -30,12 +37,14 @@ export default function MapModal({ isOpen, onClose, isKo }: MapModalProps) {
     };
   }, [isOpen, onClose]);
 
-  return (
+  if (!mounted) return null;
+
+  return createPortal(
     <AnimatePresence>
       {isOpen && (
         <div
           className="fixed inset-0 z-[70] flex items-center justify-center p-3 sm:p-6 md:p-10"
-          style={{ background: 'rgba(0,0,0,0.65)', backdropFilter: 'blur(14px)' }}
+          style={{ background: 'rgba(0,0,0,0.97)', backdropFilter: 'blur(20px)' }}
           onClick={onClose}
         >
           <motion.div
@@ -127,7 +136,8 @@ export default function MapModal({ isOpen, onClose, isKo }: MapModalProps) {
           </motion.div>
         </div>
       )}
-    </AnimatePresence>
+    </AnimatePresence>,
+    document.body
   );
 }
 

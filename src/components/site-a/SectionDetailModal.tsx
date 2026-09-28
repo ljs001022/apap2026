@@ -1,6 +1,7 @@
 'use client';
 
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
+import { createPortal } from 'react-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, ChevronLeft, ChevronRight } from 'lucide-react';
 import Image from 'next/image';
@@ -23,7 +24,12 @@ export default function SectionDetailModal({
   children,
   images = [],
 }: SectionDetailModalProps) {
+  const [mounted, setMounted] = useState(false);
   const [imgIdx, setImgIdx] = React.useState(0);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   // Close on ESC and lock body scroll
   useEffect(() => {
@@ -47,12 +53,14 @@ export default function SectionDetailModal({
     if (isOpen) setImgIdx(0);
   }, [isOpen]);
 
-  return (
+  if (!mounted) return null;
+
+  return createPortal(
     <AnimatePresence>
       {isOpen && (
         <div
           className="fixed inset-0 z-[70] flex items-center justify-center p-2.5 sm:p-6 md:p-10"
-          style={{ background: 'rgba(0,0,0,0.6)', backdropFilter: 'blur(14px)' }}
+          style={{ background: 'rgba(0,0,0,0.97)', backdropFilter: 'blur(20px)' }}
           onClick={onClose}
         >
           <motion.div
@@ -134,6 +142,7 @@ export default function SectionDetailModal({
           </motion.div>
         </div>
       )}
-    </AnimatePresence>
+    </AnimatePresence>,
+    document.body
   );
 }
