@@ -5,7 +5,7 @@ import { createPortal } from 'react-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Artist, Work } from '@/types/artist';
 import { getArtistInitials } from '@/lib/artists';
-import { X, MapPin, Calendar, Layers, ChevronLeft, ChevronRight, ZoomIn } from 'lucide-react';
+import { X, MapPin, Calendar, Layers, ChevronLeft, ChevronRight } from 'lucide-react';
 import {
   getLocalizedArtistName,
   getLocalizedVenueName,
@@ -73,7 +73,7 @@ export default function ArtistModal({
     setMounted(true);
   }, []);
 
-  // Close on ESC key and lock body scroll
+  // Close on ESC key and lock body/main scroll
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === 'Escape') {
@@ -81,13 +81,16 @@ export default function ArtistModal({
         else onClose();
       }
     };
+    const mainEl = document.querySelector('main');
     if (artist || zoomedImage) {
       window.addEventListener('keydown', handleKeyDown);
       document.body.style.overflow = 'hidden';
+      if (mainEl) mainEl.style.overflow = 'hidden';
     }
     return () => {
       window.removeEventListener('keydown', handleKeyDown);
       document.body.style.overflow = '';
+      if (mainEl) mainEl.style.overflow = '';
     };
   }, [artist, zoomedImage, onClose]);
 
@@ -173,7 +176,7 @@ export default function ArtistModal({
           </div>
 
           {/* Scrollable Body */}
-          <div className="p-4 sm:p-8 overflow-y-auto overflow-x-hidden space-y-6 sm:space-y-8 divide-y divide-white/15 min-w-0 w-full">
+          <div className="p-4 sm:p-8 overflow-y-auto overflow-x-hidden space-y-6 sm:space-y-8 divide-y divide-white/15 min-w-0 w-full overscroll-y-contain">
             {/* 1. Artist Profile Block */}
             <div className="flex flex-col sm:flex-row gap-5 sm:gap-8 items-start min-w-0 w-full">
               <div className="w-24 h-24 sm:w-32 sm:h-32 flex-shrink-0 border border-white/20 bg-zinc-900 overflow-hidden">
@@ -291,9 +294,9 @@ export default function ArtistModal({
                   <div className="lg:col-span-6 flex flex-col justify-center min-w-0 w-full max-w-full">
                     {currentWorkImage ? (
                       <div 
-                        className="relative aspect-[4/3] w-full max-w-full overflow-hidden bg-black border border-white/10 flex items-center justify-center cursor-zoom-in group select-none"
+                        className="relative aspect-[4/3] max-h-[360px] sm:max-h-[400px] w-full max-w-full overflow-hidden bg-black border border-white/10 flex items-center justify-center cursor-pointer select-none mx-auto"
                         onClick={() => setZoomedImage(currentWorkImage)}
-                        title={isKo ? '클릭하여 이미지 크게 보기' : 'Click to enlarge image'}
+                        title={isKo ? '클릭하여 이미지 크게 보기' : 'Click to view full image'}
                       >
                         <img
                           src={currentWorkImage}
@@ -302,13 +305,9 @@ export default function ArtistModal({
                           decoding="async"
                           className="w-full h-full object-contain pointer-events-none"
                         />
-                        <div className="absolute bottom-2.5 right-2.5 px-2 py-1 bg-black/75 backdrop-blur-sm border border-white/20 text-white/70 group-hover:text-white flex items-center gap-1.5 font-mono text-[11px] rounded transition-colors pointer-events-none">
-                          <ZoomIn className="w-3.5 h-3.5" />
-                          <span>{isKo ? '확대' : 'ZOOM'}</span>
-                        </div>
                       </div>
                     ) : (
-                      <div className="aspect-[4/3] w-full max-w-full bg-zinc-950 border border-white/10 flex items-center justify-center text-caption font-mono text-white/40">
+                      <div className="aspect-[4/3] max-h-[360px] sm:max-h-[400px] w-full max-w-full bg-zinc-950 border border-white/10 flex items-center justify-center text-caption font-mono text-white/40 mx-auto">
                         NO WORK IMAGE
                       </div>
                     )}
