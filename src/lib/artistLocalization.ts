@@ -12,20 +12,28 @@ export function hasEnglish(text: string): boolean {
 }
 
 /**
- * Formats a work title with standard angle brackets if not already present.
+ * Formats a work title:
+ * - Korean: uses special angle brackets 〈 〉 (no ASCII < >)
+ * - English: strips brackets so title displays clean/italic
  */
-export function formatArtworkTitle(title: string): string {
+export function formatArtworkTitle(title: string, locale: string = 'ko'): string {
   if (!title) return '';
-  const trimmed = title.trim();
-  if (trimmed.startsWith('<') || trimmed.startsWith('〈') || trimmed.startsWith('《') || trimmed.startsWith('「')) {
+  let trimmed = title.trim();
+  if (locale !== 'ko') {
+    return trimmed.replace(/^[<〈《「](.*?)[>〉》」]$/, '$1').trim();
+  }
+  if (trimmed.startsWith('<') && trimmed.endsWith('>')) {
+    trimmed = trimmed.slice(1, -1).trim();
+  }
+  if (trimmed.startsWith('〈') && trimmed.endsWith('〉')) {
     return trimmed;
   }
-  return `<${trimmed}>`;
+  if (trimmed.startsWith('《') || trimmed.startsWith('「')) {
+    return trimmed;
+  }
+  return `〈${trimmed}〉`;
 }
 
-/**
- * Returns the localized work title.
- */
 /**
  * Returns the localized work title.
  */
@@ -35,10 +43,10 @@ export function getLocalizedWorkTitle(
 ): string {
   const isKo = locale === 'ko';
   if (isKo && work.title_ko && work.title_ko.trim()) {
-    return formatArtworkTitle(work.title_ko);
+    return formatArtworkTitle(work.title_ko, locale);
   }
   if (!isKo && work.title_en && work.title_en.trim()) {
-    return formatArtworkTitle(work.title_en);
+    return formatArtworkTitle(work.title_en, locale);
   }
   return getLocalizedTitle(work.title || '', locale);
 }
@@ -58,7 +66,7 @@ export function getLocalizedTitle(titleOrWork: any, locale: string = 'ko'): stri
     if (isKo && koLine) resolved = koLine;
     else if (!isKo && enLine) resolved = enLine;
   }
-  return formatArtworkTitle(resolved);
+  return formatArtworkTitle(resolved, locale);
 }
 
 /**
@@ -282,8 +290,8 @@ export function getLocalizedVenueName(venueSlug: string, locale: string = 'ko'):
   const isKo = locale === 'ko';
   const venueMap: Record<string, { ko: string; en: string }> = {
     'e-pavilion-media': { ko: '안양파빌리온', en: 'Anyang Pavilion' },
-    'outdoor-exhibition': { ko: '야외전시', en: 'Outdoor Exhibition' },
-    '308-art-crew': { ko: '308아트', en: '308 Art Crew' },
+    'outdoor-exhibition': { ko: '오픈 그라운드', en: 'Open Ground' },
+    '308-art-crew': { ko: '308 아트크루', en: '308 Art Crew' },
     'korea-china-special': { ko: '한중특별전', en: 'Korea-China Special' },
     'media-art-open-call': { ko: '미디어아트 공모작가', en: 'Media Art Open Call' },
   };

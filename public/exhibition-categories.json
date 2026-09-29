@@ -27,8 +27,8 @@
       "id": "outdoor-exhibition",
       "manifestVenueSlug": "outdoor-exhibition",
       "tabLabel": {
-        "ko": "야외전시",
-        "en": "Outdoor Exhibition"
+        "ko": "오픈 그라운드",
+        "en": "Open Ground"
       },
       "officialName": {
         "ko": "오픈 그라운드",
@@ -49,7 +49,7 @@
       "id": "308-art-crew",
       "manifestVenueSlug": "308-art-crew",
       "tabLabel": {
-        "ko": "308아트",
+        "ko": "308 아트크루",
         "en": "308 Art Crew"
       },
       "officialName": {
@@ -76,7 +76,7 @@
       },
       "officialName": {
         "ko": "특별전: 우리가 꿈꾸는 도원",
-        "en": "Special Exhibition: The Utopia We Dream Of"
+        "en": "Special Exhibition: Dreaming Our Paradise"
       },
       "subtitle": {
         "ko": "한·중 현대미술 거장 특별 교류전",

@@ -25,6 +25,39 @@ interface ArtistModalProps {
   theme?: CardTheme;
 }
 
+function renderMarkdownText(text: string) {
+  if (!text) return null;
+  const lines = text.split('\n');
+  return lines.map((line, lIdx) => {
+    const parts: (string | React.ReactNode)[] = [];
+    const regex = /(\*\*([^*]+)\*\*|\*([^*]+)\*)/g;
+    let lastIndex = 0;
+    let match;
+    let k = 0;
+    while ((match = regex.exec(line)) !== null) {
+      if (match.index > lastIndex) {
+        parts.push(line.substring(lastIndex, match.index));
+      }
+      if (match[2]) {
+        parts.push(<strong key={k++} className="font-bold text-white">{match[2]}</strong>);
+      } else if (match[3]) {
+        parts.push(<em key={k++} className="italic text-white/95">{match[3]}</em>);
+      }
+      lastIndex = regex.lastIndex;
+    }
+    if (lastIndex < line.length) {
+      parts.push(line.substring(lastIndex));
+    }
+
+    return (
+      <React.Fragment key={lIdx}>
+        {parts}
+        {lIdx < lines.length - 1 && '\n'}
+      </React.Fragment>
+    );
+  });
+}
+
 export default function ArtistModal({
   artist,
   onClose,
@@ -212,7 +245,7 @@ export default function ArtistModal({
                       {isKo ? '주요 약력 및 전시' : 'BIOGRAPHY'}
                     </h3>
                     <div className="text-caption text-white/70 leading-relaxed whitespace-pre-line bg-white/[0.03] p-4 border border-white/10 font-mono">
-                      {localizedBio}
+                      {renderMarkdownText(localizedBio)}
                     </div>
                   </div>
                 )}
@@ -295,7 +328,7 @@ export default function ArtistModal({
                   <div className="lg:col-span-6 flex flex-col justify-between space-y-4 min-w-0 w-full break-words">
                     <div className="space-y-4">
                       <h4 className="text-2xl sm:text-3xl font-black text-white tracking-tight leading-snug">
-                        {getLocalizedTitle(currentWork, locale)}
+                        {isKo ? getLocalizedTitle(currentWork, locale) : <em>{getLocalizedTitle(currentWork, locale)}</em>}
                       </h4>
 
                       <div className="space-y-1.5 text-caption font-mono text-white/70 border-l-2 border-white/40 pl-3.5 py-0.5">
@@ -311,7 +344,7 @@ export default function ArtistModal({
 
                       {((currentWork.description && currentWork.description.trim() !== '') || currentWork.description_ko || currentWork.description_en) ? (
                         <div className="text-body text-white/90 leading-relaxed whitespace-pre-line pt-1">
-                          {getLocalizedDescription(currentWork, locale)}
+                          {renderMarkdownText(getLocalizedDescription(currentWork, locale))}
                         </div>
                       ) : (
                         <div className="text-caption font-mono text-white/40 leading-relaxed pt-1">

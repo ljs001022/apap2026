@@ -66,13 +66,13 @@ export function getCommunityItems(locale: string = 'ko'): CommunityItem[] {
         ? [
             '제8회 안양공공예술프로젝트(APAP8)의 전체 전시 구역과 주요 프로그램 정보를 한눈에 확인할 수 있는 공식 리플렛을 공개합니다.',
             '이번 리플렛은 관람객 여러분이 안양예술공원 일대에 펼쳐진 야외 조각 및 실내 미디어 전시를 편리하게 탐방하실 수 있도록 제작되었습니다.',
-            '[주요 수록 내용]\n• 전시 구역 안내 : 안양파빌리온(아이 파빌리온), 야외전시(오픈 그라운드), 308아트(밤의 도원경) 등\n• APAP8 참여 작가 명단 및 주요 대표작 소개\n• 시민 참여 프로그램, 도슨트 투어, 셔틀버스 운행 시간표\n• 관람 편의시설 및 오시는 길 안내',
+            '[주요 수록 내용]\n• 전시 구역 안내 : 안양파빌리온(아이 파빌리온), 오픈 그라운드, 308 아트크루(밤의 도원경) 등\n• APAP8 참여 작가 명단 및 주요 대표작 소개\n• 시민 참여 프로그램, 도슨트 투어, 셔틀버스 운행 시간표\n• 관람 편의시설 및 오시는 길 안내',
             '공식 리플렛 PDF 파일은 본 공지사항 첨부파일 및 홈페이지 내 [전시 안내] 메뉴에서 다운로드하실 수 있으며, 행사 기간 중 안양파빌리온 및 현장 종합안내소에서도 실물 책자를 수령하실 수 있습니다.',
           ]
         : [
             'We are pleased to release the official exhibition leaflet providing comprehensive details on APAP8 zones and programs.',
             'This guide is designed to help visitors seamlessly navigate outdoor sculptures and indoor media installations throughout Anyang Art Park.',
-            '[Key Contents]\n• Exhibition Zones: Anyang Pavilion (i Pavilion), Open Ground, 308 Art (Night Utopia), etc.\n• Participating Artists and Major Artworks\n• Civic Participation Programs, Docent Tour Schedules, and Shuttle Bus Timetable\n• Visitor Amenities and Access Directions',
+            '[Key Contents]\n• Exhibition Zones: Anyang Pavilion (i Pavilion), Open Ground, 308 Art Crew (Night Utopia), etc.\n• Participating Artists and Major Artworks\n• Civic Participation Programs, Docent Tour Schedules, and Shuttle Bus Timetable\n• Visitor Amenities and Access Directions',
             'The digital leaflet PDF can be downloaded on the website, and physical copies are available at Anyang Pavilion and information desks during the event.',
           ],
     },

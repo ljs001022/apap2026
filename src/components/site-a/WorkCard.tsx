@@ -174,7 +174,7 @@ export default function WorkCard({
 
           {/* Work Title */}
           <h4 className="text-base sm:text-lg font-extrabold text-white leading-snug tracking-tight">
-            {localizedTitle}
+            {isKo ? localizedTitle : <em>{localizedTitle}</em>}
           </h4>
 
           {/* Material & Size & Duration */}
