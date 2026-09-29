@@ -94,12 +94,12 @@ export default function SiteAPage({ params }: PageProps) {
     <div className="bg-[#0A0A0A] text-white font-sans antialiased">
       <GnbHeader locale={validLocale} />
 
-      {/* Main Container: Natural smooth vertical scrolling */}
-      <main className="h-[100dvh] overflow-y-auto overflow-x-hidden scroll-smooth hide-scrollbar">
+      {/* Main Container: Fullpage snap on desktop (md:), natural momentum scroll without scroll trap on mobile */}
+      <main className="h-[100dvh] overflow-y-auto overflow-x-hidden md:snap-y md:snap-mandatory md:scroll-smooth hide-scrollbar touch-pan-y">
         {/* ── Section 0: Hero ── */}
         <section
           id="hero"
-          className="relative min-h-[100dvh] flex flex-col bg-black border-b border-white justify-between overflow-hidden"
+          className="relative min-h-[100dvh] md:h-[100dvh] md:snap-start flex flex-col bg-black border-b border-white justify-between overflow-hidden"
         >
           {/* Top spacer for fixed header */}
           <div className="h-16 sm:h-20 flex-shrink-0" />
@@ -1698,7 +1698,7 @@ export default function SiteAPage({ params }: PageProps) {
         />
 
         {/* Footer */}
-        <div>
+        <div className="md:snap-start">
           <Footer locale={validLocale} />
         </div>
       </main>

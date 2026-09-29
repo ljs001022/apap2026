@@ -55,7 +55,7 @@ export default function SectionCard({
       },
       {
         root: scrollContainer,
-        threshold: 0.2,
+        threshold: 0.15,
       }
     );
 
@@ -70,7 +70,7 @@ export default function SectionCard({
     <section
       ref={sectionRef}
       id={id}
-      className={`relative min-h-[100dvh] flex flex-col pt-16 border-b border-white bg-[#0A0A0A] ${
+      className={`relative min-h-[100dvh] md:h-[100dvh] flex flex-col pt-16 border-b border-white md:snap-start overflow-visible md:overflow-hidden bg-[#0A0A0A] ${
         isActive ? 'section-active' : ''
       }`}
     >
@@ -92,7 +92,7 @@ export default function SectionCard({
 
       {/* Summary Content with Staggered Container */}
       <div
-        className="relative z-10 flex-1 flex flex-col px-4 sm:px-10 lg:px-16 pt-2.5 pb-6 sm:pt-4 sm:pb-8 section-stagger-container"
+        className="relative z-10 flex-1 flex flex-col px-4 sm:px-10 lg:px-16 pt-2.5 pb-6 sm:pt-4 sm:pb-8 overflow-visible md:overflow-y-auto md:overflow-x-hidden md:hide-scrollbar section-stagger-container"
       >
         <div
           className={`w-full flex flex-col ${
