@@ -94,12 +94,12 @@ export default function SiteAPage({ params }: PageProps) {
     <div className="bg-[#0A0A0A] text-white font-sans antialiased">
       <GnbHeader locale={validLocale} />
 
-      {/* Main Container: Fullpage snap on desktop (md:), natural momentum scroll without scroll trap on mobile */}
-      <main className="h-[100dvh] overflow-y-auto overflow-x-hidden md:snap-y md:snap-mandatory md:scroll-smooth hide-scrollbar touch-pan-y">
+      {/* Main Container: Fullpage vertical snapping on both mobile and PC */}
+      <main className="h-[100dvh] overflow-y-auto overflow-x-hidden snap-y snap-mandatory scroll-smooth hide-scrollbar touch-pan-y">
         {/* ── Section 0: Hero ── */}
         <section
           id="hero"
-          className="relative min-h-[100dvh] md:h-[100dvh] md:snap-start flex flex-col bg-black border-b border-white justify-between overflow-hidden"
+          className="relative h-[100dvh] snap-start flex flex-col bg-black border-b border-white justify-between overflow-hidden"
         >
           {/* Top spacer for fixed header */}
           <div className="h-16 sm:h-20 flex-shrink-0" />
@@ -153,36 +153,36 @@ export default function SiteAPage({ params }: PageProps) {
           isKo={isKo}
           summary={
             <div className="w-full max-w-[1200px] mx-auto">
-              {/* MOBILE VIEW (< md): 3 Summary Cards -> Opens Modal */}
-              <div className="block md:hidden space-y-3">
-                <div className="grid grid-cols-1 gap-2.5">
+              {/* MOBILE VIEW (< md): 4 Summary Cards -> Opens Modal */}
+              <div className="block md:hidden">
+                <div className="grid grid-cols-1 gap-1.5 sm:gap-2.5">
                   {/* Mobile Card 1: Overview */}
                   <div
                     role="button"
                     tabIndex={0}
                     onClick={() => setAboutModalItem('overview')}
                     onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') setAboutModalItem('overview'); }}
-                    className="group relative bg-[#121212] hover:bg-[#1A1A1A] border border-white/20 hover:border-white p-3.5 flex flex-col justify-between transition-all duration-200 cursor-pointer text-left space-y-2 shadow-md"
+                    className="group relative bg-[#121212] hover:bg-[#1A1A1A] border border-white/20 hover:border-white p-2.5 sm:p-3.5 flex flex-col justify-between transition-all duration-200 cursor-pointer text-left space-y-1 sm:space-y-2 shadow-md"
                   >
-                    <div className="space-y-1">
+                    <div className="space-y-0.5 sm:space-y-1">
                       <div className="flex items-center justify-between">
-                        <span className="font-mono text-badge font-black bg-white text-black px-2 py-0.5">
+                        <span className="font-mono text-badge font-black bg-white text-black px-1.5 py-0.5">
                           01
                         </span>
-                        <span className="font-mono text-caption text-[#8C8C8C] font-semibold">
+                        <span className="font-mono text-[11px] sm:text-caption text-[#8C8C8C] font-semibold">
                           {isKo ? '개요' : 'OVERVIEW'}
                         </span>
                       </div>
-                      <h3 className="text-sm font-extrabold text-white leading-snug">
+                      <h3 className="text-[13px] sm:text-sm font-extrabold text-white leading-snug">
                         {isKo ? '도시 전체가 전시장이 되는 여덟 번째 안양' : 'The Eighth Anyang: Open Museum'}
                       </h3>
-                      <p className="text-body text-[#B9B9B9] font-light leading-relaxed line-clamp-2">
+                      <p className="text-[12px] sm:text-body text-[#B9B9B9] font-light leading-relaxed line-clamp-1 sm:line-clamp-2">
                         {isKo
                           ? "제8회 안양공공예술프로젝트(APAP8)는 2005년부터 이어저 온 국내유일의 공공예술 트리엔날레의 여덟 번째 행사입니다. 지난 20여 년간 축적된 APAP의 문화자산을 재맥락화하고 지역사회 예술 기반을 확대합니다."
                           : "The 8th Anyang Public Art Project (APAP8) marks the eighth edition of Korea’s premier public art triennial, held continuously since 2005."}
                       </p>
                     </div>
-                    <div className="flex items-center justify-between pt-1.5 border-t border-white/10 text-xs font-mono text-white/50 group-hover:text-white transition-colors">
+                    <div className="flex items-center justify-between pt-1 sm:pt-1.5 border-t border-white/10 text-[11px] sm:text-xs font-mono text-white/50 group-hover:text-white transition-colors">
                       <span>{isKo ? '상세 정보 보기' : 'VIEW DETAILS'}</span>
                       <ArrowUpRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
                     </div>
@@ -194,30 +194,30 @@ export default function SiteAPage({ params }: PageProps) {
                     tabIndex={0}
                     onClick={() => setAboutModalItem('theme')}
                     onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') setAboutModalItem('theme'); }}
-                    className="group relative bg-[#121212] hover:bg-[#1A1A1A] border border-white/20 hover:border-white p-3.5 flex flex-col justify-between transition-all duration-200 cursor-pointer text-left space-y-2 shadow-md"
+                    className="group relative bg-[#121212] hover:bg-[#1A1A1A] border border-white/20 hover:border-white p-2.5 sm:p-3.5 flex flex-col justify-between transition-all duration-200 cursor-pointer text-left space-y-1 sm:space-y-2 shadow-md"
                   >
-                    <div className="space-y-1">
+                    <div className="space-y-0.5 sm:space-y-1">
                       <div className="flex items-center justify-between">
-                        <span className="font-mono text-badge font-black bg-white text-black px-2 py-0.5">
+                        <span className="font-mono text-badge font-black bg-white text-black px-1.5 py-0.5">
                           02
                         </span>
-                        <span className="font-mono text-caption text-[#8C8C8C] font-semibold">
+                        <span className="font-mono text-[11px] sm:text-caption text-[#8C8C8C] font-semibold">
                           {isKo ? '전시 주제' : 'EXHIBITION THEME'}
                         </span>
                       </div>
-                      <h3 className="text-sm font-extrabold text-white leading-snug">
+                      <h3 className="text-[13px] sm:text-sm font-extrabold text-white leading-snug">
                         {isKo ? 'Arte X : 예술 대전환' : 'Arte X : Art Transformation'}
-                        <span className="block text-[11px] font-mono text-[#8C8C8C] font-normal mt-0.5">
+                        <span className="block text-[10.5px] sm:text-[11px] font-mono text-[#8C8C8C] font-normal mt-0.5">
                           {isKo ? '부제: 안양 무릉도원' : 'Subtitle: Anyang Paradise'}
                         </span>
                       </h3>
-                      <p className="text-body text-[#B9B9B9] font-light leading-relaxed line-clamp-2">
+                      <p className="text-[12px] sm:text-body text-[#B9B9B9] font-light leading-relaxed line-clamp-1 sm:line-clamp-2">
                         {isKo
                           ? '제8회 안양공공예술프로젝트(APAP8)는 "Arte X : 예술 대전환_안양 무릉도원"을 주제로 하여 진행됩니다. 안양은 안양천과 그 지천을 중심으로 도시와 자연의 공존이 현실화한 공간입니다.'
                           : 'The 8th Anyang Public Art Project (APAP8) unfolds under the theme "Arte X : Art Transformation_Anyang Paradise", reinterpreting paradise through art where city and nature coexist.'}
                       </p>
                     </div>
-                    <div className="flex items-center justify-between pt-1.5 border-t border-white/10 text-xs font-mono text-white/50 group-hover:text-white transition-colors">
+                    <div className="flex items-center justify-between pt-1 sm:pt-1.5 border-t border-white/10 text-[11px] sm:text-xs font-mono text-white/50 group-hover:text-white transition-colors">
                       <span>{isKo ? '상세 정보 보기' : 'VIEW DETAILS'}</span>
                       <ArrowUpRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
                     </div>
@@ -229,30 +229,30 @@ export default function SiteAPage({ params }: PageProps) {
                     tabIndex={0}
                     onClick={() => setAboutModalItem('credits')}
                     onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') setAboutModalItem('credits'); }}
-                    className="group relative bg-[#121212] hover:bg-[#1A1A1A] border border-white/20 hover:border-white p-3.5 flex flex-col justify-between transition-all duration-200 cursor-pointer text-left space-y-2 shadow-md"
+                    className="group relative bg-[#121212] hover:bg-[#1A1A1A] border border-white/20 hover:border-white p-2.5 sm:p-3.5 flex flex-col justify-between transition-all duration-200 cursor-pointer text-left space-y-1 sm:space-y-2 shadow-md"
                   >
-                    <div className="space-y-1">
+                    <div className="space-y-0.5 sm:space-y-1">
                       <div className="flex items-center justify-between">
-                        <span className="font-mono text-badge font-black bg-white text-black px-2 py-0.5">
+                        <span className="font-mono text-badge font-black bg-white text-black px-1.5 py-0.5">
                           03
                         </span>
-                        <span className="font-mono text-caption text-[#8C8C8C] font-semibold">
+                        <span className="font-mono text-[11px] sm:text-caption text-[#8C8C8C] font-semibold">
                           {isKo ? '크레딧' : 'CREDITS'}
                         </span>
                       </div>
-                      <h3 className="text-sm font-extrabold text-white leading-snug">
+                      <h3 className="text-[13px] sm:text-sm font-extrabold text-white leading-snug">
                         {isKo ? '예술감독 및 참여작가 리스트' : 'Artistic Director & Artists'}
-                        <span className="block text-[11px] font-mono text-[#8C8C8C] font-normal mt-0.5">
+                        <span className="block text-[10.5px] sm:text-[11px] font-mono text-[#8C8C8C] font-normal mt-0.5">
                           {isKo ? '예술감독 박철희 · 참여작가 31인/팀' : 'Director Park Chul-hee · 31 Artists/Teams'}
                         </span>
                       </h3>
-                      <p className="text-body text-[#B9B9B9] font-light leading-relaxed line-clamp-2">
+                      <p className="text-[12px] sm:text-body text-[#B9B9B9] font-light leading-relaxed line-clamp-1 sm:line-clamp-2">
                         {isKo
                           ? '예술감독 박철희를 필두로 국내외 현대미술 거장 31인/팀과 미디어아트 작품 공모 당선 10팀이 함께하는 APAP8의 전체 크레딧입니다.'
                           : 'Artistic Director Park Chul-hee, 31 prominent artists/teams, and 10 media art competition winners.'}
                       </p>
                     </div>
-                    <div className="flex items-center justify-between pt-1.5 border-t border-white/10 text-xs font-mono text-white/50 group-hover:text-white transition-colors">
+                    <div className="flex items-center justify-between pt-1 sm:pt-1.5 border-t border-white/10 text-[11px] sm:text-xs font-mono text-white/50 group-hover:text-white transition-colors">
                       <span>{isKo ? '크레딧 명단 보기' : 'VIEW CREDITS'}</span>
                       <ArrowUpRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
                     </div>
@@ -264,30 +264,30 @@ export default function SiteAPage({ params }: PageProps) {
                     tabIndex={0}
                     onClick={() => setAboutModalItem('promo')}
                     onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') setAboutModalItem('promo'); }}
-                    className="group relative bg-[#121212] hover:bg-[#1A1A1A] border border-white/20 hover:border-white p-3.5 flex flex-col justify-between transition-all duration-200 cursor-pointer text-left space-y-2 shadow-md"
+                    className="group relative bg-[#121212] hover:bg-[#1A1A1A] border border-white/20 hover:border-white p-2.5 sm:p-3.5 flex flex-col justify-between transition-all duration-200 cursor-pointer text-left space-y-1 sm:space-y-2 shadow-md"
                   >
-                    <div className="space-y-1">
+                    <div className="space-y-0.5 sm:space-y-1">
                       <div className="flex items-center justify-between">
-                        <span className="font-mono text-badge font-black bg-white text-black px-2 py-0.5">
+                        <span className="font-mono text-badge font-black bg-white text-black px-1.5 py-0.5">
                           04
                         </span>
-                        <span className="font-mono text-caption text-[#8C8C8C] font-semibold">
+                        <span className="font-mono text-[11px] sm:text-caption text-[#8C8C8C] font-semibold">
                           {isKo ? '홍보영상' : 'PROMO VIDEO'}
                         </span>
                       </div>
-                      <h3 className="text-sm font-extrabold text-white leading-snug">
+                      <h3 className="text-[13px] sm:text-sm font-extrabold text-white leading-snug">
                         {isKo ? 'APAP8 공식 홍보영상 & 티저' : 'APAP8 Official Promo Video'}
-                        <span className="block text-[11px] font-mono text-[#8C8C8C] font-normal mt-0.5">
+                        <span className="block text-[10.5px] sm:text-[11px] font-mono text-[#8C8C8C] font-normal mt-0.5">
                           {isKo ? 'Arte X : 예술 대전환 미디어 티저' : 'Arte X : Art Transformation Teaser'}
                         </span>
                       </h3>
-                      <p className="text-body text-[#B9B9B9] font-light leading-relaxed line-clamp-2">
+                      <p className="text-[12px] sm:text-body text-[#B9B9B9] font-light leading-relaxed line-clamp-1 sm:line-clamp-2">
                         {isKo
                           ? '제8회 안양공공예술프로젝트(APAP8)의 비전과 주요 현장 및 작품들을 담은 공식 홍보 영상입니다.'
                           : 'Official promotional video and teaser showcasing the vision of the 8th Anyang Public Art Project.'}
                       </p>
                     </div>
-                    <div className="flex items-center justify-between pt-1.5 border-t border-white/10 text-xs font-mono text-white/50 group-hover:text-white transition-colors">
+                    <div className="flex items-center justify-between pt-1 sm:pt-1.5 border-t border-white/10 text-[11px] sm:text-xs font-mono text-white/50 group-hover:text-white transition-colors">
                       <span>{isKo ? '홍보영상 보기' : 'WATCH VIDEO'}</span>
                       <ArrowUpRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
                     </div>
@@ -651,38 +651,38 @@ export default function SiteAPage({ params }: PageProps) {
           summary={
             <div className="w-full max-w-[1200px] mx-auto">
               {/* MOBILE VIEW (< md): 4 Summary Cards -> Opens Modal */}
-              <div className="block md:hidden space-y-3">
-                <div className="grid grid-cols-1 gap-2.5">
+              <div className="block md:hidden">
+                <div className="grid grid-cols-1 gap-1.5 sm:gap-2.5">
                   {/* Card 1: Citizen */}
                   <div
                     role="button"
                     tabIndex={0}
                     onClick={() => setProgramModalItem('citizen')}
                     onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') setProgramModalItem('citizen'); }}
-                    className="group relative bg-[#121212] hover:bg-[#1A1A1A] border border-white/20 hover:border-white p-3.5 flex flex-col justify-between transition-all duration-200 cursor-pointer text-left space-y-2 shadow-md"
+                    className="group relative bg-[#121212] hover:bg-[#1A1A1A] border border-white/20 hover:border-white p-2.5 sm:p-3.5 flex flex-col justify-between transition-all duration-200 cursor-pointer text-left space-y-1 sm:space-y-2 shadow-md"
                   >
-                    <div className="space-y-1">
+                    <div className="space-y-0.5 sm:space-y-1">
                       <div className="flex items-center justify-between">
-                        <span className="font-mono text-badge font-black bg-white text-black px-2 py-0.5">
+                        <span className="font-mono text-badge font-black bg-white text-black px-1.5 py-0.5">
                           01
                         </span>
-                        <span className="font-mono text-caption text-[#8C8C8C] font-semibold">
+                        <span className="font-mono text-[11px] sm:text-caption text-[#8C8C8C] font-semibold">
                           {isKo ? '시민참여' : 'CITIZEN RELAY'}
                         </span>
                       </div>
-                      <h3 className="text-sm font-extrabold text-white leading-snug">
+                      <h3 className="text-[13px] sm:text-sm font-extrabold text-white leading-snug">
                         {isKo ? '도원 릴레이' : 'Dowon Relay'}
-                        <span className="block text-[11px] font-mono text-[#8C8C8C] font-normal mt-0.5">
+                        <span className="block text-[10.5px] sm:text-[11px] font-mono text-[#8C8C8C] font-normal mt-0.5">
                           {isKo ? '워크숍 · 공연 · 교육 · 체험 4종' : 'Workshops, Performances, Education, Experience'}
                         </span>
                       </h3>
-                      <p className="text-body text-[#B9B9B9] font-light leading-relaxed line-clamp-2">
+                      <p className="text-[12px] sm:text-body text-[#B9B9B9] font-light leading-relaxed line-clamp-1 sm:line-clamp-2">
                         {isKo
                           ? '시민 참여형 공공예술 프로그램을 통해 지역의 문화예술 향유 기회를 확대하고 지역 예술가와 소통하는 기반을 마련합니다.'
                           : 'Community-engaged public art programs fostering creative dialogue through workshops, performances, and education.'}
                       </p>
                     </div>
-                    <div className="flex items-center justify-between pt-1.5 border-t border-white/10 text-xs font-mono text-white/50 group-hover:text-white transition-colors">
+                    <div className="flex items-center justify-between pt-1 sm:pt-1.5 border-t border-white/10 text-[11px] sm:text-xs font-mono text-white/50 group-hover:text-white transition-colors">
                       <span>{isKo ? '프로그램 세부내용 보기' : 'VIEW DETAILS'}</span>
                       <ArrowUpRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
                     </div>
@@ -694,30 +694,30 @@ export default function SiteAPage({ params }: PageProps) {
                     tabIndex={0}
                     onClick={() => setProgramModalItem('docent')}
                     onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') setProgramModalItem('docent'); }}
-                    className="group relative bg-[#121212] hover:bg-[#1A1A1A] border border-white/20 hover:border-white p-3.5 flex flex-col justify-between transition-all duration-200 cursor-pointer text-left space-y-2 shadow-md"
+                    className="group relative bg-[#121212] hover:bg-[#1A1A1A] border border-white/20 hover:border-white p-2.5 sm:p-3.5 flex flex-col justify-between transition-all duration-200 cursor-pointer text-left space-y-1 sm:space-y-2 shadow-md"
                   >
-                    <div className="space-y-1">
+                    <div className="space-y-0.5 sm:space-y-1">
                       <div className="flex items-center justify-between">
-                        <span className="font-mono text-badge font-black bg-white text-black px-2 py-0.5">
+                        <span className="font-mono text-badge font-black bg-white text-black px-1.5 py-0.5">
                           02
                         </span>
-                        <span className="font-mono text-caption text-[#8C8C8C] font-semibold">
+                        <span className="font-mono text-[11px] sm:text-caption text-[#8C8C8C] font-semibold">
                           {isKo ? '도슨트 투어' : 'DOCENT TOUR'}
                         </span>
                       </div>
-                      <h3 className="text-sm font-extrabold text-white leading-snug">
+                      <h3 className="text-[13px] sm:text-sm font-extrabold text-white leading-snug">
                         {isKo ? 'APAP8 작품 투어 프로그램' : 'APAP8 Guided Docent Tours'}
-                        <span className="block text-[11px] font-mono text-[#8C8C8C] font-normal mt-0.5">
+                        <span className="block text-[10.5px] sm:text-[11px] font-mono text-[#8C8C8C] font-normal mt-0.5">
                           {isKo ? '정규 도슨트 · 특별전 해설 · 나이트 스페셜 3종' : 'Regular, Special Exhibition & Night Tours'}
                         </span>
                       </h3>
-                      <p className="text-body text-[#B9B9B9] font-light leading-relaxed line-clamp-2">
+                      <p className="text-[12px] sm:text-body text-[#B9B9B9] font-light leading-relaxed line-clamp-1 sm:line-clamp-2">
                         {isKo
                           ? '전문 해설사와 함께 안양예술공원 실내외 전시장을 순회하며 작품 해설을 듣는 3대 테마 투어입니다.'
                           : 'Guided walking tours exploring artworks across Anyang Art Park with professional docents.'}
                       </p>
                     </div>
-                    <div className="flex items-center justify-between pt-1.5 border-t border-white/10 text-xs font-mono text-white/50 group-hover:text-white transition-colors">
+                    <div className="flex items-center justify-between pt-1 sm:pt-1.5 border-t border-white/10 text-[11px] sm:text-xs font-mono text-white/50 group-hover:text-white transition-colors">
                       <span>{isKo ? '3개 투어 일정 보기' : 'VIEW TOURS'}</span>
                       <ArrowUpRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
                     </div>
@@ -729,30 +729,30 @@ export default function SiteAPage({ params }: PageProps) {
                     tabIndex={0}
                     onClick={() => setProgramModalItem('forum')}
                     onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') setProgramModalItem('forum'); }}
-                    className="group relative bg-[#121212] hover:bg-[#1A1A1A] border border-white/20 hover:border-white p-3.5 flex flex-col justify-between transition-all duration-200 cursor-pointer text-left space-y-2 shadow-md"
+                    className="group relative bg-[#121212] hover:bg-[#1A1A1A] border border-white/20 hover:border-white p-2.5 sm:p-3.5 flex flex-col justify-between transition-all duration-200 cursor-pointer text-left space-y-1 sm:space-y-2 shadow-md"
                   >
-                    <div className="space-y-1">
+                    <div className="space-y-0.5 sm:space-y-1">
                       <div className="flex items-center justify-between">
-                        <span className="font-mono text-badge font-black bg-white text-black px-2 py-0.5">
+                        <span className="font-mono text-badge font-black bg-white text-black px-1.5 py-0.5">
                           03
                         </span>
-                        <span className="font-mono text-caption text-[#8C8C8C] font-semibold">
+                        <span className="font-mono text-[11px] sm:text-caption text-[#8C8C8C] font-semibold">
                           {isKo ? '토론회 & 성과공유' : 'FORUM & SYMPOSIUM'}
                         </span>
                       </div>
-                      <h3 className="text-sm font-extrabold text-white leading-snug">
+                      <h3 className="text-[13px] sm:text-sm font-extrabold text-white leading-snug">
                         {isKo ? '공공예술 토론회 | 성과공유회' : 'Public Art Forum & Symposium'}
-                        <span className="block text-[11px] font-mono text-[#8C8C8C] font-normal mt-0.5">
+                        <span className="block text-[10.5px] sm:text-[11px] font-mono text-[#8C8C8C] font-normal mt-0.5">
                           {isKo ? '9/17 미래 담론 · 12/10 성과공유 2개 세션' : '2 Sessions: 9/17 Future Art & 12/10 Outcomes'}
                         </span>
                       </h3>
-                      <p className="text-body text-[#B9B9B9] font-light leading-relaxed line-clamp-2">
+                      <p className="text-[12px] sm:text-body text-[#B9B9B9] font-light leading-relaxed line-clamp-1 sm:line-clamp-2">
                         {isKo
                           ? 'APAP8의 기획 방향과 공공예술의 동시대적 가치를 고찰하고 시민과 함께 안양공공예술프로젝트가 나아갈 미래 방향을 모색하는 담론형성의 장입니다.'
                           : 'Scholarly discussions reflecting on the curatorial direction of APAP8 and exploring future directions of public art together with citizens.'}
                       </p>
                     </div>
-                    <div className="flex items-center justify-between pt-1.5 border-t border-white/10 text-xs font-mono text-white/50 group-hover:text-white transition-colors">
+                    <div className="flex items-center justify-between pt-1 sm:pt-1.5 border-t border-white/10 text-[11px] sm:text-xs font-mono text-white/50 group-hover:text-white transition-colors">
                       <span>{isKo ? '세션 일정 보기' : 'VIEW SESSIONS'}</span>
                       <ArrowUpRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
                     </div>
@@ -764,30 +764,30 @@ export default function SiteAPage({ params }: PageProps) {
                     tabIndex={0}
                     onClick={() => setProgramModalItem('broadcast')}
                     onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') setProgramModalItem('broadcast'); }}
-                    className="group relative bg-[#121212] hover:bg-[#1A1A1A] border border-white/20 hover:border-white p-3.5 flex flex-col justify-between transition-all duration-200 cursor-pointer text-left space-y-2 shadow-md"
+                    className="group relative bg-[#121212] hover:bg-[#1A1A1A] border border-white/20 hover:border-white p-2.5 sm:p-3.5 flex flex-col justify-between transition-all duration-200 cursor-pointer text-left space-y-1 sm:space-y-2 shadow-md"
                   >
-                    <div className="space-y-1">
+                    <div className="space-y-0.5 sm:space-y-1">
                       <div className="flex items-center justify-between">
-                        <span className="font-mono text-badge font-black bg-white text-black px-2 py-0.5">
+                        <span className="font-mono text-badge font-black bg-white text-black px-1.5 py-0.5">
                           04
                         </span>
-                        <span className="font-mono text-caption text-[#8C8C8C] font-semibold">
+                        <span className="font-mono text-[11px] sm:text-caption text-[#8C8C8C] font-semibold">
                           {isKo ? '미디어·방송' : 'MEDIA & BROADCAST'}
                         </span>
                       </div>
-                      <h3 className="text-sm font-extrabold text-white leading-snug">
+                      <h3 className="text-[13px] sm:text-sm font-extrabold text-white leading-snug">
                         {isKo ? 'KBS1 다큐멘터리 방송' : 'KBS1 Nationwide Broadcast'}
-                        <span className="block text-[11px] font-mono text-[#8C8C8C] font-normal mt-0.5">
+                        <span className="block text-[10.5px] sm:text-[11px] font-mono text-[#8C8C8C] font-normal mt-0.5">
                           {isKo ? '기획 〈예술로 길을 열다〉' : 'Special: Opening Paths with Art'}
                         </span>
                       </h3>
-                      <p className="text-body text-[#B9B9B9] font-light leading-relaxed line-clamp-2">
+                      <p className="text-[12px] sm:text-body text-[#B9B9B9] font-light leading-relaxed line-clamp-1 sm:line-clamp-2">
                         {isKo
                           ? 'KBS 네트워크 기획 〈예술로 길을 열다〉 — APAP8을 중심으로 지역이 예술로 가치를 발현하는 현장을 취재하고 전국 방영된 다큐멘터리입니다.'
                           : 'KBS Special documentary capturing how APAP8 revitalizes community through public art.'}
                       </p>
                     </div>
-                    <div className="flex items-center justify-between pt-1.5 border-t border-white/10 text-xs font-mono text-white/50 group-hover:text-white transition-colors">
+                    <div className="flex items-center justify-between pt-1 sm:pt-1.5 border-t border-white/10 text-[11px] sm:text-xs font-mono text-white/50 group-hover:text-white transition-colors">
                       <span>{isKo ? '방송 정보 & 다시보기' : 'WATCH ON YOUTUBE'}</span>
                       <ArrowUpRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
                     </div>
@@ -1167,7 +1167,7 @@ export default function SiteAPage({ params }: PageProps) {
                             setSelectedCommunityItem(item);
                           }
                         }}
-                        className="py-3 px-2 hover:bg-white/[0.04] transition-colors space-y-1 cursor-pointer group"
+                        className="py-2 sm:py-3 px-2 hover:bg-white/[0.04] transition-colors space-y-0.5 sm:space-y-1 cursor-pointer group"
                       >
                         <div className="flex items-center justify-between gap-4">
                           <div className="flex items-center gap-2">
@@ -1201,7 +1201,7 @@ export default function SiteAPage({ params }: PageProps) {
                         <h3 className="text-sm font-bold text-white leading-snug group-hover:text-white line-clamp-1">
                           {item.title}
                         </h3>
-                        <p className="text-xs text-[#B9B9B9] line-clamp-2 leading-relaxed font-light min-h-[2.25rem]">
+                        <p className="text-xs text-[#B9B9B9] line-clamp-1 sm:line-clamp-2 leading-relaxed font-light">
                           {item.desc}
                         </p>
                       </div>
@@ -1421,8 +1421,8 @@ export default function SiteAPage({ params }: PageProps) {
                   </div>
 
                   {/* Mobile Card 2: 4 Venue Details */}
-                  <div className="border border-white/20 p-3.5 space-y-2 bg-white/[0.02] stagger-item">
-                    <div className="flex items-center justify-between pb-1.5 border-b border-white/10">
+                  <div className="border border-white/20 p-2.5 sm:p-3.5 space-y-1.5 sm:space-y-2 bg-white/[0.02] stagger-item">
+                    <div className="flex items-center justify-between pb-1 border-b border-white/10">
                       <div className="flex items-center gap-1.5 text-xs font-mono font-bold text-[#8C8C8C] uppercase tracking-wider">
                         <Layers className="w-3.5 h-3.5 text-white flex-shrink-0" />
                         <span>{isKo ? '4대 전시장 구역 안내' : 'VENUE DETAILS'}</span>
@@ -1430,29 +1430,29 @@ export default function SiteAPage({ params }: PageProps) {
                       <span className="font-mono text-[10px] text-white/60">4개 구역</span>
                     </div>
 
-                    <div className="divide-y divide-white/5 text-xs space-y-1.5 pt-1">
+                    <div className="divide-y divide-white/5 text-xs space-y-1 pt-0.5">
+                      <div className="pt-0.5">
+                        <strong className="text-white block font-medium text-[11.5px] sm:text-xs">1. 아이 파빌리온 (안양파빌리온)</strong>
+                        <span className="text-[#B9B9B9] block text-[10.5px] sm:text-[11px]">화–금 10:00–18:00 / 토·일 10:00–19:00 (월 휴관)</span>
+                      </div>
                       <div className="pt-1">
-                        <strong className="text-white block font-medium">1. 아이 파빌리온 (안양파빌리온)</strong>
-                        <span className="text-[#B9B9B9] block text-[11px]">화–금 10:00–18:00 / 토·일 10:00–19:00 (월 휴관)</span>
+                        <strong className="text-white block font-medium text-[11.5px] sm:text-xs">2. 밤의 도원경 (파빌리온 앞 광장)</strong>
+                        <span className="text-[#B9B9B9] block text-[10.5px] sm:text-[11px]">화–일 19:00–22:00 (월 휴무) / 빛의 폭포(정시 15분), 오색운(15분~정시)</span>
                       </div>
-                      <div className="pt-1.5">
-                        <strong className="text-white block font-medium">2. 밤의 도원경 (파빌리온 앞 광장)</strong>
-                        <span className="text-[#B9B9B9] block text-[11px]">화–일 19:00–22:00 (월 휴무) / 빛의 폭포(정시 15분), 오색운(15분~정시)</span>
+                      <div className="pt-1">
+                        <strong className="text-white block font-medium text-[11.5px] sm:text-xs">3. 오픈 그라운드 (야외 공원 및 광장)</strong>
+                        <span className="text-[#B9B9B9] block text-[10.5px] sm:text-[11px]">24시간 상시개방</span>
                       </div>
-                      <div className="pt-1.5">
-                        <strong className="text-white block font-medium">3. 오픈 그라운드 (야외 공원 및 광장)</strong>
-                        <span className="text-[#B9B9B9] block text-[11px]">24시간 상시개방</span>
-                      </div>
-                      <div className="pt-1.5">
-                        <strong className="text-white block font-medium">{isKo ? '4. 특별전: 우리가 꿈꾸는 도원' : '4. Special Exhibition: Dreaming Our Paradise'}</strong>
-                        <span className="text-[#B9B9B9] block text-[11px]">아르테자이 상가 1층, 오픈 스쿨 (화–일 10:00–18:00, 월 휴관)</span>
+                      <div className="pt-1">
+                        <strong className="text-white block font-medium text-[11.5px] sm:text-xs">{isKo ? '4. 특별전: 우리가 꿈꾸는 도원' : '4. Special Exhibition: Dreaming Our Paradise'}</strong>
+                        <span className="text-[#B9B9B9] block text-[10.5px] sm:text-[11px]">아르테자이 상가 1층, 오픈 스쿨 (화–일 10:00–18:00, 월 휴관)</span>
                       </div>
                     </div>
                   </div>
 
                   {/* Mobile Card 3: Location & Access */}
-                  <div className="border border-white/20 p-3.5 space-y-2.5 bg-white/[0.02] flex flex-col justify-between stagger-item">
-                    <div className="flex items-center justify-between pb-2 border-b border-white/10">
+                  <div className="border border-white/20 p-2.5 sm:p-3.5 space-y-1.5 sm:space-y-2 bg-white/[0.02] flex flex-col justify-between stagger-item">
+                    <div className="flex items-center justify-between pb-1.5 border-b border-white/10">
                       <div className="flex items-center gap-2 text-xs font-mono font-bold text-[#8C8C8C] uppercase tracking-wider">
                         <MapPin className="w-4 h-4 text-white flex-shrink-0" />
                         <span>{isKo ? '오시는 길' : 'LOCATION'}</span>
@@ -1474,7 +1474,7 @@ export default function SiteAPage({ params }: PageProps) {
                       </div>
                     </div>
 
-                    <div className="space-y-1.5 text-xs text-[#D4D4D4] font-light">
+                    <div className="space-y-1 text-xs text-[#D4D4D4] font-light">
                       <p>경기도 안양시 만안구 예술공원로 180</p>
                       <p className="text-[11px] text-[#8C8C8C]">관악역 2번 출구(마을 6-2번) / 안양역 1번 출구(버스 2번)</p>
                     </div>
@@ -1482,7 +1482,7 @@ export default function SiteAPage({ params }: PageProps) {
                 </div>
 
                 {/* Mobile Streamlined Historical Archive Banner */}
-                <div className="border border-white/30 px-3.5 py-2.5 flex flex-row items-center justify-between gap-3 bg-white/[0.04] stagger-item">
+                <div className="border border-white/30 px-3 py-2 sm:px-3.5 sm:py-2.5 flex flex-row items-center justify-between gap-3 bg-white/[0.04] stagger-item">
                   <div className="space-y-0.5 min-w-0">
                     <span className="font-mono text-[9.5px] font-bold text-[#8C8C8C] uppercase tracking-widest block">
                       APAP ARCHIVE
@@ -1698,7 +1698,7 @@ export default function SiteAPage({ params }: PageProps) {
         />
 
         {/* Footer */}
-        <div className="md:snap-start">
+        <div className="snap-start">
           <Footer locale={validLocale} />
         </div>
       </main>

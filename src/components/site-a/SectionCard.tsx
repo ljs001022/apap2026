@@ -70,12 +70,12 @@ export default function SectionCard({
     <section
       ref={sectionRef}
       id={id}
-      className={`relative min-h-[100dvh] md:h-[100dvh] flex flex-col pt-16 border-b border-white md:snap-start overflow-visible md:overflow-hidden bg-[#0A0A0A] ${
+      className={`relative h-[100dvh] flex flex-col pt-14 sm:pt-16 border-b border-white snap-start overflow-hidden bg-[#0A0A0A] ${
         isActive ? 'section-active' : ''
       }`}
     >
       {/* Section Header Row - Animated Title */}
-      <div className="relative z-10 flex justify-between items-center px-4 py-2 sm:px-10 sm:py-3 lg:px-16 border-b border-white flex-shrink-0 bg-[#0A0A0A]/70 backdrop-blur-sm">
+      <div className="relative z-10 flex justify-between items-center px-4 py-1.5 sm:px-10 sm:py-3 lg:px-16 border-b border-white flex-shrink-0 bg-[#0A0A0A]/70 backdrop-blur-sm">
         <div
           className={`flex items-baseline gap-2 sm:gap-3 transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] ${
             isActive ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-6'
@@ -92,13 +92,13 @@ export default function SectionCard({
 
       {/* Summary Content with Staggered Container */}
       <div
-        className="relative z-10 flex-1 flex flex-col px-4 sm:px-10 lg:px-16 pt-2.5 pb-6 sm:pt-4 sm:pb-8 overflow-visible md:overflow-y-auto md:overflow-x-hidden md:hide-scrollbar section-stagger-container"
+        className="relative z-10 flex-1 flex flex-col px-3.5 sm:px-10 lg:px-16 pt-1.5 pb-3 sm:pt-4 sm:pb-8 overflow-y-auto overflow-x-hidden hide-scrollbar section-stagger-container overscroll-y-contain"
       >
         <div
           className={`w-full flex flex-col ${
             contentAlign === 'center'
               ? 'justify-center my-auto'
-              : 'justify-start mt-0 mb-auto'
+              : 'justify-start my-auto'
           }`}
         >
           {summary}

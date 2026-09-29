@@ -61,7 +61,7 @@ function PaginatedArtistCarousel({ artists, theme, locale, onArtistClick }: { ar
     <div className="space-y-2 sm:space-y-3">
       <div 
         ref={scrollRef}
-        className="flex overflow-x-auto snap-x snap-mandatory hide-scrollbar border-y border-[#2E2E2E]"
+        className="flex overflow-x-auto snap-x snap-mandatory hide-scrollbar border-y border-[#2E2E2E] touch-pan-x overscroll-x-contain"
         onScroll={handleScroll}
       >
         {pages.map((page, pageIdx) => (
@@ -187,7 +187,7 @@ export default function ArtistGrid({
   return (
     <div className={`space-y-2 sm:space-y-3 ${className}`}>
       {/* ─── Category / Venue Tabs ─── */}
-      <div className="sticky top-0 z-20 bg-[#0A0A0A] flex items-center gap-2 overflow-x-auto pb-2.5 pt-1 scroll-smooth hide-scrollbar select-none border-b border-white/10 stagger-item">
+      <div className="sticky top-0 z-20 bg-[#0A0A0A] flex items-center gap-2 overflow-x-auto pb-2.5 pt-1 scroll-smooth hide-scrollbar select-none border-b border-white/10 stagger-item touch-pan-x overscroll-x-contain">
 
         {categories.map((cat) => (
           <button

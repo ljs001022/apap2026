@@ -101,7 +101,7 @@ export default function ArtistCard({
       className={`group relative flex flex-col h-full border overflow-hidden cursor-pointer transition-all duration-300 shadow-md ${themeStyles.card} ${className}`}
     >
       {/* Visual / Image area */}
-      <div className="relative aspect-square w-full overflow-hidden bg-gradient-to-br from-zinc-900 to-black flex items-center justify-center border-b border-white/10">
+      <div className="relative aspect-[4/3] xs:aspect-square w-full overflow-hidden bg-gradient-to-br from-zinc-900 to-black flex items-center justify-center border-b border-white/10">
         {hasImage ? (
           <img
             src={displayImage!}
@@ -111,13 +111,13 @@ export default function ArtistCard({
             className="w-full h-full object-cover object-top grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-500 ease-out"
           />
         ) : (
-          <div className="w-full h-full flex flex-col items-center justify-center p-6 text-center select-none bg-gradient-to-b from-white/[0.04] to-transparent">
+          <div className="w-full h-full flex flex-col items-center justify-center p-4 sm:p-6 text-center select-none bg-gradient-to-b from-white/[0.04] to-transparent">
             <div
-              className={`w-16 h-16 rounded-full border border-white/20 ${themeStyles.monogramBorder} flex items-center justify-center font-mono font-black text-xl text-white/70 ${themeStyles.monogramText} transition-colors bg-black/40 shadow-inner`}
+              className={`w-12 h-12 sm:w-16 sm:h-16 rounded-full border border-white/20 ${themeStyles.monogramBorder} flex items-center justify-center font-mono font-black text-lg sm:text-xl text-white/70 ${themeStyles.monogramText} transition-colors bg-black/40 shadow-inner`}
             >
               {initials}
             </div>
-            <span className="font-mono text-badge tracking-widest text-white/30 group-hover:text-white/50 uppercase mt-3">
+            <span className="font-mono text-badge tracking-widest text-white/30 group-hover:text-white/50 uppercase mt-2 sm:mt-3">
               APAP8 ARTIST
             </span>
           </div>
@@ -126,20 +126,20 @@ export default function ArtistCard({
 
         {/* Works count badge */}
         {worksCount > 0 && (
-          <span className="absolute bottom-3 right-3 flex items-center gap-1 font-mono text-badge font-medium text-white/80 bg-black/70 backdrop-blur-md border border-white/10 px-2 py-0.5 rounded">
-            <Layers className={`w-3 h-3 ${themeStyles.icon}`} />
+          <span className="absolute bottom-2 right-2 sm:bottom-3 sm:right-3 flex items-center gap-1 font-mono text-badge font-medium text-white/80 bg-black/70 backdrop-blur-md border border-white/10 px-1.5 py-0.5 sm:px-2 rounded">
+            <Layers className={`w-2.5 h-2.5 sm:w-3 sm:h-3 ${themeStyles.icon}`} />
             <span>{worksLabel}</span>
           </span>
         )}
       </div>
 
       {/* Info Area */}
-      <div className="p-2.5 sm:p-3.5 flex flex-col justify-between min-h-[72px] sm:min-h-[85px] flex-1">
-        <div className="flex items-start justify-between gap-2">
-          <h3 className={`text-[16px] font-bold text-white transition-colors leading-snug break-keep ${themeStyles.name}`}>
+      <div className="p-2 sm:p-2.5 lg:p-3.5 flex flex-col justify-between min-h-[58px] sm:min-h-[72px] lg:min-h-[85px] flex-1">
+        <div className="flex items-start justify-between gap-1.5 sm:gap-2">
+          <h3 className={`text-[14px] sm:text-[16px] font-bold text-white transition-colors leading-snug break-keep ${themeStyles.name}`}>
             {displayName}
           </h3>
-          <ArrowUpRight className={`w-4 h-4 transition-transform flex-shrink-0 mt-0.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 ${themeStyles.arrow}`} />
+          <ArrowUpRight className={`w-3.5 h-3.5 sm:w-4 sm:h-4 transition-transform flex-shrink-0 mt-0.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 ${themeStyles.arrow}`} />
         </div>
 
         {/* Metadata bottom row */}
