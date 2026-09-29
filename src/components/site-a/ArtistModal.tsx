@@ -5,7 +5,7 @@ import { createPortal } from 'react-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Artist, Work } from '@/types/artist';
 import { getArtistInitials } from '@/lib/artists';
-import { X, MapPin, Calendar, Layers, ChevronLeft, ChevronRight } from 'lucide-react';
+import { X, MapPin, Calendar, Layers, ChevronLeft, ChevronRight, ZoomIn, ZoomOut, RotateCcw } from 'lucide-react';
 import {
   getLocalizedArtistName,
   getLocalizedVenueName,
@@ -68,6 +68,11 @@ export default function ArtistModal({
   const [currentWorkIndex, setCurrentWorkIndex] = useState(0);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [zoomedImage, setZoomedImage] = useState<string | null>(null);
+  const [zoomScale, setZoomScale] = useState(1);
+  const [panOffset, setPanOffset] = useState({ x: 0, y: 0 });
+  const [isDragging, setIsDragging] = useState(false);
+  const dragStartRef = React.useRef({ x: 0, y: 0 });
+  const zoomContainerRef = React.useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     setMounted(true);
@@ -94,12 +99,63 @@ export default function ArtistModal({
     };
   }, [artist, zoomedImage, onClose]);
 
-  // Reset indices when artist changes
+  // Reset indices and zoom when artist or image changes
   useEffect(() => {
     setCurrentWorkIndex(0);
     setCurrentImageIndex(0);
     setZoomedImage(null);
+    setZoomScale(1);
+    setPanOffset({ x: 0, y: 0 });
   }, [artist]);
+
+  // Handle wheel zoom inside fullscreen zoom overlay only
+  useEffect(() => {
+    if (!zoomedImage) {
+      setZoomScale(1);
+      setPanOffset({ x: 0, y: 0 });
+      return;
+    }
+
+    const container = zoomContainerRef.current;
+    if (!container) return;
+
+    const handleWheel = (e: WheelEvent) => {
+      e.preventDefault();
+      e.stopPropagation();
+      setZoomScale((prev) => {
+        const delta = e.deltaY < 0 ? 0.25 : -0.25;
+        const next = Math.min(4, Math.max(1, +(prev + delta).toFixed(2)));
+        if (next === 1) setPanOffset({ x: 0, y: 0 });
+        return next;
+      });
+    };
+
+    container.addEventListener('wheel', handleWheel, { passive: false });
+    return () => {
+      container.removeEventListener('wheel', handleWheel);
+    };
+  }, [zoomedImage]);
+
+  const handleMouseDown = (e: React.MouseEvent) => {
+    if (zoomScale <= 1) return;
+    setIsDragging(true);
+    dragStartRef.current = {
+      x: e.clientX - panOffset.x,
+      y: e.clientY - panOffset.y,
+    };
+  };
+
+  const handleMouseMove = (e: React.MouseEvent) => {
+    if (!isDragging || zoomScale <= 1) return;
+    setPanOffset({
+      x: e.clientX - dragStartRef.current.x,
+      y: e.clientY - dragStartRef.current.y,
+    });
+  };
+
+  const handleMouseUp = () => {
+    setIsDragging(false);
+  };
 
   if (!artist || !mounted) return null;
 
@@ -294,9 +350,9 @@ export default function ArtistModal({
                   <div className="lg:col-span-6 flex flex-col justify-center min-w-0 w-full max-w-full">
                     {currentWorkImage ? (
                       <div 
-                        className="relative aspect-[4/3] max-h-[360px] sm:max-h-[400px] w-full max-w-full overflow-hidden bg-black border border-white/10 flex items-center justify-center cursor-pointer select-none mx-auto"
+                        className="relative aspect-[4/3] max-h-[340px] sm:max-h-[380px] w-full max-w-lg overflow-hidden bg-black border border-white/10 hover:border-white/30 transition-colors flex items-center justify-center cursor-pointer select-none mx-auto"
                         onClick={() => setZoomedImage(currentWorkImage)}
-                        title={isKo ? '클릭하여 이미지 크게 보기' : 'Click to view full image'}
+                        title={isKo ? '클릭하여 이미지 전체보기 (확대/축소 지원)' : 'Click to view full image (supports zoom/pan)'}
                       >
                         <img
                           src={currentWorkImage}
@@ -307,7 +363,7 @@ export default function ArtistModal({
                         />
                       </div>
                     ) : (
-                      <div className="aspect-[4/3] max-h-[360px] sm:max-h-[400px] w-full max-w-full bg-zinc-950 border border-white/10 flex items-center justify-center text-caption font-mono text-white/40 mx-auto">
+                      <div className="aspect-[4/3] max-h-[340px] sm:max-h-[380px] w-full max-w-lg bg-zinc-950 border border-white/10 flex items-center justify-center text-caption font-mono text-white/40 mx-auto">
                         NO WORK IMAGE
                       </div>
                     )}
@@ -390,37 +446,116 @@ export default function ArtistModal({
       </div>
     </AnimatePresence>
 
-    {/* Fullscreen Zoom Overlay */}
+    {/* Fullscreen Zoom Overlay - Supports wheel zoom and pan */}
     <AnimatePresence>
       {zoomedImage && (
         <div 
-          className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/95 backdrop-blur-xl cursor-zoom-out"
-          onClick={() => setZoomedImage(null)}
+          ref={zoomContainerRef}
+          className={`fixed inset-0 z-[100] flex flex-col items-center justify-center p-4 bg-black/95 backdrop-blur-xl select-none overscroll-none ${
+            zoomScale > 1 ? (isDragging ? 'cursor-grabbing' : 'cursor-grab') : 'cursor-default'
+          }`}
+          onClick={(e) => {
+            if (e.target === e.currentTarget && zoomScale === 1) {
+              setZoomedImage(null);
+            }
+          }}
+          onMouseDown={handleMouseDown}
+          onMouseMove={handleMouseMove}
+          onMouseUp={handleMouseUp}
         >
-          <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 0.95 }}
-            transition={{ duration: 0.2 }}
-            className="relative max-w-[95vw] max-h-[95vh] flex items-center justify-center"
+          {/* Top Bar / Controls */}
+          <div 
+            className="absolute top-4 sm:top-6 left-1/2 -translate-x-1/2 z-30 flex items-center gap-2 bg-black/85 backdrop-blur-md border border-white/20 px-3 py-1.5 rounded-full shadow-2xl"
+            onClick={(e) => e.stopPropagation()}
           >
-            <img
-              src={zoomedImage}
-              alt="Zoomed artwork"
-              decoding="async"
-              className="max-w-full max-h-full object-contain"
-            />
             <button
-              onClick={(e) => {
-                e.stopPropagation();
-                setZoomedImage(null);
+              type="button"
+              onClick={() => {
+                setZoomScale((prev) => {
+                  const next = Math.max(1, +(prev - 0.25).toFixed(2));
+                  if (next === 1) setPanOffset({ x: 0, y: 0 });
+                  return next;
+                });
               }}
-              className="absolute -top-4 -right-4 sm:top-0 sm:-right-12 w-10 h-10 rounded-full bg-white/10 hover:bg-white text-white hover:text-black flex items-center justify-center transition-colors border border-white/20"
-              aria-label="Close zoom"
+              disabled={zoomScale <= 1}
+              className="w-8 h-8 rounded-full flex items-center justify-center text-white/80 hover:text-white disabled:opacity-30 disabled:hover:text-white/80 transition-colors cursor-pointer disabled:cursor-not-allowed"
+              title={isKo ? '축소' : 'Zoom Out'}
             >
-              <X className="w-5 h-5" />
+              <ZoomOut className="w-4 h-4" />
             </button>
-          </motion.div>
+            <span className="font-mono text-caption text-white font-bold min-w-[50px] text-center select-none">
+              {Math.round(zoomScale * 100)}%
+            </span>
+            <button
+              type="button"
+              onClick={() => setZoomScale((prev) => Math.min(4, +(prev + 0.25).toFixed(2)))}
+              disabled={zoomScale >= 4}
+              className="w-8 h-8 rounded-full flex items-center justify-center text-white/80 hover:text-white disabled:opacity-30 disabled:hover:text-white/80 transition-colors cursor-pointer disabled:cursor-not-allowed"
+              title={isKo ? '확대' : 'Zoom In'}
+            >
+              <ZoomIn className="w-4 h-4" />
+            </button>
+            <div className="w-[1px] h-4 bg-white/20 mx-1" />
+            <button
+              type="button"
+              onClick={() => {
+                setZoomScale(1);
+                setPanOffset({ x: 0, y: 0 });
+              }}
+              disabled={zoomScale === 1 && panOffset.x === 0 && panOffset.y === 0}
+              className="w-8 h-8 rounded-full flex items-center justify-center text-white/80 hover:text-white disabled:opacity-30 disabled:hover:text-white/80 transition-colors cursor-pointer disabled:cursor-not-allowed"
+              title={isKo ? '원래 크기로 리셋' : 'Reset'}
+            >
+              <RotateCcw className="w-3.5 h-3.5" />
+            </button>
+          </div>
+
+          {/* Close button in top-right */}
+          <button
+            onClick={() => setZoomedImage(null)}
+            className="absolute top-4 right-4 sm:top-6 sm:right-6 z-30 w-10 h-10 rounded-full bg-white/10 hover:bg-white text-white hover:text-black flex items-center justify-center transition-colors border border-white/20 cursor-pointer shadow-lg"
+            aria-label={isKo ? '닫기' : 'Close'}
+            title={isKo ? '닫기 (ESC)' : 'Close (ESC)'}
+          >
+            <X className="w-5 h-5" />
+          </button>
+
+          {/* Image Display Area */}
+          <div 
+            className="relative w-full h-full flex items-center justify-center overflow-hidden"
+            onDoubleClick={() => {
+              if (zoomScale > 1) {
+                setZoomScale(1);
+                setPanOffset({ x: 0, y: 0 });
+              } else {
+                setZoomScale(2);
+              }
+            }}
+          >
+            <div
+              style={{
+                transform: `translate(${panOffset.x}px, ${panOffset.y}px) scale(${zoomScale})`,
+                transition: isDragging ? 'none' : 'transform 0.15s ease-out',
+                transformOrigin: 'center center',
+              }}
+              className="max-w-[90vw] max-h-[82vh] flex items-center justify-center select-none"
+            >
+              <img
+                src={zoomedImage}
+                alt="Zoomed artwork"
+                draggable={false}
+                decoding="async"
+                className="max-w-full max-h-full object-contain pointer-events-none select-none shadow-2xl"
+              />
+            </div>
+          </div>
+
+          {/* Bottom Guide Hint */}
+          <div className="absolute bottom-4 sm:bottom-6 left-1/2 -translate-x-1/2 z-20 pointer-events-none text-center">
+            <span className="font-mono text-caption text-white/60 bg-black/70 px-3 py-1 rounded-full border border-white/10">
+              {isKo ? '마우스 휠로 확대/축소 · 드래그하여 이동 · 더블클릭 초기화' : 'Scroll wheel to zoom · Drag to pan · Double click to reset'}
+            </span>
+          </div>
         </div>
       )}
     </AnimatePresence>
