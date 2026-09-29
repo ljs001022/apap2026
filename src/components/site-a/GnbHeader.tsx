@@ -148,7 +148,7 @@ export default function GnbHeader({ locale }: GnbHeaderProps) {
               제8회 안양공공예술프로젝트
               <br />
               <span className="font-mono text-badge sm:text-caption text-[#8C8C8C]">
-                The 8th Anyang Public Art Project
+                The 8<sup className="lowercase text-[9px] sm:text-[10px]">th</sup> ANYANG PUBLIC ART PROJECT
               </span>
             </span>
           </Link>
@@ -165,7 +165,7 @@ export default function GnbHeader({ locale }: GnbHeaderProps) {
                     active ? 'text-white' : 'text-[#8C8C8C] hover:text-white'
                   }`}
                 >
-                  <span>{item.labelEn}</span>
+                  <span>{isKo ? item.labelKo : item.labelEn}</span>
                   <span
                     className={`absolute -bottom-0.5 left-0 right-0 h-[1.5px] bg-white transition-all duration-200 origin-left ${
                       active ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'

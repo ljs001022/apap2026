@@ -58,14 +58,7 @@ export default function ExhibitionPage({ params }: PageProps) {
             <h1 className="text-4xl sm:text-6xl font-black tracking-tight mt-2 text-white">
               {isKo ? '전시' : 'EXHIBITION'}
             </h1>
-
           </div>
-          <span
-            className="font-mono font-black text-5xl sm:text-7xl text-transparent select-none"
-            style={{ WebkitTextStroke: '1.5px rgba(255,255,255,0.2)' }}
-          >
-            02
-          </span>
         </div>
 
         {/* Integrated Artists Grid */}

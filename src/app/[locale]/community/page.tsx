@@ -51,12 +51,6 @@ export default function CommunityPage({ params }: PageProps) {
               {isKo ? '커뮤니티' : 'COMMUNITY'}
             </h1>
           </div>
-          <span
-            className="font-mono font-black text-5xl sm:text-7xl text-transparent select-none"
-            style={{ WebkitTextStroke: '1.5px rgba(255,255,255,0.2)' }}
-          >
-            04
-          </span>
         </div>
 
         {/* Filter Tabs */}

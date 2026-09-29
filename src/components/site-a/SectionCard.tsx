@@ -70,11 +70,11 @@ export default function SectionCard({
     <section
       ref={sectionRef}
       id={id}
-      className={`relative h-[100dvh] flex flex-col pt-16 border-b border-white snap-start overflow-hidden bg-[#0A0A0A] ${
+      className={`relative min-h-[100dvh] flex flex-col pt-16 border-b border-white bg-[#0A0A0A] ${
         isActive ? 'section-active' : ''
       }`}
     >
-      {/* Section Header Row - Animated Title & Pop Number */}
+      {/* Section Header Row - Animated Title */}
       <div className="relative z-10 flex justify-between items-center px-4 py-2 sm:px-10 sm:py-3 lg:px-16 border-b border-white flex-shrink-0 bg-[#0A0A0A]/70 backdrop-blur-sm">
         <div
           className={`flex items-baseline gap-2 sm:gap-3 transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] ${
@@ -88,22 +88,11 @@ export default function SectionCard({
             {labelEn} — {subtitle}
           </span>
         </div>
-
-        {/* Section number with pop bounce effect */}
-        <span
-          className={`font-mono font-black text-title sm:text-5xl select-none animate-glitch transition-all duration-700 delay-75 ease-[cubic-bezier(0.34,1.56,0.64,1)] ${
-            isActive ? 'opacity-100 scale-100' : 'opacity-0 scale-75'
-          }`}
-          style={{ WebkitTextStroke: '1.5px rgba(255,255,255,0.22)' }}
-          aria-hidden
-        >
-          {index}
-        </span>
       </div>
 
       {/* Summary Content with Staggered Container */}
       <div
-        className="relative z-10 flex-1 flex flex-col px-4 sm:px-10 lg:px-16 pt-2.5 pb-6 sm:pt-4 sm:pb-8 overflow-y-auto overflow-x-hidden hide-scrollbar section-stagger-container"
+        className="relative z-10 flex-1 flex flex-col px-4 sm:px-10 lg:px-16 pt-2.5 pb-6 sm:pt-4 sm:pb-8 section-stagger-container"
       >
         <div
           className={`w-full flex flex-col ${

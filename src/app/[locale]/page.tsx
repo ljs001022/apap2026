@@ -45,8 +45,8 @@ export default function SiteAPage({ params }: PageProps) {
   const validLocale: 'ko' | 'en' = locale === 'en' ? 'en' : 'ko';
   const isKo = validLocale === 'ko';
 
-  // YouTube Promo Video ID (공식 홍보영상 등록 시 YouTube ID 입력: 예 'dQw4w9WgXcQ')
-  const PROMO_YOUTUBE_ID = '';
+  // YouTube Promo Video ID (공식 홍보영상 등록: https://youtu.be/G5wZfkKGf-Y)
+  const PROMO_YOUTUBE_ID = 'G5wZfkKGf-Y';
 
   // Mobile modal states
   const [aboutModalItem, setAboutModalItem] = useState<'overview' | 'theme' | 'credits' | 'promo' | null>(null);
@@ -94,12 +94,12 @@ export default function SiteAPage({ params }: PageProps) {
     <div className="bg-[#0A0A0A] text-white font-sans antialiased">
       <GnbHeader locale={validLocale} />
 
-      {/* Main Container: 100dvh + 100vh fallback, vertical scroll snapping */}
-      <main className="h-[100dvh] overflow-y-auto overflow-x-hidden scroll-smooth snap-y snap-mandatory hide-scrollbar">
+      {/* Main Container: Natural smooth vertical scrolling */}
+      <main className="h-[100dvh] overflow-y-auto overflow-x-hidden scroll-smooth hide-scrollbar">
         {/* ── Section 0: Hero ── */}
         <section
           id="hero"
-          className="relative h-[100dvh] snap-start flex flex-col bg-black border-b border-white justify-between overflow-hidden"
+          className="relative min-h-[100dvh] flex flex-col bg-black border-b border-white justify-between overflow-hidden"
         >
           {/* Top spacer for fixed header */}
           <div className="h-16 sm:h-20 flex-shrink-0" />
@@ -1683,7 +1683,7 @@ export default function SiteAPage({ params }: PageProps) {
         />
 
         {/* Footer */}
-        <div className="snap-start">
+        <div>
           <Footer locale={validLocale} />
         </div>
       </main>

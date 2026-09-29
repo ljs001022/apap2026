@@ -37,18 +37,12 @@ export default function AboutPage({ params }: PageProps) {
         <div className="border-b border-white pb-6 mb-12 flex justify-between items-baseline">
           <div>
             <span className="font-mono text-xs font-bold text-[#8C8C8C] tracking-widest uppercase">
-              {isKo ? '제8회 안양공공예술프로젝트' : 'THE 8TH ANYANG PUBLIC ART PROJECT'}
+              {isKo ? '제8회 안양공공예술프로젝트' : <>The 8<sup className="lowercase">th</sup> ANYANG PUBLIC ART PROJECT</>}
             </span>
             <h1 className="text-4xl sm:text-6xl font-black tracking-tight mt-2 text-white">
               {isKo ? '소개' : 'ABOUT'}
             </h1>
           </div>
-          <span
-            className="font-mono font-black text-5xl sm:text-7xl text-transparent select-none"
-            style={{ WebkitTextStroke: '1.5px rgba(255,255,255,0.2)' }}
-          >
-            01
-          </span>
         </div>
 
         {/* 3 Main Blocks: Overview, Theme, Stats & Outcomes */}
@@ -268,23 +262,14 @@ export default function AboutPage({ params }: PageProps) {
             </div>
 
             <div className="border border-white/30 bg-black p-4 sm:p-6 space-y-4">
-              <div className="relative w-full aspect-video border border-dashed border-white/30 bg-[#0C0C0C] flex flex-col items-center justify-center p-6 text-center group overflow-hidden">
-                <div className="absolute inset-0 opacity-15 bg-[radial-gradient(#fff_1px,transparent_1px)] [background-size:16px_16px] pointer-events-none" />
-                <div className="relative z-10 mb-4 inline-flex items-center gap-2 border border-white/40 bg-black/80 px-3 py-1 font-mono text-[10px] text-white">
-                  <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-                  <span>YOUTUBE EMBED READY</span>
-                </div>
-                <div className="relative z-10 w-16 h-16 sm:w-20 sm:h-20 rounded-full border-2 border-white/60 bg-white/10 flex items-center justify-center mb-4 shadow-[0_0_20px_rgba(255,255,255,0.1)]">
-                  <Video className="w-8 h-8 sm:w-10 sm:h-10 text-white ml-0.5" />
-                </div>
-                <h4 className="relative z-10 text-base sm:text-lg font-bold text-white mb-1">
-                  {isKo ? 'APAP8 공식 홍보영상이 곧 공개됩니다' : 'APAP8 Official Promo Video Coming Soon'}
-                </h4>
-                <p className="relative z-10 text-xs text-[#8C8C8C] max-w-md font-light leading-relaxed">
-                  {isKo
-                    ? '유튜브 영상 등록 준비가 완료되었습니다. 영상 공개 시 본 화면에서 고화질로 바로 시청하실 수 있습니다.'
-                    : 'Ready for YouTube integration. The video player will stream directly here once published.'}
-                </p>
+              <div className="relative w-full aspect-video border border-white/20 bg-black overflow-hidden shadow-2xl">
+                <iframe
+                  src="https://www.youtube.com/embed/G5wZfkKGf-Y?rel=0&modestbranding=1"
+                  title={isKo ? 'APAP8 공식 홍보영상' : 'APAP8 Official Promo Video'}
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  allowFullScreen
+                  className="w-full h-full border-0"
+                />
               </div>
 
               <div className="bg-white/[0.02] border border-white/10 p-4 grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs font-mono">

@@ -36,18 +36,12 @@ export default function ProgramPage({ params }: PageProps) {
         <div className="border-b border-white pb-6 mb-12 flex justify-between items-baseline">
           <div>
             <span className="font-mono text-xs font-bold text-[#8C8C8C] tracking-widest uppercase">
-              {isKo ? '제8회 안양공공예술프로젝트' : 'THE 8TH ANYANG PUBLIC ART PROJECT'}
+              {isKo ? '제8회 안양공공예술프로젝트' : <>The 8<sup className="lowercase">th</sup> ANYANG PUBLIC ART PROJECT</>}
             </span>
             <h1 className="text-4xl sm:text-6xl font-black tracking-tight mt-2 text-white">
               {isKo ? '프로그램' : 'PROGRAM'}
             </h1>
           </div>
-          <span
-            className="font-mono font-black text-5xl sm:text-7xl text-transparent select-none"
-            style={{ WebkitTextStroke: '1.5px rgba(255,255,255,0.2)' }}
-          >
-            03
-          </span>
         </div>
 
         {/* 3 Categories from program.json */}
