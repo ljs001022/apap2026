@@ -74,7 +74,7 @@ export default function AboutPage({ params }: PageProps) {
             <div className="text-base sm:text-lg text-[#B9B9B9] leading-relaxed space-y-4 font-light">
               <p>
                 {isKo
-                  ? "제8회 안양공공예술프로젝트(APAP8)는 2005년부터 이어저 온 국내유일의 공공예술트리엔날레의  여덟 번째 행사입니다. 지난 20여 년간 축적된 APAP의 문화자산을 재맥락화하고, '예술의 지속성'과 '시민과의 재연결'을 통해 지역사회 예술 기반을 확대하고자 합니다."
+                  ? "제8회 안양공공예술프로젝트(APAP8)는 2005년부터 이어저 온 국내유일의 공공예술 트리엔날레의  여덟 번째 행사입니다. 지난 20여 년간 축적된 APAP의 문화자산을 재맥락화하고, '예술의 지속성'과 '시민과의 재연결'을 통해 지역사회 예술 기반을 확대하고자 합니다."
                   : "The 8th Anyang Public Art Project (APAP8) marks the eighth edition of Korea’s premier public art triennial, held continuously since 2005. Recontextualizing cultural assets accumulated over 20 years, APAP8 expands the artistic foundation of the local community through 'artistic sustainability' and 'reconnecting with citizens.'"}
               </p>
               <p>
@@ -88,7 +88,7 @@ export default function AboutPage({ params }: PageProps) {
             <div className="bg-white/[0.03] border border-white/15 p-4 grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs sm:text-sm font-mono">
               <div>
                 <span className="text-[#8C8C8C] block text-[11px]">{isKo ? '■ 전시기간' : '■ EXHIBITION PERIOD'}</span>
-                <span className="text-white font-medium">{isKo ? '2026.9.30. ~ 11.29.' : 'Sept 30 – Nov 29, 2026'}</span>
+                <span className="text-white font-medium">{isKo ? '2026.9.30.(수) ~ 11.29.(일)' : 'Sept 30 – Nov 29, 2026'}</span>
               </div>
               <div>
                 <span className="text-[#8C8C8C] block text-[11px]">{isKo ? '■ 개막식' : '■ OPENING CEREMONY'}</span>
@@ -102,16 +102,22 @@ export default function AboutPage({ params }: PageProps) {
 
             {/* Keyword Tags */}
             <div className="flex flex-wrap gap-2 pt-2">
-              {(isKo
-                ? ['#공공예술', '#트리엔날레', '#안양예술공원', '#커미션신작', '#ArteX', '#안양무릉도원']
-                : ['#PublicArt', '#Triennial', '#AnyangArtPark', '#NewCommissions', '#ArteX', '#AnyangPeachBlossomSpring']
-              ).map((tag) => (
-                <span
+              {[
+                { tag: isKo ? '#공공예술' : '#PublicArt', href: `/${validLocale}/about#theme` },
+                { tag: isKo ? '#트리엔날레' : '#Triennial', href: `/${validLocale}/about#theme` },
+                { tag: isKo ? '#안양예술공원' : '#AnyangArtPark', href: `/${validLocale}/visit` },
+                { tag: isKo ? '#커미션신작' : '#NewCommissions', href: `/${validLocale}/exhibition` },
+                { tag: isKo ? '#ArteX' : '#ArteX', href: `/${validLocale}/program` },
+                { tag: isKo ? '#안양무릉도원' : '#AnyangPeachBlossomSpring', href: `/${validLocale}/about#theme` },
+              ].map(({ tag, href }) => (
+                <Link
                   key={tag}
-                  className="text-xs font-mono border border-white/20 text-white/70 px-3 py-1 bg-white/5"
+                  href={href}
+                  className="text-xs font-mono border border-white/20 text-white/70 px-3 py-1 bg-white/5 hover:bg-white hover:text-black hover:border-white focus:outline-none focus:ring-1 focus:ring-white transition-colors inline-block cursor-pointer"
+                  aria-label={`${tag} 이동`}
                 >
                   {tag}
-                </span>
+                </Link>
               ))}
             </div>
 
@@ -197,10 +203,14 @@ export default function AboutPage({ params }: PageProps) {
             </div>
 
             {/* Participating Artists (31) */}
-            <div className="border border-white/20 p-6 bg-white/[0.02] space-y-4">
+            <Link
+              href={`/${validLocale}/exhibition`}
+              className="block border border-white/20 p-6 bg-white/[0.02] hover:bg-white/[0.05] hover:border-white/50 transition-all space-y-4 group"
+            >
               <div className="flex items-center justify-between pb-2 border-b border-white/10">
-                <span className="font-mono text-sm text-white font-bold">
-                  ■ {isKo ? '참여작가 (31인/팀)' : 'PARTICIPATING ARTISTS (31)'}
+                <span className="font-mono text-sm text-white font-bold flex items-center gap-2 group-hover:text-white">
+                  <span>■ {isKo ? '참여작가 (31인/팀)' : 'PARTICIPATING ARTISTS (31)'}</span>
+                  <span className="text-xs text-[#8C8C8C] group-hover:text-white transition-colors">→</span>
                 </span>
                 <span className="font-mono text-xs text-[#8C8C8C]">{isKo ? '가나다순' : 'Alphabetical'}</span>
               </div>
@@ -211,13 +221,13 @@ export default function AboutPage({ params }: PageProps) {
                 ).map((artist) => (
                   <span
                     key={artist.nameEn}
-                    className="text-xs sm:text-sm font-mono border border-white/20 text-white/90 px-3.5 py-1.5 bg-white/5 hover:border-white transition-colors"
+                    className="text-xs sm:text-sm font-mono border border-white/20 text-white/90 px-3.5 py-1.5 bg-white/5 group-hover:border-white/40 transition-colors"
                   >
                     {isKo ? artist.nameKo : artist.nameEn}
                   </span>
                 ))}
               </div>
-            </div>
+            </Link>
 
             {/* Competition Winners (10) */}
             <div className="border border-white/15 p-6 bg-white/[0.01] space-y-3">

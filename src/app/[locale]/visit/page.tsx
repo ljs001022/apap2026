@@ -79,7 +79,7 @@ export default function VisitPage({ params }: PageProps) {
               <div className="pt-2.5 sm:pt-3 border-t border-white/10 text-xs sm:text-sm font-mono text-white/70 space-y-1">
                 <div>
                   <span className="text-[#8C8C8C]">{isKo ? '■ 운영기간: ' : '■ Period: '}</span>
-                  <span>{isKo ? '2026년 9월 30일(수) ~ 11월 29일(일)' : 'Sept 30 – Nov 29, 2026'}</span>
+                  <span>{isKo ? '2026.9.30.(수) ~ 11.29.(일)' : 'Sept 30 – Nov 29, 2026'}</span>
                 </div>
                 <div>
                   <span className="text-[#8C8C8C]">{isKo ? '■ 개막식: ' : '■ Opening: '}</span>
@@ -97,15 +97,18 @@ export default function VisitPage({ params }: PageProps) {
                 <span>{isKo ? '전시 장소 및 주소' : 'LOCATION & ADDRESS'}</span>
               </div>
               <div className="flex items-center gap-2">
-                <button
-                  onClick={() => setIsMapModalOpen(true)}
+                <a
+                  href={isKo ? "https://map.naver.com/p/search/%EA%B2%BD%EA%B8%B0%EB%8F%84%20%EC%95%88%EC%96%91%EC%8B%9C%20%EB%A7%8C%EC%95%88%EA%B5%AC%20%EC%98%88%EC%88%A0%EA%B3%B5%EC%9B%90%EB%A1%9C%20180" : "https://www.google.com/maps/search/?api=1&query=%EA%B2%BD%EA%B8%B0%EB%8F%84+%EC%95%88%EC%96%91%EC%8B%9C+%EB%A7%8C%EC%95%88%EA%B5%AC+%EC%98%88%EC%88%A0%EA%B3%B5%EC%9B%90%EB%A1%9C+180"}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={isKo ? '안양파빌리온 네이버 지도에서 보기' : 'View Anyang Pavilion on Map'}
                   className="font-mono text-[10px] sm:text-xs border border-white hover:bg-white hover:text-black transition-colors px-2.5 py-0.5 font-bold flex items-center gap-1 text-white cursor-pointer"
                 >
                   <MapPin className="w-3 h-3" />
                   <span>{isKo ? '지도보기' : 'VIEW MAP'}</span>
-                </button>
+                </a>
                 <span className="font-mono text-[10px] sm:text-xs border border-white/40 text-white/90 px-2 py-0.5 font-bold">
-                  {isKo ? '안양파빌리온' : 'PAVILION'}
+                  {isKo ? '관내 거점: 안양파빌리온' : 'MAIN BASE: ANYANG PAVILION'}
                 </span>
               </div>
             </div>
@@ -175,15 +178,14 @@ export default function VisitPage({ params }: PageProps) {
               </div>
               <div className="text-xs sm:text-sm font-mono text-[#D4D4D4] space-y-1">
                 <div>■ 위치: {isKo ? '안양파빌리온 앞 광장, 안양박물관 야외, 안양예술공원 내 구)공동의 장' : 'Pavilion Plaza, Anyang Museum Outdoor, Former Community Plaza'}</div>
-                <div>■ 운영: 상시관람 (24시간 자유 개방)</div>
-                <div className="text-[#8C8C8C]">■ 휴관: 연중무휴</div>
+                <div>■ 운영: {isKo ? '상시관람 (24시간 상시개방)' : 'Open 24/7 (Always Open)'}</div>
               </div>
             </div>
 
             <div className="border border-white/15 p-5 bg-white/[0.01] space-y-2">
               <div className="flex justify-between items-center pb-1.5 border-b border-white/10">
                 <h4 className="text-base sm:text-lg font-bold text-white">
-                  {isKo ? '4. 특별전: 우리가 꿈꾸는 도원' : '4. Special Exhibition'}
+                  {isKo ? '4. 특별전: 우리가 꿈꾸는 도원' : '4. Special Exhibition: Dreaming Our Paradise'}
                 </h4>
                 <span className="text-xs font-mono bg-white/10 text-white/80 px-2 py-0.5">한중 특별전</span>
               </div>

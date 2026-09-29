@@ -178,7 +178,7 @@ export default function SiteAPage({ params }: PageProps) {
                       </h3>
                       <p className="text-body text-[#B9B9B9] font-light leading-relaxed line-clamp-2">
                         {isKo
-                          ? "제8회 안양공공예술프로젝트(APAP8)는 2005년부터 이어저 온 국내유일의 공공예술트리엔날레의  여덟 번째 행사입니다. 지난 20여 년간 축적된 APAP의 문화자산을 재맥락화하고 지역사회 예술 기반을 확대합니다."
+                          ? "제8회 안양공공예술프로젝트(APAP8)는 2005년부터 이어저 온 국내유일의 공공예술 트리엔날레의 여덟 번째 행사입니다. 지난 20여 년간 축적된 APAP의 문화자산을 재맥락화하고 지역사회 예술 기반을 확대합니다."
                           : "The 8th Anyang Public Art Project (APAP8) marks the eighth edition of Korea’s premier public art triennial, held continuously since 2005."}
                       </p>
                     </div>
@@ -360,7 +360,7 @@ export default function SiteAPage({ params }: PageProps) {
                     <div className="text-base lg:text-lg text-[#D4D4D4] leading-relaxed space-y-3 font-light">
                       <p>
                         {isKo
-                          ? "제8회 안양공공예술프로젝트(APAP8)는 2005년부터 이어저 온 국내유일의 공공예술트리엔날레의  여덟 번째 행사입니다. 지난 20여 년간 축적된 APAP의 문화자산을 재맥락화하고, '예술의 지속성'과 '시민과의 재연결'을 통해 지역사회 예술 기반을 확대하고자 합니다."
+                          ? "제8회 안양공공예술프로젝트(APAP8)는 2005년부터 이어저 온 국내유일의 공공예술 트리엔날레의 여덟 번째 행사입니다. 지난 20여 년간 축적된 APAP의 문화자산을 재맥락화하고, '예술의 지속성'과 '시민과의 재연결'을 통해 지역사회 예술 기반을 확대하고자 합니다."
                           : "The 8th Anyang Public Art Project (APAP8) marks the eighth edition of Korea’s premier public art triennial, held continuously since 2005. Recontextualizing cultural assets accumulated over 20 years, APAP8 expands the artistic foundation of the local community through 'artistic sustainability' and 'reconnecting with citizens.'"}
                       </p>
                       <p>
@@ -374,7 +374,7 @@ export default function SiteAPage({ params }: PageProps) {
                     <div className="bg-white/[0.03] border border-white/20 p-5 grid grid-cols-2 lg:grid-cols-4 gap-4 text-xs lg:text-sm font-mono">
                       <div>
                         <span className="text-[#8C8C8C] block text-[11px] lg:text-xs font-bold mb-1">■ {isKo ? '전시기간' : 'EXHIBITION PERIOD'}</span>
-                        <span className="text-white font-medium">{isKo ? '2026.9.30. ~ 11.29.' : 'Sept 30 – Nov 29, 2026'}</span>
+                        <span className="text-white font-medium">{isKo ? '2026.9.30.(수) ~ 11.29.(일)' : 'Sept 30 – Nov 29, 2026'}</span>
                       </div>
                       <div>
                         <span className="text-[#8C8C8C] block text-[11px] lg:text-xs font-bold mb-1">■ {isKo ? '개막식' : 'OPENING CEREMONY'}</span>
@@ -392,13 +392,22 @@ export default function SiteAPage({ params }: PageProps) {
 
                     {/* Hashtags */}
                     <div className="flex flex-wrap gap-2.5 pt-1">
-                      {(isKo
-                        ? ['#공공예술', '#트리엔날레', '#안양예술공원', '#커미션신작', '#ArteX', '#안양무릉도원']
-                        : ['#PublicArt', '#Triennial', '#AnyangArtPark', '#NewCommissions', '#ArteX', '#AnyangPeachBlossomSpring']
-                      ).map((tag) => (
-                        <span key={tag} className="text-xs font-mono border border-white/20 text-white/80 px-3 py-1.5 bg-white/5">
+                      {[
+                        { tag: isKo ? '#공공예술' : '#PublicArt', href: `/${locale}/about#theme` },
+                        { tag: isKo ? '#트리엔날레' : '#Triennial', href: `/${locale}/about#theme` },
+                        { tag: isKo ? '#안양예술공원' : '#AnyangArtPark', href: `/${locale}/visit` },
+                        { tag: isKo ? '#커미션신작' : '#NewCommissions', href: `/${locale}/exhibition` },
+                        { tag: isKo ? '#ArteX' : '#ArteX', href: `/${locale}/program` },
+                        { tag: isKo ? '#안양무릉도원' : '#AnyangPeachBlossomSpring', href: `/${locale}/about#theme` },
+                      ].map(({ tag, href }) => (
+                        <Link
+                          key={tag}
+                          href={href}
+                          className="text-xs font-mono border border-white/20 text-white/80 px-3 py-1.5 bg-white/5 hover:bg-white hover:text-black hover:border-white focus:outline-none focus:ring-1 focus:ring-white transition-colors cursor-pointer"
+                          aria-label={`${tag} 이동`}
+                        >
                           {tag}
-                        </span>
+                        </Link>
                       ))}
                     </div>
 
@@ -482,10 +491,14 @@ export default function SiteAPage({ params }: PageProps) {
                     </div>
 
                     {/* Participating Artists (31) */}
-                    <div className="border border-white/20 p-5 bg-white/[0.02] space-y-3">
+                    <Link
+                      href={`/${locale}/exhibition`}
+                      className="block border border-white/20 p-5 bg-white/[0.02] hover:bg-white/[0.05] hover:border-white/50 transition-all space-y-3 group cursor-pointer"
+                    >
                       <div className="flex items-center justify-between pb-2 border-b border-white/10">
-                        <span className="font-mono text-xs text-white font-bold">
-                          ■ {isKo ? '참여작가 (31인/팀)' : 'PARTICIPATING ARTISTS (31)'}
+                        <span className="font-mono text-xs text-white font-bold flex items-center gap-2 group-hover:text-white">
+                          <span>■ {isKo ? '참여작가 (31인/팀)' : 'PARTICIPATING ARTISTS (31)'}</span>
+                          <span className="text-[11px] text-[#8C8C8C] group-hover:text-white transition-colors">→</span>
                         </span>
                         <span className="font-mono text-[11px] text-[#8C8C8C]">{isKo ? '가나다순' : 'Alphabetical'}</span>
                       </div>
@@ -496,13 +509,13 @@ export default function SiteAPage({ params }: PageProps) {
                         ).map((artist) => (
                           <span
                             key={artist.nameEn}
-                            className="text-xs font-mono border border-white/20 text-white/90 px-3 py-1.5 bg-white/5 hover:border-white transition-colors"
+                            className="text-xs font-mono border border-white/20 text-white/90 px-3 py-1.5 bg-white/5 group-hover:border-white/40 transition-colors"
                           >
                             {isKo ? artist.nameKo : artist.nameEn}
                           </span>
                         ))}
                       </div>
-                    </div>
+                    </Link>
 
                     {/* Competition Winners (10) */}
                     <div className="border border-white/15 p-5 bg-white/[0.01] space-y-3">
@@ -1388,9 +1401,9 @@ export default function SiteAPage({ params }: PageProps) {
                           {isKo ? '전시기간' : 'Period'}
                         </span>
                         <div className="text-white font-medium text-[12.5px]">
-                          <span>{isKo ? '2026.09.30(수) ~ 11.29(일)' : 'Sept 30 – Nov 29, 2026'}</span>
+                          <span>{isKo ? '2026.9.30.(수) ~ 11.29.(일)' : 'Sept 30 – Nov 29, 2026'}</span>
                           <span className="block text-[10.5px] font-mono text-[#8C8C8C] font-normal mt-0.5">
-                            {isKo ? '※ 개막식 9.30(수) 18:00 (안양파빌리온 앞 벽천광장)' : '※ Opening Sept 30 18:00'}
+                            {isKo ? '※ 개막식 2026.9.30.(수) 18:00 (안양파빌리온 앞 벽천광장)' : '※ Opening Sept 30, 2026 18:00'}
                           </span>
                         </div>
                       </div>
@@ -1428,10 +1441,10 @@ export default function SiteAPage({ params }: PageProps) {
                       </div>
                       <div className="pt-1.5">
                         <strong className="text-white block font-medium">3. 오픈 그라운드 (야외 공원 및 광장)</strong>
-                        <span className="text-[#B9B9B9] block text-[11px]">24시간 상시 관람 (연중무휴)</span>
+                        <span className="text-[#B9B9B9] block text-[11px]">24시간 상시개방</span>
                       </div>
                       <div className="pt-1.5">
-                        <strong className="text-white block font-medium">4. 특별전: 우리가 꿈꾸는 도원</strong>
+                        <strong className="text-white block font-medium">{isKo ? '4. 특별전: 우리가 꿈꾸는 도원' : '4. Special Exhibition: Dreaming Our Paradise'}</strong>
                         <span className="text-[#B9B9B9] block text-[11px]">아르테자이 상가 1층, 오픈 스쿨 (화–일 10:00–18:00, 월 휴관)</span>
                       </div>
                     </div>
@@ -1445,15 +1458,18 @@ export default function SiteAPage({ params }: PageProps) {
                         <span>{isKo ? '오시는 길' : 'LOCATION'}</span>
                       </div>
                       <div className="flex items-center gap-2">
-                        <button
-                          onClick={() => setIsMapModalOpen(true)}
-                          className="font-mono text-[10px] border border-white hover:bg-white hover:text-black transition-colors px-2 py-0.5 font-bold flex items-center gap-1 text-white"
+                        <a
+                          href={isKo ? "https://map.naver.com/p/search/%EA%B2%BD%EA%B8%B0%EB%8F%84%20%EC%95%88%EC%96%91%EC%8B%9C%20%EB%A7%8C%EC%95%88%EA%B5%AC%20%EC%98%88%EC%88%A0%EA%B3%B5%EC%9B%90%EB%A1%9C%20180" : "https://www.google.com/maps/search/?api=1&query=%EA%B2%BD%EA%B8%B0%EB%8F%84+%EC%95%88%EC%96%91%EC%8B%9C+%EB%A7%8C%EC%95%88%EA%B5%AC+%EC%98%88%EC%88%A0%EA%B3%B5%EC%9B%90%EB%A1%9C+180"}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          aria-label={isKo ? '안양파빌리온 네이버 지도에서 보기' : 'View Anyang Pavilion on Map'}
+                          className="font-mono text-[10px] border border-white hover:bg-white hover:text-black transition-colors px-2 py-0.5 font-bold flex items-center gap-1 text-white cursor-pointer"
                         >
                           <MapPin className="w-3 h-3" />
                           <span>{isKo ? '지도보기' : 'MAP'}</span>
-                        </button>
+                        </a>
                         <span className="font-mono text-[10px] border border-white/40 text-white/90 px-2 py-0.5 font-bold">
-                          {isKo ? '안양파빌리온' : 'PAVILION'}
+                          {isKo ? '관내 거점: 안양파빌리온' : 'MAIN BASE: ANYANG PAVILION'}
                         </span>
                       </div>
                     </div>
@@ -1500,9 +1516,6 @@ export default function SiteAPage({ params }: PageProps) {
                       <span className="font-mono text-xs lg:text-sm bg-white text-black px-3 py-1 font-bold">
                         {isKo ? '관람료 전액 무료' : 'FREE ADMISSION'}
                       </span>
-                      <span className="font-mono text-xs lg:text-sm border border-white/40 text-white/90 px-3 py-1 font-bold">
-                        {isKo ? '문의 031-687-0548' : 'TEL 031-687-0548'}
-                      </span>
                     </div>
                   </div>
 
@@ -1512,7 +1525,7 @@ export default function SiteAPage({ params }: PageProps) {
                         ■ {isKo ? '전시 기간' : 'Exhibition Period'}
                       </span>
                       <div className="text-base lg:text-lg font-bold text-white">
-                        {isKo ? '2026년 9월 30일(수) ~ 11월 29일(일)' : 'Sept 30 – Nov 29, 2026'}
+                        {isKo ? '2026.9.30.(수) ~ 11.29.(일)' : 'Sept 30 – Nov 29, 2026'}
                       </div>
                       <p className="text-xs lg:text-sm text-[#B9B9B9] font-light">
                         {isKo ? '총 61일간 안양예술공원 및 관내 거점에서 무료 운영' : '61 Days Across Anyang Art Park & City Hubs'}
@@ -1524,7 +1537,7 @@ export default function SiteAPage({ params }: PageProps) {
                         ■ {isKo ? '공식 개막식' : 'Opening Ceremony'}
                       </span>
                       <div className="text-base lg:text-lg font-bold text-white">
-                        {isKo ? '2026.09.30.(수) 18:00' : 'Sept 30, 2026 (Wed) 18:00'}
+                        {isKo ? '2026.9.30.(수) 18:00' : 'Sept 30, 2026 (Wed) 18:00'}
                       </div>
                       <p className="text-xs lg:text-sm font-mono text-[#8C8C8C]">
                         {isKo ? '안양파빌리온 앞 벽천광장 (308 아트크루 레이저 공연 연계)' : 'Cascade Square in front of Anyang Pavilion'}
@@ -1584,8 +1597,7 @@ export default function SiteAPage({ params }: PageProps) {
                       </div>
                       <div className="text-xs font-mono text-[#D4D4D4] space-y-1">
                         <div>■ 위치: {isKo ? '안양파빌리온 앞 광장, 안양박물관 야외, 안양예술공원 내 구)공동의 장' : 'Pavilion Plaza, Anyang Museum Outdoor, Former Community Plaza'}</div>
-                        <div>■ 운영: 상시관람 (24시간 자유 개방)</div>
-                        <div className="text-[#8C8C8C]">■ 휴관: 연중무휴</div>
+                        <div>■ 운영: {isKo ? '상시관람 (24시간 상시개방)' : 'Open 24/7 (Always Open)'}</div>
                       </div>
                     </div>
 
@@ -1593,7 +1605,7 @@ export default function SiteAPage({ params }: PageProps) {
                     <div className="border border-white/15 p-5 bg-white/[0.01] space-y-2.5">
                       <div className="flex justify-between items-center pb-1.5 border-b border-white/10">
                         <h4 className="text-base font-bold text-white">
-                          {isKo ? '4. 특별전: 우리가 꿈꾸는 도원' : '4. Special Exhibition'}
+                          {isKo ? '4. 특별전: 우리가 꿈꾸는 도원' : '4. Special Exhibition: Dreaming Our Paradise'}
                         </h4>
                         <span className="text-xs font-mono bg-white/10 text-white/80 px-2 py-0.5">한중 특별전</span>
                       </div>
@@ -1614,15 +1626,18 @@ export default function SiteAPage({ params }: PageProps) {
                       <span>{isKo ? '03 전시 장소 및 오시는 길' : '03 LOCATION & ACCESS'}</span>
                     </div>
                     <div className="flex items-center gap-2">
-                      <button
-                        onClick={() => setIsMapModalOpen(true)}
-                        className="font-mono text-xs lg:text-sm border border-white hover:bg-white hover:text-black transition-colors px-3 py-1 font-bold flex items-center gap-1.5 text-white"
+                      <a
+                        href={isKo ? "https://map.naver.com/p/search/%EA%B2%BD%EA%B8%B0%EB%8F%84%20%EC%95%88%EC%96%91%EC%8B%9C%20%EB%A7%8C%EC%95%88%EA%B5%AC%20%EC%98%88%EC%88%A0%EA%B3%B5%EC%9B%90%EB%A1%9C%20180" : "https://www.google.com/maps/search/?api=1&query=%EA%B2%BD%EA%B8%B0%EB%8F%84+%EC%95%88%EC%96%91%EC%8B%9C+%EB%A7%8C%EC%95%88%EA%B5%AC+%EC%98%88%EC%88%A0%EA%B3%B5%EC%9B%90%EB%A1%9C+180"}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label={isKo ? '안양파빌리온 네이버 지도에서 보기' : 'View Anyang Pavilion on Map'}
+                        className="font-mono text-xs lg:text-sm border border-white hover:bg-white hover:text-black transition-colors px-3 py-1 font-bold flex items-center gap-1.5 text-white cursor-pointer"
                       >
                         <MapPin className="w-3.5 h-3.5" />
                         <span>{isKo ? '지도보기' : 'VIEW MAP'}</span>
-                      </button>
+                      </a>
                       <span className="font-mono text-xs lg:text-sm border border-white/30 text-white/80 px-3 py-1 font-bold hidden sm:block">
-                        {isKo ? '메인 거점: 안양파빌리온' : 'MAIN: ANYANG PAVILION'}
+                        {isKo ? '관내 거점: 안양파빌리온' : 'MAIN BASE: ANYANG PAVILION'}
                       </span>
                     </div>
                   </div>
@@ -1705,7 +1720,7 @@ export default function SiteAPage({ params }: PageProps) {
           <div className="text-body text-[#B9B9B9] leading-relaxed space-y-3 font-light">
             <p>
               {isKo
-                ? "제8회 안양공공예술프로젝트(APAP8)는 2005년부터 이어저 온 국내유일의 공공예술트리엔날레의  여덟 번째 행사입니다. 지난 20여 년간 축적된 APAP의 문화자산을 재맥락화하고, '예술의 지속성'과 '시민과의 재연결'을 통해 지역사회 예술 기반을 확대하고자 합니다."
+                ? "제8회 안양공공예술프로젝트(APAP8)는 2005년부터 이어저 온 국내유일의 공공예술 트리엔날레의 여덟 번째 행사입니다. 지난 20여 년간 축적된 APAP의 문화자산을 재맥락화하고, '예술의 지속성'과 '시민과의 재연결'을 통해 지역사회 예술 기반을 확대하고자 합니다."
                 : "The 8th Anyang Public Art Project (APAP8) marks the eighth edition of Korea’s premier public art triennial, held continuously since 2005. Recontextualizing cultural assets accumulated over 20 years, APAP8 expands the artistic foundation of the local community through 'artistic sustainability' and 'reconnecting with citizens.'"}
             </p>
             <p>
@@ -1719,7 +1734,7 @@ export default function SiteAPage({ params }: PageProps) {
           <div className="bg-white/[0.03] border border-white/15 p-4 grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs sm:text-sm font-mono">
             <div>
               <span className="text-[#8C8C8C] block text-[11px] font-bold">■ {isKo ? '전시기간' : 'EXHIBITION PERIOD'}</span>
-              <span className="text-white font-medium">{isKo ? '2026.9.30. ~ 11.29.' : 'Sept 30 – Nov 29, 2026'}</span>
+              <span className="text-white font-medium">{isKo ? '2026.9.30.(수) ~ 11.29.(일)' : 'Sept 30 – Nov 29, 2026'}</span>
             </div>
             <div>
               <span className="text-[#8C8C8C] block text-[11px] font-bold">■ {isKo ? '개막식' : 'OPENING CEREMONY'}</span>
@@ -1815,10 +1830,15 @@ export default function SiteAPage({ params }: PageProps) {
           </div>
 
           {/* Participating Artists (31) */}
-          <div className="border border-white/15 p-3.5 bg-white/[0.02] space-y-2">
+          <Link
+            href={`/${locale}/exhibition`}
+            onClick={() => setAboutModalItem(null)}
+            className="block border border-white/15 p-3.5 bg-white/[0.02] hover:bg-white/[0.05] hover:border-white/50 transition-all space-y-2 group cursor-pointer"
+          >
             <div className="flex justify-between items-center pb-1 border-b border-white/10">
-              <span className="font-mono text-xs font-bold text-white">
-                {isKo ? '■ 참여작가 (31인/팀)' : '■ PARTICIPATING ARTISTS (31)'}
+              <span className="font-mono text-xs font-bold text-white flex items-center gap-1.5 group-hover:text-white">
+                <span>{isKo ? '■ 참여작가 (31인/팀)' : '■ PARTICIPATING ARTISTS (31)'}</span>
+                <span className="text-[10px] text-[#8C8C8C] group-hover:text-white transition-colors">→</span>
               </span>
               <span className="font-mono text-[10px] text-[#8C8C8C]">{isKo ? '가나다순' : 'Alphabetical'}</span>
             </div>
@@ -1829,13 +1849,13 @@ export default function SiteAPage({ params }: PageProps) {
               ).map((artist) => (
                 <span
                   key={artist.nameEn}
-                  className="text-xs font-mono border border-white/20 text-white/90 px-2.5 py-1 bg-white/5"
+                  className="text-xs font-mono border border-white/20 text-white/90 px-2.5 py-1 bg-white/5 group-hover:border-white/40 transition-colors"
                 >
                   {isKo ? artist.nameKo : artist.nameEn}
                 </span>
               ))}
             </div>
-          </div>
+          </Link>
 
           {/* Competition Winners (10) */}
           <div className="border border-white/15 p-3.5 bg-white/[0.01] space-y-2">
