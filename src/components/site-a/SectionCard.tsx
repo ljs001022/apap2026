@@ -92,7 +92,7 @@ export default function SectionCard({
 
       {/* Summary Content with Staggered Container */}
       <div
-        className="relative z-10 flex-1 flex flex-col px-3.5 sm:px-10 lg:px-16 pt-1.5 pb-3 sm:pt-4 sm:pb-8 overflow-y-auto overflow-x-hidden hide-scrollbar section-stagger-container overscroll-y-contain"
+        className="relative z-10 flex-1 flex flex-col px-3.5 sm:px-10 lg:px-16 pt-1.5 pb-3 sm:pt-4 sm:pb-8 overflow-hidden md:overflow-y-auto md:overflow-x-hidden hide-scrollbar section-stagger-container touch-pan-y"
       >
         <div
           className={`w-full flex flex-col ${
