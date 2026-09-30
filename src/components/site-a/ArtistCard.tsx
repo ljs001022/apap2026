@@ -98,7 +98,7 @@ export default function ArtistCard({
           onClick?.(artist);
         }
       }}
-      className={`group relative flex flex-col h-full border overflow-hidden cursor-pointer transition-all duration-300 shadow-md ${themeStyles.card} ${className}`}
+      className={`group relative flex flex-col h-full border overflow-hidden cursor-pointer transition-all duration-300 shadow-md touch-manipulation select-none ${themeStyles.card} ${className}`}
     >
       {/* Visual / Image area */}
       <div className="relative aspect-[4/3] xs:aspect-square w-full overflow-hidden bg-gradient-to-br from-zinc-900 to-black flex items-center justify-center border-b border-white/10">
@@ -108,7 +108,8 @@ export default function ArtistCard({
             alt={displayName}
             loading="lazy"
             decoding="async"
-            className="w-full h-full object-cover object-top grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-500 ease-out"
+            draggable={false}
+            className="w-full h-full object-cover object-top grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-500 ease-out pointer-events-none select-none"
           />
         ) : (
           <div className="w-full h-full flex flex-col items-center justify-center p-4 sm:p-6 text-center select-none bg-gradient-to-b from-white/[0.04] to-transparent">
