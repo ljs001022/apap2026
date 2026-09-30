@@ -162,7 +162,7 @@ export default function SiteAPage({ params }: PageProps) {
                     tabIndex={0}
                     onClick={() => setAboutModalItem('overview')}
                     onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') setAboutModalItem('overview'); }}
-                    className="group relative bg-[#121212] hover:bg-[#1A1A1A] border border-white/20 hover:border-white p-2.5 sm:p-3.5 flex flex-col justify-between transition-all duration-200 cursor-pointer text-left space-y-1 sm:space-y-2 shadow-md"
+                    className="group relative bg-[#121212] hover:bg-[#1A1A1A] border border-white/20 hover:border-white p-2.5 sm:p-3.5 flex flex-col justify-between transition-all duration-200 cursor-pointer text-left space-y-1 sm:space-y-2 shadow-md stagger-item"
                   >
                     <div className="space-y-0.5 sm:space-y-1">
                       <div className="flex items-center justify-between">
@@ -194,7 +194,7 @@ export default function SiteAPage({ params }: PageProps) {
                     tabIndex={0}
                     onClick={() => setAboutModalItem('theme')}
                     onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') setAboutModalItem('theme'); }}
-                    className="group relative bg-[#121212] hover:bg-[#1A1A1A] border border-white/20 hover:border-white p-2.5 sm:p-3.5 flex flex-col justify-between transition-all duration-200 cursor-pointer text-left space-y-1 sm:space-y-2 shadow-md"
+                    className="group relative bg-[#121212] hover:bg-[#1A1A1A] border border-white/20 hover:border-white p-2.5 sm:p-3.5 flex flex-col justify-between transition-all duration-200 cursor-pointer text-left space-y-1 sm:space-y-2 shadow-md stagger-item"
                   >
                     <div className="space-y-0.5 sm:space-y-1">
                       <div className="flex items-center justify-between">
@@ -229,7 +229,7 @@ export default function SiteAPage({ params }: PageProps) {
                     tabIndex={0}
                     onClick={() => setAboutModalItem('credits')}
                     onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') setAboutModalItem('credits'); }}
-                    className="group relative bg-[#121212] hover:bg-[#1A1A1A] border border-white/20 hover:border-white p-2.5 sm:p-3.5 flex flex-col justify-between transition-all duration-200 cursor-pointer text-left space-y-1 sm:space-y-2 shadow-md"
+                    className="group relative bg-[#121212] hover:bg-[#1A1A1A] border border-white/20 hover:border-white p-2.5 sm:p-3.5 flex flex-col justify-between transition-all duration-200 cursor-pointer text-left space-y-1 sm:space-y-2 shadow-md stagger-item"
                   >
                     <div className="space-y-0.5 sm:space-y-1">
                       <div className="flex items-center justify-between">
@@ -264,7 +264,7 @@ export default function SiteAPage({ params }: PageProps) {
                     tabIndex={0}
                     onClick={() => setAboutModalItem('promo')}
                     onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') setAboutModalItem('promo'); }}
-                    className="group relative bg-[#121212] hover:bg-[#1A1A1A] border border-white/20 hover:border-white p-2.5 sm:p-3.5 flex flex-col justify-between transition-all duration-200 cursor-pointer text-left space-y-1 sm:space-y-2 shadow-md"
+                    className="group relative bg-[#121212] hover:bg-[#1A1A1A] border border-white/20 hover:border-white p-2.5 sm:p-3.5 flex flex-col justify-between transition-all duration-200 cursor-pointer text-left space-y-1 sm:space-y-2 shadow-md stagger-item"
                   >
                     <div className="space-y-0.5 sm:space-y-1">
                       <div className="flex items-center justify-between">
@@ -659,7 +659,7 @@ export default function SiteAPage({ params }: PageProps) {
                     tabIndex={0}
                     onClick={() => setProgramModalItem('citizen')}
                     onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') setProgramModalItem('citizen'); }}
-                    className="group relative bg-[#121212] hover:bg-[#1A1A1A] border border-white/20 hover:border-white p-2.5 sm:p-3.5 flex flex-col justify-between transition-all duration-200 cursor-pointer text-left space-y-1 sm:space-y-2 shadow-md"
+                    className="group relative bg-[#121212] hover:bg-[#1A1A1A] border border-white/20 hover:border-white p-2.5 sm:p-3.5 flex flex-col justify-between transition-all duration-200 cursor-pointer text-left space-y-1 sm:space-y-2 shadow-md stagger-item"
                   >
                     <div className="space-y-0.5 sm:space-y-1">
                       <div className="flex items-center justify-between">
@@ -694,7 +694,7 @@ export default function SiteAPage({ params }: PageProps) {
                     tabIndex={0}
                     onClick={() => setProgramModalItem('docent')}
                     onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') setProgramModalItem('docent'); }}
-                    className="group relative bg-[#121212] hover:bg-[#1A1A1A] border border-white/20 hover:border-white p-2.5 sm:p-3.5 flex flex-col justify-between transition-all duration-200 cursor-pointer text-left space-y-1 sm:space-y-2 shadow-md"
+                    className="group relative bg-[#121212] hover:bg-[#1A1A1A] border border-white/20 hover:border-white p-2.5 sm:p-3.5 flex flex-col justify-between transition-all duration-200 cursor-pointer text-left space-y-1 sm:space-y-2 shadow-md stagger-item"
                   >
                     <div className="space-y-0.5 sm:space-y-1">
                       <div className="flex items-center justify-between">
@@ -729,7 +729,7 @@ export default function SiteAPage({ params }: PageProps) {
                     tabIndex={0}
                     onClick={() => setProgramModalItem('forum')}
                     onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') setProgramModalItem('forum'); }}
-                    className="group relative bg-[#121212] hover:bg-[#1A1A1A] border border-white/20 hover:border-white p-2.5 sm:p-3.5 flex flex-col justify-between transition-all duration-200 cursor-pointer text-left space-y-1 sm:space-y-2 shadow-md"
+                    className="group relative bg-[#121212] hover:bg-[#1A1A1A] border border-white/20 hover:border-white p-2.5 sm:p-3.5 flex flex-col justify-between transition-all duration-200 cursor-pointer text-left space-y-1 sm:space-y-2 shadow-md stagger-item"
                   >
                     <div className="space-y-0.5 sm:space-y-1">
                       <div className="flex items-center justify-between">
@@ -764,7 +764,7 @@ export default function SiteAPage({ params }: PageProps) {
                     tabIndex={0}
                     onClick={() => setProgramModalItem('broadcast')}
                     onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') setProgramModalItem('broadcast'); }}
-                    className="group relative bg-[#121212] hover:bg-[#1A1A1A] border border-white/20 hover:border-white p-2.5 sm:p-3.5 flex flex-col justify-between transition-all duration-200 cursor-pointer text-left space-y-1 sm:space-y-2 shadow-md"
+                    className="group relative bg-[#121212] hover:bg-[#1A1A1A] border border-white/20 hover:border-white p-2.5 sm:p-3.5 flex flex-col justify-between transition-all duration-200 cursor-pointer text-left space-y-1 sm:space-y-2 shadow-md stagger-item"
                   >
                     <div className="space-y-0.5 sm:space-y-1">
                       <div className="flex items-center justify-between">

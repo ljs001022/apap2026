@@ -61,13 +61,17 @@ function PaginatedArtistCarousel({ artists, theme, locale, onArtistClick }: { ar
     <div className="space-y-2 sm:space-y-3">
       <div 
         ref={scrollRef}
-        className="flex overflow-x-auto snap-x snap-mandatory hide-scrollbar border-y border-[#2E2E2E] touch-manipulation"
+        className="flex overflow-x-auto snap-x snap-mandatory hide-scrollbar border-y border-[#2E2E2E] touch-manipulation transform-gpu"
         onScroll={handleScroll}
       >
         {pages.map((page, pageIdx) => (
           <div 
             key={pageIdx} 
-            className="w-full flex-shrink-0 snap-start grid grid-cols-2 md:grid-cols-4 grid-rows-2 divide-x divide-y divide-[#2E2E2E] bg-[#0A0A0A]"
+            className="w-full flex-shrink-0 snap-start grid grid-cols-2 md:grid-cols-4 grid-rows-2 divide-x divide-y divide-[#2E2E2E] bg-[#0A0A0A] transform-gpu"
+            style={{
+              contentVisibility: Math.abs(pageIdx - currentPage) <= 1 ? 'visible' : 'auto',
+              containIntrinsicSize: '600px 360px',
+            }}
           >
             {page.map((artist) => (
               <ArtistCard

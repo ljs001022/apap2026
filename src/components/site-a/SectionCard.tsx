@@ -41,21 +41,21 @@ export default function SectionCard({
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
+          clearTimeout(timer);
           if (entry.isIntersecting) {
-            // Settle delay so physical scroll snap completes before child elements animate in
-            clearTimeout(timer);
             timer = setTimeout(() => {
               setIsActive(true);
-            }, 100);
+            }, 60);
           } else {
-            clearTimeout(timer);
-            setIsActive(false);
+            timer = setTimeout(() => {
+              setIsActive(false);
+            }, 100);
           }
         });
       },
       {
         root: scrollContainer,
-        threshold: 0.15,
+        threshold: 0.3,
       }
     );
 
@@ -70,7 +70,7 @@ export default function SectionCard({
     <section
       ref={sectionRef}
       id={id}
-      className={`relative h-[100dvh] flex flex-col pt-14 sm:pt-16 border-b border-white snap-start overflow-hidden bg-[#0A0A0A] ${
+      className={`relative h-[100dvh] flex flex-col pt-14 sm:pt-16 border-b border-white snap-start overflow-hidden bg-[#0A0A0A] transform-gpu ${
         isActive ? 'section-active' : ''
       }`}
     >

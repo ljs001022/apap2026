@@ -109,7 +109,7 @@ export default function ArtistCard({
             loading="lazy"
             decoding="async"
             draggable={false}
-            className="w-full h-full object-cover object-top grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-500 ease-out pointer-events-none select-none"
+            className="w-full h-full object-cover object-top md:grayscale md:group-hover:grayscale-0 md:group-hover:scale-105 transition-transform duration-500 ease-out pointer-events-none select-none"
           />
         ) : (
           <div className="w-full h-full flex flex-col items-center justify-center p-4 sm:p-6 text-center select-none bg-gradient-to-b from-white/[0.04] to-transparent">
