@@ -4,7 +4,8 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import GnbHeader from '@/components/site-a/GnbHeader';
 import Footer from '@/components/site-a/Footer';
-import { ArrowLeft, Calendar, MapPin, Users, Radio, Video, ArrowUpRight, Music, ShoppingBag, Clock, Sparkles } from 'lucide-react';
+import ImageZoomModal from '@/components/site-a/ImageZoomModal';
+import { ArrowLeft, Calendar, MapPin, Users, Radio, Video, ArrowUpRight, Music, ShoppingBag, Clock, Sparkles, ZoomIn } from 'lucide-react';
 
 interface PageProps {
   params: Promise<{ locale: string }>;
@@ -17,6 +18,7 @@ export default function ProgramPage({ params }: PageProps) {
   const isKo = validLocale === 'ko';
 
   const [citizenTab, setCitizenTab] = useState<'busking' | 'dowonjang'>('busking');
+  const [zoomedImage, setZoomedImage] = useState<{ src: string; alt: string } | null>(null);
 
   return (
     <div className="min-h-screen bg-[#0A0A0A] text-white font-sans antialiased flex flex-col justify-between">
@@ -175,21 +177,56 @@ export default function ProgramPage({ params }: PageProps) {
 
                     {/* Right: Images (5 cols) */}
                     <div className="lg:col-span-5 space-y-3">
-                      <div className="border border-white/20 bg-black overflow-hidden shadow-lg group">
+                      <div
+                        role="button"
+                        tabIndex={0}
+                        onClick={() => setZoomedImage({ src: '/images/programs/busking-1.webp', alt: '파빌리온 버스킹 포스터 1' })}
+                        onKeyDown={(e) => {
+                          if (e.key === 'Enter' || e.key === ' ') {
+                            setZoomedImage({ src: '/images/programs/busking-1.webp', alt: '파빌리온 버스킹 포스터 1' });
+                          }
+                        }}
+                        className="relative border border-white/20 bg-black overflow-hidden shadow-lg group cursor-pointer"
+                        title={isKo ? '클릭하여 이미지 확대보기' : 'Click to enlarge image'}
+                      >
                         <img
                           src="/images/programs/busking-1.webp"
                           alt="파빌리온 버스킹 포스터 1"
                           className="w-full h-auto object-cover transition-transform duration-500 group-hover:scale-105"
                           loading="lazy"
                         />
+                        <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-1.5 font-mono text-xs text-white bg-gradient-to-t from-black/80 via-transparent to-transparent">
+                          <span className="bg-black/75 px-3 py-1.5 rounded-full border border-white/30 flex items-center gap-1.5 backdrop-blur-sm shadow-lg">
+                            <ZoomIn className="w-3.5 h-3.5" />
+                            <span>{isKo ? '클릭하여 확대' : 'CLICK TO ZOOM'}</span>
+                          </span>
+                        </div>
                       </div>
-                      <div className="border border-white/20 bg-black overflow-hidden shadow-lg group">
+
+                      <div
+                        role="button"
+                        tabIndex={0}
+                        onClick={() => setZoomedImage({ src: '/images/programs/busking-2.webp', alt: '파빌리온 버스킹 프로그램 안내 포스터 2' })}
+                        onKeyDown={(e) => {
+                          if (e.key === 'Enter' || e.key === ' ') {
+                            setZoomedImage({ src: '/images/programs/busking-2.webp', alt: '파빌리온 버스킹 프로그램 안내 포스터 2' });
+                          }
+                        }}
+                        className="relative border border-white/20 bg-black overflow-hidden shadow-lg group cursor-pointer"
+                        title={isKo ? '클릭하여 이미지 확대보기' : 'Click to enlarge image'}
+                      >
                         <img
                           src="/images/programs/busking-2.webp"
                           alt="파빌리온 버스킹 프로그램 안내 포스터 2"
                           className="w-full h-auto object-cover transition-transform duration-500 group-hover:scale-105"
                           loading="lazy"
                         />
+                        <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-1.5 font-mono text-xs text-white bg-gradient-to-t from-black/80 via-transparent to-transparent">
+                          <span className="bg-black/75 px-3 py-1.5 rounded-full border border-white/30 flex items-center gap-1.5 backdrop-blur-sm shadow-lg">
+                            <ZoomIn className="w-3.5 h-3.5" />
+                            <span>{isKo ? '클릭하여 확대' : 'CLICK TO ZOOM'}</span>
+                          </span>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -268,13 +305,30 @@ export default function ProgramPage({ params }: PageProps) {
 
                     {/* Right: Poster Image (5 cols) */}
                     <div className="lg:col-span-5">
-                      <div className="border border-white/20 bg-black overflow-hidden shadow-lg group">
+                      <div
+                        role="button"
+                        tabIndex={0}
+                        onClick={() => setZoomedImage({ src: '/images/programs/dowonjang-1.webp', alt: '도원장 포스터' })}
+                        onKeyDown={(e) => {
+                          if (e.key === 'Enter' || e.key === ' ') {
+                            setZoomedImage({ src: '/images/programs/dowonjang-1.webp', alt: '도원장 포스터' });
+                          }
+                        }}
+                        className="relative border border-white/20 bg-black overflow-hidden shadow-lg group cursor-pointer"
+                        title={isKo ? '클릭하여 이미지 확대보기' : 'Click to enlarge image'}
+                      >
                         <img
                           src="/images/programs/dowonjang-1.webp"
                           alt="도원장 포스터"
                           className="w-full h-auto object-cover transition-transform duration-500 group-hover:scale-105"
                           loading="lazy"
                         />
+                        <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-1.5 font-mono text-xs text-white bg-gradient-to-t from-black/80 via-transparent to-transparent">
+                          <span className="bg-black/75 px-3 py-1.5 rounded-full border border-white/30 flex items-center gap-1.5 backdrop-blur-sm shadow-lg">
+                            <ZoomIn className="w-3.5 h-3.5" />
+                            <span>{isKo ? '클릭하여 확대' : 'CLICK TO ZOOM'}</span>
+                          </span>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -499,6 +553,15 @@ export default function ProgramPage({ params }: PageProps) {
           </section>
         </div>
       </main>
+
+      {/* Enlarged Image Zoom Modal */}
+      <ImageZoomModal
+        isOpen={Boolean(zoomedImage)}
+        onClose={() => setZoomedImage(null)}
+        imageSrc={zoomedImage?.src || null}
+        altText={zoomedImage?.alt || 'Program Poster'}
+        isKo={isKo}
+      />
 
       <Footer locale={validLocale} />
     </div>
