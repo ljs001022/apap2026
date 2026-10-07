@@ -55,7 +55,7 @@ export default function SectionCard({
       },
       {
         root: scrollContainer,
-        threshold: 0.3,
+        threshold: 0.15,
       }
     );
 
@@ -70,7 +70,7 @@ export default function SectionCard({
     <section
       ref={sectionRef}
       id={id}
-      className={`relative h-[100dvh] flex flex-col pt-14 sm:pt-16 border-b border-white snap-start overflow-hidden bg-[#0A0A0A] transform-gpu ${
+      className={`relative min-h-[100dvh] md:h-[100dvh] flex flex-col pt-14 sm:pt-16 border-b border-white md:snap-start overflow-visible md:overflow-hidden bg-[#0A0A0A] transform-gpu ${
         isActive ? 'section-active' : ''
       }`}
     >
@@ -92,13 +92,13 @@ export default function SectionCard({
 
       {/* Summary Content with Staggered Container */}
       <div
-        className="relative z-10 flex-1 flex flex-col px-3.5 sm:px-10 lg:px-16 pt-1.5 pb-3 sm:pt-4 sm:pb-8 overflow-hidden md:overflow-y-auto md:overflow-x-hidden hide-scrollbar section-stagger-container touch-pan-y"
+        className="relative z-10 flex-1 flex flex-col px-3.5 sm:px-10 lg:px-16 pt-1.5 pb-3 sm:pt-4 sm:pb-8 overflow-visible md:overflow-y-auto md:overflow-x-hidden md:hide-scrollbar section-stagger-container touch-pan-y"
       >
         <div
           className={`w-full flex flex-col ${
             contentAlign === 'center'
               ? 'justify-center my-auto'
-              : 'justify-start my-auto'
+              : 'justify-start mt-0 mb-auto md:my-auto'
           }`}
         >
           {summary}
