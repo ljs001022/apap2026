@@ -26,6 +26,8 @@ import {
   Award,
   Download,
   Play,
+  Music,
+  ShoppingBag,
 } from 'lucide-react';
 import ArtistGrid from '@/components/site-a/ArtistGrid';
 import { getVenues } from '@/lib/artists';
@@ -58,6 +60,7 @@ export default function SiteAPage({ params }: PageProps) {
   // PC Tab states
   const [aboutPcTab, setAboutPcTab] = useState<'overview' | 'theme' | 'credits' | 'promo'>('overview');
   const [programPcTab, setProgramPcTab] = useState<'citizen' | 'docent' | 'forum' | 'broadcast'>('citizen');
+  const [citizenSubTab, setCitizenSubTab] = useState<'busking' | 'dowonjang'>('busking');
 
   // Pagination states
   const [communityPage, setCommunityPage] = useState(1); // Mobile (4 per page)
@@ -673,17 +676,17 @@ export default function SiteAPage({ params }: PageProps) {
                       <h3 className="text-[13px] sm:text-sm font-extrabold text-white leading-snug">
                         {isKo ? '도원 릴레이' : 'Dowon Relay'}
                         <span className="block text-[10.5px] sm:text-[11px] font-mono text-[#8C8C8C] font-normal mt-0.5">
-                          {isKo ? '워크숍 · 공연 · 교육 · 체험 4종' : 'Workshops, Performances, Education, Experience'}
+                          {isKo ? '파빌리온 버스킹 · 도원장(場) 2종' : 'Pavilion Busking & Dowonjang Market'}
                         </span>
                       </h3>
                       <p className="text-[12px] sm:text-body text-[#B9B9B9] font-light leading-relaxed line-clamp-1 sm:line-clamp-2">
                         {isKo
-                          ? '시민 참여형 공공예술 프로그램을 통해 지역의 문화예술 향유 기회를 확대하고 지역 예술가와 소통하는 기반을 마련합니다.'
-                          : 'Community-engaged public art programs fostering creative dialogue through workshops, performances, and education.'}
+                          ? '10월 안양파빌리온 앞마당에서 열리는 특별한 음악 버스킹과 예술 플리마켓 도원장(場)을 만나보세요.'
+                          : 'Special music busking and open art flea market Dowonjang at Anyang Pavilion in October.'}
                       </p>
                     </div>
                     <div className="flex items-center justify-between pt-1 sm:pt-1.5 border-t border-white/10 text-[11px] sm:text-xs font-mono text-white/50 group-hover:text-white transition-colors">
-                      <span>{isKo ? '프로그램 세부내용 보기' : 'VIEW DETAILS'}</span>
+                      <span>{isKo ? '상세 프로그램 보기' : 'VIEW DETAILS'}</span>
                       <ArrowUpRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
                     </div>
                   </div>
@@ -848,82 +851,144 @@ export default function SiteAPage({ params }: PageProps) {
                 {/* Tab 1: Citizen Programs (도원 릴레이) */}
                 {programPcTab === 'citizen' && (
                   <div key="citizen" className="space-y-6 animate-tab-content">
-                    <div>
-                      <span className="font-mono text-xs font-bold text-[#8C8C8C] tracking-wider uppercase block mb-1">
-                        01 CITIZEN ENGAGEMENT
-                      </span>
-                      <h3 className="text-2xl lg:text-3xl font-extrabold text-white leading-snug">
-                        {isKo ? '도원 릴레이: 시민과 함께 만드는 공공예술' : 'Dowon Relay: Citizen-Engaged Public Art'}
-                      </h3>
-                      <p className="text-sm lg:text-base text-[#B9B9B9] mt-2 font-light">
-                        {isKo
-                          ? '시민 참여형 공공예술 프로그램을 통해 지역 문화예술 향유 기회를 확대하고 예술가와 시민 간 창작·소통 기반을 마련합니다.'
-                          : 'Four distinct participatory programs fostering creative dialogue between citizens and artists.'}
-                      </p>
-                    </div>
-
-                    {/* 4 Program Cards Grid from program.json */}
-                    <div className="grid grid-cols-2 gap-4 pt-1">
-                      <div className="border border-white/20 p-5 bg-white/[0.02] space-y-2">
-                        <div className="flex justify-between items-start">
-                          <h4 className="text-base font-bold text-white">
-                            {isKo ? '■ 워크숍' : '■ WORKSHOP'}
-                          </h4>
-                          <span className="text-xs font-mono bg-white text-black px-2 py-0.5 font-bold">예술인 주도형</span>
-                        </div>
-                        <p className="text-xs lg:text-sm text-[#B9B9B9] font-light">
+                    <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+                      <div>
+                        <span className="font-mono text-xs font-bold text-[#8C8C8C] tracking-wider uppercase block mb-1">
+                          01 CITIZEN ENGAGEMENT
+                        </span>
+                        <h3 className="text-2xl lg:text-3xl font-extrabold text-white leading-snug">
+                          {isKo ? '도원 릴레이: 시민과 함께 만드는 공공예술' : 'Dowon Relay: Citizen-Engaged Public Art'}
+                        </h3>
+                        <p className="text-sm lg:text-base text-[#B9B9B9] mt-2 font-light">
                           {isKo
-                            ? 'APAP8 작품 연계 안양 지역예술가와 함께하는 창작 워크숍'
-                            : 'Creative workshops led by local Anyang artists linked to APAP8 artworks.'}
+                            ? '10월 안양파빌리온 앞마당을 무대로 음악과 공예, 창작의 즐거움을 나누는 시민참여 특별 프로그램입니다.'
+                            : 'Participatory public art programs at Anyang Pavilion featuring music busking and open art flea market.'}
                         </p>
                       </div>
 
-                      <div className="border border-white/20 p-5 bg-white/[0.02] space-y-2">
-                        <div className="flex justify-between items-start">
-                          <h4 className="text-base font-bold text-white">
-                            {isKo ? '■ 공연' : '■ PERFORMANCE'}
-                          </h4>
-                          <span className="text-xs font-mono bg-white text-black px-2 py-0.5 font-bold">예술인 참여형</span>
-                        </div>
-                        <p className="text-xs lg:text-sm text-[#B9B9B9] font-light">
-                          {isKo
-                            ? '실내외 전시, 체험, 행사존을 연결하는 미니 콘서트 및 퍼포먼스'
-                            : 'Mini-concerts and live performances connecting indoor and outdoor zones.'}
-                        </p>
-                      </div>
-
-                      <div className="border border-white/20 p-5 bg-white/[0.02] space-y-2">
-                        <div className="flex justify-between items-start">
-                          <h4 className="text-base font-bold text-white">
-                            {isKo ? '■ 교육' : '■ EDUCATION'}
-                          </h4>
-                          <span className="text-xs font-mono border border-white/40 text-white px-2 py-0.5 font-bold">시민 참여형</span>
-                        </div>
-                        <p className="text-xs lg:text-sm text-[#B9B9B9] font-light">
-                          {isKo
-                            ? 'APAP8 주제 연계 미디어아트·AI 관련 교육·강의 프로그램'
-                            : 'Lectures and educational workshops on media art and AI.'}
-                        </p>
-                      </div>
-
-                      <div className="border border-white/20 p-5 bg-white/[0.02] space-y-2">
-                        <div className="flex justify-between items-start">
-                          <h4 className="text-base font-bold text-white">
-                            {isKo ? '■ 체험' : '■ EXPERIENCE'}
-                          </h4>
-                          <span className="text-xs font-mono border border-white/40 text-white px-2 py-0.5 font-bold">가족·시민 체험형</span>
-                        </div>
-                        <p className="text-xs lg:text-sm text-[#B9B9B9] font-light">
-                          {isKo
-                            ? 'APAP를 주제로 오감 체험 프로그램을 통한 다양한 예술 활동'
-                            : 'Multisensory interactive programs themed around public art.'}
-                        </p>
+                      {/* Sub-tab navigation */}
+                      <div className="flex bg-white/5 border border-white/20 p-1 gap-1 flex-shrink-0">
+                        <button
+                          type="button"
+                          onClick={() => setCitizenSubTab('busking')}
+                          className={`flex items-center gap-2 px-3.5 py-1.5 font-mono text-xs lg:text-sm font-bold transition-all ${
+                            citizenSubTab === 'busking'
+                              ? 'bg-white text-black'
+                              : 'text-white/70 hover:text-white hover:bg-white/10'
+                          }`}
+                        >
+                          <Music className="w-3.5 h-3.5" />
+                          <span>{isKo ? '파빌리온 버스킹 (10.9)' : 'Pavilion Busking (10/9)'}</span>
+                        </button>
+                        <button
+                          type="button"
+                          onClick={() => setCitizenSubTab('dowonjang')}
+                          className={`flex items-center gap-2 px-3.5 py-1.5 font-mono text-xs lg:text-sm font-bold transition-all ${
+                            citizenSubTab === 'dowonjang'
+                              ? 'bg-white text-black'
+                              : 'text-white/70 hover:text-white hover:bg-white/10'
+                          }`}
+                        >
+                          <ShoppingBag className="w-3.5 h-3.5" />
+                          <span>{isKo ? '도원장(場) (10.17)' : 'Dowonjang (10/17)'}</span>
+                        </button>
                       </div>
                     </div>
+
+                    {/* Sub-tab 1: Busking Content */}
+                    {citizenSubTab === 'busking' && (
+                      <div className="grid grid-cols-12 gap-6 items-start animate-tab-content pt-1">
+                        <div className="col-span-7 space-y-4">
+                          <div className="border border-white/20 p-5 bg-white/[0.02] space-y-3">
+                            <div className="flex justify-between items-start border-b border-white/10 pb-2.5">
+                              <div>
+                                <span className="text-xs font-mono text-[#8C8C8C] font-semibold block">MUSIC & PERFORMANCE</span>
+                                <h4 className="text-lg lg:text-xl font-bold text-white">
+                                  {isKo ? '파빌리온 버스킹 〈도원, 음악이 머무는 곳〉' : 'Pavilion Busking: Where Music Stays'}
+                                </h4>
+                              </div>
+                              <span className="text-xs font-mono bg-white text-black px-2 py-0.5 font-bold">10. 9.(금) 무료</span>
+                            </div>
+                            <p className="text-xs lg:text-sm text-[#D4D4D4] font-light leading-relaxed">
+                              {isKo
+                                ? '안양파빌리온에 음악이 머무는 특별한 오후! 재즈와 소울의 깊은 감성을 전하는 애쉬, 잔잔하지만 깊게 스며드는 밴드 웨이블릿, 멀티 악기로 낭만을 선사하는 아코디언킴이 가을날의 파빌리온을 음악으로 채웁니다. 공연과 함께 누구나 자유롭게 참여할 수 있는 컬러링 프로그램도 운영됩니다.'
+                                : 'A musical afternoon at Anyang Pavilion featuring Ash (Jazz & Soul), Wavelet (Band), and Accordion Kim (Accordion), alongside open coloring workshops.'}
+                            </p>
+                            <div className="text-xs font-mono text-[#8C8C8C] pt-2 border-t border-white/10 space-y-1">
+                              <div>■ 일시: 2026. 10. 9.(금) 15:00–17:30</div>
+                              <div>■ 장소: 안양파빌리온 앞 광장</div>
+                              <div className="text-white/90 font-medium">■ 타임테이블: 15:00 애쉬 · 16:00 웨이블릿 · 17:00 아코디언킴</div>
+                              <div className="text-[11px] text-[#8C8C8C]">※ 공연 및 프로그램은 현장 상황에 따라 변경될 수 있습니다.</div>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div className="col-span-5 grid grid-cols-2 gap-3">
+                          <div className="border border-white/20 bg-black overflow-hidden group">
+                            <img
+                              src="/images/programs/busking-1.webp"
+                              alt="파빌리온 버스킹 포스터 1"
+                              className="w-full h-auto object-cover transition-transform duration-500 group-hover:scale-105"
+                              loading="lazy"
+                            />
+                          </div>
+                          <div className="border border-white/20 bg-black overflow-hidden group">
+                            <img
+                              src="/images/programs/busking-2.webp"
+                              alt="파빌리온 버스킹 포스터 2"
+                              className="w-full h-auto object-cover transition-transform duration-500 group-hover:scale-105"
+                              loading="lazy"
+                            />
+                          </div>
+                        </div>
+                      </div>
+                    )}
+
+                    {/* Sub-tab 2: Dowonjang Content */}
+                    {citizenSubTab === 'dowonjang' && (
+                      <div className="grid grid-cols-12 gap-6 items-start animate-tab-content pt-1">
+                        <div className="col-span-7 space-y-4">
+                          <div className="border border-white/20 p-5 bg-white/[0.02] space-y-3">
+                            <div className="flex justify-between items-start border-b border-white/10 pb-2.5">
+                              <div>
+                                <span className="text-xs font-mono text-[#8C8C8C] font-semibold block">FLEA ART MARKET</span>
+                                <h4 className="text-lg lg:text-xl font-bold text-white">
+                                  {isKo ? '안양의 창작자와 시민이 만나는 예술 장터, 〈도원장(場)〉' : 'Flea Art Market 〈Dowonjang〉'}
+                                </h4>
+                              </div>
+                              <span className="text-xs font-mono bg-white text-black px-2 py-0.5 font-bold">10. 17.(토) 무료입장</span>
+                            </div>
+                            <p className="text-xs lg:text-sm text-[#D4D4D4] font-light leading-relaxed">
+                              {isKo
+                                ? '안양의 작가와 공방, 핸드메이드 창작자 15개 팀이 직접 만든 작품과 아트상품을 선보이고 창작 체험을 나누는 열린 문화예술 마켓입니다. 공예, 일러스트, 업사이클, 리빙 등 다채로운 작품과 즐거운 이야기가 모이는 도원장에서 나만의 작은 도원을 만나보세요.'
+                                : 'An open cultural art market where 15 local artist studios and handmade creators showcase original works, living crafts, and interactive creative activities.'}
+                            </p>
+                            <div className="text-xs font-mono text-[#8C8C8C] pt-2 border-t border-white/10 space-y-1">
+                              <div>■ 일시: 2026. 10. 17.(토) 11:00~18:00</div>
+                              <div>■ 장소: 안양파빌리온 앞마당 (안양시 만안구 예술공원로 180)</div>
+                              <div>■ 내용: 아트상품 및 핸드메이드 제품 판매, 창작 체험 등</div>
+                              <div>■ 참여 셀러: 안양의 작가·공방·핸드메이드 창작자 약 15개 팀</div>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div className="col-span-5 max-w-[280px]">
+                          <div className="border border-white/20 bg-black overflow-hidden group">
+                            <img
+                              src="/images/programs/dowonjang-1.webp"
+                              alt="도원장 포스터"
+                              className="w-full h-auto object-cover transition-transform duration-500 group-hover:scale-105"
+                              loading="lazy"
+                            />
+                          </div>
+                        </div>
+                      </div>
+                    )}
 
                     <div className="border border-white/10 p-4 bg-white/[0.01] text-xs font-mono text-[#8C8C8C] flex flex-wrap gap-4">
-                      <span>■ 일정: 2026.9. ~ 2026.11.(예정) — 공식 웹사이트 및 인스타그램 순차 공개</span>
-                      <span>■ 장소: 안양파빌리온, 안양예술공원 및 관내 거점공간</span>
+                      <span>■ 기간: 2026. 10. 집중 운영</span>
+                      <span>■ 장소: 안양파빌리온 앞마당 및 광장 일대</span>
+                      <span>■ 참가비: 전액 무료</span>
                     </div>
                   </div>
                 )}
@@ -1949,53 +2014,86 @@ export default function SiteAPage({ params }: PageProps) {
         title={isKo ? '도원 릴레이: 시민과 함께 만드는 예술' : 'Dowon Relay: Citizen Participation'}
       >
         <div className="space-y-4">
-          <p className="text-body text-[#B9B9B9] leading-relaxed font-light">
-            {isKo
-              ? '시민 참여형 공공예술 프로그램을 통해 지역 문화예술 향유 기회를 확대하고 지역 예술가와 소통하는 기반을 마련합니다.'
-              : 'Expanding cultural access and fostering creative dialogue between local artists and citizens.'}
-          </p>
-
-          <div className="space-y-2.5">
-            <div className="border border-white/15 p-3 bg-white/[0.02] space-y-1">
-              <div className="flex justify-between items-center text-caption font-mono">
-                <span className="text-white font-bold">{isKo ? '■ 워크숍' : '■ WORKSHOP'}</span>
-                <span className="text-xs font-mono bg-white text-black px-1.5 py-0.2">예술인 주도형</span>
-              </div>
-              <p className="text-caption text-[#B9B9B9] font-light">
-                APAP8 작품 연계 안양 지역예술가와 함께하는 창작 워크숍
-              </p>
-            </div>
-
-            <div className="border border-white/15 p-3 bg-white/[0.02] space-y-1">
-              <div className="flex justify-between items-center text-caption font-mono">
-                <span className="text-white font-bold">{isKo ? '■ 공연' : '■ PERFORMANCE'}</span>
-                <span className="text-xs font-mono bg-white text-black px-1.5 py-0.2">예술인 참여형</span>
-              </div>
-              <p className="text-caption text-[#B9B9B9] font-light">
-                실내외 전시, 체험, 행사존을 연결하는 미니 콘서트 및 퍼포먼스
-              </p>
-            </div>
-
-            <div className="border border-white/15 p-3 bg-white/[0.02] space-y-1">
-              <div className="flex justify-between items-center text-caption font-mono">
-                <span className="text-white font-bold">{isKo ? '■ 교육' : '■ EDUCATION'}</span>
-                <span className="text-xs font-mono border border-white/40 text-white px-1.5 py-0.2">시민 참여형</span>
-              </div>
-              <p className="text-caption text-[#B9B9B9] font-light">
-                APAP8 주제 연계 미디어아트·AI 관련 교육·강의 프로그램
-              </p>
-            </div>
-
-            <div className="border border-white/15 p-3 bg-white/[0.02] space-y-1">
-              <div className="flex justify-between items-center text-caption font-mono">
-                <span className="text-white font-bold">{isKo ? '■ 체험' : '■ EXPERIENCE'}</span>
-                <span className="text-xs font-mono border border-white/40 text-white px-1.5 py-0.2">가족·시민 체험형</span>
-              </div>
-              <p className="text-caption text-[#B9B9B9] font-light">
-                APAP를 주제로 오감 체험 프로그램을 통한 다양한 예술 활동
-              </p>
-            </div>
+          <div className="flex border-b border-white/20 gap-1 pb-1">
+            <button
+              type="button"
+              onClick={() => setCitizenSubTab('busking')}
+              className={`flex-1 py-1.5 text-xs font-mono font-bold transition-all border-b-2 -mb-[5px] ${
+                citizenSubTab === 'busking'
+                  ? 'border-white text-white bg-white/5'
+                  : 'border-transparent text-[#8C8C8C] hover:text-white'
+              }`}
+            >
+              {isKo ? '파빌리온 버스킹 (10.9)' : 'Busking (10/9)'}
+            </button>
+            <button
+              type="button"
+              onClick={() => setCitizenSubTab('dowonjang')}
+              className={`flex-1 py-1.5 text-xs font-mono font-bold transition-all border-b-2 -mb-[5px] ${
+                citizenSubTab === 'dowonjang'
+                  ? 'border-white text-white bg-white/5'
+                  : 'border-transparent text-[#8C8C8C] hover:text-white'
+              }`}
+            >
+              {isKo ? '도원장(場) (10.17)' : 'Dowonjang (10/17)'}
+            </button>
           </div>
+
+          {citizenSubTab === 'busking' ? (
+            <div className="space-y-3 animate-tab-content">
+              <div className="border border-white/15 p-3.5 bg-white/[0.02] space-y-2">
+                <div className="flex justify-between items-center text-xs font-mono">
+                  <span className="text-white font-bold">파빌리온 버스킹 〈도원, 음악이 머무는 곳〉</span>
+                  <span className="bg-white text-black px-1.5 py-0.5 font-bold">무료</span>
+                </div>
+                <p className="text-xs text-[#B9B9B9] font-light leading-relaxed">
+                  안양파빌리온에 음악이 머무는 특별한 오후! 재즈와 소울의 애쉬, 밴드 웨이블릿, 아코디언킴의 무대와 함께 자유로운 컬러링 체험 프로그램이 열립니다.
+                </p>
+                <div className="text-[11px] font-mono text-[#8C8C8C] pt-2 border-t border-white/10 space-y-1">
+                  <div>■ 일시: 2026. 10. 9.(금) 15:00–17:30</div>
+                  <div>■ 장소: 안양파빌리온 앞 광장</div>
+                  <div>■ 타임테이블: 15:00 애쉬 · 16:00 웨이블릿 · 17:00 아코디언킴</div>
+                  <div className="text-[10px] text-[#6C6C6C]">※ 현장 상황에 따라 변경될 수 있습니다.</div>
+                </div>
+              </div>
+              <div className="grid grid-cols-2 gap-2">
+                <img
+                  src="/images/programs/busking-1.webp"
+                  alt="버스킹 포스터 1"
+                  className="w-full h-auto border border-white/20"
+                />
+                <img
+                  src="/images/programs/busking-2.webp"
+                  alt="버스킹 포스터 2"
+                  className="w-full h-auto border border-white/20"
+                />
+              </div>
+            </div>
+          ) : (
+            <div className="space-y-3 animate-tab-content">
+              <div className="border border-white/15 p-3.5 bg-white/[0.02] space-y-2">
+                <div className="flex justify-between items-center text-xs font-mono">
+                  <span className="text-white font-bold">플리 아트마켓 〈도원장(場)〉</span>
+                  <span className="bg-white text-black px-1.5 py-0.5 font-bold">무료입장</span>
+                </div>
+                <p className="text-xs text-[#B9B9B9] font-light leading-relaxed">
+                  안양의 작가와 공방, 핸드메이드 창작자들이 직접 만든 아트상품을 선보이고 창작 체험을 나누는 열린 문화예술 장터입니다.
+                </p>
+                <div className="text-[11px] font-mono text-[#8C8C8C] pt-2 border-t border-white/10 space-y-1">
+                  <div>■ 일시: 2026. 10. 17.(토) 11:00~18:00</div>
+                  <div>■ 장소: 안양파빌리온 앞마당</div>
+                  <div>■ 내용: 아트상품 판매 및 창작 체험 (약 15개 팀)</div>
+                </div>
+              </div>
+              <div className="max-w-[240px] mx-auto">
+                <img
+                  src="/images/programs/dowonjang-1.webp"
+                  alt="도원장 포스터"
+                  className="w-full h-auto border border-white/20"
+                />
+              </div>
+            </div>
+          )}
         </div>
       </SectionDetailModal>
 
