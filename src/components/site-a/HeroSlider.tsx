@@ -68,14 +68,21 @@ const PAVILION_WORKS: PavilionWork[] = [
   },
 ];
 
-// 총 5개 슬라이드: 0 = 메인 포스터, 1 = 다이고 우시, 2 = 박재훈, 3 = 스튜디오 올레오밍구스, 4 = 처 지엔취안
-const TOTAL_SLIDES = 1 + PAVILION_WORKS.length; // 5
+const MAIN_VIDEO_SRC = '/videos/308.mp4';
+
+// 총 6개 슬라이드: 0 = 308 영상, 1 = 메인 포스터, 2 = 다이고 우시, 3 = 박재훈, 4 = 스튜디오 올레오밍구스, 5 = 처 지엔취안
+const VIDEO_SLIDE = 0;
+const POSTER_SLIDE = 1;
+const WORK_SLIDE_OFFSET = 2;
+const TOTAL_SLIDES = WORK_SLIDE_OFFSET + PAVILION_WORKS.length; // 6
 
 export default function HeroSlider({ locale }: HeroSliderProps) {
   const isKo = locale === 'ko';
-  const [currentSlide, setCurrentSlide] = useState<number>(0);
+  const [currentSlide, setCurrentSlide] = useState<number>(VIDEO_SLIDE);
   const [isPaused, setIsPaused] = useState(false);
   const [isDesktop, setIsDesktop] = useState(false);
+  // 모바일: 308 영상 재생 후 메인 포스터로 전환
+  const [mobileVideoDone, setMobileVideoDone] = useState(false);
   const timerRef = useRef<NodeJS.Timeout | null>(null);
 
   // 화면 크기 체크 (모바일 환경에서는 슬라이더 타이머 비활성화)
@@ -88,80 +95,44 @@ export default function HeroSlider({ locale }: HeroSliderProps) {
     return () => window.removeEventListener('resize', checkIsDesktop);
   }, []);
 
-  // 타이머 실행 함수 (데스크톱에서만 작동)
-  const startTimer = useCallback(() => {
-    if (timerRef.current) {
-      clearInterval(timerRef.current);
-    }
-    if (!isDesktop) return;
+  // Autoplay (이미지 슬라이드 6초, 데스크톱 전용) 및 마우스 hover 시 일시 정지 처리
+  // 영상 슬라이드는 타이머 대신 영상 재생 종료(onEnded) 시 다음 슬라이드로 전환
+  useEffect(() => {
+    if (!isDesktop || isPaused || currentSlide === VIDEO_SLIDE) return;
 
-    timerRef.current = setInterval(() => {
+    timerRef.current = setTimeout(() => {
       setCurrentSlide((prev) => (prev + 1) % TOTAL_SLIDES);
     }, 6000);
-  }, [isDesktop]);
-
-  // 사용자 수동 조작 시 타이머 초기화 (데스크톱)
-  const resetTimer = useCallback(() => {
-    if (timerRef.current) {
-      clearInterval(timerRef.current);
-      timerRef.current = null;
-    }
-    if (!isPaused && isDesktop) {
-      startTimer();
-    }
-  }, [isPaused, isDesktop, startTimer]);
-
-  // Autoplay (6초) 및 마우스 hover 시 일시 정지 처리
-  useEffect(() => {
-    if (!isDesktop || isPaused) {
-      if (timerRef.current) {
-        clearInterval(timerRef.current);
-        timerRef.current = null;
-      }
-    } else {
-      startTimer();
-    }
     return () => {
       if (timerRef.current) {
-        clearInterval(timerRef.current);
+        clearTimeout(timerRef.current);
         timerRef.current = null;
       }
     };
-  }, [isDesktop, isPaused, startTimer]);
+  }, [isDesktop, isPaused, currentSlide]);
 
-  // 헤더 로고 클릭 시 메인 포스터(슬라이드 0)로 복귀
+  // 헤더 로고 클릭 시 첫 슬라이드(308 영상)로 복귀
   useEffect(() => {
     const handleReset = () => {
-      setCurrentSlide(0);
-      if (timerRef.current) {
-        clearInterval(timerRef.current);
-        timerRef.current = null;
-      }
-      if (!isPaused && isDesktop) {
-        timerRef.current = setInterval(() => {
-          setCurrentSlide((prev) => (prev + 1) % TOTAL_SLIDES);
-        }, 6000);
-      }
+      setCurrentSlide(VIDEO_SLIDE);
+      setMobileVideoDone(false);
     };
 
     window.addEventListener('reset-hero-slider', handleReset);
     return () => window.removeEventListener('reset-hero-slider', handleReset);
-  }, [isPaused, isDesktop]);
+  }, []);
 
   const nextSlide = useCallback(() => {
     setCurrentSlide((prev) => (prev + 1) % TOTAL_SLIDES);
-    resetTimer();
-  }, [resetTimer]);
+  }, []);
 
   const prevSlide = useCallback(() => {
     setCurrentSlide((prev) => (prev - 1 + TOTAL_SLIDES) % TOTAL_SLIDES);
-    resetTimer();
-  }, [resetTimer]);
+  }, []);
 
   const goToSlide = useCallback((index: number) => {
     setCurrentSlide(index);
-    resetTimer();
-  }, [resetTimer]);
+  }, []);
 
   // Keyboard navigation (데스크톱)
   const handleKeyDown = (e: React.KeyboardEvent) => {
@@ -178,16 +149,28 @@ export default function HeroSlider({ locale }: HeroSliderProps) {
     if (el) el.scrollIntoView({ behavior: 'smooth' });
   };
 
-  // 현재 슬라이드가 작품 슬라이드인 경우(1, 2, 3, 4) 해당 작품 데이터
-  const activeWork = currentSlide > 0 ? PAVILION_WORKS[currentSlide - 1] : null;
+  // 현재 슬라이드가 작품 슬라이드인 경우(2, 3, 4, 5) 해당 작품 데이터
+  const activeWork = currentSlide >= WORK_SLIDE_OFFSET ? PAVILION_WORKS[currentSlide - WORK_SLIDE_OFFSET] : null;
 
   return (
     <div className="relative w-full h-full flex items-center justify-center bg-black select-none">
-      {/* ── MOBILE VIEW (< md): ONLY Poster (No artwork slides, no arrows, no pagination) ── */}
+      {/* ── MOBILE VIEW (< md): 308 영상 → Poster (No artwork slides, no arrows, no pagination) ── */}
       <div
         className="block md:hidden w-full h-full overflow-hidden flex items-center justify-center cursor-default"
         aria-label={isKo ? '제8회 안양공공예술프로젝트(APAP8) 공식 포스터' : 'The 8th Anyang Public Art Project (APAP8) Official Poster'}
       >
+        {!isDesktop && !mobileVideoDone ? (
+          <video
+            src={MAIN_VIDEO_SRC}
+            autoPlay
+            muted
+            playsInline
+            preload="auto"
+            onEnded={() => setMobileVideoDone(true)}
+            onError={() => setMobileVideoDone(true)}
+            className="w-full h-full object-contain pointer-events-none"
+          />
+        ) : (
         <picture className="w-full h-full flex items-center justify-center">
           <source
             type="image/webp"
@@ -201,9 +184,10 @@ export default function HeroSlider({ locale }: HeroSliderProps) {
             loading="eager"
           />
         </picture>
+        )}
       </div>
 
-      {/* ── DESKTOP VIEW (>= md): Full Slider with Poster + 4 Artwork Stills, Arrows & Pagination ── */}
+      {/* ── DESKTOP VIEW (>= md): Full Slider with 308 Video + Poster + 4 Artwork Stills, Arrows & Pagination ── */}
       <div
         className="hidden md:flex relative w-full h-full overflow-hidden items-center justify-center group focus:outline-none"
         tabIndex={0}
@@ -215,8 +199,31 @@ export default function HeroSlider({ locale }: HeroSliderProps) {
         {/* Slide Layer */}
         <div className="relative w-full h-full flex items-center justify-center overflow-hidden">
           <AnimatePresence mode="wait">
-            {currentSlide === 0 ? (
-              /* ── Slide 1: Main Poster ── */
+            {currentSlide === VIDEO_SLIDE ? (
+              /* ── Slide 1: 308 Video (재생 종료 시 다음 슬라이드로 전환) ── */
+              <motion.div
+                key="slide-video"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.5, ease: 'easeInOut' }}
+                className="w-full h-full flex items-center justify-center bg-black cursor-default"
+              >
+                {isDesktop && (
+                  <video
+                    src={MAIN_VIDEO_SRC}
+                    autoPlay
+                    muted
+                    playsInline
+                    preload="auto"
+                    onEnded={nextSlide}
+                    onError={nextSlide}
+                    className="w-full h-full object-contain pointer-events-none"
+                  />
+                )}
+              </motion.div>
+            ) : currentSlide === POSTER_SLIDE ? (
+              /* ── Slide 2: Main Poster ── */
               <motion.div
                 key="slide-poster"
                 initial={{ opacity: 0 }}
@@ -239,7 +246,7 @@ export default function HeroSlider({ locale }: HeroSliderProps) {
                 </picture>
               </motion.div>
             ) : activeWork ? (
-              /* ── Slides 2, 3, 4, 5: Individual Artwork Still Frame Slides ── */
+              /* ── Slides 3, 4, 5, 6: Individual Artwork Still Frame Slides ── */
               <motion.div
                 key={`slide-work-${activeWork.id}`}
                 initial={{ opacity: 0, scale: 0.98 }}
@@ -301,16 +308,16 @@ export default function HeroSlider({ locale }: HeroSliderProps) {
           <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6" />
         </button>
 
-        {/* Pagination & Counter (Bottom-Right, 5 slides) */}
+        {/* Pagination & Counter (Bottom-Right, 6 slides) */}
         <div className="absolute bottom-3 sm:bottom-4 right-3 sm:right-6 z-20 flex items-center gap-2 bg-black/85 backdrop-blur-md border border-white/25 px-2.5 py-1.5 shadow-xl">
-          {/* Slide Counter: 01 / 05 ~ 05 / 05 */}
+          {/* Slide Counter: 01 / 06 ~ 06 / 06 */}
           <span className="font-mono text-[10px] sm:text-[11px] font-bold text-white tracking-widest">
             {String(currentSlide + 1).padStart(2, '0')}&nbsp;/&nbsp;0{TOTAL_SLIDES}
           </span>
 
           <span className="w-[1px] h-3 bg-white/20 mx-0.5" />
 
-          {/* 5 Indicator Bars */}
+          {/* 6 Indicator Bars */}
           <div className="flex items-center gap-1.5">
             {Array.from({ length: TOTAL_SLIDES }).map((_, idx) => (
               <button

@@ -4,7 +4,8 @@ import React from 'react';
 import Link from 'next/link';
 import GnbHeader from '@/components/site-a/GnbHeader';
 import Footer from '@/components/site-a/Footer';
-import { ArrowLeft, Video } from 'lucide-react';
+import PromoVideos from '@/components/site-a/PromoVideos';
+import { ArrowLeft } from 'lucide-react';
 import { PARTICIPATING_ARTISTS, COMPETITION_WINNERS } from '@/lib/credits';
 
 interface PageProps {
@@ -262,41 +263,16 @@ export default function AboutPage({ params }: PageProps) {
 
             <div>
               <h2 className="text-2xl sm:text-4xl font-extrabold leading-snug">
-                {isKo ? 'APAP8 공식 홍보영상 & 티저' : 'APAP8 Official Promo Video & Teaser'}
+                {isKo ? 'APAP8 티저영상 & 공식 홍보영상' : 'APAP8 Teaser & Official Promotional Video'}
               </h2>
               <p className="font-mono text-xs sm:text-sm text-[#8C8C8C] mt-2">
                 {isKo
-                  ? 'Arte X : 예술 대전환_안양 무릉도원 미디어 티저 및 현장 영상'
-                  : 'Arte X : Art Transformation Teaser & On-site Media'}
+                  ? 'Arte X : 예술 대전환_안양 무릉도원 티저영상 및 공식 홍보영상'
+                  : 'Arte X : Art Transformation Teaser & Official Promotional Video'}
               </p>
             </div>
 
-            <div className="border border-white/30 bg-black p-4 sm:p-6 space-y-4">
-              <div className="relative w-full aspect-video border border-white/20 bg-black overflow-hidden shadow-2xl">
-                <iframe
-                  src="https://www.youtube.com/embed/G5wZfkKGf-Y?rel=0&modestbranding=1"
-                  title={isKo ? 'APAP8 공식 홍보영상' : 'APAP8 Official Promo Video'}
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                  allowFullScreen
-                  className="w-full h-full border-0"
-                />
-              </div>
-
-              <div className="bg-white/[0.02] border border-white/10 p-4 grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs font-mono">
-                <div>
-                  <span className="text-[#8C8C8C] block text-[10px]">■ {isKo ? '영상 제목' : 'TITLE'}</span>
-                  <span className="text-white font-medium">{isKo ? 'APAP8 Arte X : 예술 대전환 공식 티저' : 'APAP8 Arte X Official Teaser'}</span>
-                </div>
-                <div>
-                  <span className="text-[#8C8C8C] block text-[10px]">■ {isKo ? '주최 / 주관' : 'ORGANIZER'}</span>
-                  <span className="text-white font-medium">{isKo ? '안양시 · 안양문화예술재단' : 'Anyang City & AFAC'}</span>
-                </div>
-                <div>
-                  <span className="text-[#8C8C8C] block text-[10px]">■ {isKo ? '공개 플랫폼' : 'PLATFORM'}</span>
-                  <span className="text-white font-medium">YouTube (1080p 60fps)</span>
-                </div>
-              </div>
-            </div>
+            <PromoVideos isKo={isKo} />
           </section>
         </div>
       </main>

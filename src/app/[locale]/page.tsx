@@ -8,6 +8,7 @@ import Footer from '@/components/site-a/Footer';
 import MapModal from '@/components/site-a/MapModal';
 import HeroSlider from '@/components/site-a/HeroSlider';
 import ImageZoomModal from '@/components/site-a/ImageZoomModal';
+import PromoVideos from '@/components/site-a/PromoVideos';
 import {
   MapPin,
   Calendar,
@@ -18,7 +19,6 @@ import {
   Clock,
   ChevronLeft,
   ChevronRight,
-  Video,
   Radio,
   Sparkles,
   CheckCircle2,
@@ -48,9 +48,6 @@ export default function SiteAPage({ params }: PageProps) {
   const locale = resolvedParams.locale || 'ko';
   const validLocale: 'ko' | 'en' = locale === 'en' ? 'en' : 'ko';
   const isKo = validLocale === 'ko';
-
-  // YouTube Promo Video ID (공식 홍보영상 등록: https://youtu.be/G5wZfkKGf-Y)
-  const PROMO_YOUTUBE_ID = 'G5wZfkKGf-Y';
 
   // Mobile modal states
   const [aboutModalItem, setAboutModalItem] = useState<'overview' | 'theme' | 'credits' | 'promo' | null>(null);
@@ -282,9 +279,9 @@ export default function SiteAPage({ params }: PageProps) {
                         </span>
                       </div>
                       <h3 className="text-[13px] sm:text-sm font-extrabold text-white leading-snug">
-                        {isKo ? 'APAP8 공식 홍보영상 & 티저' : 'APAP8 Official Promo Video'}
+                        {isKo ? 'APAP8 티저영상 & 공식 홍보영상' : 'APAP8 Teaser & Official Promo Video'}
                         <span className="block text-[10.5px] sm:text-[11px] font-mono text-[#8C8C8C] font-normal mt-0.5">
-                          {isKo ? 'Arte X : 예술 대전환 미디어 티저' : 'Arte X : Art Transformation Teaser'}
+                          {isKo ? 'Arte X : 예술 대전환 티저영상 · 공식 홍보영상' : 'Arte X : Teaser & Official Promo'}
                         </span>
                       </h3>
                       <p className="text-[12px] sm:text-body text-[#B9B9B9] font-light leading-relaxed line-clamp-1 sm:line-clamp-2">
@@ -556,70 +553,16 @@ export default function SiteAPage({ params }: PageProps) {
                         04 PROMOTIONAL VIDEO
                       </span>
                       <h3 className="text-2xl lg:text-3xl font-extrabold text-white leading-snug">
-                        {isKo ? '제8회 안양공공예술프로젝트(APAP8) 공식 홍보영상' : 'APAP8 Official Promotional Video'}
+                        {isKo ? 'APAP8 티저영상 & 공식 홍보영상' : 'APAP8 Teaser & Official Promotional Video'}
                       </h3>
                       <p className="font-mono text-xs text-[#8C8C8C] mt-1">
                         {isKo
-                          ? 'Arte X : 예술 대전환_안양 무릉도원 공식 티저 및 미디어 영상'
-                          : 'Arte X : Art Transformation Official Teaser & Media Video'}
+                          ? 'Arte X : 예술 대전환_안양 무릉도원 티저영상 및 공식 홍보영상'
+                          : 'Arte X : Art Transformation Teaser & Official Promotional Video'}
                       </p>
                     </div>
 
-                    {/* YouTube Video Container (Configured via PROMO_YOUTUBE_ID) */}
-                    <div className="border border-white/30 bg-black p-3 sm:p-4 space-y-4">
-                      {PROMO_YOUTUBE_ID ? (
-                        <div className="relative w-full aspect-video border border-white/20 bg-black overflow-hidden shadow-2xl">
-                          <iframe
-                            src={`https://www.youtube.com/embed/${PROMO_YOUTUBE_ID}?rel=0&modestbranding=1`}
-                            title={isKo ? 'APAP8 공식 홍보영상' : 'APAP8 Promo Video'}
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                            allowFullScreen
-                            className="w-full h-full border-0"
-                          />
-                        </div>
-                      ) : (
-                        <div className="relative w-full aspect-video border border-dashed border-white/30 bg-[#0C0C0C] flex flex-col items-center justify-center p-6 text-center group overflow-hidden">
-                          {/* Background subtle grid */}
-                          <div className="absolute inset-0 opacity-15 bg-[radial-gradient(#fff_1px,transparent_1px)] [background-size:16px_16px] pointer-events-none" />
-                          
-                          {/* Ready Badge */}
-                          <div className="relative z-10 mb-4 inline-flex items-center gap-2 border border-white/40 bg-black/80 px-3 py-1 font-mono text-[10px] text-white">
-                            <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-                            <span>YOUTUBE EMBED READY</span>
-                          </div>
-
-                          {/* Play button dummy */}
-                          <div className="relative z-10 w-16 h-16 sm:w-20 sm:h-20 rounded-full border-2 border-white/60 group-hover:border-white bg-white/10 group-hover:bg-white/20 flex items-center justify-center transition-all duration-300 group-hover:scale-105 mb-4 shadow-[0_0_20px_rgba(255,255,255,0.1)]">
-                            <Video className="w-8 h-8 sm:w-10 sm:h-10 text-white ml-0.5" />
-                          </div>
-
-                          <h4 className="relative z-10 text-base sm:text-lg font-bold text-white mb-1">
-                            {isKo ? 'APAP8 공식 홍보영상이 곧 공개됩니다' : 'APAP8 Official Promo Video Coming Soon'}
-                          </h4>
-                          <p className="relative z-10 text-xs text-[#8C8C8C] max-w-md font-light leading-relaxed">
-                            {isKo
-                              ? '유튜브 영상 등록 준비가 완료되었습니다. 영상 공개 시 본 화면에서 고화질로 바로 시청하실 수 있습니다.'
-                              : 'Ready for YouTube integration. The video player will stream directly here once published.'}
-                          </p>
-                        </div>
-                      )}
-
-                      {/* Video Meta Info Box */}
-                      <div className="bg-white/[0.02] border border-white/10 p-4 grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs font-mono">
-                        <div>
-                          <span className="text-[#8C8C8C] block text-[10px]">■ {isKo ? '영상 제목' : 'TITLE'}</span>
-                          <span className="text-white font-medium">{isKo ? 'APAP8 Arte X : 예술 대전환 공식 티저' : 'APAP8 Arte X Official Teaser'}</span>
-                        </div>
-                        <div>
-                          <span className="text-[#8C8C8C] block text-[10px]">■ {isKo ? '주최 / 주관' : 'ORGANIZER'}</span>
-                          <span className="text-white font-medium">{isKo ? '안양시 · 안양문화예술재단' : 'Anyang City & AFAC'}</span>
-                        </div>
-                        <div>
-                          <span className="text-[#8C8C8C] block text-[10px]">■ {isKo ? '공개 플랫폼' : 'PLATFORM'}</span>
-                          <span className="text-white font-medium">YouTube (1080p 60fps)</span>
-                        </div>
-                      </div>
-                    </div>
+                    <PromoVideos isKo={isKo} />
                   </div>
                 )}
               </div>
@@ -2005,58 +1948,16 @@ export default function SiteAPage({ params }: PageProps) {
         isOpen={aboutModalItem === 'promo'}
         onClose={() => setAboutModalItem(null)}
         category={isKo ? '04 홍보영상' : '04 PROMOTIONAL VIDEO'}
-        title={isKo ? 'APAP8 공식 홍보영상 & 티저' : 'APAP8 Official Promo Video'}
+        title={isKo ? 'APAP8 티저영상 & 공식 홍보영상' : 'APAP8 Teaser & Official Promo Video'}
       >
         <div className="space-y-4">
           <p className="font-mono text-xs text-[#8C8C8C]">
             {isKo
-              ? 'Arte X : 예술 대전환_안양 무릉도원 미디어 티저 및 영상'
+              ? 'Arte X : 예술 대전환_안양 무릉도원 티저영상 및 공식 홍보영상'
               : 'Arte X : Art Transformation Official Teaser & Video'}
           </p>
 
-          {/* YouTube Video Container (Configured via PROMO_YOUTUBE_ID) */}
-          <div className="border border-white/20 bg-black p-2 sm:p-3 space-y-3">
-            {PROMO_YOUTUBE_ID ? (
-              <div className="relative w-full aspect-video border border-white/20 bg-black overflow-hidden shadow-xl">
-                <iframe
-                  src={`https://www.youtube.com/embed/${PROMO_YOUTUBE_ID}?rel=0&modestbranding=1`}
-                  title={isKo ? 'APAP8 공식 홍보영상' : 'APAP8 Promo Video'}
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                  allowFullScreen
-                  className="w-full h-full border-0"
-                />
-              </div>
-            ) : (
-              <div className="relative w-full aspect-video border border-dashed border-white/30 bg-[#0C0C0C] flex flex-col items-center justify-center p-4 text-center group overflow-hidden">
-                <div className="relative z-10 mb-3 inline-flex items-center gap-1.5 border border-white/40 bg-black/80 px-2.5 py-0.5 font-mono text-[9px] text-white">
-                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-                  <span>YOUTUBE READY</span>
-                </div>
-                <div className="relative z-10 w-12 h-12 rounded-full border border-white/60 bg-white/10 flex items-center justify-center mb-2.5 shadow-[0_0_15px_rgba(255,255,255,0.1)]">
-                  <Video className="w-6 h-6 text-white ml-0.5" />
-                </div>
-                <h4 className="relative z-10 text-sm font-bold text-white mb-1">
-                  {isKo ? '공식 홍보영상 공개 예정' : 'Promo Video Coming Soon'}
-                </h4>
-                <p className="relative z-10 text-[11px] text-[#8C8C8C] font-light leading-snug">
-                  {isKo
-                    ? '유튜브 영상 등록 준비가 완료되었습니다.'
-                    : 'Ready for YouTube stream.'}
-                </p>
-              </div>
-            )}
-
-            <div className="bg-white/[0.02] border border-white/10 p-3 space-y-1 text-xs font-mono">
-              <div className="flex justify-between">
-                <span className="text-[#8C8C8C]">■ {isKo ? '제목' : 'TITLE'}</span>
-                <span className="text-white">{isKo ? 'APAP8 Arte X : 예술 대전환 티저' : 'APAP8 Arte X Teaser'}</span>
-              </div>
-              <div className="flex justify-between">
-                <span className="text-[#8C8C8C]">■ {isKo ? '플랫폼' : 'PLATFORM'}</span>
-                <span className="text-white">YouTube (1080p)</span>
-              </div>
-            </div>
-          </div>
+          <PromoVideos isKo={isKo} compact />
         </div>
       </SectionDetailModal>
 

@@ -10,6 +10,11 @@ interface NoticeModalContentProps {
   isKo: boolean;
 }
 
+function getYoutubeId(url: string) {
+  const match = url.match(/(?:v=|youtu\.be\/|embed\/)([\w-]{11})/);
+  return match ? match[1] : '';
+}
+
 function renderLineWithLinks(text: string) {
   const urlRegex = /(https?:\/\/[^\s]+)/g;
   if (!text.match(urlRegex)) return text;
@@ -74,7 +79,7 @@ export default function NoticeModalContent({ item, isKo }: NoticeModalContentPro
               className="flex items-center gap-1.5 text-xs font-mono text-white bg-red-600/30 hover:bg-red-600 px-2.5 py-1 border border-red-500/50 transition-colors"
             >
               <Play className="w-3 h-3 fill-current" />
-              <span>{isKo ? '다시보기 영상' : 'YOUTUBE'}</span>
+              <span>{isKo ? '영상 보기' : 'YOUTUBE'}</span>
             </a>
           )}
         </div>
@@ -263,12 +268,12 @@ export default function NoticeModalContent({ item, isKo }: NoticeModalContentPro
         </div>
       )}
 
-      {/* ── Case 4: Video Preview (KBS 1TV Documentary Replay) ── */}
+      {/* ── Case 4: Video Preview (YouTube) ── */}
       {item.previewType === 'video' && item.videoUrl && (
         <div className="pt-2 space-y-3.5 border-t border-white/10">
           <div className="flex items-center justify-between text-xs font-mono text-[#8C8C8C]">
             <span className="font-bold text-white/90">
-              ■ {isKo ? 'KBS 1TV 다큐멘터리 다시보기 영상' : 'KBS 1TV DOCUMENTARY REPLAY'}
+              ■ {item.videoLabel ?? (isKo ? 'KBS 1TV 다큐멘터리 다시보기 영상' : 'KBS 1TV DOCUMENTARY REPLAY')}
             </span>
             <span className="text-[11px] text-white/70 bg-red-600/20 border border-red-500/40 px-2 py-0.5">
               YouTube · 1080p Full HD
@@ -277,7 +282,7 @@ export default function NoticeModalContent({ item, isKo }: NoticeModalContentPro
 
           <div className="relative w-full aspect-video bg-neutral-950 border border-white/20 rounded overflow-hidden shadow-2xl">
             <iframe
-              src="https://www.youtube-nocookie.com/embed/4zB7LXO7Ydo"
+              src={`https://www.youtube-nocookie.com/embed/${getYoutubeId(item.videoUrl)}`}
               title={item.title}
               className="w-full h-full border-0"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"

@@ -12,12 +12,38 @@ export interface CommunityItem {
   previewType?: 'image' | 'pdf' | 'download_only' | 'video';
   previewImage?: string;
   videoUrl?: string;
+  videoLabel?: string;
 }
 
 export function getCommunityItems(locale: string = 'ko'): CommunityItem[] {
   const isKo = locale === 'ko';
 
   return [
+    // 0. 공식 홍보 영상 (Official Promotional Video)
+    {
+      id: 'notice-promo-video',
+      cat: isKo ? '공지' : 'Notice',
+      type: 'notice',
+      title: isKo
+        ? '제8회 안양공공예술프로젝트(APAP8) 공식 홍보 영상'
+        : 'The 8th Anyang Public Art Project (APAP8) Official Promotional Video',
+      date: '2026.10.18',
+      desc: isKo
+        ? '‘Arte X: 예술대전환_안양 무릉도원’을 주제로 펼쳐지는 APAP8의 공식 홍보 영상입니다.'
+        : 'The official promotional video of APAP8, themed "Arte X : Art Transformation_Anyang Paradise".',
+      videoUrl: 'https://www.youtube.com/watch?v=A9SrGSk3Qro',
+      videoLabel: isKo ? 'APAP8 공식 홍보 영상' : 'APAP8 OFFICIAL PROMOTIONAL VIDEO',
+      previewType: 'video',
+      content: isKo
+        ? [
+            '‘Arte X: 예술대전환_안양 무릉도원’을 주제로 펼쳐지는 APAP8의 공식 홍보 영상입니다.',
+            '4개국 41명(팀)의 작가가 선보이는 실내 미디어 전시부터 야외 조각전, 특별전, 야간 미디어아트까지— 예술과 첨단기술, 자연이 어우러져 안양의 일상 공간을 새로이 재해석하는 공공예술의 생생한 현장을 영상으로 먼저 만나보세요.',
+          ]
+        : [
+            'This is the official promotional video of APAP8, unfolding under the theme "Arte X : Art Transformation_Anyang Paradise".',
+            'From indoor media exhibitions by 41 artists (teams) from 4 countries to outdoor sculpture, special exhibitions, and night-time media art — preview the vivid scenes of public art where art, cutting-edge technology, and nature come together to reinterpret the everyday spaces of Anyang.',
+          ],
+    },
     // 1. 개막식 안내 (Opening Ceremony Guide)
     {
       id: 'notice-opening',
