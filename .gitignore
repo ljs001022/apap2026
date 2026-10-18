@@ -42,3 +42,7 @@ next-env.d.ts
 
 # references
 /references
+
+# local assets & tooling
+/docs/1018/
+/.claude/launch.json
