@@ -801,43 +801,17 @@
           "profile_image": "/assets/artists/korea-china-special/kimkeunjoong/profile.webp",
           "works": [
             {
-              "title": "<꽃세상 Natural Being 7-5>",
+              "title": "<꽃세상(原本自然圖) 7-5>\nNatural Being 7-5",
+              "title_ko": "<꽃세상(原本自然圖) 7-5>",
+              "title_en": "Natural Being 7-5",
               "year": "2007",
-              "material": "캔버스에 유채",
+              "material": "캔버스에 아크릴\n\nAcrylic on canvas",
+              "medium_ko": "캔버스에 아크릴",
+              "medium_en": "Acrylic on canvas",
               "size": "161.5 × 130 cm",
               "description": "김근중의 <꽃세상(Flower World)> 연작은 전통 민화의 대표적 도상인 모란을 화려한 원색과 팝아트적 기법으로 재해석한 대표작이다. 전통 동양화의 틀을 깨고 유채, 아크릴, 원색 물감을 사용해 화면 가득 꽃을 배치하며 대중적인 조형 감각과 강렬한 시각적 에너지로 승화시켰다. 작가는 만개하거나 시들어 가는 다양한 상태의 모란을 통해 생멸하고 변화하는 인간 삶과 존재의 모습을 투영한다. 모란이 지닌 전통적 상징인 '부귀'에 그치지 않고, 선과 악, 미와 추 같은 이분법적 경계를 넘어 세속적 삶과 인간 본연의 순수한 마음을 있는 그대로 포용한다. 결국 그의 <꽃세상>은 화려한 화면 너머로 우리가 살아가고 숨 쉬는 '지금, 여기'의 현실이야말로 가장 본질적인 세상이자 긍정의 공간임을 역설한다.  \n\nKim Keunjoong's Flower World series is a signature body of work that reinterprets the peony- a representative icon of traditional Korean folk painting (Minhwa) - through vibrant primary colors and Pop Art techniques. Breaking away from the constraints of traditional Oriental painting, he uses oil, acrylic, and vivid pigments to fill the canvas with blossoms, elevating them into an accessible aesthetic with powerful visual energy.  Through peonies depicted in various stages of life - from full bloom to decay - the artist reflects human existence and its continuous cycle of life and transformation. Moving beyond the traditional symbol of wealth and prosperity, the work transcends dichotomies like good and evil or beauty and ugliness, embracing both secular life and the intrinsic purity of the human heart. Ultimately,  asserts that behind its brilliant visual surface, the reality of 'here and now' where we live is the most fundamental and affirming world of all.",
               "images": [
                 "/assets/artists/korea-china-special/kimkeunjoong/work-1-1.webp"
-              ]
-            },
-            {
-              "title": "〈Natural Being-There or Here 26-20〉\n\n〈Natural Being-There or Here 26-20〉",
-              "year": "2026",
-              "material": "캔버스에 아크릴\n\nAcrylic on canvas",
-              "size": "162.5 × 130.5 cm",
-              "description": "전통 모란화의 형상을 현대 회화의 기호와 자유로운 붓터치로 환원하여 자연과 인간 존재의 근원적 생명력을 환기한다.",
-              "images": [
-                "/assets/artists/korea-china-special/kimkeunjoong/work-2-1.webp"
-              ]
-            },
-            {
-              "title": "〈Natural Being-There or Here 26-21〉\n\n〈Natural Being-There or Here 26-21〉",
-              "year": "2026",
-              "material": "캔버스에 아크릴\n\nAcrylic on canvas",
-              "size": "162.5 × 130.5 cm",
-              "description": "꽃이라는 소재를 통해 존재의 생성과 소멸, 유희와 초월의 경계를 경쾌하면서도 깊이 있는 색면으로 구축한다.",
-              "images": [
-                "/assets/artists/korea-china-special/kimkeunjoong/work-3-1.webp"
-              ]
-            },
-            {
-              "title": "〈존재 26-18 (Being 26-18)〉\n\n〈Being 26-18〉",
-              "year": "2026",
-              "material": "캔버스에 아크릴\n\nAcrylic on canvas",
-              "size": "162.5 × 130.5 cm",
-              "description": "형상과 비형상의 경계에서 피어나는 원초적 생명성을 명상적이면서도 직관적인 붓질로 완성한 신작이다.",
-              "images": [
-                "/assets/artists/korea-china-special/kimkeunjoong/work-4-1.webp"
               ]
             }
           ]
@@ -1016,42 +990,16 @@
           "works": [
             {
               "title": "<소멸과 생성 - 욕망의 바다>\nErasure and Generation - Sea of Desire",
+              "title_ko": "<소멸과 생성 - 욕망의 바다>",
+              "title_en": "Erasure and Generation - Sea of Desire",
               "year": "2019",
               "material": "순지에 향불, 장지에 배접 및 코팅\nIncense on Sunji, Lined and Coated on Jangji",
+              "medium_ko": "순지에 향불, 장지에 배접 및 코팅",
+              "medium_en": "Incense on Sunji, Lined and Coated on Jangji",
               "size": "500 × 190 cm",
-              "description": "이길우의 작품 세계는 동양적 사유와 현대적 스펙터클이 만나는 거대한 '융합의 장'이다. 작가의 가장 독창적인 방법론은 한지를 향(香)이나 인두로 태워 무수한 구멍을 내고, 그 균열 사이로 다른 이미지를 중첩하는 '향불 작업'이다. 그는 이 노동집약적인 프로세스를 통해 서로 다른 시공간의 인물이나 대중문화의 아이콘을 하나의 화면에 겹치게 한다. 이를 통해 동양과 서양, 전통과 현대, 그리고 성(聖)과 속(俗)의 경계를 허물며 이질적인 가치들이 어떻게 공존하고 충돌하는지 탐구한다. 화면을 가득 채운 무수한 구멍들은 단순한 물리적 흔적을 넘어, 소멸과 생성, 치유와 흔적에 대한 회화적 은유다. 전통 회화의 메커니즘을 해체하고 재구성하는 작가의 실험은 현대 사회의 다층적인 단면을 투영하며 아날로그적 붓질과 불이 도달할 수 있는 현대 한국화의 새로운 가능성을 증명한다.\n\nThe artistic world of Lee Gil Woo serves as a massive 'arena of fusion' where Eastern philosophy meets contemporary spectacle. His most unique methodology involves burning countless holes into Hanji (traditional Korean handmade paper) using incense or a soldering iron, and then overlapping different images through these fissures. Through this labor-intensive process, the artist superimposes figures from different times and spaces or pop culture icons onto a single canvas.In doing so, he dissolves the boundaries between East and West, tradition and modernity, as well as the sacred and the profane, exploring how disparate values coexist and collide. The myriad of holes filling the screen transcend mere physical traces; they are painterly metaphors for erasure and generation, healing and vestige. His experimentation in deconstructing and reconstructing the mechanisms of traditional painting reflects the multilayered facets of modern society, proving the new possibilities of contemporary Korean painting achieved through analog brushstrokes and fire.",
+              "description": "이길우는 동양적 사유와 현대적 스펙터클이 만나는 '융합의 장'을 작품으로 구현한다. 그의 가장 독창적인 방법론은 한지를 향(香)이나 인두로 태워 무수한 구멍을 내고, 그 균열 사이로 다른 이미지를 중첩하는 '향불 작업'이다. 작가는 이 노동집약적인 프로세스를 통해 서로 다른 시공간의 인물이나 대중문화의 아이콘을 하나의 화면에 오버랩시킨다. 이를 통해 동양과 서양, 전통과 현대, 그리고 성(聖)과 속(俗)의 경계를 허물며 이질적인 가치들이 어떻게 공존하고 충돌하는지 탐구한다. 화면을 가득 채운 무수한 구멍들은 단순한 물리적 흔적을 넘어, 소멸과 생성, 치유와 흔적에 대한 회화적 은유다. 전통 회화의 매커니즘을 해체하고 재구성하는 그의 실험은 현대 사회의 다층적인 단면을 투영하며 아날로그적 붓질과 불이 도달할 수 있는 현대 한국화의 새로운 가능성을 증명한다.\n\nLee Gil Woo depicts a massive 'arena of fusion' where Eastern philosophy meets contemporary spectacle in his works. His most unique methodology involves burning countless holes into Hanji (traditional Korean handmade paper) using incense or a soldering iron, and then overlapping different images through these fissures. Through this labor-intensive process, the artist superimposes figures from different times and spaces or pop culture icons onto a single canvas. In doing so, he dissolves the boundaries between East and West, tradition and modernity, as well as the sacred and the profane, exploring how disparate values coexist and collide. The myriad of holes filling the screen transcend mere physical traces; they are painterly metaphors for erasure and generation, healing and vestige. His experimentation in deconstructing and reconstructing the mechanisms of traditional painting reflects the multilayered facets of modern society, proving the new possibilities of contemporary Korean painting achieved through analog brushstrokes and fire.",
               "images": [
                 "/assets/artists/korea-china-special/lee-gil-woo/work-1-1.webp"
-              ]
-            },
-            {
-              "title": "〈All kinds of things 025-7〉\n\n〈All kinds of things 025-7〉",
-              "year": "2025",
-              "material": "순지에 향불, 장지에 배접 및 코팅\n\nIncense burn on Korean paper, mounted and coated on Jangji",
-              "size": "120 × 85 cm",
-              "description": "향불로 태운 한지 구멍들의 미세한 중첩을 통해 동서양의 다양한 사물과 상징들이 하나의 화면에서 공존하는 시각적 층위를 형성한다.",
-              "images": [
-                "/assets/artists/korea-china-special/lee-gil-woo/work-2-1.webp"
-              ]
-            },
-            {
-              "title": "〈All kinds of things 025-5〉\n\n〈All kinds of things 025-5〉",
-              "year": "2025",
-              "material": "순지에 향불, 장지에 배접 및 코팅\n\nIncense burn on Korean paper, mounted and coated on Jangji",
-              "size": "140 × 185 cm",
-              "description": "향불의 흔적이 빚어내는 반투명한 레이어는 물질과 비물질, 소멸과 생성이 교차하는 현대사회의 다층적 풍경을 포착한다.",
-              "images": [
-                "/assets/artists/korea-china-special/lee-gil-woo/work-3-1.webp"
-              ]
-            },
-            {
-              "title": "〈여행자 1〉\n\n〈Traveler 1〉",
-              "year": "2025",
-              "material": "순지에 향불, 장지에 배접 및 코팅\n\nIncense burn on Korean paper, mounted and coated on Jangji",
-              "size": "140 × 185 cm",
-              "description": "시간과 공간을 횡단하는 존재로서의 ‘여행자’를 향불 작업 특유의 번짐과 여백, 중첩된 선을 통해 은유적으로 형상화한다.",
-              "images": [
-                "/assets/artists/korea-china-special/lee-gil-woo/work-4-1.webp"
               ]
             }
           ]
