@@ -292,8 +292,8 @@ export function getLocalizedVenueName(venueSlug: string, locale: string = 'ko'):
     'e-pavilion-media': { ko: '아이 파빌리온', en: 'i Pavilion' },
     'outdoor-exhibition': { ko: '오픈 그라운드', en: 'Open Ground' },
     '308-art-crew': { ko: '밤의 도원경', en: 'Night Utopia' },
-    'korea-china-special': { ko: '한중특별전', en: 'Korea-China Special' },
-    'media-art-open-call': { ko: '미디어아트 공모작가', en: 'Media Art Open Call' },
+    'korea-china-special': { ko: '특별전: 우리가 꿈꾸는 도원', en: 'Special Exhibition: Dreaming Our Paradise' },
+    'media-art-open-call': { ko: 'APAP8 미디어아트 작품공모 당선작가전', en: 'APAP8 Media Art Open Call Selected Artists' },
   };
 
   const found = venueMap[venueSlug];
