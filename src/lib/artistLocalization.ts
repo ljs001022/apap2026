@@ -289,9 +289,9 @@ export function getLocalizedArtistName(
 export function getLocalizedVenueName(venueSlug: string, locale: string = 'ko'): string {
   const isKo = locale === 'ko';
   const venueMap: Record<string, { ko: string; en: string }> = {
-    'e-pavilion-media': { ko: '안양파빌리온', en: 'Anyang Pavilion' },
+    'e-pavilion-media': { ko: '아이 파빌리온', en: 'i Pavilion' },
     'outdoor-exhibition': { ko: '오픈 그라운드', en: 'Open Ground' },
-    '308-art-crew': { ko: '308 아트크루', en: '308 Art Crew' },
+    '308-art-crew': { ko: '밤의 도원경', en: 'Night Utopia' },
     'korea-china-special': { ko: '한중특별전', en: 'Korea-China Special' },
     'media-art-open-call': { ko: '미디어아트 공모작가', en: 'Media Art Open Call' },
   };
