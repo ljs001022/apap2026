@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 import GnbHeader from '@/components/site-a/GnbHeader';
 import Footer from '@/components/site-a/Footer';
@@ -19,6 +19,14 @@ export default function ProgramPage({ params }: PageProps) {
 
   const [citizenTab, setCitizenTab] = useState<'busking' | 'dowonjang' | 'november'>('november');
   const [zoomedImage, setZoomedImage] = useState<{ src: string; alt: string } | null>(null);
+  const citizenTabsRef = useRef<HTMLDivElement>(null);
+
+  // 좁은 화면에서 활성 탭이 가로 스크롤 밖에 있으면 보이는 위치로 이동
+  useEffect(() => {
+    const bar = citizenTabsRef.current;
+    const active = bar?.querySelector<HTMLElement>('[data-active="true"]');
+    if (bar && active) bar.scrollLeft = active.offsetLeft - (bar.clientWidth - active.offsetWidth) / 2;
+  }, [citizenTab]);
 
   return (
     <div className="min-h-screen bg-[#0A0A0A] text-white font-sans antialiased flex flex-col justify-between">
@@ -75,9 +83,10 @@ export default function ProgramPage({ params }: PageProps) {
 
             {/* Inner Tabs: Busking & Dowonjang */}
             <div className="space-y-6">
-              <div className="flex border-b border-white/20 gap-2 overflow-x-auto hide-scrollbar">
+              <div ref={citizenTabsRef} className="flex border-b border-white/20 gap-2 overflow-x-auto hide-scrollbar relative">
                 <button
                   type="button"
+                  data-active={citizenTab === 'busking'}
                   onClick={() => setCitizenTab('busking')}
                   className={`flex items-center gap-2 px-4 sm:px-6 py-2.5 sm:py-3 font-mono text-xs sm:text-sm font-bold transition-all border-b-2 -mb-[2px] whitespace-nowrap flex-shrink-0 ${
                     citizenTab === 'busking'
@@ -90,6 +99,7 @@ export default function ProgramPage({ params }: PageProps) {
                 </button>
                 <button
                   type="button"
+                  data-active={citizenTab === 'dowonjang'}
                   onClick={() => setCitizenTab('dowonjang')}
                   className={`flex items-center gap-2 px-4 sm:px-6 py-2.5 sm:py-3 font-mono text-xs sm:text-sm font-bold transition-all border-b-2 -mb-[2px] whitespace-nowrap flex-shrink-0 ${
                     citizenTab === 'dowonjang'
@@ -102,6 +112,7 @@ export default function ProgramPage({ params }: PageProps) {
                 </button>
                 <button
                   type="button"
+                  data-active={citizenTab === 'november'}
                   onClick={() => setCitizenTab('november')}
                   className={`flex items-center gap-2 px-4 sm:px-6 py-2.5 sm:py-3 font-mono text-xs sm:text-sm font-bold transition-all border-b-2 -mb-[2px] whitespace-nowrap flex-shrink-0 ${
                     citizenTab === 'november'
