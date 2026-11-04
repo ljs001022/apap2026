@@ -33,8 +33,7 @@
               "description_ko": "〈OVERLAID: Compressed Series〉(2026)는 시간과 기억이 축적되고 중첩되는 과정을 물질과 공간의 관계로 확장한다. 작가에게 시간은 지나가며 소멸하는 것이 아니라, 끊임없이 쌓이고 흔적을 남기며 현재를 구성하는 물질적 층위이다. 공간을 채우는 수많은 구체는 각각 독립된 시간의 단위로, 표면에는 서로 다른 색면이 반복적으로 쌓이고 갈아내어지며 시간의 흔적을 남긴다. 하나의 색이 다른 색을 덮고 다시 제거되는 과정에서 이전의 층이 드러나고, 사라진 것과 남겨진 것이 하나의 표면 안에 공존한다. 서로 다른 크기의 구체들은 다양한 높이와 간격으로 밀집되어 하나의 군집을 이루며, 개별성과 전체의 경계를 흐린다. 이때 공간은 하나의 거대한 ‘압축된 풍경’으로 전환된다. ‘압축’은 단순한 밀집이 아니라, 서로 다른 시간과 기억, 흔적과 존재가 하나의 현재 안에 중첩되어 공존하는 상태를 의미한다.",
               "description_en": "OVERLAID: Compressed Series explores how time and memory accumulate and overlap through the relationship between material and space. For the artist, time is not something that simply passes and disappears, but a material layer that leaves traces and constitutes the present. Each sphere represents a unit of time, with layers of color repeatedly built up and removed from its surface, revealing traces of what came before. Spheres of different sizes cluster at varying heights and intervals, blurring the boundary between the individual and the whole. The space thus becomes a vast “compressed landscape,” where different times, memories, traces, and forms of existence overlap and coexist within the present.",
               "images": [
-                "/assets/artists/e-pavilion-media/kim-deok-han/work-2-1.webp",
-                "/assets/artists/e-pavilion-media/kim-deok-han/work-2-2.webp"
+                "/assets/artists/e-pavilion-media/kim-deok-han/work-2-1.webp"
               ]
             },
             {
@@ -244,8 +243,7 @@
               "size": "200 × 280 × 80 cm",
               "description": "유영운의 작업은 인쇄 매체의 텍스트와 이미지를 조형적 인과관계로 전환하는 해체와 재구성의 과정이다. 일상에서 유통되다 버려진 지면 파편들은 작가의 손을 거쳐 새로운 피부처럼 구축되며, 표면의 텍스트와 픽셀화된 색채는 실재와 환영 사이의 미묘한 긴장을 유발한다. 조각이 매스미디어에 의해 가공된 껍데기 형태의 물질적 구조를 직관적으로 증명한다면, 회화는 그러한 잔상이 기억 속에서 변형되는 심리적 흔적을 시각화한다. 이를 통해 작가는 관람객이 소비해온 권력과 상징의 겉모습을 해부하고, 편집된 현실 뒤에 숨겨진 시각 매커니즘을 낯설게 재인식하도록 유도한다.\n\nYoo Young Wun’s practice is a process of deconstruction and reconstruction that transforms printed text and images into structural relationships. Fragments of printed paper, discarded after daily circulation, are built up like a new skin under the artist's hands, while the surface text and pixelated colors induce a subtle tension between reality and illusion. If his sculptures intuitively demonstrate the physical structure of processed shells constructed by mass media, his paintings visualize the psychological traces of how these afterimages distort within memory. Through this dual approach, the artist dissects the surface of power and symbolism consumed by the public, urging viewers to perceive the visual mechanisms hidden behind edited realities from an unfamiliar perspective.",
               "images": [
-                "/assets/artists/e-pavilion-media/yoo-young-wun/work-1-1.webp",
-                "/assets/artists/e-pavilion-media/yoo-young-wun/work-1-2.webp"
+                "/assets/artists/e-pavilion-media/yoo-young-wun/work-1-1.webp"
               ]
             }
           ]
@@ -531,7 +529,8 @@
               "size": "300x100x100㎝",
               "description": "작가는 자연의 흐름을 기하학적 무늬와 부드러운 곡선의 조합으로 연출한다. **〈Rafting〉(2023)**의 금속 표면에 구성된 패턴은 단순한 장식이 아닌, 작가의 행위와 재료의 물성이 접목되며 연속적으로 재배열된 과정의 흔적이다. 스테인리스 스틸 구조가 만들어내는 입체적 리듬은 고정된 형태를 넘어 공간 안에서 끊임없이 연동된다. 깎고 연마하는 작업의 반복을 통해 표면에 물결과 같은 리듬을 새기며, 정적인 형태 안에 시간과 에너지가 축적되는 과정을 드러낸다. 이는 자연과 인간, 물질과 행위가 상호작용하는 관계를 연상시킨다.\n\nHere, the artist evokes the flow of nature through a combination of geometric patterns and gentle curves. The patterns formed on the metal surface of *Rafting* (2023) go beyond mere decoration to exist as traces of a process in which the artist’s actions and the material properties of the medium come together and are continuously rearranged. The three-dimensional rhythm created by the stainless steel structure transcends fixed forms, continually unfolding and interacting within the space. Through his repeated processes of cutting and polishing, the artist inscribes a wave-like rhythm onto the work’s surface, revealing the accumulation of time and energy within a static form and evoking the interactive relationship between nature and humanity, and between matter and action.",
               "images": [
-                "/assets/artists/outdoor-exhibition/jang-sungjae/work-1-1.webp"
+                "/assets/artists/outdoor-exhibition/jang-sungjae/work-1-1.webp",
+                "/assets/artists/outdoor-exhibition/jang-sungjae/work-1-2.webp"
               ],
               "title_ko": "〈Rafting〉",
               "title_en": "Rafting",
