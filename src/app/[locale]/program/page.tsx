@@ -17,7 +17,7 @@ export default function ProgramPage({ params }: PageProps) {
   const validLocale = ['ko', 'en'].includes(locale) ? locale : 'ko';
   const isKo = validLocale === 'ko';
 
-  const [citizenTab, setCitizenTab] = useState<'busking' | 'dowonjang'>('busking');
+  const [citizenTab, setCitizenTab] = useState<'busking' | 'dowonjang' | 'november'>('november');
   const [zoomedImage, setZoomedImage] = useState<{ src: string; alt: string } | null>(null);
 
   return (
@@ -63,7 +63,7 @@ export default function ProgramPage({ params }: PageProps) {
                   {isKo ? '도원 릴레이' : 'Dowon Relay'}
                 </h2>
                 <span className="font-mono text-xs bg-white text-black font-bold px-2.5 py-0.5">
-                  {isKo ? '2026. 10. 집중 운영' : 'October 2026'}
+                  {isKo ? '2026. 10. ~ 11.' : 'October – November 2026'}
                 </span>
               </div>
               <p className="text-base sm:text-lg text-[#B9B9B9] font-light leading-relaxed mt-2">
@@ -75,11 +75,11 @@ export default function ProgramPage({ params }: PageProps) {
 
             {/* Inner Tabs: Busking & Dowonjang */}
             <div className="space-y-6">
-              <div className="flex border-b border-white/20 gap-2">
+              <div className="flex border-b border-white/20 gap-2 overflow-x-auto hide-scrollbar">
                 <button
                   type="button"
                   onClick={() => setCitizenTab('busking')}
-                  className={`flex items-center gap-2 px-4 sm:px-6 py-2.5 sm:py-3 font-mono text-xs sm:text-sm font-bold transition-all border-b-2 -mb-[2px] ${
+                  className={`flex items-center gap-2 px-4 sm:px-6 py-2.5 sm:py-3 font-mono text-xs sm:text-sm font-bold transition-all border-b-2 -mb-[2px] whitespace-nowrap flex-shrink-0 ${
                     citizenTab === 'busking'
                       ? 'border-white text-white bg-white/5'
                       : 'border-transparent text-[#8C8C8C] hover:text-white'
@@ -91,7 +91,7 @@ export default function ProgramPage({ params }: PageProps) {
                 <button
                   type="button"
                   onClick={() => setCitizenTab('dowonjang')}
-                  className={`flex items-center gap-2 px-4 sm:px-6 py-2.5 sm:py-3 font-mono text-xs sm:text-sm font-bold transition-all border-b-2 -mb-[2px] ${
+                  className={`flex items-center gap-2 px-4 sm:px-6 py-2.5 sm:py-3 font-mono text-xs sm:text-sm font-bold transition-all border-b-2 -mb-[2px] whitespace-nowrap flex-shrink-0 ${
                     citizenTab === 'dowonjang'
                       ? 'border-white text-white bg-white/5'
                       : 'border-transparent text-[#8C8C8C] hover:text-white'
@@ -99,6 +99,18 @@ export default function ProgramPage({ params }: PageProps) {
                 >
                   <ShoppingBag className="w-4 h-4" />
                   <span>{isKo ? '도원장(場) 아트마켓 (10.17)' : 'Dowonjang Art Market (Oct 17)'}</span>
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setCitizenTab('november')}
+                  className={`flex items-center gap-2 px-4 sm:px-6 py-2.5 sm:py-3 font-mono text-xs sm:text-sm font-bold transition-all border-b-2 -mb-[2px] whitespace-nowrap flex-shrink-0 ${
+                    citizenTab === 'november'
+                      ? 'border-white text-white bg-white/5'
+                      : 'border-transparent text-[#8C8C8C] hover:text-white'
+                  }`}
+                >
+                  <Calendar className="w-4 h-4" />
+                  <span>{isKo ? '11월 프로그램 (11.7~11.21)' : 'November Program (Nov 7–21)'}</span>
                 </button>
               </div>
 
@@ -334,13 +346,165 @@ export default function ProgramPage({ params }: PageProps) {
                   </div>
                 </div>
               )}
+
+              {/* Tab 3: November Program */}
+              {citizenTab === 'november' && (
+                <div className="space-y-6 animate-tab-content">
+                  <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+                    {/* Left: Text & Info (7 cols) */}
+                    <div className="lg:col-span-7 space-y-4">
+                      <div>
+                        <span className="font-mono text-xs text-[#8C8C8C] font-semibold tracking-wider uppercase block mb-1">
+                          NOVEMBER PROGRAM
+                        </span>
+                        <h3 className="text-xl sm:text-2xl font-black text-white leading-snug">
+                          {isKo ? '〈도원 릴레이〉 11월 프로그램 안내' : 'Dowon Relay: November Program Guide'}
+                        </h3>
+                        <p className="text-xs sm:text-sm font-mono text-white/70 mt-1">
+                          {isKo ? '안양박물관 교육관 · 전 프로그램 무료' : 'Education Center, Anyang Museum · Free for all programs'}
+                        </p>
+                      </div>
+
+                      <div className="text-sm sm:text-base text-[#D4D4D4] leading-relaxed space-y-3 font-light border-y border-white/10 py-4">
+                        <p>
+                          {isKo
+                            ? '제8회 안양공공예술프로젝트(APAP8) 시민참여 프로그램 〈도원 릴레이〉가 11월을 맞아 다양한 체험과 창작 워크숍을 운영합니다.'
+                            : 'The 8th Anyang Public Art Project (APAP8) presents a series of hands-on activities and creative workshops as part of its citizen participation program, “Dowon Relay,” throughout November.'}
+                        </p>
+                        <p>
+                          {isKo
+                            ? '〈도원 릴레이〉는 예술과 기술, 자연과 상상을 바탕으로 시민들이 예술을 직접 경험하고 자신만의 무릉도원을 만들어 보는 시민참여 프로그램입니다. 스텐실 파우치 만들기, 어린이 창작 체험, 미디어아트·AI 교육, 옻칠 창작 워크숍 등 다채로운 프로그램을 통해 일상 속 예술을 경험할 수 있습니다.'
+                            : '“Dowon Relay” invites citizens to experience art firsthand and create their own personal utopia, inspired by the interplay of art, technology, nature, and imagination. The November program features stencil pouch making, creative workshops for children, media art and AI education, and a lacquerware workshop, offering opportunities to experience art in everyday life.'}
+                        </p>
+                      </div>
+
+                      {/* Program Schedule */}
+                      <div className="bg-white/[0.02] border border-white/15 p-4 sm:p-5 space-y-4 font-mono text-xs sm:text-sm">
+                        <span className="text-[#8C8C8C] block text-[11px] font-bold uppercase tracking-wider">
+                          ■ {isKo ? '프로그램 일정' : 'PROGRAM SCHEDULE'}
+                        </span>
+                        {[
+                          {
+                            date: isKo ? '11. 7.(토)' : 'Sat, Nov 7',
+                            title: isKo ? '스텐실 파우치 키트 체험 《나만의 안양 무릉도원》' : 'Stencil Pouch Kit Workshop “Create Your Own Anyang Utopia”',
+                            times: isKo ? '1회차 14:00–15:00 · 2회차 15:30–16:30' : 'Session 1 14:00–15:00 · Session 2 15:30–16:30',
+                            desc: isKo
+                              ? '전문 에듀케이터와 함께 스텐실 기법으로 자신만의 감각과 색채를 담은 파우치를 제작하는 체험 프로그램'
+                              : 'A hands-on workshop where participants create one-of-a-kind pouches using stencil techniques, incorporating their own artistic sensibilities and color palettes.',
+                          },
+                          {
+                            date: isKo ? '11. 11.(수)' : 'Wed, Nov 11',
+                            title: isKo ? '도원 키즈데이 《도원의 호박정원 – 가을 수확 축제》' : 'Dowon Kids Day “The Pumpkin Garden of Dowon – Autumn Harvest Festival”',
+                            times: isKo
+                              ? '호박 쿠키 마그넷 1회차 10:00–11:00 · 2회차 14:00–15:00 / 컬러링 키트 1회차 11:30–12:30 · 2회차 15:30–16:30'
+                              : 'Pumpkin cookie magnet: 10:00–11:00 · 14:00–15:00 / Coloring kit: 11:30–12:30 · 15:30–16:30',
+                            desc: isKo
+                              ? '호박 쿠키 마그넷 만들기 및 컬러링 키트 체험 (대상: 어린이집·유치원 등 미취학 유아, 기관 단위 참여 우선 배정)'
+                              : 'Pumpkin cookie magnet making and coloring kit activities (for preschool children; priority given to group applications from institutions).',
+                          },
+                          {
+                            date: isKo ? '11. 13.(금)' : 'Fri, Nov 13',
+                            title: isKo ? '미디어아트·AI 교육 《프롬프트 도원경》' : 'Media Art & AI Education “Prompted Paradise”',
+                            times: '14:00–16:00',
+                            desc: isKo
+                              ? 'APAP8 참여 작가 진진아와 함께 안양의 풍경을 AI 이미지로 재해석하고, 디지털 기술을 활용해 자신만의 무릉도원을 구현하는 교육 프로그램'
+                              : 'Together with APAP8 participating artist Jin Jin Ah, participants reinterpret the landscapes of Anyang through AI-generated images and use digital technology to create their own personal utopia.',
+                          },
+                          {
+                            date: isKo ? '11. 21.(토)' : 'Sat, Nov 21',
+                            title: isKo ? '작가 창작 워크숍 《옻, 시간을 입히다》' : 'Artist-Led Creative Workshop “Lacquer: Layers of Time”',
+                            times: '13:30–16:30',
+                            desc: isKo
+                              ? 'APAP8 참여 작가 김덕한과 함께 옻칠의 특성과 매력을 알아보고, 시간의 층을 담은 나만의 원목 코스터를 제작하는 창작 워크숍'
+                              : 'Join APAP8 participating artist Kim Deok han to explore the characteristics and appeal of traditional lacquer techniques and create a wooden coaster that captures the layers of time.',
+                          },
+                        ].map((p, i) => (
+                          <div key={i} className="border-t border-white/10 pt-3 first:border-t-0 first:pt-0 space-y-1">
+                            <div className="flex flex-wrap items-baseline gap-x-3 gap-y-0.5">
+                              <span className="bg-white text-black font-bold px-2 py-0.5 text-[11px]">{p.date}</span>
+                              <span className="text-white font-bold">{p.title}</span>
+                            </div>
+                            <div className="text-[#B9B9B9] text-[11px] sm:text-xs">{p.times}</div>
+                            <p className="text-[#D4D4D4] font-sans font-light text-xs sm:text-sm leading-relaxed">{p.desc}</p>
+                          </div>
+                        ))}
+                      </div>
+
+                      {/* Info Box */}
+                      <div className="bg-white/[0.02] border border-white/15 p-4 sm:p-5 space-y-2.5 font-mono text-xs sm:text-sm">
+                        <span className="text-[#8C8C8C] block text-[11px] font-bold uppercase tracking-wider mb-2">
+                          ■ {isKo ? '운영 안내 · 신청 및 문의' : 'INFORMATION & INQUIRIES'}
+                        </span>
+                        <div className="space-y-2">
+                          <div className="flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-3">
+                            <span className="text-[#8C8C8C] flex-shrink-0 min-w-[70px]">{isKo ? '장 소:' : 'Venue:'}</span>
+                            <span className="text-white font-medium">{isKo ? '안양박물관 교육관' : 'Education Center, Anyang Museum'}</span>
+                          </div>
+                          <div className="flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-3">
+                            <span className="text-[#8C8C8C] flex-shrink-0 min-w-[70px]">{isKo ? '참 가 비:' : 'Fee:'}</span>
+                            <span className="text-white font-bold bg-white text-black px-2 py-0.5 w-fit">{isKo ? '전 프로그램 무료' : 'Free for all programs'}</span>
+                          </div>
+                          <div className="flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-3">
+                            <span className="text-[#8C8C8C] flex-shrink-0 min-w-[70px]">{isKo ? '참여 대상:' : 'Eligibility:'}</span>
+                            <span className="text-white font-medium">{isKo ? '프로그램별 상이' : 'Varies by program'}</span>
+                          </div>
+                          <div className="flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-3">
+                            <span className="text-[#8C8C8C] flex-shrink-0 min-w-[70px]">{isKo ? '신청 방법:' : 'Registration:'}</span>
+                            <span className="text-white font-medium">
+                              {isKo ? '개인 온라인 신청 / 기관·단체 별도 문의' : 'Online application for individuals; separate inquiries for institutions and groups'}
+                            </span>
+                          </div>
+                          <div className="flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-3">
+                            <span className="text-[#8C8C8C] flex-shrink-0 min-w-[70px]">{isKo ? '문 의:' : 'Contact:'}</span>
+                            <span className="text-white font-medium">070-4289-5542 · contact@artsoombi.com</span>
+                          </div>
+                        </div>
+                        <p className="text-[11px] text-[#8C8C8C] font-sans pt-2 leading-relaxed">
+                          {isKo
+                            ? '※ 11월 11일(수) 도원 키즈데이는 어린이집·유치원 등 기관 단위 참여를 우선 배정합니다. ※ 프로그램별 참여 인원이 제한되어 있으며, 신청 상황에 따라 조기 마감될 수 있습니다. ※ 포스터 이미지는 이해를 돕기 위한 예시이며, 실제 프로그램 내용 및 결과물과 다를 수 있습니다.'
+                            : '※ For Dowon Kids Day on Wednesday, November 11, priority is given to group participation from daycare centers, kindergartens, and other institutions. ※ Each program has a limited number of participants and may close early depending on registration.'}
+                        </p>
+                      </div>
+                    </div>
+
+                    {/* Right: Poster Image (5 cols) */}
+                    <div className="lg:col-span-5">
+                      <div
+                        role="button"
+                        tabIndex={0}
+                        onClick={() => setZoomedImage({ src: '/images/programs/november-1.webp', alt: '도원 릴레이 11월 프로그램 일정 포스터' })}
+                        onKeyDown={(e) => {
+                          if (e.key === 'Enter' || e.key === ' ') {
+                            setZoomedImage({ src: '/images/programs/november-1.webp', alt: '도원 릴레이 11월 프로그램 일정 포스터' });
+                          }
+                        }}
+                        className="relative border border-white/20 bg-black overflow-hidden shadow-lg group cursor-pointer"
+                        title={isKo ? '클릭하여 이미지 확대보기' : 'Click to enlarge image'}
+                      >
+                        <img
+                          src="/images/programs/november-1.webp"
+                          alt="도원 릴레이 11월 프로그램 일정 포스터"
+                          className="w-full h-auto object-cover transition-transform duration-500 group-hover:scale-105"
+                          loading="lazy"
+                        />
+                        <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-1.5 font-mono text-xs text-white bg-gradient-to-t from-black/80 via-transparent to-transparent">
+                          <span className="bg-black/75 px-3 py-1.5 rounded-full border border-white/30 flex items-center gap-1.5 backdrop-blur-sm shadow-lg">
+                            <ZoomIn className="w-3.5 h-3.5" />
+                            <span>{isKo ? '클릭하여 확대' : 'CLICK TO ZOOM'}</span>
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              )}
             </div>
 
             {/* Bottom Meta Row */}
             <div className="flex flex-wrap gap-4 text-xs font-mono text-[#8C8C8C] border-t border-white/10 pt-3">
-              <span>{isKo ? '기간: 2026. 10. 집중 운영' : 'Schedule: October 2026'}</span>
+              <span>{isKo ? '기간: 2026. 10. ~ 11.' : 'Schedule: October – November 2026'}</span>
               <span>•</span>
-              <span>{isKo ? '장소: 안양파빌리온 앞마당 및 광장 일대' : 'Location: Anyang Pavilion Area'}</span>
+              <span>{isKo ? '장소: 안양파빌리온 앞마당·광장 일대 및 안양박물관 교육관' : 'Location: Anyang Pavilion Area & Education Center, Anyang Museum'}</span>
               <span>•</span>
               <span>{isKo ? '참가비: 전액 무료' : 'Fee: Free Admission'}</span>
             </div>
