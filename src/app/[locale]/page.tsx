@@ -37,6 +37,7 @@ import { getCommunityItems, CommunityItem } from '@/lib/community';
 import { getLocalizedVenueName } from '@/lib/artistLocalization';
 import { PARTICIPATING_ARTISTS, COMPETITION_WINNERS } from '@/lib/credits';
 import NoticeModalContent from '@/components/community/NoticeModalContent';
+import { getNovemberPrograms, NOVEMBER_POSTER } from '@/lib/novemberProgram';
 import Link from 'next/link';
 
 interface PageProps {
@@ -59,7 +60,7 @@ export default function SiteAPage({ params }: PageProps) {
   // PC Tab states
   const [aboutPcTab, setAboutPcTab] = useState<'overview' | 'theme' | 'credits' | 'promo'>('overview');
   const [programPcTab, setProgramPcTab] = useState<'citizen' | 'docent' | 'forum' | 'broadcast'>('citizen');
-  const [citizenSubTab, setCitizenSubTab] = useState<'busking' | 'dowonjang'>('busking');
+  const [citizenSubTab, setCitizenSubTab] = useState<'busking' | 'dowonjang' | 'november'>('november');
   const [zoomedImage, setZoomedImage] = useState<{ src: string; alt: string } | null>(null);
 
   // Pagination states
@@ -838,6 +839,18 @@ export default function SiteAPage({ params }: PageProps) {
                           <ShoppingBag className="w-3.5 h-3.5" />
                           <span>{isKo ? '도원장(場) (10.17)' : 'Dowonjang (10/17)'}</span>
                         </button>
+                        <button
+                          type="button"
+                          onClick={() => setCitizenSubTab('november')}
+                          className={`flex items-center gap-2 px-3.5 py-1.5 font-mono text-xs lg:text-sm font-bold transition-all ${
+                            citizenSubTab === 'november'
+                              ? 'bg-white text-black'
+                              : 'text-white/70 hover:text-white hover:bg-white/10'
+                          }`}
+                        >
+                          <Calendar className="w-3.5 h-3.5" />
+                          <span>{isKo ? '11월 프로그램 (11.7~11.21)' : 'November (11/7–11/21)'}</span>
+                        </button>
                       </div>
                     </div>
 
@@ -982,8 +995,77 @@ export default function SiteAPage({ params }: PageProps) {
                       </div>
                     )}
 
+                    {/* Sub-tab 3: November Program */}
+                    {citizenSubTab === 'november' && (
+                      <div className="grid grid-cols-12 gap-6 items-start animate-tab-content pt-1">
+                        <div className="col-span-7 space-y-4">
+                          <div className="border border-white/20 p-5 bg-white/[0.02] space-y-3">
+                            <div className="flex justify-between items-start border-b border-white/10 pb-2.5">
+                              <div>
+                                <span className="text-xs font-mono text-[#8C8C8C] font-semibold block">NOVEMBER PROGRAM</span>
+                                <h4 className="text-lg lg:text-xl font-bold text-white">
+                                  {isKo ? '〈도원 릴레이〉 11월 프로그램 안내' : 'Dowon Relay: November Program Guide'}
+                                </h4>
+                              </div>
+                              <span className="text-xs font-mono bg-white text-black px-2 py-0.5 font-bold">{isKo ? '전 프로그램 무료' : 'Free'}</span>
+                            </div>
+                            <div className="space-y-3">
+                              {getNovemberPrograms(isKo).map((p, i) => (
+                                <div key={i} className="border-t border-white/10 pt-3 first:border-t-0 first:pt-0 space-y-1">
+                                  <div className="flex flex-wrap items-baseline gap-x-3 gap-y-0.5">
+                                    <span className="bg-white text-black font-bold px-2 py-0.5 text-[11px] font-mono">{p.date}</span>
+                                    <span className="text-white font-bold text-sm">{p.title}</span>
+                                  </div>
+                                  <div className="text-[#B9B9B9] text-[11px] font-mono">{p.times}</div>
+                                  <p className="text-xs lg:text-sm text-[#D4D4D4] font-light leading-relaxed">{p.desc}</p>
+                                </div>
+                              ))}
+                            </div>
+                            <div className="text-xs font-mono text-[#8C8C8C] pt-2 border-t border-white/10 space-y-1">
+                              <div>■ {isKo ? '장소: 안양박물관 교육관' : 'Venue: Education Center, Anyang Museum'}</div>
+                              <div>■ {isKo ? '신청: 개인 온라인 신청 / 기관·단체 별도 문의' : 'Registration: online for individuals; inquire separately for groups'}</div>
+                              <div>■ {isKo ? '문의: ' : 'Contact: '}070-4289-5542 · contact@artsoombi.com</div>
+                              <div className="text-[11px]">
+                                {isKo
+                                  ? '※ 11. 11.(수) 도원 키즈데이는 기관 단위 참여를 우선 배정합니다. 프로그램별 인원이 제한되어 조기 마감될 수 있습니다.'
+                                  : '※ Dowon Kids Day (Nov 11) gives priority to group participation from institutions. Spaces are limited and may close early.'}
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div className="col-span-5 max-w-[340px]">
+                          <div
+                            role="button"
+                            tabIndex={0}
+                            onClick={() => setZoomedImage(NOVEMBER_POSTER)}
+                            onKeyDown={(e) => {
+                              if (e.key === 'Enter' || e.key === ' ') {
+                                setZoomedImage(NOVEMBER_POSTER);
+                              }
+                            }}
+                            className="relative border border-white/20 bg-black overflow-hidden group cursor-pointer"
+                            title={isKo ? '클릭하여 이미지 확대보기' : 'Click to enlarge image'}
+                          >
+                            <img
+                              src={NOVEMBER_POSTER.src}
+                              alt={NOVEMBER_POSTER.alt}
+                              className="w-full h-auto object-cover transition-transform duration-500 group-hover:scale-105"
+                              loading="lazy"
+                            />
+                            <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-1 font-mono text-[11px] text-white bg-gradient-to-t from-black/80 via-transparent to-transparent">
+                              <span className="bg-black/80 px-2.5 py-1 rounded-full border border-white/30 flex items-center gap-1 backdrop-blur-sm shadow-md">
+                                <ZoomIn className="w-3 h-3" />
+                                <span>{isKo ? '확대보기' : 'ZOOM'}</span>
+                              </span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    )}
+
                     <div className="border border-white/10 p-4 bg-white/[0.01] text-xs font-mono text-[#8C8C8C] flex flex-wrap gap-4">
-                      <span>■ 기간: 2026. 10. 집중 운영</span>
+                      <span>■ 기간: 2026. 10. ~ 11.</span>
                       <span>■ 장소: 안양파빌리온 앞마당 및 광장 일대</span>
                       <span>■ 참가비: 전액 무료</span>
                     </div>
@@ -1992,6 +2074,17 @@ export default function SiteAPage({ params }: PageProps) {
             >
               {isKo ? '도원장(場) (10.17)' : 'Dowonjang (10/17)'}
             </button>
+            <button
+              type="button"
+              onClick={() => setCitizenSubTab('november')}
+              className={`flex-1 py-1.5 text-xs font-mono font-bold transition-all border-b-2 -mb-[5px] ${
+                citizenSubTab === 'november'
+                  ? 'border-white text-white bg-white/5'
+                  : 'border-transparent text-[#8C8C8C] hover:text-white'
+              }`}
+            >
+              {isKo ? '11월 프로그램' : 'November'}
+            </button>
           </div>
 
           {citizenSubTab === 'busking' ? (
@@ -2060,6 +2153,48 @@ export default function SiteAPage({ params }: PageProps) {
                       <span>{isKo ? '확대' : 'ZOOM'}</span>
                     </span>
                   </div>
+                </div>
+              </div>
+            </div>
+          ) : citizenSubTab === 'november' ? (
+            <div className="space-y-3 animate-tab-content">
+              <div className="border border-white/15 p-3.5 bg-white/[0.02] space-y-3">
+                <div className="flex justify-between items-center text-xs font-mono">
+                  <span className="text-white font-bold">{isKo ? '〈도원 릴레이〉 11월 프로그램' : 'Dowon Relay: November'}</span>
+                  <span className="bg-white text-black px-1.5 py-0.5 font-bold">{isKo ? '무료' : 'Free'}</span>
+                </div>
+                {getNovemberPrograms(isKo).map((p, i) => (
+                  <div key={i} className="border-t border-white/10 pt-2.5 first:border-t-0 first:pt-0 space-y-1">
+                    <span className="inline-block bg-white text-black font-bold px-1.5 py-0.5 text-[10px] font-mono">{p.date}</span>
+                    <div className="text-white font-bold text-xs leading-snug">{p.title}</div>
+                    <div className="text-[#B9B9B9] text-[10px] font-mono">{p.times}</div>
+                    <p className="text-xs text-[#B9B9B9] font-light leading-relaxed">{p.desc}</p>
+                  </div>
+                ))}
+                <div className="text-[11px] font-mono text-[#8C8C8C] pt-2 border-t border-white/10 space-y-1">
+                  <div>■ {isKo ? '장소: 안양박물관 교육관' : 'Venue: Education Center, Anyang Museum'}</div>
+                  <div>■ {isKo ? '신청: 개인 온라인 / 기관·단체 별도 문의' : 'Registration: online / groups inquire separately'}</div>
+                  <div>■ {isKo ? '문의: ' : 'Contact: '}070-4289-5542 · contact@artsoombi.com</div>
+                </div>
+              </div>
+              <div className="max-w-[280px] mx-auto">
+                <div
+                  role="button"
+                  tabIndex={0}
+                  onClick={() => setZoomedImage(NOVEMBER_POSTER)}
+                  onKeyDown={(e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                      setZoomedImage(NOVEMBER_POSTER);
+                    }
+                  }}
+                  className="relative border border-white/20 bg-black overflow-hidden group cursor-pointer"
+                  title={isKo ? '클릭하여 이미지 확대보기' : 'Click to enlarge image'}
+                >
+                  <img
+                    src={NOVEMBER_POSTER.src}
+                    alt={NOVEMBER_POSTER.alt}
+                    className="w-full h-auto object-cover transition-transform duration-300 group-hover:scale-105"
+                  />
                 </div>
               </div>
             </div>
