@@ -726,7 +726,7 @@
           "works": [
             {
               "title": "<Flowers>",
-              "year": "2005",
+              "year": "2016-2021",
               "material": "캔버스에 유채",
               "size": "300 × 400 cm",
               "description": "장지엔의 작품은 베이징의 허우하이(后海), 천안문 광장, 공원 등 사회적 역사와 개인의 기억이 교차하는 공공장소를 중심으로 전개된다. 작가는 현대 도시의 화려함보다는 일상적이고 차분한 풍경에 주목하며, 이를 특유의 부드럽고 몽환적인 색조와 섬세한 붓질로 화면에 담아낸다. 빛과 그림자의 오묘한 변주가 만들어내는 그의 풍경은 마치 아련한 기억 속의 한 장면을 들여다보는 듯한 서정적인 분위기와 멜랑콜리를 자아낸다. 특히 작가의 회화 속 공공장소들은 단순한 공간의 묘사를 넘어, 급격한 현대화 과정에서 개인이 겪는 상실감과 고독, 그리고 시간의 흐름을 투영하는 특별한 상징적 매개체로 기능한다. 시각적 자극 대신 고요한 사유의 공간을 제시하는 그의 작품은 관람객에게 도시의 일상 이면에 숨겨진 실존적 정서와 사적인 서사를 발견하게 만드는 은은하고도 강렬한 통로로 작용한다.\n\nZhang Jian’s artistic universe unfolds around public spaces where social history and personal memory intersect, such as Beijing's Houhai, Tiananmen Square, and public parks. Rather than focusing on the glamor of modern cities, the artist draws attention to ordinary, tranquil landscapes, capturing them on canvas with his signature soft, dreamlike tones and delicate brushstrokes. His landscapes, created through the subtle interplay of light and shadow, evoke a lyrical atmosphere and melancholy, as if peering into a scene from a fading memory.In particular, the public spaces in his paintings transcend mere geographical depictions; they serve as unique symbolic mediums that project the sense of loss, solitude, and the passage of time experienced by individuals amidst rapid modernization. Rejecting visual stimulation in favor of presenting a space for quiet contemplation, his work acts as a subtle yet powerful conduit that allows viewers to discover the existential emotions and private narratives hidden beneath the surface of daily urban life.",
@@ -828,6 +828,7 @@
           "works": [
             {
               "title": "<반고흐 & 반고흐>",
+              "title_en": "Van Gogh & Van Gogh",
               "year": "2022",
               "material": "캔버스에 유채",
               "size": "162.2 × 130.3 cm",
@@ -850,6 +851,7 @@
           "works": [
             {
               "title": "<안양 M4>",
+              "title_en": "Anyang M4",
               "year": "2025",
               "material": "캔버스에 아크릴",
               "size": "112.1 × 91 cm",
@@ -898,8 +900,10 @@
           "works": [
             {
               "title": "<무릉도원- Pandemic Situ 1>",
+              "title_en": "Mureungdowon - Pandemic Situ 1",
               "year": "2021",
               "material": "종이에 혼합재료",
+              "medium_en": "Mixed media on paper",
               "size": "37 × 26.5 cm",
               "description": "",
               "images": [
@@ -908,8 +912,10 @@
             },
             {
               "title": "<무릉도원- Pandemic Situ 2>",
+              "title_en": "Mureungdowon - Pandemic Situ 2",
               "year": "2021",
               "material": "종이에 혼합재료",
+              "medium_en": "Mixed media on paper",
               "size": "37 × 26.5 cm",
               "description": "",
               "images": [
@@ -918,8 +924,10 @@
             },
             {
               "title": "<무릉도원- Pandemic Situ 3>",
+              "title_en": "Mureungdowon - Pandemic Situ 3",
               "year": "2021",
               "material": "종이에 혼합재료",
+              "medium_en": "Mixed media on paper",
               "size": "37 × 26.5 cm",
               "description": "",
               "images": [
@@ -928,8 +936,10 @@
             },
             {
               "title": "<무릉도원- Pandemic Situ 4>",
+              "title_en": "Mureungdowon - Pandemic Situ 4",
               "year": "2021",
               "material": "종이에 혼합재료",
+              "medium_en": "Mixed media on paper",
               "size": "37 × 26.5 cm",
               "description": "",
               "images": [
@@ -938,8 +948,10 @@
             },
             {
               "title": "<무릉도원- Pandemic Situ 5>",
+              "title_en": "Mureungdowon - Pandemic Situ 5",
               "year": "2021",
               "material": "종이에 혼합재료",
+              "medium_en": "Mixed media on paper",
               "size": "37 × 26.5 cm",
               "description": "",
               "images": [
@@ -948,8 +960,10 @@
             },
             {
               "title": "<무릉도원- Pandemic Situ 6>",
+              "title_en": "Mureungdowon - Pandemic Situ 6",
               "year": "2021",
               "material": "종이에 혼합재료",
+              "medium_en": "Mixed media on paper",
               "size": "37 × 26.5 cm",
               "description": "",
               "images": [
@@ -958,8 +972,10 @@
             },
             {
               "title": "<무릉도원- Pandemic Situ 7>",
+              "title_en": "Mureungdowon - Pandemic Situ 7",
               "year": "2021",
               "material": "종이에 혼합재료",
+              "medium_en": "Mixed media on paper",
               "size": "37 × 26.5 cm",
               "description": "",
               "images": [
@@ -968,8 +984,10 @@
             },
             {
               "title": "<무릉도원- Pandemic Situ 8>",
+              "title_en": "Mureungdowon - Pandemic Situ 8",
               "year": "2021",
               "material": "종이에 혼합재료",
+              "medium_en": "Mixed media on paper",
               "size": "37 × 26.5 cm",
               "description": "",
               "images": [
@@ -1015,9 +1033,13 @@
           "profile_image": "/assets/artists/korea-china-special/lee-hoo-chang/profile.webp",
           "works": [
             {
-              "title": "<12지신 오벨리스크\n(Obelisk of the Twelve Zodiac Deities)>",
+              "title": "<12지신 오벨리스크>\nObelisk of the Twelve Zodiac Deities",
+              "title_ko": "<12지신 오벨리스크>",
+              "title_en": "Obelisk of the Twelve Zodiac Deities",
               "year": "2024",
-              "material": "유리, 스테인레스, 황금잎사귀 및 LED\n(Glass, Stainless Steel, Gold Leaf, LED)",
+              "material": "유리, 스테인레스, 황금잎사귀 및 LED\n\nGlass, Stainless Steel, Gold Leaf, LED",
+              "medium_ko": "유리, 스테인레스, 황금잎사귀 및 LED",
+              "medium_en": "Glass, Stainless Steel, Gold Leaf, LED",
               "size": "60 × 60 × 230 cm",
               "description": "이후창의 작품은 ‘일체유심조(一切唯心造)’라는 사유를 바탕으로, 세계가 마음의 인식에 따라 새롭게 구성된다는 깨달음을 담고 있다. 유리와 빛, 스테인리스 스틸의 반사 표면이 만들어내는 파동과 환영은 관람자로 하여금 실제와 환영이 교차하는 경계를 경험하게 한다. 그러나 작가가 궁극적으로 지향하는 것은 단순히 가변적인 현상 그 자체가 아니다. 작품은 성(聖)과 속(俗)이라는 이분법적 가치 판단을 넘어, 흔들리고 사라지는 현상 이면에 존재하는 ‘보이지 않는 실체’에 대해 스스로 질문하도록 이끈다. 이 몽환적인 시각적 향연은 변화하는 세계 속에서 본질적인 실재를 사유하게 하는 초대이며, 관람자는 작품 앞에서 현상과 실체 사이의 경계에 서서 자신의 마음을 비추어 보게 된다.\n\nBased on the philosophy of Ilcheyusimjo (the Buddhist concept that everything is created by the mind), Lee Hoo-chang's work conveys the realization that the world is continuously reconstructed through mindful perception. The ripples and illusions created by glass, light, and the reflective surfaces of stainless steel allow viewers to experience the boundary where reality and illusion intersect. However, the artist's ultimate focus is not merely on the fluid phenomenon itself. Moving beyond dichotomous judgments of the sacred and the profane, his work prompts viewers to question the \"invisible reality\" that exists behind fleeting phenomena. This dreamlike visual feast serves as an invitation to contemplate the fundamental existence within a shifting world, encouraging viewers to stand at the threshold of phenomenon and reality to reflect upon their own minds.",
               "images": [
@@ -1064,8 +1086,11 @@
           "works": [
             {
               "title": "<자아(自芽)>",
+              "title_en": "The Self-Sprout",
               "year": "2012",
-              "material": "FRB, 밤나무 및 회양목",
+              "material": "FRP, 밤나무 및 회양목\n\nFRP, chestnut and boxwood",
+              "medium_ko": "FRP, 밤나무 및 회양목",
+              "medium_en": "FRP, chestnut and boxwood",
               "size": "35 × 60 × 9.5 cm",
               "description": "정영남의 작품 세계는 자연과의 황홀한 동화(同化)와 그 과정에서 피어난 예술가적 ‘감동’을 핵심 원동력으로 삼는다. 작가에게 있어 단순히 사물을 기계적으로 재현하는 것은 진정한 예술이 아니며, 오직 대상에 매료되어 자아를 잊은 채 몰입하는 와중에 탄생한 결과물만이 진정한 생명력을 얻는다. 그의 조각은 형상화된 물질을 넘어 화가이자 조각가로서 지닌 진실한 내면의 고백이자 순수한 감정의 전달체다. 유기적인 양감과 매체의 물성이 조화를 이루는 조형 공간 안에서, 작가는 관람객에게 단순한 시각적 감상을 넘어 본질적인 자연 회귀의 미적 경험을 유도한다. 작품 표면과 구조마다 짙게 배어 있는 작가의 정서적 흔적들은 감상자의 감정의 결을 건드리며 깊은 소통을 이끌어낸다. 이처럼 자아와 대상이 하나로 합일되는 황홀한 자기 세계를 투영한 그의 조각은 현대인에게 삭막한 현실을 벗어나 생동하는 대자연의 생명력과 마주하게 만드는 은은하고도 강렬한 통로로 기능한다.\n\nJeong Young Nam’s artistic universe is driven by an ecstatic assimilation with nature and the artistic \"inspiration\" born from that process. For the artist, the mere mechanical reproduction of an object is not true art; a piece gains genuine vitality only when created in a state of absolute immersion where the self is forgotten. His sculptures transcend formalized matter, serving as an honest inner confession and a conduit of pure emotion from his perspective as both a painter and a sculptor.Within a formative space where organic volume harmonizes with the materiality of the medium, the artist guides viewers beyond simple visual appreciation toward an aesthetic experience of returning to nature. The emotional traces deeply embedded within the surfaces and structures of his work touch the subtle chords of the viewers' feelings, leading to profound communion. Projecting an ecstatic inner world where the self and the subject merge into one, his sculptures function as a subtle yet powerful pathway that allows modern individuals to escape bleak reality and confront the vibrant vitality of Mother Nature.",
               "images": [
