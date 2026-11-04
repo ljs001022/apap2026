@@ -31,7 +31,7 @@ export function getCommunityItems(locale: string = 'ko'): CommunityItem[] {
       desc: isKo
         ? '‘Arte X: 예술대전환_안양 무릉도원’을 주제로 펼쳐지는 APAP8의 공식 홍보 영상입니다.'
         : 'The official promotional video of APAP8, themed "Arte X : Art Transformation_Anyang Paradise".',
-      videoUrl: 'https://www.youtube.com/watch?v=A9SrGSk3Qro',
+      videoUrl: 'https://www.youtube.com/watch?v=j1XflTJ2EQQ&t=24s',
       videoLabel: isKo ? 'APAP8 공식 홍보 영상' : 'APAP8 OFFICIAL PROMOTIONAL VIDEO',
       previewType: 'video',
       content: isKo

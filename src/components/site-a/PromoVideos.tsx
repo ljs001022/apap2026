@@ -2,6 +2,7 @@ import React from 'react';
 
 interface PromoVideo {
   youtubeId: string;
+  startSec?: number;
   titleKo: string;
   titleEn: string;
 }
@@ -14,7 +15,8 @@ export const PROMO_VIDEOS: PromoVideo[] = [
     titleEn: 'APAP8 Official Teaser',
   },
   {
-    youtubeId: 'A9SrGSk3Qro',
+    youtubeId: 'j1XflTJ2EQQ',
+    startSec: 24,
     titleKo: '제8회 안양공공예술프로젝트(APAP8) 공식 홍보영상',
     titleEn: 'APAP8 Official Promotional Video',
   },
@@ -38,7 +40,7 @@ export default function PromoVideos({ isKo, compact = false }: PromoVideosProps)
             <div className={`border bg-black space-y-3 ${compact ? 'border-white/20 p-2 sm:p-3' : 'border-white/30 p-3 sm:p-4'}`}>
               <div className="relative w-full aspect-video border border-white/20 bg-black overflow-hidden shadow-2xl">
                 <iframe
-                  src={`https://www.youtube.com/embed/${video.youtubeId}?rel=0&modestbranding=1`}
+                  src={`https://www.youtube.com/embed/${video.youtubeId}?rel=0&modestbranding=1${video.startSec ? `&start=${video.startSec}` : ''}`}
                   title={title}
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                   allowFullScreen
