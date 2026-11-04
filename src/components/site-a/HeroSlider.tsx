@@ -70,6 +70,53 @@ const PAVILION_WORKS: PavilionWork[] = [
 
 const MAIN_VIDEO_SRC = '/videos/308.mp4';
 
+// 히어로 영상: 화면 밖으로 스크롤되면 일시정지해 다음 섹션 스크롤 시 디코딩 부하를 없애고,
+// 다시 보이면 이어서 재생한다.
+function HeroVideo({ src, onEnded, onError }: { src: string; onEnded: () => void; onError: () => void }) {
+  const ref = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    const video = ref.current;
+    if (!video) return;
+    let timer: ReturnType<typeof setTimeout> | null = null;
+    // 내부 스크롤 컨테이너(main)의 스크롤도 잡기 위해 캡처 단계에서 감지
+    const sync = () => {
+      timer = null;
+      const rect = video.getBoundingClientRect();
+      const visible = rect.bottom > rect.height * 0.3 && rect.top < window.innerHeight - rect.height * 0.3;
+      if (visible) {
+        if (video.paused && !video.ended) video.play().catch(() => {});
+      } else if (!video.paused) {
+        video.pause();
+      }
+    };
+    const onScroll = () => {
+      if (!timer) timer = setTimeout(sync, 100);
+    };
+    document.addEventListener('scroll', onScroll, { capture: true, passive: true });
+    window.addEventListener('resize', onScroll);
+    return () => {
+      document.removeEventListener('scroll', onScroll, { capture: true });
+      window.removeEventListener('resize', onScroll);
+      if (timer) clearTimeout(timer);
+    };
+  }, []);
+
+  return (
+    <video
+      ref={ref}
+      src={src}
+      autoPlay
+      muted
+      playsInline
+      preload="auto"
+      onEnded={onEnded}
+      onError={onError}
+      className="w-full h-full object-contain pointer-events-none"
+    />
+  );
+}
+
 // 총 6개 슬라이드: 0 = 308 영상, 1 = 메인 포스터, 2 = 다이고 우시, 3 = 박재훈, 4 = 스튜디오 올레오밍구스, 5 = 처 지엔취안
 const VIDEO_SLIDE = 0;
 const POSTER_SLIDE = 1;
@@ -160,15 +207,10 @@ export default function HeroSlider({ locale }: HeroSliderProps) {
         aria-label={isKo ? '제8회 안양공공예술프로젝트(APAP8) 공식 포스터' : 'The 8th Anyang Public Art Project (APAP8) Official Poster'}
       >
         {!isDesktop && !mobileVideoDone ? (
-          <video
+          <HeroVideo
             src={MAIN_VIDEO_SRC}
-            autoPlay
-            muted
-            playsInline
-            preload="auto"
             onEnded={() => setMobileVideoDone(true)}
             onError={() => setMobileVideoDone(true)}
-            className="w-full h-full object-contain pointer-events-none"
           />
         ) : (
         <picture className="w-full h-full flex items-center justify-center">
@@ -210,16 +252,7 @@ export default function HeroSlider({ locale }: HeroSliderProps) {
                 className="w-full h-full flex items-center justify-center bg-black cursor-default"
               >
                 {isDesktop && (
-                  <video
-                    src={MAIN_VIDEO_SRC}
-                    autoPlay
-                    muted
-                    playsInline
-                    preload="auto"
-                    onEnded={nextSlide}
-                    onError={nextSlide}
-                    className="w-full h-full object-contain pointer-events-none"
-                  />
+                  <HeroVideo src={MAIN_VIDEO_SRC} onEnded={nextSlide} onError={nextSlide} />
                 )}
               </motion.div>
             ) : currentSlide === POSTER_SLIDE ? (
