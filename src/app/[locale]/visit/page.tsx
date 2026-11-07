@@ -125,7 +125,7 @@ export default function VisitPage({ params }: PageProps) {
               </p>
               <p className="font-mono text-xs sm:text-sm text-white/70 flex items-center gap-1.5 pt-1.5 border-t border-white/10">
                 <Phone className="w-3.5 h-3.5" />
-                <span>031-687-0548 (안양문화예술재단 공공예술부)</span>
+                <span>{isKo ? '031-687-0548 (안양문화예술재단 공공예술부)' : '+82-31-687-0548 (Public Art Dept., Anyang Foundation for Culture & Arts)'}</span>
               </p>
             </div>
           </div>
@@ -137,7 +137,7 @@ export default function VisitPage({ params }: PageProps) {
             <h3 className="text-xl sm:text-2xl font-black text-white flex items-center gap-2.5">
               <span>{isKo ? '전시장 4대 구역별 상세 안내' : '4 VENUE DETAILS'}</span>
             </h3>
-            <span className="font-mono text-xs text-[#8C8C8C]">아이 파빌리온 · 밤의 도원경 · 오픈 그라운드 · 우리가 꿈꾸는 도원</span>
+            <span className="font-mono text-xs text-[#8C8C8C]">{isKo ? '아이 파빌리온 · 밤의 도원경 · 오픈 그라운드 · 우리가 꿈꾸는 도원' : 'i Pavilion · Night Utopia · Open Ground · Dreaming Our Paradise'}</span>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
@@ -146,12 +146,12 @@ export default function VisitPage({ params }: PageProps) {
                 <h4 className="text-base sm:text-lg font-bold text-white">
                   {isKo ? '1. 아이 파빌리온' : '1. i Pavilion'}
                 </h4>
-                <span className="text-xs font-mono bg-white/10 text-white/80 px-2 py-0.5">실내 미디어·설치</span>
+                <span className="text-xs font-mono bg-white/10 text-white/80 px-2 py-0.5">{isKo ? '실내 미디어·설치' : 'Indoor Media & Installation'}</span>
               </div>
               <div className="text-xs sm:text-sm font-mono text-[#D4D4D4] space-y-1">
-                <div>■ 위치: 안양파빌리온 (만안구 예술공원로 180)</div>
-                <div>■ 운영: 화 - 금 10:00 – 18:00 / 토, 일 10:00 – 19:00</div>
-                <div className="text-[#8C8C8C]">■ 휴관: 매주 월요일 휴관 (10.5.(월) 대체공휴일 개관, 10.6.(화) 휴관)</div>
+                <div>■ {isKo ? '위치: 안양파빌리온 (만안구 예술공원로 180)' : 'Location: Anyang Pavilion (180 Yesulgongwon-ro, Manan-gu)'}</div>
+                <div>■ {isKo ? '운영: 화 - 금 10:00 – 18:00 / 토, 일 10:00 – 19:00' : 'Hours: Tue–Fri 10:00 AM – 6:00 PM / Sat–Sun 10:00 AM – 7:00 PM'}</div>
+                <div className="text-[#8C8C8C]">■ {isKo ? '휴관: 매주 월요일 휴관 (10.5.(월) 대체공휴일 개관, 10.6.(화) 휴관)' : 'Closed: Mondays (Open on Oct 5 (Mon) for substitute holiday, Closed on Oct 6 (Tue))'}</div>
               </div>
             </div>
 
@@ -160,12 +160,12 @@ export default function VisitPage({ params }: PageProps) {
                 <h4 className="text-base sm:text-lg font-bold text-white">
                   {isKo ? '2. 밤의 도원경' : '2. Night Utopia'}
                 </h4>
-                <span className="text-xs font-mono bg-white/10 text-white/80 px-2 py-0.5">야외 미디어아트</span>
+                <span className="text-xs font-mono bg-white/10 text-white/80 px-2 py-0.5">{isKo ? '야외 미디어아트' : 'Nighttime Media Art'}</span>
               </div>
               <div className="text-xs sm:text-sm font-mono text-[#D4D4D4] space-y-1">
-                <div>■ 위치: 안양파빌리온 앞 광장 일대</div>
-                <div>■ 운영: 화 - 일 19:00 – 22:00 (월요일 휴무 / 10.5.(월) 정상운영, 10.6.(화) 휴무)</div>
-                <div className="text-white font-medium">■ 상영: 〈빛의 폭포〉 매 정시 15분간 / 〈오색운〉 매시 15분~정시 상영</div>
+                <div>■ {isKo ? '위치: 안양파빌리온 앞 광장 일대' : 'Location: Anyang Pavilion Square'}</div>
+                <div>■ {isKo ? '운영: 화 - 일 19:00 – 22:00 (월요일 휴무 / 10.5.(월) 정상운영, 10.6.(화) 휴무)' : 'Hours: Tue–Sun 7:00 PM – 10:00 PM (Closed on Mondays / Open on Oct 5 (Mon), Closed on Oct 6 (Tue))'}</div>
+                <div className="text-white font-medium">{isKo ? '■ 상영: 〈빛의 폭포〉 매 정시 15분간 / 〈오색운〉 매시 15분~정시 상영' : <>■ Screenings<br />- Waterfall of Light: First 15 minutes of every hour<br />- Five-Colored Clouds (Osaegun): From 15 minutes past the hour to the top of the next hour</>}</div>
               </div>
             </div>
 
@@ -174,11 +174,11 @@ export default function VisitPage({ params }: PageProps) {
                 <h4 className="text-base sm:text-lg font-bold text-white">
                   {isKo ? '3. 오픈 그라운드' : '3. Open Ground'}
                 </h4>
-                <span className="text-xs font-mono bg-white text-black px-2 py-0.5 font-bold">24시간 상시개방</span>
+                <span className="text-xs font-mono bg-white text-black px-2 py-0.5 font-bold">{isKo ? '24시간 상시개방' : '24-Hour Open Space'}</span>
               </div>
               <div className="text-xs sm:text-sm font-mono text-[#D4D4D4] space-y-1">
-                <div>■ 위치: {isKo ? '안양파빌리온 앞 광장, 안양박물관 야외, 안양예술공원 내 구)공동의 장' : 'Pavilion Plaza, Anyang Museum Outdoor, Former Community Plaza'}</div>
-                <div>■ 운영: {isKo ? '상시관람 (24시간 상시개방)' : 'Open 24/7 (Always Open)'}</div>
+                <div>■ {isKo ? '위치' : 'Location'}: {isKo ? '안양파빌리온 앞 광장, 안양박물관 야외, 안양예술공원 내 구)공동의 장' : 'Pavilion Plaza, Anyang Museum Outdoor Area, Former Community Plaza'}</div>
+                <div>■ {isKo ? '운영' : 'Hours'}: {isKo ? '상시관람 (24시간 상시개방)' : 'Open 24/7'}</div>
               </div>
             </div>
 
@@ -187,12 +187,12 @@ export default function VisitPage({ params }: PageProps) {
                 <h4 className="text-base sm:text-lg font-bold text-white">
                   {isKo ? '4. 특별전: 우리가 꿈꾸는 도원' : '4. Special Exhibition: Dreaming Our Paradise'}
                 </h4>
-                <span className="text-xs font-mono bg-white/10 text-white/80 px-2 py-0.5">한중 특별전</span>
+                <span className="text-xs font-mono bg-white/10 text-white/80 px-2 py-0.5">{isKo ? '한중 특별전' : 'Korea-China Special Exhibition'}</span>
               </div>
               <div className="text-xs sm:text-sm font-mono text-[#D4D4D4] space-y-1">
-                <div>■ 위치: {isKo ? '아르테자이 상가 1층 오감갤러리, 오픈 스쿨' : 'Arte Zai 1F Ogam Gallery, Open School'}</div>
-                <div>■ 운영: 화 - 일 10:00 – 18:00</div>
-                <div className="text-[#8C8C8C]">■ 휴관: 매주 월요일 휴관 (10.5.(월) 개관, 10.6.(화) 휴관)</div>
+                <div>■ {isKo ? '위치' : 'Location'}: {isKo ? '아르테자이 상가 1층 오감갤러리, 오픈 스쿨' : 'Ogam Gallery (1F Arte Zai), Open School'}</div>
+                <div>■ {isKo ? '운영: 화 - 일 10:00 – 18:00' : 'Hours: Tue–Sun 10:00 AM – 6:00 PM'}</div>
+                <div className="text-[#8C8C8C]">■ {isKo ? '휴관: 매주 월요일 휴관 (10.5.(월) 개관, 10.6.(화) 휴관)' : 'Closed: Mondays (Open on Oct 5 (Mon), Closed on Oct 6 (Tue))'}</div>
               </div>
             </div>
           </div>

@@ -6,14 +6,19 @@ import Link from 'next/link';
 
 export default function Footer({ locale }: { locale: string }) {
   const navT = useTranslations('nav');
+  const isKo = locale === 'ko';
 
   return (
     <footer className="border-t border-white/5 bg-[#050505] py-12 px-6 relative z-10 text-caption text-white/40">
       <div className="container mx-auto max-w-[1200px] flex flex-col md:flex-row justify-between items-center md:items-start space-y-8 md:space-y-0">
         <div className="space-y-2 text-center md:text-left">
-          <p className="font-extrabold text-white/80 tracking-wider">제8회 안양공공예술프로젝트(APAP8)</p>
-          <p>안양문화예술재단 | 경기도 안양시 만안구 예술공원로 180</p>
-          <p className="font-mono text-sm text-white/80 pt-1">문의: 031-687-0548</p>
+          <p className="font-extrabold text-white/80 tracking-wider">{isKo ? '제8회 안양공공예술프로젝트(APAP8)' : 'The 8th Anyang Public Art Project (APAP8)'}</p>
+          <p>
+            {isKo
+              ? '안양문화예술재단 | 경기도 안양시 만안구 예술공원로 180'
+              : 'Anyang Foundation for Culture & Arts | 180 Yesulgongwon-ro, Manan-gu, Anyang-si, Gyeonggi-do, Republic of Korea'}
+          </p>
+          <p className="font-mono text-sm text-white/80 pt-1">{isKo ? '문의: 031-687-0548' : 'Contact: +82-31-687-0548'}</p>
           <p className="text-caption text-white/50 text-white/30 pt-2">© 2026 Anyang Foundation for Culture & Arts. All rights reserved.</p>
         </div>
         
@@ -28,7 +33,7 @@ export default function Footer({ locale }: { locale: string }) {
           </a>
           <span className="w-1 h-1 bg-white/20 rounded-full hidden sm:block" />
           <a href="https://www.ayac.or.kr" target="_blank" rel="noopener noreferrer" className="text-white/60 hover:text-white transition-colors font-semibold">
-            재단 홈페이지
+            {isKo ? '재단 홈페이지' : 'Foundation Website'}
           </a>
         </div>
       </div>

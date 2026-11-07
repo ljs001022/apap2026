@@ -165,34 +165,34 @@ export default function ProgramPage({ params }: PageProps) {
                       <div className="bg-white/[0.02] border border-white/15 p-4 sm:p-5 space-y-3 font-mono text-xs sm:text-sm">
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 pb-3 border-b border-white/10">
                           <div>
-                            <span className="text-[#8C8C8C] block text-[11px] font-bold mb-0.5">■ 일시 / DATETIME</span>
-                            <span className="text-white font-medium">2026. 10. 9.(금) 15:00–17:30</span>
+                            <span className="text-[#8C8C8C] block text-[11px] font-bold mb-0.5">■ {isKo ? '일시 / DATETIME' : 'DATE & TIME'}</span>
+                            <span className="text-white font-medium">{isKo ? '2026. 10. 9.(금) 15:00–17:30' : 'Fri, Oct 9, 2026, 3:00–5:30 PM'}</span>
                           </div>
                           <div>
-                            <span className="text-[#8C8C8C] block text-[11px] font-bold mb-0.5">■ 장소 / VENUE</span>
-                            <span className="text-white font-medium">안양파빌리온 앞 광장</span>
+                            <span className="text-[#8C8C8C] block text-[11px] font-bold mb-0.5">■ {isKo ? '장소 / VENUE' : 'VENUE'}</span>
+                            <span className="text-white font-medium">{isKo ? '안양파빌리온 앞 광장' : 'Anyang Pavilion Plaza'}</span>
                           </div>
                         </div>
 
                         {/* Program Timetable */}
                         <div className="space-y-1.5 pt-1">
-                          <span className="text-[#8C8C8C] block text-[11px] font-bold mb-1">■ PROGRAM 타임테이블</span>
+                          <span className="text-[#8C8C8C] block text-[11px] font-bold mb-1">■ {isKo ? 'PROGRAM 타임테이블' : 'PROGRAM TIMETABLE'}</span>
                           <div className="divide-y divide-white/5 bg-white/[0.02] border border-white/10">
                             <div className="flex items-center justify-between px-3 py-2 text-xs">
                               <span className="font-bold text-white">15:00–15:40</span>
-                              <span className="text-white/90">애쉬 (Ash) — 재즈 & 소울</span>
+                              <span className="text-white/90">{isKo ? '애쉬 (Ash) — 재즈 & 소울' : 'Ash — Jazz & Soul'}</span>
                             </div>
                             <div className="flex items-center justify-between px-3 py-2 text-xs">
                               <span className="font-bold text-white">16:00–16:50</span>
-                              <span className="text-white/90">웨이블릿 (Wavelet) — 밴드</span>
+                              <span className="text-white/90">{isKo ? '웨이블릿 (Wavelet) — 밴드' : 'Wavelet — Band'}</span>
                             </div>
                             <div className="flex items-center justify-between px-3 py-2 text-xs">
                               <span className="font-bold text-white">17:00–17:30</span>
-                              <span className="text-white/90">아코디언킴 (Accordion Kim) — 아코디언</span>
+                              <span className="text-white/90">{isKo ? '아코디언킴 (Accordion Kim) — 아코디언' : 'Accordion Kim — Accordion'}</span>
                             </div>
                           </div>
                           <span className="text-[11px] text-[#8C8C8C] block pt-1">
-                            ※ 공연 및 프로그램은 현장 상황에 따라 변경될 수 있습니다.
+                            {isKo ? '※ 공연 및 프로그램은 현장 상황에 따라 변경될 수 있습니다.' : '※ Performances and programs are subject to change depending on on-site conditions.'}
                           </span>
                         </div>
                       </div>
@@ -295,32 +295,32 @@ export default function ProgramPage({ params }: PageProps) {
                       {/* Event Meta Box */}
                       <div className="bg-white/[0.02] border border-white/15 p-4 sm:p-5 space-y-2.5 font-mono text-xs sm:text-sm">
                         <span className="text-[#8C8C8C] block text-[11px] font-bold uppercase tracking-wider mb-2">
-                          ■ 행사 안내 / EVENT OVERVIEW
+                          ■ {isKo ? '행사 안내 / EVENT OVERVIEW' : 'EVENT OVERVIEW'}
                         </span>
                         <div className="space-y-2">
                           <div className="flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-3">
-                            <span className="text-[#8C8C8C] flex-shrink-0 min-w-[70px]">행 사 명:</span>
-                            <span className="text-white font-medium">제8회 안양공공예술프로젝트(APAP8) 시민참여 프로그램 《도원장(場)》</span>
+                            <span className="text-[#8C8C8C] flex-shrink-0 min-w-[70px]">{isKo ? '행 사 명:' : 'Event:'}</span>
+                            <span className="text-white font-medium">{isKo ? '제8회 안양공공예술프로젝트(APAP8) 시민참여 프로그램 《도원장(場)》' : 'APAP8 Citizen Engagement Program “Dowonjang”'}</span>
                           </div>
                           <div className="flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-3">
-                            <span className="text-[#8C8C8C] flex-shrink-0 min-w-[70px]">일 시:</span>
-                            <span className="text-white font-medium">2026. 10. 17.(토) 11:00~18:00</span>
+                            <span className="text-[#8C8C8C] flex-shrink-0 min-w-[70px]">{isKo ? '일 시:' : 'Date:'}</span>
+                            <span className="text-white font-medium">{isKo ? '2026. 10. 17.(토) 11:00~18:00' : 'Sat, Oct 17, 2026, 11:00 AM–6:00 PM'}</span>
                           </div>
                           <div className="flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-3">
-                            <span className="text-[#8C8C8C] flex-shrink-0 min-w-[70px]">장 소:</span>
-                            <span className="text-white font-medium">안양파빌리온 앞마당 (안양시 만안구 예술공원로 180)</span>
+                            <span className="text-[#8C8C8C] flex-shrink-0 min-w-[70px]">{isKo ? '장 소:' : 'Venue:'}</span>
+                            <span className="text-white font-medium">{isKo ? '안양파빌리온 앞마당 (안양시 만안구 예술공원로 180)' : 'Anyang Pavilion Front Yard (180 Yesulgongwon-ro, Manan-gu, Anyang-si)'}</span>
                           </div>
                           <div className="flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-3">
-                            <span className="text-[#8C8C8C] flex-shrink-0 min-w-[70px]">내 용:</span>
-                            <span className="text-white font-medium">아트상품 및 핸드메이드 제품 판매, 창작 체험 등</span>
+                            <span className="text-[#8C8C8C] flex-shrink-0 min-w-[70px]">{isKo ? '내 용:' : 'Program:'}</span>
+                            <span className="text-white font-medium">{isKo ? '아트상품 및 핸드메이드 제품 판매, 창작 체험 등' : 'Art goods and handmade products, creative workshops'}</span>
                           </div>
                           <div className="flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-3">
-                            <span className="text-[#8C8C8C] flex-shrink-0 min-w-[70px]">참여 셀러:</span>
-                            <span className="text-white font-medium">안양의 작가·공방·핸드메이드 창작자 등 약 15개 팀</span>
+                            <span className="text-[#8C8C8C] flex-shrink-0 min-w-[70px]">{isKo ? '참여 셀러:' : 'Participants:'}</span>
+                            <span className="text-white font-medium">{isKo ? '안양의 작가·공방·핸드메이드 창작자 등 약 15개 팀' : 'About 15 Anyang artists, studios, and handmade creators'}</span>
                           </div>
                           <div className="flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-3">
-                            <span className="text-[#8C8C8C] flex-shrink-0 min-w-[70px]">참 가 비:</span>
-                            <span className="text-white font-bold bg-white text-black px-2 py-0.5 w-fit">무료 (자유 입장)</span>
+                            <span className="text-[#8C8C8C] flex-shrink-0 min-w-[70px]">{isKo ? '참 가 비:' : 'Admission:'}</span>
+                            <span className="text-white font-bold bg-white text-black px-2 py-0.5 w-fit">{isKo ? '무료 (자유 입장)' : 'Free (open admission)'}</span>
                           </div>
                         </div>
                       </div>
@@ -544,9 +544,9 @@ export default function ProgramPage({ params }: PageProps) {
               {[
                 {
                   name: isKo ? '도슨트와 함께하는 APAP8' : 'Guided Docent with APAP8',
-                  price: isKo ? '무료' : 'Free',
+                  price: isKo ? '무료' : 'FREE',
                   location: isKo ? '안양파빌리온' : 'Anyang Pavilion',
-                  schedule: isKo ? '11:00, 14:00, 16:00 (1일 3회 운영 / 45분 내외)' : '11:00, 14:00, 16:00 (Daily 3x / Approx. 45 min)',
+                  schedule: isKo ? '11:00, 14:00, 16:00 (1일 3회 운영 / 45분 내외)' : '11:00, 14:00, 16:00 (3 times a day / approx. 45 mins)',
                   content: isKo
                     ? 'APAP8 실내외 주요 작품 해설'
                     : 'APAP8 indoor & outdoor highlight artworks commentary',
@@ -554,7 +554,7 @@ export default function ProgramPage({ params }: PageProps) {
                 },
                 {
                   name: isKo ? '〈특별전: 우리가 꿈꾸는 도원〉 도슨트 해설' : 'Special Exhibition Docent Commentary',
-                  price: isKo ? '무료' : 'Free',
+                  price: isKo ? '무료' : 'FREE',
                   location: isKo ? '아르테자이 상가, 오픈 스쿨' : 'Arte Zai Commercial, Open School',
                   schedule: isKo ? '상시운영 (10분 내외)' : 'Always operating (Approx. 10 min)',
                   content: isKo
@@ -579,7 +579,7 @@ export default function ProgramPage({ params }: PageProps) {
                       <span className="font-mono text-xs text-[#8C8C8C]">0{idx + 1}</span>
                       <span
                         className={`font-mono text-xs font-bold px-2 py-0.5 ${
-                          tour.price.includes('무료') || tour.price === 'Free'
+                          tour.price.includes('무료') || tour.price === 'FREE'
                             ? 'bg-white text-black'
                             : 'border border-white text-white'
                         }`}
@@ -591,7 +591,7 @@ export default function ProgramPage({ params }: PageProps) {
                       {tour.name}
                     </h3>
                     <div className="text-xs font-mono text-[#8C8C8C] space-y-0.5 pt-1 border-t border-white/10">
-                      <div>■ {isKo ? '시작장소:' : 'Location:'} {tour.location}</div>
+                      <div>■ {isKo ? '시작장소:' : 'Meeting Point:'} {tour.location}</div>
                       <div>■ {isKo ? '운영일정:' : 'Schedule:'} {tour.schedule}</div>
                     </div>
                     <p className="text-xs text-white/80 font-light leading-relaxed pt-1">
@@ -600,7 +600,7 @@ export default function ProgramPage({ params }: PageProps) {
                   </div>
                   {tour.reservation && (
                     <div className="text-[11px] font-mono text-white/60 pt-2 border-t border-white/10">
-                      ■ {tour.reservation}
+                      ■ {isKo ? '' : 'How to Join: '}{tour.reservation}
                     </div>
                   )}
                 </div>
@@ -631,7 +631,7 @@ export default function ProgramPage({ params }: PageProps) {
               <div className="border border-white/20 p-6 bg-white/[0.02] space-y-3">
                 <div className="flex justify-between items-center pb-2 border-b border-white/10">
                   <span className="font-mono text-xs font-bold bg-white text-black px-2 py-0.5">SESSION 01</span>
-                  <span className="font-mono text-xs text-[#8C8C8C]">2026.09.17.(목) 14:00 - 16:00</span>
+                  <span className="font-mono text-xs text-[#8C8C8C]">{isKo ? '2026.09.17.(목) 14:00 - 16:00' : 'Sep 17, 2026 (Thu) 2:00–4:00 PM'}</span>
                 </div>
                 <h3 className="text-lg font-bold text-white">
                   {isKo ? '1. APAP8, 공공예술의 미래' : 'APAP8: The Future of Public Art'}
@@ -642,8 +642,8 @@ export default function ProgramPage({ params }: PageProps) {
                     : 'Exploring the social role and transformation of public art in the era of AI and cutting-edge technologies.'}
                 </p>
                 <div className="text-xs font-mono text-[#8C8C8C] pt-2 border-t border-white/10 space-y-0.5">
-                  <div>■ 장소: 안양박물관 교육관</div>
-                  <div>■ 대상: 문화예술 전문가 및 시민 누구나</div>
+                  <div>■ {isKo ? '장소: 안양박물관 교육관' : 'Venue: Anyang Museum Education Center'}</div>
+                  <div>■ {isKo ? '대상: 문화예술 전문가, 연구자 및 관심 있는 시민 누구나' : 'Target Audience: Arts and culture professionals, researchers, and anyone interested'}</div>
                 </div>
               </div>
 
@@ -651,7 +651,7 @@ export default function ProgramPage({ params }: PageProps) {
               <div className="border border-white/20 p-6 bg-white/[0.02] space-y-3">
                 <div className="flex justify-between items-center pb-2 border-b border-white/10">
                   <span className="font-mono text-xs font-bold bg-white text-black px-2 py-0.5">SESSION 02</span>
-                  <span className="font-mono text-xs text-[#8C8C8C]">2026.12.10.(목) 14:00 - 16:00</span>
+                  <span className="font-mono text-xs text-[#8C8C8C]">{isKo ? '2026.12.10.(목) 14:00 - 16:00' : 'Dec 10, 2026 (Thu) 2:00–4:00 PM'}</span>
                 </div>
                 <h3 className="text-lg font-bold text-white">
                   {isKo ? '2. APAP8, 아시아 공공예술로 나아가다' : 'APAP8: Advancing to Asian Public Art'}
@@ -662,8 +662,8 @@ export default function ProgramPage({ params }: PageProps) {
                     : 'Evaluating comprehensive APAP8 outcomes and expanding Asian public art networks.'}
                 </p>
                 <div className="text-xs font-mono text-[#8C8C8C] pt-2 border-t border-white/10 space-y-0.5">
-                  <div>■ 장소: 안양박물관 교육관</div>
-                  <div>■ 대상: 국내외 큐레이터, 예술가, 시민 참여자</div>
+                  <div>■ {isKo ? '장소: 안양박물관 교육관' : 'Venue: Anyang Museum Education Center'}</div>
+                  <div>■ {isKo ? '대상: 국내외 큐레이터, 예술가, 시민 참여자' : 'Target Audience: Local and international curators, artists, and the general public'}</div>
                 </div>
               </div>
             </div>
@@ -693,11 +693,11 @@ export default function ProgramPage({ params }: PageProps) {
                 <div className="flex items-center gap-2">
                   <Radio className="w-5 h-5 text-white" />
                   <span className="font-mono text-sm font-bold text-white tracking-wider">
-                    KBS1 (전국방송)
+                    {isKo ? 'KBS1 (전국방송)' : 'KBS1 (National Broadcast)'}
                   </span>
                 </div>
                 <span className="font-mono text-xs text-[#8C8C8C]">
-                  {isKo ? '방영일: 2026년 8월 29일(토) 13:05' : 'Air Date: Aug 29, 2026 13:05'}
+                  {isKo ? '방영일: 2026년 8월 29일(토) 13:05' : 'Air Date: August 29, 2026 (Sat) 1:05 PM'}
                 </span>
               </div>
 

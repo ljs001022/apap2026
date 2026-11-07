@@ -866,7 +866,7 @@ export default function SiteAPage({ params }: PageProps) {
                                   {isKo ? '파빌리온 버스킹 〈도원, 음악이 머무는 곳〉' : 'Pavilion Busking: Where Music Stays'}
                                 </h4>
                               </div>
-                              <span className="text-xs font-mono bg-white text-black px-2 py-0.5 font-bold">10. 9.(금) 무료</span>
+                              <span className="text-xs font-mono bg-white text-black px-2 py-0.5 font-bold">{isKo ? '10. 9.(금) 무료' : 'Oct 9 (Fri) · Free'}</span>
                             </div>
                             <p className="text-xs lg:text-sm text-[#D4D4D4] font-light leading-relaxed">
                               {isKo
@@ -874,10 +874,10 @@ export default function SiteAPage({ params }: PageProps) {
                                 : 'A musical afternoon at Anyang Pavilion featuring Ash (Jazz & Soul), Wavelet (Band), and Accordion Kim (Accordion), alongside open coloring workshops.'}
                             </p>
                             <div className="text-xs font-mono text-[#8C8C8C] pt-2 border-t border-white/10 space-y-1">
-                              <div>■ 일시: 2026. 10. 9.(금) 15:00–17:30</div>
-                              <div>■ 장소: 안양파빌리온 앞 광장</div>
-                              <div className="text-white/90 font-medium">■ 타임테이블: 15:00 애쉬 · 16:00 웨이블릿 · 17:00 아코디언킴</div>
-                              <div className="text-[11px] text-[#8C8C8C]">※ 공연 및 프로그램은 현장 상황에 따라 변경될 수 있습니다.</div>
+                              <div>■ {isKo ? '일시: 2026. 10. 9.(금) 15:00–17:30' : 'Date: Fri, Oct 9, 2026, 3:00–5:30 PM'}</div>
+                              <div>■ {isKo ? '장소: 안양파빌리온 앞 광장' : 'Venue: Anyang Pavilion Plaza'}</div>
+                              <div className="text-white/90 font-medium">■ {isKo ? '타임테이블: 15:00 애쉬 · 16:00 웨이블릿 · 17:00 아코디언킴' : 'Timetable: 3:00 PM Ash · 4:00 PM Wavelet · 5:00 PM Accordion Kim'}</div>
+                              <div className="text-[11px] text-[#8C8C8C]">{isKo ? '※ 공연 및 프로그램은 현장 상황에 따라 변경될 수 있습니다.' : '※ Performances and programs are subject to change depending on on-site conditions.'}</div>
                             </div>
                           </div>
                         </div>
@@ -949,7 +949,7 @@ export default function SiteAPage({ params }: PageProps) {
                                   {isKo ? '안양의 창작자와 시민이 만나는 예술 장터, 〈도원장(場)〉' : 'Flea Art Market 〈Dowonjang〉'}
                                 </h4>
                               </div>
-                              <span className="text-xs font-mono bg-white text-black px-2 py-0.5 font-bold">10. 17.(토) 무료입장</span>
+                              <span className="text-xs font-mono bg-white text-black px-2 py-0.5 font-bold">{isKo ? '10. 17.(토) 무료입장' : 'Oct 17 (Sat) · Free Admission'}</span>
                             </div>
                             <p className="text-xs lg:text-sm text-[#D4D4D4] font-light leading-relaxed">
                               {isKo
@@ -957,10 +957,10 @@ export default function SiteAPage({ params }: PageProps) {
                                 : 'An open cultural art market where 15 local artist studios and handmade creators showcase original works, living crafts, and interactive creative activities.'}
                             </p>
                             <div className="text-xs font-mono text-[#8C8C8C] pt-2 border-t border-white/10 space-y-1">
-                              <div>■ 일시: 2026. 10. 17.(토) 11:00~18:00</div>
-                              <div>■ 장소: 안양파빌리온 앞마당 (안양시 만안구 예술공원로 180)</div>
-                              <div>■ 내용: 아트상품 및 핸드메이드 제품 판매, 창작 체험 등</div>
-                              <div>■ 참여 셀러: 안양의 작가·공방·핸드메이드 창작자 약 15개 팀</div>
+                              <div>■ {isKo ? '일시: 2026. 10. 17.(토) 11:00~18:00' : 'Date: Sat, Oct 17, 2026, 11:00 AM–6:00 PM'}</div>
+                              <div>■ {isKo ? '장소: 안양파빌리온 앞마당 (안양시 만안구 예술공원로 180)' : 'Venue: Anyang Pavilion Front Yard (180 Yesulgongwon-ro, Manan-gu, Anyang-si)'}</div>
+                              <div>■ {isKo ? '내용: 아트상품 및 핸드메이드 제품 판매, 창작 체험 등' : 'Program: Art goods and handmade products, creative workshops'}</div>
+                              <div>■ {isKo ? '참여 셀러: 안양의 작가·공방·핸드메이드 창작자 약 15개 팀' : 'Participants: About 15 Anyang artists, studios, and handmade creators'}</div>
                             </div>
                           </div>
                         </div>
@@ -1065,9 +1065,9 @@ export default function SiteAPage({ params }: PageProps) {
                     )}
 
                     <div className="border border-white/10 p-4 bg-white/[0.01] text-xs font-mono text-[#8C8C8C] flex flex-wrap gap-4">
-                      <span>■ 기간: 2026. 10. ~ 11.</span>
-                      <span>■ 장소: 안양파빌리온 앞마당 및 광장 일대</span>
-                      <span>■ 참가비: 전액 무료</span>
+                      <span>■ {isKo ? '기간: 2026. 10. ~ 11.' : 'Dates: October – November 2026'}</span>
+                      <span>■ {isKo ? '장소: 안양파빌리온 앞마당 및 광장 일대' : 'Venue: Anyang Pavilion Front Yard and Square'}</span>
+                      <span>■ {isKo ? '참가비: 전액 무료' : 'Admission: Free'}</span>
                     </div>
                   </div>
                 )}
@@ -1095,8 +1095,8 @@ export default function SiteAPage({ params }: PageProps) {
                       <div className="border border-white/20 p-5 bg-white/[0.02] space-y-3 flex flex-col justify-between">
                         <div className="space-y-2">
                           <div className="flex justify-between items-start">
-                            <span className="text-xs font-mono bg-white text-black px-2 py-0.5 font-bold">무료</span>
-                            <span className="text-xs font-mono text-[#8C8C8C]">45분 내외</span>
+                            <span className="text-xs font-mono bg-white text-black px-2 py-0.5 font-bold">{isKo ? '무료' : 'FREE'}</span>
+                            <span className="text-xs font-mono text-[#8C8C8C]">{isKo ? '45분 내외' : 'approx. 45 min'}</span>
                           </div>
                           <h4 className="text-base font-bold text-white">
                             {isKo ? '도슨트와 함께하는 APAP8' : 'Guided Docent with APAP8'}
@@ -1108,9 +1108,9 @@ export default function SiteAPage({ params }: PageProps) {
                           </p>
                         </div>
                         <div className="text-xs font-mono text-[#8C8C8C] pt-2 border-t border-white/10 space-y-1">
-                          <div>■ 시작장소: {isKo ? '안양파빌리온' : 'Anyang Pavilion'}</div>
-                          <div>■ 운영시간: 11:00, 14:00, 16:00 (1일 3회 / 45분 내외)</div>
-                          <div>■ 참여방법: {isKo ? '현장 참여 가능 / 10인 이상 단체 사전 예약' : 'Walk-in / Advance booking for groups 10+'}</div>
+                          <div>■ {isKo ? '시작장소' : 'Meeting Point'}: {isKo ? '안양파빌리온' : 'Anyang Pavilion'}</div>
+                          <div>■ {isKo ? '운영시간' : 'Schedule'}: {isKo ? '11:00, 14:00, 16:00 (1일 3회 / 45분 내외)' : '11:00, 14:00, 16:00 (3 times a day / approx. 45 mins)'}</div>
+                          <div>■ {isKo ? '참여방법' : 'How to Join'}: {isKo ? '현장 참여 가능 / 10인 이상 단체 사전 예약' : 'Walk-in / Advance booking for groups 10+'}</div>
                         </div>
                       </div>
 
@@ -1118,8 +1118,8 @@ export default function SiteAPage({ params }: PageProps) {
                       <div className="border border-white/20 p-5 bg-white/[0.02] space-y-3 flex flex-col justify-between">
                         <div className="space-y-2">
                           <div className="flex justify-between items-start">
-                            <span className="text-xs font-mono bg-white text-black px-2 py-0.5 font-bold">무료</span>
-                            <span className="text-xs font-mono text-[#8C8C8C]">10분 내외</span>
+                            <span className="text-xs font-mono bg-white text-black px-2 py-0.5 font-bold">{isKo ? '무료' : 'FREE'}</span>
+                            <span className="text-xs font-mono text-[#8C8C8C]">{isKo ? '10분 내외' : 'approx. 10 min'}</span>
                           </div>
                           <h4 className="text-base font-bold text-white">
                             {isKo ? '〈특별전: 우리가 꿈꾸는 도원〉 도슨트 해설' : 'Special Exhibition Docent'}
@@ -1131,9 +1131,9 @@ export default function SiteAPage({ params }: PageProps) {
                           </p>
                         </div>
                         <div className="text-xs font-mono text-[#8C8C8C] pt-2 border-t border-white/10 space-y-1">
-                          <div>■ 시작장소: {isKo ? '아르테자이 상가, 오픈 스쿨' : 'Arte Zai Commercial, Open School'}</div>
-                          <div>■ 운영시간: {isKo ? '상시운영 (10분 내외)' : 'Always operating (Approx. 10 min)'}</div>
-                          <div>■ 참여방법: {isKo ? '현장 참여 가능 / 10인 이상 단체 사전 예약' : 'Walk-in / Advance booking for groups 10+'}</div>
+                          <div>■ {isKo ? '시작장소' : 'Meeting Point'}: {isKo ? '아르테자이 상가, 오픈 스쿨' : 'Arte Zai Commercial, Open School'}</div>
+                          <div>■ {isKo ? '운영시간' : 'Schedule'}: {isKo ? '상시운영 (10분 내외)' : 'Always operating (Approx. 10 min)'}</div>
+                          <div>■ {isKo ? '참여방법' : 'How to Join'}: {isKo ? '현장 참여 가능 / 10인 이상 단체 사전 예약' : 'Walk-in / Advance booking for groups 10+'}</div>
                         </div>
                       </div>
 
@@ -1142,7 +1142,7 @@ export default function SiteAPage({ params }: PageProps) {
                         <div className="space-y-2">
                           <div className="flex justify-between items-start">
                             <span className="text-xs font-mono border border-white/60 text-white px-2 py-0.5 font-bold">{isKo ? '유료 (5천원)' : 'Paid (KRW 5,000)'}</span>
-                            <span className="text-xs font-mono text-[#8C8C8C]">90분 내외</span>
+                            <span className="text-xs font-mono text-[#8C8C8C]">{isKo ? '90분 내외' : 'approx. 90 min'}</span>
                           </div>
                           <h4 className="text-base font-bold text-white">
                             {isKo ? 'APAP8 스페셜 투어-나이트' : 'APAP8 Special Night Tour'}
@@ -1154,9 +1154,9 @@ export default function SiteAPage({ params }: PageProps) {
                           </p>
                         </div>
                         <div className="text-xs font-mono text-[#8C8C8C] pt-2 border-t border-white/10 space-y-1">
-                          <div>■ 시작장소: {isKo ? '안양파빌리온' : 'Anyang Pavilion'}</div>
-                          <div>■ 운영일정: {isKo ? '10.16. ~ 11.6.(매주 금요일) 19:00 (90분 내외)' : 'Oct 16 – Nov 6 (Every Fri) 19:00 (90 min)'}</div>
-                          <div>■ 예약: {isKo ? '네이버·전화 예약 또는 현장 참여 가능' : 'Naver / Phone booking or walk-in available'}</div>
+                          <div>■ {isKo ? '시작장소' : 'Meeting Point'}: {isKo ? '안양파빌리온' : 'Anyang Pavilion'}</div>
+                          <div>■ {isKo ? '운영일정' : 'Schedule'}: {isKo ? '10.16. ~ 11.6.(매주 금요일) 19:00 (90분 내외)' : 'Oct 16 – Nov 6 (Every Fri) 19:00 (90 min)'}</div>
+                          <div>■ {isKo ? '예약' : 'Booking'}: {isKo ? '네이버·전화 예약 또는 현장 참여 가능' : 'Naver / Phone booking or walk-in available'}</div>
                         </div>
                       </div>
                     </div>
@@ -1185,7 +1185,7 @@ export default function SiteAPage({ params }: PageProps) {
                       <div className="border border-white/20 p-6 bg-white/[0.02] space-y-4">
                         <div className="flex justify-between items-center pb-2 border-b border-white/10">
                           <span className="font-mono text-xs font-bold bg-white text-black px-2 py-0.5">SESSION 01</span>
-                          <span className="font-mono text-xs text-[#8C8C8C]">2026.09.17.(목) 14:00 - 16:00</span>
+                          <span className="font-mono text-xs text-[#8C8C8C]">{isKo ? '2026.09.17.(목) 14:00 - 16:00' : 'Sep 17, 2026 (Thu) 2:00–4:00 PM'}</span>
                         </div>
                         <div>
                           <h4 className="text-lg lg:text-xl font-bold text-white">
@@ -1198,8 +1198,8 @@ export default function SiteAPage({ params }: PageProps) {
                           </p>
                         </div>
                         <div className="text-xs font-mono text-white/70 pt-2 border-t border-white/10 space-y-1">
-                          <div>■ 장소: 안양박물관 교육관</div>
-                          <div>■ 대상: 문화예술 전문가, 연구자 및 관심 있는 시민 누구나</div>
+                          <div>■ {isKo ? '장소: 안양박물관 교육관' : 'Venue: Anyang Museum Education Center'}</div>
+                          <div>■ {isKo ? '대상: 문화예술 전문가, 연구자 및 관심 있는 시민 누구나' : 'Target Audience: Arts and culture professionals, researchers, and anyone interested'}</div>
                         </div>
                       </div>
 
@@ -1207,7 +1207,7 @@ export default function SiteAPage({ params }: PageProps) {
                       <div className="border border-white/20 p-6 bg-white/[0.02] space-y-4">
                         <div className="flex justify-between items-center pb-2 border-b border-white/10">
                           <span className="font-mono text-xs font-bold bg-white text-black px-2 py-0.5">SESSION 02</span>
-                          <span className="font-mono text-xs text-[#8C8C8C]">2026.12.10.(목) 14:00 - 16:00</span>
+                          <span className="font-mono text-xs text-[#8C8C8C]">{isKo ? '2026.12.10.(목) 14:00 - 16:00' : 'Dec 10, 2026 (Thu) 2:00–4:00 PM'}</span>
                         </div>
                         <div>
                           <h4 className="text-lg lg:text-xl font-bold text-white">
@@ -1220,8 +1220,8 @@ export default function SiteAPage({ params }: PageProps) {
                           </p>
                         </div>
                         <div className="text-xs font-mono text-white/70 pt-2 border-t border-white/10 space-y-1">
-                          <div>■ 장소: 안양박물관 교육관</div>
-                          <div>■ 대상: 국내외 큐레이터, 예술가, 시민 참여자</div>
+                          <div>■ {isKo ? '장소: 안양박물관 교육관' : 'Venue: Anyang Museum Education Center'}</div>
+                          <div>■ {isKo ? '대상: 국내외 큐레이터, 예술가, 시민 참여자' : 'Target Audience: Local and international curators, artists, and the general public'}</div>
                         </div>
                       </div>
                     </div>
@@ -1248,7 +1248,7 @@ export default function SiteAPage({ params }: PageProps) {
                     <div className="border border-white/20 p-6 lg:p-8 bg-white/[0.02] space-y-4 max-w-2xl">
                       <div className="flex items-center gap-2">
                         <Tv className="w-5 h-5 text-white" />
-                        <span className="font-mono text-xs font-bold text-[#8C8C8C]">KBS1 (전국방송)</span>
+                        <span className="font-mono text-xs font-bold text-[#8C8C8C]">{isKo ? 'KBS1 (전국방송)' : 'KBS1 (National Broadcast)'}</span>
                       </div>
                       <h4 className="text-xl lg:text-2xl font-bold text-white">
                         {isKo ? '네트워크 기획 〈예술로 길을 열다〉' : 'Special Documentary: Opening Paths with Art'}
@@ -1259,8 +1259,8 @@ export default function SiteAPage({ params }: PageProps) {
                           : 'A special documentary highlighting how local spaces create enduring value through public art, featuring APAP8 and global benchmarks.'}
                       </p>
                       <div className="text-xs font-mono text-[#8C8C8C] pt-2 border-t border-white/10 space-y-1">
-                        <div>■ 방송일시: 2026년 8월 29일(토) 13:05</div>
-                        <div>■ 방송채널: KBS 1TV 전국 방송</div>
+                        <div>■ {isKo ? '방송일시: 2026년 8월 29일(토) 13:05' : 'Air Date: August 29, 2026 (Sat) 1:05 PM'}</div>
+                        <div>■ {isKo ? '방송채널: KBS 1TV 전국 방송' : 'Channel: KBS 1TV (National Broadcast)'}</div>
                       </div>
                       <div className="pt-2">
                         <a
@@ -1697,7 +1697,7 @@ export default function SiteAPage({ params }: PageProps) {
                       <Layers className="w-5 h-5 text-white flex-shrink-0" />
                       <span>{isKo ? '02 전시장 4대 구역별 상세 안내' : '02 4 VENUE DETAILS'}</span>
                     </div>
-                    <span className="font-mono text-xs text-[#8C8C8C]">아이 파빌리온 · 밤의 도원경 · 오픈 그라운드 · 우리가 꿈꾸는 도원</span>
+                    <span className="font-mono text-xs text-[#8C8C8C]">{isKo ? '아이 파빌리온 · 밤의 도원경 · 오픈 그라운드 · 우리가 꿈꾸는 도원' : 'i Pavilion · Night Utopia · Open Ground · Dreaming Our Paradise'}</span>
                   </div>
 
                   <div className="grid grid-cols-2 gap-4 pt-1">
@@ -1707,12 +1707,12 @@ export default function SiteAPage({ params }: PageProps) {
                         <h4 className="text-base font-bold text-white">
                           {isKo ? '1. 아이 파빌리온' : '1. i Pavilion'}
                         </h4>
-                        <span className="text-xs font-mono bg-white/10 text-white/80 px-2 py-0.5">실내 미디어·설치</span>
+                        <span className="text-xs font-mono bg-white/10 text-white/80 px-2 py-0.5">{isKo ? '실내 미디어·설치' : 'Indoor Media & Installation'}</span>
                       </div>
                       <div className="text-xs font-mono text-[#D4D4D4] space-y-1">
-                        <div>■ 위치: 안양파빌리온 (만안구 예술공원로 180)</div>
-                        <div>■ 운영: 화 - 금 10:00 – 18:00 / 토, 일 10:00 – 19:00</div>
-                        <div className="text-[#8C8C8C]">■ 휴관: 매주 월요일 휴관 (10.5.(월) 대체공휴일 개관, 10.6.(화) 휴관)</div>
+                        <div>■ {isKo ? '위치: 안양파빌리온 (만안구 예술공원로 180)' : 'Location: Anyang Pavilion (180 Yesulgongwon-ro, Manan-gu)'}</div>
+                        <div>■ {isKo ? '운영: 화 - 금 10:00 – 18:00 / 토, 일 10:00 – 19:00' : 'Hours: Tue–Fri 10:00 AM – 6:00 PM / Sat–Sun 10:00 AM – 7:00 PM'}</div>
+                        <div className="text-[#8C8C8C]">■ {isKo ? '휴관: 매주 월요일 휴관 (10.5.(월) 대체공휴일 개관, 10.6.(화) 휴관)' : 'Closed: Mondays (Open on Oct 5 (Mon) for substitute holiday, Closed on Oct 6 (Tue))'}</div>
                       </div>
                     </div>
 
@@ -1722,12 +1722,12 @@ export default function SiteAPage({ params }: PageProps) {
                         <h4 className="text-base font-bold text-white">
                           {isKo ? '2. 밤의 도원경' : '2. Night Utopia'}
                         </h4>
-                        <span className="text-xs font-mono bg-white/10 text-white/80 px-2 py-0.5">야간 미디어아트</span>
+                        <span className="text-xs font-mono bg-white/10 text-white/80 px-2 py-0.5">{isKo ? '야간 미디어아트' : 'Nighttime Media Art'}</span>
                       </div>
                       <div className="text-xs font-mono text-[#D4D4D4] space-y-1">
-                        <div>■ 위치: 안양파빌리온 앞 광장 일대</div>
-                        <div>■ 운영: 화 - 일 19:00 – 22:00 (월요일 휴무 / 10.5.(월) 정상운영, 10.6.(화) 휴무)</div>
-                        <div className="text-white font-medium">■ 상영: 〈빛의 폭포〉 매 정시 15분간 / 〈오색운〉 매시 15분~정시 상영</div>
+                        <div>■ {isKo ? '위치: 안양파빌리온 앞 광장 일대' : 'Location: Anyang Pavilion Square'}</div>
+                        <div>■ {isKo ? '운영: 화 - 일 19:00 – 22:00 (월요일 휴무 / 10.5.(월) 정상운영, 10.6.(화) 휴무)' : 'Hours: Tue–Sun 7:00 PM – 10:00 PM (Closed on Mondays / Open on Oct 5 (Mon), Closed on Oct 6 (Tue))'}</div>
+                        <div className="text-white font-medium">{isKo ? '■ 상영: 〈빛의 폭포〉 매 정시 15분간 / 〈오색운〉 매시 15분~정시 상영' : <>■ Screenings<br />- Waterfall of Light: First 15 minutes of every hour<br />- Five-Colored Clouds (Osaegun): From 15 minutes past the hour to the top of the next hour</>}</div>
                       </div>
                     </div>
 
@@ -1737,11 +1737,11 @@ export default function SiteAPage({ params }: PageProps) {
                         <h4 className="text-base font-bold text-white">
                           {isKo ? '3. 오픈 그라운드' : '3. Open Ground'}
                         </h4>
-                        <span className="text-xs font-mono bg-white text-black px-2 py-0.5 font-bold">24시간 상시개방</span>
+                        <span className="text-xs font-mono bg-white text-black px-2 py-0.5 font-bold">{isKo ? '24시간 상시개방' : '24-Hour Open Space'}</span>
                       </div>
                       <div className="text-xs font-mono text-[#D4D4D4] space-y-1">
-                        <div>■ 위치: {isKo ? '안양파빌리온 앞 광장, 안양박물관 야외, 안양예술공원 내 구)공동의 장' : 'Pavilion Plaza, Anyang Museum Outdoor, Former Community Plaza'}</div>
-                        <div>■ 운영: {isKo ? '상시관람 (24시간 상시개방)' : 'Open 24/7 (Always Open)'}</div>
+                        <div>■ {isKo ? '위치' : 'Location'}: {isKo ? '안양파빌리온 앞 광장, 안양박물관 야외, 안양예술공원 내 구)공동의 장' : 'Pavilion Plaza, Anyang Museum Outdoor Area, Former Community Plaza'}</div>
+                        <div>■ {isKo ? '운영' : 'Hours'}: {isKo ? '상시관람 (24시간 상시개방)' : 'Open 24/7'}</div>
                       </div>
                     </div>
 
@@ -1751,12 +1751,12 @@ export default function SiteAPage({ params }: PageProps) {
                         <h4 className="text-base font-bold text-white">
                           {isKo ? '4. 특별전: 우리가 꿈꾸는 도원' : '4. Special Exhibition: Dreaming Our Paradise'}
                         </h4>
-                        <span className="text-xs font-mono bg-white/10 text-white/80 px-2 py-0.5">한중 특별전</span>
+                        <span className="text-xs font-mono bg-white/10 text-white/80 px-2 py-0.5">{isKo ? '한중 특별전' : 'Korea-China Special Exhibition'}</span>
                       </div>
                       <div className="text-xs font-mono text-[#D4D4D4] space-y-1">
-                        <div>■ 위치: {isKo ? '아르테자이 상가 1층 오감갤러리, 오픈 스쿨' : 'Arte Zai 1F Ogam Gallery, Open School'}</div>
-                        <div>■ 운영: 화 - 일 10:00 – 18:00</div>
-                        <div className="text-[#8C8C8C]">■ 휴관: 매주 월요일 휴관 (10.5.(월) 개관, 10.6.(화) 휴관)</div>
+                        <div>■ {isKo ? '위치' : 'Location'}: {isKo ? '아르테자이 상가 1층 오감갤러리, 오픈 스쿨' : 'Ogam Gallery (1F Arte Zai), Open School'}</div>
+                        <div>■ {isKo ? '운영: 화 - 일 10:00 – 18:00' : 'Hours: Tue–Sun 10:00 AM – 6:00 PM'}</div>
+                        <div className="text-[#8C8C8C]">■ {isKo ? '휴관: 매주 월요일 휴관 (10.5.(월) 개관, 10.6.(화) 휴관)' : 'Closed: Mondays (Open on Oct 5 (Mon), Closed on Oct 6 (Tue))'}</div>
                       </div>
                     </div>
                   </div>
@@ -2092,16 +2092,16 @@ export default function SiteAPage({ params }: PageProps) {
               <div className="border border-white/15 p-3.5 bg-white/[0.02] space-y-2">
                 <div className="flex justify-between items-center text-xs font-mono">
                   <span className="text-white font-bold">파빌리온 버스킹 〈도원, 음악이 머무는 곳〉</span>
-                  <span className="bg-white text-black px-1.5 py-0.5 font-bold">무료</span>
+                  <span className="bg-white text-black px-1.5 py-0.5 font-bold">{isKo ? '무료' : 'Free'}</span>
                 </div>
                 <p className="text-xs text-[#B9B9B9] font-light leading-relaxed">
                   안양파빌리온에 음악이 머무는 특별한 오후! 재즈와 소울의 애쉬, 밴드 웨이블릿, 아코디언킴의 무대와 함께 자유로운 컬러링 체험 프로그램이 열립니다.
                 </p>
                 <div className="text-[11px] font-mono text-[#8C8C8C] pt-2 border-t border-white/10 space-y-1">
-                  <div>■ 일시: 2026. 10. 9.(금) 15:00–17:30</div>
-                  <div>■ 장소: 안양파빌리온 앞 광장</div>
-                  <div>■ 타임테이블: 15:00 애쉬 · 16:00 웨이블릿 · 17:00 아코디언킴</div>
-                  <div className="text-[10px] text-[#6C6C6C]">※ 현장 상황에 따라 변경될 수 있습니다.</div>
+                  <div>■ {isKo ? '일시: 2026. 10. 9.(금) 15:00–17:30' : 'Date: Fri, Oct 9, 2026, 3:00–5:30 PM'}</div>
+                  <div>■ {isKo ? '장소: 안양파빌리온 앞 광장' : 'Venue: Anyang Pavilion Plaza'}</div>
+                  <div>■ {isKo ? '타임테이블: 15:00 애쉬 · 16:00 웨이블릿 · 17:00 아코디언킴' : 'Timetable: 3:00 PM Ash · 4:00 PM Wavelet · 5:00 PM Accordion Kim'}</div>
+                  <div className="text-[10px] text-[#6C6C6C]">{isKo ? '※ 현장 상황에 따라 변경될 수 있습니다.' : '※ Subject to change depending on on-site conditions.'}</div>
                 </div>
               </div>
               <div className="grid grid-cols-2 gap-2">
@@ -2203,15 +2203,15 @@ export default function SiteAPage({ params }: PageProps) {
               <div className="border border-white/15 p-3.5 bg-white/[0.02] space-y-2">
                 <div className="flex justify-between items-center text-xs font-mono">
                   <span className="text-white font-bold">플리 아트마켓 〈도원장(場)〉</span>
-                  <span className="bg-white text-black px-1.5 py-0.5 font-bold">무료입장</span>
+                  <span className="bg-white text-black px-1.5 py-0.5 font-bold">{isKo ? '무료입장' : 'Free Admission'}</span>
                 </div>
                 <p className="text-xs text-[#B9B9B9] font-light leading-relaxed">
                   안양의 작가와 공방, 핸드메이드 창작자들이 직접 만든 아트상품을 선보이고 창작 체험을 나누는 열린 문화예술 장터입니다.
                 </p>
                 <div className="text-[11px] font-mono text-[#8C8C8C] pt-2 border-t border-white/10 space-y-1">
-                  <div>■ 일시: 2026. 10. 17.(토) 11:00~18:00</div>
-                  <div>■ 장소: 안양파빌리온 앞마당</div>
-                  <div>■ 내용: 아트상품 판매 및 창작 체험 (약 15개 팀)</div>
+                  <div>■ {isKo ? '일시: 2026. 10. 17.(토) 11:00~18:00' : 'Date: Sat, Oct 17, 2026, 11:00 AM–6:00 PM'}</div>
+                  <div>■ {isKo ? '장소: 안양파빌리온 앞마당' : 'Venue: Anyang Pavilion Front Yard'}</div>
+                  <div>■ {isKo ? '내용: 아트상품 판매 및 창작 체험 (약 15개 팀)' : 'Program: Art goods and creative workshops (about 15 teams)'}</div>
                 </div>
               </div>
               <div className="max-w-[240px] mx-auto">
@@ -2265,15 +2265,15 @@ export default function SiteAPage({ params }: PageProps) {
                 <span className="text-white font-bold text-caption font-mono">
                   {isKo ? '1. 도슨트와 함께하는 APAP8' : '1. Regular Docent Tour'}
                 </span>
-                <span className="text-[10px] font-mono bg-white text-black px-1.5 py-0.2 font-bold">무료 (45분)</span>
+                <span className="text-[10px] font-mono bg-white text-black px-1.5 py-0.2 font-bold">{isKo ? '무료 (45분)' : 'FREE (45 min)'}</span>
               </div>
               <p className="text-caption text-[#B9B9B9] font-light">
                 {isKo ? 'APAP8 실내외 주요 작품 해설' : 'APAP8 indoor & outdoor highlight artworks commentary'}
               </p>
               <div className="text-[11px] font-mono text-[#8C8C8C] pt-1 border-t border-white/10 space-y-0.5">
-                <div>■ 시작장소: {isKo ? '안양파빌리온' : 'Anyang Pavilion'}</div>
-                <div>■ 운영시간: 11:00, 14:00, 16:00 (1일 3회 운영 / 45분 내외)</div>
-                <div>■ 참여방법: {isKo ? '현장 참여 가능 / 10인 이상 단체 사전 예약' : 'Walk-in / Advance booking for groups 10+'}</div>
+                <div>■ {isKo ? '시작장소' : 'Meeting Point'}: {isKo ? '안양파빌리온' : 'Anyang Pavilion'}</div>
+                <div>■ {isKo ? '운영시간' : 'Schedule'}: {isKo ? '11:00, 14:00, 16:00 (1일 3회 운영 / 45분 내외)' : '11:00, 14:00, 16:00 (3 times a day / approx. 45 mins)'}</div>
+                <div>■ {isKo ? '참여방법' : 'How to Join'}: {isKo ? '현장 참여 가능 / 10인 이상 단체 사전 예약' : 'Walk-in / Advance booking for groups 10+'}</div>
               </div>
             </div>
 
@@ -2283,15 +2283,15 @@ export default function SiteAPage({ params }: PageProps) {
                 <span className="text-white font-bold text-caption font-mono">
                   {isKo ? '2. 〈특별전: 우리가 꿈꾸는 도원〉 도슨트 해설' : '2. Special Exhibition Docent'}
                 </span>
-                <span className="text-[10px] font-mono bg-white text-black px-1.5 py-0.2 font-bold">무료 (10분)</span>
+                <span className="text-[10px] font-mono bg-white text-black px-1.5 py-0.2 font-bold">{isKo ? '무료 (10분)' : 'FREE (10 min)'}</span>
               </div>
               <p className="text-caption text-[#B9B9B9] font-light">
                 {isKo ? '주요 작품 해설' : 'Key exhibition artworks commentary'}
               </p>
               <div className="text-[11px] font-mono text-[#8C8C8C] pt-1 border-t border-white/10 space-y-0.5">
-                <div>■ 시작장소: {isKo ? '아르테자이 상가, 오픈 스쿨' : 'Arte Zai Commercial, Open School'}</div>
-                <div>■ 운영시간: {isKo ? '상시운영 (10분 내외)' : 'Always operating (Approx. 10 min)'}</div>
-                <div>■ 참여방법: {isKo ? '현장 참여 가능 / 10인 이상 단체 사전 예약' : 'Walk-in / Advance booking for groups 10+'}</div>
+                <div>■ {isKo ? '시작장소' : 'Meeting Point'}: {isKo ? '아르테자이 상가, 오픈 스쿨' : 'Arte Zai Commercial, Open School'}</div>
+                <div>■ {isKo ? '운영시간' : 'Schedule'}: {isKo ? '상시운영 (10분 내외)' : 'Always operating (Approx. 10 min)'}</div>
+                <div>■ {isKo ? '참여방법' : 'How to Join'}: {isKo ? '현장 참여 가능 / 10인 이상 단체 사전 예약' : 'Walk-in / Advance booking for groups 10+'}</div>
               </div>
             </div>
 
@@ -2307,9 +2307,9 @@ export default function SiteAPage({ params }: PageProps) {
                 {isKo ? 'APAP 야외 주요 작품 해설' : 'APAP outdoor key artworks commentary'}
               </p>
               <div className="text-[11px] font-mono text-[#8C8C8C] pt-1 border-t border-white/10 space-y-0.5">
-                <div>■ 시작장소: {isKo ? '안양파빌리온' : 'Anyang Pavilion'}</div>
-                <div>■ 운영일정: {isKo ? '10.16. ~ 11.6.(매주 금요일) 19:00 (90분 내외)' : 'Oct 16 – Nov 6 (Every Fri) 19:00 (90 min)'}</div>
-                <div>■ 예약방법: {isKo ? '네이버·전화 예약 또는 현장 참여 가능' : 'Naver / Phone booking or walk-in available'}</div>
+                <div>■ {isKo ? '시작장소' : 'Meeting Point'}: {isKo ? '안양파빌리온' : 'Anyang Pavilion'}</div>
+                <div>■ {isKo ? '운영일정' : 'Schedule'}: {isKo ? '10.16. ~ 11.6.(매주 금요일) 19:00 (90분 내외)' : 'Oct 16 – Nov 6 (Every Fri) 19:00 (90 min)'}</div>
+                <div>■ {isKo ? '예약방법' : 'Booking'}: {isKo ? '네이버·전화 예약 또는 현장 참여 가능' : 'Naver / Phone booking or walk-in available'}</div>
               </div>
             </div>
           </div>
@@ -2340,8 +2340,8 @@ export default function SiteAPage({ params }: PageProps) {
                 기술 융합 시대 동시대 공공예술의 지향점과 지속가능성 담론 모색
               </p>
               <div className="text-[11px] font-mono text-[#8C8C8C] pt-1 border-t border-white/10 space-y-0.5">
-                <div>■ 일시: 2026.09.17.(목) 14:00 - 16:00</div>
-                <div>■ 장소: 안양박물관 교육관</div>
+                <div>■ {isKo ? '일시: 2026.09.17.(목) 14:00 - 16:00' : 'Date: Thu, Sep 17, 2026, 2:00–4:00 PM'}</div>
+                <div>■ {isKo ? '장소: 안양박물관 교육관' : 'Venue: Anyang Museum Education Center'}</div>
               </div>
             </div>
 
@@ -2354,8 +2354,8 @@ export default function SiteAPage({ params }: PageProps) {
                 APAP8 행사 종합 성과 평가 및 글로벌·아시아 공공예술 네트워크 확장 전략 공유
               </p>
               <div className="text-[11px] font-mono text-[#8C8C8C] pt-1 border-t border-white/10 space-y-0.5">
-                <div>■ 일시: 2026.12.10.(목) 14:00 - 16:00</div>
-                <div>■ 장소: 안양박물관 교육관</div>
+                <div>■ {isKo ? '일시: 2026.12.10.(목) 14:00 - 16:00' : 'Date: Thu, Dec 10, 2026, 2:00–4:00 PM'}</div>
+                <div>■ {isKo ? '장소: 안양박물관 교육관' : 'Venue: Anyang Museum Education Center'}</div>
               </div>
             </div>
           </div>
@@ -2380,8 +2380,8 @@ export default function SiteAPage({ params }: PageProps) {
               APAP8을 중심으로 지역이 예술로 가치를 발현하는 현장을 취재하고, APAP8과 유사한 해외 사례를 소개한 특별 다큐멘터리 프로그램입니다.
             </p>
             <div className="text-caption font-mono text-[#8C8C8C] pt-2 border-t border-white/10 space-y-1">
-              <div>■ 방송일시: 2026년 8월 29일(토) 13:05</div>
-              <div>■ 방송채널: KBS 1TV 전국 방송</div>
+              <div>■ {isKo ? '방송일시: 2026년 8월 29일(토) 13:05' : 'Air Date: August 29, 2026 (Sat) 1:05 PM'}</div>
+              <div>■ {isKo ? '방송채널: KBS 1TV 전국 방송' : 'Channel: KBS 1TV (National Broadcast)'}</div>
             </div>
             <div className="pt-2">
               <a
