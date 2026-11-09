@@ -1547,7 +1547,7 @@ export default function SiteAPage({ params }: PageProps) {
                         <div className="text-white font-medium text-[12.5px]">
                           <span>{isKo ? '2026.9.30.(수) ~ 11.29.(일)' : 'Sept 30 – Nov 29, 2026'}</span>
                           <span className="block text-[10.5px] font-mono text-[#8C8C8C] font-normal mt-0.5">
-                            {isKo ? '※ 개막식 2026.9.30.(수) 18:00 (안양파빌리온 앞 벽천광장)' : '※ Opening Sept 30, 2026 18:00'}
+                            {isKo ? '※ 개막식 2026.9.30.(수) 18:00 (안양파빌리온 앞 벽천광장)' : '※ Opening: September 30, 2026 (Wed) 6:00 PM, Cascade Square in front of Anyang Pavilion'}
                           </span>
                         </div>
                       </div>
@@ -1558,7 +1558,7 @@ export default function SiteAPage({ params }: PageProps) {
                           {isKo ? '관람문의' : 'Contact'}
                         </span>
                         <div className="text-[#D4D4D4] font-light text-[12px]">
-                          <span>031-687-0548 (공공예술부)</span>
+                          <span>{isKo ? '031-687-0548 (공공예술부)' : '+82-31-687-0548 (Public Art Dept.)'}</span>
                         </div>
                       </div>
                     </div>
@@ -1571,25 +1571,25 @@ export default function SiteAPage({ params }: PageProps) {
                         <Layers className="w-3.5 h-3.5 text-white flex-shrink-0" />
                         <span>{isKo ? '4대 전시장 구역 안내' : 'VENUE DETAILS'}</span>
                       </div>
-                      <span className="font-mono text-[10px] text-white/60">4개 구역</span>
+                      <span className="font-mono text-[10px] text-white/60">{isKo ? '4개 구역' : '4 ZONES'}</span>
                     </div>
 
                     <div className="divide-y divide-white/5 text-xs space-y-1 pt-0.5">
                       <div className="pt-0.5">
-                        <strong className="text-white block font-medium text-[11.5px] sm:text-xs">1. 아이 파빌리온 (안양파빌리온)</strong>
-                        <span className="text-[#B9B9B9] block text-[10.5px] sm:text-[11px]">화–금 10:00–18:00 / 토·일 10:00–19:00 (월 휴관)</span>
+                        <strong className="text-white block font-medium text-[11.5px] sm:text-xs">{isKo ? '1. 아이 파빌리온 (안양파빌리온)' : '1. i Pavilion (Anyang Pavilion)'}</strong>
+                        <span className="text-[#B9B9B9] block text-[10.5px] sm:text-[11px]">{isKo ? '화–금 10:00–18:00 / 토·일 10:00–19:00 (월 휴관)' : 'Tue–Fri 10:00 AM – 6:00 PM / Sat–Sun 10:00 AM – 7:00 PM (Closed Mondays)'}</span>
                       </div>
                       <div className="pt-1">
-                        <strong className="text-white block font-medium text-[11.5px] sm:text-xs">2. 밤의 도원경 (파빌리온 앞 광장)</strong>
-                        <span className="text-[#B9B9B9] block text-[10.5px] sm:text-[11px]">화–일 19:00–22:00 (월 휴무) / 빛의 폭포(정시 15분), 오색운(15분~정시)</span>
+                        <strong className="text-white block font-medium text-[11.5px] sm:text-xs">{isKo ? '2. 밤의 도원경 (파빌리온 앞 광장)' : '2. Night Utopia (Pavilion Square)'}</strong>
+                        <span className="text-[#B9B9B9] block text-[10.5px] sm:text-[11px]">{isKo ? '화–일 19:00–22:00 (월 휴무) / 빛의 폭포(정시 15분), 오색운(15분~정시)' : 'Tue–Sun 7:00 PM – 10:00 PM (Closed Mondays) / Waterfall of Light (first 15 min of each hour), Five-Colored Clouds (15 min past the hour to the next hour)'}</span>
                       </div>
                       <div className="pt-1">
-                        <strong className="text-white block font-medium text-[11.5px] sm:text-xs">3. 오픈 그라운드 (야외 공원 및 광장)</strong>
-                        <span className="text-[#B9B9B9] block text-[10.5px] sm:text-[11px]">24시간 상시개방</span>
+                        <strong className="text-white block font-medium text-[11.5px] sm:text-xs">{isKo ? '3. 오픈 그라운드 (야외 공원 및 광장)' : '3. Open Ground (Outdoor Park & Plaza)'}</strong>
+                        <span className="text-[#B9B9B9] block text-[10.5px] sm:text-[11px]">{isKo ? '24시간 상시개방' : 'Open 24/7'}</span>
                       </div>
                       <div className="pt-1">
                         <strong className="text-white block font-medium text-[11.5px] sm:text-xs">{isKo ? '4. 특별전: 우리가 꿈꾸는 도원' : '4. Special Exhibition: Dreaming Our Paradise'}</strong>
-                        <span className="text-[#B9B9B9] block text-[10.5px] sm:text-[11px]">아르테자이 상가 1층, 오픈 스쿨 (화–일 10:00–18:00, 월 휴관)</span>
+                        <span className="text-[#B9B9B9] block text-[10.5px] sm:text-[11px]">{isKo ? '아르테자이 상가 1층, 오픈 스쿨 (화–일 10:00–18:00, 월 휴관)' : 'Ogam Gallery (1F Arte Zai), Open School (Tue–Sun 10:00 AM – 6:00 PM, Closed Mondays)'}</span>
                       </div>
                     </div>
                   </div>
@@ -1619,8 +1619,8 @@ export default function SiteAPage({ params }: PageProps) {
                     </div>
 
                     <div className="space-y-1 text-xs text-[#D4D4D4] font-light">
-                      <p>경기도 안양시 만안구 예술공원로 180</p>
-                      <p className="text-[11px] text-[#8C8C8C]">관악역 2번 출구(마을 6-2번) / 안양역 1번 출구(버스 2번)</p>
+                      <p>{isKo ? '경기도 안양시 만안구 예술공원로 180' : '180 Yesulgongwon-ro, Manan-gu, Anyang-si, Gyeonggi-do'}</p>
+                      <p className="text-[11px] text-[#8C8C8C]">{isKo ? '관악역 2번 출구(마을 6-2번) / 안양역 1번 출구(버스 2번)' : 'Gwanak Stn Exit 2 (Village Bus 6-2) / Anyang Stn Exit 1 (Bus 2)'}</p>
                     </div>
                   </div>
                 </div>
