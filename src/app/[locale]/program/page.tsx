@@ -513,11 +513,11 @@ export default function ProgramPage({ params }: PageProps) {
 
             {/* Bottom Meta Row */}
             <div className="flex flex-wrap gap-4 text-xs font-mono text-[#8C8C8C] border-t border-white/10 pt-3">
-              <span>{isKo ? '기간: 2026. 10. ~ 11.' : 'Schedule: October – November 2026'}</span>
+              <span>{isKo ? '기간: 2026. 10. ~ 11.' : 'Dates: October – November 2026'}</span>
               <span>•</span>
-              <span>{isKo ? '장소: 안양파빌리온 앞마당·광장 일대 및 안양박물관 교육관' : 'Location: Anyang Pavilion Area & Education Center, Anyang Museum'}</span>
+              <span>{isKo ? '장소: 안양파빌리온 앞마당·광장 일대 및 안양박물관 교육관' : 'Venue: Anyang Pavilion Front Yard and Square'}</span>
               <span>•</span>
-              <span>{isKo ? '참가비: 전액 무료' : 'Fee: Free Admission'}</span>
+              <span>{isKo ? '참가비: 전액 무료' : 'Admission: Free'}</span>
             </div>
           </section>
 
