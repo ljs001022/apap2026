@@ -631,15 +631,15 @@ export default function ProgramPage({ params }: PageProps) {
               <div className="border border-white/20 p-6 bg-white/[0.02] space-y-3">
                 <div className="flex justify-between items-center pb-2 border-b border-white/10">
                   <span className="font-mono text-xs font-bold bg-white text-black px-2 py-0.5">SESSION 01</span>
-                  <span className="font-mono text-xs text-[#8C8C8C]">{isKo ? '2026.09.17.(목) 14:00 - 16:00' : 'Sep 17, 2026 (Thu) 2:00–4:00 PM'}</span>
+                  <span className="font-mono text-xs text-[#8C8C8C]">{isKo ? '2026.09.17.(목) 14:00 - 16:00' : 'September 17, 2026 (Thu) 2:00 PM – 4:00 PM'}</span>
                 </div>
                 <h3 className="text-lg font-bold text-white">
-                  {isKo ? '1. APAP8, 공공예술의 미래' : 'APAP8: The Future of Public Art'}
+                  {isKo ? '1. APAP8, 공공예술의 미래' : 'APAP8, The Future of Public Art'}
                 </h3>
                 <p className="text-xs sm:text-sm text-[#B9B9B9] font-light leading-relaxed">
                   {isKo
                     ? '인공지능과 첨단기술이 융합하는 시대, 공공예술의 사회적 역할과 예술 대전환의 미래 담론을 모색합니다.'
-                    : 'Exploring the social role and transformation of public art in the era of AI and cutting-edge technologies.'}
+                    : 'Exploring the directions and sustainability of contemporary public art in the era of technological convergence'}
                 </p>
                 <div className="text-xs font-mono text-[#8C8C8C] pt-2 border-t border-white/10 space-y-0.5">
                   <div>■ {isKo ? '장소: 안양박물관 교육관' : 'Venue: Anyang Museum Education Center'}</div>
@@ -651,15 +651,15 @@ export default function ProgramPage({ params }: PageProps) {
               <div className="border border-white/20 p-6 bg-white/[0.02] space-y-3">
                 <div className="flex justify-between items-center pb-2 border-b border-white/10">
                   <span className="font-mono text-xs font-bold bg-white text-black px-2 py-0.5">SESSION 02</span>
-                  <span className="font-mono text-xs text-[#8C8C8C]">{isKo ? '2026.12.10.(목) 14:00 - 16:00' : 'Dec 10, 2026 (Thu) 2:00–4:00 PM'}</span>
+                  <span className="font-mono text-xs text-[#8C8C8C]">{isKo ? '2026.12.10.(목) 14:00 - 16:00' : 'December 10, 2026 (Thu) 2:00 PM – 4:00 PM'}</span>
                 </div>
                 <h3 className="text-lg font-bold text-white">
-                  {isKo ? '2. APAP8, 아시아 공공예술로 나아가다' : 'APAP8: Advancing to Asian Public Art'}
+                  {isKo ? '2. APAP8, 아시아 공공예술로 나아가다' : 'APAP8, Toward Asian Public Art'}
                 </h3>
                 <p className="text-xs sm:text-sm text-[#B9B9B9] font-light leading-relaxed">
                   {isKo
                     ? 'APAP8의 종합적 성과를 평가하고, 한중 특별전을 기점으로 아시아 공공예술 연대와 글로벌 거점 확장을 논의합니다.'
-                    : 'Evaluating comprehensive APAP8 outcomes and expanding Asian public art networks.'}
+                    : 'Comprehensive performance evaluation of APAP8 and sharing strategies for expanding global and Asian public art networks'}
                 </p>
                 <div className="text-xs font-mono text-[#8C8C8C] pt-2 border-t border-white/10 space-y-0.5">
                   <div>■ {isKo ? '장소: 안양박물관 교육관' : 'Venue: Anyang Museum Education Center'}</div>

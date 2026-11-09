@@ -1185,16 +1185,16 @@ export default function SiteAPage({ params }: PageProps) {
                       <div className="border border-white/20 p-6 bg-white/[0.02] space-y-4">
                         <div className="flex justify-between items-center pb-2 border-b border-white/10">
                           <span className="font-mono text-xs font-bold bg-white text-black px-2 py-0.5">SESSION 01</span>
-                          <span className="font-mono text-xs text-[#8C8C8C]">{isKo ? '2026.09.17.(목) 14:00 - 16:00' : 'Sep 17, 2026 (Thu) 2:00–4:00 PM'}</span>
+                          <span className="font-mono text-xs text-[#8C8C8C]">{isKo ? '2026.09.17.(목) 14:00 - 16:00' : 'September 17, 2026 (Thu) 2:00 PM – 4:00 PM'}</span>
                         </div>
                         <div>
                           <h4 className="text-lg lg:text-xl font-bold text-white">
-                            {isKo ? '1. APAP8, 공공예술의 미래' : 'APAP8: The Future of Public Art'}
+                            {isKo ? '1. APAP8, 공공예술의 미래' : 'APAP8, The Future of Public Art'}
                           </h4>
                           <p className="text-xs lg:text-sm text-[#B9B9B9] font-light leading-relaxed mt-2">
                             {isKo
                               ? '인공지능과 첨단기술이 융합하는 시대, 공공예술의 사회적 역할과 예술 대전환의 미래 담론을 모색합니다.'
-                              : 'Exploring the social role and transformation of public art in the era of AI and cutting-edge technologies.'}
+                              : 'Exploring the directions and sustainability of contemporary public art in the era of technological convergence'}
                           </p>
                         </div>
                         <div className="text-xs font-mono text-white/70 pt-2 border-t border-white/10 space-y-1">
@@ -1207,16 +1207,16 @@ export default function SiteAPage({ params }: PageProps) {
                       <div className="border border-white/20 p-6 bg-white/[0.02] space-y-4">
                         <div className="flex justify-between items-center pb-2 border-b border-white/10">
                           <span className="font-mono text-xs font-bold bg-white text-black px-2 py-0.5">SESSION 02</span>
-                          <span className="font-mono text-xs text-[#8C8C8C]">{isKo ? '2026.12.10.(목) 14:00 - 16:00' : 'Dec 10, 2026 (Thu) 2:00–4:00 PM'}</span>
+                          <span className="font-mono text-xs text-[#8C8C8C]">{isKo ? '2026.12.10.(목) 14:00 - 16:00' : 'December 10, 2026 (Thu) 2:00 PM – 4:00 PM'}</span>
                         </div>
                         <div>
                           <h4 className="text-lg lg:text-xl font-bold text-white">
-                            {isKo ? '2. APAP8, 아시아 공공예술로 나아가다' : 'APAP8: Advancing to Asian Public Art'}
+                            {isKo ? '2. APAP8, 아시아 공공예술로 나아가다' : 'APAP8, Toward Asian Public Art'}
                           </h4>
                           <p className="text-xs lg:text-sm text-[#B9B9B9] font-light leading-relaxed mt-2">
                             {isKo
                               ? 'APAP8의 종합적 성과를 평가하고, 한중 특별전을 기점으로 아시아 공공예술 연대와 글로벌 거점 확장을 논의합니다.'
-                              : 'Evaluating comprehensive APAP8 outcomes and expanding Asian public art networks.'}
+                              : 'Comprehensive performance evaluation of APAP8 and sharing strategies for expanding global and Asian public art networks'}
                           </p>
                         </div>
                         <div className="text-xs font-mono text-white/70 pt-2 border-t border-white/10 space-y-1">
@@ -2333,28 +2333,28 @@ export default function SiteAPage({ params }: PageProps) {
           <div className="space-y-3">
             <div className="border border-white/15 p-3.5 bg-white/[0.02] space-y-1.5">
               <div className="flex justify-between items-center">
-                <span className="text-white font-bold text-caption font-mono">1. APAP8, 공공예술의 미래</span>
+                <span className="text-white font-bold text-caption font-mono">{isKo ? '1. APAP8, 공공예술의 미래' : 'APAP8, The Future of Public Art'}</span>
                 <span className="text-[10px] font-mono bg-white text-black px-1.5 py-0.2 font-bold">SESSION 01</span>
               </div>
               <p className="text-caption text-[#B9B9B9] font-light">
-                기술 융합 시대 동시대 공공예술의 지향점과 지속가능성 담론 모색
+                {isKo ? '기술 융합 시대 동시대 공공예술의 지향점과 지속가능성 담론 모색' : 'Exploring the directions and sustainability of contemporary public art in the era of technological convergence'}
               </p>
               <div className="text-[11px] font-mono text-[#8C8C8C] pt-1 border-t border-white/10 space-y-0.5">
-                <div>■ {isKo ? '일시: 2026.09.17.(목) 14:00 - 16:00' : 'Date: Thu, Sep 17, 2026, 2:00–4:00 PM'}</div>
+                <div>■ {isKo ? '일시: 2026.09.17.(목) 14:00 - 16:00' : 'Date & Time: September 17, 2026 (Thu) 2:00 PM – 4:00 PM'}</div>
                 <div>■ {isKo ? '장소: 안양박물관 교육관' : 'Venue: Anyang Museum Education Center'}</div>
               </div>
             </div>
 
             <div className="border border-white/15 p-3.5 bg-white/[0.02] space-y-1.5">
               <div className="flex justify-between items-center">
-                <span className="text-white font-bold text-caption font-mono">2. APAP8, 아시아 공공예술로 나아가다</span>
+                <span className="text-white font-bold text-caption font-mono">{isKo ? '2. APAP8, 아시아 공공예술로 나아가다' : 'APAP8, Toward Asian Public Art'}</span>
                 <span className="text-[10px] font-mono bg-white text-black px-1.5 py-0.2 font-bold">SESSION 02</span>
               </div>
               <p className="text-caption text-[#B9B9B9] font-light">
-                APAP8 행사 종합 성과 평가 및 글로벌·아시아 공공예술 네트워크 확장 전략 공유
+                {isKo ? 'APAP8 행사 종합 성과 평가 및 글로벌·아시아 공공예술 네트워크 확장 전략 공유' : 'Comprehensive performance evaluation of APAP8 and sharing strategies for expanding global and Asian public art networks'}
               </p>
               <div className="text-[11px] font-mono text-[#8C8C8C] pt-1 border-t border-white/10 space-y-0.5">
-                <div>■ {isKo ? '일시: 2026.12.10.(목) 14:00 - 16:00' : 'Date: Thu, Dec 10, 2026, 2:00–4:00 PM'}</div>
+                <div>■ {isKo ? '일시: 2026.12.10.(목) 14:00 - 16:00' : 'Date & Time: December 10, 2026 (Thu) 2:00 PM – 4:00 PM'}</div>
                 <div>■ {isKo ? '장소: 안양박물관 교육관' : 'Venue: Anyang Museum Education Center'}</div>
               </div>
             </div>
